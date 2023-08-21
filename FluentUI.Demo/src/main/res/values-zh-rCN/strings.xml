@@ -37,7 +37,7 @@
     <string name="app_bar_subtitle">副标题</string>
 
     <!-- Text to show the bottom border property of App bar .-->
-    <string name="app_bar_bottom_border">Bottom Border</string>
+    <string name="app_bar_bottom_border">下边框</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">已单击导航图标。</string>
@@ -856,84 +856,84 @@
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
-    <string name="tooltip_title">Title</string>
+    <string name="tooltip_title">标题</string>
     <!-- UI Label for ToolTip Text-->
-    <string name="tooltip_text">Tooltip Text</string>
+    <string name="tooltip_text">工具提示文本</string>
     <!-- Text for button that shows Custom content Tooltip on tap -->
-    <string name="tooltip_custom_content">Tap for Custom Content Tooltip</string>
+    <string name="tooltip_custom_content">点击以获取自定义内容工具提示</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start">Top Start </string>
+    <string name="tooltip_top_start">顶部开始时间 </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end">Top End </string>
+    <string name="tooltip_top_end">顶端 </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start">Bottom Start </string>
+    <string name="tooltip_bottom_start">底部开始 </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end">Bottom End </string>
+    <string name="tooltip_bottom_end">下边缘 </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center">Center </string>
+    <string name="tooltip_center">居中 </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_custom_center">Custom Center</string>
+    <string name="tooltip_custom_center">自定义中心</string>
 
     <!-- V2 Demo App -->
-    <string name="release_notes_updates">For updates on Release Notes, </string>
-    <string name="click_here">click here.</string>
-    <string name="open_source_cross_platform">Open source cross platform Design System.</string>
-    <string name="intuitive_and_powerful">Intuitive &amp; Powerful.</string>
-    <string name="design_tokens">Design Tokens</string>
-    <string name="release_notes">Release Notes</string>
+    <string name="release_notes_updates">有关发行说明的更新， </string>
+    <string name="click_here">单击此处。</string>
+    <string name="open_source_cross_platform">开放源代码跨平台设计系统。</string>
+    <string name="intuitive_and_powerful">直观&amp;功能强大。</string>
+    <string name="design_tokens">设计标记</string>
+    <string name="release_notes">发行说明</string>
     <string name="github_repo">GitHub Repo</string>
-    <string name="github_repo_link">GitHub Repo Link</string>
-    <string name="report_issue">Report Issue</string>
-    <string name="v1_components">V1 Components</string>
-    <string name="v2_components">V2 Components</string>
-    <string name="all_components">All</string>
-    <string name="fluent_logo">Fluent Logo</string>
-    <string name="new_badge">New</string>
-    <string name="modified_badge">Modified</string>
-    <string name="api_break_badge">API Break</string>
-    <string name="app_bar_more">More</string>
-    <string name="accent">Accent</string>
-    <string name="appearance">Appearance</string>
-    <string name="choose_brand_theme">Choose your brand theme:</string>
-    <string name="fluent_brand_theme">Fluent Brand</string>
+    <string name="github_repo_link">GitHub Repo 链接</string>
+    <string name="report_issue">报告问题</string>
+    <string name="v1_components">V1 组件</string>
+    <string name="v2_components">V2 组件</string>
+    <string name="all_components">全部</string>
+    <string name="fluent_logo">Fluent 徽标</string>
+    <string name="new_badge">新建</string>
+    <string name="modified_badge">修改时间</string>
+    <string name="api_break_badge">API 中断</string>
+    <string name="app_bar_more">更多</string>
+    <string name="accent">突出</string>
+    <string name="appearance">外观</string>
+    <string name="choose_brand_theme">选择品牌主题:</string>
+    <string name="fluent_brand_theme">Fluent 品牌</string>
     <string name="one_note_theme">OneNote</string>
     <string name="word_theme">Word</string>
     <string name="excel_theme">Excel</string>
     <string name="powerpoint_theme">PowerPoint</string>
     <string name="m365_theme">M365</string>
     <string name="teams_theme">MS Teams</string>
-    <string name="choose_appearance">Choose Appearance</string>
-    <string name="appearance_system_default">System Default</string>
-    <string name="appearance_light">Light</string>
-    <string name="appearance_dark">Dark</string>
-    <string name="demo_activity_github_link">Demo Activity GitHub Link</string>
-    <string name="control_tokens_details">Control Tokens details</string>
-    <string name="parameters">Parameters</string>
-    <string name="control_tokens">Control Tokens</string>
-    <string name="global_tokens">Global Tokens</string>
-    <string name="alias_tokens">Alias Tokens</string>
-    <string name="sample_text">Text</string>
-    <string name="sample_icon">Sample Icon</string>
-    <string name="color">Color</string>
-    <string name="neutral_color_tokens">Neutral Color Tokens</string>
-    <string name="font_size_tokens">Font Size Tokens</string>
-    <string name="line_height_tokens">Line Height Tokens</string>
-    <string name="font_weight_tokens">Font Weight Tokens</string>
-    <string name="icon_size_tokens">Icon Size Tokens</string>
-    <string name="size_tokens">Size Tokens</string>
-    <string name="shadow_tokens">Shadow Tokens</string>
-    <string name="corner_radius_tokens">Corner RadiusTokens</string>
-    <string name="stroke_width_tokens">Stroke Width Tokens</string>
-    <string name="brand_color_tokens">Brand Color Tokens</string>
-    <string name="neutral_background_color_tokens">Neutral Background Color Tokens</string>
-    <string name="neutral_foreground_color_tokens">Neutral Foreground Color Tokens</string>
-    <string name="neutral_stroke_color_tokens">Neutral Stroke Color Tokens</string>
-    <string name="brand_background_color_tokens">Brand Background Color Tokens</string>
-    <string name="brand_foreground_color_tokens">Brand Foreground Color Tokens</string>
-    <string name="brand_stroke_color_tokens">Brand Stroke Color Tokens</string>
-    <string name="error_and_status_color_tokens">Error and Status Color Tokens</string>
-    <string name="presence_tokens">Presence Color Tokens</string>
-    <string name="typography_tokens">Typography Tokens</string>
-    <string name="unspecified">Unspecified</string>
+    <string name="choose_appearance">选择外观</string>
+    <string name="appearance_system_default">系统默认</string>
+    <string name="appearance_light">浅色</string>
+    <string name="appearance_dark">深色</string>
+    <string name="demo_activity_github_link">演示活动 GitHub 链接</string>
+    <string name="control_tokens_details">控制令牌详细信息</string>
+    <string name="parameters">参数</string>
+    <string name="control_tokens">控制令牌</string>
+    <string name="global_tokens">全局标记</string>
+    <string name="alias_tokens">别名标记</string>
+    <string name="sample_text">文本</string>
+    <string name="sample_icon">示例图标</string>
+    <string name="color">颜色</string>
+    <string name="neutral_color_tokens">中性颜色标记</string>
+    <string name="font_size_tokens">字体大小令牌</string>
+    <string name="line_height_tokens">行高标记</string>
+    <string name="font_weight_tokens">字体粗细标记</string>
+    <string name="icon_size_tokens">图标大小令牌</string>
+    <string name="size_tokens">调整标记大小</string>
+    <string name="shadow_tokens">阴影标记</string>
+    <string name="corner_radius_tokens">圆角半径标记</string>
+    <string name="stroke_width_tokens">笔划墨迹宽度标记</string>
+    <string name="brand_color_tokens">品牌颜色标记</string>
+    <string name="neutral_background_color_tokens">中性背景色标记</string>
+    <string name="neutral_foreground_color_tokens">中性前景色标记</string>
+    <string name="neutral_stroke_color_tokens">中性笔划墨迹颜色标记</string>
+    <string name="brand_background_color_tokens">品牌背景色标记</string>
+    <string name="brand_foreground_color_tokens">品牌前景色标记</string>
+    <string name="brand_stroke_color_tokens">品牌笔划墨迹颜色标记</string>
+    <string name="error_and_status_color_tokens">错误和状态颜色标记</string>
+    <string name="presence_tokens">状态颜色标记</string>
+    <string name="typography_tokens">版式标记</string>
+    <string name="unspecified">未指定</string>
 
 </resources>

@@ -37,7 +37,7 @@
     <string name="app_bar_subtitle">ઉપશીર્ષક</string>
 
     <!-- Text to show the bottom border property of App bar .-->
-    <string name="app_bar_bottom_border">Bottom Border</string>
+    <string name="app_bar_bottom_border">નીચલી કિનારી</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">નેવિગેશન આઇકૉન પર ક્લિક કર્યું.</string>
@@ -857,84 +857,84 @@
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
-    <string name="tooltip_title">Title</string>
+    <string name="tooltip_title">શીર્ષક</string>
     <!-- UI Label for ToolTip Text-->
-    <string name="tooltip_text">Tooltip Text</string>
+    <string name="tooltip_text">ટૂલટીપ પાઠ</string>
     <!-- Text for button that shows Custom content Tooltip on tap -->
-    <string name="tooltip_custom_content">Tap for Custom Content Tooltip</string>
+    <string name="tooltip_custom_content">કસ્ટમ સામગ્રી ટૂલટીપ માટે ટૅપ કરો</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start">Top Start </string>
+    <string name="tooltip_top_start">ટોચની શરૂઆત </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end">Top End </string>
+    <string name="tooltip_top_end">ટોચનો છેડો </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start">Bottom Start </string>
+    <string name="tooltip_bottom_start">તળિયેથી પ્રારંભ </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end">Bottom End </string>
+    <string name="tooltip_bottom_end">નીચેનો છેડો </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center">Center </string>
+    <string name="tooltip_center">મધ્ય </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_custom_center">Custom Center</string>
+    <string name="tooltip_custom_center">કસ્ટમ કેન્દ્ર</string>
 
     <!-- V2 Demo App -->
-    <string name="release_notes_updates">For updates on Release Notes, </string>
-    <string name="click_here">click here.</string>
-    <string name="open_source_cross_platform">Open source cross platform Design System.</string>
-    <string name="intuitive_and_powerful">Intuitive &amp; Powerful.</string>
-    <string name="design_tokens">Design Tokens</string>
-    <string name="release_notes">Release Notes</string>
-    <string name="github_repo">GitHub Repo</string>
-    <string name="github_repo_link">GitHub Repo Link</string>
-    <string name="report_issue">Report Issue</string>
-    <string name="v1_components">V1 Components</string>
-    <string name="v2_components">V2 Components</string>
-    <string name="all_components">All</string>
-    <string name="fluent_logo">Fluent Logo</string>
-    <string name="new_badge">New</string>
-    <string name="modified_badge">Modified</string>
-    <string name="api_break_badge">API Break</string>
-    <string name="app_bar_more">More</string>
-    <string name="accent">Accent</string>
-    <string name="appearance">Appearance</string>
-    <string name="choose_brand_theme">Choose your brand theme:</string>
-    <string name="fluent_brand_theme">Fluent Brand</string>
+    <string name="release_notes_updates">જાહેર નોંધ પર અપડેટ્સ માટે, </string>
+    <string name="click_here">અહીં ક્લિક કરો.</string>
+    <string name="open_source_cross_platform">ઓપન સોર્સ ક્રોસ પ્લેટફોર્મ ડિઝાઇન સિસ્ટમ.</string>
+    <string name="intuitive_and_powerful">સહજ &amp; સશક્ત.</string>
+    <string name="design_tokens">ડિઝાઇન ટોકન્સ</string>
+    <string name="release_notes">જાહેર નોંધ</string>
+    <string name="github_repo">GitHub રેપો</string>
+    <string name="github_repo_link">GitHub રેપો લિંક</string>
+    <string name="report_issue">સમસ્યાની જાણ કરો</string>
+    <string name="v1_components">V1 ઘટકો</string>
+    <string name="v2_components">V2 ઘટકો</string>
+    <string name="all_components">બધા</string>
+    <string name="fluent_logo">Fluent લોગો</string>
+    <string name="new_badge">નવું / નવી</string>
+    <string name="modified_badge">સંશોધિત કરાયેલ</string>
+    <string name="api_break_badge">API બ્રેક</string>
+    <string name="app_bar_more">વધુ</string>
+    <string name="accent">ઍક્સેંટ</string>
+    <string name="appearance">દેખાવ</string>
+    <string name="choose_brand_theme">તમારી બ્રાન્ડ થીમ પસંદ કરો:</string>
+    <string name="fluent_brand_theme">Fluent બ્રાન્ડ</string>
     <string name="one_note_theme">OneNote</string>
     <string name="word_theme">Word</string>
     <string name="excel_theme">Excel</string>
     <string name="powerpoint_theme">PowerPoint</string>
     <string name="m365_theme">M365</string>
     <string name="teams_theme">MS Teams</string>
-    <string name="choose_appearance">Choose Appearance</string>
-    <string name="appearance_system_default">System Default</string>
-    <string name="appearance_light">Light</string>
-    <string name="appearance_dark">Dark</string>
-    <string name="demo_activity_github_link">Demo Activity GitHub Link</string>
-    <string name="control_tokens_details">Control Tokens details</string>
-    <string name="parameters">Parameters</string>
-    <string name="control_tokens">Control Tokens</string>
-    <string name="global_tokens">Global Tokens</string>
-    <string name="alias_tokens">Alias Tokens</string>
-    <string name="sample_text">Text</string>
-    <string name="sample_icon">Sample Icon</string>
-    <string name="color">Color</string>
-    <string name="neutral_color_tokens">Neutral Color Tokens</string>
-    <string name="font_size_tokens">Font Size Tokens</string>
-    <string name="line_height_tokens">Line Height Tokens</string>
-    <string name="font_weight_tokens">Font Weight Tokens</string>
-    <string name="icon_size_tokens">Icon Size Tokens</string>
-    <string name="size_tokens">Size Tokens</string>
-    <string name="shadow_tokens">Shadow Tokens</string>
-    <string name="corner_radius_tokens">Corner RadiusTokens</string>
-    <string name="stroke_width_tokens">Stroke Width Tokens</string>
-    <string name="brand_color_tokens">Brand Color Tokens</string>
-    <string name="neutral_background_color_tokens">Neutral Background Color Tokens</string>
-    <string name="neutral_foreground_color_tokens">Neutral Foreground Color Tokens</string>
-    <string name="neutral_stroke_color_tokens">Neutral Stroke Color Tokens</string>
-    <string name="brand_background_color_tokens">Brand Background Color Tokens</string>
-    <string name="brand_foreground_color_tokens">Brand Foreground Color Tokens</string>
-    <string name="brand_stroke_color_tokens">Brand Stroke Color Tokens</string>
-    <string name="error_and_status_color_tokens">Error and Status Color Tokens</string>
-    <string name="presence_tokens">Presence Color Tokens</string>
-    <string name="typography_tokens">Typography Tokens</string>
-    <string name="unspecified">Unspecified</string>
+    <string name="choose_appearance">દેખાવ પસંદ કરો</string>
+    <string name="appearance_system_default">સિસ્ટમ ડિફૉલ્ટ</string>
+    <string name="appearance_light">લાઈટ</string>
+    <string name="appearance_dark">ડાર્ક</string>
+    <string name="demo_activity_github_link">ડેમો પ્રવૃત્તિ GitHub લિંક</string>
+    <string name="control_tokens_details">નિયંત્રણ ટોકન્સની વિગતો</string>
+    <string name="parameters">પેરામીટર્સ</string>
+    <string name="control_tokens">નિયંત્રણ ટોકન્સ</string>
+    <string name="global_tokens">વૈશ્વિક ટોકન્સ</string>
+    <string name="alias_tokens">ઉપનામ ટોકન્સ</string>
+    <string name="sample_text">ટેક્સ્ટ</string>
+    <string name="sample_icon">નમૂનાનું આઇકૉન</string>
+    <string name="color">રંગ</string>
+    <string name="neutral_color_tokens">ન્યુટ્રલ રંગના ટોકન્સ</string>
+    <string name="font_size_tokens">ફૉન્ટ આકારના ટોકન્સ</string>
+    <string name="line_height_tokens">પંક્તિ ઊંચાઈના ટોકન્સ</string>
+    <string name="font_weight_tokens">ફૉન્ટ વજનના ટોકન્સ</string>
+    <string name="icon_size_tokens">આઇકૉન આકારના ટોકન્સ</string>
+    <string name="size_tokens">આકારના ટોકન્સ</string>
+    <string name="shadow_tokens">છાયા ટોકન્સ</string>
+    <string name="corner_radius_tokens">ખૂણાના ત્રિજ્યાટોકન્સ</string>
+    <string name="stroke_width_tokens">સ્ટ્રોકની પહોળાઈના ટોકન્સ</string>
+    <string name="brand_color_tokens">બ્રાન્ડ રંગના ટોકન્સ</string>
+    <string name="neutral_background_color_tokens">ન્યુટ્રલ પૃષ્ઠભૂમિ રંગના ટોકન્સ</string>
+    <string name="neutral_foreground_color_tokens">ન્યુટ્રલ અગ્રભૂમિ રંગના ટોકન્સ</string>
+    <string name="neutral_stroke_color_tokens">ન્યુટ્રલ સ્ટ્રોક રંગના ટોકન્સ</string>
+    <string name="brand_background_color_tokens">બ્રાન્ડ પૃષ્ઠભૂમિ રંગના ટોકન્સ</string>
+    <string name="brand_foreground_color_tokens">બ્રાન્ડ અગ્રભૂમિ રંગના ટોકન્સ</string>
+    <string name="brand_stroke_color_tokens">બ્રાન્ડ સ્ટ્રોક રંગના ટોકન્સ</string>
+    <string name="error_and_status_color_tokens">ત્રુટી અને સ્થિતિ રંગના ટોકન્સ</string>
+    <string name="presence_tokens">ઉપસ્થિતિ રંગના ટોકન્સ</string>
+    <string name="typography_tokens">ટાઇપોગ્રાફી ટોકન્સ</string>
+    <string name="unspecified">અનિર્દિષ્ટ</string>
 
 </resources>

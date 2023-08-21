@@ -37,7 +37,7 @@
     <string name="app_bar_subtitle">자막</string>
 
     <!-- Text to show the bottom border property of App bar .-->
-    <string name="app_bar_bottom_border">Bottom Border</string>
+    <string name="app_bar_bottom_border">하단 테두리</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">탐색 아이콘을 클릭했습니다.</string>
@@ -856,84 +856,84 @@
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
-    <string name="tooltip_title">Title</string>
+    <string name="tooltip_title">타이틀</string>
     <!-- UI Label for ToolTip Text-->
-    <string name="tooltip_text">Tooltip Text</string>
+    <string name="tooltip_text">도구 설명 텍스트</string>
     <!-- Text for button that shows Custom content Tooltip on tap -->
-    <string name="tooltip_custom_content">Tap for Custom Content Tooltip</string>
+    <string name="tooltip_custom_content">사용자 지정 콘텐츠 도구 설명을 보려면 탭하세요.</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start">Top Start </string>
+    <string name="tooltip_top_start">상위 시작 </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end">Top End </string>
+    <string name="tooltip_top_end">위쪽 끝 </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start">Bottom Start </string>
+    <string name="tooltip_bottom_start">아래쪽 시작 </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end">Bottom End </string>
+    <string name="tooltip_bottom_end">아래쪽 끝 </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center">Center </string>
+    <string name="tooltip_center">센터 </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_custom_center">Custom Center</string>
+    <string name="tooltip_custom_center">사용자 지정 센터</string>
 
     <!-- V2 Demo App -->
-    <string name="release_notes_updates">For updates on Release Notes, </string>
-    <string name="click_here">click here.</string>
-    <string name="open_source_cross_platform">Open source cross platform Design System.</string>
-    <string name="intuitive_and_powerful">Intuitive &amp; Powerful.</string>
-    <string name="design_tokens">Design Tokens</string>
-    <string name="release_notes">Release Notes</string>
-    <string name="github_repo">GitHub Repo</string>
-    <string name="github_repo_link">GitHub Repo Link</string>
-    <string name="report_issue">Report Issue</string>
-    <string name="v1_components">V1 Components</string>
-    <string name="v2_components">V2 Components</string>
-    <string name="all_components">All</string>
-    <string name="fluent_logo">Fluent Logo</string>
-    <string name="new_badge">New</string>
-    <string name="modified_badge">Modified</string>
-    <string name="api_break_badge">API Break</string>
-    <string name="app_bar_more">More</string>
-    <string name="accent">Accent</string>
-    <string name="appearance">Appearance</string>
-    <string name="choose_brand_theme">Choose your brand theme:</string>
-    <string name="fluent_brand_theme">Fluent Brand</string>
+    <string name="release_notes_updates">릴리스 정보에 대한 업데이트는</string>
+    <string name="click_here">여기를 클릭하세요.</string>
+    <string name="open_source_cross_platform">오픈 소스 크로스 플랫폼 디자인 시스템.</string>
+    <string name="intuitive_and_powerful">직관적이고 강력합니다.</string>
+    <string name="design_tokens">디자인 토큰</string>
+    <string name="release_notes">릴리즈 정보</string>
+    <string name="github_repo">GitHub 리포지토리</string>
+    <string name="github_repo_link">GitHub 리포지토리 링크</string>
+    <string name="report_issue">문제 신고</string>
+    <string name="v1_components">V1 구성 요소</string>
+    <string name="v2_components">V2 구성 요소</string>
+    <string name="all_components">모두</string>
+    <string name="fluent_logo">Fluent 로고</string>
+    <string name="new_badge">새로운</string>
+    <string name="modified_badge">수정됨</string>
+    <string name="api_break_badge">API 브레이크</string>
+    <string name="app_bar_more">추가</string>
+    <string name="accent">악센트</string>
+    <string name="appearance">모양</string>
+    <string name="choose_brand_theme">브랜드 테마 선택:</string>
+    <string name="fluent_brand_theme">Fluent 브랜드</string>
     <string name="one_note_theme">OneNote</string>
     <string name="word_theme">Word</string>
     <string name="excel_theme">Excel</string>
     <string name="powerpoint_theme">PowerPoint</string>
     <string name="m365_theme">M365</string>
     <string name="teams_theme">MS Teams</string>
-    <string name="choose_appearance">Choose Appearance</string>
-    <string name="appearance_system_default">System Default</string>
-    <string name="appearance_light">Light</string>
-    <string name="appearance_dark">Dark</string>
-    <string name="demo_activity_github_link">Demo Activity GitHub Link</string>
-    <string name="control_tokens_details">Control Tokens details</string>
-    <string name="parameters">Parameters</string>
-    <string name="control_tokens">Control Tokens</string>
-    <string name="global_tokens">Global Tokens</string>
-    <string name="alias_tokens">Alias Tokens</string>
-    <string name="sample_text">Text</string>
-    <string name="sample_icon">Sample Icon</string>
-    <string name="color">Color</string>
-    <string name="neutral_color_tokens">Neutral Color Tokens</string>
-    <string name="font_size_tokens">Font Size Tokens</string>
-    <string name="line_height_tokens">Line Height Tokens</string>
-    <string name="font_weight_tokens">Font Weight Tokens</string>
-    <string name="icon_size_tokens">Icon Size Tokens</string>
-    <string name="size_tokens">Size Tokens</string>
-    <string name="shadow_tokens">Shadow Tokens</string>
-    <string name="corner_radius_tokens">Corner RadiusTokens</string>
-    <string name="stroke_width_tokens">Stroke Width Tokens</string>
-    <string name="brand_color_tokens">Brand Color Tokens</string>
-    <string name="neutral_background_color_tokens">Neutral Background Color Tokens</string>
-    <string name="neutral_foreground_color_tokens">Neutral Foreground Color Tokens</string>
-    <string name="neutral_stroke_color_tokens">Neutral Stroke Color Tokens</string>
-    <string name="brand_background_color_tokens">Brand Background Color Tokens</string>
-    <string name="brand_foreground_color_tokens">Brand Foreground Color Tokens</string>
-    <string name="brand_stroke_color_tokens">Brand Stroke Color Tokens</string>
-    <string name="error_and_status_color_tokens">Error and Status Color Tokens</string>
-    <string name="presence_tokens">Presence Color Tokens</string>
-    <string name="typography_tokens">Typography Tokens</string>
-    <string name="unspecified">Unspecified</string>
+    <string name="choose_appearance">모양 선택</string>
+    <string name="appearance_system_default">시스템 기본값</string>
+    <string name="appearance_light">빛</string>
+    <string name="appearance_dark">어두운</string>
+    <string name="demo_activity_github_link">데모 활동 GitHub 링크</string>
+    <string name="control_tokens_details">제어 토큰 세부 정보</string>
+    <string name="parameters">매개 변수</string>
+    <string name="control_tokens">제어 토큰</string>
+    <string name="global_tokens">글로벌 토큰</string>
+    <string name="alias_tokens">별칭 토큰</string>
+    <string name="sample_text">텍스트</string>
+    <string name="sample_icon">샘플 아이콘</string>
+    <string name="color">색상</string>
+    <string name="neutral_color_tokens">중립 색상 토큰</string>
+    <string name="font_size_tokens">글꼴 크기 토큰</string>
+    <string name="line_height_tokens">선 높이 토큰</string>
+    <string name="font_weight_tokens">글꼴 두께 토큰</string>
+    <string name="icon_size_tokens">아이콘 크기 토큰</string>
+    <string name="size_tokens">크기 토큰</string>
+    <string name="shadow_tokens">섀도 토큰</string>
+    <string name="corner_radius_tokens">코너 반경토큰</string>
+    <string name="stroke_width_tokens">스트로크 폭 토큰</string>
+    <string name="brand_color_tokens">브랜드 컬러 토큰</string>
+    <string name="neutral_background_color_tokens">중립 배경 색상 토큰</string>
+    <string name="neutral_foreground_color_tokens">중립 전경 색상 토큰</string>
+    <string name="neutral_stroke_color_tokens">중립 스트로크 색상 토큰</string>
+    <string name="brand_background_color_tokens">브랜드 배경 색상 토큰</string>
+    <string name="brand_foreground_color_tokens">브랜드 전경 색상 토큰</string>
+    <string name="brand_stroke_color_tokens">브랜드 스트로크 색상 토큰</string>
+    <string name="error_and_status_color_tokens">오류 및 상태 색상 토큰</string>
+    <string name="presence_tokens">현재 상태 색상 토큰</string>
+    <string name="typography_tokens">타이포그래피 토큰</string>
+    <string name="unspecified">미지정</string>
 
 </resources>

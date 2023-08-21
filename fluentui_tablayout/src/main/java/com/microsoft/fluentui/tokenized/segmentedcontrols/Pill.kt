@@ -164,8 +164,7 @@ fun PillButton(
             .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
             .padding(vertical = token.verticalPadding(pillButtonInfo))
             .semantics(true) {
-                contentDescription =
-                    "${pillMetaData.text} $selectedString $enabledString"
+                contentDescription = if (pillMetaData.enabled) "${pillMetaData.text} $selectedString" else "${pillMetaData.text} $enabledString"
             },
         contentAlignment = Alignment.Center
     ) {
