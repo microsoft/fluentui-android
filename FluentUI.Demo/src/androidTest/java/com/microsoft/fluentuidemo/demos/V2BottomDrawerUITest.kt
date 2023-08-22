@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_CONTENT_TAG
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_HANDLE_TAG
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_SCRIM_TAG
-import com.microsoft.fluentui.tokenized.notification.SNACK_BAR_ICON
 import com.microsoft.fluentuidemo.BaseTest
 import com.microsoft.fluentuidemo.R
 import org.junit.Before
