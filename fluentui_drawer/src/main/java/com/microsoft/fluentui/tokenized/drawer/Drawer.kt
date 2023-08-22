@@ -123,7 +123,10 @@ class DrawerState(
     suspend fun open() {
         enable = true
         animationInProgress = true
-        delay(50)
+        do{
+            delay(50)
+        }while(!anchorsFilled)
+
         try {
             animateTo(DrawerValue.Open, AnimationSpec)
         } catch (e: Exception) {
@@ -163,7 +166,10 @@ class DrawerState(
     suspend fun expand() {
         enable = true
         animationInProgress = true
-        delay(50)
+        do{
+            delay(50)
+        }while(!anchorsFilled)
+
         val targetValue = when {
             hasExpandedState -> DrawerValue.Expanded
             else -> DrawerValue.Open
