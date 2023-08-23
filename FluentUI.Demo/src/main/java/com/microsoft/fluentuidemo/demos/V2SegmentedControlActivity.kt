@@ -92,8 +92,7 @@ class V2SegmentedControlActivity : V2DemoActivity() {
                                     selected = selected,
                                     enabled = enabled,
                                     notificationDot = unread,
-                                ),
-                                modifier = Modifier.testTag("ally 1")
+                                )
                             )
                             PillButton(
                                 modifier = Modifier.testTag(SEGMENTED_CONTROL_PILL_BUTTON_COMPONENT),
