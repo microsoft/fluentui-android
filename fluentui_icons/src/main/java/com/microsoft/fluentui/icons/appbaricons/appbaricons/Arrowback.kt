@@ -1,4 +1,4 @@
-package com.microsoft.fluentui.icons.appbaricons.appbarnavigationicon
+package com.microsoft.fluentui.icons.appbaricons.appbaricons
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
@@ -9,15 +9,15 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.icons.appbaricons.AppBarNavigationIcon
+import com.microsoft.fluentui.icons.appbaricons.AppBarIcons
 
-public val AppBarNavigationIcon.Appbarnavigationicon: ImageVector
+public val AppBarIcons.Arrowback: ImageVector
     get() {
-        if (_appbarnavigationicon != null) {
-            return _appbarnavigationicon!!
+        if (_arrowback != null) {
+            return _arrowback!!
         }
-        _appbarnavigationicon = Builder(name = "Appbarnavigationicon", defaultWidth = 24.0.dp,
-                defaultHeight = 24.0.dp, viewportWidth = 24.0f, viewportHeight = 24.0f).apply {
+        _arrowback = Builder(name = "Arrowback", defaultWidth = 24.0.dp, defaultHeight = 24.0.dp,
+                viewportWidth = 24.0f, viewportHeight = 24.0f).apply {
             path(fill = SolidColor(Color(0xFF242424)), stroke = null, strokeLineWidth = 0.0f,
                     strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
                     pathFillType = NonZero) {
@@ -42,7 +42,7 @@ public val AppBarNavigationIcon.Appbarnavigationicon: ImageVector
             }
         }
         .build()
-        return _appbarnavigationicon!!
+        return _arrowback!!
     }
 
-private var _appbarnavigationicon: ImageVector? = null
+private var _arrowback: ImageVector? = null
