@@ -22,8 +22,6 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.core.R
 import com.microsoft.fluentui.icons.ListItemIcons
 import com.microsoft.fluentui.icons.SearchBarIcons
-import com.microsoft.fluentui.icons.AppBarIcons.appbaricons
-import com.microsoft.fluentui.icons.AppBarIcons.AppBarIcons.Arrowback
 import com.microsoft.fluentui.icons.appbaricons.AppBarIcons
 import com.microsoft.fluentui.icons.appbaricons.appbaricons.Arrowback
 import com.microsoft.fluentui.icons.listitemicons.Chevron
