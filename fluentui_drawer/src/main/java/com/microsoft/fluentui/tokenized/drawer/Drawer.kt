@@ -123,7 +123,10 @@ class DrawerState(
     suspend fun open() {
         enable = true
         animationInProgress = true
-        delay(50)
+        do{
+            delay(50)
+        }while(!anchorsFilled)
+
         try {
             animateTo(DrawerValue.Open, AnimationSpec)
         } catch (e: Exception) {
@@ -163,7 +166,10 @@ class DrawerState(
     suspend fun expand() {
         enable = true
         animationInProgress = true
-        delay(50)
+        do{
+            delay(50)
+        }while(!anchorsFilled)
+
         val targetValue = when {
             hasExpandedState -> DrawerValue.Expanded
             else -> DrawerValue.Open
@@ -286,7 +292,7 @@ private fun Modifier.bottomDrawerSwipeable(
             val minHeight = 0f
             val bottomOpenStateY = max(maxOpenHeight, fullHeight - drawerHeight)
             val bottomExpandedStateY = max(minHeight, fullHeight - drawerHeight)
-            val anchors = if (drawerHeight < bottomOpenStateY || !expandable) {
+            val anchors = if (drawerHeight <= maxOpenHeight || !expandable) {
                 mapOf(
                     fullHeight to DrawerValue.Closed,
                     bottomOpenStateY to DrawerValue.Open

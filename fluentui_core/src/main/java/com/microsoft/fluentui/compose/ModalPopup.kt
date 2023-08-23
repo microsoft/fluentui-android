@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionContext
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -22,12 +23,15 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.AbstractComposeView
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.ViewRootForInspector
 import androidx.compose.ui.semantics.popup
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.lifecycle.ViewTreeLifecycleOwner
 import androidx.lifecycle.ViewTreeViewModelStoreOwner
@@ -62,6 +66,12 @@ fun ModalPopup(
                     Box(
                         Modifier
                             .semantics { this.popup() }
+                            // Get the size of the content
+                            .onSizeChanged {
+                                popupContentSize = it
+                            }
+                            // Hide the popup while we can't position it correctly
+                            .alpha(if (canCalculatePosition) 1f else 0f)
                             .windowInsetsPadding(windowInsets)
                             .imePadding()
                     ) {
@@ -91,6 +101,10 @@ private class ModalWindow(
     AbstractComposeView(composeView.context),
     ViewTreeObserver.OnGlobalLayoutListener,
     ViewRootForInspector {
+    var popupContentSize: IntSize? by mutableStateOf(null)
+    val canCalculatePosition by derivedStateOf {
+        popupContentSize != null
+    }
     init {
         id = android.R.id.content
         // Set up view owners
@@ -105,11 +119,6 @@ private class ModalWindow(
     private val windowManager =
         composeView.context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
 
-    private val displayWidth: Int
-        get() {
-            val density = context.resources.displayMetrics.density
-            return (context.resources.configuration.screenWidthDp * density).roundToInt()
-        }
 
     private val params: WindowManager.LayoutParams =
         WindowManager.LayoutParams().apply {
@@ -118,7 +127,7 @@ private class ModalWindow(
             // Application panel window
             type = WindowManager.LayoutParams.TYPE_APPLICATION_PANEL
             // Fill up the entire app view
-            width = displayWidth
+            width = WindowManager.LayoutParams.MATCH_PARENT
             height = WindowManager.LayoutParams.MATCH_PARENT
 
             // Format of screen pixels
