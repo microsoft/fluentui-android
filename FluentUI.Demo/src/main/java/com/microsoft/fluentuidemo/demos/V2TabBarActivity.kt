@@ -78,7 +78,7 @@ class V2TabBarActivity : V2DemoActivity() {
                             text = resources.getString(R.string.tabBar_vertical),
                             modifier = Modifier.weight(1F),
                             style = TextStyle(
-                                color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                                     themeMode = ThemeMode.Auto
                                 )
                             )
@@ -101,7 +101,7 @@ class V2TabBarActivity : V2DemoActivity() {
                             text = resources.getString(R.string.tabBar_horizontal),
                             modifier = Modifier.weight(1F),
                             style = TextStyle(
-                                color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                                     themeMode = ThemeMode.Auto
                                 )
                             )
@@ -124,7 +124,7 @@ class V2TabBarActivity : V2DemoActivity() {
                             text = resources.getString(R.string.tabBar_no_text),
                             modifier = Modifier.weight(1F),
                             style = TextStyle(
-                                color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                                     themeMode = ThemeMode.Auto
                                 )
                             )
