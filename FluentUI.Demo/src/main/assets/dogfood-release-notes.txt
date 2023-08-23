@@ -1,19 +1,14 @@
-Release Version 0.1.31:
+Release Version 0.1.32:
 
 What's New:
 
 Fluent V2:
-	Components:
-		1. V2 Chip
-		2. V2 Side Rail
-
 	Fix/Enhancement:
-		1. ListItem:
-		    a) Fixed unread dot alignment
-		    b) Fix: If onClick is not provided then ListItem will not be clickable.
-		2. BottomDrawer:
-		    a) Added ModalPopUp in Core module & used in BottomDrawer which has window flag set to work with IME.
-			b) Added windowInset parameter to BottomDrawer to control window insets.
-		3. TextField now has readOnly and enabled parameter
-		4. ControlInfo class for component is now Open to extend
-		5. Added "ControlType" suffix in ControlType enums in ControlTokens class.
+		1. BottomDrawer:
+		    a) Fix first time expand animation. When expand API invoke it will expand completely instead of open.
+			b) Fix flicker issue on opening of drawer.
+			c) Fix to cover whole screen by drawer when orientation changes & activity does not restart.
+		2. Improve TalkBack announcement in PillButton.
+		3. Update default Navigation icon in AppBar.
+		4. Added "ControlType" suffix in ControlType enums in ControlTokens class.
+		5. Fix hover effect in TabItem.
