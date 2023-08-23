@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusEvent
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.unit.Dp
@@ -175,11 +176,10 @@ class ListContentBuilder {
                     modifier = Modifier
                         .background(
                             token.backgroundBrush(
-                                TabItemInfo(
-                                    TabTextAlignment.VERTICAL,
-                                    FluentStyle.Brand
-                                )
-                            )
+                                tabItemInfo =TabItemInfo(
+                                TabTextAlignment.VERTICAL,
+                                FluentStyle.Brand
+                            )).rest
                         )
                         .padding(start = 16.dp, end = 16.dp),
                     content = {
@@ -255,7 +255,7 @@ class ListContentBuilder {
                                     TabTextAlignment.VERTICAL,
                                     FluentStyle.Brand
                                 )
-                            )
+                            ).rest
                         )
                         .padding(start = 16.dp)
                         .fillMaxWidth()
