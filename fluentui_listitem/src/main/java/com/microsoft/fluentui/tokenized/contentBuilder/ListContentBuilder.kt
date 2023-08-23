@@ -175,12 +175,11 @@ class ListContentBuilder {
                 Layout(
                     modifier = Modifier
                         .background(
-                            token.listItemContainerBackgroundBrush(
+                            token.backgroundBrush(
                                 tabItemInfo =TabItemInfo(
-                                    TabTextAlignment.VERTICAL,
-                                    FluentStyle.Brand
-                                )
-                            )
+                                TabTextAlignment.VERTICAL,
+                                FluentStyle.Brand
+                            )).rest
                         )
                         .padding(start = 16.dp, end = 16.dp),
                     content = {
@@ -251,12 +250,12 @@ class ListContentBuilder {
                 LazyRow(
                     state = rowLazyListState, modifier = Modifier
                         .background(
-                            token.listItemContainerBackgroundBrush(
+                            token.backgroundBrush(
                                 TabItemInfo(
                                     TabTextAlignment.VERTICAL,
                                     FluentStyle.Brand
                                 )
-                            )
+                            ).rest
                         )
                         .padding(start = 16.dp)
                         .fillMaxWidth()

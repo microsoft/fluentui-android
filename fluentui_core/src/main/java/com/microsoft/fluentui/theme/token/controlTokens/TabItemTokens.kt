@@ -52,14 +52,6 @@ open class TabItemTokens : IControlToken, Parcelable {
             )
         )
     }
-    @Composable
-    open fun listItemContainerBackgroundBrush(tabItemInfo: TabItemInfo): Brush {
-        return SolidColor(
-            FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                FluentTheme.themeMode
-            )
-        )
-    }
 
     @Composable
     open fun rippleColor(tabItemInfo: TabItemInfo): Color {
