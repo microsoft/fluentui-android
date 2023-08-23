@@ -95,9 +95,9 @@ fun TabItem(
     if (textAlignment == TabTextAlignment.HORIZONTAL) {
         ConstraintLayout(
             modifier = modifier
-                .padding(padding)
-                .background(backgroundColor)
                 .then(clickableModifier)
+                .background(backgroundColor)
+                .padding(padding)
                 .then(widthModifier)
         )
         {
@@ -196,9 +196,9 @@ fun TabItem(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
             modifier = modifier
-                .padding(padding)
-                .background(backgroundColor)
                 .then(clickableModifier)
+                .background(backgroundColor)
+                .padding(padding)
                 .then(widthModifier)
         ) {
             badgeWithIcon()
