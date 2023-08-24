@@ -79,7 +79,12 @@ open class SwipeableState<T>(
      */
     var currentValue: T by mutableStateOf(initialValue)
         private set
-
+    /*
+    It's a flag to indicate whether anchors are filled or not.
+    Useful as a flag to let expand(), open() to get to know whether anchors are filled or not
+    when launched for the very first time
+     */
+    var anchorsFilled: Boolean by mutableStateOf(false)
     /**
      * Whether the state is currently animating.
      */
@@ -584,6 +589,7 @@ fun <T> Modifier.swipeable(
             state.velocityThreshold = velocityThreshold.toPx()
         }
         state.processNewAnchors(oldAnchors, anchors)
+        state.anchorsFilled = true
     }
 
     Modifier.draggable(

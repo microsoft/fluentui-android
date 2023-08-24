@@ -22,8 +22,9 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.core.R
 import com.microsoft.fluentui.icons.ListItemIcons
 import com.microsoft.fluentui.icons.SearchBarIcons
+import com.microsoft.fluentui.icons.appbaricons.AppBarIcons
+import com.microsoft.fluentui.icons.appbaricons.appbaricons.Arrowback
 import com.microsoft.fluentui.icons.listitemicons.Chevron
-import com.microsoft.fluentui.icons.searchbaricons.Arrowback
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.*
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarInfo
@@ -77,7 +78,7 @@ fun AppBar(
     subTitle: String? = null,
     logo: @Composable (() -> Unit)? = null,
     searchMode: Boolean = false,
-    navigationIcon: FluentIcon = FluentIcon(SearchBarIcons.Arrowback, flipOnRtl = true),
+    navigationIcon: FluentIcon = FluentIcon(AppBarIcons.Arrowback, flipOnRtl = true),
     postTitleIcon: FluentIcon = FluentIcon(),
     preSubtitleIcon: FluentIcon = FluentIcon(),
     postSubtitleIcon: FluentIcon = FluentIcon(
