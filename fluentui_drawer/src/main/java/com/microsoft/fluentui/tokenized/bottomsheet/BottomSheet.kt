@@ -21,6 +21,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -179,9 +180,9 @@ fun rememberBottomSheetState(
 }
 
 //Tag use for testing
-private const val BOTTOMSHEET_HANDLE_TAG = "Fluent Bottom Sheet Handle"
-private const val BOTTOMSHEET_CONTENT_TAG = "Fluent Bottom Sheet Content"
-private const val BOTTOMSHEET_SCRIM_TAG = "Fluent Bottom Sheet Scrim"
+const val BOTTOMSHEET_HANDLE_TAG = "Fluent Bottom Sheet Handle"
+const val BOTTOMSHEET_CONTENT_TAG = "Fluent Bottom Sheet Content"
+const val BOTTOMSHEET_SCRIM_TAG = "Fluent Bottom Sheet Scrim"
 
 private const val BottomSheetOpenFraction = 0.5f
 
@@ -222,6 +223,7 @@ fun BottomSheet(
     scrimVisible: Boolean = true,
     showHandle: Boolean = true,
     slideOver: Boolean = true,
+    enableSwipeDismiss: Boolean = false,
     bottomSheetTokens: BottomSheetTokens? = null,
     content: @Composable () -> Unit
 ) {
@@ -284,7 +286,12 @@ fun BottomSheet(
         Box(
             Modifier
                 .fillMaxWidth()
-                .nestedScroll(if (slideOver) sheetState.PreUpPostDownNestedScrollConnection else sheetState.PostDownNestedScrollConnection)
+                .nestedScroll(
+                    if(!enableSwipeDismiss && sheetState.offset.value != null && sheetState.offset.value!! >= (fullHeight - dpToPx(peekHeight) ) )
+                        sheetState.NonDismissiblePostDownNestedScrollConnection
+                    else if (slideOver) sheetState.PreUpPostDownNestedScrollConnection
+                    else sheetState.PostDownNestedScrollConnection
+                )
                 .offset {
                     val y = if (sheetState.anchors.isEmpty()) {
                         // if we don't know our anchors yet, render the sheet as hidden
@@ -363,13 +370,23 @@ fun BottomSheet(
                             .draggable(
                                 orientation = Orientation.Vertical,
                                 state = rememberDraggableState { delta ->
-                                    sheetState.performDrag(delta)
+                                    if(!enableSwipeDismiss && sheetState.offset.value != null && sheetState.offset.value!! >= (fullHeight - dpToPx(peekHeight) ) ){
+                                        if(delta<0){
+                                            sheetState.performDrag(delta)
+                                        }
+                                    }
+                                    else sheetState.performDrag(delta)
                                 },
                                 onDragStopped = { velocity ->
                                     launch {
                                         sheetState.performFling(velocity)
                                         if (!sheetState.isVisible) {
-                                            scope.launch { sheetState.hide() }
+                                            if(enableSwipeDismiss) {
+                                                scope.launch { sheetState.hide() }
+                                            }
+                                            else {
+                                                scope.launch { sheetState.show() }
+                                            }
                                         }
                                     }
                                 },

@@ -43,6 +43,7 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -87,6 +88,8 @@ class V2BottomSheetActivity : V2DemoActivity() {
 
 @Composable
 private fun CreateActivityUI() {
+    var enableSwipeDismiss by remember { mutableStateOf(true) }
+
     var showHandleState by remember { mutableStateOf(true) }
 
     var expandableState by remember { mutableStateOf(true) }
@@ -137,7 +140,8 @@ private fun CreateActivityUI() {
         peekHeight = peekHeightState,
         showHandle = showHandleState,
         sheetState = bottomSheetState,
-        slideOver = slideOverState
+        slideOver = slideOverState,
+        enableSwipeDismiss = enableSwipeDismiss
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(10.dp),
@@ -265,7 +269,26 @@ private fun CreateActivityUI() {
                     onValueChange = { slideOverState = it }
                 )
             }
-
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(30.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                BasicText(
+                    text = "Enable Swipe Down to Dismiss",
+                    modifier = Modifier.weight(1F),
+                    style = TextStyle(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
+                    )
+                )
+                ToggleSwitch(
+                    modifier = Modifier.testTag("enableSwipeDismiss"),
+                    checkedState = enableSwipeDismiss,
+                    onValueChange = { enableSwipeDismiss = it }
+                )
+            }
             Row(
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 verticalAlignment = Alignment.CenterVertically,

@@ -32,7 +32,8 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicChipActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicControlsActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomDrawerActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomSheetActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomSheetActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity android:name="com.microsoft.fluentuidemo.demos.V2CardActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2CardNudgeActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2CitationActivity" />
