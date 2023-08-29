@@ -27,6 +27,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -65,7 +66,7 @@ import com.microsoft.fluentui.util.softNavBarOffsetX
 import kotlinx.coroutines.CancellableContinuation
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
-
+import androidx.compose.runtime.saveable.Saver
 
 /**
  * The state that is associated with an instance of a tooltip.
@@ -282,7 +283,14 @@ fun ToolTipBox(
         }
     }
 }
-
+val TipAlignmentSaver = Saver<Alignment, Boolean>(
+    save = { alignment ->
+        alignment == Alignment.TopCenter
+    },
+    restore = { savedValue ->
+        if (savedValue) Alignment.TopCenter else Alignment.BottomCenter
+    }
+)
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 private fun Tooltip(
@@ -297,7 +305,9 @@ private fun Tooltip(
     val token = tooltipTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TooltipControlType] as TooltipTokens
     val tooltipInfo = TooltipInfo()
-    var tipAlignment: Alignment = Alignment.TopCenter
+    var tipAlignment: Alignment by rememberSaveable(stateSaver = TipAlignmentSaver) {
+        mutableStateOf(Alignment.TopCenter)
+    }
     var tipOffsetX = 0.0f
     val isRTL = LocalLayoutDirection.current == LayoutDirection.Rtl
 
@@ -357,7 +367,7 @@ private fun Tooltip(
                         contentDescription = null,
                         tint = token.tipColor(tooltipInfo),
                         modifier = Modifier
-                            .offset(x= pxToDp(tipOffsetX),y = 0.dp)
+                            .offset(x = pxToDp(tipOffsetX), y = 0.dp)
                             .testTag(TOOLTIP_TIP_TEST_TAG)
                     )
                 }
