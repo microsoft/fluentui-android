@@ -356,7 +356,7 @@ fun BottomSheet(
                                 true
                             }
                         } else if (!enableSwipeDismiss) {
-                            collapse {
+                            dismiss {
                                 if (sheetState.confirmStateChange(BottomSheetValue.Shown)) {
                                     scope.launch { sheetState.show() }
                                 }
