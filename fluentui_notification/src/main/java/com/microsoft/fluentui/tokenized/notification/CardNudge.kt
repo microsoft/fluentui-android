@@ -134,15 +134,9 @@ fun CardNudge(
         ) {
             LaunchedEffect(state.offset.value) {
                 if (state.offset.value > 0.1F) {
-                    when {
-                        isRtl -> metadata.rightSwipeGesture?.invoke(-state.offset.value / maxWidth) //negative value for RTL for aligning the "Hide" Text appropriately
-                        else -> metadata.rightSwipeGesture?.invoke(state.offset.value / maxWidth)
-                    }
+                    metadata.rightSwipeGesture?.invoke(state.offset.value / maxWidth)
                 } else if (state.offset.value < -0.1F) {
-                    when {
-                        isRtl -> metadata.leftSwipeGesture?.invoke(-state.offset.value / maxWidth)
-                        else -> metadata.leftSwipeGesture?.invoke(state.offset.value / maxWidth)
-                    }
+                    metadata.leftSwipeGesture?.invoke(state.offset.value / maxWidth)
                 }
             }
 
