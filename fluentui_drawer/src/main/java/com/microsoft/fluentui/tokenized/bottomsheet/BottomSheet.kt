@@ -335,11 +335,13 @@ fun BottomSheet(
                 .background(sheetBackgroundColor)
                 .semantics(mergeDescendants = true) {
                     if (sheetState.isVisible) {
-                        dismiss {
-                            if (sheetState.confirmStateChange(BottomSheetValue.Hidden)) {
-                                scope.launch { sheetState.hide() }
+                        if(enableSwipeDismiss) {
+                            dismiss {
+                                if (sheetState.confirmStateChange(BottomSheetValue.Hidden)) {
+                                    scope.launch { sheetState.hide() }
+                                }
+                                true
                             }
-                            true
                         }
                         if (sheetState.currentValue == BottomSheetValue.Shown) {
                             expand {
@@ -350,13 +352,6 @@ fun BottomSheet(
                             }
                         } else if (sheetState.hasExpandedState) {
                             collapse {
-                                if (sheetState.confirmStateChange(BottomSheetValue.Shown)) {
-                                    scope.launch { sheetState.show() }
-                                }
-                                true
-                            }
-                        } else if (!enableSwipeDismiss) {
-                            dismiss {
                                 if (sheetState.confirmStateChange(BottomSheetValue.Shown)) {
                                     scope.launch { sheetState.show() }
                                 }
