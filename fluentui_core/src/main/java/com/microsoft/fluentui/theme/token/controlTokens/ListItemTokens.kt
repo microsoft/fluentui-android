@@ -10,6 +10,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.*
 import com.microsoft.fluentui.theme.token.FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1
 import com.microsoft.fluentui.theme.token.FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled1
@@ -110,7 +111,10 @@ open class ListItemTokens : IControlToken, Parcelable {
         return StateColor(
             rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground3].value(
                 themeMode = FluentTheme.themeMode
-            )
+            ),
+            disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
+                themeMode = FluentTheme.themeMode
+            ),
         )
     }
 
