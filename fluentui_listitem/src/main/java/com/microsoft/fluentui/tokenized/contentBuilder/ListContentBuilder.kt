@@ -308,7 +308,12 @@ class ListContentBuilder {
                     subText = item.subTitle,
                     leadingAccessoryContent = {
                         if (item.icon != null) {
-                            Icon(item.icon, null, tint = token.iconColor(ListItemInfo()).rest)
+                            Icon(
+                                item.icon, null,
+                                tint = token.iconColor(ListItemInfo()).let {
+                                    if (item.enabled) it.rest else it.disabled
+                                }
+                            )
                         }
                     },
                     trailingAccessoryContent = item.accessory,
