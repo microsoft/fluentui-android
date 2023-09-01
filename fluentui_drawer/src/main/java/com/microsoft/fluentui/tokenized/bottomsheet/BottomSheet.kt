@@ -252,7 +252,20 @@ fun BottomSheet(
         val sheetHeightState =
             remember(sheetContent.hashCode()) { mutableStateOf<Float?>(null) }
 
-        Box(Modifier.fillMaxSize()) {
+        Box(
+            Modifier
+                .fillMaxSize()
+                .semantics {
+                    if (!sheetState.isVisible) {
+                        expand {
+                            if (sheetState.confirmStateChange(BottomSheetValue.Shown)) {
+                                scope.launch { sheetState.show() }
+                            }
+                            true
+                        }
+                    }
+                }
+        ) {
             content()
             if (slideOver) {
                 Scrim(
