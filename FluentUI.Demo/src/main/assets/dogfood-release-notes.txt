@@ -4,11 +4,7 @@ What's New:
 
 Fluent V2:
 	Fix/Enhancement:
-		1. BottomDrawer:
-		    a) Fix first time expand animation. When expand API invoke it will expand completely instead of open.
-			b) Fix flicker issue on opening of drawer.
-			c) Fix to cover whole screen by drawer when orientation changes & activity does not restart.
-		2. Improve TalkBack announcement in PillButton.
-		3. Update default Navigation icon in AppBar.
-		4. Added "ControlType" suffix in ControlType enums in ControlTokens class.
-		5. Fix hover effect in TabItem.
+		1. Added Functionality to the BottomSheet with TestCases: Enable/Disable Swipe Down Dismiss with more intuitive accessibility controls
+		2. ToolTip Alignment Bug Fixed: Resolved an issue where ToolTips were not aligning correctly, ensuring a visually consistent and user-friendly interfac
+		3. CardNudge Enhancement: Fixed a right-to-left (RTL) issue affecting swiping left and right within CardNudge, ensuring a smoother interaction.
+		4. Vertical Lists Icon Color Consistency: Addressed an issue where disabled icons in vertical lists had inconsistent colors. Icons now maintain uniform appearance for improved visual clarity
