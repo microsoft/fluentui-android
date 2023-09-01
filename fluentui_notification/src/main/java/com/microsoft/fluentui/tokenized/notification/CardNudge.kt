@@ -18,10 +18,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.compose.FractionalThreshold
 import com.microsoft.fluentui.compose.rememberSwipeableState
@@ -91,6 +93,7 @@ fun CardNudge(
     val cardNudgeInfo = CardNudgeInfo()
     val animationSpec = TweenSpec<Float>(durationMillis = 300)
     val state = rememberSwipeableState(initialValue = SwipeGesture.NONE, animationSpec) { true }
+    val isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
 
     BoxWithConstraints {
         val maxWidth = constraints.maxWidth.toFloat()
@@ -122,6 +125,7 @@ fun CardNudge(
                         0F to SwipeGesture.NONE,
                         maxWidth to SwipeGesture.RIGHT
                     ),
+                    reverseDirection = isRtl,
                     thresholds = { _, _ -> FractionalThreshold(0.3F) },
                     orientation = Orientation.Horizontal,
                 )

@@ -17,9 +17,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.LayoutDirection
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens
@@ -240,7 +242,7 @@ class V2CardNudgeActivity : V2DemoActivity() {
                 LocalContext.current.resources.getString(R.string.fluentui_left_swiped)
             val rightSwiped =
                 LocalContext.current.resources.getString(R.string.fluentui_right_swiped)
-
+            val isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
             Column(Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Center) {
                 Box(
                     Modifier
@@ -261,7 +263,11 @@ class V2CardNudgeActivity : V2DemoActivity() {
                             .padding(horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)),
                         style = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1Strong].merge(
                             TextStyle(
-                                textAlign = if (swipeAmount > 0) TextAlign.Left else TextAlign.Right,
+                                textAlign =
+                                if (swipeAmount > 0) {
+                                    if(!isRtl) TextAlign.Left else TextAlign.Right
+                                } else {
+                                    if(!isRtl) TextAlign.Right else TextAlign.Left },
                                 color = if (abs(swipeAmount) > 0.3)
                                     FluentTheme.aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.WarningForeground1].value()
                                 else
@@ -297,13 +303,25 @@ class V2CardNudgeActivity : V2DemoActivity() {
                                 }
                             } else null,
                             leftSwipeGesture = {
-                                swipeRight = false
-                                swipeLeft = true
+                                if(!isRtl){
+                                    swipeRight = false
+                                    swipeLeft = true
+                                }
+                                else{
+                                    swipeRight = true
+                                    swipeLeft = false
+                                }
                                 swipeAmount = it
                             },
                             rightSwipeGesture = {
-                                swipeRight = true
-                                swipeLeft = false
+                                if(!isRtl) {
+                                    swipeRight = true
+                                    swipeLeft = false
+                                }
+                                else{
+                                    swipeRight = false
+                                    swipeLeft = true
+                                }
                                 swipeAmount = it
                             }
 
