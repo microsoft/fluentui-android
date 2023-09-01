@@ -12,6 +12,7 @@ import org.junit.runners.Suite
     V2AvatarGroupActivityUITest::class,
     V2BadgeActivityUITest::class,
     V2BottomDrawerUITest::class,
+    V2BottomSheetActivityUITest::class,
     V2ButtonsActivityUITest::class,
     V2CardNudgeActivityUITest::class,
     V2CardUITest::class,
