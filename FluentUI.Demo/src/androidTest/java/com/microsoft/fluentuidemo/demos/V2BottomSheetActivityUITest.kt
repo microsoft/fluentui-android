@@ -28,9 +28,9 @@ class V2BottomSheetActivityUITest(): BaseTest(){
         bottomSheetScrim.assertExists()
         bottomSheetContent.assertExists()
     }
-    @Test
+    @Testunn
     fun testBottomSheetDismissDisabledSwipeDown() {
-        composeTestRule.onNodeWithTag("enableSwipeDismiss", useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithTag(BOTTOM_SHEET_ENABLE_SWIPE_DISMISS_TEST_TAG, useUnmergedTree = true).performClick()
         //SwipeDown on bottomSheetContent should close it.
         bottomSheetContent.performTouchInput {
             swipeDown()

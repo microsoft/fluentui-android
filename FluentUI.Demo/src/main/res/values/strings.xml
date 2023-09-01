@@ -135,6 +135,8 @@
     <string name="bottom_navigation_accessibility_labels_state">Labels are %s</string>
 
     <!--BottomSheet-->
+    <string name ="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+
     <!--UI Labels -->
     <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
