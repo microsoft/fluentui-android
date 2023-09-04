@@ -4,13 +4,20 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
@@ -28,6 +35,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.tokenized.controls.Button
+import com.microsoft.fluentui.tokenized.controls.TextField
 import com.microsoft.fluentui.tokenized.divider.Divider
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.notification.ToolTipBox
@@ -133,30 +141,47 @@ fun CreateToolTipActivityUI(context: Context) {
         Column {
             ListItem.Header(title = context.getString(R.string.menu_xOffset),
                 trailingAccessoryContent = {
-                    BasicTextField(value = xOffsetState.value,
-                        modifier = Modifier.testTag(TOOLTIP_ACTIVITY_X_OFFSET_TEXTFIELD_TAG),
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        onValueChange = { xOffsetState.value = it.trim() })
+                    Box(Modifier.widthIn(100.dp,150.dp)) {
+                        TextField(
+                            value = xOffsetState.value,
+                            onValueChange = { xOffsetState.value = it.trim() },
+                            modifier = Modifier.testTag(TOOLTIP_ACTIVITY_X_OFFSET_TEXTFIELD_TAG),
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                        )
+                    }
                 }
             )
             ListItem.Header(title = context.getString(R.string.menu_yOffset),
                 trailingAccessoryContent = {
-                    BasicTextField(value = yOffsetState.value,
-                        modifier = Modifier.testTag(TOOLTIP_ACTIVITY_Y_OFFSET_TEXTFIELD_TAG),
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        onValueChange = { yOffsetState.value = it.trim() })
+                    Box(Modifier.widthIn(100.dp,150.dp)) {
+                        TextField(
+                            value = yOffsetState.value,
+                            onValueChange = { yOffsetState.value = it.trim() },
+                            modifier = Modifier.testTag(TOOLTIP_ACTIVITY_Y_OFFSET_TEXTFIELD_TAG),
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                        )
+                    }
                 })
             ListItem.Header(title = context.getString(R.string.tooltip_title),
                 trailingAccessoryContent = {
-                    BasicTextField(
-                        value = toolTipTitle.value,
-                        onValueChange = { toolTipTitle.value = it })
+                    Box(Modifier.widthIn(100.dp,150.dp)) {
+                        TextField(
+                            value =toolTipTitle.value,
+                            onValueChange = { toolTipTitle.value = it.trim() },
+                            keyboardOptions = KeyboardOptions(keyboardType=KeyboardType.Text)
+                        )
+                    }
                 })
             ListItem.Header(title = context.getString(R.string.tooltip_text),
                 trailingAccessoryContent = {
-                    BasicTextField(
-                        value = toolTipText.value,
-                        onValueChange = { toolTipText.value = it })
+
+                    Box(Modifier.widthIn(100.dp,150.dp)) {
+                        TextField(
+                            value = toolTipText.value,
+                            onValueChange = { toolTipText.value = it.trim() },
+                            keyboardOptions = KeyboardOptions(keyboardType=KeyboardType.Text)
+                        )
+                    }
                 })
             Divider()
         }
