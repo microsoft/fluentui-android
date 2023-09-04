@@ -79,7 +79,8 @@ fun Badge(
                 .border(borderStroke.width, borderStroke.brush, shape)
                 .padding(0.5.dp) //TODO to check fix for https://issuetracker.google.com/issues/228985905
                 .background(background, shape)
-                .clip(shape),
+                .clip(shape)
+                .then(modifier),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
