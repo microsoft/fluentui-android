@@ -166,7 +166,7 @@ fun CreateToolTipActivityUI(context: Context) {
                 trailingAccessoryContent = {
                     Box(Modifier.widthIn(100.dp,150.dp)) {
                         TextField(
-                            value =toolTipTitle.value,
+                            value = toolTipTitle.value,
                             onValueChange = { toolTipTitle.value = it.trim() },
                             keyboardOptions = KeyboardOptions(keyboardType=KeyboardType.Text)
                         )
@@ -174,12 +174,11 @@ fun CreateToolTipActivityUI(context: Context) {
                 })
             ListItem.Header(title = context.getString(R.string.tooltip_text),
                 trailingAccessoryContent = {
-
                     Box(Modifier.widthIn(100.dp,150.dp)) {
                         TextField(
                             value = toolTipText.value,
                             onValueChange = { toolTipText.value = it.trim() },
-                            keyboardOptions = KeyboardOptions(keyboardType=KeyboardType.Text)
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
                         )
                     }
                 })
