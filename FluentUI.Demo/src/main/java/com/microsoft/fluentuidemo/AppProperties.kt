@@ -160,6 +160,7 @@ fun AppBarMenu() {
                     )
                 },
                 onClick = { showAppearanceDialog = !showAppearanceDialog },
+                border = BorderType.Bottom,
                 listItemTokens = CustomizedTokens.listItemTokens
             )
 
@@ -174,11 +175,8 @@ fun AppBarMenu() {
                     SetAppThemeMode { showAppearanceDialog = !showAppearanceDialog }
                 }
             }
-
-            ListItem.SectionHeader(
-                title = stringResource(id = R.string.choose_brand_theme),
-                enableChevron = false,
-                style = SectionHeaderStyle.Subtle,
+            ListItem.Item(
+                text = stringResource(id = R.string.choose_brand_theme),
                 listItemTokens = CustomizedTokens.listItemTokens
             )
             SetAppTheme()
