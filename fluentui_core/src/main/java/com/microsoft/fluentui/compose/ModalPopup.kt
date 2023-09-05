@@ -33,8 +33,10 @@ import androidx.compose.ui.semantics.popup
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.LayoutDirection
-import androidx.lifecycle.ViewTreeLifecycleOwner
-import androidx.lifecycle.ViewTreeViewModelStoreOwner
+import androidx.lifecycle.findViewTreeLifecycleOwner
+import androidx.lifecycle.findViewTreeViewModelStoreOwner
+import androidx.lifecycle.setViewTreeLifecycleOwner
+import androidx.lifecycle.setViewTreeViewModelStoreOwner
 import androidx.savedstate.findViewTreeSavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
 import java.util.UUID
@@ -108,8 +110,8 @@ private class ModalWindow(
     init {
         id = android.R.id.content
         // Set up view owners
-        ViewTreeLifecycleOwner.set(this, ViewTreeLifecycleOwner.get(composeView))
-        ViewTreeViewModelStoreOwner.set(this, ViewTreeViewModelStoreOwner.get(composeView))
+        this.setViewTreeLifecycleOwner(composeView.findViewTreeLifecycleOwner())
+        this.setViewTreeViewModelStoreOwner(composeView.findViewTreeViewModelStoreOwner())
         setViewTreeSavedStateRegistryOwner(composeView.findViewTreeSavedStateRegistryOwner())
         setTag(androidx.compose.ui.R.id.compose_view_saveable_id_tag, "Popup:$saveId")
         // Enable children to draw their shadow by not clipping them
@@ -173,7 +175,7 @@ private class ModalWindow(
     }
 
     fun dismiss() {
-        ViewTreeLifecycleOwner.set(this, null)
+        this.setViewTreeLifecycleOwner(null)
         setViewTreeSavedStateRegistryOwner(null)
         composeView.viewTreeObserver.removeOnGlobalLayoutListener(this)
         windowManager.removeViewImmediate(this)

@@ -8,6 +8,7 @@ package com.microsoft.fluentuidemo.demos
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
+import com.google.android.material.navigation.NavigationBarView
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.databinding.ActivityBottomNavigationBinding
@@ -33,11 +34,11 @@ class BottomNavigationActivity : DemoActivity() {
             // You can also achieve unlabeled items via @style/Widget.FluentUI.BottomNavigation.Unlabeled
             if (bottomNavigationBinding.bottomNavigation.labelVisibilityMode == LabelVisibilityMode.LABEL_VISIBILITY_UNLABELED) {
                 bottomNavigationBinding.bottomNavigation.labelVisibilityMode =
-                    LabelVisibilityMode.LABEL_VISIBILITY_LABELED
+                    NavigationBarView.LABEL_VISIBILITY_LABELED
                 labelsState = "On"
             } else {
                 bottomNavigationBinding.bottomNavigation.labelVisibilityMode =
-                    LabelVisibilityMode.LABEL_VISIBILITY_UNLABELED
+                    NavigationBarView.LABEL_VISIBILITY_UNLABELED
                 labelsState = "Off"
             }
             it.announceForAccessibility(

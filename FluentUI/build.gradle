@@ -29,7 +29,6 @@ android {
             mavenCentral()
         }
     }
-
 }
 
 dependencies {
@@ -56,6 +55,9 @@ dependencies {
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+
+    //Compose BOM
+    implementation platform("androidx.compose:compose-bom:$composeBomVersion")
 }
 
 task sourceJar(type: Jar) {

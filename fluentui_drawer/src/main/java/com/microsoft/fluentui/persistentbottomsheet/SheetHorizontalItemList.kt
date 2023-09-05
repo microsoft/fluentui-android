@@ -183,7 +183,10 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
      */
     private fun setCollectionAccessibility(view: ViewGroup, size: Int) {
         ViewCompat.setAccessibilityDelegate(view, object : AccessibilityDelegateCompat() {
-            override fun onInitializeAccessibilityNodeInfo(host: View?, info: AccessibilityNodeInfoCompat?) {
+            override fun onInitializeAccessibilityNodeInfo(
+                host: View,
+                info: AccessibilityNodeInfoCompat
+            ) {
                 super.onInitializeAccessibilityNodeInfo(host, info)
                 val collectionInfo = AccessibilityNodeInfoCompat.CollectionInfoCompat
                         .obtain(rowCount,
@@ -201,7 +204,10 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
      */
     private fun setChildAccessibilityCollectionItemInfo(container: View, rowIndex: Int, columnIndex: Int) {
         ViewCompat.setAccessibilityDelegate(container, object : AccessibilityDelegateCompat() {
-            override fun onInitializeAccessibilityNodeInfo(host: View?, info: AccessibilityNodeInfoCompat?) {
+            override fun onInitializeAccessibilityNodeInfo(
+                host: View,
+                info: AccessibilityNodeInfoCompat
+            ) {
                 super.onInitializeAccessibilityNodeInfo(host, info)
                 info?.setCollectionItemInfo(AccessibilityNodeInfoCompat.CollectionItemInfoCompat.obtain(
                         rowIndex,

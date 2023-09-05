@@ -899,7 +899,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             setInfoText(info)
         }
 
-        override fun onPopulateAccessibilityEvent(host: View?, event: AccessibilityEvent?) {
+        override fun onPopulateAccessibilityEvent(host: View, event: AccessibilityEvent) {
             super.onPopulateAccessibilityEvent(host, event)
             /**
              * The CommaTokenizer is confusing in the screen reader.
@@ -1090,6 +1090,9 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
                 PeoplePickerPersonaChipClickStyle.DELETE -> {
                     sendEventForVirtualView(personaSpanIndex, AccessibilityEvent.TYPE_VIEW_CLICKED)
                     sendEventForVirtualView(personaSpanIndex, AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUS_CLEARED)
+                }
+                else -> {
+                    throw IllegalStateException("Invalid persona chip click style")
                 }
             }
         }
