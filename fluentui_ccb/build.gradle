@@ -10,35 +10,29 @@ apply from: '../publish.gradle'
 
 android {
     compileSdkVersion constants.compileSdkVersion
-
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
         versionCode project.ext.fluentui_ccb_version_code
         versionName project.ext.fluentui_ccb_versionid
-
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         consumerProguardFiles 'consumer-rules.pro'
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
     kotlinOptions {
         jvmTarget = '1.8'
-        useIR = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion composeCompilerVersion
     }
     buildFeatures {
         compose true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion composeVersion
-    }
-
 }
 
 dependencies {
@@ -53,10 +47,10 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 
-    implementation("androidx.compose.foundation:foundation:$composeVersion")
-    implementation("androidx.compose.material:material:$composeVersion")
-    implementation("androidx.compose.runtime:runtime:$composeVersion")
-    implementation("androidx.compose.ui:ui:$composeVersion")
+    implementation("androidx.compose.foundation:foundation")
+    implementation("androidx.compose.material:material")
+    implementation("androidx.compose.runtime:runtime")
+    implementation("androidx.compose.ui:ui")
     implementation("androidx.constraintlayout:constraintlayout-compose:$constraintLayoutComposeVersion")
 }
 

@@ -249,9 +249,9 @@ class ActionBarLayout @JvmOverloads constructor(appContext: Context, attrs: Attr
 
     // Accessibility
     private inner class defaultViewpagerAccessibilityDelegate() : AccessibilityDelegate() {
-        override fun onInitializeAccessibilityNodeInfo(host: View?, info: AccessibilityNodeInfo?) {
+        override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfo) {
             super.onInitializeAccessibilityNodeInfo(host, info)
-            info?.contentDescription = resources.getString(R.string.action_bar_accessibility_viewpager_description, currentPosition+1, itemCount)
+            info.contentDescription = resources.getString(R.string.action_bar_accessibility_viewpager_description, currentPosition+1, itemCount)
         }
     }
 

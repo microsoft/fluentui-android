@@ -19,20 +19,17 @@ android {
         targetSdkVersion constants.targetSdkVersion
         versionCode project.ext.fluentui_drawer_version_code
         versionName project.ext.fluentui_drawer_versionid
-
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         consumerProguardFiles 'consumer-rules.pro'
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
     composeOptions {
-        kotlinCompilerExtensionVersion composeVersion
+        kotlinCompilerExtensionVersion composeCompilerVersion
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -40,9 +37,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
-        useIR = true
     }
-
 }
 
 dependencies {
@@ -58,9 +53,9 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 
-    implementation "androidx.compose.ui:ui:$composeVersion"
-    implementation "androidx.compose.ui:ui-util:$composeVersion"
-    implementation "androidx.compose.material:material:$composeVersion"
+    implementation "androidx.compose.ui:ui"
+    implementation "androidx.compose.ui:ui-util"
+    implementation "androidx.compose.material:material"
     implementation "androidx.constraintlayout:constraintlayout-compose:$constraintLayoutComposeVersion"
 }
 
