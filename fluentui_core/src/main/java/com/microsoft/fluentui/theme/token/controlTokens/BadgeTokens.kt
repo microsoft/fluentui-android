@@ -19,7 +19,8 @@ import kotlinx.parcelize.Parcelize
 
 enum class BadgeType {
     Character,
-    List
+    List,
+    Modified
 }
 
 open class BadgeInfo(val type: BadgeType) : ControlInfo
@@ -29,6 +30,9 @@ open class BadgeTokens : IControlToken, Parcelable {
 
     @Composable
     open fun backgroundBrush(badgeInfo: BadgeInfo): Brush {
+        if(badgeInfo.type == BadgeType.Modified) {
+            return SolidColor(FluentTheme.aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.SuccessForeground2].value())
+        }
         return SolidColor(FluentTheme.aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.DangerBackground2].value())
     }
 
@@ -41,7 +45,7 @@ open class BadgeTokens : IControlToken, Parcelable {
     open fun typography(badgeInfo: BadgeInfo): TextStyle {
         return when (badgeInfo.type) {
             BadgeType.Character -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption2]
-            BadgeType.List -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption1Strong]
+            BadgeType.List, BadgeType.Modified -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption1Strong]
         }
     }
 
@@ -54,7 +58,7 @@ open class BadgeTokens : IControlToken, Parcelable {
                 ).width
             )
 
-            BadgeType.List -> PaddingValues(
+            BadgeType.List, BadgeType.Modified -> PaddingValues(
                 start = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80) + borderStroke(
                     badgeInfo
                 ).width,

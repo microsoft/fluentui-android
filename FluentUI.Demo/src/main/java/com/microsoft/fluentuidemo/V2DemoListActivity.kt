@@ -524,19 +524,13 @@ class V2DemoListActivity : ComponentActivity() {
                                     trailingAccessoryContent = if (it.badge != Badge.None) {
                                         {
                                             Badge(
-                                                modifier = when(it.badge) {
-                                                    Badge.New -> Modifier.background(brush = SolidColor(FluentTheme.aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.SevereForeground2].value()), shape = RoundedCornerShape(100.dp))
-                                                    Badge.Modified -> Modifier.background(brush = SolidColor(FluentTheme.aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.SuccessBackground2].value()), shape = RoundedCornerShape(100.dp))
-                                                    Badge.None ->  Modifier.background(brush = SolidColor(FluentTheme.aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.SuccessBackground2].value()), shape = RoundedCornerShape(100.dp))
-                                                    else -> Modifier // Badge.APIBreak (Danger Color)
-                                                },
                                                 text = when (it.badge) {
                                                     Badge.New -> stringResource(id = R.string.new_badge)
                                                     Badge.Modified -> stringResource(id = R.string.modified_badge)
                                                     Badge.APIBreak -> stringResource(id = R.string.api_break_badge)
                                                     else -> ""
                                                 },
-                                                badgeType = BadgeType.List,
+                                                badgeType = if(it.badge == Badge.Modified) BadgeType.Modified else BadgeType.List,
                                             )
                                         }
                                     } else null
