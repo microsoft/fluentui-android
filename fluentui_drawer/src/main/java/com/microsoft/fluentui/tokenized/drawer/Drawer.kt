@@ -849,7 +849,6 @@ fun Drawer(
                     else -> RoundedCornerShape(tokens.borderRadius(drawerInfo))
                 }
             val drawerElevation: Dp = tokens.elevation(drawerInfo)
-            val horizontalDrawerElevation: Dp = 0.dp
             val drawerBackgroundColor: Brush =
                 tokens.backgroundBrush(drawerInfo)
             val drawerHandleColor: Color = tokens.handleColor(drawerInfo)
@@ -891,7 +890,7 @@ fun Drawer(
                     modifier = modifier,
                     drawerState = drawerState,
                     drawerShape = drawerShape,
-                    drawerElevation = horizontalDrawerElevation,
+                    drawerElevation = drawerElevation,
                     drawerBackground = drawerBackgroundColor,
                     scrimColor = scrimColor,
                     scrimVisible = scrimVisible,
