@@ -40,14 +40,8 @@ open class DrawerTokens : IControlToken, Parcelable {
         )
 
     @Composable
-    open fun elevation(drawerInfo: DrawerInfo): Dp {
-        return if(drawerInfo.type == BehaviorType.BOTTOM ||
-            drawerInfo.type == BehaviorType.LEFT_SLIDE_OVER ||
-            drawerInfo.type == BehaviorType.RIGHT_SLIDE_OVER)
-            FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow00)
-        else FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow28)
+    open fun elevation(drawerInfo: DrawerInfo): Dp = FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow00)
 
-    }
     @Composable
     open fun borderRadius(drawerInfo: DrawerInfo): Dp {
         return when (drawerInfo.type) {
