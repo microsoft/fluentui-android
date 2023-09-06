@@ -627,6 +627,7 @@ object ListItem {
         title: String,
         modifier: Modifier = Modifier,
         titleMaxLines: Int = 1,
+        onClick: (() -> Unit)? = null,
         accessoryTextTitle: String? = null,
         accessoryTextOnClick: (() -> Unit)? = null,
         enabled: Boolean = true,
@@ -694,11 +695,19 @@ object ListItem {
                 .fillMaxWidth()
                 .heightIn(min = cellHeight)
                 .background(backgroundColor)
-                .clickAndSemanticsModifier(
-                    interactionSource,
-                    onClick = { expandedState = !expandedState },
-                    enabled,
-                    rippleColor
+                .then(
+                    if(onClick != null){
+                        Modifier.clickAndSemanticsModifier(
+                            interactionSource,
+                            onClick = {
+                                expandedState = !expandedState
+                                onClick
+                            },
+                            enabled,
+                            rippleColor
+                        )
+                    }
+                    else Modifier
                 )
                 .semantics(mergeDescendants = true) {
                     contentDescription =
