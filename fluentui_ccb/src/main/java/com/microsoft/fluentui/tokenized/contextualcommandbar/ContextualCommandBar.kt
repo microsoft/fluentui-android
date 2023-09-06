@@ -127,7 +127,6 @@ fun ContextualCommandBar(
                     contextualCommandBarInfo
                 )
             )
-            .wrapContentHeight()
     ) {
         val (KeyboardDismiss, Content) = createRefs()
         val contentPaddingWithActionButton =
