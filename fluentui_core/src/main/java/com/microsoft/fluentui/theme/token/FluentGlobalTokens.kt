@@ -267,6 +267,7 @@ object FluentGlobalTokens {
     }
 
     enum class ShadowTokens {
+        Shadow00,
         Shadow02,
         Shadow04,
         Shadow08,
@@ -277,6 +278,7 @@ object FluentGlobalTokens {
 
     fun elevation(token: ShadowTokens): Dp {
         return when (token) {
+            ShadowTokens.Shadow00 -> 0.dp
             ShadowTokens.Shadow02 -> 2.dp
             ShadowTokens.Shadow04 -> 4.dp
             ShadowTokens.Shadow08 -> 8.dp

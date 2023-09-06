@@ -40,8 +40,7 @@ open class DrawerTokens : IControlToken, Parcelable {
         )
 
     @Composable
-    open fun elevation(drawerInfo: DrawerInfo): Dp =
-        FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow28)
+    open fun elevation(drawerInfo: DrawerInfo): Dp = FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow00)
 
     @Composable
     open fun borderRadius(drawerInfo: DrawerInfo): Dp {
