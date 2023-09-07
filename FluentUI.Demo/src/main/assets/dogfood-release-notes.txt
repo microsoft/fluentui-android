@@ -1,10 +1,12 @@
-Release Version 0.1.33:
+Release Version 0.1.34:
 
 What's New:
 
 Fluent V2:
 	Fix/Enhancement:
-		1. Added Functionality to the BottomSheet with TestCases: Enable/Disable Swipe Down Dismiss with more intuitive accessibility controls
-		2. ToolTip Alignment Bug Fixed: Resolved an issue where ToolTips were not aligning correctly, ensuring a visually consistent and user-friendly interface
-		3. CardNudge Enhancement: Fixed a right-to-left (RTL) issue affecting swiping left and right within CardNudge, ensuring a smoother interaction
-		4. Vertical Lists Icon Color Consistency: Addressed an issue where disabled icons in vertical lists had inconsistent colors. Icons now maintain uniform appearance for improved visual clarity
+	    1. Persona chip Bug Fixed: Persona height will change when the system font size is increased
+		2. Improved the visibility of the ToolTip Activity Caret in dark mode
+		3 Fixed the gap between the Drawer and the Navigation bar
+		4. Made the SectionHeader non-clickable when no onClick or null onClick is passed
+		5. Minor enhancement in demo app
+		6. Readme has been updated to include information about the v2 components as well.
