@@ -231,23 +231,23 @@ Starting from version 0.0.12, Fluent UI has been split into multiple modules by 
 
 The list of modules and their respective controls is as follows
 
-| Module Name| Controls  |
-|:----------|:-----|
-|fluentui_drawer| Drawer, BottomSheet,<br> Persistent BottomSheet|
-|fluentui_listitem|ListItemView|
-|fluentui_tablayout|Tablayout|
-|fluentui_core|TemplateView, Utilities|
-|fluentui_actionbar*|Action Bar Layout|
-|fluentui_bottomnavigation*|Bottom Navigation|
-|fluentui_buttons*| Buttons|
-|fluentui_calendar|Calendar, DateTime Picker|
-|fluentui_menus|Pop up Menu|
-|fluentui_peoplepicker|PeoplePickerView|
-|fluentui_persona|AvatarView, AvatarGroup View,<br>PersonaChipView, PersonaListView|
-|fluentui_progress|Linear Progress Bar, Circular Progress Bar|
-|fluentui_topappbars|Toolbar, AppBar Layout, SearchBar|
-|fluentui_transients|Snackbar, Tooltip|
-|fluentui_viewpager*|View Pager|
+| Modules                  | v1 Controls                                                       | v2 Controls                                                                                                     | 
+|:-------------------------|:------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------|
+|fluentui_calendar         | Calendar, DateTime Picker                                         |                                                                                                                 |
+| fluentui_ccb             |                                                                   | ContextualCommandBar                                                                                            |
+| fluentui_controls        |                                                                   | AnnouncementCard, BasicCard,<br> BasicChip, Button,<br> Checkbox, Citation,<br> FileCard, FloatingActionButton, 
+ <br> Label, RadioButton,<br> TextField, ToggleSwitch |
+| fluentui_core            | TemplateView, Utilities                                           |                                                                                                                 |
+| fluentui_drawer          | Drawer, BottomSheet,<br> Persistent BottomShee                    | BottomSheet, Drawer                                                                                             |
+| fluentui_listitem        | ListItemView                                                      | ListContentBuilder, Divider,<br> ListItem, TabItem                                                              |
+| fluentui_menus           | Pop up Menu                                                       | Dialog, Menu                                                                                                    |
+| fluentui_notification    |                                                                   | Badge, CardNudge,<br> NotificationCommon, Snackbar,<br> ToolTip                                                 |
+|fluentui_persona          | AvatarView, AvatarGroup View,<br>PersonaChipView, PersonaListView | Avatar, AvatarCarousel,<br> AvatarGroup, Persona,<br> PersonaChip, PersonaList,<br> SearchBarPersonaChip        |
+| fluentui_peoplepicker    | PeoplePickerView                                                  | PeoplePicker                                                                                                    |
+| fluentui_progress        | Linear Progress Bar, Circular Progress Bar                        | CircularProgressIndicator, LinearProgressIndicator,<br> ProgressText, Shimmer                                   |
+| fluentui_tablayout       | Tablayout                                                         | SideRail, TabBar,<br> Pill, PillSwitch,<br> PillTabs                                                            |
+| fluentui_topappbars      | Toolbar, AppBar Layout, SearchBar                                 | AppBar, SearchBar                                                                                               |
+|fluentui_transients       | Snackbar, Tooltip                                                 |                                                                                                                 |
 
 *These controls are not yet available in modular form as modularization process is ongoing.
 For now these controls can be found in fluentui_others module
