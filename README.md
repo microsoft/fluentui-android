@@ -238,7 +238,7 @@ The list of modules and their respective controls is as follows
 | fluentui_controls        |                                                                   | AnnouncementCard, BasicCard,<br> BasicChip, Button,<br> Checkbox, Citation,<br> FileCard, FloatingActionButton, 
  <br> Label, RadioButton,<br> TextField, ToggleSwitch |
 | fluentui_core            | TemplateView, Utilities                                           |                                                                                                                 |
-| fluentui_drawer          | Drawer, BottomSheet,<br> Persistent BottomShee                    | BottomSheet, Drawer                                                                                             |
+| fluentui_drawer          | Drawer, BottomSheet,<br> Persistent BottomSheet                    | BottomSheet, Drawer                                                                                             |
 | fluentui_listitem        | ListItemView                                                      | ListContentBuilder, Divider,<br> ListItem, TabItem                                                              |
 | fluentui_menus           | Pop up Menu                                                       | Dialog, Menu                                                                                                    |
 | fluentui_notification    |                                                                   | Badge, CardNudge,<br> NotificationCommon, Snackbar,<br> ToolTip                                                 |
