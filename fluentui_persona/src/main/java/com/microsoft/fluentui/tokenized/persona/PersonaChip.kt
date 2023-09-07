@@ -85,8 +85,6 @@ fun PersonaChip(
         token.avatarToTextSpacing(personaChipInfo = personaChipInfo)
     val cornerRadius =
         token.cornerRadius(personaChipInfo = personaChipInfo)
-    val maxHeight =
-        token.maxHeight(personaChipInfo = personaChipInfo)
     val selectedString = if (selected)
         LocalContext.current.resources.getString(R.string.fluentui_selected)
     else
@@ -101,7 +99,6 @@ fun PersonaChip(
         modifier = modifier
             .clip(RoundedCornerShape(cornerRadius))
             .background(backgroundColor)
-            .heightIn(max = maxHeight)
             .clickable(
                 enabled = enabled,
                 onClick = onClick ?: {},
