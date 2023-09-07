@@ -11,7 +11,7 @@ Fluent UI for Android is a native library that provides the Office UI experience
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | App Center      | [![Build status](https://build.appcenter.ms/v0.1/apps/7acc51be-c1e6-4351-8fa4-c4536fd42dd8/branches/master/badge)](https://appcenter.ms)                                                                                                                         |
 | Build Pipeline | [![Android CI](https://github.com/microsoft/fluentui-android/actions/workflows/android-build-check.yml/badge.svg?branch=master)](https://github.com/microsoft/fluentui-android/actions/workflows/android-build-check.yml)                                                                                                                        |
-| Release Pipeline | [![Build Status](https://dev.azure.com/microsoftdesign/fluentui-native/_apis/build/status/fluentui-android-CI-maven-publish?branchName=master)]
+| Release Pipeline | ![Build Status](https://dev.azure.com/microsoftdesign/fluentui-native/_apis/build/status/fluentui-android-CI-maven-publish?branchName=master)        |
 
 ## Contents
 
