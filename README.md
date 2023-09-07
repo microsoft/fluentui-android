@@ -36,7 +36,7 @@ Please refer to [Modularization](#modularization) section for more details
 Fluent UI for Android includes an expanding library of controls written in Kotlin. These controls implement the Fluent design language and bring consistency across Office app experiences.
 
 
-## Version 1 (v1) Controls
+## XML based Controls (v1)
 
 - [Action Bar](fluentui_others/src/main/java/com/microsoft/fluentui)
 - [App Bar](fluentui_others/src/main/java/com/microsoft/fluentui)
@@ -61,7 +61,7 @@ Fluent UI for Android includes an expanding library of controls written in Kotli
 - [TemplateView](fluentui_core/src/main/java/com/microsoft/fluentui)
 - [Tooltip](fluentui_others/src/main/java/com/microsoft/fluentui)
 
-## Version 2 (v2) Controls
+## Compose based Controls (v2)
 - [AnnouncementCard](fluentui_controls/src/main/java/com/microsoft/fluentui/tokenized/controls/AnnouncementCard.kt)
 - [AppBar](fluentui_topappbars/src/main/java/com/microsoft/fluentui/tokenized/AppBar.kt)
 - [Avatar](fluentui_persona/src/main/java/com/microsoft/fluentui/tokenized/persona/Avatar.kt)
@@ -235,8 +235,7 @@ The list of modules and their respective controls is as follows
 |:-------------------------|:------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------|
 |fluentui_calendar         | Calendar, DateTime Picker                                         |                                                                                                                 |
 | fluentui_ccb             |                                                                   | ContextualCommandBar                                                                                            |
-| fluentui_controls        |                                                                   | AnnouncementCard, BasicCard,<br> BasicChip, Button,<br> Checkbox, Citation,<br> FileCard, FloatingActionButton, 
- <br> Label, RadioButton,<br> TextField, ToggleSwitch |
+| fluentui_controls        |                                                                   | AnnouncementCard, BasicCard,<br> BasicChip, Button,<br> Checkbox, Citation,<br> FileCard, FloatingActionButton,<br> Label, RadioButton,<br> TextField, ToggleSwitch |
 | fluentui_core            | TemplateView, Utilities                                           |                                                                                                                 |
 | fluentui_drawer          | Drawer, BottomSheet,<br> Persistent BottomSheet                    | BottomSheet, Drawer                                                                                             |
 | fluentui_listitem        | ListItemView                                                      | ListContentBuilder, Divider,<br> ListItem, TabItem                                                              |
@@ -250,7 +249,6 @@ The list of modules and their respective controls is as follows
 | fluentui_topappbars      | Toolbar, AppBar Layout, SearchBar                                 | AppBar, SearchBar                                                                                               |
 |fluentui_transients       | Snackbar, Tooltip                                                 |                                                                                                                 |
 
-=======
 
 
 ## Contributing
