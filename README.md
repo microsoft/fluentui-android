@@ -11,7 +11,7 @@ Fluent UI for Android is a native library that provides the Office UI experience
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | App Center      | [![Build status](https://build.appcenter.ms/v0.1/apps/7acc51be-c1e6-4351-8fa4-c4536fd42dd8/branches/master/badge)](https://appcenter.ms)                                                                                                                         |
 | Build Pipeline | [![Android CI](https://github.com/microsoft/fluentui-android/actions/workflows/android-build-check.yml/badge.svg?branch=master)](https://github.com/microsoft/fluentui-android/actions/workflows/android-build-check.yml)                                                                                                                        |
-| Release Pipeline | [![Build Status](https://dev.azure.com/microsoftdesign/fluentui-native/_apis/build/status/fluentui-android-CI-maven-publish?branchName=master)]
+| Release Pipeline | ![Build Status](https://dev.azure.com/microsoftdesign/fluentui-native/_apis/build/status/fluentui-android-CI-maven-publish?branchName=master)        |
 
 ## Contents
 
@@ -35,7 +35,9 @@ Please refer to [Modularization](#modularization) section for more details
 
 Fluent UI for Android includes an expanding library of controls written in Kotlin. These controls implement the Fluent design language and bring consistency across Office app experiences.
 
-Some of the controls available include:
+
+## Version 1 (v1) Controls
+
 - [Action Bar](fluentui_others/src/main/java/com/microsoft/fluentui)
 - [App Bar](fluentui_others/src/main/java/com/microsoft/fluentui)
 - [AvatarView](fluentui_others/src/main/java/com/microsoft/fluentui)
@@ -58,6 +60,55 @@ Some of the controls available include:
 - [Tablayout](fluentui_tablayout/src/main/java/com/microsoft/fluentui)
 - [TemplateView](fluentui_core/src/main/java/com/microsoft/fluentui)
 - [Tooltip](fluentui_others/src/main/java/com/microsoft/fluentui)
+
+## Version 2 (v2) Controls
+- [AnnouncementCard](fluentui_controls/src/main/java/com/microsoft/fluentui/tokenized/controls/AnnouncementCard.kt)
+- [AppBar](fluentui_topappbars/src/main/java/com/microsoft/fluentui/tokenized/AppBar.kt)
+- [Avatar](fluentui_persona/src/main/java/com/microsoft/fluentui/tokenized/persona/Avatar.kt)
+- [AvatarCarousel](fluentui_persona/src/main/java/com/microsoft/fluentui/tokenized/persona/AvatarCarousel.kt)
+- [AvatarGroup](fluentui_persona/src/main/java/com/microsoft/fluentui/tokenized/persona/AvatarGroup.kt)
+- [Badge](fluentui_notification/src/main/java/com/microsoft/fluentui/tokenized/notification/Badge.kt)
+- [BasicCard](fluentui_controls/src/main/java/com/microsoft/fluentui/tokenized/controls/BasicCard.kt)
+- [BasicChip](fluentui_controls/src/main/java/com/microsoft/fluentui/tokenized/controls/BasicChip.kt)
+- [BottomSheet](fluentui_drawer/src/main/java/com/microsoft/fluentui/tokenized/bottomsheet/BottomSheet.kt)
+- [Button](fluentui_controls/src/main/java/com/microsoft/fluentui/tokenized/controls/Button.kt)
+- [CardNudge](fluentui_notification/src/main/java/com/microsoft/fluentui/tokenized/notification/CardNudge.kt)
+- [Checkbox](fluentui_controls/src/main/java/com/microsoft/fluentui/tokenized/controls/Checkbox.kt)
+- [CircularProgressIndicator](fluentui_progress/src/main/java/com/microsoft/fluentui/tokenized/progress/CircularProgressIndicator.kt)
+- [Citation](fluentui_controls/src/main/java/com/microsoft/fluentui/tokenized/controls/Citation.kt)
+- [ContextualCommandBar](fluentui_ccb/src/main/java/com/microsoft/fluentui/tokenized/contextualcommandbar/ContextualCommandBar.kt)
+- [Dialog](fluentui_menus/src/main/java/com/microsoft/fluentui/tokenized/menu/Dialog.kt)
+- [Divider](fluentui_listitem/src/main/java/com/microsoft/fluentui/tokenized/divider/Divider.kt)
+- [Drawer](fluentui_drawer/src/main/java/com/microsoft/fluentui/tokenized/drawer/Drawer.kt)
+- [FileCard](fluentui_controls/src/main/java/com/microsoft/fluentui/tokenized/controls/FileCard.kt)
+- [FloatingActionButton](fluentui_controls/src/main/java/com/microsoft/fluentui/tokenized/controls/FloatingActionButton.kt)
+- [Label](fluentui_controls/src/main/java/com/microsoft/fluentui/tokenized/controls/Label.kt)
+- [LinearProgressIndicator](fluentui_progress/src/main/java/com/microsoft/fluentui/tokenized/progress/LinearProgressIndicator.kt)
+- [ListContentBuilder](fluentui_listitem/src/main/java/com/microsoft/fluentui/tokenized/contentBuilder/ListContentBuilder.kt)
+- [ListItem](fluentui_listitem/src/main/java/com/microsoft/fluentui/tokenized/listitem/ListItem.kt)
+- [Menu](fluentui_menus/src/main/java/com/microsoft/fluentui/tokenized/menu/Menu.kt)
+- [NotificationCommon](fluentui_notification/src/main/java/com/microsoft/fluentui/tokenized/notification/NotificationCommon.kt)
+- [PeoplePicker](fluentui_peoplepicker/src/main/java/com/microsoft/fluentui/tokenized/peoplepicker/PeoplePicker.kt)
+- [Persona](fluentui_persona/src/main/java/com/microsoft/fluentui/tokenized/persona/Persona.kt)
+- [PersonaChip](fluentui_persona/src/main/java/com/microsoft/fluentui/tokenized/persona/PersonaChip.kt)
+- [PersonaList](fluentui_persona/src/main/java/com/microsoft/fluentui/tokenized/persona/PersonaList.kt)
+- [Pill](fluentui_tablayout/src/main/java/com/microsoft/fluentui/tokenized/segmentedcontrols/Pill.kt)
+- [PillSwitch](fluentui_tablayout/src/main/java/com/microsoft/fluentui/tokenized/segmentedcontrols/PillSwitch.kt)
+- [PillTabs](fluentui_tablayout/src/main/java/com/microsoft/fluentui/tokenized/segmentedcontrols/PillTabs.kt)
+- [ProgressText](fluentui_progress/src/main/java/com/microsoft/fluentui/tokenized/progress/ProgressText.kt)
+- [RadioButton](fluentui_controls/src/main/java/com/microsoft/fluentui/tokenized/controls/RadioButton.kt)
+- [SearchBar](fluentui_topappbars/src/main/java/com/microsoft/fluentui/tokenized/SearchBar.kt)
+- [SearchBarPersonaChip](fluentui_persona/src/main/java/com/microsoft/fluentui/tokenized/persona/SearchBarPersonaChip.kt)
+- [Shimmer](fluentui_progress/src/main/java/com/microsoft/fluentui/tokenized/shimmer/Shimmer.kt)
+- [SideRail](fluentui_tablayout/src/main/java/com/microsoft/fluentui/tokenized/navigation/SideRail.kt)
+- [Snackbar](fluentui_notification/src/main/java/com/microsoft/fluentui/tokenized/notification/Snackbar.kt)
+- [TabBar](fluentui_tablayout/src/main/java/com/microsoft/fluentui/tokenized/navigation/TabBar.kt)
+- [TabItem](fluentui_listitem/src/main/java/com/microsoft/fluentui/tokenized/tabItem/TabItem.kt)
+- [TextField](fluentui_controls/src/main/java/com/microsoft/fluentui/tokenized/controls/TextField.kt)
+- [ToggleSwitch](fluentui_controls/src/main/java/com/microsoft/fluentui/tokenized/controls/ToggleSwitch.kt)
+- [ToolTip](fluentui_notification/src/main/java/com/microsoft/fluentui/tokenized/notification/ToolTip.kt)
+
+
 
 
 
@@ -180,43 +231,26 @@ Starting from version 0.0.12, Fluent UI has been split into multiple modules by 
 
 The list of modules and their respective controls is as follows
 
-v1:
-| Module Name| Controls  |
-|:----------|:-----|
-|fluentui_drawer| Drawer, BottomSheet,<br> Persistent BottomSheet|
-|fluentui_listitem|ListItemView|
-|fluentui_tablayout|Tablayout|
-|fluentui_core|TemplateView, Utilities|
-|fluentui_actionbar*|Action Bar Layout|
-|fluentui_bottomnavigation*|Bottom Navigation|
-|fluentui_buttons*| Buttons|
-|fluentui_calendar|Calendar, DateTime Picker|
-|fluentui_menus|Pop up Menu|
-|fluentui_peoplepicker|PeoplePickerView|
-|fluentui_persona|AvatarView, AvatarGroup View,<br>PersonaChipView, PersonaListView|
-|fluentui_progress|Linear Progress Bar, Circular Progress Bar|
-|fluentui_topappbars|Toolbar, AppBar Layout, SearchBar|
-|fluentui_transients|Snackbar, Tooltip|
-|fluentui_viewpager*|View Pager|
+| Modules                  | v1 Controls                                                       | v2 Controls                                                                                                     | 
+|:-------------------------|:------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------|
+|fluentui_calendar         | Calendar, DateTime Picker                                         |                                                                                                                 |
+| fluentui_ccb             |                                                                   | ContextualCommandBar                                                                                            |
+| fluentui_controls        |                                                                   | AnnouncementCard, BasicCard,<br> BasicChip, Button,<br> Checkbox, Citation,<br> FileCard, FloatingActionButton, 
+ <br> Label, RadioButton,<br> TextField, ToggleSwitch |
+| fluentui_core            | TemplateView, Utilities                                           |                                                                                                                 |
+| fluentui_drawer          | Drawer, BottomSheet,<br> Persistent BottomSheet                    | BottomSheet, Drawer                                                                                             |
+| fluentui_listitem        | ListItemView                                                      | ListContentBuilder, Divider,<br> ListItem, TabItem                                                              |
+| fluentui_menus           | Pop up Menu                                                       | Dialog, Menu                                                                                                    |
+| fluentui_notification    |                                                                   | Badge, CardNudge,<br> NotificationCommon, Snackbar,<br> ToolTip                                                 |
+| fluentui_others          | Action Bar Layout, Bottom Navigation, Buttons, View Pager         |                                                                                                                 |
+| fluentui_persona         | AvatarView, AvatarGroup View,<br>PersonaChipView, PersonaListView | Avatar, AvatarCarousel,<br> AvatarGroup, Persona,<br> PersonaChip, PersonaList,<br> SearchBarPersonaChip        |
+| fluentui_peoplepicker    | PeoplePickerView                                                  | PeoplePicker                                                                                                    |
+| fluentui_progress        | Linear Progress Bar, Circular Progress Bar                        | CircularProgressIndicator, LinearProgressIndicator,<br> ProgressText, Shimmer                                   |
+| fluentui_tablayout       | Tablayout                                                         | SideRail, TabBar,<br> Pill, PillSwitch,<br> PillTabs                                                            |
+| fluentui_topappbars      | Toolbar, AppBar Layout, SearchBar                                 | AppBar, SearchBar                                                                                               |
+|fluentui_transients       | Snackbar, Tooltip                                                 |                                                                                                                 |
 
-v2:
-
-| Modules                  | Controls                                                       |
-|:-------------------------|:---------------------------------------------------------------|
-| fluentui_ccb             | ContextualCommandBar                                          |
-| fluentui_controls        | AnnouncementCard, BasicCard,<br> BasicChip, Button,<br> Checkbox, Citation,<br> FileCard, FloatingActionButton,<br> Label, RadioButton,<br> TextField, ToggleSwitch |
-| fluentui_drawer          | BottomSheet, Drawer                                          |
-| fluentui_listitem        | ListContentBuilder, Divider,<br> ListItem, TabItem               |
-| fluentui_menus           | Dialog, Menu                                                 |
-| fluentui_notification     | Badge, CardNudge,<br> NotificationCommon, Snackbar,<br> ToolTip     |
-| fluentui_peoplepicker    | PeoplePicker                                                |
-| fluentui_progress        | CircularProgressIndicator, LinearProgressIndicator,<br> ProgressText, Shimmer |
-| fluentui_tablayout       | SideRail, TabBar,<br> Pill, PillSwitch,<br> PillTabs                |
-| fluentui_topappbars      | AppBar, SearchBar                                           |
-
-
-*These controls are not yet available in modular form as modularization process is ongoing.
-For now these controls can be found in fluentui_others module
+=======
 
 
 ## Contributing
