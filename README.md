@@ -180,6 +180,7 @@ Starting from version 0.0.12, Fluent UI has been split into multiple modules by 
 
 The list of modules and their respective controls is as follows
 
+v1:
 | Module Name| Controls  |
 |:----------|:-----|
 |fluentui_drawer| Drawer, BottomSheet,<br> Persistent BottomSheet|
@@ -197,6 +198,22 @@ The list of modules and their respective controls is as follows
 |fluentui_topappbars|Toolbar, AppBar Layout, SearchBar|
 |fluentui_transients|Snackbar, Tooltip|
 |fluentui_viewpager*|View Pager|
+
+v2:
+
+| Modules                  | Controls                                                       |
+|:-------------------------|:---------------------------------------------------------------|
+| fluentui_ccb             | ContextualCommandBar                                          |
+| fluentui_controls        | AnnouncementCard, BasicCard,<br> BasicChip, Button,<br> Checkbox, Citation,<br> FileCard, FloatingActionButton,<br> Label, RadioButton,<br> TextField, ToggleSwitch |
+| fluentui_drawer          | BottomSheet, Drawer                                          |
+| fluentui_listitem        | ListContentBuilder, Divider,<br> ListItem, TabItem               |
+| fluentui_menus           | Dialog, Menu                                                 |
+| fluentui_notification     | Badge, CardNudge,<br> NotificationCommon, Snackbar,<br> ToolTip     |
+| fluentui_peoplepicker    | PeoplePicker                                                |
+| fluentui_progress        | CircularProgressIndicator, LinearProgressIndicator,<br> ProgressText, Shimmer |
+| fluentui_tablayout       | SideRail, TabBar,<br> Pill, PillSwitch,<br> PillTabs                |
+| fluentui_topappbars      | AppBar, SearchBar                                           |
+
 
 *These controls are not yet available in modular form as modularization process is ongoing.
 For now these controls can be found in fluentui_others module
