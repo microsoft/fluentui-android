@@ -204,6 +204,7 @@ open class V2DemoActivity : ComponentActivity() {
                             navigationIcon = FluentIcon(
                                 SearchBarIcons.Arrowback,
                                 contentDescription = stringResource(id = R.string.app_bar_layout_navigation_icon_clicked),
+                                flipOnRtl = true,
                                 onClick = { Navigation.backNavigation(this) }
                             ),
                             style = AppThemeViewModel.appThemeStyle.value,

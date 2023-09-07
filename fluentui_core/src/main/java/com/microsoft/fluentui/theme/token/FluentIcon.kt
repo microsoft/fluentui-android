@@ -15,6 +15,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.toolingGraphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -165,16 +166,16 @@ fun Icon(
             .then(modifier)
             .toolingGraphicsLayer()
             .defaultSizeFor(painter)
+            .then(
+                if (flipOnRtl && LocalLayoutDirection.current == LayoutDirection.Rtl)
+                    Modifier.scale(-1F, 1F)
+                else
+                    Modifier
+            )
             .paint(
                 painter,
                 colorFilter = colorFilter,
-                contentScale = ContentScale.Fit
-            )
-            .then(
-                if (flipOnRtl && LocalLayoutDirection.current == LayoutDirection.Rtl)
-                    Modifier.scale(-1F, -1F)
-                else
-                    Modifier
+                contentScale = ContentScale.Fit,
             )
             .then(semantics)
     )
