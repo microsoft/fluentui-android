@@ -627,7 +627,6 @@ object ListItem {
         title: String,
         modifier: Modifier = Modifier,
         titleMaxLines: Int = 1,
-        onClick: (() -> Unit)? = null,
         accessoryTextTitle: String? = null,
         accessoryTextOnClick: (() -> Unit)? = null,
         enabled: Boolean = true,
@@ -696,12 +695,11 @@ object ListItem {
                 .heightIn(min = cellHeight)
                 .background(backgroundColor)
                 .then(
-                    if(onClick != null){
+                    if(enableContentOpenCloseTransition && content != null){
                         Modifier.clickAndSemanticsModifier(
                             interactionSource,
                             onClick = {
                                 expandedState = !expandedState
-                                onClick
                             },
                             enabled,
                             rippleColor
