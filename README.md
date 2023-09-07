@@ -107,7 +107,6 @@ Fluent UI for Android includes an expanding library of controls written in Kotli
 - [TextField](fluentui_controls/src/main/java/com/microsoft/fluentui/tokenized/controls/TextField.kt)
 - [ToggleSwitch](fluentui_controls/src/main/java/com/microsoft/fluentui/tokenized/controls/ToggleSwitch.kt)
 - [ToolTip](fluentui_notification/src/main/java/com/microsoft/fluentui/tokenized/notification/ToolTip.kt)
-- [Utils](fluentui_persona/src/main/java/com/microsoft/fluentui/tokenized/persona/Utils.kt)
 
 
 
