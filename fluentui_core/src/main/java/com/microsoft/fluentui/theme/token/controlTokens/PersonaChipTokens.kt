@@ -238,12 +238,4 @@ open class PersonaChipTokens : IControlToken, Parcelable {
     open fun avatarSize(personaChipInfo: PersonaChipControlInfo): AvatarSize {
         return AvatarSize.Size16
     }
-
-    @Composable
-    open fun maxHeight(personaChipInfo: PersonaChipControlInfo): Dp {
-        return when (personaChipInfo.size) {
-            Small -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size200)
-            Medium -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size240)
-        }
-    }
 }
