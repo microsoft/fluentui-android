@@ -7,6 +7,8 @@ Fluent V2:
 	        1. Persona chip Bug Fixed: Persona height will change when the system font size is increased
 		2. Improved the visibility of the ToolTip Activity Caret in dark mode
 		3 Fixed the gap between the Drawer and the Navigation bar
-		4. Made the SectionHeader non-clickable when no onClick or null onClick is passed
+		4. Made the SectionHeader non-clickable in the following cases:
+		    a. When there's no content
+		    b. when enableContentOpenCloseTransition param is false
 		5. Minor enhancement in demo app
 		6. Readme has been updated to include information about the v2 components as well.
