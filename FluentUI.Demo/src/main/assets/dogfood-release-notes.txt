@@ -4,7 +4,7 @@ What's New:
 
 Fluent V2:
 	Fix/Enhancement:
-	    1. Persona chip Bug Fixed: Persona height will change when the system font size is increased
+	        1. Persona chip Bug Fixed: Persona height will change when the system font size is increased
 		2. Improved the visibility of the ToolTip Activity Caret in dark mode
 		3 Fixed the gap between the Drawer and the Navigation bar
 		4. Made the SectionHeader non-clickable when no onClick or null onClick is passed
