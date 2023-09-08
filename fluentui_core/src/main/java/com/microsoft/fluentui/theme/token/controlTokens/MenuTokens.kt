@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlInfo
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
@@ -30,7 +31,7 @@ open class MenuTokens : IControlToken, Parcelable {
         FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius80)
 
     open fun elevation(menuInfo: MenuInfo): Dp =
-        FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow16)
+        FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow08)
 
     open fun bottomMargin(menuInfo: MenuInfo): Dp =
         FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)
