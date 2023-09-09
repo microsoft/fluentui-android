@@ -383,7 +383,7 @@ class V2ContextualCommandBarActivity : V2DemoActivity() {
                                         )
                                     }
                                 }
-                                LazyColumn(){
+                                LazyColumn{
                                     item {
                                         ContextualCommandBar(
                                             listOf(commandGroup2),
