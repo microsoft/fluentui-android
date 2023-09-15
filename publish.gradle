@@ -60,9 +60,9 @@ project.ext.publishingFunc = { artifactIdName ->
                     }
                     developers {
                         developer {
-                            id = project.ext.developer_id
-                            name = project.ext.developer_name
-                            email = project.ext.developer_email
+                            id = project.hasProperty('developer_id') ? "$developer_id" : ''
+                            name = project.hasProperty('developer_name') ? "$developer_name" : ''
+                            email = project.hasProperty('developer_email') ? "$developer_email" : ''
                         }
                     }
                     scm {
