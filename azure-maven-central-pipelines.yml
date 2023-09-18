@@ -73,6 +73,17 @@ jobs:
           jdkVersionOption: "$(jdkVersion)"
           options: "-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword)"
 
+      - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+        displayName: 📒 Generate Manifest
+        inputs:
+          BuildDropPath: '$(build.sourcesdirectory)/build'
+
+      - task: PublishPipelineArtifact@1
+        displayName: 📒 Publish Manifest
+        inputs:
+          artifactName: SBom-$(System.JobAttempt)
+          targetPath: $(build.sourcesdirectory)/build/_manifest
+
       - task: PublishPipelineArtifact@1
         displayName: "Publish artifacts to pipeline"
         inputs:
