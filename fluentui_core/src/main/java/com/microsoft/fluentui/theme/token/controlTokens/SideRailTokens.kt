@@ -3,7 +3,9 @@ package com.microsoft.fluentui.theme.token.controlTokens
 import android.os.Parcelable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -39,7 +41,7 @@ open class SideRailTokens : IControlToken, Parcelable {
         return PaddingValues(16.dp)
     }
     @Composable
-    open fun backgroundColor(sideRailInfo: SideRailInfo): Color {
-        return FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value()
+    open fun backgroundBrush(sideRailInfo: SideRailInfo): Brush {
+        return SolidColor(FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value())
     }
 }
