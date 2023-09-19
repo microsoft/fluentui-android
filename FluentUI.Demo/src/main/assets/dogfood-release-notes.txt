@@ -1,10 +1,11 @@
-Release Version 0.1.33:
+Release Version 0.1.35:
 
 What's New:
 
 Fluent V2:
 	Fix/Enhancement:
-		1. Added Functionality to the BottomSheet with TestCases: Enable/Disable Swipe Down Dismiss with more intuitive accessibility controls
-		2. ToolTip Alignment Bug Fixed: Resolved an issue where ToolTips were not aligning correctly, ensuring a visually consistent and user-friendly interface
-		3. CardNudge Enhancement: Fixed a right-to-left (RTL) issue affecting swiping left and right within CardNudge, ensuring a smoother interaction
-		4. Vertical Lists Icon Color Consistency: Addressed an issue where disabled icons in vertical lists had inconsistent colors. Icons now maintain uniform appearance for improved visual clarity
+	        1. Fluent Icon RTL fix
+	Kotlin and Jetpack Compose Upgrade:
+		1.Jetpack compose BOM: 2023.06.01
+		2.Jetpack compose compiler version: 1.4.7 
+		3.Kotlin version: 1.8.21

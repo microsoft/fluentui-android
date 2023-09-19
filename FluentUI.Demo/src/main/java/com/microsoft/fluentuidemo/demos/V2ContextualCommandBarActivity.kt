@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Divider
@@ -382,21 +383,25 @@ class V2ContextualCommandBarActivity : V2DemoActivity() {
                                         )
                                     }
                                 }
-                                ContextualCommandBar(
-                                    listOf(commandGroup2),
-                                    scrollable = false,
-                                    actionButtonPosition = ActionButtonPosition.None
-                                )
-                                ContextualCommandBar(
-                                    listOf(commandGroup3),
-                                    scrollable = false,
-                                    actionButtonPosition = ActionButtonPosition.None
-                                )
-                                ContextualCommandBar(
-                                    listOf(commandGroup4, commandGroup5),
-                                    scrollable = false,
-                                    actionButtonPosition = ActionButtonPosition.None
-                                )
+                                LazyColumn{
+                                    item {
+                                        ContextualCommandBar(
+                                            listOf(commandGroup2),
+                                            scrollable = false,
+                                            actionButtonPosition = ActionButtonPosition.None
+                                        )
+                                        ContextualCommandBar(
+                                            listOf(commandGroup3),
+                                            scrollable = false,
+                                            actionButtonPosition = ActionButtonPosition.None
+                                        )
+                                        ContextualCommandBar(
+                                            listOf(commandGroup4, commandGroup5),
+                                            scrollable = false,
+                                            actionButtonPosition = ActionButtonPosition.None
+                                        )
+                                    }
+                                }
                             }
 
                         },

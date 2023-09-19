@@ -197,7 +197,6 @@ private fun CreateListActivityUI(context: Context) {
             Column(Modifier.padding(top = 2.dp, bottom = 1.dp)) {
                 ListItem.SectionHeader(
                     title = "One-Line list",
-                    onClick={},
                     enableChevron = true,
                     enableContentOpenCloseTransition = true,
                     chevronOrientation = ChevronOrientation(90f, 0f),
@@ -209,7 +208,6 @@ private fun CreateListActivityUI(context: Context) {
                 )
                 ListItem.SectionHeader(
                     title = "Two-Line list",
-                    onClick={},
                     style = Subtle,
                     enableChevron = true,
                     enableContentOpenCloseTransition = true,
@@ -219,7 +217,6 @@ private fun CreateListActivityUI(context: Context) {
                 )
                 ListItem.SectionHeader(
                     title = "Three-Line list",
-                    onClick={},
                     enableChevron = false,
                     enableContentOpenCloseTransition = true,
                     trailingAccessoryContent = { RightContentToggle() },
