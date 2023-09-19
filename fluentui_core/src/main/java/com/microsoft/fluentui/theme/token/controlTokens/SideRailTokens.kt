@@ -38,4 +38,8 @@ open class SideRailTokens : IControlToken, Parcelable {
     open fun headerPadding(sideRailInfo: SideRailInfo): PaddingValues {
         return PaddingValues(16.dp)
     }
+    @Composable
+    open fun backgroundColor(sideRailInfo: SideRailInfo): Color {
+        return FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value()
+    }
 }
