@@ -135,7 +135,7 @@ fun Menu(context: Context, xOffset: Dp, yOffset: Dp, contentText: String, count:
                         text = "$contentText ${it + 1}",
                         style = TextStyle(
                             color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                                themeMode = ThemeMode.Auto
+                                themeMode = FluentTheme.themeMode
                             )
                         )
                     )
