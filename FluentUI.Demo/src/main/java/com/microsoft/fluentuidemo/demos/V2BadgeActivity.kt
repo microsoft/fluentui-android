@@ -109,7 +109,7 @@ class V2BadgeActivity : V2DemoActivity() {
                         style = title2Font.merge(
                             TextStyle(
                                 color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                                    themeMode = ThemeMode.Auto
+                                    themeMode = FluentTheme.themeMode
                                 )
                             )
                         )
