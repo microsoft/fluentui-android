@@ -275,6 +275,7 @@ object ListItem {
         val borderColor = token.borderColor(listItemInfo).getColorByState(
             enabled = enabled, selected = false, interactionSource = interactionSource
         )
+        val textAccessoryContentTextSpacing = token.textAccessoryContentTextSpacing(listItemInfo)
         val leadingAccessoryAlignment = when (leadingAccessoryContentAlignment) {
             Alignment.Top -> Alignment.TopCenter
             Alignment.Bottom -> Alignment.BottomCenter
@@ -292,15 +293,14 @@ object ListItem {
                 .height(IntrinsicSize.Max)
                 .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                 .then(
-                    if(onClick != null){
+                    if (onClick != null) {
                         Modifier.clickAndSemanticsModifier(
                             interactionSource,
                             onClick = onClick,
                             enabled,
                             rippleColor
                         )
-                    }
-                    else Modifier
+                    } else Modifier
                 )
         ) {
             if (leadingAccessoryContent != null && textAlignment == ListItemTextAlignment.Regular) {
@@ -343,7 +343,7 @@ object ListItem {
                 Column(Modifier.padding(vertical = padding.calculateTopPadding())) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        horizontalArrangement = Arrangement.spacedBy(textAccessoryContentTextSpacing)
                     ) {
                         if (primaryTextLeadingContent != null) {
                             primaryTextLeadingContent()
@@ -373,7 +373,7 @@ object ListItem {
                     if (textAlignment == ListItemTextAlignment.Regular) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            horizontalArrangement = Arrangement.spacedBy(textAccessoryContentTextSpacing)
                         ) {
                             if (bottomContent != null) {
                                 Row(modifier.padding(top = 7.dp, bottom = 7.dp)) {
@@ -630,6 +630,8 @@ object ListItem {
         accessoryTextTitle: String? = null,
         accessoryTextOnClick: (() -> Unit)? = null,
         enabled: Boolean = true,
+        titleLeadingContent: (@Composable () -> Unit)? = null,
+        titleTrailingContent: (@Composable () -> Unit)? = null,
         style: SectionHeaderStyle = SectionHeaderStyle.Bold,
         enableChevron: Boolean = true,
         chevronOrientation: ChevronOrientation = ChevronOrientation(0f, 0f),
@@ -682,6 +684,7 @@ object ListItem {
         val borderColor = token.borderColor(listItemInfo).getColorByState(
             enabled = enabled, selected = false, interactionSource = interactionSource
         )
+        val textAccessoryContentTextSpacing = token.textAccessoryContentTextSpacing(listItemInfo)
         val chevronTint = token.chevronTint(listItemInfo)
         var expandedState by rememberSaveable { mutableStateOf(false) }
         val rotationState by animateFloatAsState(
@@ -695,7 +698,7 @@ object ListItem {
                 .heightIn(min = cellHeight)
                 .background(backgroundColor)
                 .then(
-                    if(enableContentOpenCloseTransition && content != null){
+                    if (enableContentOpenCloseTransition && content != null) {
                         Modifier.clickAndSemanticsModifier(
                             interactionSource,
                             onClick = {
@@ -704,8 +707,7 @@ object ListItem {
                             enabled,
                             rippleColor
                         )
-                    }
-                    else Modifier
+                    } else Modifier
                 )
                 .semantics(mergeDescendants = true) {
                     contentDescription =
@@ -715,7 +717,9 @@ object ListItem {
                             } else {
                                 collapsedString
                             }
-                        } else {""}
+                        } else {
+                            ""
+                        }
                 }
                 .borderModifier(border, borderColor, borderSize, borderInsetToPx)
         ) {
@@ -750,13 +754,24 @@ object ListItem {
                                     tint = chevronTint
                                 )
                             }
-                            BasicText(
-                                modifier = Modifier.clearAndSetSemantics { },
-                                text = title,
-                                style = primaryTextTypography.merge(TextStyle(color = primaryTextColor)),
-                                maxLines = titleMaxLines,
-                                overflow = TextOverflow.Ellipsis
-                            )
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(textAccessoryContentTextSpacing)
+                            ) {
+                                if(titleLeadingContent != null){
+                                    titleLeadingContent()
+                                }
+                                BasicText(
+                                    modifier = Modifier.clearAndSetSemantics { },
+                                    text = title,
+                                    style = primaryTextTypography.merge(TextStyle(color = primaryTextColor)),
+                                    maxLines = titleMaxLines,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                                if(titleTrailingContent != null){
+                                    titleTrailingContent()
+                                }
+                            }
                         }
 
                     }

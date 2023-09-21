@@ -315,4 +315,9 @@ open class ListItemTokens : IControlToken, Parcelable {
             }
         }
     }
+
+    @Composable
+    open fun textAccessoryContentTextSpacing(listItemInfo: ListItemInfo): Dp {
+        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
+    }
 }
