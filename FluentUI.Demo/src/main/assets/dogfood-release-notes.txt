@@ -5,7 +5,6 @@ What's New:
 Fluent V2:
 	Fix/Enhancement:
 	        1. Fixed the bug that caused multiline text to overlap in v2CCBActivity
-	        2. Removed the developer id, email, and name from config.gradle and passed them as pipeline variables for better security and privacy
-	        3. Added trailing and leading accessories for the title in the section header, enhancing it's scope.
-	        4. Resolved the issue of inconsistent background color in the side rail
-	        5. Fixed the system dark and appearance light issues in the Fluent Demo App to ensure a consistent theme
+	        2. Added trailing and leading accessories for the title in the section header, enhancing it's scope.
+	        3. Resolved the issue of inconsistent background color in the side rail
+	        4. Fixed the system dark and appearance light issues in the Fluent Demo App to ensure a consistent theme
