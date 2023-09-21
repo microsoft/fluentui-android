@@ -74,7 +74,7 @@ class V2BasicControlsActivity : V2DemoActivity() {
                             .focusable(false),
                         style = TextStyle(
                             color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                                themeMode = ThemeMode.Auto
+                                themeMode = FluentTheme.themeMode
                             ),
                             fontWeight = FontWeight.Bold
                         )
@@ -104,7 +104,7 @@ class V2BasicControlsActivity : V2DemoActivity() {
                         style = TextStyle(
                             fontWeight = FontWeight.Bold,
                             color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                                themeMode = ThemeMode.Auto
+                                themeMode = FluentTheme.themeMode
                             )
                         )
                     )
@@ -140,7 +140,7 @@ class V2BasicControlsActivity : V2DemoActivity() {
                         style = TextStyle(
                             fontWeight = FontWeight.Bold,
                             color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                                themeMode = ThemeMode.Auto
+                                themeMode = FluentTheme.themeMode
                             )
                         )
                     )
@@ -182,7 +182,7 @@ class V2BasicControlsActivity : V2DemoActivity() {
                             style = TextStyle(
                                 fontWeight = FontWeight.Bold,
                                 color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                                    themeMode = ThemeMode.Auto
+                                    themeMode = FluentTheme.themeMode
                                 )
                             )
                         )

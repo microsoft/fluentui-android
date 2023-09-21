@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -54,6 +55,8 @@ import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.notification.Badge
+import com.microsoft.fluentui.tokenized.notification.ToolTipBox
+import com.microsoft.fluentui.tokenized.notification.rememberTooltipState
 import com.microsoft.fluentui.tokenized.persona.Avatar
 import com.microsoft.fluentui.tokenized.persona.AvatarGroup
 import com.microsoft.fluentui.tokenized.persona.Group
@@ -64,6 +67,7 @@ import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.icons.ListItemIcons
 import com.microsoft.fluentuidemo.icons.listitemicons.Folder40
 import com.microsoft.fluentuidemo.util.invokeToast
+import kotlinx.coroutines.launch
 
 class V2ListItemActivity : V2DemoActivity() {
     init {
@@ -194,10 +198,28 @@ private fun CreateListActivityUI(context: Context) {
                 border = BorderType.Bottom
             )
             ListItem.Header(title = "Section Headers with/without chevron")
+            val toolTipState = rememberTooltipState()
+            val scope = rememberCoroutineScope()
             Column(Modifier.padding(top = 2.dp, bottom = 1.dp)) {
                 ListItem.SectionHeader(
                     title = "One-Line list",
                     enableChevron = true,
+                    titleTrailingContent = {
+                        ToolTipBox(
+                            title = "",
+                            text = "This is a tooltip",
+                            tooltipState = toolTipState
+                        ) {
+                            Icon(
+                                painter = painterResource(id = drawable.ic_icon__16x16_checkmark),
+                                contentDescription = "Flag",
+                                tint = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+                                    themeMode
+                                ),
+                                onClick = { scope.launch { toolTipState.show() } }
+                            )
+                        }
+                    },
                     enableContentOpenCloseTransition = true,
                     chevronOrientation = ChevronOrientation(90f, 0f),
                     accessoryTextTitle = "Action",

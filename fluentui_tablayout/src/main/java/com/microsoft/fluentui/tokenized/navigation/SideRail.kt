@@ -61,10 +61,12 @@ fun SideRail(
     val topMargin = token.topMargin(sideRailInfo)
     val bottomMargin = token.bottomMargin(sideRailInfo)
     val headerPadding = token.headerPadding(sideRailInfo)
+    val backgroundBrush = token.backgroundBrush(sideRailInfo)
 
     Box(
         modifier = modifier
             .fillMaxHeight()
+            .background(backgroundBrush)
     ) {
         Box(
             Modifier
