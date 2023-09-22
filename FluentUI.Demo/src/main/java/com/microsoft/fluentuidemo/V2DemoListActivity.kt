@@ -25,6 +25,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
@@ -41,11 +42,13 @@ import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import com.microsoft.fluentui.compose.Scaffold
 import com.microsoft.fluentui.icons.SearchBarIcons
@@ -54,6 +57,7 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentColor
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens.cornerRadius
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.Icon
@@ -526,7 +530,7 @@ class V2DemoListActivity : ComponentActivity() {
                                                     Badge.APIBreak -> stringResource(id = R.string.api_break_badge)
                                                     else -> ""
                                                 },
-                                                badgeType = BadgeType.List,
+                                                badgeType = if(it.badge == Badge.Modified) BadgeType.Modified else BadgeType.List,
                                             )
                                         }
                                     } else null
