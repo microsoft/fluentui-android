@@ -1,11 +1,11 @@
-Release Version 0.1.35:
+Release Version 0.1.36:
 
 What's New:
 
 Fluent V2:
 	Fix/Enhancement:
-	        1. Fluent Icon RTL fix
-	Kotlin and Jetpack Compose Upgrade:
-		1.Jetpack compose BOM: 2023.06.01
-		2.Jetpack compose compiler version: 1.4.7 
-		3.Kotlin version: 1.8.21
+	        1. Fixed the bug that caused multiline text to overlap in v2CCBActivity
+	        2. Added trailing and leading accessories for the title in the section header, enhancing it's scope.
+	        3. Resolved the issue of inconsistent background color in the side rail
+	        4. Fixed the system dark and appearance light issues in the Fluent Demo App to ensure a consistent theme
+		5. Adding alignment parameter for pillbar so that user can customize the alignment of the pill buttons
