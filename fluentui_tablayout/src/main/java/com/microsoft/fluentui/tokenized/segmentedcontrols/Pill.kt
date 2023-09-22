@@ -231,6 +231,7 @@ fun PillButton(
  * @param modifier
  * @param style
  * @param showBackground
+ * @param pillAlignment
  * @param pillButtonTokens
  * @param pillBarTokens
  */
@@ -240,6 +241,7 @@ fun PillBar(
     modifier: Modifier = Modifier,
     style: FluentStyle = FluentStyle.Neutral,
     showBackground: Boolean = false,
+    pillAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
     pillButtonTokens: PillButtonTokens? = null,
     pillBarTokens: PillBarTokens? = null
 ) {
@@ -261,7 +263,7 @@ fun PillBar(
             .background(if (showBackground) token.backgroundBrush(pillBarInfo) else SolidColor(Color.Unspecified))
             .focusable(enabled = false),
         contentPadding = PaddingValues(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
+        horizontalArrangement = Arrangement.spacedBy(8.dp, pillAlignment),
         state = lazyListState
     ) {
         metadataList.forEachIndexed { index, pillMetadata ->
