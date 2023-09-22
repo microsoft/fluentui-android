@@ -8,3 +8,4 @@ Fluent V2:
 	        2. Added trailing and leading accessories for the title in the section header, enhancing it's scope.
 	        3. Resolved the issue of inconsistent background color in the side rail
 	        4. Fixed the system dark and appearance light issues in the Fluent Demo App to ensure a consistent theme
+		5. Adding alignment parameter for pillbar so that user can customize the alignment of the pill buttons
