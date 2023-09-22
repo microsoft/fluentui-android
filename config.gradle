@@ -13,7 +13,7 @@
   */
 project.ext.fluentui_calendar_versionid = '0.0.28'
 project.ext.fluentui_controls_versionid = '0.1.18'
-project.ext.fluentui_core_versionid = '0.1.27'
+project.ext.fluentui_core_versionid = '0.1.28'
 project.ext.fluentui_listitem_versionid = '0.1.19'
 project.ext.fluentui_tablayout_versionid = '0.1.13'
 project.ext.fluentui_drawer_versionid = '0.1.21'
@@ -30,7 +30,7 @@ project.ext.fluentui_notification_versionid = '0.1.12'
 project.ext.FluentUI_versionid = '0.1.36'
 project.ext.fluentui_calendar_version_code = 28
 project.ext.fluentui_controls_version_code = 19
-project.ext.fluentui_core_version_code = 50
+project.ext.fluentui_core_version_code = 51
 project.ext.fluentui_listitem_version_code = 44
 project.ext.fluentui_tablayout_version_code = 38
 project.ext.fluentui_drawer_version_code = 45
