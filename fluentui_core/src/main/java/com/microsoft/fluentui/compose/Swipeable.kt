@@ -224,7 +224,7 @@ open class SwipeableState<T>(
             }
         }
     }
-
+    var directSwipeDownDismiss: Boolean by mutableStateOf(false)
     /**
      * The target value of the state.
      *
@@ -234,6 +234,7 @@ open class SwipeableState<T>(
      */
     val targetValue: T
         get() {
+
             // TODO(calintat): Track current velocity (b/149549482) and use that here.
             val target = animationTarget.value ?: computeTarget(
                     offset = offset.value,
@@ -241,7 +242,8 @@ open class SwipeableState<T>(
                     anchors = anchors.keys,
                     thresholds = thresholds,
                     velocity = 0f,
-                    velocityThreshold = Float.POSITIVE_INFINITY
+                    velocityThreshold = Float.POSITIVE_INFINITY,
+                    directSwipeDownDismiss = directSwipeDownDismiss
             )
             return anchors[target] ?: currentValue
         }
@@ -253,7 +255,7 @@ open class SwipeableState<T>(
      */
     val progress: SwipeProgress<T>
         get() {
-            val bounds = findBounds(offset.value, anchors.keys)
+            val bounds = findBounds(offset.value, anchors.keys, directSwipeDownDismiss, direction==-1f)
             val from: T
             val to: T
             val fraction: Float
@@ -355,7 +357,8 @@ open class SwipeableState<T>(
                     anchors = anchors.keys,
                     thresholds = thresholds,
                     velocity = velocity,
-                    velocityThreshold = velocityThreshold
+                    velocityThreshold = velocityThreshold,
+                    directSwipeDownDismiss = directSwipeDownDismiss
             )
             val targetState = anchors[targetValue]
             if (targetState != null && confirmStateChange(targetState)) animateTo(targetState)
@@ -714,12 +717,20 @@ class ResistanceConfig(
  *   5. [ a , b ] if a and b are anchors such that a < x < b and b - a is minimal.
  */
 private fun findBounds(
-        offset: Float,
-        anchors: Set<Float>
+    offset: Float,
+    anchors: Set<Float>,
+    directSwipeDownDismiss: Boolean,
+    isSwipeDown: Boolean = false,
 ): List<Float> {
     // Find the anchors the target lies between with a little bit of rounding error.
     val a = anchors.filter { it <= offset + 0.001 }.maxOrNull()
-    val b = anchors.filter { it >= offset - 0.001 }.minOrNull()
+    var b = anchors.filter { it >= offset - 0.001 }.minOrNull()
+    if(directSwipeDownDismiss && isSwipeDown) {
+        //this block is added to support direct swipe down dismiss
+        //it skips the Open state and directly goes to Dismiss state
+        b = anchors.maxOrNull()
+    }
+
 
     return when {
         a == null ->
@@ -745,9 +756,11 @@ private fun computeTarget(
         anchors: Set<Float>,
         thresholds: (Float, Float) -> Float,
         velocity: Float,
-        velocityThreshold: Float
+        velocityThreshold: Float,
+        directSwipeDownDismiss: Boolean,
 ): Float {
-    val bounds = findBounds(offset, anchors)
+    val isSwipeDown: Boolean = velocity > 0
+    val bounds = findBounds(offset, anchors, directSwipeDownDismiss, isSwipeDown)
     return when (bounds.size) {
         0 -> lastValue
         1 -> bounds[0]

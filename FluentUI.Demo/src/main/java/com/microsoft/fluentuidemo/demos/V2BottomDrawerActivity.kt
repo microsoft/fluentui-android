@@ -56,6 +56,7 @@ private fun CreateActivityUI() {
     var nestedDrawerContent by remember { mutableStateOf(false) }
     var listContent by remember { mutableStateOf(true) }
     var expandable by remember { mutableStateOf(true) }
+    var directSwipeDownDismissible by remember { mutableStateOf(false) }
     var selectedContent by remember { mutableStateOf(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT) }
     var slideOver by remember { mutableStateOf(false) }
     var showHandle by remember { mutableStateOf(true) }
@@ -64,6 +65,7 @@ private fun CreateActivityUI() {
             slideOver = slideOver,
             scrimVisible = scrimVisible,
             expandable = expandable,
+            directSwipeDownDismissible = directSwipeDownDismissible,
             showHandle = showHandle,
             drawerContent =
             if (listContent)
@@ -139,6 +141,26 @@ private fun CreateActivityUI() {
                         ToggleSwitch(
                             onValueChange = { expandable = it },
                             checkedState = expandable,
+                        )
+                    }
+                )
+            }
+            item {
+                val directSwipeDownText = "Direct Swipe Down Dismiss"
+                ListItem.Header(title = directSwipeDownText,
+                    modifier = Modifier
+                        .toggleable(
+                            value = directSwipeDownDismissible,
+                            role = Role.Switch,
+                            onValueChange = { directSwipeDownDismissible = ! directSwipeDownDismissible }
+                        )
+                        .clearAndSetSemantics {
+                            this.contentDescription = directSwipeDownText
+                        },
+                    trailingAccessoryContent = {
+                        ToggleSwitch(
+                            onValueChange = { directSwipeDownDismissible = it },
+                            checkedState = directSwipeDownDismissible
                         )
                     }
                 )
@@ -265,6 +287,7 @@ private fun CreateActivityUI() {
 private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     slideOver: Boolean,
     expandable: Boolean,
+    directSwipeDownDismissible: Boolean,
     scrimVisible: Boolean,
     showHandle: Boolean,
     drawerContent: @Composable ((() -> Unit) -> Unit),
@@ -297,6 +320,7 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
         drawerContent = { drawerContent(close) },
         expandable = expandable,
         scrimVisible = scrimVisible,
+        directSwipeDownDismiss = directSwipeDownDismissible,
         slideOver = slideOver,
         showHandle = showHandle
     )

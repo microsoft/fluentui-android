@@ -623,11 +623,14 @@ private fun BottomDrawer(
     scrimColor: Color,
     scrimVisible: Boolean,
     expandable: Boolean,
+    directSwipeDownDismiss: Boolean,
     slideOver: Boolean,
     showHandle: Boolean,
     onDismiss: () -> Unit,
     drawerContent: @Composable () -> Unit
 ) {
+    if(directSwipeDownDismiss)
+        drawerState.directSwipeDownDismiss = true
     BoxWithConstraints(modifier.fillMaxSize()) {
         val fullHeight = constraints.maxHeight.toFloat()
         val drawerHeight =
@@ -867,6 +870,7 @@ fun Drawer(
                     scrimColor = scrimColor,
                     scrimVisible = scrimVisible,
                     expandable = true,
+                    directSwipeDownDismiss = false,
                     slideOver = behaviorType == BehaviorType.BOTTOM_SLIDE_OVER,
                     showHandle = true,
                     onDismiss = close,
@@ -931,6 +935,7 @@ fun BottomDrawer(
     expandable: Boolean = true,
     scrimVisible: Boolean = true,
     showHandle: Boolean = true,
+    directSwipeDownDismiss: Boolean = false,
     windowInsets: WindowInsets = WindowInsets.systemBars,
     drawerTokens: DrawerTokens? = null,
     drawerContent: @Composable () -> Unit
@@ -978,6 +983,7 @@ fun BottomDrawer(
                 scrimColor = scrimColor,
                 scrimVisible = scrimVisible,
                 expandable = expandable,
+                directSwipeDownDismiss = directSwipeDownDismiss,
                 slideOver = slideOver,
                 showHandle = showHandle,
                 onDismiss = close,
