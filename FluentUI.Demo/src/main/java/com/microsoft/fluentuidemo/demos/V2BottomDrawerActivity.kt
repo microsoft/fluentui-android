@@ -146,13 +146,15 @@ private fun CreateActivityUI() {
                 )
             }
             item {
-                val directSwipeDownText = "Direct Swipe Down Dismiss"
+                val directSwipeDownText = stringResource(id = R.string.direct_swipe_down_dismiss)
                 ListItem.Header(title = directSwipeDownText,
                     modifier = Modifier
                         .toggleable(
                             value = directSwipeDownDismissible,
                             role = Role.Switch,
-                            onValueChange = { directSwipeDownDismissible = ! directSwipeDownDismissible }
+                            onValueChange = {
+                                directSwipeDownDismissible = !directSwipeDownDismissible
+                            }
                         )
                         .clearAndSetSemantics {
                             this.contentDescription = directSwipeDownText

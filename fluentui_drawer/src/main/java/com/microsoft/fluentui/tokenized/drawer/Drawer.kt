@@ -721,7 +721,7 @@ private fun BottomDrawer(
                                 }
                                 true
                             }
-                        } else if (drawerState.hasExpandedState) {
+                        } else if (drawerState.hasExpandedState && !directSwipeDownDismiss) {
                             collapse {
                                 if (drawerState.confirmStateChange(DrawerValue.Open)) {
                                     scope.launch { drawerState.open() }
