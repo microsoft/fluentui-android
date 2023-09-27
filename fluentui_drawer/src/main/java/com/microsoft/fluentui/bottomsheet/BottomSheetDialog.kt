@@ -10,6 +10,9 @@ import android.os.Build
 import android.view.View
 import android.view.Window
 import androidx.annotation.StyleRes
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import com.microsoft.fluentui.drawer.DrawerDialog
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.drawer.databinding.ViewBottomSheetBinding
@@ -45,6 +48,20 @@ class BottomSheetDialog : DrawerDialog, BottomSheetItem.OnClickListener {
         }
 
         setContentView(binding.root)
+
+        ViewCompat.setAccessibilityDelegate(binding.root,
+            object : AccessibilityDelegateCompat() {
+                override fun onInitializeAccessibilityNodeInfo(
+                    v: View,
+                    info: AccessibilityNodeInfoCompat
+                ) {
+                    super.onInitializeAccessibilityNodeInfo(v, info)
+                    clickedItem?.let {
+                        info.roleDescription = it.roleDescription
+                    }
+                }
+            }
+        )
     }
 
     private fun createHeader(headerItem: BottomSheetItem): View {

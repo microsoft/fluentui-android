@@ -5,6 +5,7 @@
 
 package com.microsoft.fluentui.bottomsheet
 
+import android.content.ClipDescription
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.Parcel
@@ -29,6 +30,7 @@ class BottomSheetItem : Parcelable {
     }
 
     val id: Int
+    val roleDescription: String
     @DrawableRes
     val imageId: Int
     val title: String
@@ -48,6 +50,7 @@ class BottomSheetItem : Parcelable {
         id: Int = NO_ID,
         @DrawableRes imageId: Int = NO_ID,
         title: String,
+        roleDescription: String = "Button",
         subtitle: String = "",
         useDivider: Boolean = false,
         @ColorInt imageTint: Int = 0,
@@ -58,6 +61,7 @@ class BottomSheetItem : Parcelable {
         accessoryBitmap: Bitmap? = null
     ) {
         this.id = id
+        this.roleDescription = roleDescription
         this.imageId = imageId
         this.title = title
         this.subtitle = subtitle
@@ -74,6 +78,7 @@ class BottomSheetItem : Parcelable {
         id = parcel.readInt(),
         imageId = parcel.readInt(),
         title = parcel.readString() ?: "",
+        roleDescription = parcel.readString() ?: "Button",
         subtitle = parcel.readString() ?: "",
         useDivider = parcel.readInt() == 1,
         imageTint = parcel.readInt(),
@@ -88,6 +93,7 @@ class BottomSheetItem : Parcelable {
         parcel.writeInt(id)
         parcel.writeInt(imageId)
         parcel.writeString(title)
+        parcel.writeString(roleDescription)
         parcel.writeString(subtitle)
         parcel.writeInt(if (useDivider) 1 else 0)
         parcel.writeInt(imageTint)
@@ -108,6 +114,7 @@ class BottomSheetItem : Parcelable {
         if (id != other.id) return false
         if (imageId != other.imageId) return false
         if (title != other.title) return false
+        if (roleDescription != other.roleDescription) return false
         if (subtitle != other.subtitle) return false
         if (useDivider != other.useDivider) return false
         if (imageTint != other.imageTint) return false
@@ -124,6 +131,7 @@ class BottomSheetItem : Parcelable {
         var result = id
         result = 31 * result + imageId
         result = 31 * result + title.hashCode()
+        result = 31 * result + roleDescription.hashCode()
         result = 31 * result + subtitle.hashCode()
         result = 31 * result + useDivider.hashCode()
         result = 31 * result + imageTint
