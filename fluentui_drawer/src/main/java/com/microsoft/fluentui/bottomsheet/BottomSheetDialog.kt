@@ -48,20 +48,6 @@ class BottomSheetDialog : DrawerDialog, BottomSheetItem.OnClickListener {
         }
 
         setContentView(binding.root)
-
-        ViewCompat.setAccessibilityDelegate(binding.root,
-            object : AccessibilityDelegateCompat() {
-                override fun onInitializeAccessibilityNodeInfo(
-                    v: View,
-                    info: AccessibilityNodeInfoCompat
-                ) {
-                    super.onInitializeAccessibilityNodeInfo(v, info)
-                    clickedItem?.let {
-                        info.roleDescription = it.roleDescription
-                    }
-                }
-            }
-        )
     }
 
     private fun createHeader(headerItem: BottomSheetItem): View {

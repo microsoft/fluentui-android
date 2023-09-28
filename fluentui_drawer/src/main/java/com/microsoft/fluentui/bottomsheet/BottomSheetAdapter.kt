@@ -8,9 +8,13 @@ package com.microsoft.fluentui.bottomsheet
 import android.content.Context
 import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.annotation.StyleRes
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.microsoft.fluentui.bottomsheet.BottomSheetItem.Companion.NO_ID
@@ -82,6 +86,7 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
             listItemView.layoutDensity = ListItemView.LayoutDensity.COMPACT
             listItemView.background = R.drawable.bottom_sheet_item_ripple_background
             listItemView.disabled = item.disabled
+            var clickedItem: BottomSheetItem? = null
             if (textAppearance != 0) {
                 listItemView.titleStyleRes = textAppearance
             }
@@ -111,7 +116,21 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             listItemView.setOnClickListener {
                 onBottomSheetItemClickListener?.onBottomSheetItemClick(item)
+                clickedItem = item
             }
+            ViewCompat.setAccessibilityDelegate(this.itemView,
+                object : AccessibilityDelegateCompat() {
+                    override fun onInitializeAccessibilityNodeInfo(
+                        v: View,
+                        info: AccessibilityNodeInfoCompat
+                    ) {
+                        super.onInitializeAccessibilityNodeInfo(v, info)
+                        clickedItem?.let {
+                            info.roleDescription = it.roleDescription
+                        }
+                    }
+                }
+            )
         }
     }
 
