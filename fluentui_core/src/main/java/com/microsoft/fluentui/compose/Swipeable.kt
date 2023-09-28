@@ -224,7 +224,6 @@ open class SwipeableState<T>(
             }
         }
     }
-    var directSwipeDownDismiss: Boolean by mutableStateOf(false)
     /**
      * The target value of the state.
      *
@@ -242,8 +241,7 @@ open class SwipeableState<T>(
                     anchors = anchors.keys,
                     thresholds = thresholds,
                     velocity = 0f,
-                    velocityThreshold = Float.POSITIVE_INFINITY,
-                    directSwipeDownDismiss = directSwipeDownDismiss
+                    velocityThreshold = Float.POSITIVE_INFINITY
             )
             return anchors[target] ?: currentValue
         }
@@ -255,7 +253,7 @@ open class SwipeableState<T>(
      */
     val progress: SwipeProgress<T>
         get() {
-            val bounds = findBounds(offset.value, anchors.keys, directSwipeDownDismiss, direction==-1f)
+            val bounds = findBounds(offset.value, anchors.keys)
             val from: T
             val to: T
             val fraction: Float
@@ -357,8 +355,7 @@ open class SwipeableState<T>(
                     anchors = anchors.keys,
                     thresholds = thresholds,
                     velocity = velocity,
-                    velocityThreshold = velocityThreshold,
-                    directSwipeDownDismiss = directSwipeDownDismiss
+                    velocityThreshold = velocityThreshold
             )
             val targetState = anchors[targetValue]
             if (targetState != null && confirmStateChange(targetState)) animateTo(targetState)
@@ -718,19 +715,11 @@ class ResistanceConfig(
  */
 private fun findBounds(
     offset: Float,
-    anchors: Set<Float>,
-    directSwipeDownDismiss: Boolean,
-    isSwipeDown: Boolean = false,
+    anchors: Set<Float>
 ): List<Float> {
     // Find the anchors the target lies between with a little bit of rounding error.
     val a = anchors.filter { it <= offset + 0.001 }.maxOrNull()
     var b = anchors.filter { it >= offset - 0.001 }.minOrNull()
-    if(directSwipeDownDismiss && isSwipeDown) {
-        //this block is added to support direct swipe down dismiss
-        //it skips the Open state and directly goes to Dismiss state
-        b = anchors.maxOrNull()
-    }
-
 
     return when {
         a == null ->
@@ -756,11 +745,9 @@ private fun computeTarget(
         anchors: Set<Float>,
         thresholds: (Float, Float) -> Float,
         velocity: Float,
-        velocityThreshold: Float,
-        directSwipeDownDismiss: Boolean,
+        velocityThreshold: Float
 ): Float {
-    val isSwipeDown: Boolean = velocity > 0
-    val bounds = findBounds(offset, anchors, directSwipeDownDismiss, isSwipeDown)
+    val bounds = findBounds(offset, anchors)
     return when (bounds.size) {
         0 -> lastValue
         1 -> bounds[0]

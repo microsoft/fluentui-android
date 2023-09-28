@@ -885,7 +885,7 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Expandable</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="direct_swipe_down_dismiss">Direct Swipe Down Dismiss</string>
+    <string name="skip_open_state">Skip Open State</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Show Handle</string>
 

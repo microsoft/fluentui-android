@@ -92,12 +92,11 @@ class DrawerState(
 ) {
 
     var enable: Boolean by mutableStateOf(false)
-
     /**
-     * Whether the drawer is open.
+     * Whether drawer has Open state.
      */
-    val isOpen: Boolean
-        get() = currentValue != DrawerValue.Closed
+    val hasOpenedState: Boolean
+        get() = anchors.values.contains(DrawerValue.Open)
 
     /**
      * Whether the drawer is closed.
@@ -126,15 +125,19 @@ class DrawerState(
         do{
             delay(50)
         }while(!anchorsFilled)
-
+        val targetValue = when {
+            hasOpenedState -> DrawerValue.Open
+            hasExpandedState -> DrawerValue.Expanded
+            else -> DrawerValue.Closed
+        }
         try {
-            animateTo(DrawerValue.Open, AnimationSpec)
+            animateTo(targetValue = targetValue, AnimationSpec)
         } catch (e: Exception) {
             //TODO: When previous instance of drawer changes its content & closed then on
             // re-triggering the same drawer, it open but stuck to end of screen due to
             // JobCancellationException thrown with message "ScopeCoroutine was cancelled".
             // Hence re-triggering "animateTo". Check for better sol
-            animateTo(DrawerValue.Open, AnimationSpec)
+            animateTo(targetValue = targetValue, AnimationSpec)
         }
         animationInProgress = false
     }
@@ -172,7 +175,8 @@ class DrawerState(
 
         val targetValue = when {
             hasExpandedState -> DrawerValue.Expanded
-            else -> DrawerValue.Open
+            hasOpenedState -> DrawerValue.Open
+            else -> DrawerValue.Closed
         }
         try {
             animateTo(targetValue = targetValue, AnimationSpec)
@@ -282,6 +286,7 @@ private fun Modifier.drawerHeight(
 private fun Modifier.bottomDrawerSwipeable(
     drawerState: DrawerState,
     expandable: Boolean,
+    skipOpenState: Boolean,
     slideOver: Boolean,
     maxOpenHeight: Float,
     fullHeight: Float,
@@ -293,16 +298,31 @@ private fun Modifier.bottomDrawerSwipeable(
             val bottomOpenStateY = max(maxOpenHeight, fullHeight - drawerHeight)
             val bottomExpandedStateY = max(minHeight, fullHeight - drawerHeight)
             val anchors = if (drawerHeight <= maxOpenHeight || !expandable) {
-                mapOf(
-                    fullHeight to DrawerValue.Closed,
-                    bottomOpenStateY to DrawerValue.Open
-                )
+                if(skipOpenState){
+                    mapOf(
+                        fullHeight to DrawerValue.Closed
+                    )
+                }
+                else {
+                    mapOf(
+                        fullHeight to DrawerValue.Closed,
+                        bottomOpenStateY to DrawerValue.Open
+                    )
+                }
             } else {
-                mapOf(
-                    fullHeight to DrawerValue.Closed,
-                    bottomOpenStateY to DrawerValue.Open,
-                    bottomExpandedStateY to DrawerValue.Expanded
-                )
+                if(skipOpenState){
+                    mapOf(
+                        fullHeight to DrawerValue.Closed,
+                        bottomExpandedStateY to DrawerValue.Expanded
+                    )
+                }
+                else {
+                    mapOf(
+                        fullHeight to DrawerValue.Closed,
+                        bottomOpenStateY to DrawerValue.Open,
+                        bottomExpandedStateY to DrawerValue.Expanded
+                    )
+                }
             }
             Modifier.swipeable(
                 state = drawerState,
@@ -316,16 +336,31 @@ private fun Modifier.bottomDrawerSwipeable(
         }
     } else {
         val anchors = if (expandable) {
-            mapOf(
-                fullHeight to DrawerValue.Closed,
-                maxOpenHeight to DrawerValue.Open,
-                0F to DrawerValue.Expanded
-            )
+            if(skipOpenState){
+                mapOf(
+                    fullHeight to DrawerValue.Closed,
+                    0F to DrawerValue.Expanded
+                )
+            }
+            else {
+                mapOf(
+                    fullHeight to DrawerValue.Closed,
+                    maxOpenHeight to DrawerValue.Open,
+                    0F to DrawerValue.Expanded
+                )
+            }
         } else {
-            mapOf(
-                fullHeight to DrawerValue.Closed,
-                maxOpenHeight to DrawerValue.Open
-            )
+            if(skipOpenState){
+                mapOf(
+                    fullHeight to DrawerValue.Closed
+                )
+            }
+            else {
+                mapOf(
+                    fullHeight to DrawerValue.Closed,
+                    maxOpenHeight to DrawerValue.Open
+                )
+            }
         }
         Modifier.swipeable(
             state = drawerState,
@@ -404,7 +439,7 @@ private fun HorizontalDrawer(
             val anchors = mapOf(minValue to DrawerValue.Closed, maxValue to DrawerValue.Open)
             val isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
             Scrim(
-                open = drawerState.isOpen,
+                open = !drawerState.isClosed,
                 onClose = onDismiss,
                 fraction = {
                     calculateFraction(minValue, maxValue, drawerState.offset.value)
@@ -428,12 +463,12 @@ private fun HorizontalDrawer(
                         end = if (leftSlide) paddingPx else 0.dp
                     )
                     .semantics {
-                        if (drawerState.isOpen) {
-                            dismiss {
-                                onDismiss()
-                                true
+                        if (drawerState.hasOpenedState && !drawerState.isClosed) {
+                                dismiss {
+                                    onDismiss()
+                                    true
+                                }
                             }
-                        }
                     }
                     .shadow(drawerElevation)
                     .clip(drawerShape)
@@ -541,7 +576,7 @@ private fun TopDrawer(
                 drawerConstraints
                     .offset { IntOffset(0, 0) }
                     .semantics {
-                        if (drawerState.isOpen) {
+                        if (drawerState.hasOpenedState && !drawerState.isClosed) {
                             dismiss {
                                 onDismiss()
                                 true
@@ -623,14 +658,12 @@ private fun BottomDrawer(
     scrimColor: Color,
     scrimVisible: Boolean,
     expandable: Boolean,
-    directSwipeDownDismiss: Boolean,
+    skipOpenState: Boolean,
     slideOver: Boolean,
     showHandle: Boolean,
     onDismiss: () -> Unit,
     drawerContent: @Composable () -> Unit
 ) {
-    if(directSwipeDownDismiss)
-        drawerState.directSwipeDownDismiss = true
     BoxWithConstraints(modifier.fillMaxSize()) {
         val fullHeight = constraints.maxHeight.toFloat()
         val drawerHeight =
@@ -650,7 +683,7 @@ private fun BottomDrawer(
             open = !drawerState.isClosed,
             onClose = onDismiss,
             fraction = {
-                if (drawerState.anchors.isEmpty()
+                if (drawerState.anchors.isEmpty() || skipOpenState
                 ) {
                     0.toFloat()
                 } else {
@@ -679,6 +712,7 @@ private fun BottomDrawer(
                 .bottomDrawerSwipeable(
                     drawerState,
                     expandable,
+                    skipOpenState,
                     slideOver,
                     maxOpenHeight,
                     fullHeight,
@@ -709,7 +743,7 @@ private fun BottomDrawer(
                 .clip(drawerShape)
                 .background(drawerBackground)
                 .semantics {
-                    if (drawerState.isOpen) {
+                    if (drawerState.hasOpenedState && !drawerState.isClosed) {
                         dismiss {
                             onDismiss()
                             true
@@ -721,7 +755,7 @@ private fun BottomDrawer(
                                 }
                                 true
                             }
-                        } else if (drawerState.hasExpandedState && !directSwipeDownDismiss) {
+                        } else if (drawerState.hasExpandedState && !skipOpenState && drawerState.hasOpenedState) {
                             collapse {
                                 if (drawerState.confirmStateChange(DrawerValue.Open)) {
                                     scope.launch { drawerState.open() }
@@ -770,12 +804,12 @@ private fun BottomDrawer(
                                     if (drawerState.currentValue == DrawerValue.Expanded) {
                                         LocalContext.current.resources.getString(R.string.collapse)
                                     } else {
-                                        if (drawerState.hasExpandedState && drawerState.isOpen) LocalContext.current.resources.getString(
+                                        if (drawerState.hasExpandedState && !drawerState.isClosed) LocalContext.current.resources.getString(
                                             R.string.expand
                                         ) else null
                                     }
                                 ) {
-                                    if (drawerState.currentValue == DrawerValue.Expanded) {
+                                    if (drawerState.currentValue == DrawerValue.Expanded && drawerState.hasOpenedState) {
                                         if (drawerState.confirmStateChange(DrawerValue.Open)) {
                                             scope.launch { drawerState.open() }
                                         }
@@ -870,7 +904,7 @@ fun Drawer(
                     scrimColor = scrimColor,
                     scrimVisible = scrimVisible,
                     expandable = true,
-                    directSwipeDownDismiss = false,
+                    skipOpenState = false,
                     slideOver = behaviorType == BehaviorType.BOTTOM_SLIDE_OVER,
                     showHandle = true,
                     onDismiss = close,
@@ -935,7 +969,7 @@ fun BottomDrawer(
     expandable: Boolean = true,
     scrimVisible: Boolean = true,
     showHandle: Boolean = true,
-    directSwipeDownDismiss: Boolean = false,
+    skipOpenState: Boolean = false,
     windowInsets: WindowInsets = WindowInsets.systemBars,
     drawerTokens: DrawerTokens? = null,
     drawerContent: @Composable () -> Unit
@@ -983,7 +1017,7 @@ fun BottomDrawer(
                 scrimColor = scrimColor,
                 scrimVisible = scrimVisible,
                 expandable = expandable,
-                directSwipeDownDismiss = directSwipeDownDismiss,
+                skipOpenState = skipOpenState,
                 slideOver = slideOver,
                 showHandle = showHandle,
                 onDismiss = close,
