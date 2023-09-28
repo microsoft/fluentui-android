@@ -24,4 +24,9 @@ open class PeoplePickerTokens : TextFieldTokens() {
     open fun chipSpacing(peoplePickerInfo: PeoplePickerInfo): Dp {
         return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
     }
+
+    @Composable
+    open fun chipVerticalSpacing(peoplePickerInfo: PeoplePickerInfo): Dp {
+        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
+    }
 }
