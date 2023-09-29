@@ -63,7 +63,7 @@ import com.microsoft.fluentui.tokenized.persona.PersonaChip
  *
  * @param selectedPeopleList List of PersonaChips to be shown in PeoplePicker.
  * @param onValueChange The callback that is triggered when the input service updates the text or [selectedPeopleList].
- * An updated text and List of selectedPeople comes as a parameter of the callback
+ * An updated text and List of selectedPeople comes as a parameter for the callback
  * @param modifier Optional modifier for the TextField
  * @param onBackPress The callback that is triggered when the back button is pressed.
  * @param onChipClick The callback that is triggered when a PersonaChip is clicked.
@@ -118,7 +118,7 @@ fun PeoplePicker(
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PeoplePickerControlType] as PeoplePickerTokens
 
     val peoplePickerInfo = PeoplePickerInfo()
-    val chipSpacing = token.chipSpacing(peoplePickerInfo = peoplePickerInfo)
+    val chipHorizontalSpacing = token.chipHorizontalSpacing(peoplePickerInfo = peoplePickerInfo)
     val chipVerticalSpacing = token.chipVerticalSpacing(peoplePickerInfo = peoplePickerInfo)
     var queryText by rememberSaveable { mutableStateOf("") }
     var selectedPeopleListSize by rememberSaveable { mutableStateOf(0) }
@@ -192,7 +192,7 @@ fun PeoplePicker(
                                 },
                                 style = chipValidation(it.person)
                             )
-                            Spacer(modifier = Modifier.width(chipSpacing))
+                            Spacer(modifier = Modifier.width(chipHorizontalSpacing))
                         }
                         focusRequester.requestFocus()
                     }
