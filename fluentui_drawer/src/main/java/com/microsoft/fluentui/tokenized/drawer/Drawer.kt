@@ -94,6 +94,7 @@ class DrawerState(
     var enable: Boolean by mutableStateOf(false)
     /**
      * Whether drawer has Open state.
+     * It is false in case of skipOpenState is true.
      */
     val hasOpenedState: Boolean
         get() = anchors.values.contains(DrawerValue.Open)
@@ -125,6 +126,10 @@ class DrawerState(
         do{
             delay(50)
         }while(!anchorsFilled)
+        /*
+        * open and expanded states are possible in case of
+        * true expandanble and false skipOpenState respectively.
+         */
         val targetValue = when {
             hasOpenedState -> DrawerValue.Open
             hasExpandedState -> DrawerValue.Expanded
@@ -172,7 +177,10 @@ class DrawerState(
         do{
             delay(50)
         }while(!anchorsFilled)
-
+        /*
+        * expandable and open states are possible in case of
+        * true expandanble and false skipOpenState respectively.
+         */
         val targetValue = when {
             hasExpandedState -> DrawerValue.Expanded
             hasOpenedState -> DrawerValue.Open
@@ -683,15 +691,23 @@ private fun BottomDrawer(
             open = !drawerState.isClosed,
             onClose = onDismiss,
             fraction = {
-                if (drawerState.anchors.isEmpty() || skipOpenState
+                if (drawerState.anchors.isEmpty()
                 ) {
                     0.toFloat()
                 } else {
-                    calculateFraction(
-                        drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Closed }?.key!!,
-                        drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Open }?.key!!,
-                        drawerState.offset.value
-                    )
+                    if(skipOpenState){
+                        calculateFraction(
+                            drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Closed }?.key!!,
+                            drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Expanded }?.key!!,
+                            drawerState.offset.value
+                        )
+                    }else{
+                        calculateFraction(
+                            drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Closed }?.key!!,
+                            drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Open }?.key!!,
+                            drawerState.offset.value
+                        )
+                    }
                 }
             },
             color = if (scrimVisible) scrimColor else Color.Transparent,
@@ -743,7 +759,7 @@ private fun BottomDrawer(
                 .clip(drawerShape)
                 .background(drawerBackground)
                 .semantics {
-                    if (drawerState.hasOpenedState && !drawerState.isClosed) {
+                    if (!drawerState.isClosed) {
                         dismiss {
                             onDismiss()
                             true
@@ -809,8 +825,8 @@ private fun BottomDrawer(
                                         ) else null
                                     }
                                 ) {
-                                    if (drawerState.currentValue == DrawerValue.Expanded && drawerState.hasOpenedState) {
-                                        if (drawerState.confirmStateChange(DrawerValue.Open)) {
+                                    if (drawerState.currentValue == DrawerValue.Expanded) {
+                                        if (drawerState.hasOpenedState && drawerState.confirmStateChange(DrawerValue.Open)) {
                                             scope.launch { drawerState.open() }
                                         }
                                     } else if (drawerState.hasExpandedState) {
@@ -954,6 +970,7 @@ fun Drawer(
  * The default value is true
  * @param scrimVisible create obscures background when scrim visible set to true when the drawer is open. The default value is true
  * @param showHandle if true drawer handle would be visible. The default value is true
+ * @param skipOpenState if true drawer would transition directly between Expanded and Close state, and there won't be any Open state. The default value is false
  * @param windowInsets window insets to be passed to the bottom drawer window via PaddingValues params.
  * @param drawerTokens tokens to provide appearance values. If not provided then drawer tokens will be picked from [FluentTheme]
  * @param drawerContent composable that represents content inside the drawer

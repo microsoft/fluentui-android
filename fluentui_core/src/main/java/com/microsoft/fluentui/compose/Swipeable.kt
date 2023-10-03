@@ -224,6 +224,7 @@ open class SwipeableState<T>(
             }
         }
     }
+
     /**
      * The target value of the state.
      *
@@ -233,7 +234,6 @@ open class SwipeableState<T>(
      */
     val targetValue: T
         get() {
-
             // TODO(calintat): Track current velocity (b/149549482) and use that here.
             val target = animationTarget.value ?: computeTarget(
                     offset = offset.value,
@@ -714,12 +714,12 @@ class ResistanceConfig(
  *   5. [ a , b ] if a and b are anchors such that a < x < b and b - a is minimal.
  */
 private fun findBounds(
-    offset: Float,
-    anchors: Set<Float>
+        offset: Float,
+        anchors: Set<Float>
 ): List<Float> {
     // Find the anchors the target lies between with a little bit of rounding error.
     val a = anchors.filter { it <= offset + 0.001 }.maxOrNull()
-    var b = anchors.filter { it >= offset - 0.001 }.minOrNull()
+    val b = anchors.filter { it >= offset - 0.001 }.minOrNull()
 
     return when {
         a == null ->
