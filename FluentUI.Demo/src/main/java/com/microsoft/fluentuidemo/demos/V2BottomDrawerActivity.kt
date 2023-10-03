@@ -317,11 +317,8 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     showHandle: Boolean,
     drawerContent: @Composable ((() -> Unit) -> Unit),
 ) {
-    val key = remember(slideOver, expandable, skipOpenState, scrimVisible, showHandle) {
-        "$slideOver-$expandable-$skipOpenState-$scrimVisible-$showHandle"
-    }
     val scope = rememberCoroutineScope()
-    val drawerState = remember(key) { DrawerState(initialValue = DrawerValue.Closed) }
+    val drawerState = DrawerState(initialValue = DrawerValue.Closed)
     val open: () -> Unit = {
         scope.launch { drawerState.open() }
     }
