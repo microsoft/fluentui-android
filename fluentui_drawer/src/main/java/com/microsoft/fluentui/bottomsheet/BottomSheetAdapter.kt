@@ -86,7 +86,6 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
             listItemView.layoutDensity = ListItemView.LayoutDensity.COMPACT
             listItemView.background = R.drawable.bottom_sheet_item_ripple_background
             listItemView.disabled = item.disabled
-            var clickedItem: BottomSheetItem? = null
             if (textAppearance != 0) {
                 listItemView.titleStyleRes = textAppearance
             }
@@ -116,18 +115,15 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             listItemView.setOnClickListener {
                 onBottomSheetItemClickListener?.onBottomSheetItemClick(item)
-                clickedItem = item
             }
-            ViewCompat.setAccessibilityDelegate(this.itemView,
+            ViewCompat.setAccessibilityDelegate(listItemView,
                 object : AccessibilityDelegateCompat() {
                     override fun onInitializeAccessibilityNodeInfo(
                         v: View,
                         info: AccessibilityNodeInfoCompat
                     ) {
                         super.onInitializeAccessibilityNodeInfo(v, info)
-                        clickedItem?.let {
-                            info.roleDescription = it.roleDescription
-                        }
+                        info.roleDescription = item.roleDescription
                     }
                 }
             )
