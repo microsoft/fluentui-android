@@ -132,17 +132,22 @@ class DrawerState(
          */
         val targetValue = when {
             hasOpenedState -> DrawerValue.Open
-            hasExpandedState -> DrawerValue.Expanded
+            //hasExpandedState -> DrawerValue.Expanded
             else -> DrawerValue.Closed
         }
         try {
-            animateTo(targetValue = targetValue, AnimationSpec)
+            if(targetValue != currentValue) {
+                animateTo(targetValue = targetValue, AnimationSpec)
+            }
         } catch (e: Exception) {
             //TODO: When previous instance of drawer changes its content & closed then on
             // re-triggering the same drawer, it open but stuck to end of screen due to
             // JobCancellationException thrown with message "ScopeCoroutine was cancelled".
             // Hence re-triggering "animateTo". Check for better sol
             animateTo(targetValue = targetValue, AnimationSpec)
+        }
+        finally {
+            animationInProgress = false
         }
         animationInProgress = false
     }
@@ -183,15 +188,20 @@ class DrawerState(
          */
         val targetValue = when {
             hasExpandedState -> DrawerValue.Expanded
-            hasOpenedState -> DrawerValue.Open
+            //hasOpenedState -> DrawerValue.Open
             else -> DrawerValue.Closed
         }
         try {
-            animateTo(targetValue = targetValue, AnimationSpec)
-            animationInProgress = false
+            if(targetValue != currentValue) {
+                animateTo(targetValue = targetValue, AnimationSpec)
+            }
         } catch (e: Exception) {
             animateTo(targetValue = targetValue, AnimationSpec)
         }
+        finally {
+            animationInProgress = false
+        }
+        animationInProgress = false
     }
 
     val nestedScrollConnection = this.PreUpPostDownNestedScrollConnection
@@ -691,7 +701,7 @@ private fun BottomDrawer(
             open = !drawerState.isClosed,
             onClose = onDismiss,
             fraction = {
-                if (drawerState.anchors.isEmpty()
+                if (drawerState.anchors.isNullOrEmpty()
                 ) {
                     0.toFloat()
                 } else {
@@ -702,11 +712,17 @@ private fun BottomDrawer(
                             drawerState.offset.value
                         )
                     }else{
-                        calculateFraction(
-                            drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Closed }?.key!!,
-                            drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Open }?.key!!,
-                            drawerState.offset.value
-                        )
+
+                        if(drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Open }?.key != null) {
+                            calculateFraction(
+                                drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Closed }?.key!!,
+                                drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Open }?.key!!,
+                                drawerState.offset.value
+                            )
+                        }
+                        else{
+                            0.toFloat()
+                        }
                     }
                 }
             },
@@ -739,6 +755,7 @@ private fun BottomDrawer(
                         && drawerState.currentValue == DrawerValue.Closed
                         && drawerState.targetValue == DrawerValue.Closed
                     ) {
+
                         onDismiss()
                     }
 
@@ -967,10 +984,10 @@ fun Drawer(
  * @param slideOver if true, then BottomDrawer would be drawn in full length & only covering up to half screen when open & it get slided more
  * in the visible region on expand. If false then, the BottomDrawer end at the bottom & hence the content get only the visible region height to draw itself.The default value is true
  * @param expandable if true drawer would expand on drag else drawer open till fixed/wrapped height.
- * The default value is true
+ * The default value is true. If expandable is
  * @param scrimVisible create obscures background when scrim visible set to true when the drawer is open. The default value is true
  * @param showHandle if true drawer handle would be visible. The default value is true
- * @param skipOpenState if true drawer would transition directly between Expanded and Close state, and there won't be any Open state. The default value is false
+ * @param skipOpenState if true drawer would transition directly between Expanded and Close state, and there won't be any Open state. The default value is false. Expandable should be true for this to work.
  * @param windowInsets window insets to be passed to the bottom drawer window via PaddingValues params.
  * @param drawerTokens tokens to provide appearance values. If not provided then drawer tokens will be picked from [FluentTheme]
  * @param drawerContent composable that represents content inside the drawer

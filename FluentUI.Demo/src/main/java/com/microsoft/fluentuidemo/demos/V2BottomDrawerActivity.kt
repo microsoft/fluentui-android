@@ -137,7 +137,7 @@ private fun CreateActivityUI() {
                             role = Role.Switch,
                             onValueChange = {
                                 expandable = it
-                                if(!it) {
+                                if (!it) {
                                     skipOpenState = false
                                 }
                             }
@@ -318,7 +318,7 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     drawerContent: @Composable ((() -> Unit) -> Unit),
 ) {
     val scope = rememberCoroutineScope()
-    val drawerState = DrawerState(initialValue = DrawerValue.Closed)
+    val drawerState = rememberDrawerState()//DrawerState(initialValue = DrawerValue.Closed)
     val open: () -> Unit = {
         scope.launch { drawerState.open() }
     }
