@@ -130,13 +130,12 @@ class DrawerState(
         * open and expanded states are possible in case of
         * true expandanble and false skipOpenState respectively.
          */
-        val targetValue = when {
+        var targetValue = when {
             hasOpenedState -> DrawerValue.Open
-            //hasExpandedState -> DrawerValue.Expanded
             else -> DrawerValue.Closed
         }
         try {
-            if(targetValue != currentValue) {
+            if(targetValue != currentValue){
                 animateTo(targetValue = targetValue, AnimationSpec)
             }
         } catch (e: Exception) {
@@ -149,7 +148,6 @@ class DrawerState(
         finally {
             animationInProgress = false
         }
-        animationInProgress = false
     }
 
     /**
@@ -166,8 +164,10 @@ class DrawerState(
         } catch (e: Exception) {
             animateTo(DrawerValue.Closed, AnimationSpec)
         }
-        animationInProgress = false
-        enable = false
+        finally {
+            animationInProgress = false
+            enable = false
+        }
     }
 
     /**
@@ -188,7 +188,6 @@ class DrawerState(
          */
         val targetValue = when {
             hasExpandedState -> DrawerValue.Expanded
-            //hasOpenedState -> DrawerValue.Open
             else -> DrawerValue.Closed
         }
         try {
@@ -201,7 +200,6 @@ class DrawerState(
         finally {
             animationInProgress = false
         }
-        animationInProgress = false
     }
 
     val nestedScrollConnection = this.PreUpPostDownNestedScrollConnection
