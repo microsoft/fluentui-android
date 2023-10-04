@@ -123,9 +123,9 @@ class DrawerState(
     suspend fun open() {
         enable = true
         animationInProgress = true
-        do{
+        do {
             delay(50)
-        }while(!anchorsFilled)
+        } while (!anchorsFilled)
         /*
         * open and expanded states are possible in case of
         * true expandanble and false skipOpenState respectively.
@@ -134,18 +134,21 @@ class DrawerState(
             hasOpenedState -> DrawerValue.Open
             else -> DrawerValue.Closed
         }
-        try {
-            if(targetValue != currentValue){
+        if (targetValue != currentValue) {
+            try {
                 animateTo(targetValue = targetValue, AnimationSpec)
+
+            } catch (e: Exception) {
+                //TODO: When previous instance of drawer changes its content & closed then on
+                // re-triggering the same drawer, it open but stuck to end of screen due to
+                // JobCancellationException thrown with message "ScopeCoroutine was cancelled".
+                // Hence re-triggering "animateTo". Check for better sol
+                animateTo(targetValue = targetValue, AnimationSpec)
+            } finally {
+                animationInProgress = false
             }
-        } catch (e: Exception) {
-            //TODO: When previous instance of drawer changes its content & closed then on
-            // re-triggering the same drawer, it open but stuck to end of screen due to
-            // JobCancellationException thrown with message "ScopeCoroutine was cancelled".
-            // Hence re-triggering "animateTo". Check for better sol
-            animateTo(targetValue = targetValue, AnimationSpec)
         }
-        finally {
+        else {
             animationInProgress = false
         }
     }
@@ -179,9 +182,9 @@ class DrawerState(
     suspend fun expand() {
         enable = true
         animationInProgress = true
-        do{
+        do {
             delay(50)
-        }while(!anchorsFilled)
+        } while (!anchorsFilled)
         /*
         * expandable and open states are possible in case of
         * true expandanble and false skipOpenState respectively.
@@ -190,17 +193,19 @@ class DrawerState(
             hasExpandedState -> DrawerValue.Expanded
             else -> DrawerValue.Closed
         }
-        try {
-            if(targetValue != currentValue) {
+        if (targetValue != currentValue) {
+            try {
                 animateTo(targetValue = targetValue, AnimationSpec)
+            } catch (e: Exception) {
+                animateTo(targetValue = targetValue, AnimationSpec)
+            } finally {
+                animationInProgress = false
             }
-        } catch (e: Exception) {
-            animateTo(targetValue = targetValue, AnimationSpec)
-        }
-        finally {
+        } else {
             animationInProgress = false
         }
     }
+
 
     val nestedScrollConnection = this.PreUpPostDownNestedScrollConnection
 
@@ -314,17 +319,10 @@ private fun Modifier.bottomDrawerSwipeable(
             val bottomOpenStateY = max(maxOpenHeight, fullHeight - drawerHeight)
             val bottomExpandedStateY = max(minHeight, fullHeight - drawerHeight)
             val anchors = if (drawerHeight <= maxOpenHeight || !expandable) {
-                if(skipOpenState){
-                    mapOf(
-                        fullHeight to DrawerValue.Closed
-                    )
-                }
-                else {
-                    mapOf(
-                        fullHeight to DrawerValue.Closed,
-                        bottomOpenStateY to DrawerValue.Open
-                    )
-                }
+                mapOf(
+                    fullHeight to DrawerValue.Closed,
+                    bottomOpenStateY to DrawerValue.Open
+                )
             } else {
                 if(skipOpenState){
                     mapOf(
@@ -480,11 +478,11 @@ private fun HorizontalDrawer(
                     )
                     .semantics {
                         if (drawerState.hasOpenedState && !drawerState.isClosed) {
-                                dismiss {
-                                    onDismiss()
-                                    true
-                                }
+                            dismiss {
+                                onDismiss()
+                                true
                             }
+                        }
                     }
                     .shadow(drawerElevation)
                     .clip(drawerShape)
