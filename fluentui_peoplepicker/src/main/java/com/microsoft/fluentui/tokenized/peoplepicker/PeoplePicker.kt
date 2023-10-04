@@ -1,13 +1,13 @@
 package com.microsoft.fluentui.tokenized.peoplepicker
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -39,6 +39,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.LayoutDirection
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Dismisscircle
+import com.microsoft.fluentui.peoplepicker.R
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
@@ -49,7 +50,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle
 import com.microsoft.fluentui.tokenized.controls.TextField
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.PersonaChip
-import com.microsoft.fluentui.peoplepicker.R
 
 /**
  * API to create a customized PeoplePicker for users to add a list of PersonaChips
@@ -63,7 +63,7 @@ import com.microsoft.fluentui.peoplepicker.R
  *
  * @param selectedPeopleList List of PersonaChips to be shown in PeoplePicker.
  * @param onValueChange The callback that is triggered when the input service updates the text or [selectedPeopleList].
- * An updated text and List of selectedPeople comes as a parameter of the callback
+ * An updated text and List of selectedPeople comes as a parameter for the callback
  * @param modifier Optional modifier for the TextField
  * @param onBackPress The callback that is triggered when the back button is pressed.
  * @param onChipClick The callback that is triggered when a PersonaChip is clicked.
@@ -84,7 +84,10 @@ import com.microsoft.fluentui.peoplepicker.R
  * @param peoplePickerContentDescription String which acts as content description for the PeoplePicker. Add content description for accessibility description.
  * @param peoplePickerTokens Customization options for the PeoplePicker.
  */
-@OptIn(ExperimentalComposeUiApi::class, ExperimentalFoundationApi::class)
+@OptIn(
+    ExperimentalComposeUiApi::class, ExperimentalFoundationApi::class,
+    ExperimentalLayoutApi::class
+)
 @Composable
 fun PeoplePicker(
     selectedPeopleList: MutableList<PeoplePickerItemData> = mutableStateListOf(),
@@ -115,7 +118,8 @@ fun PeoplePicker(
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PeoplePickerControlType] as PeoplePickerTokens
 
     val peoplePickerInfo = PeoplePickerInfo()
-    val chipSpacing = token.chipSpacing(peoplePickerInfo = peoplePickerInfo)
+    val chipHorizontalSpacing = token.chipHorizontalSpacing(peoplePickerInfo = peoplePickerInfo)
+    val chipVerticalSpacing = token.chipVerticalSpacing(peoplePickerInfo = peoplePickerInfo)
     var queryText by rememberSaveable { mutableStateOf("") }
     var selectedPeopleListSize by rememberSaveable { mutableStateOf(0) }
     var lastAddedPerson by rememberSaveable { mutableStateOf(Person()) }
@@ -162,17 +166,17 @@ fun PeoplePicker(
             Box(
                 Modifier
                     .fillMaxWidth()
-                    .horizontalScroll(rememberScrollState())
                     .semantics { this.contentDescription = accessibilityAnnouncement },
                 contentAlignment = if (LocalLayoutDirection.current == LayoutDirection.Rtl)
                     Alignment.CenterEnd
                 else
                     Alignment.CenterStart
             ) {
-                Row {
+                FlowRow {
                     if (selectedPeopleList.isNotEmpty()) {
                         selectedPeopleList.forEach {
                             PersonaChip(
+                                modifier = Modifier.padding(bottom = chipVerticalSpacing),
                                 person = it.person, selected = it.selected.value,
                                 onCloseClick = if (onChipCloseClick != null) {
                                     {
@@ -188,7 +192,7 @@ fun PeoplePicker(
                                 },
                                 style = chipValidation(it.person)
                             )
-                            Spacer(modifier = Modifier.width(chipSpacing))
+                            Spacer(modifier = Modifier.width(chipHorizontalSpacing))
                         }
                         focusRequester.requestFocus()
                     }
@@ -199,9 +203,15 @@ fun PeoplePicker(
                         isAdded = selectedPeopleListSize < selectedPeopleList.size
                         lastAddedPerson = selectedPeopleList.lastOrNull()?.person ?: Person()
                         accessibilityAnnouncement = if (isAdded) {
-                            LocalContext.current.resources.getString(R.string.people_picker_accessibility_persona_added, lastAddedPerson.getLabel())
+                            LocalContext.current.resources.getString(
+                                R.string.people_picker_accessibility_persona_added,
+                                lastAddedPerson.getLabel()
+                            )
                         } else {
-                            LocalContext.current.resources.getString(R.string.people_picker_accessibility_persona_removed, lastRemovedPerson.getLabel())
+                            LocalContext.current.resources.getString(
+                                R.string.people_picker_accessibility_persona_removed,
+                                lastRemovedPerson.getLabel()
+                            )
                         }
                         lastRemovedPerson = lastAddedPerson
                     }
