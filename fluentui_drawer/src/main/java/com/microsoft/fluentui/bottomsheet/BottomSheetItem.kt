@@ -5,7 +5,6 @@
 
 package com.microsoft.fluentui.bottomsheet
 
-import android.content.ClipDescription
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.Parcel
@@ -30,7 +29,6 @@ class BottomSheetItem : Parcelable {
     }
 
     val id: Int
-    val roleDescription: String
     @DrawableRes
     val imageId: Int
     val title: String
@@ -45,6 +43,8 @@ class BottomSheetItem : Parcelable {
     val accessoryImageId: Int
     val accessoryBitmap: Bitmap?
 
+    val roleDescription: String
+
     @JvmOverloads
     constructor(
         id: Int = NO_ID,
@@ -58,7 +58,7 @@ class BottomSheetItem : Parcelable {
         disabled: Boolean = false,
         @DrawableRes accessoryImageId: Int = NO_ID,
         accessoryBitmap: Bitmap? = null,
-        roleDescription: String = "Button",
+        roleDescription: String = "",
     ) {
         this.id = id
         this.imageId = imageId
@@ -86,7 +86,7 @@ class BottomSheetItem : Parcelable {
         disabled = parcel.readInt() == 1,
         accessoryImageId = parcel.readInt(),
         accessoryBitmap = parcel.readParcelable(Bitmap::class.java.classLoader),
-        roleDescription = parcel.readString() ?: "Button",
+        roleDescription = parcel.readString() ?: "",
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

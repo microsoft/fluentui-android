@@ -187,7 +187,8 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
                         BottomSheetItem(
                             R.id.bottom_sheet_item_alarm,
                             R.drawable.ic_alert_24_regular,
-                            getString(R.string.bottom_sheet_item_alarm_title)
+                            getString(R.string.bottom_sheet_item_alarm_title),
+                            roleDescription = "Clickable Button" //Example of setting role description for accessibility
                         ),
                         BottomSheetItem(
                             R.id.bottom_sheet_item_time_zone,
