@@ -10,9 +10,6 @@ import android.os.Build
 import android.view.View
 import android.view.Window
 import androidx.annotation.StyleRes
-import androidx.core.view.AccessibilityDelegateCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import com.microsoft.fluentui.drawer.DrawerDialog
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.drawer.databinding.ViewBottomSheetBinding

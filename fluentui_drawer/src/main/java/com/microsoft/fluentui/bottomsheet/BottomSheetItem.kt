@@ -50,7 +50,6 @@ class BottomSheetItem : Parcelable {
         id: Int = NO_ID,
         @DrawableRes imageId: Int = NO_ID,
         title: String,
-        roleDescription: String = "Button",
         subtitle: String = "",
         useDivider: Boolean = false,
         @ColorInt imageTint: Int = 0,
@@ -58,10 +57,10 @@ class BottomSheetItem : Parcelable {
         customBitmap: Bitmap? = null,
         disabled: Boolean = false,
         @DrawableRes accessoryImageId: Int = NO_ID,
-        accessoryBitmap: Bitmap? = null
+        accessoryBitmap: Bitmap? = null,
+        roleDescription: String = "Button",
     ) {
         this.id = id
-        this.roleDescription = roleDescription
         this.imageId = imageId
         this.title = title
         this.subtitle = subtitle
@@ -72,13 +71,13 @@ class BottomSheetItem : Parcelable {
         this.disabled = disabled
         this.accessoryImageId = accessoryImageId
         this.accessoryBitmap = accessoryBitmap
+        this.roleDescription = roleDescription
     }
 
     private constructor(parcel: Parcel) : this(
         id = parcel.readInt(),
         imageId = parcel.readInt(),
         title = parcel.readString() ?: "",
-        roleDescription = parcel.readString() ?: "Button",
         subtitle = parcel.readString() ?: "",
         useDivider = parcel.readInt() == 1,
         imageTint = parcel.readInt(),
@@ -86,14 +85,14 @@ class BottomSheetItem : Parcelable {
         customBitmap = parcel.readParcelable(Bitmap::class.java.classLoader),
         disabled = parcel.readInt() == 1,
         accessoryImageId = parcel.readInt(),
-        accessoryBitmap = parcel.readParcelable(Bitmap::class.java.classLoader)
+        accessoryBitmap = parcel.readParcelable(Bitmap::class.java.classLoader),
+        roleDescription = parcel.readString() ?: "Button",
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
         parcel.writeInt(imageId)
         parcel.writeString(title)
-        parcel.writeString(roleDescription)
         parcel.writeString(subtitle)
         parcel.writeInt(if (useDivider) 1 else 0)
         parcel.writeInt(imageTint)
@@ -102,6 +101,7 @@ class BottomSheetItem : Parcelable {
         parcel.writeInt(if (disabled) 1 else 0)
         parcel.writeInt(accessoryImageId)
         parcel.writeValue(accessoryBitmap)
+        parcel.writeString(roleDescription)
     }
 
     override fun describeContents(): Int = 0
@@ -114,7 +114,6 @@ class BottomSheetItem : Parcelable {
         if (id != other.id) return false
         if (imageId != other.imageId) return false
         if (title != other.title) return false
-        if (roleDescription != other.roleDescription) return false
         if (subtitle != other.subtitle) return false
         if (useDivider != other.useDivider) return false
         if (imageTint != other.imageTint) return false
@@ -123,6 +122,7 @@ class BottomSheetItem : Parcelable {
         if (disabled != other.disabled) return false
         if (accessoryImageId != other.accessoryImageId) return false
         if (accessoryBitmap != other.accessoryBitmap) return false
+        if (roleDescription != other.roleDescription) return false
 
         return true
     }
@@ -131,7 +131,6 @@ class BottomSheetItem : Parcelable {
         var result = id
         result = 31 * result + imageId
         result = 31 * result + title.hashCode()
-        result = 31 * result + roleDescription.hashCode()
         result = 31 * result + subtitle.hashCode()
         result = 31 * result + useDivider.hashCode()
         result = 31 * result + imageTint
@@ -140,6 +139,7 @@ class BottomSheetItem : Parcelable {
         result = 31 * result + disabled.hashCode()
         result = 31 * result + accessoryImageId.hashCode()
         result = 31 * result + (accessoryBitmap?.hashCode() ?: 0)
+        result = 31 * result + roleDescription.hashCode()
         return result
     }
 
