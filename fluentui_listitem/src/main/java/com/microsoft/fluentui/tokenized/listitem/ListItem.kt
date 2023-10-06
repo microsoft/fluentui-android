@@ -1020,7 +1020,6 @@ object ListItem {
                 .fillMaxWidth()
                 .heightIn(min = cellHeight)
                 .background(backgroundColor)
-                .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                 .focusable(false)
         ) {
             Row(
@@ -1028,6 +1027,7 @@ object ListItem {
                     .fillMaxWidth()
                     .heightIn(min = cellHeight)
                     .background(backgroundColor)
+                    .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                     .focusable(true), verticalAlignment = Alignment.Bottom
             ) {
                 BasicText(
