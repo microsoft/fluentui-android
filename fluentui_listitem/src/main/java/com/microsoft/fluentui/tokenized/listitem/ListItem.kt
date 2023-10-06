@@ -721,7 +721,6 @@ object ListItem {
                             ""
                         }
                 }
-                .borderModifier(border, borderColor, borderSize, borderInsetToPx)
         ) {
             Column {
                 Row(
@@ -729,6 +728,7 @@ object ListItem {
                         .background(backgroundColor)
                         .fillMaxWidth()
                         .heightIn(min = cellHeight)
+                        .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                         .padding(bottom = padding.calculateBottomPadding()),
                     verticalAlignment = Alignment.Bottom
                 ) {
@@ -1020,7 +1020,6 @@ object ListItem {
                 .fillMaxWidth()
                 .heightIn(min = cellHeight)
                 .background(backgroundColor)
-                .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                 .focusable(false)
         ) {
             Row(
@@ -1028,6 +1027,7 @@ object ListItem {
                     .fillMaxWidth()
                     .heightIn(min = cellHeight)
                     .background(backgroundColor)
+                    .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                     .focusable(true), verticalAlignment = Alignment.Bottom
             ) {
                 BasicText(
