@@ -721,8 +721,6 @@ object ListItem {
                             ""
                         }
                 }
-                .borderModifier(border, borderColor, borderSize, borderInsetToPx)
-                .padding(bottom = padding.calculateBottomPadding())
         ) {
             Column {
                 Row(
@@ -730,6 +728,7 @@ object ListItem {
                         .background(backgroundColor)
                         .fillMaxWidth()
                         .heightIn(min = cellHeight)
+                        .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                         .padding(bottom = padding.calculateBottomPadding()),
                     verticalAlignment = Alignment.Bottom
                 ) {

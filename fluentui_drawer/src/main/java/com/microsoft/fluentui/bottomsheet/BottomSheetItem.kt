@@ -43,8 +43,6 @@ class BottomSheetItem : Parcelable {
     val accessoryImageId: Int
     val accessoryBitmap: Bitmap?
 
-    val roleDescription: String
-
     @JvmOverloads
     constructor(
         id: Int = NO_ID,
@@ -57,8 +55,7 @@ class BottomSheetItem : Parcelable {
         customBitmap: Bitmap? = null,
         disabled: Boolean = false,
         @DrawableRes accessoryImageId: Int = NO_ID,
-        accessoryBitmap: Bitmap? = null,
-        roleDescription: String = "",
+        accessoryBitmap: Bitmap? = null
     ) {
         this.id = id
         this.imageId = imageId
@@ -71,7 +68,6 @@ class BottomSheetItem : Parcelable {
         this.disabled = disabled
         this.accessoryImageId = accessoryImageId
         this.accessoryBitmap = accessoryBitmap
-        this.roleDescription = roleDescription
     }
 
     private constructor(parcel: Parcel) : this(
@@ -85,8 +81,7 @@ class BottomSheetItem : Parcelable {
         customBitmap = parcel.readParcelable(Bitmap::class.java.classLoader),
         disabled = parcel.readInt() == 1,
         accessoryImageId = parcel.readInt(),
-        accessoryBitmap = parcel.readParcelable(Bitmap::class.java.classLoader),
-        roleDescription = parcel.readString() ?: "",
+        accessoryBitmap = parcel.readParcelable(Bitmap::class.java.classLoader)
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -101,7 +96,6 @@ class BottomSheetItem : Parcelable {
         parcel.writeInt(if (disabled) 1 else 0)
         parcel.writeInt(accessoryImageId)
         parcel.writeValue(accessoryBitmap)
-        parcel.writeString(roleDescription)
     }
 
     override fun describeContents(): Int = 0
@@ -122,7 +116,6 @@ class BottomSheetItem : Parcelable {
         if (disabled != other.disabled) return false
         if (accessoryImageId != other.accessoryImageId) return false
         if (accessoryBitmap != other.accessoryBitmap) return false
-        if (roleDescription != other.roleDescription) return false
 
         return true
     }
@@ -139,7 +132,6 @@ class BottomSheetItem : Parcelable {
         result = 31 * result + disabled.hashCode()
         result = 31 * result + accessoryImageId.hashCode()
         result = 31 * result + (accessoryBitmap?.hashCode() ?: 0)
-        result = 31 * result + roleDescription.hashCode()
         return result
     }
 
