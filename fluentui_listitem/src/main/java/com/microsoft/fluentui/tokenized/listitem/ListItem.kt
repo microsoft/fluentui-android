@@ -722,6 +722,7 @@ object ListItem {
                         }
                 }
                 .borderModifier(border, borderColor, borderSize, borderInsetToPx)
+                .padding(bottom = padding.calculateBottomPadding())
         ) {
             Column {
                 Row(
