@@ -138,7 +138,7 @@ val V1DEMO = arrayListOf(
     Demo(AVATAR_GROUP_VIEW, AvatarGroupViewActivity::class),
     Demo(BASIC_INPUTS, BasicInputsActivity::class),
     Demo(BOTTOM_NAVIGATION, BottomNavigationActivity::class),
-    Demo(BOTTOM_SHEET, BottomSheetActivity::class, Badge.APIBreak),
+    Demo(BOTTOM_SHEET, BottomSheetActivity::class, Badge.Modified),
     Demo(CALENDAR_VIEW, CalendarViewActivity::class),
     Demo(CONTEXTUAL_COMMAND_BAR, ContextualCommandBarActivity::class),
     Demo(DATE_TIME_PICKER, DateTimePickerActivity::class),
