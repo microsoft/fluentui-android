@@ -200,7 +200,7 @@ private fun CreateListActivityUI(context: Context) {
             ListItem.Header(title = "Section Headers with/without chevron")
             val toolTipState = rememberTooltipState()
             val scope = rememberCoroutineScope()
-            Column(Modifier.padding(top = 2.dp, bottom = 1.dp)) {
+            Column {
                 ListItem.SectionHeader(
                     title = "One-Line list",
                     enableChevron = true,
