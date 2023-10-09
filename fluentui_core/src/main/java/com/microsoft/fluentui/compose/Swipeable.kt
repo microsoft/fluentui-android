@@ -23,7 +23,6 @@ import androidx.compose.foundation.gestures.DraggableState
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.material.DrawerValue
 import androidx.compose.material.rememberSwipeableState
 import androidx.compose.material.swipeable
 import androidx.compose.runtime.*
@@ -318,7 +317,7 @@ open class SwipeableState<T>(
     suspend fun animateTo(targetValue: T, anim: AnimationSpec<Float> = animationSpec) {
         latestNonEmptyAnchorsFlow.collect { anchors ->
             try {
-                val targetOffset = anchors.getOffset(targetValue)?: anchors.maxOf { it.key } //if corresponding anchor is not found, use the max anchor (CLOSED state value)
+                val targetOffset = anchors.getOffset(targetValue)
                 requireNotNull(targetOffset) {
                     "The target value must have an associated anchor."
                 }
@@ -776,7 +775,7 @@ private fun computeTarget(
     }
 }
 
-fun <T> Map<Float, T>.getOffset(state: T): Float? {
+private fun <T> Map<Float, T>.getOffset(state: T): Float? {
     return entries.firstOrNull { it.value == state }?.key
 }
 
