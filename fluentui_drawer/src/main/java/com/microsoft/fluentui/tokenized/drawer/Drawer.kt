@@ -84,19 +84,34 @@ enum class DrawerValue {
  */
 class DrawerState(
     private val initialValue: DrawerValue = DrawerValue.Closed,
+    expandable: Boolean = true,
+    isSkipOpenState: Boolean = false,
     confirmStateChange: (DrawerValue) -> Boolean = { true }
 ) : SwipeableState<DrawerValue>(
     initialValue = initialValue,
     animationSpec = AnimationSpec,
     confirmStateChange = confirmStateChange
 ) {
-
+    init {
+        if (isSkipOpenState) {
+            require(initialValue != DrawerValue.Open) {
+                "The initial value must not be set to Open if skipOpenState is set to" +
+                        " true."
+            }
+        }
+        else if (expandable) {
+            require(initialValue != DrawerValue.Expanded) {
+                "The initial value must not be set to Expanded if expandable is set to" +
+                        " true."
+            }
+        }
+    }
     var enable: Boolean by mutableStateOf(false)
     /**
      * Whether drawer has Open state.
      * It is false in case of skipOpenState is true.
      */
-    val hasOpenedState: Boolean
+    internal val hasOpenedState: Boolean
         get() = anchors.values.contains(DrawerValue.Open)
 
     /**
@@ -213,11 +228,29 @@ class DrawerState(
         /**
          * The default [Saver] implementation for [DrawerState].
          */
-        fun Saver(confirmStateChange: (DrawerValue) -> Boolean) =
+        fun Saver(expandable: Boolean, skipOpenState: Boolean, confirmStateChange: (DrawerValue) -> Boolean) =
             Saver<DrawerState, DrawerValue>(
                 save = { it.currentValue },
-                restore = { DrawerState(it, confirmStateChange) }
+                restore = {
+                    DrawerState(initialValue = it, expandable = expandable, isSkipOpenState = skipOpenState, confirmStateChange = confirmStateChange)
+                }
             )
+        /**
+         * The default [Saver] implementation for [DrawerState].
+         */
+        @Deprecated(
+            message = "Please specify the expandable And/Or skipOpenState parameter",
+            replaceWith = ReplaceWith(
+                "DrawerState.Saver(" +
+                        "expandable = ," +
+                        "skipOpenState = ," +
+                        "confirmStateChange = confirmStateChange" +
+                        ")"
+            )
+        )
+        fun Saver(confirmStateChange: (DrawerValue) -> Boolean): Saver<DrawerState, DrawerValue> =
+            Saver(expandable = true , skipOpenState = false, confirmStateChange = confirmStateChange)
+
     }
 }
 
@@ -227,11 +260,18 @@ class DrawerState(
  */
 @Composable
 fun rememberDrawerState(confirmStateChange: (DrawerValue) -> Boolean = { true }): DrawerState {
-    return rememberSaveable(saver = DrawerState.Saver(confirmStateChange)) {
-        DrawerState(DrawerValue.Closed, confirmStateChange)
+    return rememberSaveable(saver = DrawerState.Saver(expandable = true, skipOpenState = false, confirmStateChange = confirmStateChange)) {
+        DrawerState(initialValue = DrawerValue.Closed, expandable = true, isSkipOpenState = false, confirmStateChange)
     }
 }
-
+@Composable
+fun rememberBottomDrawerState(initialValue: DrawerValue = DrawerValue.Closed, confirmStateChange: (DrawerValue) -> Boolean = { true }, expandable: Boolean = true, skipOpenState: Boolean = false ): DrawerState {
+    return rememberSaveable(
+        initialValue, confirmStateChange, expandable, skipOpenState,
+        saver = DrawerState.Saver(expandable, skipOpenState, confirmStateChange)) {
+        DrawerState(DrawerValue.Closed, expandable, skipOpenState , confirmStateChange)
+    }
+}
 private class DrawerPositionProvider : PopupPositionProvider {
     override fun calculatePosition(
         anchorBounds: IntRect,

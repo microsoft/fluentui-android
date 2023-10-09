@@ -25,6 +25,7 @@ import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.drawer.BottomDrawer
 import com.microsoft.fluentui.tokenized.drawer.DrawerState
 import com.microsoft.fluentui.tokenized.drawer.DrawerValue
+import com.microsoft.fluentui.tokenized.drawer.rememberBottomDrawerState
 import com.microsoft.fluentui.tokenized.drawer.rememberDrawerState
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentuidemo.R
@@ -62,7 +63,6 @@ private fun CreateActivityUI() {
     var selectedContent by remember { mutableStateOf(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT) }
     var slideOver by remember { mutableStateOf(false) }
     var showHandle by remember { mutableStateOf(true) }
-
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
             slideOver = slideOver,
@@ -145,6 +145,7 @@ private fun CreateActivityUI() {
                         .clearAndSetSemantics {
                             this.contentDescription = expandableText
                         },
+                    enabled = !skipOpenState,
                     trailingAccessoryContent = {
                         ToggleSwitch(
                             onValueChange = {
@@ -176,6 +177,7 @@ private fun CreateActivityUI() {
                         .clearAndSetSemantics {
                             this.contentDescription = skipOpenStateText
                         },
+                    enabled = expandable,
                     trailingAccessoryContent = {
                         ToggleSwitch(
                             onValueChange = {
@@ -318,7 +320,9 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     drawerContent: @Composable ((() -> Unit) -> Unit),
 ) {
     val scope = rememberCoroutineScope()
-    val drawerState = rememberDrawerState()//DrawerState(initialValue = DrawerValue.Closed)
+
+    val drawerState = rememberBottomDrawerState(expandable = expandable, skipOpenState = skipOpenState)
+
     val open: () -> Unit = {
         scope.launch { drawerState.open() }
     }
