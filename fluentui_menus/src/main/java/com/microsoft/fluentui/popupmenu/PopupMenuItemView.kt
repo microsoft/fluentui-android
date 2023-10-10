@@ -30,22 +30,21 @@ import com.microsoft.fluentui.view.TemplateView
 internal class PopupMenuItemView : TemplateView {
     var itemCheckableBehavior: PopupMenu.ItemCheckableBehavior = DEFAULT_ITEM_CHECKABLE_BEHAVIOR
         set(value) {
-            if (field == value)
-                return
-            field = value
-
             when (itemCheckableBehavior) {
                 PopupMenu.ItemCheckableBehavior.SINGLE -> {
                     showRadioButton = true
                     showCheckBox = false
+                    showButton = false
                 }
                 PopupMenu.ItemCheckableBehavior.ALL -> {
                     showRadioButton = false
                     showCheckBox = true
+                    showButton = false
                 }
                 PopupMenu.ItemCheckableBehavior.NONE -> {
                     showRadioButton = false
                     showCheckBox = false
+                    showButton = true
                 }
             }
 
@@ -59,6 +58,7 @@ internal class PopupMenuItemView : TemplateView {
     private var showDividerBelow: Boolean = false
     private var showRadioButton: Boolean = false
     private var showCheckBox: Boolean = false
+    private var showButton: Boolean = false
     private var roleDescription: String? = null
 
     @JvmOverloads
@@ -171,6 +171,10 @@ internal class PopupMenuItemView : TemplateView {
             showCheckBox -> context.getString(R.string.popup_menu_accessibility_item_check_box)
             else -> ""
         }
+        val buttonViewString = if (showButton)
+            context.getString(R.string.popup_menu_accessibility_item_button)
+        else
+            ""
 
         val checkedState = if (isChecked)
             context.getString(R.string.popup_menu_accessibility_item_state_checked)
@@ -178,9 +182,9 @@ internal class PopupMenuItemView : TemplateView {
             context.getString(R.string.popup_menu_accessibility_item_state_not_checked)
 
         contentDescription = if (showRadioButton || showCheckBox)
-            "$title, $checkViewType $checkedState, $roleDescription"
+            "$title, $roleDescription, $checkViewType $checkedState"
         else
-            "$title, $roleDescription"
+            "$title, $roleDescription, $buttonViewString"
     }
 
     private fun updateAccessibilityClickAction() {

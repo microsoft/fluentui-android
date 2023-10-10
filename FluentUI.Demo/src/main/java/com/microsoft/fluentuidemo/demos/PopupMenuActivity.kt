@@ -8,7 +8,6 @@ package com.microsoft.fluentuidemo.demos
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import androidx.lifecycle.repeatOnLifecycle
 import com.microsoft.fluentui.popupmenu.PopupMenu
 import com.microsoft.fluentui.popupmenu.PopupMenuItem
 import com.microsoft.fluentui.snackbar.Snackbar
@@ -66,29 +65,24 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
 
     private fun showPopupNoCheck(anchorView: View) {
         val popupMenuItems = arrayListOf(
-            PopupMenuItem(R.id.popup_menu_item_share, getString(R.string.popup_menu_item_share),
-                roleDescription = "Popup item"),
-            PopupMenuItem(R.id.popup_menu_item_follow, getString(R.string.popup_menu_item_follow),
-                roleDescription = "Popup item"),
+            PopupMenuItem(R.id.popup_menu_item_share, getString(R.string.popup_menu_item_share)),
+            PopupMenuItem(R.id.popup_menu_item_follow, getString(R.string.popup_menu_item_follow)),
             PopupMenuItem(
                 R.id.popup_menu_item_invite_people,
-                getString(R.string.popup_menu_item_invite_people),
-                roleDescription = "Popup item"
+                getString(R.string.popup_menu_item_invite_people)
             ),
             PopupMenuItem(
                 R.id.popup_menu_item_refresh_page,
-                getString(R.string.popup_menu_item_refresh_page),
-                roleDescription = "Popup item"
+                getString(R.string.popup_menu_item_refresh_page)
             ),
             PopupMenuItem(
                 R.id.popup_menu_item_open_in_browser,
-                getString(R.string.popup_menu_item_open_in_browser),
-                roleDescription = "Popup item"
+                getString(R.string.popup_menu_item_open_in_browser)
             ),
             PopupMenuItem(
                 R.id.popup_menu_item_multiline,
                 getString(R.string.popup_menu_item_multiline),
-                roleDescription = "Popup item"
+                roleDescription = "Popup Menu item"
             )
         )
 
@@ -111,23 +105,19 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
             PopupMenuItem(
                 R.id.popup_menu_item_all_news,
                 getString(R.string.popup_menu_item_all_news),
-                showDividerBelow = true,
-                roleDescription = "Popup item"
+                showDividerBelow = true
             ),
             PopupMenuItem(
                 R.id.popup_menu_item_saved_news,
-                getString(R.string.popup_menu_item_saved_news),
-                roleDescription = "Popup item"
+                getString(R.string.popup_menu_item_saved_news)
             ),
             PopupMenuItem(
                 R.id.popup_menu_item_news_from_sites,
-                getString(R.string.popup_menu_item_news_from_sites),
-                roleDescription = "Popup item"
+                getString(R.string.popup_menu_item_news_from_sites)
             ),
             PopupMenuItem(
                 R.id.popup_menu_item_contoso_travel,
-                getString(R.string.popup_menu_item_contoso_travel),
-                roleDescription = "Popup item"
+                getString(R.string.popup_menu_item_contoso_travel)
             )
         )
 
@@ -157,7 +147,6 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
                     R.id.popup_menu_item_notify_outside,
                     getString(R.string.popup_menu_item_notify_outside),
                     R.drawable.ic_sync_24_filled,
-                    roleDescription = "Popup item"
                 ),
                 PopupMenuItem(
                     R.id.popup_menu_item_notify_inactive,
