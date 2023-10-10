@@ -27,6 +27,7 @@ class PopupMenuItem : Parcelable {
     val iconResourceId: Int?
     var isChecked: Boolean
     val showDividerBelow: Boolean
+    var roleDescription: String?
 
     @JvmOverloads
     constructor(
@@ -35,13 +36,15 @@ class PopupMenuItem : Parcelable {
         @DrawableRes
         iconResourceId: Int? = null,
         isChecked: Boolean = false,
-        showDividerBelow: Boolean = false
+        showDividerBelow: Boolean = false,
+        roleDescription: String? = null
     ) {
         this.id = id
         this.title = title
         this.iconResourceId = iconResourceId
         this.isChecked = isChecked
         this.showDividerBelow = showDividerBelow
+        this.roleDescription = roleDescription
     }
 
     private constructor(parcel: Parcel) : this(
@@ -49,7 +52,8 @@ class PopupMenuItem : Parcelable {
         title = parcel.readString() ?: "",
         iconResourceId = parcel.readInt(),
         isChecked = parcel.readByte() != 0.toByte(),
-        showDividerBelow = parcel.readByte() != 0.toByte()
+        showDividerBelow = parcel.readByte() != 0.toByte(),
+        roleDescription = parcel.readString() ?: ""
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -58,6 +62,7 @@ class PopupMenuItem : Parcelable {
         parcel.writeValue(iconResourceId)
         parcel.writeByte(if (isChecked) 1 else 0)
         parcel.writeByte(if (showDividerBelow) 1 else 0)
+        parcel.writeString(roleDescription)
     }
 
     override fun describeContents(): Int = 0
