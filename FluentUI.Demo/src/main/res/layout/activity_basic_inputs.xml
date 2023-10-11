@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/demo_headline_padding_bottom"
+        android:accessibilityHeading="true"
         android:text="Different views of button" />
 
     <View
