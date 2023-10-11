@@ -65,27 +65,27 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
 
     private fun showPopupNoCheck(anchorView: View) {
         val popupMenuItems = arrayListOf(
-            PopupMenuItem(R.id.popup_menu_item_share, getString(R.string.popup_menu_item_share), roleDescription = "Popup Menu item Button"),
-            PopupMenuItem(R.id.popup_menu_item_follow, getString(R.string.popup_menu_item_follow), roleDescription = "Popup Menu item Button"),
+            PopupMenuItem(R.id.popup_menu_item_share, getString(R.string.popup_menu_item_share), roleDescription = "Button"),
+            PopupMenuItem(R.id.popup_menu_item_follow, getString(R.string.popup_menu_item_follow), roleDescription = "Button"),
             PopupMenuItem(
                 R.id.popup_menu_item_invite_people,
                 getString(R.string.popup_menu_item_invite_people),
-                roleDescription = "Popup Menu item Button"
+                roleDescription = "Button"
             ),
             PopupMenuItem(
                 R.id.popup_menu_item_refresh_page,
                 getString(R.string.popup_menu_item_refresh_page),
-                roleDescription = "Popup Menu item Button"
+                roleDescription = "Button"
             ),
             PopupMenuItem(
                 R.id.popup_menu_item_open_in_browser,
                 getString(R.string.popup_menu_item_open_in_browser),
-                roleDescription = "Popup Menu item Button"
+                roleDescription = "Button"
             ),
             PopupMenuItem(
                 R.id.popup_menu_item_multiline,
                 getString(R.string.popup_menu_item_multiline),
-                roleDescription = "Popup Menu item Button"
+                roleDescription = "Button"
             )
         )
 
