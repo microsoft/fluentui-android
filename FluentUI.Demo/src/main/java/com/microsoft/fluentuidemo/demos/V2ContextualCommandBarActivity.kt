@@ -59,6 +59,7 @@ import com.microsoft.fluentui.tokenized.contextualcommandbar.ContextualCommandBa
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.drawer.BottomDrawer
+import com.microsoft.fluentui.tokenized.drawer.rememberBottomDrawerState
 import com.microsoft.fluentui.tokenized.drawer.rememberDrawerState
 import com.microsoft.fluentuidemo.V2DemoActivity
 import kotlinx.coroutines.launch
@@ -244,7 +245,7 @@ class V2ContextualCommandBarActivity : V2DemoActivity() {
 
                 val focusManager = LocalFocusManager.current
                 val scope = rememberCoroutineScope()
-                val drawerState = rememberDrawerState()
+                val drawerState = rememberBottomDrawerState(expandable = false)
                 val open: () -> Unit = {
                     scope.launch { drawerState.open() }
                 }
@@ -314,6 +315,7 @@ class V2ContextualCommandBarActivity : V2DemoActivity() {
                                         focusManager.moveFocus(FocusDirection.Down)
                                         true
                                     }
+
                                     else -> {
                                         false
                                     }
@@ -406,7 +408,6 @@ class V2ContextualCommandBarActivity : V2DemoActivity() {
 
                         },
                         slideOver = false,
-                        expandable = false,
                         scrimVisible = false
                     )
                 } else {
@@ -477,7 +478,6 @@ class V2ContextualCommandBarActivity : V2DemoActivity() {
 
                         },
                         slideOver = false,
-                        expandable = false,
                         scrimVisible = false
                     )
                 }

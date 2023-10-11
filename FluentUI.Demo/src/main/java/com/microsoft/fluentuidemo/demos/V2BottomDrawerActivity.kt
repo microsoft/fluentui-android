@@ -347,9 +347,7 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     BottomDrawer(
         drawerState = drawerState,
         drawerContent = { drawerContent(close) },
-        expandable = expandable,
         scrimVisible = scrimVisible,
-        skipOpenState = skipOpenState,
         slideOver = slideOver,
         showHandle = showHandle
     )
