@@ -255,7 +255,7 @@ class V2BottomDrawerUITest : BaseTest() {
         // Click on the "Open Drawer" button
         composeTestRule.onNodeWithText(getString(R.string.drawer_expand)).performClick()
         //Skip Open State Button must be disabled
-        composeTestRule.onNodeWithText("Skip Open State", useUnmergedTree = true).assertHasNoClickAction()
+        composeTestRule.onNodeWithText(getString(R.string.skip_open_state), useUnmergedTree = true).assertHasNoClickAction()
         // Click on the "Open Drawer" button
         composeTestRule.onNodeWithText(getString(R.string.drawer_expand)).performClick()
         composeTestRule.waitForIdle()
