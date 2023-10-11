@@ -194,7 +194,6 @@ fun PeoplePicker(
                             )
                             Spacer(modifier = Modifier.width(chipHorizontalSpacing))
                         }
-                        focusRequester.requestFocus()
                     }
 
                     if (selectedPeopleListSize != selectedPeopleList.size) {
