@@ -315,6 +315,7 @@
 
     <!--Button-->
     <!-- text for buttons -->
+    <string name="basic_input_activity_heading">Different views of button</string>
     <string name="button">Button</string>
     <string name="buttonbar">ButtonBar</string>
     <string name="button_disabled">Disabled Button Example</string>
