@@ -24,8 +24,6 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.key.Key
@@ -126,7 +124,6 @@ fun PeoplePicker(
     var lastRemovedPerson by rememberSaveable { mutableStateOf(Person()) }
     var isAdded: Boolean by rememberSaveable { mutableStateOf(true) }
     var accessibilityAnnouncement by rememberSaveable { mutableStateOf("") }
-    val focusRequester = remember { FocusRequester() }
 
     TextField(
         modifier = modifier
@@ -138,8 +135,7 @@ fun PeoplePicker(
                     }
                 }
                 true
-            }
-            .focusRequester(focusRequester),
+            },
         value = queryText,
         onValueChange = {
             queryText = it
