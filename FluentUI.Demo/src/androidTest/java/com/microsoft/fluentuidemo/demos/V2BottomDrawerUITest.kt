@@ -253,11 +253,11 @@ class V2BottomDrawerUITest : BaseTest() {
         // Set expandable = false
         composeTestRule.onNodeWithText(getString(R.string.drawer_expandable), useUnmergedTree = true).performClick()
         // Click on the "Open Drawer" button
-        composeTestRule.onNodeWithText("Expand Drawer").performClick()
+        composeTestRule.onNodeWithText(getString(R.string.drawer_expand)).performClick()
         //Skip Open State Button must be disabled
         composeTestRule.onNodeWithText("Skip Open State", useUnmergedTree = true).assertHasNoClickAction()
         // Click on the "Open Drawer" button
-        composeTestRule.onNodeWithText("Expand Drawer").performClick()
+        composeTestRule.onNodeWithText(getString(R.string.drawer_expand)).performClick()
         composeTestRule.waitForIdle()
 
         openCheckForVerticalDrawer()
