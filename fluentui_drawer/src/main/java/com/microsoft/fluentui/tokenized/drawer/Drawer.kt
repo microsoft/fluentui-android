@@ -82,6 +82,10 @@ enum class DrawerValue {
  * @param initialValue The initial value of the state.
  * @param expandable defines if the drawer is allowed to take the Expanded state.
  * @param isSkipOpenState defines if the drawer is allowed to take the Open state. (Open State is skipped in case of true)
+ * expandable = true & isSkipOpenState = false -> Drawer can take all the three states.
+ * expandable = true & isSkipOpenState = true -> Drawer can take only Closed & Expanded states.
+ * expandable = false & isSkipOpenState = false -> Drawer can take only Closed & Open states.
+ * expandable = false & isSkipOpenState = true -> Invalid state.
  * @param confirmStateChange Optional callback invoked to confirm or veto a pending state change.
  */
 class DrawerState(
@@ -100,11 +104,14 @@ class DrawerState(
                 "The initial value must not be set to Open if skipOpenState is set to" +
                         " true."
             }
+            require(expandable) {
+                "Invalid state: expandable = false & skipOpenState = true"
+            }
         }
-        else if (expandable) {
+        if (!expandable) {
             require(initialValue != DrawerValue.Expanded) {
                 "The initial value must not be set to Expanded if expandable is set to" +
-                        " true."
+                        " false."
             }
         }
     }
@@ -144,8 +151,8 @@ class DrawerState(
             delay(50)
         } while (!anchorsFilled)
         /*
-        * open and expanded states are possible in case of
-        * true expandanble and false skipOpenState respectively.
+        * first try to open the drawer
+        * if not possible then try to expand the drawer
          */
         var targetValue = when {
             hasOpenedState -> DrawerValue.Open
@@ -204,8 +211,8 @@ class DrawerState(
             delay(50)
         } while (!anchorsFilled)
         /*
-        * expandable and open states are possible in case of
-        * true expandanble and false skipOpenState respectively.
+        * first try to expand the drawer
+        * if not possible then try to open the drawer
          */
         val targetValue = when {
             hasExpandedState -> DrawerValue.Expanded
@@ -224,7 +231,6 @@ class DrawerState(
             animationInProgress = false
         }
     }
-
 
     val nestedScrollConnection = this.PreUpPostDownNestedScrollConnection
 
@@ -269,9 +275,9 @@ fun rememberDrawerState(confirmStateChange: (DrawerValue) -> Boolean = { true })
     }
 }
 @Composable
-fun rememberBottomDrawerState(initialValue: DrawerValue = DrawerValue.Closed, confirmStateChange: (DrawerValue) -> Boolean = { true }, expandable: Boolean = true, skipOpenState: Boolean = false ): DrawerState {
+fun rememberBottomDrawerState(expandable: Boolean = true, skipOpenState: Boolean = false, confirmStateChange: (DrawerValue) -> Boolean = { true }): DrawerState {
     return rememberSaveable(
-        initialValue, confirmStateChange, expandable, skipOpenState,
+        confirmStateChange, expandable, skipOpenState,
         saver = DrawerState.Saver(expandable, skipOpenState, confirmStateChange)) {
         DrawerState(DrawerValue.Closed, expandable, skipOpenState , confirmStateChange)
     }
@@ -410,7 +416,6 @@ private fun Modifier.bottomDrawerSwipeable(
                 fullHeight to DrawerValue.Closed,
                 maxOpenHeight to DrawerValue.Open
             )
-
         }
         Modifier.swipeable(
             state = drawerState,
