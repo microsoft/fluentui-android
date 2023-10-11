@@ -17,7 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/demo_headline_padding_bottom"
-        android:text="@string/button" />
+        android:accessibilityHeading="true"
+        android:text="@string/basic_input_activity_heading" />
 
     <View
         android:layout_width="match_parent"
@@ -36,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:enabled="false"
-        android:text="@string/button_disabled" />
+        android:text="@string/button_disabled"  />
 
     <!--For other button variants, style can be set in the widget.-->
 
