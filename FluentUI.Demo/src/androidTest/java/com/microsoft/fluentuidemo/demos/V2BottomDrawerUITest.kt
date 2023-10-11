@@ -251,7 +251,7 @@ class V2BottomDrawerUITest : BaseTest() {
     @Test
     fun testNonExpandableAndExpandDrawerClicked() {
         // Set expandable = false
-        composeTestRule.onNodeWithText("Expandable", useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithText(getString(R.string.drawer_expandable), useUnmergedTree = true).performClick()
         // Click on the "Open Drawer" button
         composeTestRule.onNodeWithText("Expand Drawer").performClick()
         //Skip Open State Button must be disabled
