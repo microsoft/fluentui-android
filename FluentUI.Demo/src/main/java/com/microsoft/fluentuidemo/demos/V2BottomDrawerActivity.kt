@@ -23,10 +23,7 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.drawer.BottomDrawer
-import com.microsoft.fluentui.tokenized.drawer.DrawerState
-import com.microsoft.fluentui.tokenized.drawer.DrawerValue
 import com.microsoft.fluentui.tokenized.drawer.rememberBottomDrawerState
-import com.microsoft.fluentui.tokenized.drawer.rememberDrawerState
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity

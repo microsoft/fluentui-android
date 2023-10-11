@@ -60,7 +60,6 @@ import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.drawer.BottomDrawer
 import com.microsoft.fluentui.tokenized.drawer.rememberBottomDrawerState
-import com.microsoft.fluentui.tokenized.drawer.rememberDrawerState
 import com.microsoft.fluentuidemo.V2DemoActivity
 import kotlinx.coroutines.launch
 
