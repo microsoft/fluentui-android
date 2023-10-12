@@ -137,7 +137,7 @@ fun PeoplePicker(
                         onValueChange(queryText, selectedPeopleList)
                     }
                 }
-                true
+                false
             }
             .focusRequester(focusRequester),
         value = queryText,
