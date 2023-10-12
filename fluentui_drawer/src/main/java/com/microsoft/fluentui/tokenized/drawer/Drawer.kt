@@ -81,17 +81,17 @@ enum class DrawerValue {
  *
  * @param initialValue The initial value of the state.
  * @param expandable defines if the drawer is allowed to take the Expanded state.
- * @param isSkipOpenState defines if the drawer is allowed to take the Open state. (Open State is skipped in case of true)
- * expandable = true & isSkipOpenState = false -> Drawer can take all the three states.
- * expandable = true & isSkipOpenState = true -> Drawer can take only Closed & Expanded states.
- * expandable = false & isSkipOpenState = false -> Drawer can take only Closed & Open states.
- * expandable = false & isSkipOpenState = true -> Invalid state.
+ * @param skipOpenState defines if the drawer is allowed to take the Open state. (Open State is skipped in case of true)
+ * expandable = true & skipOpenState = false -> Drawer can take all the three states.
+ * expandable = true & skipOpenState = true -> Drawer can take only Closed & Expanded states.
+ * expandable = false & skipOpenState = false -> Drawer can take only Closed & Open states.
+ * expandable = false & skipOpenState = true -> Invalid state.
  * @param confirmStateChange Optional callback invoked to confirm or veto a pending state change.
  */
 class DrawerState(
     private val initialValue: DrawerValue = DrawerValue.Closed,
     internal val expandable: Boolean = true,
-    internal val isSkipOpenState: Boolean = false,
+    internal val skipOpenState: Boolean = false,
     confirmStateChange: (DrawerValue) -> Boolean = { true }
 ) : SwipeableState<DrawerValue>(
     initialValue = initialValue,
@@ -99,7 +99,7 @@ class DrawerState(
     confirmStateChange = confirmStateChange
 ) {
     init {
-        if (isSkipOpenState) {
+        if (skipOpenState) {
             require(initialValue != DrawerValue.Open) {
                 "The initial value must not be set to Open if skipOpenState is set to" +
                         " true."
@@ -242,7 +242,7 @@ class DrawerState(
             Saver<DrawerState, DrawerValue>(
                 save = { it.currentValue },
                 restore = {
-                    DrawerState(initialValue = it, expandable = expandable, isSkipOpenState = skipOpenState, confirmStateChange = confirmStateChange)
+                    DrawerState(initialValue = it, expandable = expandable, skipOpenState = skipOpenState, confirmStateChange = confirmStateChange)
                 }
             )
         /**
@@ -271,7 +271,7 @@ class DrawerState(
 @Composable
 fun rememberDrawerState(confirmStateChange: (DrawerValue) -> Boolean = { true }): DrawerState {
     return rememberSaveable(saver = DrawerState.Saver(expandable = true, skipOpenState = false, confirmStateChange = confirmStateChange)) {
-        DrawerState(initialValue = DrawerValue.Closed, expandable = true, isSkipOpenState = false, confirmStateChange)
+        DrawerState(initialValue = DrawerValue.Closed, expandable = true, skipOpenState = false, confirmStateChange)
     }
 }
 @Composable
@@ -366,7 +366,7 @@ private fun Modifier.bottomDrawerSwipeable(
             val minHeight = 0f
             val bottomOpenStateY = max(maxOpenHeight, fullHeight - drawerHeight)
             val bottomExpandedStateY = max(minHeight, fullHeight - drawerHeight)
-            val anchors = if (drawerHeight <= maxOpenHeight || drawerState.isSkipOpenState) {
+            val anchors = if (drawerHeight <= maxOpenHeight || drawerState.skipOpenState) {
                 mapOf(
                     fullHeight to DrawerValue.Closed,
                     bottomOpenStateY to DrawerValue.Open
@@ -398,7 +398,7 @@ private fun Modifier.bottomDrawerSwipeable(
         }
     } else {
         val anchors = if (drawerState.expandable) {
-            if(drawerState.isSkipOpenState){
+            if(drawerState.skipOpenState){
                 mapOf(
                     fullHeight to DrawerValue.Closed,
                     0F to DrawerValue.Expanded
@@ -736,7 +736,7 @@ private fun BottomDrawer(
             open = !drawerState.isClosed,
             onClose = onDismiss,
             fraction = {
-                if (drawerState.anchors.isEmpty() || drawerState.isSkipOpenState) {
+                if (drawerState.anchors.isEmpty() || drawerState.skipOpenState) {
                     0.toFloat()
                 }
                 else {
