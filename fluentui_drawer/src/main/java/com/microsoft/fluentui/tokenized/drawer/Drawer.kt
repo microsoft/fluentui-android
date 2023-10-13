@@ -365,23 +365,30 @@ private fun Modifier.bottomDrawerSwipeable(
             val minHeight = 0f
             val bottomOpenStateY = max(maxOpenHeight, fullHeight - drawerHeight)
             val bottomExpandedStateY = max(minHeight, fullHeight - drawerHeight)
-            val anchors = if (drawerHeight <= maxOpenHeight || !drawerState.skipOpenState) {
+            val anchors = if (drawerHeight <= maxOpenHeight){
                 mapOf(
                     fullHeight to DrawerValue.Closed,
                     bottomOpenStateY to DrawerValue.Open
                 )
             } else {
-                if(drawerState.expandable){
+                if (drawerState.expandable) {
+                    if(drawerState.skipOpenState){
+                        mapOf(
+                            fullHeight to DrawerValue.Closed,
+                            0F to DrawerValue.Expanded
+                        )
+                    }
+                    else {
+                        mapOf(
+                            fullHeight to DrawerValue.Closed,
+                            maxOpenHeight to DrawerValue.Open,
+                            0F to DrawerValue.Expanded
+                        )
+                    }
+                } else {
                     mapOf(
                         fullHeight to DrawerValue.Closed,
-                        bottomOpenStateY to DrawerValue.Open,
-                        bottomExpandedStateY to DrawerValue.Expanded
-                    )
-                }
-                else {
-                    mapOf(
-                        fullHeight to DrawerValue.Closed,
-                        bottomOpenStateY to DrawerValue.Open
+                        maxOpenHeight to DrawerValue.Open
                     )
                 }
             }
@@ -738,19 +745,16 @@ private fun BottomDrawer(
                 if (drawerState.anchors.isEmpty()) {
                     0.toFloat()
                 } else {
-                    if (drawerState.skipOpenState) {
-                        calculateFraction(
-                            drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Closed }?.key!!,
-                            drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Expanded }?.key!!,
-                            drawerState.offset.value
-                        )
+                    val targetValue: DrawerValue = if (drawerState.skipOpenState) {
+                        DrawerValue.Expanded
                     } else {
-                        calculateFraction(
-                            drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Closed }?.key!!,
-                            drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Open }?.key!!,
-                            drawerState.offset.value
-                        )
+                        DrawerValue.Open
                     }
+                    calculateFraction(
+                        drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Closed }?.key!!,
+                        drawerState.anchors.entries.firstOrNull { it.value == targetValue }?.key!!,
+                        drawerState.offset.value
+                    )
                 }
             },
             color = if (scrimVisible) scrimColor else Color.Transparent,
