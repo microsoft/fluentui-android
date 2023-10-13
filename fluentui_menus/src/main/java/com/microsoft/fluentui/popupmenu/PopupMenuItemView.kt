@@ -9,9 +9,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.PorterDuff
 import androidx.annotation.DrawableRes
-import androidx.core.view.AccessibilityDelegateCompat
 import androidx.core.view.ViewCompat
-import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
@@ -20,6 +18,8 @@ import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.TextView
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import com.microsoft.fluentui.menus.R
 import com.microsoft.fluentui.popupmenu.PopupMenu.Companion.DEFAULT_ITEM_CHECKABLE_BEHAVIOR
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
@@ -59,6 +59,7 @@ internal class PopupMenuItemView : TemplateView {
     private var showDividerBelow: Boolean = false
     private var showRadioButton: Boolean = false
     private var showCheckBox: Boolean = false
+    private var roleDescription: String? = null
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Menus), attrs, defStyleAttr)
@@ -68,6 +69,7 @@ internal class PopupMenuItemView : TemplateView {
         iconResourceId = popupMenuItem.iconResourceId
         isChecked = popupMenuItem.isChecked
         showDividerBelow = popupMenuItem.showDividerBelow
+        roleDescription = popupMenuItem.roleDescription
 
         updateViews()
     }
@@ -169,16 +171,15 @@ internal class PopupMenuItemView : TemplateView {
             showCheckBox -> context.getString(R.string.popup_menu_accessibility_item_check_box)
             else -> ""
         }
-
         val checkedState = if (isChecked)
             context.getString(R.string.popup_menu_accessibility_item_state_checked)
         else
             context.getString(R.string.popup_menu_accessibility_item_state_not_checked)
 
-        contentDescription = if (showRadioButton || showCheckBox)
-            "$title, $checkViewType $checkedState"
-        else
-            title
+        contentDescription =
+            if(!roleDescription.isNullOrEmpty()) "$title, $roleDescription"
+            else if (showRadioButton || showCheckBox) "$title, $checkViewType $checkedState"
+            else "$title"
     }
 
     private fun updateAccessibilityClickAction() {

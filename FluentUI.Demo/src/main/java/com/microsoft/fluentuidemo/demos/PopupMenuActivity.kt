@@ -65,23 +65,27 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
 
     private fun showPopupNoCheck(anchorView: View) {
         val popupMenuItems = arrayListOf(
-            PopupMenuItem(R.id.popup_menu_item_share, getString(R.string.popup_menu_item_share)),
-            PopupMenuItem(R.id.popup_menu_item_follow, getString(R.string.popup_menu_item_follow)),
+            PopupMenuItem(R.id.popup_menu_item_share, getString(R.string.popup_menu_item_share), roleDescription = "Button"),
+            PopupMenuItem(R.id.popup_menu_item_follow, getString(R.string.popup_menu_item_follow), roleDescription = "Button"),
             PopupMenuItem(
                 R.id.popup_menu_item_invite_people,
-                getString(R.string.popup_menu_item_invite_people)
+                getString(R.string.popup_menu_item_invite_people),
+                roleDescription = "Button"
             ),
             PopupMenuItem(
                 R.id.popup_menu_item_refresh_page,
-                getString(R.string.popup_menu_item_refresh_page)
+                getString(R.string.popup_menu_item_refresh_page),
+                roleDescription = "Button"
             ),
             PopupMenuItem(
                 R.id.popup_menu_item_open_in_browser,
-                getString(R.string.popup_menu_item_open_in_browser)
+                getString(R.string.popup_menu_item_open_in_browser),
+                roleDescription = "Button"
             ),
             PopupMenuItem(
                 R.id.popup_menu_item_multiline,
-                getString(R.string.popup_menu_item_multiline)
+                getString(R.string.popup_menu_item_multiline),
+                roleDescription = "Button"
             )
         )
 
@@ -145,7 +149,7 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
                 PopupMenuItem(
                     R.id.popup_menu_item_notify_outside,
                     getString(R.string.popup_menu_item_notify_outside),
-                    R.drawable.ic_sync_24_filled
+                    R.drawable.ic_sync_24_filled,
                 ),
                 PopupMenuItem(
                     R.id.popup_menu_item_notify_inactive,
