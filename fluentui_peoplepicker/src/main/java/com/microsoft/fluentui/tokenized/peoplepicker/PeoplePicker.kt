@@ -134,7 +134,7 @@ fun PeoplePicker(
                         onValueChange(queryText, selectedPeopleList)
                     }
                 }
-                true
+                false
             },
         value = queryText,
         onValueChange = {
