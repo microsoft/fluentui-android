@@ -197,7 +197,7 @@ fun SearchBar(
                             }
 
                         }
-                        true
+                        false
                     },
                 verticalAlignment = Alignment.CenterVertically
             ) {
