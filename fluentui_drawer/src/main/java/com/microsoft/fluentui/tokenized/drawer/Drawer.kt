@@ -332,14 +332,13 @@ const val DRAWER_SCRIM_TAG = "Fluent Drawer Scrim"
 private val DrawerHandleHeightOffset = 20.dp
 
 private fun Modifier.drawerHeight(
-    expandable: Boolean,
     slideOver: Boolean,
     fixedHeight: Float,
     fullHeight: Float,
     drawerState: DrawerState
 ): Modifier {
     val modifier = if (slideOver) {
-        if (expandable) {
+        if (drawerState.expandable) {
             Modifier
         } else {
             Modifier.heightIn(
@@ -366,7 +365,7 @@ private fun Modifier.bottomDrawerSwipeable(
             val minHeight = 0f
             val bottomOpenStateY = max(maxOpenHeight, fullHeight - drawerHeight)
             val bottomExpandedStateY = max(minHeight, fullHeight - drawerHeight)
-            val anchors = if (drawerHeight <= maxOpenHeight || drawerState.skipOpenState) {
+            val anchors = if (drawerHeight <= maxOpenHeight || !drawerState.skipOpenState) {
                 mapOf(
                     fullHeight to DrawerValue.Closed,
                     bottomOpenStateY to DrawerValue.Open
@@ -736,15 +735,22 @@ private fun BottomDrawer(
             open = !drawerState.isClosed,
             onClose = onDismiss,
             fraction = {
-                if (drawerState.anchors.isEmpty() || drawerState.skipOpenState) {
+                if (drawerState.anchors.isEmpty()) {
                     0.toFloat()
-                }
-                else {
-                    calculateFraction(
-                        drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Closed }?.key!!,
-                        drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Open }?.key!!,
-                        drawerState.offset.value
-                    )
+                } else {
+                    if (drawerState.skipOpenState) {
+                        calculateFraction(
+                            drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Closed }?.key!!,
+                            drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Expanded }?.key!!,
+                            drawerState.offset.value
+                        )
+                    } else {
+                        calculateFraction(
+                            drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Closed }?.key!!,
+                            drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Open }?.key!!,
+                            drawerState.offset.value
+                        )
+                    }
                 }
             },
             color = if (scrimVisible) scrimColor else Color.Transparent,
@@ -790,7 +796,6 @@ private fun BottomDrawer(
                     }
                 }
                 .drawerHeight(
-                    drawerState.hasExpandedState,
                     slideOver,
                     maxOpenHeight,
                     fullHeight,
