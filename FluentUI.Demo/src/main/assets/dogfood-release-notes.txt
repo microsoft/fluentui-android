@@ -10,4 +10,4 @@ Fluent V2:
 	        1. People picker's stability has been improved on different Screen layouts to ensure crash free experience.
 	        2. The behaviour of People Picker & Search Bar on Back Button or Back Gesture has been improved to make it more intuitive.
 	        3. Users can decide if both icons of CardNudge should take same or distinct colours.
-            4. Improved stability by fixing Run Time Exceptions caused due to non-existent tokens.
+                4. Improved stability by fixing Run Time Exceptions caused due to non-existent tokens.
