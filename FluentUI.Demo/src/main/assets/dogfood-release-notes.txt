@@ -4,10 +4,9 @@ What's New:
 
 Fluent V1:
 	Fix/Enhancement:
-	        1. Now, accessibility roles for PopUp Menu Items can be defined by users.
+	        1. Accessibitly role description can be added to popup menu item.
 Fluent V2:
 	Fix/Enhancement:
-	        1. People picker's stability has been improved on different Screen layouts to ensure crash free experience.
+	        1. People picker crash on orientation change is fixed.
 	        2. The behaviour of People Picker & Search Bar on Back Button or Back Gesture has been improved to make it more intuitive.
-	        3. Users can decide if both icons of CardNudge should take same or distinct colours.
-                4. Improved stability by fixing Run Time Exceptions caused due to non-existent tokens.
+	        3. Added dismiss icon token for Card nudge.
