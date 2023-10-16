@@ -1,11 +1,13 @@
-Release Version 0.1.37:
+Release Version 0.1.38:
 
 What's New:
 
 Fluent V1:
 	Fix/Enhancement:
-	        1. Accessibility roles for BottomSheetDialog items can be customized.
+	        1. Now, accessibility roles for PopUp Menu Items can be defined by users.
 Fluent V2:
 	Fix/Enhancement:
-	        1. People picker items adapt to multiple rows when horizontal space is limited.
-	        2. ListItem SectionHeaders' and Headers' border visibility issues has been fixed.
+	        1. People picker's stability has been improved on different Screen layouts to ensure crash free experience.
+	        2. The behaviour of People Picker & Search Bar on Back Button or Back Gesture has been improved to make it more intuitive.
+	        3. Users can decide if both icons of CardNudge should take same or distinct colours.
+            4. Improved stability by fixing Run Time Exceptions caused due to non-existent tokens.
