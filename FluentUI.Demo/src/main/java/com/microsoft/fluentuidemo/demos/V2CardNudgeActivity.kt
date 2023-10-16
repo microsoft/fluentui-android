@@ -65,7 +65,6 @@ class V2CardNudgeActivity : V2DemoActivity() {
             var swipeAmount: Float by rememberSaveable { mutableStateOf(0.0F) }
 
             var icon: Boolean by rememberSaveable { mutableStateOf(true) }
-            var iconType: Boolean by rememberSaveable { mutableStateOf(false) }
             var actionButton: Boolean by rememberSaveable { mutableStateOf(true) }
             var subtitle: String? by rememberSaveable { mutableStateOf(null) }
             var accentText: String? by rememberSaveable { mutableStateOf(null) }
@@ -101,25 +100,6 @@ class V2CardNudgeActivity : V2DemoActivity() {
                                         },
                                         modifier = Modifier.testTag(CARD_NUDGE_ICON_PARAM),
                                         checkedState = icon
-                                    )
-                                }
-                            )
-                        }
-                        item {
-                            ListItem.Item(
-                                enabled = icon,
-                                text = LocalContext.current.resources.getString(R.string.fluentui_icon),
-                                subText = if (!iconType)
-                                    LocalContext.current.resources.getString(R.string.fluentui_image_vector)
-                                else
-                                    LocalContext.current.resources.getString(R.string.fluentui_image_drawable),
-                                trailingAccessoryContent = {
-                                    ToggleSwitch(
-                                        enabledSwitch = icon,
-                                        onValueChange = {
-                                            iconType = it
-                                        },
-                                        checkedState = iconType
                                     )
                                 }
                             )
@@ -298,8 +278,7 @@ class V2CardNudgeActivity : V2DemoActivity() {
                     CardNudge(
                         metadata = CardNudgeMetaData(
                             message = LocalContext.current.resources.getString(R.string.fluentui_title),
-                            icon = if (icon && !iconType) FluentIcon(Icons.Outlined.Call) else null,
-                            iconDrawable = if(icon && iconType) R.drawable.avatar_amanda_brady else null,
+                            icon = if (icon) FluentIcon(Icons.Outlined.Call) else null,
                             subTitle = subtitle,
                             accentText = accentText,
                             accentIcon = if (accentImage) FluentIcon(Icons.Outlined.LocationOn) else null,

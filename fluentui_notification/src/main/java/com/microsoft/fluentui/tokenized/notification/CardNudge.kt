@@ -56,7 +56,6 @@ class CardNudgeMetaData(
     val message: String,
     val dismissOnClick: (() -> Unit)? = null,
     val icon: FluentIcon? = null,
-    val iconDrawable: Int? = null,
     val subTitle: String? = null,
     val accentText: String? = null,
     val accentIcon: FluentIcon? = null,
@@ -152,7 +151,7 @@ fun CardNudge(
             if (metadata.icon != null && metadata.icon.isIconAvailable()) {
                 Box(
                     modifier = Modifier
-                        .size(token.leftIconBackgroundSize(cardNudgeInfo))
+                        .size(token.iconBackgroundSize(cardNudgeInfo))
                         .background(
                             token.iconBackgroundBrush(cardNudgeInfo),
                             CircleShape
@@ -174,18 +173,10 @@ fun CardNudge(
                     Icon(
                         metadata.icon,
                         modifier = Modifier
-                            .size(token.leftIconSize(cardNudgeInfo)),
+                            .size(token.iconSize(cardNudgeInfo)),
                         tint = metadata.icon.tint ?: token.iconColor(cardNudgeInfo)
                     )
                 }
-            }else if(metadata.iconDrawable != null){
-                Image(
-                    painter = painterResource(metadata.iconDrawable),
-                    modifier = Modifier
-                        .size(token.leftIconSize(cardNudgeInfo))
-                        .clip(CircleShape),
-                    contentDescription = ""
-                )
             }
 
             Column(
