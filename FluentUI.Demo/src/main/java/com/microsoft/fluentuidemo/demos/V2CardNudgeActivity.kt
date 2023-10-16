@@ -298,7 +298,7 @@ class V2CardNudgeActivity : V2DemoActivity() {
                     CardNudge(
                         metadata = CardNudgeMetaData(
                             message = LocalContext.current.resources.getString(R.string.fluentui_title),
-                            icon = if (icon && !iconType) FluentIcon(Icons.Outlined.Call, tint = Color.Unspecified) else null,
+                            icon = if (icon && !iconType) FluentIcon(Icons.Outlined.Call) else null,
                             iconDrawable = if(icon && iconType) R.drawable.avatar_amanda_brady else null,
                             subTitle = subtitle,
                             accentText = accentText,

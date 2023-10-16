@@ -175,14 +175,14 @@ fun CardNudge(
                         metadata.icon,
                         modifier = Modifier
                             .size(token.leftIconSize(cardNudgeInfo)),
-                        tint = token.iconColor(cardNudgeInfo)
+                        tint = metadata.icon.tint ?: token.iconColor(cardNudgeInfo)
                     )
                 }
             }else if(metadata.iconDrawable != null){
                 Image(
                     painter = painterResource(metadata.iconDrawable),
                     modifier = Modifier
-                        .size(token.leftIconBackgroundSize(cardNudgeInfo))
+                        .size(token.leftIconSize(cardNudgeInfo))
                         .clip(CircleShape),
                     contentDescription = ""
                 )
@@ -277,7 +277,7 @@ fun CardNudge(
                         .padding(10.dp)
                         .size(token.dismissIconSize(cardNudgeInfo))
                         .testTag(CARD_NUDGE_DISMISS_BUTTON),
-                    tint = token.iconColor(cardNudgeInfo),
+                    tint = token.dismissIconColor(cardNudgeInfo),
                     onClick = metadata.dismissOnClick
                 )
             }
