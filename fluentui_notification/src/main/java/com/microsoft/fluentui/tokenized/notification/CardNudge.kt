@@ -199,7 +199,7 @@ fun CardNudge(
                             ) {
                                 Icon(
                                     metadata.accentIcon,
-                                    tint = token.accentColor(cardNudgeInfo)
+                                    tint = metadata.accentIcon.tint ?: token.accentColor(cardNudgeInfo)
                                 )
                             }
                         }
