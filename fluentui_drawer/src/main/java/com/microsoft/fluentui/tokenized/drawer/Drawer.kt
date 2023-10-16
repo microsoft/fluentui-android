@@ -747,7 +747,10 @@ private fun BottomDrawer(
                 if (drawerState.anchors.isEmpty()) {
                     0.toFloat()
                 } else {
-                    var targetValue: DrawerValue = if (drawerState.skipOpenState) {
+                    var targetValue: DrawerValue = if(slideOver){
+                        drawerState.anchors.maxBy { it.value }?.value!!
+                    }
+                    else if (drawerState.skipOpenState) {
                         DrawerValue.Expanded
                     } else {
                         DrawerValue.Open
