@@ -10,3 +10,4 @@ Fluent V2:
 	        1. People picker crash on orientation change is fixed.
 	        2. The behaviour of People Picker & Search Bar on Back Button or Back Gesture has been improved to make it more intuitive.
 	        3. Added dismiss icon token for Card nudge.
+		4. Cardnudge tokens are renamed
