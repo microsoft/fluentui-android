@@ -82,10 +82,10 @@ open class CardNudgeTokens : IControlToken, Parcelable {
         FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth10)
 
     @Composable
-    open fun leftIconSize(cardNudgeInfo: CardNudgeInfo): Dp = 24.dp
+    open fun iconSize(cardNudgeInfo: CardNudgeInfo): Dp = 24.dp
 
     @Composable
-    open fun leftIconBackgroundSize(cardNudgeInfo: CardNudgeInfo): Dp = 40.dp
+    open fun iconBackgroundSize(cardNudgeInfo: CardNudgeInfo): Dp = 40.dp
 
     @Composable
     open fun dismissIconSize(cardNudgeInfo: CardNudgeInfo): Dp = 20.dp

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Describes the primary and secondary Strings -->
     <string name="fluentui_primary">Primary</string>
     <string name="fluentui_secondary">Secondary</string>
@@ -14,8 +14,6 @@
     <!-- Describes the image component with accent color -->
     <string name="fluentui_accent_icon">Icon</string>
     <!-- Describes disabled action-->
-    <string name="fluentui_image_drawable" tools:ignore="MissingTranslation">ImageDrawable</string>
-    <string name="fluentui_image_vector" tools:ignore="MissingTranslation">ImageVector</string>
     <string name="fluentui_disabled">Disabled</string>
     <!-- Describes the action button component -->
     <string name="fluentui_action_button">Action Button</string>
