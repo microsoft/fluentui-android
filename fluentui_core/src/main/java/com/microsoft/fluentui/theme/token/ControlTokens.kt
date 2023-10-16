@@ -25,6 +25,8 @@ interface IControlTokens {
     }
 }
 
+class UndefinedControlType: IControlToken
+
 /**
  * Extend the ControlToken to add token for custom control or providing new token to existing Fluent Control. *
  */
@@ -120,7 +122,7 @@ open class ControlTokens : IControlTokens {
                 ControlType.ToggleSwitchControlType -> ToggleSwitchTokens()
                 ControlType.TooltipControlType -> TooltipTokens()
                 else -> {
-                    throw java.lang.RuntimeException("$type not defined")
+                    UndefinedControlType()
                 }
             }
         }
