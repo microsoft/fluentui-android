@@ -195,6 +195,8 @@ class DrawerState(
         finally {
             animationInProgress = false
             enable = false
+            anchors = emptyMap()
+            anchorsFilled = false
         }
     }
 
