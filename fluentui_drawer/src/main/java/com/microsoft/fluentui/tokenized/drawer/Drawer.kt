@@ -365,7 +365,7 @@ private fun Modifier.bottomDrawerSwipeable(
             val minHeight = 0f
             val bottomOpenStateY = max(maxOpenHeight, fullHeight - drawerHeight)
             val bottomExpandedStateY = max(minHeight, fullHeight - drawerHeight)
-            val anchors = if (drawerHeight <= maxOpenHeight){
+            val anchors = if (drawerHeight <= maxOpenHeight){  // when contentHeight is less than maxOpenHeight
                 mapOf(
                     fullHeight to DrawerValue.Closed,
                     bottomOpenStateY to DrawerValue.Open
@@ -375,14 +375,14 @@ private fun Modifier.bottomDrawerSwipeable(
                     if(drawerState.skipOpenState){
                         mapOf(
                             fullHeight to DrawerValue.Closed,
-                            0F to DrawerValue.Expanded
+                            max(0F, fullHeight-drawerHeight) to DrawerValue.Expanded // when drawerHeight is greater than maxOpenHeight but less than fullHeight, then Expanded state starts from fullHeight-drawerHeight
                         )
                     }
                     else {
                         mapOf(
                             fullHeight to DrawerValue.Closed,
                             maxOpenHeight to DrawerValue.Open,
-                            0F to DrawerValue.Expanded
+                            max(0F, fullHeight-drawerHeight) to DrawerValue.Expanded
                         )
                     }
                 } else {
@@ -745,7 +745,7 @@ private fun BottomDrawer(
                 if (drawerState.anchors.isEmpty()) {
                     0.toFloat()
                 } else {
-                    val targetValue: DrawerValue = if (drawerState.skipOpenState) {
+                    var targetValue: DrawerValue = if (drawerState.skipOpenState) {
                         DrawerValue.Expanded
                     } else {
                         DrawerValue.Open
@@ -772,13 +772,6 @@ private fun BottomDrawer(
                     }
                     IntOffset(x = 0, y = y)
                 }
-                .bottomDrawerSwipeable(
-                    drawerState,
-                    slideOver,
-                    maxOpenHeight,
-                    fullHeight,
-                    drawerHeight.value
-                )
                 .onGloballyPositioned { layoutCoordinates ->
                     if (!drawerState.animationInProgress
                         && drawerState.currentValue == DrawerValue.Closed
@@ -789,7 +782,7 @@ private fun BottomDrawer(
 
                     if (slideOver) {
                         val originalSize = layoutCoordinates.size.height.toFloat()
-                        drawerHeight.value = if (drawerState.hasExpandedState) {
+                        drawerHeight.value = if (drawerState.expandable) {
                             originalSize
                         } else {
                             min(
@@ -799,6 +792,13 @@ private fun BottomDrawer(
                         }
                     }
                 }
+                .bottomDrawerSwipeable(
+                    drawerState,
+                    slideOver,
+                    maxOpenHeight,
+                    fullHeight,
+                    drawerHeight.value
+                )
                 .drawerHeight(
                     slideOver,
                     maxOpenHeight,
