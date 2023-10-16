@@ -76,9 +76,11 @@ open class CardNudgeTokens : IControlToken, Parcelable {
     open fun borderSize(cardNudgeInfo: CardNudgeInfo): Dp =
         FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth10)
 
+    //Size of the icon if Icon ImageVector is used in CardNudgeMetaData
     @Composable
     open fun leftIconSize(cardNudgeInfo: CardNudgeInfo): Dp = 24.dp
 
+    //Size of the icon if IconDrawable is used in CardNudgeMetaData
     @Composable
     open fun leftIconBackgroundSize(cardNudgeInfo: CardNudgeInfo): Dp = 40.dp
 
