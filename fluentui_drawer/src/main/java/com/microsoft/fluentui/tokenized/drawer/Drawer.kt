@@ -369,7 +369,11 @@ private fun Modifier.bottomDrawerSwipeable(
             val bottomExpandedStateY = max(minHeight, fullHeight - drawerHeight)
             val anchors =
                 if (drawerHeight <= maxOpenHeight) {  // when contentHeight is less than maxOpenHeight
-                    if (drawerState.anchors.containsValue(DrawerValue.Expanded)) { //For dynamic content when drawerHeight was previously greater than maxOpenHeight and now less than maxOpenHEight
+                    if (drawerState.anchors.containsValue(DrawerValue.Expanded)) {
+                        /*
+                        *For dynamic content when drawerHeight was previously greater than maxOpenHeight and now less than maxOpenHEight
+                        *The old anchors won't have Open state, so we need to continue with Expanded state.
+                        */
                         mapOf(
                             fullHeight to DrawerValue.Closed,
                             bottomOpenStateY to DrawerValue.Expanded
@@ -383,7 +387,11 @@ private fun Modifier.bottomDrawerSwipeable(
                 } else {
                     if (drawerState.expandable) {
                         if (drawerState.skipOpenState) {
-                            if (drawerState.anchors.containsValue(DrawerValue.Open)) { //dynamic content when drawerHeight was previously less than maxOpenHeight and now greater than maxOpenHEight
+                            if (drawerState.anchors.containsValue(DrawerValue.Open)) {
+                                /*
+                                *For dynamic content when drawerHeight was previously less than maxOpenHeight and now greater than maxOpenHEight
+                                *The old anchors won't have Expanded state, so we need to continue with Open state.
+                                */
                                 mapOf(
                                     fullHeight to DrawerValue.Closed,
                                     bottomExpandedStateY to DrawerValue.Open // when drawerHeight is greater than maxOpenHeight but less than fullHeight, then Expanded state starts from fullHeight-drawerHeight
