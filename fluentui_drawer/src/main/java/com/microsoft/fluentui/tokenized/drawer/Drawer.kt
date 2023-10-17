@@ -367,47 +367,47 @@ private fun Modifier.bottomDrawerSwipeable(
             val minHeight = 0f
             val bottomOpenStateY = max(maxOpenHeight, fullHeight - drawerHeight)
             val bottomExpandedStateY = max(minHeight, fullHeight - drawerHeight)
-            val anchors = if (drawerHeight <= maxOpenHeight){  // when contentHeight is less than maxOpenHeight
-                if(drawerState.anchors.containsValue(DrawerValue.Expanded)){ //For dynamic content when drawerHeight was previously greater than maxOpenHeight and now less than maxOpenHEight
+            val anchors =
+                if (drawerHeight <= maxOpenHeight) {  // when contentHeight is less than maxOpenHeight
+                    if (drawerState.anchors.containsValue(DrawerValue.Expanded)) { //For dynamic content when drawerHeight was previously greater than maxOpenHeight and now less than maxOpenHEight
                         mapOf(
                             fullHeight to DrawerValue.Closed,
                             bottomOpenStateY to DrawerValue.Expanded
                         )
-                } else {
-                    mapOf(
-                        fullHeight to DrawerValue.Closed,
-                        bottomOpenStateY to DrawerValue.Open
-                    )
-                }
-            } else {
-                if (drawerState.expandable) {
-                    if(drawerState.skipOpenState){
-                        if(drawerState.anchors.containsValue(DrawerValue.Open)){ //dynamic content when drawerHeight was previously less than maxOpenHeight and now greater than maxOpenHEight
-                            mapOf(
-                                fullHeight to DrawerValue.Closed,
-                                bottomExpandedStateY  to DrawerValue.Open // when drawerHeight is greater than maxOpenHeight but less than fullHeight, then Expanded state starts from fullHeight-drawerHeight
-                            )
-                        } else {
-                            mapOf(
-                                fullHeight to DrawerValue.Closed,
-                                bottomExpandedStateY  to DrawerValue.Expanded // when drawerHeight is greater than maxOpenHeight but less than fullHeight, then Expanded state starts from fullHeight-drawerHeight
-                            )
-                        }
-                    }
-                    else {
+                    } else {
                         mapOf(
                             fullHeight to DrawerValue.Closed,
-                            maxOpenHeight to DrawerValue.Open,
-                            bottomExpandedStateY  to DrawerValue.Expanded
+                            bottomOpenStateY to DrawerValue.Open
                         )
                     }
                 } else {
-                    mapOf(
-                        fullHeight to DrawerValue.Closed,
-                        maxOpenHeight to DrawerValue.Open
-                    )
+                    if (drawerState.expandable) {
+                        if (drawerState.skipOpenState) {
+                            if (drawerState.anchors.containsValue(DrawerValue.Open)) { //dynamic content when drawerHeight was previously less than maxOpenHeight and now greater than maxOpenHEight
+                                mapOf(
+                                    fullHeight to DrawerValue.Closed,
+                                    bottomExpandedStateY to DrawerValue.Open // when drawerHeight is greater than maxOpenHeight but less than fullHeight, then Expanded state starts from fullHeight-drawerHeight
+                                )
+                            } else {
+                                mapOf(
+                                    fullHeight to DrawerValue.Closed,
+                                    bottomExpandedStateY to DrawerValue.Expanded // when drawerHeight is greater than maxOpenHeight but less than fullHeight, then Expanded state starts from fullHeight-drawerHeight
+                                )
+                            }
+                        } else {
+                            mapOf(
+                                fullHeight to DrawerValue.Closed,
+                                maxOpenHeight to DrawerValue.Open,
+                                bottomExpandedStateY to DrawerValue.Expanded
+                            )
+                        }
+                    } else {
+                        mapOf(
+                            fullHeight to DrawerValue.Closed,
+                            maxOpenHeight to DrawerValue.Open
+                        )
+                    }
                 }
-            }
             Modifier.swipeable(
                 state = drawerState,
                 anchors = anchors,
