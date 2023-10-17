@@ -368,23 +368,37 @@ private fun Modifier.bottomDrawerSwipeable(
             val bottomOpenStateY = max(maxOpenHeight, fullHeight - drawerHeight)
             val bottomExpandedStateY = max(minHeight, fullHeight - drawerHeight)
             val anchors = if (drawerHeight <= maxOpenHeight){  // when contentHeight is less than maxOpenHeight
-                mapOf(
-                    fullHeight to DrawerValue.Closed,
-                    bottomOpenStateY to DrawerValue.Open
-                )
+                if(drawerState.anchors.containsValue(DrawerValue.Expanded)){ //For dynamic content when drawerHeight was previously greater than maxOpenHeight and now less than maxOpenHEight
+                        mapOf(
+                            fullHeight to DrawerValue.Closed,
+                            bottomOpenStateY to DrawerValue.Expanded
+                        )
+                } else {
+                    mapOf(
+                        fullHeight to DrawerValue.Closed,
+                        bottomOpenStateY to DrawerValue.Open
+                    )
+                }
             } else {
                 if (drawerState.expandable) {
                     if(drawerState.skipOpenState){
-                        mapOf(
-                            fullHeight to DrawerValue.Closed,
-                            max(0F, fullHeight-drawerHeight) to DrawerValue.Expanded // when drawerHeight is greater than maxOpenHeight but less than fullHeight, then Expanded state starts from fullHeight-drawerHeight
-                        )
+                        if(drawerState.anchors.containsValue(DrawerValue.Open)){ //dynamic content when drawerHeight was previously less than maxOpenHeight and now greater than maxOpenHEight
+                            mapOf(
+                                fullHeight to DrawerValue.Closed,
+                                bottomExpandedStateY  to DrawerValue.Open // when drawerHeight is greater than maxOpenHeight but less than fullHeight, then Expanded state starts from fullHeight-drawerHeight
+                            )
+                        } else {
+                            mapOf(
+                                fullHeight to DrawerValue.Closed,
+                                bottomExpandedStateY  to DrawerValue.Expanded // when drawerHeight is greater than maxOpenHeight but less than fullHeight, then Expanded state starts from fullHeight-drawerHeight
+                            )
+                        }
                     }
                     else {
                         mapOf(
                             fullHeight to DrawerValue.Closed,
                             maxOpenHeight to DrawerValue.Open,
-                            max(0F, fullHeight-drawerHeight) to DrawerValue.Expanded
+                            bottomExpandedStateY  to DrawerValue.Expanded
                         )
                     }
                 } else {
