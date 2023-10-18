@@ -31,10 +31,13 @@ apply plugin: "com.microsoft.hydralab.client-util"
 
 allprojects {
     project.ext {
+//        Maintaining different compileSdkVersions for APK and AAR in order to maintain parity with Compose BOM update
+//        https://issuetracker.google.com/issues/295457468
         constants = [
                 minSdkVersion: 21,
                 targetSdkVersion: 33,
                 compileSdkVersion: 33,
+                apkCompileSdkVersion: 34,
         ]
 
         androidxRunner            =    '1.5.0'
@@ -44,7 +47,7 @@ allprojects {
         appCompatVersion          =    '1.6.1'
         buildToolVersion          =    '31.0.0'
         composeActivityVersion    =    '1.7.2'
-        composeBomVersion         =    '2023.06.01'
+        composeBomVersion         =    '2023.09.00'
         composeTestVersion        =    '1.4.3'
         composeCompilerVersion    =    '1.4.7'
         constraintLayoutVersion   =    '2.1.4'

@@ -15,14 +15,13 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsFocused
 import androidx.compose.ui.test.assertIsNotFocused
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onAllNodesWithContentDescription
 import androidx.compose.ui.test.onChild
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
-import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performKeyPress
-import androidx.compose.ui.test.printToLog
 import com.microsoft.fluentui.persona.R
 import com.microsoft.fluentui.tokenized.peoplepicker.PeoplePicker
 import com.microsoft.fluentui.tokenized.peoplepicker.PeoplePickerItemData
@@ -78,7 +77,8 @@ class V2PeoplePickerUITest {
                 ),
             )
         }
-        val peoplePickerChip = composeTestRule.onNodeWithContentDescription("firstName", true)
+        val peoplePickerChip =
+            composeTestRule.onAllNodesWithContentDescription("firstName", true)[0]
         peoplePickerChip.assertExists()
         peoplePickerChip.assertIsDisplayed()
         peoplePickerChip.assertHasClickAction()
