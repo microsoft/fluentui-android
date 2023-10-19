@@ -8,13 +8,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion constants.compileSdkVersion
+    compileSdkVersion constants.apkCompileSdkVersion
     defaultConfig {
         applicationId 'com.microsoft.fluentuidemo'
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 72
-        versionName '0.1.37'
+        versionCode 73
+        versionName '0.1.38'
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     kotlinOptions {
