@@ -148,7 +148,7 @@ fun CardNudge(
             if (metadata.icon != null && metadata.icon.isIconAvailable()) {
                 Box(
                     modifier = Modifier
-                        .size(token.leftIconBackgroundSize(cardNudgeInfo))
+                        .size(token.iconBackgroundSize(cardNudgeInfo))
                         .background(
                             token.iconBackgroundBrush(cardNudgeInfo),
                             CircleShape
@@ -170,8 +170,8 @@ fun CardNudge(
                     Icon(
                         metadata.icon,
                         modifier = Modifier
-                            .size(token.leftIconSize(cardNudgeInfo)),
-                        tint = token.iconColor(cardNudgeInfo)
+                            .size(token.iconSize(cardNudgeInfo)),
+                        tint = metadata.icon.tint ?: token.iconColor(cardNudgeInfo)
                     )
                 }
             }
@@ -199,7 +199,7 @@ fun CardNudge(
                             ) {
                                 Icon(
                                     metadata.accentIcon,
-                                    tint = token.accentColor(cardNudgeInfo)
+                                    tint = metadata.accentIcon.tint ?: token.accentColor(cardNudgeInfo)
                                 )
                             }
                         }
@@ -265,7 +265,7 @@ fun CardNudge(
                         .padding(10.dp)
                         .size(token.dismissIconSize(cardNudgeInfo))
                         .testTag(CARD_NUDGE_DISMISS_BUTTON),
-                    tint = token.iconColor(cardNudgeInfo),
+                    tint = token.dismissIconColor(cardNudgeInfo),
                     onClick = metadata.dismissOnClick
                 )
             }
