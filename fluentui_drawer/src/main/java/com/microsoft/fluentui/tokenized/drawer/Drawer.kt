@@ -848,7 +848,7 @@ private fun BottomDrawer(
                                 }
                                 true
                             }
-                        } else if (drawerState.hasExpandedState && drawerState.hasOpenedState && drawerState.hasOpenedState) {
+                        } else if (drawerState.hasExpandedState && drawerState.hasOpenedState) {
                             collapse {
                                 if (drawerState.confirmStateChange(DrawerValue.Open)) {
                                     scope.launch { drawerState.open() }
