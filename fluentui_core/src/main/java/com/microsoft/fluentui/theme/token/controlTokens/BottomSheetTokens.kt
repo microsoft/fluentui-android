@@ -34,7 +34,7 @@ open class BottomSheetTokens : IControlToken, Parcelable {
 
     @Composable
     open fun elevation(bottomSheetInfo: BottomSheetInfo): Dp =
-        FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow28)
+        FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow02)
 
     @Composable
     open fun cornerRadius(bottomSheetInfo: BottomSheetInfo): Dp =
