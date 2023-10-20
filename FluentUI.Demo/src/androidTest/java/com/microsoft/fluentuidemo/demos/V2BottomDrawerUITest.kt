@@ -1,15 +1,11 @@
 package com.microsoft.fluentuidemo.demos
 
-import android.content.Context
 import android.content.res.Resources
-import android.util.Log
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertHasNoClickAction
 import androidx.compose.ui.test.click
 import androidx.compose.ui.test.hasTestTag
-import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
@@ -25,7 +21,6 @@ import androidx.test.uiautomator.UiDevice
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_CONTENT_TAG
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_HANDLE_TAG
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_SCRIM_TAG
-import com.microsoft.fluentui.util.statusBarHeight
 import com.microsoft.fluentuidemo.BaseTest
 import com.microsoft.fluentuidemo.R
 import org.junit.Before
@@ -70,8 +65,6 @@ class V2BottomDrawerUITest : BaseTest() {
         waitForDrawerOpen()
         val drawerHandleY = (drawerHandle.fetchSemanticsNode().positionInRoot.y / context.resources.displayMetrics.density).dp
         val topHandlePadding = 8.dp
-        val statusBarHeight = context.statusBarHeight
-        Log.i("Drawer Height status bar", statusBarHeight.toString())
         assert(drawerHandleY == topHandlePadding) //if drawerHandle is below status bar, then it's in Expanded state
     }
 
