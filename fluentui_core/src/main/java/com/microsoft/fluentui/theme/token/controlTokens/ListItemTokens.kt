@@ -10,17 +10,33 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.ThemeMode
-import com.microsoft.fluentui.theme.token.*
+import com.microsoft.fluentui.theme.token.ControlInfo
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1
 import com.microsoft.fluentui.theme.token.FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled1
 import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background1
 import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background1Pressed
-import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralForegroundColorTokens.*
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralForegroundColorTokens.Foreground1
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralForegroundColorTokens.Foreground2
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralForegroundColorTokens.Foreground3
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1
 import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralStrokeColorTokens.Stroke2
-import com.microsoft.fluentui.theme.token.FluentAliasTokens.TypographyTokens.*
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.TypographyTokens.Body1Strong
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.TypographyTokens.Body2
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.TypographyTokens.Body2Strong
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.TypographyTokens.Caption1
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.TypographyTokens.Caption1Strong
+import com.microsoft.fluentui.theme.token.FluentColor
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15
-import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.*
+import com.microsoft.fluentui.theme.token.IControlToken
+import com.microsoft.fluentui.theme.token.StateBrush
+import com.microsoft.fluentui.theme.token.StateColor
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.OneLine
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.SectionDescription
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.SectionHeader
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.ThreeLine
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.TwoLine
 import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Bold
 import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Subtle
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Bottom
@@ -189,6 +205,9 @@ open class ListItemTokens : IControlToken, Parcelable {
             ),
             pressed = FluentTheme.aliasTokens.neutralForegroundColor[Foreground1].value(
                 themeMode = FluentTheme.themeMode
+            ),
+            focused = FluentTheme.aliasTokens.neutralForegroundColor[Foreground1].value(
+                themeMode = FluentTheme.themeMode
             )
         )
     }
@@ -203,6 +222,9 @@ open class ListItemTokens : IControlToken, Parcelable {
                 themeMode = FluentTheme.themeMode
             ),
             pressed = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            focused = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
                 themeMode = FluentTheme.themeMode
             )
         )
@@ -219,6 +241,9 @@ open class ListItemTokens : IControlToken, Parcelable {
             ),
             pressed = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
                 themeMode = FluentTheme.themeMode
+            ),
+            focused = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
+                themeMode = FluentTheme.themeMode
             )
         )
     }
@@ -234,6 +259,9 @@ open class ListItemTokens : IControlToken, Parcelable {
             ),
             pressed = FluentTheme.aliasTokens.brandForegroundColor[BrandForeground1].value(
                 themeMode = FluentTheme.themeMode
+            ),
+            focused = FluentTheme.aliasTokens.brandForegroundColor[BrandForeground1].value(
+                themeMode = FluentTheme.themeMode
             )
         )
     }
@@ -248,6 +276,9 @@ open class ListItemTokens : IControlToken, Parcelable {
                 themeMode = FluentTheme.themeMode
             ),
             pressed = FluentTheme.aliasTokens.neutralForegroundColor[Foreground3].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            focused = FluentTheme.aliasTokens.neutralForegroundColor[Foreground3].value(
                 themeMode = FluentTheme.themeMode
             )
         )
@@ -298,6 +329,7 @@ open class ListItemTokens : IControlToken, Parcelable {
             Bold -> {
                 FluentTheme.aliasTokens.typography[Body1Strong]
             }
+
             Subtle -> {
                 FluentTheme.aliasTokens.typography[Caption1]
             }
@@ -310,6 +342,7 @@ open class ListItemTokens : IControlToken, Parcelable {
             Bold -> {
                 FluentTheme.aliasTokens.typography[Body2Strong]
             }
+
             Subtle -> {
                 FluentTheme.aliasTokens.typography[Caption1Strong]
             }
