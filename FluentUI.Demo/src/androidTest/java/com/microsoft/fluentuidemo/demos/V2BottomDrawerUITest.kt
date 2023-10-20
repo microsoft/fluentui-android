@@ -271,7 +271,7 @@ class V2BottomDrawerUITest : BaseTest() {
         expandedCheckForVerticalDrawer()
     }
     @Test
-    fun testSkipOpenTestAndOpenDrawerClicked() {
+    fun testSkipOpenStateAndOpenDrawerClicked() {
         // Set skipOpenState = true
         composeTestRule.onNodeWithText(getString(R.string.skip_open_state), useUnmergedTree = true).performClick()
         // Click on the "Open Drawer" button
@@ -282,7 +282,7 @@ class V2BottomDrawerUITest : BaseTest() {
         expandedCheckForVerticalDrawer()
     }
     @Test
-    fun testSkipOpenTestAndSwipeDown() {
+    fun testSkipOpenStateAndSwipeDown() {
         // Set skipOpenState = true
         composeTestRule.onNodeWithText(getString(R.string.skip_open_state), useUnmergedTree = true).performClick()
         // Click on the "Open Drawer" button
