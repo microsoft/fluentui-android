@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.Resources
 import android.util.Log
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertHasNoClickAction
 import androidx.compose.ui.test.click
@@ -24,6 +25,7 @@ import androidx.test.uiautomator.UiDevice
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_CONTENT_TAG
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_HANDLE_TAG
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_SCRIM_TAG
+import com.microsoft.fluentui.util.statusBarHeight
 import com.microsoft.fluentuidemo.BaseTest
 import com.microsoft.fluentuidemo.R
 import org.junit.Before
@@ -62,6 +64,15 @@ class V2BottomDrawerUITest : BaseTest() {
         drawerHandle.assertDoesNotExist()
         drawerScrim.assertDoesNotExist()
         drawerContent.assertDoesNotExist()
+    }
+    private fun expandedCheckForVerticalDrawer(){
+        //This will work for drawer with show handle only
+        waitForDrawerOpen()
+        val drawerHandleY = (drawerHandle.fetchSemanticsNode().positionInRoot.y / context.resources.displayMetrics.density).dp
+        val topHandlePadding = 8.dp
+        val statusBarHeight = context.statusBarHeight
+        Log.i("Drawer Height status bar", statusBarHeight.toString())
+        assert(drawerHandleY == topHandlePadding) //if drawerHandle is below status bar, then it's in Expanded state
     }
 
     private fun dpToPx(value: Dp) = (value * Resources
@@ -259,18 +270,40 @@ class V2BottomDrawerUITest : BaseTest() {
         openCheckForVerticalDrawer()
     }
     @Test
-    fun testSkipOpenTest() {
+    fun testExpandedState(){
+        composeTestRule.onNodeWithText(getString(R.string.drawer_expand), useUnmergedTree = true).performClick()
+        composeTestRule.waitForIdle()
+        val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+        composeTestRule.waitUntil {  drawerHandle.fetchSemanticsNode().positionInRoot.y < device.displayHeight} //Letting drawer handle come up
+        expandedCheckForVerticalDrawer()
+    }
+    @Test
+    fun testSkipOpenTestAndOpenDrawerClicked() {
         // Set skipOpenState = true
         composeTestRule.onNodeWithText(getString(R.string.skip_open_state), useUnmergedTree = true).performClick()
         // Click on the "Open Drawer" button
         composeTestRule.onNodeWithText(getString(R.string.drawer_open)).performClick()
         composeTestRule.waitForIdle()
-        composeTestRule.waitUntil {  drawerHandle.fetchSemanticsNode().positionInRoot.y.toInt() < 2400}
-        waitForDrawerOpen()
-        val drawerHandleY = drawerHandle.fetchSemanticsNode().positionInRoot.y.toInt()
         val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
-        val openStateY = device.displayHeight/2
-        assert(drawerHandleY < openStateY) //if drawerHandle is above Open state, then it's in Expanded state
+        composeTestRule.waitUntil {  drawerHandle.fetchSemanticsNode().positionInRoot.y < device.displayHeight} //Letting drawer handle come up
+        expandedCheckForVerticalDrawer()
+    }
+    @Test
+    fun testSkipOpenTestAndSwipeDown() {
+        // Set skipOpenState = true
+        composeTestRule.onNodeWithText(getString(R.string.skip_open_state), useUnmergedTree = true).performClick()
+        // Click on the "Open Drawer" button
+        composeTestRule.onNodeWithText(getString(R.string.drawer_open)).performClick()
+        composeTestRule.waitForIdle()
+        val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+        composeTestRule.waitUntil {  drawerHandle.fetchSemanticsNode().positionInRoot.y < device.displayHeight} //Letting drawer handle come up
+        expandedCheckForVerticalDrawer()
+        //SwipeDown on drawerHandle should close it.
+        drawerContent.performTouchInput {
+            swipeDown()
+        }
+        waitForDrawerClose()
+        closeCheckForVerticalDrawer()
     }
 }
 
