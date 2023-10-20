@@ -1,11 +1,14 @@
 package com.microsoft.fluentuidemo.demos
 
+import android.content.Context
 import android.content.res.Resources
+import android.util.Log
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertHasNoClickAction
 import androidx.compose.ui.test.click
 import androidx.compose.ui.test.hasTestTag
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
@@ -16,6 +19,8 @@ import androidx.compose.ui.test.swipeDown
 import androidx.compose.ui.test.swipeUp
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.uiautomator.UiDevice
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_CONTENT_TAG
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_HANDLE_TAG
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_SCRIM_TAG
@@ -251,7 +256,22 @@ class V2BottomDrawerUITest : BaseTest() {
         // Click on the "Expand Drawer" button
         composeTestRule.onNodeWithText(getString(R.string.drawer_expand)).performClick()
         composeTestRule.waitForIdle()
-
         openCheckForVerticalDrawer()
     }
+    @Test
+    fun testSkipOpenTest() {
+        // Set skipOpenState = true
+        composeTestRule.onNodeWithText(getString(R.string.skip_open_state), useUnmergedTree = true).performClick()
+        // Click on the "Open Drawer" button
+        composeTestRule.onNodeWithText(getString(R.string.drawer_open)).performClick()
+        composeTestRule.waitForIdle()
+        composeTestRule.waitUntil {  drawerHandle.fetchSemanticsNode().positionInRoot.y.toInt() < 2400}
+        waitForDrawerOpen()
+        val drawerHandleY = drawerHandle.fetchSemanticsNode().positionInRoot.y.toInt()
+        val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+        val openStateY = device.displayHeight/2
+        assert(drawerHandleY < openStateY) //if drawerHandle is above Open state, then it's in Expanded state
+    }
 }
+
+
