@@ -9,4 +9,5 @@ Fluent V2:
 	        3. Adjusted Drawer and BottomSheet elevation.
 		4. Fixed keyboards focus color for List Items and Section Headers.
 		5. Button now uses stable version of TextStyle.
-		6. Upgraded compose library to 1.5.1 with BOM 2023.09.00.
+		6. Upgraded compose library to 1.5.1 with BOM 2023.09.00. Added a workaround to get around Android34 upgrade.
+		7. Added variant of getStringResource function with format arguments.
