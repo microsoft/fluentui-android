@@ -885,6 +885,8 @@
     <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Expandable</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="skip_open_state">Skip Open State</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Show Handle</string>
 

@@ -3,6 +3,7 @@ package com.microsoft.fluentuidemo.demos
 import android.content.res.Resources
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.test.assertHasNoClickAction
 import androidx.compose.ui.test.click
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.onAllNodesWithTag
@@ -15,6 +16,8 @@ import androidx.compose.ui.test.swipeDown
 import androidx.compose.ui.test.swipeUp
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.uiautomator.UiDevice
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_CONTENT_TAG
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_HANDLE_TAG
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_SCRIM_TAG
@@ -56,6 +59,13 @@ class V2BottomDrawerUITest : BaseTest() {
         drawerHandle.assertDoesNotExist()
         drawerScrim.assertDoesNotExist()
         drawerContent.assertDoesNotExist()
+    }
+    private fun expandedCheckForVerticalDrawer(){
+        //This will work for drawer with show handle only
+        waitForDrawerOpen()
+        val drawerHandleY = (drawerHandle.fetchSemanticsNode().positionInRoot.y / context.resources.displayMetrics.density).dp
+        val topHandlePadding = 8.dp
+        assert(drawerHandleY == topHandlePadding) //if drawerHandle is below status bar, then it's in Expanded state
     }
 
     private fun dpToPx(value: Dp) = (value * Resources
@@ -241,4 +251,53 @@ class V2BottomDrawerUITest : BaseTest() {
         }
         closeCheckForVerticalDrawer()
     }
+    @Test
+    fun testSetNonExpandableThenExpandableDrawerClicked() {
+        // Set expandable = false
+        composeTestRule.onNodeWithText(getString(R.string.drawer_expandable), useUnmergedTree = true).performClick()
+        //Skip Open State Button must be disabled
+        composeTestRule.onNodeWithText(getString(R.string.skip_open_state), useUnmergedTree = true).assertHasNoClickAction()
+        // Click on the "Expand Drawer" button
+        composeTestRule.onNodeWithText(getString(R.string.drawer_expand)).performClick()
+        composeTestRule.waitForIdle()
+        openCheckForVerticalDrawer()
+    }
+    @Test
+    fun testExpandedState(){
+        composeTestRule.onNodeWithText(getString(R.string.drawer_expand), useUnmergedTree = true).performClick()
+        composeTestRule.waitForIdle()
+        val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+        composeTestRule.waitUntil {  drawerHandle.fetchSemanticsNode().positionInRoot.y < device.displayHeight} //Letting drawer handle come up
+        expandedCheckForVerticalDrawer()
+    }
+    @Test
+    fun testSkipOpenStateAndOpenDrawerClicked() {
+        // Set skipOpenState = true
+        composeTestRule.onNodeWithText(getString(R.string.skip_open_state), useUnmergedTree = true).performClick()
+        // Click on the "Open Drawer" button
+        composeTestRule.onNodeWithText(getString(R.string.drawer_open)).performClick()
+        composeTestRule.waitForIdle()
+        val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+        composeTestRule.waitUntil {  drawerHandle.fetchSemanticsNode().positionInRoot.y < device.displayHeight} //Letting drawer handle come up
+        expandedCheckForVerticalDrawer()
+    }
+    @Test
+    fun testSkipOpenStateAndSwipeDown() {
+        // Set skipOpenState = true
+        composeTestRule.onNodeWithText(getString(R.string.skip_open_state), useUnmergedTree = true).performClick()
+        // Click on the "Open Drawer" button
+        composeTestRule.onNodeWithText(getString(R.string.drawer_open)).performClick()
+        composeTestRule.waitForIdle()
+        val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+        composeTestRule.waitUntil {  drawerHandle.fetchSemanticsNode().positionInRoot.y < device.displayHeight} //Letting drawer handle come up
+        expandedCheckForVerticalDrawer()
+        //SwipeDown on drawerHandle should close it.
+        drawerContent.performTouchInput {
+            swipeDown()
+        }
+        waitForDrawerClose()
+        closeCheckForVerticalDrawer()
+    }
 }
+
+

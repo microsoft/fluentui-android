@@ -1,13 +1,13 @@
-Release Version 0.1.38:
+Release Version 0.1.39:
 
 What's New:
 
-Fluent V1:
-	Fix/Enhancement:
-	        1. Accessibitly role description can be added to popup menu item.
 Fluent V2:
 	Fix/Enhancement:
-	        1. People picker crash on orientation change is fixed.
-	        2. The behaviour of People Picker & Search Bar on Back Button or Back Gesture has been improved to make it more intuitive.
-	        3. Added dismiss icon token for Card nudge.
-		4. Cardnudge tokens are renamed
+	        1. Added skipOpenState feature to Bottom Drawer for direct Expanding and closing, completely omitting the middle (half screen) state.
+	        2. Resolved crashes and freezes issues with Bottom Drawer.
+	        3. Adjusted Drawer and BottomSheet elevation.
+		4. Fixed keyboards focus color for List Items and Section Headers.
+		5. Button now uses stable version of TextStyle.
+		6. Upgraded compose library to 1.5.1 with BOM 2023.09.00. Added a workaround to get around Android34 upgrade.
+		7. Added variant of getStringResource function with format arguments.

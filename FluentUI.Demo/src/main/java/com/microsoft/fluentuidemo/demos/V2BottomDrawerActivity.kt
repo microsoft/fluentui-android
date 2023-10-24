@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.drawer.BottomDrawer
-import com.microsoft.fluentui.tokenized.drawer.rememberDrawerState
+import com.microsoft.fluentui.tokenized.drawer.rememberBottomDrawerState
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
@@ -56,6 +56,7 @@ private fun CreateActivityUI() {
     var nestedDrawerContent by remember { mutableStateOf(false) }
     var listContent by remember { mutableStateOf(true) }
     var expandable by remember { mutableStateOf(true) }
+    var skipOpenState by remember { mutableStateOf(false) }
     var selectedContent by remember { mutableStateOf(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT) }
     var slideOver by remember { mutableStateOf(false) }
     var showHandle by remember { mutableStateOf(true) }
@@ -63,6 +64,7 @@ private fun CreateActivityUI() {
         CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
             slideOver = slideOver,
             scrimVisible = scrimVisible,
+            skipOpenState = skipOpenState,
             expandable = expandable,
             showHandle = showHandle,
             drawerContent =
@@ -130,15 +132,59 @@ private fun CreateActivityUI() {
                         .toggleable(
                             value = expandable,
                             role = Role.Switch,
-                            onValueChange = { expandable = !expandable }
+                            onValueChange = {
+                                expandable = it
+                                if (!it) {
+                                    skipOpenState = false
+                                }
+                            }
                         )
                         .clearAndSetSemantics {
                             this.contentDescription = expandableText
                         },
+                    enabled = !skipOpenState,
                     trailingAccessoryContent = {
                         ToggleSwitch(
-                            onValueChange = { expandable = it },
+                            onValueChange = {
+                                expandable = it
+                                if(!it) {
+                                    skipOpenState = false
+                                }
+                                            },
                             checkedState = expandable,
+                            enabledSwitch = !skipOpenState
+                        )
+                    }
+                )
+            }
+            item {
+                val skipOpenStateText = stringResource(id = R.string.skip_open_state)
+                ListItem.Header(title = skipOpenStateText,
+                    modifier = Modifier
+                        .toggleable(
+                            value = skipOpenState,
+                            role = Role.Switch,
+                            onValueChange = {
+                                skipOpenState = it
+                                if (it) {
+                                    expandable = true
+                                }
+                            }
+                        )
+                        .clearAndSetSemantics {
+                            this.contentDescription = skipOpenStateText
+                        },
+                    enabled = expandable,
+                    trailingAccessoryContent = {
+                        ToggleSwitch(
+                            onValueChange = {
+                                skipOpenState = it
+                                if (it) {
+                                    expandable = true
+                                }
+                            },
+                            checkedState = skipOpenState,
+                            enabledSwitch = expandable
                         )
                     }
                 )
@@ -265,12 +311,15 @@ private fun CreateActivityUI() {
 private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     slideOver: Boolean,
     expandable: Boolean,
+    skipOpenState: Boolean,
     scrimVisible: Boolean,
     showHandle: Boolean,
     drawerContent: @Composable ((() -> Unit) -> Unit),
 ) {
     val scope = rememberCoroutineScope()
-    val drawerState = rememberDrawerState()
+
+    val drawerState = rememberBottomDrawerState(expandable = expandable, skipOpenState = skipOpenState)
+
     val open: () -> Unit = {
         scope.launch { drawerState.open() }
     }
@@ -295,7 +344,6 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     BottomDrawer(
         drawerState = drawerState,
         drawerContent = { drawerContent(close) },
-        expandable = expandable,
         scrimVisible = scrimVisible,
         slideOver = slideOver,
         showHandle = showHandle
