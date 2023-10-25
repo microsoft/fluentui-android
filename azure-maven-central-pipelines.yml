@@ -1,5 +1,4 @@
-pr:
-  enabled: false
+pr: none
 variables:
 - group: InfoSec-SecurityResults
 - name: tags
