@@ -56,16 +56,16 @@ extends:
               # Write your commands here
               sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
               ls
-        - task: Gradle@3
-          inputs:
-            gradleWrapperFile: "gradlew"
-            tasks: "build"
-            options: "-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)"
-            publishJUnitResults: false
-            javaHomeOption: "JDKVersion"
-            jdkVersionOption: "$(jdkVersion)"
-            sonarQubeRunAnalysis: false
-            spotBugsAnalysis: false
+        # - task: Gradle@3
+        #   inputs:
+        #     gradleWrapperFile: "gradlew"
+        #     tasks: "build"
+        #     options: "-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)"
+        #     publishJUnitResults: false
+        #     javaHomeOption: "JDKVersion"
+        #     jdkVersionOption: "$(jdkVersion)"
+        #     sonarQubeRunAnalysis: false
+        #     spotBugsAnalysis: false
         - task: Gradle@2
           displayName: Generate testApk
           inputs:
@@ -90,14 +90,14 @@ extends:
             testResultsFiles: "$(build.sourcesdirectory)/build/testResult/**/hydra_result_*.xml"
             testRunTitle: "Test-Result"
             failTaskOnFailedTests: false
-        - task: Gradle@2
-          displayName: "generate artifacts and publish to feed"
-          inputs:
-            gradleWrapperFile: "gradlew"
-            tasks: "publish"
-            javaHomeOption: "JDKVersion"
-            jdkVersionOption: "$(jdkVersion)"
-            options: "-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword) -Pdeveloper_id=$(developer_id) -Pdeveloper_name=\"$(developer_name)\" -Pdeveloper_email=$(developer_email)"
+        # - task: Gradle@2
+        #   displayName: "generate artifacts and publish to feed"
+        #   inputs:
+        #     gradleWrapperFile: "gradlew"
+        #     tasks: "publish"
+        #     javaHomeOption: "JDKVersion"
+        #     jdkVersionOption: "$(jdkVersion)"
+        #     options: "-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword) -Pdeveloper_id=$(developer_id) -Pdeveloper_name=\"$(developer_name)\" -Pdeveloper_email=$(developer_email)"
         templateContext:
           outputs:
           - output: pipelineArtifact
