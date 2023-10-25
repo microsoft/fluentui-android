@@ -37,6 +37,7 @@ import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupPositionProvider
 import androidx.compose.ui.window.PopupProperties
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.core.view.WindowInsetsCompat
 import com.microsoft.fluentui.compose.*
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.theme.FluentTheme
@@ -1057,7 +1058,7 @@ fun BottomDrawer(
     slideOver: Boolean = true,
     scrimVisible: Boolean = true,
     showHandle: Boolean = true,
-    windowInsets: WindowInsets = WindowInsets.systemBars,
+    windowInsetsType: Int = WindowInsetsCompat.Type.systemBars(),
     drawerTokens: DrawerTokens? = null,
     drawerContent: @Composable () -> Unit
 ) {
@@ -1078,7 +1079,7 @@ fun BottomDrawer(
         val drawerInfo = DrawerInfo(type = behaviorType)
         ModalPopup(
             onDismissRequest = close,
-            windowInsets = windowInsets
+            windowInsetsType = windowInsetsType
         )
         {
             val drawerShape: Shape =
@@ -1110,4 +1111,8 @@ fun BottomDrawer(
             )
         }
     }
+}
+@Composable
+fun getWindowInsets(): WindowInsets {
+    return WindowInsets.systemBars
 }
