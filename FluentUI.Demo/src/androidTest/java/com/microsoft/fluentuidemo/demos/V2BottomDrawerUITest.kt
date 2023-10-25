@@ -1,7 +1,11 @@
 package com.microsoft.fluentuidemo.demos
 
+import android.content.Context
 import android.content.res.Resources
+import android.view.WindowManager
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertHasNoClickAction
 import androidx.compose.ui.test.click
@@ -21,6 +25,9 @@ import androidx.test.uiautomator.UiDevice
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_CONTENT_TAG
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_HANDLE_TAG
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_SCRIM_TAG
+import com.microsoft.fluentui.util.displaySize
+import com.microsoft.fluentui.util.navigationBarHeight
+import com.microsoft.fluentui.util.statusBarHeight
 import com.microsoft.fluentuidemo.BaseTest
 import com.microsoft.fluentuidemo.R
 import org.junit.Before
@@ -65,7 +72,8 @@ class V2BottomDrawerUITest : BaseTest() {
         waitForDrawerOpen()
         val drawerHandleY = (drawerHandle.fetchSemanticsNode().positionInRoot.y / context.resources.displayMetrics.density).dp
         val topHandlePadding = 8.dp
-        assert(drawerHandleY == topHandlePadding) //if drawerHandle is below status bar, then it's in Expanded state
+        val statusBarheight = (context.statusBarHeight / context.resources.displayMetrics.density).dp
+        assert(drawerHandleY == topHandlePadding + statusBarheight) //if drawerHandle is below status bar, then it's in Expanded state
     }
 
     private fun dpToPx(value: Dp) = (value * Resources
@@ -298,6 +306,5 @@ class V2BottomDrawerUITest : BaseTest() {
         waitForDrawerClose()
         closeCheckForVerticalDrawer()
     }
-}
 
 
