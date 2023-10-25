@@ -47,6 +47,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.PillButtonInfo
 import com.microsoft.fluentui.theme.token.controlTokens.PillButtonTokens
 import com.microsoft.fluentui.util.dpToPx
 import kotlinx.coroutines.launch
+import java.text.FieldPosition
 import kotlin.math.max
 
 data class PillMetaData(
@@ -66,6 +67,7 @@ data class PillMetaData(
  * @param style Color Scheme of pill shaped button. Default: [FluentStyle.Neutral]
  * @param interactionSource Interaction Source Object to handle gestures.
  * @param pillButtonTokens Tokens to customize the design of pill button.
+ * @param positionNumber Pill button number when inside PillBar. Default: null
  */
 @Composable
 fun PillButton(
@@ -73,7 +75,8 @@ fun PillButton(
     modifier: Modifier = Modifier,
     style: FluentStyle = FluentStyle.Neutral,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    pillButtonTokens: PillButtonTokens? = null
+    pillButtonTokens: PillButtonTokens? = null,
+    positionNumber: String? = null
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
@@ -164,7 +167,9 @@ fun PillButton(
             .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
             .padding(vertical = token.verticalPadding(pillButtonInfo))
             .semantics(true) {
-                contentDescription = if (pillMetaData.enabled) "${pillMetaData.text} $selectedString" else "${pillMetaData.text} $enabledString"
+                contentDescription = (if (pillMetaData.enabled) "${pillMetaData.text} $selectedString"
+                else "${pillMetaData.text} $enabledString") + (if(positionNumber != null) " Button Number $positionNumber " else "")
+
             },
         contentAlignment = Alignment.Center
     ) {
@@ -222,7 +227,6 @@ fun PillButton(
         }
     }
 }
-
 /**
  * API to create Bar of Pill button. The PillBar control is a linear set of two or more PillButton, each of which functions as a mutually exclusive button.
  * PillBar are commonly used as filter for search results.
@@ -278,7 +282,8 @@ fun PillBar(
                                 )
                             }
                         }
-                    }, style = style, pillButtonTokens = pillButtonTokens
+                    }, style = style, pillButtonTokens = pillButtonTokens,
+                    positionNumber = if(metadataList.size > 1) (index+1).toString() else null
                 )
             }
         }
