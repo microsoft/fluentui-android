@@ -1,67 +1,62 @@
 variables:
-- group: InfoSec-SecurityResults
-- name: tags
-  value: production,externalfacing
-resources:
-  repositories:
-  - repository: 1ESPipelineTemplates
-    type: git
-    name: 1ESPipelineTemplates/1ESPipelineTemplates
-    ref: refs/tags/release
-extends:
-  template: v1/1ES.Official.PipelineTemplate.yml@1ESPipelineTemplates
-  parameters:
+  - group: InfoSec-SecurityResults
+  - name: tags
+    value: production,externalfacing
+
+jobs:
+  - job: Compliance
+    displayName: Compliance checks
+    pool: OE-OfficePublic
+    steps:
+      - checkout: self # self represents the repo where the initial Pipelines YAML file was found
+        clean: true # whether to fetch clean each time
+        fetchDepth: 10 # the depth of commits to ask Git to fetch
+
+  - job: 
+    dependsOn: Compliance
     pool:
-      name: Azure-Pipelines-1ESPT-ExDShared
-      image: windows-2022
-      os: windows
-    customBuildTags:
-    - ES365AIMigrationTooling
-    stages:
-    - stage: __default
-      jobs:
-      - job: Compliance
-        displayName: Compliance checks
-        steps:
-        - task: 6d15af64-176c-496d-b583-fd2ae21d4df4@1
-          inputs:
-            repository: self
-            clean: true
-            fetchDepth: 10
-      - job: ''
-        dependsOn:
-        - Compliance
-        variables:
-        - name: BUILDSECMON_OPT_IN
-          value: true
-        steps:
-        - task: Gradle@2
-          inputs:
-            gradleWrapperFile: 'gradlew'
-            tasks: 'assembleRelease makeUniversalPkg'
-            publishJUnitResults: true
-            testResultsFiles: '**/TEST-*.xml'
-            javaHomeOption: 'JDKVersion'
-            jdkVersionOption: '1.11'
-            sonarQubeRunAnalysis: false
-            options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'
-        - task: CopyFiles@2
-          displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
-          inputs:
-            SourceFolder: '$(system.defaultworkingdirectory)/universal'
-            Contents: '**'
-            TargetFolder: '$(build.artifactstagingdirectory)/outputs'
-            CleanTargetFolder: true
-            OverWrite: true
-            preserveTimestamp: true
-        - task: UniversalPackages@0
-          inputs:
-            command: 'publish'
-            publishDirectory: '$(Build.ArtifactStagingDirectory)/outputs/'
-            feedsToUsePublish: 'internal'
-            vstsFeedPublish: 'Office'
-            vstsFeedPackagePublish: 'fluentuiandroid'
-            versionOption: 'custom'
-            versionPublish: '0.1.39'
-            packagePublishDescription: 'Fluent Universal Package'
-            publishedPackageVar: 'fluent package'
+      vmImage: 'macos-latest'
+      demands:
+        - java
+        - JDK
+    variables:
+      - name: BUILDSECMON_OPT_IN
+        value: true
+    steps:
+      - task: Gradle@2
+        inputs:
+          gradleWrapperFile: 'gradlew'
+          tasks: 'assembleRelease makeUniversalPkg'
+          publishJUnitResults: true
+          testResultsFiles: '**/TEST-*.xml'
+          javaHomeOption: 'JDKVersion'
+          jdkVersionOption: '1.11'
+          sonarQubeRunAnalysis: false
+          options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'    
+
+      - task: CopyFiles@2
+        displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+        inputs:
+          SourceFolder: '$(system.defaultworkingdirectory)/universal'
+          Contents: '**'
+          TargetFolder: '$(build.artifactstagingdirectory)/outputs'
+          CleanTargetFolder: true
+          OverWrite: true
+          preserveTimestamp: true    
+
+      - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+        displayName: 📒 Generate Manifest
+        inputs:
+          BuildDropPath: '$(Build.ArtifactStagingDirectory)/outputs/'    
+
+      - task: UniversalPackages@0
+        inputs:
+          command: 'publish'
+          publishDirectory: '$(Build.ArtifactStagingDirectory)/outputs/'
+          feedsToUsePublish: 'internal'
+          vstsFeedPublish: 'Office'
+          vstsFeedPackagePublish: 'fluentuiandroid'
+          versionOption: 'custom'
+          versionPublish: '0.1.39'
+          packagePublishDescription: 'Fluent Universal Package'
+          publishedPackageVar: 'fluent package'
