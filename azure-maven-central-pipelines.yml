@@ -104,4 +104,3 @@ jobs:
           targetPath: "$(build.sourcesdirectory)/FluentUI.Demo/src/main/assets/dogfood-release-notes.txt"
           artifact: "notes"
           publishLocation: "pipeline"
-          

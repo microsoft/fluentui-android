@@ -60,4 +60,3 @@ jobs:
           versionPublish: '0.1.39'
           packagePublishDescription: 'Fluent Universal Package'
           publishedPackageVar: 'fluent package'
-          
