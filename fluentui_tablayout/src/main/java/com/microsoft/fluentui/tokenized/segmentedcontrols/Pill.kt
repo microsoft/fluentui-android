@@ -31,7 +31,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
+import androidx.compose.ui.semantics.text
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -46,6 +49,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.PillBarTokens
 import com.microsoft.fluentui.theme.token.controlTokens.PillButtonInfo
 import com.microsoft.fluentui.theme.token.controlTokens.PillButtonTokens
 import com.microsoft.fluentui.util.dpToPx
+import com.microsoft.fluentui.util.getStringResource
 import kotlinx.coroutines.launch
 import kotlin.math.max
 
@@ -74,8 +78,7 @@ fun PillButton(
     modifier: Modifier = Modifier,
     style: FluentStyle = FluentStyle.Neutral,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    pillButtonTokens: PillButtonTokens? = null,
-    positionNumber: Int? = null
+    pillButtonTokens: PillButtonTokens? = null
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
@@ -155,7 +158,6 @@ fun PillButton(
         LocalContext.current.resources.getString(R.string.fluentui_enabled)
     else
         LocalContext.current.resources.getString(R.string.fluentui_disabled)
-    val buttonNumberString: String = LocalContext.current.resources.getString(R.string.pill_button_number)
 
     Box(
         modifier
@@ -168,8 +170,8 @@ fun PillButton(
             .padding(vertical = token.verticalPadding(pillButtonInfo))
             .semantics(true) {
                 contentDescription =
-                    (if (pillMetaData.enabled) "${pillMetaData.text} $selectedString"
-                    else "${pillMetaData.text} $enabledString") + (if (positionNumber != null) " $buttonNumberString $positionNumber " else "")
+                    if (pillMetaData.enabled) "${pillMetaData.text} $selectedString"
+                    else "${pillMetaData.text} $enabledString"
 
             },
         contentAlignment = Alignment.Center
@@ -261,7 +263,7 @@ fun PillBar(
     val pillBarInfo = PillBarInfo(style)
     val lazyListState = rememberLazyListState()
     val scope = rememberCoroutineScope()
-
+    val buttonNumberString: String = LocalContext.current.resources.getString(R.string.pill_button_number)
     LazyRow(
         modifier = modifier
             .fillMaxWidth()
@@ -275,16 +277,20 @@ fun PillBar(
             item(index.toString()) {
                 PillButton(
                     pillMetadata,
-                    modifier = Modifier.onFocusEvent { focusState ->
-                        if (focusState.isFocused) {
-                            scope.launch {
-                                lazyListState.animateScrollToItem(
-                                    max(0, index - 2)
-                                )
+                    modifier = Modifier
+                        .onFocusEvent { focusState ->
+                            if (focusState.isFocused) {
+                                scope.launch {
+                                    lazyListState.animateScrollToItem(
+                                        max(0, index - 2)
+                                    )
+                                }
                             }
                         }
-                    }, style = style, pillButtonTokens = pillButtonTokens,
-                    positionNumber = if(metadataList.size > 1) (index+1) else null
+                        .semantics(mergeDescendants = true) {
+                            stateDescription =  if(metadataList.size >1) "$buttonNumberString ${index+1}" else ""
+                        },
+                    style = style, pillButtonTokens = pillButtonTokens
                 )
             }
         }
