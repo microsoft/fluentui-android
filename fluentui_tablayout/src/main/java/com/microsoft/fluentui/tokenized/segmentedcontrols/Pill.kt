@@ -47,7 +47,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.PillButtonInfo
 import com.microsoft.fluentui.theme.token.controlTokens.PillButtonTokens
 import com.microsoft.fluentui.util.dpToPx
 import kotlinx.coroutines.launch
-import java.text.FieldPosition
 import kotlin.math.max
 
 data class PillMetaData(
@@ -76,7 +75,7 @@ fun PillButton(
     style: FluentStyle = FluentStyle.Neutral,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     pillButtonTokens: PillButtonTokens? = null,
-    positionNumber: String? = null
+    positionNumber: Int? = null
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
@@ -156,6 +155,7 @@ fun PillButton(
         LocalContext.current.resources.getString(R.string.fluentui_enabled)
     else
         LocalContext.current.resources.getString(R.string.fluentui_disabled)
+    val buttonNumberString: String = LocalContext.current.resources.getString(R.string.pill_button_number)
 
     Box(
         modifier
@@ -167,8 +167,9 @@ fun PillButton(
             .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
             .padding(vertical = token.verticalPadding(pillButtonInfo))
             .semantics(true) {
-                contentDescription = (if (pillMetaData.enabled) "${pillMetaData.text} $selectedString"
-                else "${pillMetaData.text} $enabledString") + (if(positionNumber != null) " Button Number $positionNumber " else "")
+                contentDescription =
+                    (if (pillMetaData.enabled) "${pillMetaData.text} $selectedString"
+                    else "${pillMetaData.text} $enabledString") + (if (positionNumber != null) " $buttonNumberString $positionNumber " else "")
 
             },
         contentAlignment = Alignment.Center
@@ -283,7 +284,7 @@ fun PillBar(
                             }
                         }
                     }, style = style, pillButtonTokens = pillButtonTokens,
-                    positionNumber = if(metadataList.size > 1) (index+1).toString() else null
+                    positionNumber = if(metadataList.size > 1) (index+1) else null
                 )
             }
         }
