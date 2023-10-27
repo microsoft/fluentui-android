@@ -105,7 +105,4 @@
     <string name="fluentui_keyboard_number_password">NumberPassword</string>
     <string name="fluentui_keyboard_decimal">Decimal</string>
 
-    <!-- Describes the Numbering of Pill Butons Inside PillBar -->
-    <string name="pill_button_number">Button Number</string>
-
 </resources>
