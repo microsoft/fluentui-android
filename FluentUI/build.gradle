@@ -39,9 +39,6 @@ android {
             mavenCentral()
         }
     }
-    lintOptions {
-        disable 'MissingTranslation'
-    }
 }
 
 dependencies {
