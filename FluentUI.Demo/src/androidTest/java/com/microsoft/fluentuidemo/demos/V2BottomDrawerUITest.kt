@@ -21,6 +21,7 @@ import androidx.test.uiautomator.UiDevice
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_CONTENT_TAG
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_HANDLE_TAG
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_SCRIM_TAG
+import com.microsoft.fluentui.util.statusBarHeight
 import com.microsoft.fluentuidemo.BaseTest
 import com.microsoft.fluentuidemo.R
 import org.junit.Before
@@ -65,7 +66,8 @@ class V2BottomDrawerUITest : BaseTest() {
         waitForDrawerOpen()
         val drawerHandleY = (drawerHandle.fetchSemanticsNode().positionInRoot.y / context.resources.displayMetrics.density).dp
         val topHandlePadding = 8.dp
-        assert(drawerHandleY == topHandlePadding) //if drawerHandle is below status bar, then it's in Expanded state
+        val statusBarHeight = (context.statusBarHeight / context.resources.displayMetrics.density).dp
+        assert(drawerHandleY == topHandlePadding + statusBarHeight) //if drawerHandle is below status bar, then it's in Expanded state
     }
 
     private fun dpToPx(value: Dp) = (value * Resources

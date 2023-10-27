@@ -37,6 +37,7 @@ import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupPositionProvider
 import androidx.compose.ui.window.PopupProperties
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.core.view.WindowInsetsCompat
 import com.microsoft.fluentui.compose.*
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.theme.FluentTheme
@@ -1043,7 +1044,7 @@ fun Drawer(
  * in the visible region on expand. If false then, the BottomDrawer end at the bottom & hence the content get only the visible region height to draw itself.The default value is true
  * @param scrimVisible create obscures background when scrim visible set to true when the drawer is open. The default value is true
  * @param showHandle if true drawer handle would be visible. The default value is true
- * @param windowInsets window insets to be passed to the bottom drawer window via PaddingValues params.
+ * @param windowInsetsType Type window insets to be passed to the bottom drawer window via PaddingValues params. The default value is WindowInsetsCompat.Type.systemBars()
  * @param drawerTokens tokens to provide appearance values. If not provided then drawer tokens will be picked from [FluentTheme]
  * @param drawerContent composable that represents content inside the drawer
  *
@@ -1057,7 +1058,7 @@ fun BottomDrawer(
     slideOver: Boolean = true,
     scrimVisible: Boolean = true,
     showHandle: Boolean = true,
-    windowInsets: WindowInsets = WindowInsets.systemBars,
+    windowInsetsType: Int = WindowInsetsCompat.Type.systemBars(),
     drawerTokens: DrawerTokens? = null,
     drawerContent: @Composable () -> Unit
 ) {
@@ -1078,7 +1079,7 @@ fun BottomDrawer(
         val drawerInfo = DrawerInfo(type = behaviorType)
         ModalPopup(
             onDismissRequest = close,
-            windowInsets = windowInsets
+            windowInsetsType = windowInsetsType
         )
         {
             val drawerShape: Shape =
