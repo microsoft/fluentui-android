@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onChildAt
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -114,12 +115,12 @@ class V2ToolTipActivityUITest : BaseTest() {
     fun testTooltipOffset() {
         //Enter offset values
         val xOffsetTextField =
-            composeTestRule.onNodeWithTag(TOOLTIP_ACTIVITY_X_OFFSET_TEXTFIELD_TAG)
+            composeTestRule.onNodeWithTag(TOOLTIP_ACTIVITY_X_OFFSET_TEXTFIELD_TAG).onChildAt(0) //Text Field has two child composables, one is the actual text field and other is the spacer, hence picking first one
 
         xOffsetTextField.performTextInput("10")
 
         val yOffsetTextField =
-            composeTestRule.onNodeWithTag(TOOLTIP_ACTIVITY_Y_OFFSET_TEXTFIELD_TAG)
+            composeTestRule.onNodeWithTag(TOOLTIP_ACTIVITY_Y_OFFSET_TEXTFIELD_TAG).onChildAt(0)
         yOffsetTextField.performTextInput("10")
 
         //Click on the button to show tooltip
