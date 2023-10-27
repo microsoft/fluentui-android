@@ -9,7 +9,16 @@ import android.view.ViewTreeObserver
 import android.view.WindowManager
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.captionBar
+import androidx.compose.foundation.layout.displayCutout
+import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.mandatorySystemGestures
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.safeContent
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.tappableElement
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionContext
@@ -33,6 +42,7 @@ import androidx.compose.ui.semantics.popup
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.LayoutDirection
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.lifecycle.setViewTreeLifecycleOwner
@@ -40,7 +50,6 @@ import androidx.lifecycle.setViewTreeViewModelStoreOwner
 import androidx.savedstate.findViewTreeSavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
 import java.util.UUID
-import kotlin.math.roundToInt
 
 /**
  * Popup specific for modal bottom drawer.
@@ -48,7 +57,7 @@ import kotlin.math.roundToInt
 @Composable
 fun ModalPopup(
     onDismissRequest: () -> Unit,
-    windowInsets: WindowInsets,
+    windowInsetsType: Int = WindowInsetsCompat.Type.systemBars(),
     content: @Composable () -> Unit,
 ) {
     val view = LocalView.current
@@ -74,7 +83,9 @@ fun ModalPopup(
                             }
                             // Hide the popup while we can't position it correctly
                             .alpha(if (canCalculatePosition) 1f else 0f)
-                            .windowInsetsPadding(windowInsets)
+                            .windowInsetsPadding(
+                                convertWindowInsetsCompatTypeToWindowInsets(windowInsetsType)
+                            )
                             .imePadding()
                     ) {
                         currentContent()
@@ -91,6 +102,20 @@ fun ModalPopup(
             modalWindow.disposeComposition()
             modalWindow.dismiss()
         }
+    }
+}
+@Composable
+fun convertWindowInsetsCompatTypeToWindowInsets(windowInsetsCompatType: Int): WindowInsets {
+    return when (windowInsetsCompatType) {
+        WindowInsetsCompat.Type.statusBars() -> WindowInsets.statusBars
+        WindowInsetsCompat.Type.navigationBars() -> WindowInsets.navigationBars
+        WindowInsetsCompat.Type.systemBars() -> WindowInsets.systemBars
+        WindowInsetsCompat.Type.ime() -> WindowInsets.ime
+        WindowInsetsCompat.Type.tappableElement() -> WindowInsets.tappableElement
+        WindowInsetsCompat.Type.displayCutout() -> WindowInsets.displayCutout
+        WindowInsetsCompat.Type.captionBar() -> WindowInsets.captionBar
+        WindowInsetsCompat.Type.mandatorySystemGestures() -> WindowInsets.mandatorySystemGestures
+        else -> WindowInsets.systemBars
     }
 }
 
