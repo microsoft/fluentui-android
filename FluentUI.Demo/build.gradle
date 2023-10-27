@@ -26,9 +26,6 @@ android {
                 force("androidx.emoji2:emoji2:1.3.0")
             }
         }
-        lintOptions {
-            disable 'MissingTranslation'
-        }
     }
     kotlinOptions {
         jvmTarget = '1.8'
