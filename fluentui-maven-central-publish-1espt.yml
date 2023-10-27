@@ -110,18 +110,18 @@ extends:
             displayName: "\U0001F4D2 Publish Manifest"
             artifactName: SBom-$(System.JobAttempt)
             targetPath: $(build.sourcesdirectory)/build/_manifest
-          # - output: pipelineArtifact
-          #   displayName: 'Publish artifacts to pipeline'
-          #   targetPath: "$(build.sourcesdirectory)/build/artifacts/com/microsoft/fluentui"
-          #   artifactName: "Build"
-          #   publishLocation: "pipeline"
-          # - output: pipelineArtifact
-          #   displayName: 'Publish dogfood apk to pipeline'
-          #   targetPath: "$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/dogfood/release/FluentUI.Demo-dogfood-release.apk"
-          #   artifactName: "dogfood"
-          #   publishLocation: "pipeline"
-          # - output: pipelineArtifact
-          #   displayName: 'Publish release notes to pipeline'
-          #   targetPath: "$(build.sourcesdirectory)/FluentUI.Demo/src/main/assets/dogfood-release-notes.txt"
-          #   artifactName: "notes"
-          #   publishLocation: "pipeline"
+          - output: pipelineArtifact
+            displayName: 'Publish artifacts to pipeline'
+            targetPath: "$(build.sourcesdirectory)/build/artifacts/com/microsoft/fluentui"
+            artifactName: "Build"
+            publishLocation: "pipeline"
+          - output: pipelineArtifact
+            displayName: 'Publish dogfood apk to pipeline'
+            targetPath: "$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/dogfood/release/FluentUI.Demo-dogfood-release.apk"
+            artifactName: "dogfood"
+            publishLocation: "pipeline"
+          - output: pipelineArtifact
+            displayName: 'Publish release notes to pipeline'
+            targetPath: "$(build.sourcesdirectory)/FluentUI.Demo/src/main/assets/dogfood-release-notes.txt"
+            artifactName: "notes"
+            publishLocation: "pipeline"
