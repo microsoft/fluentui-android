@@ -5,4 +5,6 @@
 
     <!-- Describes the Numbering of Pill Butons Inside PillBar -->
     <string name="pill_button_number">Button Number</string>
+    <!-- used before total button count in PillBar -->
+    <string name="pill_bar_outof">out of</string>
 </resources>

@@ -262,6 +262,7 @@ fun PillBar(
     val lazyListState = rememberLazyListState()
     val scope = rememberCoroutineScope()
     val buttonNumberString: String = LocalContext.current.resources.getString(R.string.pill_button_number)
+    val outOfString: String = LocalContext.current.resources.getString(R.string.pill_bar_outof)
     LazyRow(
         modifier = modifier
             .fillMaxWidth()
@@ -286,7 +287,7 @@ fun PillBar(
                             }
                         }
                         .semantics(mergeDescendants = true) {
-                            stateDescription =  if(metadataList.size >1) "$buttonNumberString ${index+1}" else ""
+                            stateDescription =  if(metadataList.size >1) "$buttonNumberString ${index+1} $outOfString ${metadataList.size}" else ""
                         },
                     style = style, pillButtonTokens = pillButtonTokens
                 )
