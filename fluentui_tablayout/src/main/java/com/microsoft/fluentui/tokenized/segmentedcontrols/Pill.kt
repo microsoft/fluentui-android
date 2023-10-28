@@ -166,7 +166,8 @@ fun PillButton(
             .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
             .padding(vertical = token.verticalPadding(pillButtonInfo))
             .semantics(true) {
-                contentDescription = if (pillMetaData.enabled) "${pillMetaData.text} $selectedString"
+                contentDescription =
+                    if (pillMetaData.enabled) "${pillMetaData.text} $selectedString"
                     else "${pillMetaData.text} $enabledString"
 
             },
@@ -277,16 +278,17 @@ fun PillBar(
                 PillButton(
                     pillMetadata,
                     modifier = Modifier.onFocusEvent { focusState ->
-                            if (focusState.isFocused) {
-                                scope.launch {
-                                    lazyListState.animateScrollToItem(
-                                        max(0, index - 2)
-                                    )
-                                }
+                        if (focusState.isFocused) {
+                            scope.launch {
+                                lazyListState.animateScrollToItem(
+                                    max(0, index - 2)
+                                )
                             }
                         }
+                    }
                         .semantics(mergeDescendants = true) {
-                            stateDescription =  if(metadataList.size >1) "$buttonNumberString ${index+1} $outOfString ${metadataList.size}" else ""
+                            stateDescription =
+                                if (metadataList.size > 1) "$buttonNumberString ${index + 1} $outOfString ${metadataList.size}" else ""
                         },
                     style = style, pillButtonTokens = pillButtonTokens
                 )
