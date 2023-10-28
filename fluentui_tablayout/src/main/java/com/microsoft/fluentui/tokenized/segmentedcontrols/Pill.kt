@@ -31,7 +31,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.TextStyle
@@ -167,8 +166,7 @@ fun PillButton(
             .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
             .padding(vertical = token.verticalPadding(pillButtonInfo))
             .semantics(true) {
-                contentDescription =
-                    if (pillMetaData.enabled) "${pillMetaData.text} $selectedString"
+                contentDescription = if (pillMetaData.enabled) "${pillMetaData.text} $selectedString"
                     else "${pillMetaData.text} $enabledString"
 
             },
@@ -228,6 +226,7 @@ fun PillButton(
         }
     }
 }
+
 /**
  * API to create Bar of Pill button. The PillBar control is a linear set of two or more PillButton, each of which functions as a mutually exclusive button.
  * PillBar are commonly used as filter for search results.
@@ -263,6 +262,7 @@ fun PillBar(
     val scope = rememberCoroutineScope()
     val buttonNumberString: String = LocalContext.current.resources.getString(R.string.pill_button_number)
     val outOfString: String = LocalContext.current.resources.getString(R.string.pill_bar_outof)
+
     LazyRow(
         modifier = modifier
             .fillMaxWidth()
@@ -276,8 +276,7 @@ fun PillBar(
             item(index.toString()) {
                 PillButton(
                     pillMetadata,
-                    modifier = Modifier
-                        .onFocusEvent { focusState ->
+                    modifier = Modifier.onFocusEvent { focusState ->
                             if (focusState.isFocused) {
                                 scope.launch {
                                     lazyListState.animateScrollToItem(
