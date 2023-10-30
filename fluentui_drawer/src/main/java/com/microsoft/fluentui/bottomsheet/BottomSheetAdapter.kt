@@ -57,7 +57,7 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as? BottomSheetItemViewHolder)?.setBottomSheetItem(items[position])
+        (holder as? BottomSheetItemViewHolder)?.setBottomSheetItem(items[position], position, items.size)
     }
 
     /**
@@ -79,7 +79,7 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
             listItemView = itemView
         }
 
-        fun setBottomSheetItem(item: BottomSheetItem) {
+        fun setBottomSheetItem(item: BottomSheetItem, position: Int, size: Int) {
             listItemView.title = item.title
             listItemView.subtitle = item.subtitle
             listItemView.setTag(R.id.fluentui_bottom_sheet_item_divider, item.useDivider)
@@ -124,6 +124,9 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     ) {
                         super.onInitializeAccessibilityNodeInfo(v, info)
                         info.roleDescription = item.roleDescription
+                        if(size>1) {
+                            info.contentDescription = "Item " + (position + 1).toString() + " of " + size
+                        }
                     }
                 }
             )

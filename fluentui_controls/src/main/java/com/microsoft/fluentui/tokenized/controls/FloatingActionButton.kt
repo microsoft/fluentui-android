@@ -34,7 +34,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.FABTokens
  *
  * @param onClick OnClick behaviour for the button
  * @param modifier Optional Modifier for FAB
- * @param state State the FAB is supposed to be in. Default: [FABState.Expanded]
+ * @param state State the FAB is supposed to be in. Default: [FABState.Expanded]m
  * @param size Size of the FAB. Default: [FABSize.Large]
  * @param enabled Boolean for enabling/disabling FAB. Default: [true]
  * @param interactionSource Interaction Source for user interactions.
