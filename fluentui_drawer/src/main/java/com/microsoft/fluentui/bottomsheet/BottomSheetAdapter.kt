@@ -125,7 +125,7 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         super.onInitializeAccessibilityNodeInfo(v, info)
                         info.roleDescription = item.roleDescription
                         if(size>1) {
-                            info.contentDescription = "Item " + (position + 1).toString() + " of " + size
+                            info.contentDescription = (position + 1).toString() + " of " + size
                         }
                     }
                 }
