@@ -67,7 +67,6 @@ data class PillMetaData(
  * @param style Color Scheme of pill shaped button. Default: [FluentStyle.Neutral]
  * @param interactionSource Interaction Source Object to handle gestures.
  * @param pillButtonTokens Tokens to customize the design of pill button.
- * @param positionNumber Pill button number when inside PillBar. Default: null
  */
 @Composable
 fun PillButton(
