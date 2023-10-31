@@ -32,6 +32,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -164,7 +165,10 @@ fun PillButton(
             .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
             .padding(vertical = token.verticalPadding(pillButtonInfo))
             .semantics(true) {
-                contentDescription = if (pillMetaData.enabled) "${pillMetaData.text} $selectedString" else "${pillMetaData.text} $enabledString"
+                contentDescription =
+                    if (pillMetaData.enabled) "${pillMetaData.text} $selectedString"
+                    else "${pillMetaData.text} $enabledString"
+
             },
         contentAlignment = Alignment.Center
     ) {
@@ -256,7 +260,7 @@ fun PillBar(
     val pillBarInfo = PillBarInfo(style)
     val lazyListState = rememberLazyListState()
     val scope = rememberCoroutineScope()
-
+    val positionString: String = LocalContext.current.resources.getString(R.string.position_string)
     LazyRow(
         modifier = modifier
             .fillMaxWidth()
@@ -278,7 +282,12 @@ fun PillBar(
                                 )
                             }
                         }
-                    }, style = style, pillButtonTokens = pillButtonTokens
+                    }
+                        .semantics(mergeDescendants = true) {
+                            stateDescription =
+                                if (metadataList.size > 1) positionString.format(index+1, metadataList.size ) else ""
+                        },
+                    style = style, pillButtonTokens = pillButtonTokens
                 )
             }
         }
