@@ -54,7 +54,8 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     private var isDrawerHandleVisible = true
     private var sheetContainer: PersistentBottomSheetContentViewProvider.SheetContainerInfo? = null
     private var focusDrawerHandleInAccessibility = true
-    var backgroundViews: List<View>? = null
+    var backgroundViews: List<View>? = null  //views in activity that will be hidden behind the Expanded sheet
+    // so focus doesn't reach to background Views when sheet is expanded
 
 
     init {

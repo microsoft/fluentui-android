@@ -81,7 +81,7 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
             getString(R.string.drawer_content_desc_collapse_state),
             getString(R.string.drawer_content_desc_expand_state)
         )
-        persistentBottomSheetDemo.backgroundViews = listOf(persistentBottomSheetBinding.demoMainContent, persistentBottomSheetBinding.scrollContainer)
+        persistentBottomSheetDemo.backgroundViews = listOf(persistentBottomSheetBinding.demoMainContent, persistentBottomSheetBinding.scrollContainer) // These views shouldn't get accessibility focus when Sheet is expanded
 
         mHorizontalSheet = arrayListOf(
             SheetItem(
