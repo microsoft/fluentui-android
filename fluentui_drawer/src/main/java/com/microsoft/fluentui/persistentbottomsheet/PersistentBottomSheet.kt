@@ -54,6 +54,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     private var isDrawerHandleVisible = true
     private var sheetContainer: PersistentBottomSheetContentViewProvider.SheetContainerInfo? = null
     private var focusDrawerHandleInAccessibility = true
+    var backgroundViews: List<View>? = null
 
 
     init {
@@ -249,6 +250,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         if(focusDrawerHandle) {
             persistentSheetBinding.sheetDrawerHandle.requestFocus()
         }
+        setImportantForAccessibility(backgroundViews!!, View.IMPORTANT_FOR_ACCESSIBILITY_YES)
     }
 
     fun expand(focusDrawerHandle: Boolean = true) {
@@ -257,10 +259,12 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         if(focusDrawerHandle) {
             persistentSheetBinding.sheetDrawerHandle.requestFocus()
         }
+        backgroundViews?.let { setImportantForAccessibility(it, View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS) }
     }
 
     fun hide(){
         persistentSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        backgroundViews?.let { setImportantForAccessibility(it, View.IMPORTANT_FOR_ACCESSIBILITY_YES) }
     }
 
     fun show(expanded: Boolean = false, focusDrawerHandle: Boolean = true) {
@@ -273,6 +277,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         if(focusDrawerHandle) {
             persistentSheetBinding.sheetDrawerHandle.requestFocus()
         }
+        backgroundViews?.let { setImportantForAccessibility(it, View.IMPORTANT_FOR_ACCESSIBILITY_YES) }
     }
 
     fun updateBottomSheetLayoutParams(peekHeight: Int = itemLayoutParam.defaultPeekHeight,
@@ -439,6 +444,14 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
             return true
         }
         return super.onKeyUp(keyCode, event)
+    }
+
+    fun setImportantForAccessibility(views: List<View>, important: Int) {
+        if(views!=null) {
+            for (view in views) {
+                view.importantForAccessibility = important
+            }
+        }
     }
 
 }
