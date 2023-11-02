@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -42,6 +43,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.ButtonTokens
  * @param contentDescription Content Description for Icon. Default: [null]
  * @param buttonTokens Tokens to customize appearance of button. Default: [null]
  */
+@OptIn(ExperimentalTextApi::class)
 @Composable
 fun Button(
     onClick: () -> Unit,
