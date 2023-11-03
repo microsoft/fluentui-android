@@ -68,6 +68,7 @@ private fun CreateActivityUI() {
     var dynamicSizeContent by remember { mutableStateOf(false) }
     var nestedDrawerContent by remember { mutableStateOf(false) }
     var listContent by remember { mutableStateOf(true) }
+    var preventDismissalOnScrimClick by remember { mutableStateOf(false) }
     var selectedContent by remember { mutableStateOf(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT) }
     var selectedBehaviorType by remember { mutableStateOf(BehaviorType.BOTTOM_SLIDE_OVER) }
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -80,7 +81,8 @@ private fun CreateActivityUI() {
             } else {
                 getDynamicListGeneratorAsContent()
             },
-            scrimVisible = scrimVisible
+            scrimVisible = scrimVisible,
+            preventDismissalOnScrimClick = preventDismissalOnScrimClick
         )
         LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
             item {
@@ -167,6 +169,26 @@ private fun CreateActivityUI() {
                         checkedState = scrimVisible
                     )
                 }
+                )
+            }
+            item {
+                val preventDismissalOnScrimClickText = stringResource(id = R.string.prevent_scrim_click_dismissal)
+                ListItem.Header(title = preventDismissalOnScrimClickText,
+                    modifier = Modifier
+                        .toggleable(
+                            value = preventDismissalOnScrimClick,
+                            role = Role.Switch,
+                            onValueChange = { preventDismissalOnScrimClick = !preventDismissalOnScrimClick }
+                        )
+                        .clearAndSetSemantics {
+                            this.contentDescription = preventDismissalOnScrimClickText
+                        },
+                    trailingAccessoryContent = {
+                        ToggleSwitch(
+                            onValueChange = { preventDismissalOnScrimClick = !preventDismissalOnScrimClick },
+                            checkedState = preventDismissalOnScrimClick
+                        )
+                    }
                 )
             }
 
@@ -272,7 +294,8 @@ private fun CreateActivityUI() {
 private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     behaviorType: BehaviorType,
     drawerContent: @Composable ((() -> Unit) -> Unit),
-    scrimVisible: Boolean = true
+    scrimVisible: Boolean = true,
+    preventDismissalOnScrimClick: Boolean
 ) {
     val scope = rememberCoroutineScope()
     val drawerState = rememberDrawerState()
@@ -302,6 +325,6 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
         drawerContent = { drawerContent(close) },
         behaviorType = behaviorType,
         scrimVisible = scrimVisible,
-        onScrimClick = { Log.i("Drawer", "Scrim clicked to close") }
+        preventDismissalOnScrimClick = preventDismissalOnScrimClick
     )
 }
