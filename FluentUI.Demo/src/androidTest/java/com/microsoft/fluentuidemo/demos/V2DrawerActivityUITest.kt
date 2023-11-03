@@ -307,4 +307,15 @@ class V2DrawerActivityUITest : BaseTest() {
         closeCheckForVerticalDrawer()
     }
 
+    @Test
+    fun testPreventDrawerDismissalOnScrimClick(){
+        composeTestRule.onNodeWithText(getString(R.string.prevent_scrim_click_dismissal), useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithText("Open Drawer").performClick()
+        openCheckForVerticalDrawer()
+        drawerScrim.performTouchInput {
+            click(Offset((0..width).random().toFloat(), (0..height).random().toFloat()))
+        }
+        openCheckForVerticalDrawer()
+    }
+
 }
