@@ -1,6 +1,9 @@
 package com.microsoft.fluentuidemo.demos
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -298,6 +301,7 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
         drawerState = drawerState,
         drawerContent = { drawerContent(close) },
         behaviorType = behaviorType,
-        scrimVisible = scrimVisible
+        scrimVisible = scrimVisible,
+        onScrimClick = { Log.i("Drawer", "Scrim clicked to close") }
     )
 }
