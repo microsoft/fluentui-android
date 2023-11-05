@@ -46,4 +46,32 @@ class V2BannerUITest {
         bannerAccessory2.assertExists()
         bannerAccessory2.assertIsDisplayed()
     }
+
+    @Test
+    fun testNoAccessoryButtonBanner(){
+        composeTestRule.setContent {
+            Banner(
+                text = "Banner",
+                leadingIcon = FluentIcon(Icons.Outlined.Info, contentDescription = "Info"),
+                actionButtonOnClick = {},
+                actionButtonText = "Action",
+                accessoryTextButton1 = "Accessory 1",
+                accessoryTextButton2 = "Accessory 2",
+            )
+        }
+        composeTestRule.onNodeWithText("Accessory 1").assertDoesNotExist()
+        composeTestRule.onNodeWithText("Accessory 2").assertDoesNotExist()
+    }
+
+    @Test
+    fun testNoActionButtonBanner(){
+        composeTestRule.setContent {
+            Banner(
+                text = "Banner",
+                leadingIcon = FluentIcon(Icons.Outlined.Info, contentDescription = "Info"),
+                actionButtonText = "Action",
+            )
+        }
+        composeTestRule.onNodeWithText("Action").assertDoesNotExist()
+    }
 }
