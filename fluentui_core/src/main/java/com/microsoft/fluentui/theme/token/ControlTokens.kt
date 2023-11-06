@@ -7,6 +7,7 @@ package com.microsoft.fluentui.theme.token
 
 import androidx.compose.runtime.compositionLocalOf
 import com.microsoft.fluentui.theme.token.controlTokens.*
+import java.util.ResourceBundle.Control
 
 interface ControlInfo
 
@@ -38,6 +39,7 @@ open class ControlTokens : IControlTokens {
         AvatarCarouselControlType,
         AvatarGroupControlType,
         BadgeControlType,
+        BannerControlType,
         BasicCardControlType,
         BasicChipControlType,
         BottomSheetControlType,
@@ -85,6 +87,7 @@ open class ControlTokens : IControlTokens {
                 ControlType.AvatarCarouselControlType -> AvatarCarouselTokens()
                 ControlType.AvatarGroupControlType -> AvatarGroupTokens()
                 ControlType.BadgeControlType -> BadgeTokens()
+                ControlType.BannerControlType -> BannerTokens()
                 ControlType.BasicCardControlType -> BasicCardTokens()
                 ControlType.BasicChipControlType -> BasicChipTokens()
                 ControlType.BottomSheetControlType -> BottomSheetTokens()

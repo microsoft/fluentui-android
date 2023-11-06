@@ -35,6 +35,7 @@ import com.microsoft.fluentuidemo.demos.V2AvatarActivity
 import com.microsoft.fluentuidemo.demos.V2AvatarCarouselActivity
 import com.microsoft.fluentuidemo.demos.V2AvatarGroupActivity
 import com.microsoft.fluentuidemo.demos.V2BadgeActivity
+import com.microsoft.fluentuidemo.demos.V2BannerActivity
 import com.microsoft.fluentuidemo.demos.V2BasicChipActivity
 import com.microsoft.fluentuidemo.demos.V2BasicControlsActivity
 import com.microsoft.fluentuidemo.demos.V2BottomDrawerActivity
@@ -77,6 +78,7 @@ const val V2AVATAR = "V2 Avatar"
 const val V2AVATAR_CAROUSEL = "V2 Avatar Carousel"
 const val V2AVATAR_GROUP = "V2 Avatar Group"
 const val V2BADGE = "V2 Badge"
+const val V2BANNER = "V2 Banner"
 const val V2BASIC_CHIP = "V2 Basic Chip"
 const val V2BASIC_CONTROLS = "V2 Basic Controls"
 const val V2BOTTOM_DRAWER = "V2 Bottom Drawer"
@@ -164,6 +166,7 @@ val V2DEMO = arrayListOf(
     Demo(V2AVATAR_CAROUSEL, V2AvatarCarouselActivity::class),
     Demo(V2AVATAR_GROUP, V2AvatarGroupActivity::class),
     Demo(V2BADGE, V2BadgeActivity::class),
+    Demo(V2BANNER, V2BannerActivity::class),
     Demo(V2BASIC_CHIP, V2BasicChipActivity::class),
     Demo(V2BASIC_CONTROLS, V2BasicControlsActivity::class),
     Demo(V2BOTTOM_DRAWER, V2BottomDrawerActivity::class, Badge.APIBreak),
