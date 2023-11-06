@@ -138,6 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">Chân_trang_tính</string>
     <string name="bottom_sheet_dialog">Hộp_thoại_chân_trang_tính</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Hiển thị với các mục dòng đơn</string>
     <string name="bottom_sheet_with_double_line_items">Hiển thị với các mục dòng kép</string>
@@ -283,15 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
+    <string name="basic_input_activity_heading">Different views of button</string>
     <string name="button">Nút</string>
     <string name="buttonbar">Thanh nút</string>
-    <string name="button_disabled">Nút Đã tắt</string>
-    <string name="button_borderless">Nút không viền</string>
-    <string name="button_borderless_disabled">Nút Đã tắt không viền</string>
-    <string name="button_large">Nút lớn</string>
-    <string name="button_large_disabled">Nút Đã tắt lớn</string>
-    <string name="button_outlined">Nút có viền</string>
-    <string name="button_outlined_disabled">Nút Đã tắt có viền</string>
+    <string name="button_disabled">Disabled Button Example</string>
+    <string name="button_borderless">Borderless Button Example</string>
+    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
+    <string name="button_large">Large Button Example</string>
+    <string name="button_large_disabled">Large Disabled Button Example</string>
+    <string name="button_outlined">Outlined Button Example</string>
+    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Chọn ngày tháng</string>
@@ -851,6 +853,10 @@
     <string name="drawer_nested_drawer_content">Nội dung ngăn xếp chồng nhau</string>
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Có thể mở rộng</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="skip_open_state">Skip Open State</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Prevent Dismissal on Scrim Click</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Hiện núm điều khiển</string>
 

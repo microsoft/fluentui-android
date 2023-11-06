@@ -2,4 +2,7 @@
 <resources>
     <!--- Announces the name of the tab and its position in the list of tabs-->
     <string name="tab_content_description">\u0020 第 %1$d 个选项卡(共 %2$d 个)</string>
+
+    <!-- Describes the Numbering of Pill Butons Inside PillBar -->
+    <string name="position_string">Item %d in list of %d</string>
 </resources>

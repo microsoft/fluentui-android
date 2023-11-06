@@ -138,6 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Bir satrli element bilan koʻrsatish</string>
     <string name="bottom_sheet_with_double_line_items">Ikki satrli elementlar bilan koʻrsatish</string>
@@ -283,15 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
+    <string name="basic_input_activity_heading">Different views of button</string>
     <string name="button">Tugma</string>
     <string name="buttonbar">ButtonBar</string>
-    <string name="button_disabled">Oʻchirilgan tugmasi</string>
-    <string name="button_borderless">Chegarasiz tugmasi</string>
-    <string name="button_borderless_disabled">Chegarasiz oʻchirilgan tugma</string>
-    <string name="button_large">Yirik tugmasi</string>
-    <string name="button_large_disabled">Katta faolsizlashtirilgan tugma</string>
-    <string name="button_outlined">Kontur tugmasi</string>
-    <string name="button_outlined_disabled">Belgilangan oʻchirilgan tugmasi</string>
+    <string name="button_disabled">Disabled Button Example</string>
+    <string name="button_borderless">Borderless Button Example</string>
+    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
+    <string name="button_large">Large Button Example</string>
+    <string name="button_large_disabled">Large Disabled Button Example</string>
+    <string name="button_outlined">Outlined Button Example</string>
+    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Sanani tanlash</string>
@@ -852,6 +854,10 @@
     <string name="drawer_nested_drawer_content">Ichki panel kontenti</string>
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Kengaytiriladigan</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="skip_open_state">Skip Open State</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Prevent Dismissal on Scrim Click</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Dastakni chiqarish</string>
 

@@ -138,6 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Afficher avec des éléments sur une seule ligne</string>
     <string name="bottom_sheet_with_double_line_items">Afficher avec des éléments de ligne double</string>
@@ -283,15 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
+    <string name="basic_input_activity_heading">Different views of button</string>
     <string name="button">Bouton</string>
     <string name="buttonbar">Barre de boutons</string>
-    <string name="button_disabled">Bouton désactivé</string>
-    <string name="button_borderless">Bouton sans bordure</string>
-    <string name="button_borderless_disabled">Bouton désactivé sans bordure</string>
-    <string name="button_large">Grand bouton</string>
-    <string name="button_large_disabled">Grand bouton désactivé</string>
-    <string name="button_outlined">Bouton avec contour</string>
-    <string name="button_outlined_disabled">Bouton désactivé avec contour</string>
+    <string name="button_disabled">Disabled Button Example</string>
+    <string name="button_borderless">Borderless Button Example</string>
+    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
+    <string name="button_large">Large Button Example</string>
+    <string name="button_large_disabled">Large Disabled Button Example</string>
+    <string name="button_outlined">Outlined Button Example</string>
+    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Choisir une date</string>
@@ -853,6 +855,10 @@
     <string name="drawer_nested_drawer_content">Contenu du tiroir imbriqué</string>
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Extensible</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="skip_open_state">Skip Open State</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Prevent Dismissal on Scrim Click</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Afficher la poignée</string>
 

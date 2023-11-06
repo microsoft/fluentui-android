@@ -138,6 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">Nederste ark</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Vis med elementer på én linje</string>
     <string name="bottom_sheet_with_double_line_items">Vis med elementer med dobbelt linje</string>
@@ -283,15 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
+    <string name="basic_input_activity_heading">Different views of button</string>
     <string name="button">Knap</string>
     <string name="buttonbar">Værktøjslinje</string>
-    <string name="button_disabled">Deaktiveret knap</string>
-    <string name="button_borderless">Knap uden kanter</string>
-    <string name="button_borderless_disabled">Deaktiveret knap uden kanter</string>
-    <string name="button_large">Knappen Stor</string>
-    <string name="button_large_disabled">Knappen Stor deaktiveret</string>
-    <string name="button_outlined">Knappen Kontur</string>
-    <string name="button_outlined_disabled">Knappen Fremhævet deaktiveret</string>
+    <string name="button_disabled">Disabled Button Example</string>
+    <string name="button_borderless">Borderless Button Example</string>
+    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
+    <string name="button_large">Large Button Example</string>
+    <string name="button_large_disabled">Large Disabled Button Example</string>
+    <string name="button_outlined">Outlined Button Example</string>
+    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Vælg en dato</string>
@@ -852,6 +854,10 @@
     <string name="drawer_nested_drawer_content">Indhold i indlejret skuffe</string>
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Kan udvides</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="skip_open_state">Skip Open State</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Prevent Dismissal on Scrim Click</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Vis håndtag</string>
 

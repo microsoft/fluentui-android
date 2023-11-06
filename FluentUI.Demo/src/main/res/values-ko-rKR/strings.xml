@@ -138,6 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">한 줄 항목으로 표시</string>
     <string name="bottom_sheet_with_double_line_items">이중 줄 항목으로 표시</string>
@@ -283,15 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
+    <string name="basic_input_activity_heading">Different views of button</string>
     <string name="button">단추</string>
     <string name="buttonbar">ButtonBar</string>
-    <string name="button_disabled">사용 안 함 단추</string>
-    <string name="button_borderless">테두리 없는 단추</string>
-    <string name="button_borderless_disabled">테두리 없는 사용 안 함 단추</string>
-    <string name="button_large">큰 단추</string>
-    <string name="button_large_disabled">큰 사용 안 함 단추</string>
-    <string name="button_outlined">개요 단추</string>
-    <string name="button_outlined_disabled">윤곽선이 있는 사용 안 함 단추</string>
+    <string name="button_disabled">Disabled Button Example</string>
+    <string name="button_borderless">Borderless Button Example</string>
+    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
+    <string name="button_large">Large Button Example</string>
+    <string name="button_large_disabled">Large Disabled Button Example</string>
+    <string name="button_outlined">Outlined Button Example</string>
+    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">날짜 선택</string>
@@ -851,6 +853,10 @@
     <string name="drawer_nested_drawer_content">중첩 서랍 콘텐츠</string>
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">확장 가능</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="skip_open_state">Skip Open State</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Prevent Dismissal on Scrim Click</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">핸들 표시</string>
 

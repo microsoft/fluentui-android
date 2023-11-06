@@ -61,6 +61,10 @@
     <!-- Describes the outline design of control -->
     <string name="fluentui_outline">Kontuur</string>
 
+    <string name="fluentui_action_button_icon">Action button icon</string>
+    <string name="fluentui_center">Center text</string>
+    <string name="fluentui_accessory_button">Accessory Buttons</string>
+
     <!--Describes the control -->
     <string name="fluentui_radio_button">Raadionupp</string>
     <string name="fluentui_label">Silt</string>
