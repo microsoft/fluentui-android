@@ -50,14 +50,8 @@ import com.microsoft.fluentui.tokenized.calculateFraction
 import com.microsoft.fluentui.util.dpToPx
 import com.microsoft.fluentui.util.pxToDp
 import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
-import kotlin.coroutines.CoroutineContext
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
