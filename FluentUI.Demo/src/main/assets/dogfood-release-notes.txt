@@ -4,10 +4,14 @@ What's New:
 
 Fluent V2:
 	Fix/Enhancement:
-	        1. Added skipOpenState feature to Bottom Drawer for direct Expanding and closing, completely omitting the middle (half screen) state.
-	        2. Resolved crashes and freezes issues with Bottom Drawer.
-	        3. Adjusted Drawer and BottomSheet elevation.
-		4. Fixed keyboards focus color for List Items and Section Headers.
-		5. Button now uses stable version of TextStyle.
-		6. Upgraded compose library to 1.5.1 with BOM 2023.09.00. Added a workaround to get around Android34 upgrade.
-		7. Added variant of getStringResource function with format arguments.
+	        1. Introducing Fluent Banners: We are excited to introduce Fluent Banners, a novel component designed for displaying banners on the screen.
+	        2. The BottomDrawer component now impeccably adheres to window insets, ensuring that it does not obstruct system bars.
+	        3. PillBar Talkback Enhancements: We have improved the accessibility of the PillBar component by enabling Talkback to announce the position of each pill button within the bar.
+	        4. Drawer and Bottom Drawer Scrim Behavior Control: Users now have the flexibility to disable the automatic closure of drawers upon tapping the scrim. This allows for a more customized user experience.
+		5.  Introducing a new parameter for the Drawer component that enables you to define a callback function when the scrim is tapped, enhancing the interactivity of your app.
+		6. Provides an enhanced localization support for strings within the library, ensuring a more inclusive and accessible user experience.
+
+Fluent V1:
+        Fix/Enhancement:
+            1. In the EXPANDED state of PersistentBottomSheet, Talkback focus now remains on visible elements, eliminating navigation to hidden background views.
+            2. Implementing Talkback support to announce the positions of individual items within the sheet.
