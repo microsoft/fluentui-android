@@ -61,6 +61,10 @@
     <!-- Describes the outline design of control -->
     <string name="fluentui_outline">Структура</string>
 
+    <string name="fluentui_action_button_icon">Action button icon</string>
+    <string name="fluentui_center">Center text</string>
+    <string name="fluentui_accessory_button">Accessory Buttons</string>
+
     <!--Describes the control -->
     <string name="fluentui_radio_button">Переключатель</string>
     <string name="fluentui_label">Метка</string>

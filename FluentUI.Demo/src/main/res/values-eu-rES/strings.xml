@@ -138,6 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">Beheko orria</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Erakutsi lerro bakarreko elementuak</string>
     <string name="bottom_sheet_with_double_line_items">Erakutsi lerro bikoitzeko elementuekin</string>
@@ -283,15 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
+    <string name="basic_input_activity_heading">Different views of button</string>
     <string name="button">Botoia</string>
     <string name="buttonbar">Botoi-barra</string>
-    <string name="button_disabled">Desgaitutako botoia</string>
-    <string name="button_borderless">Ertzik gabeko botoia</string>
-    <string name="button_borderless_disabled">Ertzik gabeko botoi desgaitua</string>
-    <string name="button_large">Botoi handia</string>
-    <string name="button_large_disabled">Desgaitutako botoi handia</string>
-    <string name="button_outlined">Inguruko lerroa duen botoia</string>
-    <string name="button_outlined_disabled">Inguruko lerroa duen botoi desgaitua</string>
+    <string name="button_disabled">Disabled Button Example</string>
+    <string name="button_borderless">Borderless Button Example</string>
+    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
+    <string name="button_large">Large Button Example</string>
+    <string name="button_large_disabled">Large Disabled Button Example</string>
+    <string name="button_outlined">Outlined Button Example</string>
+    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Aukeratu data</string>
@@ -852,6 +854,8 @@
     <string name="drawer_nested_drawer_content">Habia-tiraderaren edukia</string>
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Zabalgarria</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="skip_open_state">Skip Open State</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Erakutsi heldulekua</string>
 
