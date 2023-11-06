@@ -138,6 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">សន្លឹកខាងក្រោម</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">បង្ហាញជាមួយធាតុតែមួយបន្ទាត់</string>
     <string name="bottom_sheet_with_double_line_items">បង្ហាញជាមួយធាតុបន្ទាត់ទ្វេ</string>
@@ -283,15 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
+    <string name="basic_input_activity_heading">Different views of button</string>
     <string name="button">ប៊ូតុង</string>
     <string name="buttonbar">របារប៊ូតុង</string>
-    <string name="button_disabled">ប៊ូតុងមិនអាចប្រើបាន</string>
-    <string name="button_borderless">ប៊ូតុងគ្មានស៊ុម</string>
-    <string name="button_borderless_disabled">ប៊ូតុងមិនអាចប្រើបានគ្មានស៊ុម</string>
-    <string name="button_large">ប៊ូតុងធំ</string>
-    <string name="button_large_disabled">ប៊ូតុងមិនអាចប្រើបានធំ</string>
-    <string name="button_outlined">ប៊ូតុងដែលបានគ្រោង</string>
-    <string name="button_outlined_disabled">បានគ្រោងប៊ូតុងមិនអាចប្រើបាន</string>
+    <string name="button_disabled">Disabled Button Example</string>
+    <string name="button_borderless">Borderless Button Example</string>
+    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
+    <string name="button_large">Large Button Example</string>
+    <string name="button_large_disabled">Large Disabled Button Example</string>
+    <string name="button_outlined">Outlined Button Example</string>
+    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">ជ្រើសរើសកាលបរិច្ឆេទមួយ</string>
@@ -851,6 +853,8 @@
     <string name="drawer_nested_drawer_content">ខ្លឹមសារថតបង្កប់ក្នុង</string>
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">អាចពង្រីកបាន</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="skip_open_state">Skip Open State</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">បង្ហាញចំណុចទាញ</string>
 
