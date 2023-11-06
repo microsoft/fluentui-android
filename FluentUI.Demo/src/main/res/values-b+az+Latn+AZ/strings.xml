@@ -138,6 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">AltSheet</string>
     <string name="bottom_sheet_dialog">AltSheetDialoqu</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Tək sətir elementləri ilə göstərin</string>
     <string name="bottom_sheet_with_double_line_items">Qoşa sətir elementləri ilə göstər</string>
@@ -283,15 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
+    <string name="basic_input_activity_heading">Different views of button</string>
     <string name="button">Düymə</string>
     <string name="buttonbar">Düymə Çubuğu</string>
-    <string name="button_disabled">Qeyri-aktiv et Düyməsi</string>
-    <string name="button_borderless">Sərhədsiz Düyməsi</string>
-    <string name="button_borderless_disabled">Sərhədsiz Qeyri-aktiv edildi Düyməsi</string>
-    <string name="button_large">Böyük Düymə</string>
-    <string name="button_large_disabled">Böyük Qeyri-aktiv edildi Düyməsi</string>
-    <string name="button_outlined">Konturlanmış Düymə</string>
-    <string name="button_outlined_disabled">Konturlanma Qeyri-aktiv edildi Düyməsi</string>
+    <string name="button_disabled">Disabled Button Example</string>
+    <string name="button_borderless">Borderless Button Example</string>
+    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
+    <string name="button_large">Large Button Example</string>
+    <string name="button_large_disabled">Large Disabled Button Example</string>
+    <string name="button_outlined">Outlined Button Example</string>
+    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Tarix seçin</string>
@@ -852,6 +854,8 @@
     <string name="drawer_nested_drawer_content">İç-içə Siyirmə Məzmunu</string>
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Genişlənə bilən</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="skip_open_state">Skip Open State</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Tutacağı Göstərin</string>
 

@@ -138,6 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">Donji list</string>
     <string name="bottom_sheet_dialog">Dijaloški okvir donjeg lista</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Prikaži sa stavkama u jednom retku</string>
     <string name="bottom_sheet_with_double_line_items">Prikaži sa stavkama u dva retka</string>
@@ -283,15 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
+    <string name="basic_input_activity_heading">Different views of button</string>
     <string name="button">Gumb</string>
     <string name="buttonbar">Traka gumba</string>
-    <string name="button_disabled">Gumb Onemogućeno</string>
-    <string name="button_borderless">Gumb bez obruba</string>
-    <string name="button_borderless_disabled">Gumb Onemogućeno bez obruba</string>
-    <string name="button_large">Veliki gumb</string>
-    <string name="button_large_disabled">Veliki gumb Onemogućeno</string>
-    <string name="button_outlined">Gumb s obrubom</string>
-    <string name="button_outlined_disabled">Gumb Onemogućeno s obrubom</string>
+    <string name="button_disabled">Disabled Button Example</string>
+    <string name="button_borderless">Borderless Button Example</string>
+    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
+    <string name="button_large">Large Button Example</string>
+    <string name="button_large_disabled">Large Disabled Button Example</string>
+    <string name="button_outlined">Outlined Button Example</string>
+    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Odaberite datum</string>
@@ -853,6 +855,8 @@
     <string name="drawer_nested_drawer_content">Sadržaj ugniježđene ladice</string>
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Proširivo</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="skip_open_state">Skip Open State</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Pokaži dršku</string>
 

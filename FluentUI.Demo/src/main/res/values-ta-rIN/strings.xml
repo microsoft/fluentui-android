@@ -138,6 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">கீழ்தாள்</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">ஒற்றை வரி உருப்படிகளுடன் காட்டு</string>
     <string name="bottom_sheet_with_double_line_items">இரட்டை வரி உருப்படிகளுடன் காட்டு</string>
@@ -283,15 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
+    <string name="basic_input_activity_heading">Different views of button</string>
     <string name="button">பொத்தான்</string>
     <string name="buttonbar">ButtonBar</string>
-    <string name="button_disabled">முடக்கப்பட்ட பொத்தான்</string>
-    <string name="button_borderless">கரையில்லா பொத்தான்</string>
-    <string name="button_borderless_disabled">கரையில்லா முடக்கப்பட்ட பொத்தான்</string>
-    <string name="button_large">பெரிய பொத்தான்</string>
-    <string name="button_large_disabled">பெரிய முடக்கப்பட்ட பொத்தான்</string>
-    <string name="button_outlined">கோடிட்டுக் காட்டப்பட்ட பொத்தான்</string>
-    <string name="button_outlined_disabled">கோடிட்டுக் காட்டப்பட்ட முடக்கப்பட்ட பொத்தான்</string>
+    <string name="button_disabled">Disabled Button Example</string>
+    <string name="button_borderless">Borderless Button Example</string>
+    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
+    <string name="button_large">Large Button Example</string>
+    <string name="button_large_disabled">Large Disabled Button Example</string>
+    <string name="button_outlined">Outlined Button Example</string>
+    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">தேதியைத் தேர்வுசெய்யவும்</string>
@@ -852,6 +854,8 @@
     <string name="drawer_nested_drawer_content">உள்ளமைக்கப்பட்ட டிராயர் உள்ளடக்கம்</string>
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">விரிவாக்கக்கூடியது</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="skip_open_state">Skip Open State</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">நடத்தியைக் காட்டு</string>
 
