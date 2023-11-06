@@ -300,6 +300,16 @@ class V2BottomDrawerUITest : BaseTest() {
         waitForDrawerClose()
         closeCheckForVerticalDrawer()
     }
+    @Test
+    fun testPreventBottomDrawerDismissalOnScrimClick(){
+        composeTestRule.onNodeWithText(getString(R.string.prevent_scrim_click_dismissal), useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithText(getString(R.string.drawer_open)).performClick()
+        openCheckForVerticalDrawer()
+        drawerScrim.performTouchInput {
+            click(Offset((0..width).random().toFloat(), (0..height).random().toFloat()))
+        }
+        openCheckForVerticalDrawer()
+    }
 }
 
 

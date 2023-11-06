@@ -301,10 +301,19 @@ private fun Scrim(
     open: Boolean,
     onClose: () -> Unit,
     fraction: () -> Float,
-    color: Color
+    color: Color,
+    preventDismissalOnScrimClick: Boolean = false,
+    onScrimClick: () -> Unit = {},
 ) {
     val dismissDrawer = if (open) {
-        Modifier.pointerInput(onClose) { detectTapGestures { onClose() } }
+        Modifier.pointerInput(onClose) {
+            detectTapGestures {
+                if(!preventDismissalOnScrimClick) {
+                    onClose()
+                }
+                onScrimClick() //this function runs post onClose() so that the drawer is closed before the callback is invoked
+            }
+        }
     } else {
         Modifier
     }
@@ -473,6 +482,8 @@ private fun Modifier.bottomDrawerSwipeable(
  * drawer sheet
  * @param drawerBackground background color to be used for the drawer sheet
  * @param scrimColor color of the scrim that obscures content when the drawer is open
+ * @param preventDismissalOnScrimClick when true, the drawer will not be dismissed when the scrim is clicked
+ * @param onScrimClick callback to be invoked when the scrim is clicked
  *
  * @throws IllegalStateException when parent has [Float.POSITIVE_INFINITY] width
  */
@@ -487,7 +498,9 @@ private fun HorizontalDrawer(
     scrimColor: Color,
     scrimVisible: Boolean,
     onDismiss: () -> Unit,
-    drawerContent: @Composable () -> Unit
+    drawerContent: @Composable () -> Unit,
+    preventDismissalOnScrimClick: Boolean = false,
+    onScrimClick: () -> Unit = {}
 ) {
     BoxWithConstraints(modifier.fillMaxSize()) {
         val modalDrawerConstraints = constraints
@@ -531,6 +544,8 @@ private fun HorizontalDrawer(
                     calculateFraction(minValue, maxValue, drawerState.offset.value)
                 },
                 color = if (scrimVisible) scrimColor else Color.Transparent,
+                preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+                onScrimClick = onScrimClick
             )
 
             Box(
@@ -605,7 +620,9 @@ private fun TopDrawer(
     scrimColor: Color,
     scrimVisible: Boolean,
     onDismiss: () -> Unit,
-    drawerContent: @Composable () -> Unit
+    drawerContent: @Composable () -> Unit,
+    preventDismissalOnScrimClick: Boolean = false,
+    onScrimClick: () -> Unit = {}
 ) {
     BoxWithConstraints(modifier.fillMaxSize()) {
         val fullHeight = constraints.maxHeight.toFloat()
@@ -656,6 +673,8 @@ private fun TopDrawer(
                     calculateFraction(minValue, maxValue, drawerState.offset.value)
                 },
                 color = if (scrimVisible) scrimColor else Color.Transparent,
+                preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+                onScrimClick = onScrimClick
             )
 
             Box(
@@ -746,7 +765,9 @@ private fun BottomDrawer(
     slideOver: Boolean,
     showHandle: Boolean,
     onDismiss: () -> Unit,
-    drawerContent: @Composable () -> Unit
+    drawerContent: @Composable () -> Unit,
+    preventDismissalOnScrimClick: Boolean = false,
+    onScrimClick: () -> Unit = {}
 ) {
     BoxWithConstraints(modifier.fillMaxSize()) {
         val fullHeight = constraints.maxHeight.toFloat()
@@ -774,7 +795,7 @@ private fun BottomDrawer(
                         drawerState.anchors.maxBy { it.value }?.value!!
                     }
                     else if (drawerState.skipOpenState) {
-                        DrawerValue.Expanded
+                           DrawerValue.Expanded
                     } else {
                         DrawerValue.Open
                     }
@@ -786,6 +807,8 @@ private fun BottomDrawer(
                 }
             },
             color = if (scrimVisible) scrimColor else Color.Transparent,
+            preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+            onScrimClick = onScrimClick
         )
 
         Box(
@@ -934,6 +957,8 @@ private fun BottomDrawer(
  * @param scrimVisible create obscures background when scrim visible set to true when the drawer is open. The default value is true
  * @param drawerTokens tokens to provide appearance values. If not provided then drawer tokens will be picked from [FluentTheme]
  * @param drawerContent composable that represents content inside the drawer
+ * @param preventDismissalOnScrimClick when true, the drawer will not be dismissed when the scrim is clicked
+ * @param onScrimClick callback to be invoked when the scrim is clicked
  *
  * @throws IllegalStateException when parent has [Float.POSITIVE_INFINITY] width
  */
@@ -945,7 +970,9 @@ fun Drawer(
     drawerState: DrawerState = rememberDrawerState(),
     scrimVisible: Boolean = true,
     drawerTokens: DrawerTokens? = null,
-    drawerContent: @Composable () -> Unit
+    drawerContent: @Composable () -> Unit,
+    preventDismissalOnScrimClick: Boolean = false,
+    onScrimClick: () -> Unit = {}
 ) {
     if (drawerState.enable) {
         val themeID =
@@ -1000,7 +1027,9 @@ fun Drawer(
                     slideOver = behaviorType == BehaviorType.BOTTOM_SLIDE_OVER,
                     showHandle = true,
                     onDismiss = close,
-                    drawerContent = drawerContent
+                    drawerContent = drawerContent,
+                    preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+                    onScrimClick = onScrimClick
                 )
                 BehaviorType.TOP -> TopDrawer(
                     modifier = modifier,
@@ -1012,7 +1041,9 @@ fun Drawer(
                     scrimColor = scrimColor,
                     scrimVisible = scrimVisible,
                     onDismiss = close,
-                    drawerContent = drawerContent
+                    drawerContent = drawerContent,
+                    preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+                    onScrimClick = onScrimClick
                 )
 
                 BehaviorType.LEFT_SLIDE_OVER, BehaviorType.RIGHT_SLIDE_OVER -> HorizontalDrawer(
@@ -1025,7 +1056,9 @@ fun Drawer(
                     scrimColor = scrimColor,
                     scrimVisible = scrimVisible,
                     onDismiss = close,
-                    drawerContent = drawerContent
+                    drawerContent = drawerContent,
+                    preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+                    onScrimClick = onScrimClick
                 )
             }
         }
@@ -1047,6 +1080,8 @@ fun Drawer(
  * @param windowInsetsType Type window insets to be passed to the bottom drawer window via PaddingValues params. The default value is WindowInsetsCompat.Type.systemBars()
  * @param drawerTokens tokens to provide appearance values. If not provided then drawer tokens will be picked from [FluentTheme]
  * @param drawerContent composable that represents content inside the drawer
+ * @param preventDismissalOnScrimClick when true, the drawer will not be dismissed when the scrim is clicked
+ * @param onScrimClick callback to be invoked when the scrim is clicked
  *
  * @throws IllegalStateException when parent has [Float.POSITIVE_INFINITY] width
  */
@@ -1060,7 +1095,9 @@ fun BottomDrawer(
     showHandle: Boolean = true,
     windowInsetsType: Int = WindowInsetsCompat.Type.systemBars(),
     drawerTokens: DrawerTokens? = null,
-    drawerContent: @Composable () -> Unit
+    drawerContent: @Composable () -> Unit,
+    preventDismissalOnScrimClick: Boolean = false,
+    onScrimClick: () -> Unit = {},
 ) {
     if (drawerState.enable) {
         val themeID =
@@ -1107,7 +1144,9 @@ fun BottomDrawer(
                 slideOver = slideOver,
                 showHandle = showHandle,
                 onDismiss = close,
-                drawerContent = drawerContent
+                drawerContent = drawerContent,
+                preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+                onScrimClick = onScrimClick
             )
         }
     }

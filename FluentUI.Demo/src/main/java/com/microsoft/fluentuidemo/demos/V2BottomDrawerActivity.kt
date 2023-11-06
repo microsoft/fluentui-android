@@ -60,6 +60,7 @@ private fun CreateActivityUI() {
     var selectedContent by remember { mutableStateOf(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT) }
     var slideOver by remember { mutableStateOf(false) }
     var showHandle by remember { mutableStateOf(true) }
+    var preventDismissalOnScrimClick by remember { mutableStateOf(false) }
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
             slideOver = slideOver,
@@ -67,6 +68,7 @@ private fun CreateActivityUI() {
             skipOpenState = skipOpenState,
             expandable = expandable,
             showHandle = showHandle,
+            preventDismissalOnScrimClick = preventDismissalOnScrimClick,
             drawerContent =
             if (listContent)
                 getAndroidViewAsContent(selectedContent)
@@ -185,6 +187,26 @@ private fun CreateActivityUI() {
                             },
                             checkedState = skipOpenState,
                             enabledSwitch = expandable
+                        )
+                    }
+                )
+            }
+            item {
+                val preventDismissalOnScrimClickText = stringResource(id = R.string.prevent_scrim_click_dismissal)
+                ListItem.Header(title = preventDismissalOnScrimClickText,
+                    modifier = Modifier
+                        .toggleable(
+                            value = preventDismissalOnScrimClick,
+                            role = Role.Switch,
+                            onValueChange = { preventDismissalOnScrimClick = !preventDismissalOnScrimClick }
+                        )
+                        .clearAndSetSemantics {
+                            this.contentDescription = preventDismissalOnScrimClickText
+                        },
+                    trailingAccessoryContent = {
+                        ToggleSwitch(
+                            onValueChange = { preventDismissalOnScrimClick = !preventDismissalOnScrimClick },
+                            checkedState = preventDismissalOnScrimClick
                         )
                     }
                 )
@@ -314,6 +336,7 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     skipOpenState: Boolean,
     scrimVisible: Boolean,
     showHandle: Boolean,
+    preventDismissalOnScrimClick: Boolean,
     drawerContent: @Composable ((() -> Unit) -> Unit),
 ) {
     val scope = rememberCoroutineScope()
@@ -346,7 +369,8 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
         drawerContent = { drawerContent(close) },
         scrimVisible = scrimVisible,
         slideOver = slideOver,
-        showHandle = showHandle
+        showHandle = showHandle,
+        preventDismissalOnScrimClick = preventDismissalOnScrimClick
     )
 }
 
