@@ -251,7 +251,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         if(focusDrawerHandle) {
             persistentSheetBinding.sheetDrawerHandle.requestFocus()
         }
-        backgroundViews?.let { setImportantForAccessibility(it, View.IMPORTANT_FOR_ACCESSIBILITY_YES) }
+        backgroundViews?.let { setImportantForAccessibility(it, View.IMPORTANT_FOR_ACCESSIBILITY_YES)  }
     }
 
     fun expand(focusDrawerHandle: Boolean = true) {
