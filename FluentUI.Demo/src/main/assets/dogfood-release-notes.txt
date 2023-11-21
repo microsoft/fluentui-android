@@ -3,15 +3,9 @@ Release Version 0.1.39:
 What's New:
 
 Fluent V2:
-	Fix/Enhancement:
-	        1. Introducing Fluent Banners: We are excited to introduce Fluent Banners, a novel component designed for displaying banners on the screen.
-	        2. The BottomDrawer component now impeccably adheres to window insets, ensuring that it does not obstruct system bars.
-	        3. PillBar Talkback Enhancements: We have improved the accessibility of the PillBar component by enabling Talkback to announce the position of each pill button within the bar.
-	        4. Drawer and Bottom Drawer Scrim Behavior Control: Users now have the flexibility to disable the automatic closure of drawers upon tapping the scrim. This allows for a more customized user experience.
-		5.  Introducing a new parameter for the Drawer component that enables you to define a callback function when the scrim is tapped, enhancing the interactivity of your app.
-		6. Provides an enhanced localization support for strings within the library, ensuring a more inclusive and accessible user experience.
+        Fix/Enhancement:
+            1. Added param description for better understanding of the API.
 
 Fluent V1:
         Fix/Enhancement:
-            1. In the EXPANDED state of PersistentBottomSheet, Talkback focus now remains on visible elements, eliminating navigation to hidden background views.
-            2. Implementing Talkback support to announce the positions of individual items within the sheet.
+            1. Resolved an issue with the persistent bottom sheet’s talkback functionality, where focus was incorrectly not shifting to the background elements post-collapsing of the sheet. This enhancement ensures a more seamless user experience.
