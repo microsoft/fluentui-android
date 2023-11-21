@@ -208,6 +208,7 @@ private const val BottomSheetOpenFraction = 0.5f
  * value is true.
  * @param slideOver if true, then sheetContent would be drawn in full length & it just get slided
  * in the visible region. If false then, the sheetContainer placed at the bottom & its height could be at peekHeight, fullheight or hidden when dragged by Handle or swipe down.
+ * @param enableSwipeDismiss if false, bottomSheet will not be dismissed after swipe down gesture. Default value is false.
  * @param bottomSheetTokens tokens to provide appearance values. If not provided then bottomSheet
  * tokens will be picked from [AppThemeController]
  * @param content The content of rest of the screen.
