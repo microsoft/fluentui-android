@@ -125,7 +125,7 @@ fun Snackbar(
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.SnackbarControlType] as SnackBarTokens
 
     val snackBarInfo = SnackBarInfo(metadata.style, !metadata.subTitle.isNullOrBlank())
-    var textPaddingValues = if(metadata.actionText != null) PaddingValues(start = 16.dp, top = 12.dp, bottom = 12.dp, end = 16.dp) else PaddingValues(start = 16.dp, top = 12.dp, bottom = 12.dp)
+    var textPaddingValues = if(metadata.actionText == null && !metadata.enableDismiss ) PaddingValues(start = 16.dp, top = 12.dp, bottom = 12.dp, end = 16.dp) else PaddingValues(start = 16.dp, top = 12.dp, bottom = 12.dp)
 
     NotificationContainer(
         notificationMetadata = metadata,
