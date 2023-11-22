@@ -66,6 +66,8 @@ const val TEXT_FIELD_SECONDARY_TEXT = "Fluent TEXT_FIELD_TRAILING_ACCESSORY_TEXT
  * @param onValueChange The callback that is triggered when the input service updates the text.
  * An updated text comes as a parameter of the callback
  * @param modifier Optional modifier for the TextField
+ * @param readOnly Boolean to indicate if the TextField is editable or not.
+ * @param enabled Boolean to indicate if the TextField is enabled or not.
  * @param hintText Hint to be shown on TextField. Displayed when [value] is empty and TextField
  * doesn't have focus.
  * @param label String which acts as a description for the TextField.
