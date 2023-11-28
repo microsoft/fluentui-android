@@ -68,8 +68,8 @@ class V2ContextualCommandBarActivity : V2DemoActivity() {
         setupActivity(this)
     }
 
-    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-15"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-15"
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-17"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-17"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
