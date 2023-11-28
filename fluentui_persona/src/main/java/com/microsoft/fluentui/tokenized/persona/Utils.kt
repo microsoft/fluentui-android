@@ -1,5 +1,6 @@
 package com.microsoft.fluentui.tokenized.persona
 
+import android.graphics.Bitmap
 import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import androidx.compose.runtime.Composable
@@ -30,7 +31,7 @@ class Person(
     val lastName: String = "",
     val email: String? = null,
     @DrawableRes val image: Int? = null,
-    val imageBitmap: @RawValue ImageBitmap? = null,
+    val imageBitmap: @RawValue Bitmap? = null,
     val isActive: Boolean = false,
     val status: AvatarStatus = AvatarStatus.Available,
     val isOOO: Boolean = false
@@ -96,7 +97,7 @@ class Group(
     val groupName: String = "",
     val email: String? = null,
     @DrawableRes val image: Int? = null,
-    val imageBitmap: @RawValue ImageBitmap? = null,
+    val imageBitmap: @RawValue Bitmap? = null,
 ) : Parcelable {
     fun isImageAvailable(): Boolean {
         return image != null || imageBitmap != null

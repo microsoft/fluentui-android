@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalDensity
@@ -118,7 +119,7 @@ fun Avatar(
                 }
                 person.imageBitmap != null -> {
                     Image(
-                        bitmap = person.imageBitmap, null,
+                        bitmap = person.imageBitmap.asImageBitmap(), null,
                         modifier = Modifier
                             .size(avatarSize)
                             .clip(CircleShape)
@@ -275,7 +276,7 @@ fun Avatar(
                 )
             } else if (group.imageBitmap != null) {
                 Image(
-                    bitmap = group.imageBitmap,
+                    bitmap = group.imageBitmap.asImageBitmap(),
                     contentDescription = null,
                     modifier = Modifier
                         .size(avatarSize)
