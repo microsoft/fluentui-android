@@ -291,7 +291,8 @@ class V2CardNudgeActivity : V2DemoActivity() {
                                             buttonPressed,
                                             Toast.LENGTH_SHORT
                                         ).show()
-                                    }
+                                    },
+                                    isPartOfCardNudge = true
                                 ) else null,
                             dismissOnClick = if (dismissEnabled) {
                                 {
