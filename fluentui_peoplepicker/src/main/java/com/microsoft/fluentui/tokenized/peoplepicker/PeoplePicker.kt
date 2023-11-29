@@ -254,7 +254,7 @@ fun rememberPeoplePickerItemDataList(
                             "lastName" to itemData.person.lastName,
                             "email" to itemData.person.email,
                             "image" to itemData.person.image,
-                            "imageBitmap" to itemData.person.imageBitmap,
+                            "bitmap" to itemData.person.bitmap,
                             "isActive" to itemData.person.isActive,
                             "isOOO" to itemData.person.isOOO,
                             "status" to itemData.person.status
@@ -273,7 +273,7 @@ fun rememberPeoplePickerItemDataList(
                                 lastName = item["lastName"] as String,
                                 email = item["email"] as String?,
                                 image = item["image"] as Int?,
-                                imageBitmap = item["imageBitmap"] as ImageBitmap?,
+                                bitmap = item["bitmap"] as ImageBitmap?,
                                 isActive = item["isActive"] as Boolean,
                                 isOOO = item["isOOO"] as Boolean,
                                 status = item["status"] as AvatarStatus

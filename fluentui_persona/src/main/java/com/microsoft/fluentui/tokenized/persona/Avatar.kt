@@ -116,9 +116,9 @@ fun Avatar(
                             }
                     )
                 }
-                person.imageBitmap != null -> {
+                person.bitmap != null -> {
                     Image(
-                        bitmap = person.imageBitmap, null,
+                        bitmap = person.bitmap, null,
                         modifier = Modifier
                             .size(avatarSize)
                             .clip(CircleShape)
@@ -273,9 +273,9 @@ fun Avatar(
                             testTag = AVATAR_IMAGE
                         }
                 )
-            } else if (group.imageBitmap != null) {
+            } else if (group.bitmap != null) {
                 Image(
-                    bitmap = group.imageBitmap,
+                    bitmap = group.bitmap,
                     contentDescription = null,
                     modifier = Modifier
                         .size(avatarSize)
