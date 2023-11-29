@@ -16,7 +16,7 @@ import kotlinx.parcelize.RawValue
  * @property lastName Last Name of person
  * @property email Email Id for person
  * @property image Drawable Image for a person
- * @property bitmap Bitmap for a person
+ * @property imageBitmap Bitmap Image for a person
  * @property isActive Enable/Disable Active status of a person
  * @property status Current Status of the person
  * @property isOOO Enable/Disable Out-Of-Office flag for person
@@ -30,7 +30,7 @@ class Person(
     val lastName: String = "",
     val email: String? = null,
     @DrawableRes val image: Int? = null,
-    val bitmap: @RawValue ImageBitmap? = null,
+    val imageBitmap: @RawValue ImageBitmap? = null,
     val isActive: Boolean = false,
     val status: AvatarStatus = AvatarStatus.Available,
     val isOOO: Boolean = false
@@ -53,7 +53,7 @@ class Person(
     }
 
     fun isImageAvailable(): Boolean {
-        return image != null || bitmap != null
+        return image != null || imageBitmap != null
     }
 
     fun getInitials(): String {
@@ -88,7 +88,7 @@ class Person(
  * @property groupName Name of the group
  * @property email E-mail ID for the group
  * @property image Drawable Image for the group
- * @property bitmap bitmap Image for the group
+ * @property imageBitmap Bitmap Image for the group
  */
 @Parcelize
 class Group(
@@ -96,10 +96,10 @@ class Group(
     val groupName: String = "",
     val email: String? = null,
     @DrawableRes val image: Int? = null,
-    val bitmap: @RawValue ImageBitmap? = null,
+    val imageBitmap: @RawValue ImageBitmap? = null,
 ) : Parcelable {
     fun isImageAvailable(): Boolean {
-        return image != null || bitmap != null
+        return image != null || imageBitmap != null
     }
 
     fun getName(): String {
