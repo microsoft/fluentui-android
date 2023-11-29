@@ -85,7 +85,7 @@ class V2PersonaListActivity : V2DemoActivity() {
             Persona(Person(
                 "Ashley",
                 "McCarthy",
-                imageBitmap = BitmapFactory.decodeResource(context.resources, R.drawable.avatar_ashley_mccarthy),
+                bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.avatar_ashley_mccarthy),
                 email = "allan.munger@microsoft.com",
                 isActive = true,
                 status = Available,
