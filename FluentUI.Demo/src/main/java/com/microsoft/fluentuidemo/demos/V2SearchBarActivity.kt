@@ -42,8 +42,8 @@ class V2SearchBarActivity : V2DemoActivity() {
         setupActivity(this)
     }
 
-    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-26"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-26"
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-29"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-27"
 
     @OptIn(ExperimentalComposeUiApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {

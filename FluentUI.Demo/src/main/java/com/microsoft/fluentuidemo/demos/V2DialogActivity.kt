@@ -39,8 +39,8 @@ class V2DialogActivity : V2DemoActivity() {
         setupActivity(this)
     }
 
-    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-16"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-16"
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-18"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-18"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

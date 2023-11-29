@@ -29,9 +29,9 @@ class V2PersonaListActivity : V2DemoActivity() {
         setupActivity(this)
     }
 
-    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-22"
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-25"
     override val controlTokensUrl =
-        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-22"
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-24"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
