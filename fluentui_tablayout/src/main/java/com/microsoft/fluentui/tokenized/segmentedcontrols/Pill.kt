@@ -146,7 +146,7 @@ fun PillButton(
         onClick = pillMetaData.onClick
     )
 
-    val selectedString = if(pillMetaData.isPartOfCardNudge) ""
+    val selectedString = if(pillMetaData.isPartOfCardNudge)  ""
     else if (pillMetaData.selected)
         LocalContext.current.resources.getString(R.string.fluentui_selected)
     else
