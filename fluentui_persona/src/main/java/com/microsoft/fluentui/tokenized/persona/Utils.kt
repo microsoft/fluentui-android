@@ -17,7 +17,7 @@ import kotlinx.parcelize.RawValue
  * @property lastName Last Name of person
  * @property email Email Id for person
  * @property image Drawable Image for a person
- * @property bitmap Bitmap Image for a person
+ * @property bitmap Bitmap for a person
  * @property isActive Enable/Disable Active status of a person
  * @property status Current Status of the person
  * @property isOOO Enable/Disable Out-Of-Office flag for person
@@ -89,7 +89,7 @@ class Person(
  * @property groupName Name of the group
  * @property email E-mail ID for the group
  * @property image Drawable Image for the group
- * @property bitmap Bitmap Image for the group
+ * @property bitmap Bitmap for the group
  */
 @Parcelize
 class Group(
