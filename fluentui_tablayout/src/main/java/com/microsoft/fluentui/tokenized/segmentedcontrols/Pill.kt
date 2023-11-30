@@ -57,7 +57,7 @@ data class PillMetaData(
     var enabled: Boolean = true,
     var selected: Boolean = false,
     var notificationDot: Boolean = false,
-    var calloutSelectionState: Boolean = true,
+    var calloutSelectionState: Boolean = true ,
 )
 
 /**
