@@ -225,6 +225,7 @@ fun CardNudge(
             }
 
             if (metadata.actionMetaData != null) {
+                metadata.actionMetaData.calloutSelectionState = false
                 PillButton(
                     metadata.actionMetaData,
                     modifier = Modifier.testTag(CARD_NUDGE_ACTION_BUTTON),
