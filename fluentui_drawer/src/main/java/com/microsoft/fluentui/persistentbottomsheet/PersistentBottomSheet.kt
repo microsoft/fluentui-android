@@ -252,6 +252,9 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
             persistentSheetBinding.sheetDrawerHandle.requestFocus()
         }
         backgroundViews?.let { setImportantForAccessibility(it, View.IMPORTANT_FOR_ACCESSIBILITY_YES) }
+        backgroundViews?.forEach { view ->
+            setDescendantsFocusable(view, true)
+        }
     }
 
     fun expand(focusDrawerHandle: Boolean = true) {
@@ -261,11 +264,28 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
             persistentSheetBinding.sheetDrawerHandle.requestFocus()
         }
         backgroundViews?.let { setImportantForAccessibility(it, View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS) }
+        backgroundViews?.forEach { view ->
+            setDescendantsFocusable(view, false)
+        }
     }
+    fun setDescendantsFocusable(view: View, focusable: Boolean) {
+        view.isFocusable = focusable
+        if (view is ViewGroup) {
+            for (i in 0 until view.childCount) {
+                val child = view.getChildAt(i)
+                setDescendantsFocusable(child, focusable)
+            }
+        }
+    }
+
+
 
     fun hide(){
         persistentSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         backgroundViews?.let { setImportantForAccessibility(it, View.IMPORTANT_FOR_ACCESSIBILITY_YES) }
+        backgroundViews?.forEach { view ->
+            setDescendantsFocusable(view, true)
+        }
     }
 
     fun show(expanded: Boolean = false, focusDrawerHandle: Boolean = true) {
@@ -279,6 +299,9 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
             persistentSheetBinding.sheetDrawerHandle.requestFocus()
         }
         backgroundViews?.let { setImportantForAccessibility(it, View.IMPORTANT_FOR_ACCESSIBILITY_YES) }
+        backgroundViews?.forEach { view ->
+            setDescendantsFocusable(view, true)
+        }
     }
 
     fun updateBottomSheetLayoutParams(peekHeight: Int = itemLayoutParam.defaultPeekHeight,
