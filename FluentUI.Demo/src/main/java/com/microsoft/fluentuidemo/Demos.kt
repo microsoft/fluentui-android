@@ -181,7 +181,7 @@ val V2DEMO = arrayListOf(
     Demo(V2LABEL, V2LabelActivity::class),
     Demo(V2LIST_ITEM, V2ListItemActivity::class),
     Demo(V2MENU, V2MenuActivity::class),
-    Demo(V2PEOPLE_PICKER, V2PeoplePickerActivity::class),
+    Demo(V2PEOPLE_PICKER, V2PeoplePickerActivity::class, Badge.APIBreak ),
     Demo(V2PERSONA, V2PersonaActivity::class),
     Demo(V2PERSONA_CHIP, V2PersonaChipActivity::class),
     Demo(V2PERSONA_LIST, V2PersonaListActivity::class),
