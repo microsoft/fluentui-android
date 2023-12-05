@@ -3,9 +3,12 @@ package com.microsoft.fluentui.tokenized
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicText
-import androidx.compose.runtime.Composable=
+import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -79,7 +82,7 @@ fun AppBar(
     logo: @Composable (() -> Unit)? = null,
     searchMode: Boolean = false,
     navigationIcon: FluentIcon = FluentIcon(AppBarIcons.Arrowback, flipOnRtl = true),
-    navigationIconModifier: Modifier = Modifier,
+    navigationIconModifier: Modifier? = null,
     postTitleIcon: FluentIcon = FluentIcon(),
     preSubtitleIcon: FluentIcon = FluentIcon(),
     postSubtitleIcon: FluentIcon = FluentIcon(
@@ -143,7 +146,15 @@ fun AppBar(
                         navigationIcon,
                         modifier =
                         Modifier
-                            .then(navigationIconModifier)
+                            .then(
+                                navigationIconModifier
+                                    ?: Modifier.clickable(
+                                        interactionSource = remember { MutableInteractionSource() },
+                                        indication = rememberRipple(),
+                                        enabled = true,
+                                        onClick = navigationIcon.onClick ?: {}
+                                    )
+                            )
                             .padding(token.navigationIconPadding(appBarInfo))
                             .size(token.leftIconSize(appBarInfo)),
                         tint = token.navigationIconColor(appBarInfo)
