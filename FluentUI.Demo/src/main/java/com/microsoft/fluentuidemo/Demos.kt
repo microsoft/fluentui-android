@@ -161,7 +161,7 @@ val V1DEMO = arrayListOf(
 )
 
 val V2DEMO = arrayListOf(
-    Demo(V2APP_BAR_LAYOUT, V2AppBarActivity::class),
+    Demo(V2APP_BAR_LAYOUT, V2AppBarActivity::class, Badge.Modified),
     Demo(V2AVATAR, V2AvatarActivity::class),
     Demo(V2AVATAR_CAROUSEL, V2AvatarCarouselActivity::class),
     Demo(V2AVATAR_GROUP, V2AvatarGroupActivity::class),
