@@ -53,6 +53,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
  * @param logo Composable to be placed at left of Title. Guideline is to not increase a size of 32x32. Default: [null]
  * @param searchMode Boolean to enable/disable searchMode. Default: [false]
  * @param navigationIcon Navigate Back Icon to be placed at extreme left. Default: [SearchBarIcons.Arrowback]
+ * @param navigationIconModifier Modifier for navigation Icon to change behaviour especially for click. Default: [null]
  * @param postTitleIcon Icon to be placed after title making the title clickable. Default: Empty [FluentIcon]
  * @param preSubtitleIcon Icon to be placed before subtitle. Default: Empty [FluentIcon]
  * @param postSubtitleIcon Icon to be placed after subtitle. Default: [ListItemIcons.Chevron]
