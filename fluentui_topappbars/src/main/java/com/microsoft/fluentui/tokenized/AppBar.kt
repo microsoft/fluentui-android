@@ -5,7 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicText
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Composable=
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -79,6 +79,7 @@ fun AppBar(
     logo: @Composable (() -> Unit)? = null,
     searchMode: Boolean = false,
     navigationIcon: FluentIcon = FluentIcon(AppBarIcons.Arrowback, flipOnRtl = true),
+    navigationIconModifier: Modifier = Modifier,
     postTitleIcon: FluentIcon = FluentIcon(),
     preSubtitleIcon: FluentIcon = FluentIcon(),
     postSubtitleIcon: FluentIcon = FluentIcon(
@@ -140,7 +141,9 @@ fun AppBar(
                 if (appBarSize != AppBarSize.Large && navigationIcon.isIconAvailable()) {
                     Icon(
                         navigationIcon,
-                        modifier = Modifier
+                        modifier =
+                        Modifier
+                            .then(navigationIconModifier)
                             .padding(token.navigationIconPadding(appBarInfo))
                             .size(token.leftIconSize(appBarInfo)),
                         tint = token.navigationIconColor(appBarInfo)
