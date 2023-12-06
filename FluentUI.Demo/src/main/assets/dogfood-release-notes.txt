@@ -9,6 +9,7 @@ Fluent V2:
             3. Resolved issues causing crashes in the Person and Group classes related to ImageBitmap handling. This fix enhances stability and performance
             4. Updated ParamsURL to support the latest version of the URLSearchParams API.
             5. Now, customized modifier can be passed for navigation icon in App bar.
+            6. Ripple effect on AppBar's back navigation click has been added.
 
 
 Fluent V1:
