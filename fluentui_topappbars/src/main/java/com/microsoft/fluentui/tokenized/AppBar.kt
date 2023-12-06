@@ -53,7 +53,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
  * @param logo Composable to be placed at left of Title. Guideline is to not increase a size of 32x32. Default: [null]
  * @param searchMode Boolean to enable/disable searchMode. Default: [false]
  * @param navigationIcon Navigate Back Icon to be placed at extreme left. Default: [SearchBarIcons.Arrowback]
- * @param navigationIconModifier Modifier for navigation Icon to change behaviour especially for click. Default: [null]
  * @param postTitleIcon Icon to be placed after title making the title clickable. Default: Empty [FluentIcon]
  * @param preSubtitleIcon Icon to be placed before subtitle. Default: Empty [FluentIcon]
  * @param postSubtitleIcon Icon to be placed after subtitle. Default: [ListItemIcons.Chevron]
@@ -83,7 +82,6 @@ fun AppBar(
     logo: @Composable (() -> Unit)? = null,
     searchMode: Boolean = false,
     navigationIcon: FluentIcon = FluentIcon(AppBarIcons.Arrowback, flipOnRtl = true),
-    navigationIconModifier: Modifier? = null,
     postTitleIcon: FluentIcon = FluentIcon(),
     preSubtitleIcon: FluentIcon = FluentIcon(),
     postSubtitleIcon: FluentIcon = FluentIcon(
@@ -147,14 +145,11 @@ fun AppBar(
                         navigationIcon,
                         modifier =
                         Modifier
-                            .then(
-                                navigationIconModifier
-                                    ?: Modifier.clickable(
-                                        interactionSource = remember { MutableInteractionSource() },
-                                        indication = rememberRipple(),
-                                        enabled = true,
-                                        onClick = navigationIcon.onClick ?: {}
-                                    )
+                            .clickable(
+                                interactionSource = remember { MutableInteractionSource() },
+                                indication = rememberRipple(),
+                                enabled = true,
+                                onClick = navigationIcon.onClick ?: {}
                             )
                             .padding(token.navigationIconPadding(appBarInfo))
                             .size(token.leftIconSize(appBarInfo)),
