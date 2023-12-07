@@ -200,7 +200,7 @@ fun AppBar(
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis
                             )
-                            if (postTitleIcon.isIconAvailable()  && appBarSize == AppBarSize.Small)
+                            if (postTitleIcon.isIconAvailable() && appBarSize == AppBarSize.Small)
                                 Icon(
                                     postTitleIcon.value(),
                                     postTitleIcon.contentDescription,
