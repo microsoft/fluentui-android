@@ -18,7 +18,7 @@
     <!-- Describes the action button component -->
     <string name="fluentui_action_button">動作按鈕</string>
     <!-- Describes the dismiss button component -->
-    <string name="fluentui_dismiss_button">[關閉] 按鈕</string>
+    <string name="fluentui_dismiss_button">Dismiss</string>
     <!-- Describes enabled action-->
     <string name="fluentui_enabled">已啟用</string>
     <!-- Describes close action for a sheet-->
@@ -61,9 +61,9 @@
     <!-- Describes the outline design of control -->
     <string name="fluentui_outline">大綱</string>
 
-    <string name="fluentui_action_button_icon">Action button icon</string>
-    <string name="fluentui_center">Center text</string>
-    <string name="fluentui_accessory_button">Accessory Buttons</string>
+    <string name="fluentui_action_button_icon">動作按鈕圖示</string>
+    <string name="fluentui_center">文字置中</string>
+    <string name="fluentui_accessory_button">周邊按鈕</string>
 
     <!--Describes the control -->
     <string name="fluentui_radio_button">選項按鈕</string>

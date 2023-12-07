@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">Neðsta blað</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">virkja strjúka niður til að hafna</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Sýna með atriðum í einni línu</string>
     <string name="bottom_sheet_with_double_line_items">Sýna með atriðum í tveimur línum</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">Mismunandi yfirlit hnapps</string>
     <string name="button">Hnappur</string>
     <string name="buttonbar">Hnappastika</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">Dæmi um hnapp fyrir óvirkt</string>
+    <string name="button_borderless">Dæmi um rammalausan hnapp</string>
+    <string name="button_borderless_disabled">Dæmi um rammalausan hnapp fyrir óvirkt</string>
+    <string name="button_large">Dæmi um stóran hnapp</string>
+    <string name="button_large_disabled">Dæmi um stóran hnapp fyrir óvirkt</string>
+    <string name="button_outlined">Dæmi um hnapp með útlínum</string>
+    <string name="button_outlined_disabled">Dæmi um hnapp með útlínum fyrir óvirkt</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Velja dagsetningu</string>
@@ -855,7 +855,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Stækkanlegt</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">Sleppa opinni stöðu</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Koma í veg fyrir að hægt sé að hafna þegar smellt er á Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Sýna haldið</string>
 

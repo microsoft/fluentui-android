@@ -18,7 +18,7 @@
     <!-- Describes the action button component -->
     <string name="fluentui_action_button">Dugme radnje</string>
     <!-- Describes the dismiss button component -->
-    <string name="fluentui_dismiss_button">Dugme „Odbaci“</string>
+    <string name="fluentui_dismiss_button">Dismiss</string>
     <!-- Describes enabled action-->
     <string name="fluentui_enabled">Omogućeno</string>
     <!-- Describes close action for a sheet-->
@@ -61,9 +61,9 @@
     <!-- Describes the outline design of control -->
     <string name="fluentui_outline">Prikaz strukture</string>
 
-    <string name="fluentui_action_button_icon">Action button icon</string>
-    <string name="fluentui_center">Center text</string>
-    <string name="fluentui_accessory_button">Accessory Buttons</string>
+    <string name="fluentui_action_button_icon">Ikona dugmeta radnje</string>
+    <string name="fluentui_center">Centriraj tekst</string>
+    <string name="fluentui_accessory_button">Dugmad pribora</string>
 
     <!--Describes the control -->
     <string name="fluentui_radio_button">Radio dugme</string>

@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">Dolní list</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Povolit zavření potáhnutím prstem dolů</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Zobrazit s položkami s jedním řádkem</string>
     <string name="bottom_sheet_with_double_line_items">Zobrazit s dvouřádkovými položkami</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">Různá zobrazení tlačítka</string>
     <string name="button">Tlačítko</string>
     <string name="buttonbar">Panel tlačítek</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">Příklad neaktivního tlačítka</string>
+    <string name="button_borderless">Příklad tlačítka bez ohraničení</string>
+    <string name="button_borderless_disabled">Příklad neaktivního tlačítka bez ohraničení</string>
+    <string name="button_large">Příklad velkého tlačítka</string>
+    <string name="button_large_disabled">Příklad velkého neaktivního tlačítka</string>
+    <string name="button_outlined">Příklad tlačítka s obrysem</string>
+    <string name="button_outlined_disabled">Příklad neaktivního ohraničeného tlačítka</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Zvolit datum</string>
@@ -857,7 +857,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Lze rozbalit</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">Přeskočit stav otevření</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Zabránit zavření při kliknutí na Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Zobrazit úchyt</string>
 

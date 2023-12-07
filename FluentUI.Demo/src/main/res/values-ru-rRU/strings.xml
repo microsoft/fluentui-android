@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Включить функцию проведения вниз для закрытия</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Показать однострочные элементы</string>
     <string name="bottom_sheet_with_double_line_items">Показать с элементами из двух строк</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">Различные представления кнопки</string>
     <string name="button">Кнопка</string>
     <string name="buttonbar">ButtonBar</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">Пример кнопки "Отключено"</string>
+    <string name="button_borderless">Пример кнопки без полей</string>
+    <string name="button_borderless_disabled">Пример кнопки "Отключено" без полей</string>
+    <string name="button_large">Пример большой кнопки</string>
+    <string name="button_large_disabled">Пример большой кнопки "Отключено"</string>
+    <string name="button_outlined">Пример кнопки с контуром</string>
+    <string name="button_outlined_disabled">Пример кнопки "Отключено" с контуром</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Выберите дату</string>
@@ -857,7 +857,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">С возможностью развертывания</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">Пропустить состояние открытия</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Запретить закрытие по щелчку перекрывающей области</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Показать маркер</string>
 

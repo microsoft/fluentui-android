@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">ДолуНаЛиста</string>
     <string name="bottom_sheet_dialog">ДиалоговПрозорецДолуНаЛиста</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Разрешаване на плъзгане надолу за отхвърляне</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Показване с елементи от един ред</string>
     <string name="bottom_sheet_with_double_line_items">Показване с елементи от два реда</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">Различни изгледи на бутон</string>
     <string name="button">Бутон</string>
     <string name="buttonbar">Лента с бутони</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">Пример за деактивиран бутон</string>
+    <string name="button_borderless">Пример за бутон без граници</string>
+    <string name="button_borderless_disabled">Пример за деактивиран бутон без граници</string>
+    <string name="button_large">Пример за голям бутон</string>
+    <string name="button_large_disabled">Пример за голям деактивиран бутон</string>
+    <string name="button_outlined">Пример за очертан бутон</string>
+    <string name="button_outlined_disabled">Пример за очертан деактивиран бутон</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Избор на дата</string>
@@ -855,7 +855,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Разширяем</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">Пропускане на отвореното състояние</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Предотвратяване на отхвърлянето при щракване върху Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Показване на манипулатора</string>
 

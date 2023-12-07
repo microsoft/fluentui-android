@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Ota käyttöön hylkääminen sipaisemalla alas</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Näytä yksirivisillä kohteilla</string>
     <string name="bottom_sheet_with_double_line_items">Näytä kahden rivin kohteilla</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">Painikkeen eri näkymät</string>
     <string name="button">Painike</string>
     <string name="buttonbar">ButtonBar</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">Käytöstä poistettu painike – esimerkki</string>
+    <string name="button_borderless">Reunaton painike – esimerkki</string>
+    <string name="button_borderless_disabled">Reunaton käytöstä poistettu painike – esimerkki</string>
+    <string name="button_large">Suuri painike – esimerkki</string>
+    <string name="button_large_disabled">Suuri käytöstä poistettu painike – esimerkki</string>
+    <string name="button_outlined">Ääriviivapainike – esimerkki</string>
+    <string name="button_outlined_disabled">Käytöstä poistettu ääriviivapainike – esimerkki</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Valitse päivämäärä</string>
@@ -855,7 +855,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Laajennettava</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">Ohita avaustila</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Estä Scrim-napsautuksen ohittaminen</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Näytä kahva</string>
 

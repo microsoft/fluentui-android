@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">ボトム シート</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">下へスワイプして閉じるを有効にする</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">単一の項目で表示</string>
     <string name="bottom_sheet_with_double_line_items">二重線の項目を表示</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">ボタンのさまざまなビュー</string>
     <string name="button">ボタン</string>
     <string name="buttonbar">ButtonBar</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">大きなボタンの例</string>
+    <string name="button_borderless">罫線のないボタンの例</string>
+    <string name="button_borderless_disabled">フチ無し無効ボタンの例</string>
+    <string name="button_large">大きいボタンの例</string>
+    <string name="button_large_disabled">大きな無効化ボタンの例</string>
+    <string name="button_outlined">アウトライン化されたボタンの例</string>
+    <string name="button_outlined_disabled">アウトライン化された無効なボタンの例</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">日付の選択</string>
@@ -854,7 +854,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">拡張可能</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">開いている状態をスキップする</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Scrim のクリック時の無視を防止する</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">ハンドルの表示</string>
 

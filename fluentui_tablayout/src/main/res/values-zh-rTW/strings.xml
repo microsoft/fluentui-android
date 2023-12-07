@@ -4,5 +4,5 @@
     <string name="tab_content_description">\u0020 索引標籤 第 %1$d 個 (共 %2$d 個)</string>
 
     <!-- Describes the Numbering of Pill Butons Inside PillBar -->
-    <string name="position_string">Item %d in list of %d</string>
+    <string name="position_string">%d 清單中的項目 %d</string>
 </resources>

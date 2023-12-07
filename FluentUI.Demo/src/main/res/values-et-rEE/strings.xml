@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">AlumineLeht</string>
     <string name="bottom_sheet_dialog">AlumiseLeheDialoog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Luba allanipsamisega sulgemine</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Kuva üherealiste üksustega</string>
     <string name="bottom_sheet_with_double_line_items">Kuva kaherealiste üksustega</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">Nupu eri vaated</string>
     <string name="button">Nupp</string>
     <string name="buttonbar">Nupuriba</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">Keelatud nupu näide</string>
+    <string name="button_borderless">Ääristeta nupu näide</string>
+    <string name="button_borderless_disabled">Ääristeta keelatud nupu näide</string>
+    <string name="button_large">Suure nupu näide</string>
+    <string name="button_large_disabled">Suure keelatud nupu näide</string>
+    <string name="button_outlined">Liigendatud nupu näide</string>
+    <string name="button_outlined_disabled">Liigendatud keelatud nupu näide</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Valige kuupäev</string>
@@ -855,7 +855,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Laiendatav</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">Jäta avatud olek vahele</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Keela kihi klõpsamisel sulgemine</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Kuva pide</string>
 
