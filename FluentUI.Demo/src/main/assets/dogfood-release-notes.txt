@@ -1,11 +1,16 @@
-Release Version 0.1.41:
+Release Version 0.1.42:
 
 What's New:
 
 Fluent V2:
         Fix/Enhancement:
-            1. Added param description for better understanding of the API.
+            1. Added padding at the end of the Snackbar for better visual separation and readability.
+            2. Enhanced the accessibility of Cardnudge to ensure a more user-friendly experience.
+            3. Resolved issues causing crashes in the Person and Group classes related to ImageBitmap handling. This fix enhances stability and performance
+            4. Updated ParamsURL to support the latest version of the URLSearchParams API.
+            5. Ripple effect on AppBar's back navigation click has been added as default.
+
 
 Fluent V1:
         Fix/Enhancement:
-            1. Resolved an issue with the persistent bottom sheet’s talkback functionality, where focus was incorrectly not shifting to the background elements post-collapsing of the sheet. This enhancement ensures a more seamless user experience.
+            1. Resolved an issue with the persistent bottom sheet’s hardware keyboard functionality, where focus was incorrectly shifting to the background elements when the bottom sheet was expanded.
