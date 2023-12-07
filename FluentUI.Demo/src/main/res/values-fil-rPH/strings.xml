@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">IbabangSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Pagahin ang Pag-swipe Paibabba para Alisin</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Ipakita gamit ang mga single line item</string>
     <string name="bottom_sheet_with_double_line_items">Ipakita gamit ang double line item</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">Iba\'t ibang view ng button</string>
     <string name="button">Button</string>
     <string name="buttonbar">ButtonBar</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">Halimbawa ng Button ng Naka-disable</string>
+    <string name="button_borderless">Halimbawa ng Button na Walang Border</string>
+    <string name="button_borderless_disabled">Halimbawa ng Button ng Naka-disable ang Walang Border</string>
+    <string name="button_large">Halimbawa ng Malaking Button</string>
+    <string name="button_large_disabled">Halimbawa ng Button ng Naka-disable ang Malaki</string>
+    <string name="button_outlined">Halimbawa ng Buton ng Naka-outline</string>
+    <string name="button_outlined_disabled">Halimbawa ng Button ng Naka-disable ang Naka-outline</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Pumili ng petsa</string>
@@ -855,7 +855,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Napapalawak</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">Laktawan ang Nakabukas na Katayuan</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Pigilan ang Pag-alis sa Pag-click ng Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Ipakita ang Hawakan</string>
 

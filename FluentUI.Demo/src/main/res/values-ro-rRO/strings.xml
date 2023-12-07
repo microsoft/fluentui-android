@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">Foaie inferioară</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Activați tragerea cu degetul în jos pentru a respinge</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Afișați cu elemente cu o singură linie</string>
     <string name="bottom_sheet_with_double_line_items">Afișați cu elemente cu linie dublă</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">Vizualizări diferite ale butonului</string>
     <string name="button">Buton</string>
     <string name="buttonbar">Bară de buton</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">Exemplu de buton dezactivat</string>
+    <string name="button_borderless">Exemplu de buton fără bordură</string>
+    <string name="button_borderless_disabled">Exemplu de buton fără bordură dezactivat</string>
+    <string name="button_large">Exemplu de buton mare</string>
+    <string name="button_large_disabled">Exemplu de buton mare dezactivat</string>
+    <string name="button_outlined">Exemplu de buton conturat</string>
+    <string name="button_outlined_disabled">Exemplu de buton conturat dezactivat</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Alegeți o dată</string>
@@ -856,7 +856,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Extensibil</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">Omiteți starea de deschidere</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Împiedicați eliminarea la clic pe Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Afișați handle-ul</string>
 

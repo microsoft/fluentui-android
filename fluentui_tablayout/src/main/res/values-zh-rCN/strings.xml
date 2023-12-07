@@ -4,5 +4,5 @@
     <string name="tab_content_description">\u0020 第 %1$d 个选项卡(共 %2$d 个)</string>
 
     <!-- Describes the Numbering of Pill Butons Inside PillBar -->
-    <string name="position_string">Item %d in list of %d</string>
+    <string name="position_string">%d 列表中的项目 %d</string>
 </resources>

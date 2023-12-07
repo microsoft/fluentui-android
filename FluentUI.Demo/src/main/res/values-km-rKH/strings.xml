@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">សន្លឹកខាងក្រោម</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">បើកដំណើរការអូសចុះក្រោមដើម្បីបិទ</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">បង្ហាញជាមួយធាតុតែមួយបន្ទាត់</string>
     <string name="bottom_sheet_with_double_line_items">បង្ហាញជាមួយធាតុបន្ទាត់ទ្វេ</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">ទិដ្ឋភាពផ្សេងគ្នានៃប៊ូតុង</string>
     <string name="button">ប៊ូតុង</string>
     <string name="buttonbar">របារប៊ូតុង</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">ឧទាហរណ៍ប៊ូតុងមិនអាចប្រើ</string>
+    <string name="button_borderless">ឧទាហរណ៍ប៊ូតុងដែលគ្មានស៊ុម</string>
+    <string name="button_borderless_disabled">ឧទាហរណ៍ប៊ូតុងមិនអាចប្រើបានដែលគ្មានស៊ុម</string>
+    <string name="button_large">ឧទាហរណ៍ប៊ូតុងធំ</string>
+    <string name="button_large_disabled">ឧទាហរណ៍ប៊ូតុងមិនអាចប្រើបានធំ</string>
+    <string name="button_outlined">ឧទាហរណ៍ប៊ូតុងដែលបានគ្រោង</string>
+    <string name="button_outlined_disabled">ឧទាហរណ៍ប៊ូតុងមិនអាចប្រើបានដែលមានគ្រោង</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">ជ្រើសរើសកាលបរិច្ឆេទមួយ</string>
@@ -854,7 +854,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">អាចពង្រីកបាន</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">រំលងស្ថានភាពបើកចំហ</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">ទប់ស្កាត់ការបោះបង់នៅពេលចុច Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">បង្ហាញចំណុចទាញ</string>
 

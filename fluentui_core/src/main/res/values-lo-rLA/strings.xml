@@ -18,7 +18,7 @@
     <!-- Describes the action button component -->
     <string name="fluentui_action_button">ປຸ່ມ​ການ​ກະ​ທຳ</string>
     <!-- Describes the dismiss button component -->
-    <string name="fluentui_dismiss_button">ປຸ່ມປ່ອຍໄປ</string>
+    <string name="fluentui_dismiss_button">Dismiss</string>
     <!-- Describes enabled action-->
     <string name="fluentui_enabled">ເປີດນຳໃຊ້ແລ້ວ</string>
     <!-- Describes close action for a sheet-->
@@ -61,9 +61,9 @@
     <!-- Describes the outline design of control -->
     <string name="fluentui_outline">ໂຄງຮ່າງ</string>
 
-    <string name="fluentui_action_button_icon">Action button icon</string>
-    <string name="fluentui_center">Center text</string>
-    <string name="fluentui_accessory_button">Accessory Buttons</string>
+    <string name="fluentui_action_button_icon">ໄອຄອນປຸ່ມດຳເນີນການ</string>
+    <string name="fluentui_center">ຈັດຂໍ້ຄວາມຢູ່ເຄິ່ງກາງ</string>
+    <string name="fluentui_accessory_button">ປຸ່ມອຸປະກອນເສີມ</string>
 
     <!--Describes the control -->
     <string name="fluentui_radio_button">ປຸ່ມ​ວິ​ທະ​ຍຸ</string>

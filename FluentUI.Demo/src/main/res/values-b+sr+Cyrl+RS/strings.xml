@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">Доњи лист</string>
     <string name="bottom_sheet_dialog">Дијалог доњег листа</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Омогући брзо превлачење надоле за одбацивање</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Прикажи са ставкама у једном реду</string>
     <string name="bottom_sheet_with_double_line_items">Приказ ставки у два реда</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">Различити прикази дугмета</string>
     <string name="button">Дугме</string>
     <string name="buttonbar">Трака са дугмадима</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">Пример дугмета „Онемогућено“</string>
+    <string name="button_borderless">Пример дугмета „Без ивица“</string>
+    <string name="button_borderless_disabled">Пример дугмета „Онемогућено без ивица“</string>
+    <string name="button_large">Пример великог дугмета</string>
+    <string name="button_large_disabled">Пример великог дугмета „Онемогућено“</string>
+    <string name="button_outlined">Пример дугмета „Оивичено“</string>
+    <string name="button_outlined_disabled">Пример дугмета „Оивичено онемогућено“</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Одаберите датум</string>
@@ -856,7 +856,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Прошириво</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">Прескочи отворено стање</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Спречи одбацивање кликом ван дијалога</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Прикажи регулатор</string>
 

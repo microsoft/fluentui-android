@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Habilitar el deslizamiento hacia abajo para descartar</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Mostrar con elementos de una sola línea</string>
     <string name="bottom_sheet_with_double_line_items">Mostrar con elementos de línea doble</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">Diferentes vistas del botón</string>
     <string name="button">Botón</string>
     <string name="buttonbar">ButtonBar</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">Ejemplo de botón deshabilitado</string>
+    <string name="button_borderless">Ejemplo de botón sin borde</string>
+    <string name="button_borderless_disabled">Ejemplo de botón deshabilitado sin bordes</string>
+    <string name="button_large">Ejemplo de botón grande</string>
+    <string name="button_large_disabled">Ejemplo de botón deshabilitado grande</string>
+    <string name="button_outlined">Ejemplo de botón con contorno</string>
+    <string name="button_outlined_disabled">Ejemplo de botón deshabilitado resaltado</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Elegir una fecha</string>
@@ -856,7 +856,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Expansible</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">Omitir estado abierto</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Impedir el descarte al hacer clic en Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Mostrar identificador</string>
 
