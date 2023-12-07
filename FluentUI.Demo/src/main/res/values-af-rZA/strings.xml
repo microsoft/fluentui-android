@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Aktiveer vee af om te weier</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Wys met enkelreëlitems</string>
     <string name="bottom_sheet_with_double_line_items">Wys met dubbelreëlitems</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">Verskillende aansigte van knoppie</string>
     <string name="button">Knoppie</string>
     <string name="buttonbar">Knoppiebalk</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">Voorbeeld van gedeaktiveer-knoppie</string>
+    <string name="button_borderless">Voorbeeld van raamlose knoppie</string>
+    <string name="button_borderless_disabled">Voorbeeld van raamlose gedeaktiveer-knoppie</string>
+    <string name="button_large">Voorbeeld van groot knoppie</string>
+    <string name="button_large_disabled">Voorbeeld van groot gedeaktiveer-knoppie</string>
+    <string name="button_outlined">Voorbeeld van knoppie met omlyning</string>
+    <string name="button_outlined_disabled">Voorbeeld van gedeaktiveer-knoppie met omlyning</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Kies ’n datum</string>
@@ -855,7 +855,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Uitvoubaar</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">Slaan oop status oor</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Voorkom weiering by Scrim-klik</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Wys handvatsel</string>
 

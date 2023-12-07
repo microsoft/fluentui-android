@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">ख़ारिज करने के लिए ‘नीचे की ओर स्वाइप करें’ को सक्षम करें</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">एकल पंक्ति आइटम्स के साथ दिखाएँ</string>
     <string name="bottom_sheet_with_double_line_items">दोहरी रेखा वाले आइटम दिखाएँ</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">बटन के विभिन्न दृश्य</string>
     <string name="button">बटन</string>
     <string name="buttonbar">बटन पट्टी</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">‘आउटलाइन अक्षम करने वाले’ बटन का उदाहरण</string>
+    <string name="button_borderless">‘बॉर्डर रहित करने वाले’ बटन उदाहरण</string>
+    <string name="button_borderless_disabled">‘बॉर्डर रहित को अक्षम करने वाले’ बटन का उदाहरण</string>
+    <string name="button_large">‘बड़ा करने वाले’ बटन का उदाहरण</string>
+    <string name="button_large_disabled">‘बड़ा करने को अक्षम करने वाला’ बटन</string>
+    <string name="button_outlined">‘आउटलाइन करने वाले’ बटन का उदाहरण</string>
+    <string name="button_outlined_disabled">‘आउटलाइन को अक्षम करने वाले’ बटन</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">कोई दिनांक चुनें</string>
@@ -855,7 +855,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">विस्तार करने योग्य</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">‘ओपन स्टेट’ विकल्प को छोड़ें</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Scrim क्लिक पर ख़ारिज करना रोकें</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">हैंडल दिखाएँ</string>
 

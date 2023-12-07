@@ -4,5 +4,5 @@
     <string name="tab_content_description">Картица \u0020 на %1$d од %2$d</string>
 
     <!-- Describes the Numbering of Pill Butons Inside PillBar -->
-    <string name="position_string">Item %d in list of %d</string>
+    <string name="position_string">Ставка %d на листи %d</string>
 </resources>
