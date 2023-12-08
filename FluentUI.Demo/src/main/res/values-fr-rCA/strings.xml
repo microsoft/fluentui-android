@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Activer le balayage vers le bas pour ignorer</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Afficher avec des éléments sur une seule ligne</string>
     <string name="bottom_sheet_with_double_line_items">Afficher avec des éléments de ligne double</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">Différentes vues du bouton</string>
     <string name="button">Bouton</string>
     <string name="buttonbar">Barre de boutons</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">Exemple de bouton désactivé</string>
+    <string name="button_borderless">Exemple de bouton sans bordure</string>
+    <string name="button_borderless_disabled">Exemple de bouton désactivé sans bordure</string>
+    <string name="button_large">Exemple de bouton volumineux</string>
+    <string name="button_large_disabled">Exemple de bouton désactivé volumineux</string>
+    <string name="button_outlined">Exemple de bouton mis en évidence</string>
+    <string name="button_outlined_disabled">Exemple de bouton désactivé avec contour</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Choisir une date</string>
@@ -856,7 +856,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Extensible</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">Ignorer l’état d’ouverture</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Empêcher le rejet en cas de clic sur Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Afficher la poignée</string>
 

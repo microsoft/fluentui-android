@@ -18,7 +18,7 @@
     <!-- Describes the action button component -->
     <string name="fluentui_action_button">ប៊ូតុងសកម្មភាព</string>
     <!-- Describes the dismiss button component -->
-    <string name="fluentui_dismiss_button">ប៊ូតុងបោះបង់</string>
+    <string name="fluentui_dismiss_button">Dismiss</string>
     <!-- Describes enabled action-->
     <string name="fluentui_enabled">បានបើក</string>
     <!-- Describes close action for a sheet-->
@@ -61,9 +61,9 @@
     <!-- Describes the outline design of control -->
     <string name="fluentui_outline">គ្រោង</string>
 
-    <string name="fluentui_action_button_icon">Action button icon</string>
-    <string name="fluentui_center">Center text</string>
-    <string name="fluentui_accessory_button">Accessory Buttons</string>
+    <string name="fluentui_action_button_icon">រូបតំណាងប៊ូតុងសកម្មភាព</string>
+    <string name="fluentui_center">ដាក់អត្ថបទចំកណ្តាល</string>
+    <string name="fluentui_accessory_button">ប៊ូតុងឧបករណ៍បន្ទាប់បន្សំ</string>
 
     <!--Describes the control -->
     <string name="fluentui_radio_button">ប៊ូតុងមូល</string>

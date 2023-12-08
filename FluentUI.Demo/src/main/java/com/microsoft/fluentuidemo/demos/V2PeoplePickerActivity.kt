@@ -37,6 +37,8 @@ class V2PeoplePickerActivity : V2DemoActivity() {
         setupActivity(this)
     }
 
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-22"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

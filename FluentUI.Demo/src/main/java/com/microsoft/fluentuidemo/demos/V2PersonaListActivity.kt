@@ -1,6 +1,7 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,6 +16,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.BorderType
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.Persona
 import com.microsoft.fluentui.tokenized.persona.PersonaList
+import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.R.drawable
 import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.icons.ListItemIcons
@@ -29,9 +31,9 @@ class V2PersonaListActivity : V2DemoActivity() {
         setupActivity(this)
     }
 
-    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-22"
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-25"
     override val controlTokensUrl =
-        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-22"
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-24"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,7 +85,7 @@ class V2PersonaListActivity : V2DemoActivity() {
             Persona(Person(
                 "Ashley",
                 "McCarthy",
-                image = drawable.avatar_ashley_mccarthy,
+                bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.avatar_ashley_mccarthy),
                 email = "allan.munger@microsoft.com",
                 isActive = true,
                 status = Available,

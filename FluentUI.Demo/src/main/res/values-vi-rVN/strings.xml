@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">Chân_trang_tính</string>
     <string name="bottom_sheet_dialog">Hộp_thoại_chân_trang_tính</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Bật Trượt nhanh xuống để bỏ</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Hiển thị với các mục dòng đơn</string>
     <string name="bottom_sheet_with_double_line_items">Hiển thị với các mục dòng kép</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">Các dạng xem khác nhau của nút</string>
     <string name="button">Nút</string>
     <string name="buttonbar">Thanh nút</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">Ví dụ về nút Đã tắt</string>
+    <string name="button_borderless">Ví dụ về nút không viền</string>
+    <string name="button_borderless_disabled">Ví dụ về nút Đã tắt không viền</string>
+    <string name="button_large">Ví dụ về nút lớn</string>
+    <string name="button_large_disabled">Ví dụ về nút Đã tắt lớn</string>
+    <string name="button_outlined">Ví dụ về nút có viền</string>
+    <string name="button_outlined_disabled">Ví dụ về nút Đã tắt có viền</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Chọn ngày tháng</string>
@@ -854,7 +854,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Có thể mở rộng</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">Bỏ qua trạng thái mở</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Ngăn Bỏ qua khi Bấm Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Hiện núm điều khiển</string>
 

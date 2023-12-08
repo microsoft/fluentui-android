@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">ქვედა ფურცელი</string>
     <string name="bottom_sheet_dialog">BottomSheetdialog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">დასახურად, ქვემოთ გასრიალების ჩართვა</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">ერთხაზოვანი ელემენტების ჩვენება</string>
     <string name="bottom_sheet_with_double_line_items">ორხაზოვანი ელემენტების ჩვენება</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">ღილაკის სხვადასხვა ხედი</string>
     <string name="button">ღილაკი</string>
     <string name="buttonbar">ButtonBar</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">გამორთული ღილაკის მაგალითი</string>
+    <string name="button_borderless">უსაზღვრო ღილაკის მაგალითი</string>
+    <string name="button_borderless_disabled">უსაზღვრო გამორთული ღილაკის მაგალითი</string>
+    <string name="button_large">დიდი ღილაკის მაგალითი</string>
+    <string name="button_large_disabled">დიდი გამორთული ღილაკის მაგალითი</string>
+    <string name="button_outlined">გამოკვეთილი ღილაკის მაგალითი</string>
+    <string name="button_outlined_disabled">გამოკვეთილი გამორთული ღილაკის მაგალითი</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">თარიღის არჩევა</string>
@@ -855,7 +855,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">გაშლადი</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">ღია მდგომარეობის გამოტოვება</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">თავიდან აიცილეთ დახურვა Scrim Click-ზე</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">ჩვენების სახელური</string>
 

@@ -4,5 +4,5 @@
     <string name="tab_content_description">\u0020 lap : %1$d/%2$d</string>
 
     <!-- Describes the Numbering of Pill Butons Inside PillBar -->
-    <string name="position_string">Item %d in list of %d</string>
+    <string name="position_string">%d. elem a(z) %d elemből álló listán</string>
 </resources>

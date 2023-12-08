@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">DalenGwaelod</string>
     <string name="bottom_sheet_dialog">DeialogDalenGwaelod</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Galluogi Symud Bys i Lawr i Ddiystyru</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Dangos gydag eitemau un llinell</string>
     <string name="bottom_sheet_with_double_line_items">Dangos gydag eitemau llinell ddwbl</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">Gwahanol golygfeydd o’r botwm</string>
     <string name="button">Botwm</string>
     <string name="buttonbar">BarBotymau</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">Esiampl Botwm wedi\'i Analluogi</string>
+    <string name="button_borderless">Esiampl Botwm Heb Ymylon</string>
+    <string name="button_borderless_disabled">Esiampl Botwm Heb Ymyl Wedi\'i Analluogi</string>
+    <string name="button_large">Enghraifft Botwm Mawr</string>
+    <string name="button_large_disabled">Esiampl Botwm Mawr Wedi\'i Analluogi</string>
+    <string name="button_outlined">Esiampl Botwm wedi\'i Amlinellu</string>
+    <string name="button_outlined_disabled">Esiampl Botwm Wedi\'i Analluogi wedi\'i Amlinellu</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Dewis dyddiad</string>
@@ -859,7 +859,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Mae modd ei ehangu</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">Hepgor Cyflwr Agored</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Atal Disodli ar Glic Sgrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Dangos y Ddolen</string>
 

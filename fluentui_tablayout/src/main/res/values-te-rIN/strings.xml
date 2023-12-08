@@ -4,5 +4,5 @@
     <string name="tab_content_description">\u0020 %2$dలో %1$d ట్యాబ్</string>
 
     <!-- Describes the Numbering of Pill Butons Inside PillBar -->
-    <string name="position_string">Item %d in list of %d</string>
+    <string name="position_string">%d జాబితాలో ఐటమ్ %d</string>
 </resources>

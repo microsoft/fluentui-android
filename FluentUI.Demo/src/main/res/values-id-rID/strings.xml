@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Aktifkan Geser ke Bawah untuk Menutup</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Tampilkan dengan item baris tunggal</string>
     <string name="bottom_sheet_with_double_line_items">Tampilkan dengan item garis ganda</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">Tampilan tombol yang berbeda</string>
     <string name="button">Tombol</string>
     <string name="buttonbar">ButtonBar</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">Contoh Tombol Nonaktif</string>
+    <string name="button_borderless">Contoh Tombol Tanpa Batas</string>
+    <string name="button_borderless_disabled">Contoh Tombol Nonaktif Tanpa Batas</string>
+    <string name="button_large">Contoh Tombol Besar</string>
+    <string name="button_large_disabled">Contoh Tombol Nonaktif Besar</string>
+    <string name="button_outlined">Contoh Tombol Bergaris Luar</string>
+    <string name="button_outlined_disabled">Contoh Tombol Nonaktif Bergaris Luar</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Pilih tanggal</string>
@@ -854,7 +854,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Dapat diperluas</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">Lewati Kondisi Terbuka</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Cegah Pemberhentian saat Klik Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Tampilkan Handel</string>
 

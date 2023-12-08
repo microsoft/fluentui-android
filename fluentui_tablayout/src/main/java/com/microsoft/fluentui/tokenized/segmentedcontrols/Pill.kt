@@ -57,6 +57,7 @@ data class PillMetaData(
     var enabled: Boolean = true,
     var selected: Boolean = false,
     var notificationDot: Boolean = false,
+    var calloutSelectionState: Boolean = true,
 )
 
 /**
@@ -145,7 +146,8 @@ fun PillButton(
         onClick = pillMetaData.onClick
     )
 
-    val selectedString = if (pillMetaData.selected)
+    val selectedString = if(!pillMetaData.calloutSelectionState)  ""
+    else if (pillMetaData.selected)
         LocalContext.current.resources.getString(R.string.fluentui_selected)
     else
         LocalContext.current.resources.getString(R.string.fluentui_not_selected)

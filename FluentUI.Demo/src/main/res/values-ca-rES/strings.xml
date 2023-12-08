@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">Full inferior</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Habiliteu l’opció de passar el dit cap avall per ignorar</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Mostra amb elements d\'una sola línia</string>
     <string name="bottom_sheet_with_double_line_items">Mostra amb elements de doble línia</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">Visualitzacions diferents dels botons</string>
     <string name="button">Botó</string>
     <string name="buttonbar">Barra de botons</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">Exemple de botó inhabilitat</string>
+    <string name="button_borderless">Exemple de botó sense vores</string>
+    <string name="button_borderless_disabled">Exemple de botó sense vores inhabilitat</string>
+    <string name="button_large">Exemple de botó gran</string>
+    <string name="button_large_disabled">Exemple de botó gran inhabilitat</string>
+    <string name="button_outlined">Exemple de botó amb contorn</string>
+    <string name="button_outlined_disabled">Exemple de botó inhabilitat amb contorn</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Tria una data</string>
@@ -855,7 +855,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Expansible</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">Omet l\'estat obert</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Impedeix l\'apagament en fer clic a l\'scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Mostra la nansa</string>
 

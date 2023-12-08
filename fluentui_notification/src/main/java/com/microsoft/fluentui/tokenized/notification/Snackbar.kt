@@ -125,6 +125,8 @@ fun Snackbar(
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.SnackbarControlType] as SnackBarTokens
 
     val snackBarInfo = SnackBarInfo(metadata.style, !metadata.subTitle.isNullOrBlank())
+    var textPaddingValues = if(metadata.actionText == null && !metadata.enableDismiss ) PaddingValues(start = 16.dp, top = 12.dp, bottom = 12.dp, end = 16.dp) else PaddingValues(start = 16.dp, top = 12.dp, bottom = 12.dp)
+
     NotificationContainer(
         notificationMetadata = metadata,
         hasIcon = metadata.icon != null,
@@ -170,31 +172,23 @@ fun Snackbar(
                     )
                 }
             }
-
-            if (metadata.subTitle.isNullOrBlank()) {
+            Column(
+                Modifier
+                    .weight(1F)
+                    .padding(textPaddingValues)
+            ) {
                 BasicText(
                     text = metadata.message,
-                    modifier = Modifier
-                        .weight(1F)
-                        .padding(start = 16.dp, top = 12.dp, bottom = 12.dp),
                     style = token.titleTypography(snackBarInfo)
                 )
-            } else {
-                Column(
-                    Modifier
-                        .weight(1F)
-                        .padding(start = 16.dp, top = 12.dp, bottom = 12.dp)
-                ) {
-                    BasicText(
-                        text = metadata.message,
-                        style = token.titleTypography(snackBarInfo)
-                    )
+                if (!metadata.subTitle.isNullOrBlank()) {
                     BasicText(
                         text = metadata.subTitle,
                         style = token.subtitleTypography(snackBarInfo),
                         modifier = Modifier.testTag(SNACK_BAR_SUBTITLE)
                     )
                 }
+
             }
 
             if (metadata.actionText != null) {

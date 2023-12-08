@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">Nederste ark</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Aktivér stryg ned for at afvise</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Vis med elementer på én linje</string>
     <string name="bottom_sheet_with_double_line_items">Vis med elementer med dobbelt linje</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">Forskellige visninger af en knap</string>
     <string name="button">Knap</string>
     <string name="buttonbar">Værktøjslinje</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">Eksempel på deaktiveret knap</string>
+    <string name="button_borderless">Eksempel på knap uden kanter</string>
+    <string name="button_borderless_disabled">Eksempel på deaktiveret knap uden kanter</string>
+    <string name="button_large">Eksempel på stor knap</string>
+    <string name="button_large_disabled">Eksempel på stor deaktiveret knap</string>
+    <string name="button_outlined">Eksempel på fremhævet knap</string>
+    <string name="button_outlined_disabled">Eksempel på fremhævet deaktiveret knap</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Vælg en dato</string>
@@ -855,7 +855,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Kan udvides</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">Spring åben tilstand over</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Undgå afvisning ved Scrim-klik</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Vis håndtag</string>
 

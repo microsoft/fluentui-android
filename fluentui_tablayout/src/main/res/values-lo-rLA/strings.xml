@@ -4,5 +4,5 @@
     <string name="tab_content_description">\u0020 ແຖບ %1$d ຈາກທັງໝົດ %2$d</string>
 
     <!-- Describes the Numbering of Pill Butons Inside PillBar -->
-    <string name="position_string">Item %d in list of %d</string>
+    <string name="position_string">ລາຍການ %d ໃນລາຍການຂອງ %d</string>
 </resources>

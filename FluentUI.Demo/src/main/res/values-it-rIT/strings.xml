@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">Foglio inferiore</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">Abilita scorrimento rapido verso il basso per ignorare</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Mostra con singole voci di riga</string>
     <string name="bottom_sheet_with_double_line_items">Mostra con voci doppie</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">Visualizzazioni diverse del pulsante</string>
     <string name="button">Pulsante</string>
     <string name="buttonbar">Barra dei pulsanti</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">Esempio di pulsante disabilitato</string>
+    <string name="button_borderless">Esempio di pulsante senza bordi</string>
+    <string name="button_borderless_disabled">Esempio di pulsante Disabilitato senza bordi</string>
+    <string name="button_large">Esempio di pulsante Grande</string>
+    <string name="button_large_disabled">Esempio di pulsante Disabilitato grande</string>
+    <string name="button_outlined">Esempio di pulsante con contorno</string>
+    <string name="button_outlined_disabled">Esempio di pulsante Disabilitato evidenziato</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Scegli una data</string>
@@ -856,7 +856,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">Espandibile</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">Ignora stato di apertura</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">Impedisci chiusura al clic Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Mostra quadratino</string>
 

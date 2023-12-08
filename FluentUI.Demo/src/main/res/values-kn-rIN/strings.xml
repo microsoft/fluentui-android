@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">ವಜಾಗೊಳಿಸಲು ಕೆಳಗೆ ಸ್ವೈಪ್ ಮಾಡಿ ಸಕ್ರಿಯಗೊಳಿಸಿ</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">ಏಕ ಸಾಲು ಐಟಂಗಳನ್ನು ತೋರಿಸಿ</string>
     <string name="bottom_sheet_with_double_line_items">ಎರಡು ಸಾಲು ಐಟಂಗಳೊಂದಿಗೆ ತೋರಿಸಿ</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">ಬಟನ್‌ನ ವಿಭಿನ್ನ ವೀಕ್ಷಣೆಗಳು</string>
     <string name="button">ಬಟನ್</string>
     <string name="buttonbar">ButtonBar</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ ಬಟನ್ ಉದಾಹರಣೆ</string>
+    <string name="button_borderless">ಅಂಚುರಹಿತ ಬಟನ್ ಉದಾಹರಣೆ</string>
+    <string name="button_borderless_disabled">ಅಂಚುರಹಿತ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ ಬಟನ್‌ ಉದಾಹರಣೆ</string>
+    <string name="button_large">ದೊಡ್ಡ ಬಟನ್ ಉದಾಹರಣೆ</string>
+    <string name="button_large_disabled">ದೊಡ್ಡದು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ ಬಟನ್ ಉದಾಹರಣೆ</string>
+    <string name="button_outlined">ರೂಪುರೇಷೆಗೊಳಿಸಿದ ಬಟನ್ ಉದಾಹರಣೆ</string>
+    <string name="button_outlined_disabled">ರೂಪುರೇಷೆಗೊಳಿಸಿದ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ ಬಟನ್ ಉದಾಹಣೆ</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">ದಿನಾಂಕವನ್ನು ಆರಿಸಿ</string>
@@ -855,7 +855,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">ವಿಸ್ತರಿಸಬಹುದು</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">ತೆರೆದ ಸ್ಥಿತಿಯನ್ನು ಬಿಟ್ಟುಬಿಡಿ</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">ಸ್ಕ್ರಿಮ್ ಕ್ಲಿಕ್‌ನಲ್ಲಿ ವಜಾ ತಡೆಯಿರಿ</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">ಹ್ಯಾಂಡಲ್ ತೋರಿಸಿ</string>
 

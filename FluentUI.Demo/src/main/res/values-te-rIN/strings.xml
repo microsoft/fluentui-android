@@ -138,7 +138,7 @@
     <!--UI Labels -->
     <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
-    <string name="bottom_sheet_text_enable_swipe_dismiss">Enable Swipe Down to Dismiss</string>
+    <string name="bottom_sheet_text_enable_swipe_dismiss">విస్మరించడానికి క్రిందికి స్వైప్‌ చేయిని ప్రారంభించండి</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">సింగిల్ లైన్ అంశాలతో చూపించు</string>
     <string name="bottom_sheet_with_double_line_items">డబుల్ లైన్ అంశాలతో చూపించు</string>
@@ -284,16 +284,16 @@
 
     <!--Button-->
     <!-- text for buttons -->
-    <string name="basic_input_activity_heading">Different views of button</string>
+    <string name="basic_input_activity_heading">బటన్ విభిన్న వీక్షణలు</string>
     <string name="button">బటన్</string>
     <string name="buttonbar">ButtonBar</string>
-    <string name="button_disabled">Disabled Button Example</string>
-    <string name="button_borderless">Borderless Button Example</string>
-    <string name="button_borderless_disabled">Borderless Disabled Button Example</string>
-    <string name="button_large">Large Button Example</string>
-    <string name="button_large_disabled">Large Disabled Button Example</string>
-    <string name="button_outlined">Outlined Button Example</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button Example</string>
+    <string name="button_disabled">నిలిపివేసిన బటన్ ఉదాహరణ</string>
+    <string name="button_borderless">బార్డర్ లేని బటన్ ఉదాహరణ</string>
+    <string name="button_borderless_disabled">బార్డర్ లేని నిలిపివేసిన బటన్ ఉదాహరణ</string>
+    <string name="button_large">పెద్ద బటన్ ఉదాహరణ</string>
+    <string name="button_large_disabled">పెద్ద నిలిపివేసిన బటన్ ఉదాహరణ</string>
+    <string name="button_outlined">ఔట్‌లైన్ కలిగిన బటన్ ఉదాహరణ</string>
+    <string name="button_outlined_disabled">ఔట్‌లైన్ కలిగిన నిలిపివేసిన బటన్ ఉదాహరణ</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">తేదీని ఎంచుకోండి</string>
@@ -855,7 +855,9 @@
     <!-- UI Label for Expandable -->
     <string name="drawer_expandable">విస్తరించదగినది</string>
     <!-- UI Label for direct swipe down dismiss-->
-    <string name="skip_open_state">Skip Open State</string>
+    <string name="skip_open_state">తెరచిన స్థితిని స్కిప్ చేయండి</string>
+    <!-- UI Label for direct swipe down dismiss-->
+    <string name="prevent_scrim_click_dismissal">స్క్రిం క్లిక్ పై తొలగింపును నిరోధించండి</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">హ్యాండిల్‌ని చూపించు</string>
 

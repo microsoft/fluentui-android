@@ -4,5 +4,5 @@
     <string name="tab_content_description">Karta \u0020 %1$d z %2$d</string>
 
     <!-- Describes the Numbering of Pill Butons Inside PillBar -->
-    <string name="position_string">Item %d in list of %d</string>
+    <string name="position_string">Element %d na liście %d</string>
 </resources>

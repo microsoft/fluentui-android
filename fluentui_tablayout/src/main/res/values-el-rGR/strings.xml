@@ -4,5 +4,5 @@
     <string name="tab_content_description">\u0020 καρτέλα %1$d από %2$d</string>
 
     <!-- Describes the Numbering of Pill Butons Inside PillBar -->
-    <string name="position_string">Item %d in list of %d</string>
+    <string name="position_string">Στοιχείο %d στη λίστα των %d</string>
 </resources>
