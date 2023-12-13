@@ -37,6 +37,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.compose.*
+import com.microsoft.fluentui.compose.FixedThreshold
 import com.microsoft.fluentui.compose.SwipeableDefaults
 import com.microsoft.fluentui.compose.SwipeableState
 import com.microsoft.fluentui.drawer.R
@@ -225,6 +226,9 @@ fun BottomSheet(
     showHandle: Boolean = true,
     slideOver: Boolean = true,
     enableSwipeDismiss: Boolean = false,
+    stickyBehavior: Boolean = false,
+    stickyThresholdUpward: Float? = null,
+    stickyThresholdDownward: Float? = null,
     bottomSheetTokens: BottomSheetTokens? = null,
     content: @Composable () -> Unit
 ) {
@@ -247,6 +251,11 @@ fun BottomSheet(
         tokens.scrimColor(bottomSheetInfo).copy(alpha = scrimOpacity)
 
     val scope = rememberCoroutineScope()
+    if(stickyBehavior){
+        if(stickyThresholdUpward == null || stickyThresholdDownward == null){
+            throw IllegalArgumentException("Sticky threshold should be provided for sticky behavior")
+        }
+    }
 
     BoxWithConstraints(modifier) {
         val fullHeight = constraints.maxHeight.toFloat()
@@ -301,7 +310,10 @@ fun BottomSheet(
             Modifier
                 .fillMaxWidth()
                 .nestedScroll(
-                    if(!enableSwipeDismiss && sheetState.offset.value != null && sheetState.offset.value!! >= (fullHeight - dpToPx(peekHeight) ) )
+                    if (!enableSwipeDismiss && sheetState.offset.value != null && sheetState.offset.value!! >= (fullHeight - dpToPx(
+                            peekHeight
+                        ))
+                    )
                         sheetState.NonDismissiblePostDownNestedScrollConnection
                     else if (slideOver) sheetState.PreUpPostDownNestedScrollConnection
                     else sheetState.PostDownNestedScrollConnection
@@ -319,6 +331,9 @@ fun BottomSheet(
                 .bottomSheetSwipeable(
                     sheetState,
                     expandable,
+                    stickyBehavior,
+                    stickyThresholdDownward,
+                    stickyThresholdUpward,
                     peekHeight,
                     fullHeight,
                     sheetHeightState.value,
@@ -349,7 +364,7 @@ fun BottomSheet(
                 .background(sheetBackgroundColor)
                 .semantics(mergeDescendants = true) {
                     if (sheetState.isVisible) {
-                        if(enableSwipeDismiss) {
+                        if (enableSwipeDismiss) {
                             dismiss {
                                 if (sheetState.confirmStateChange(BottomSheetValue.Hidden)) {
                                     scope.launch { sheetState.hide() }
@@ -386,21 +401,22 @@ fun BottomSheet(
                             .draggable(
                                 orientation = Orientation.Vertical,
                                 state = rememberDraggableState { delta ->
-                                    if(!enableSwipeDismiss && sheetState.offset.value != null && sheetState.offset.value!! >= (fullHeight - dpToPx(peekHeight) ) ){
-                                        if(delta<0){
+                                    if (!enableSwipeDismiss && sheetState.offset.value != null && sheetState.offset.value!! >= (fullHeight - dpToPx(
+                                            peekHeight
+                                        ))
+                                    ) {
+                                        if (delta < 0) {
                                             sheetState.performDrag(delta)
                                         }
-                                    }
-                                    else sheetState.performDrag(delta)
+                                    } else sheetState.performDrag(delta)
                                 },
                                 onDragStopped = { velocity ->
                                     launch {
                                         sheetState.performFling(velocity)
                                         if (!sheetState.isVisible) {
-                                            if(enableSwipeDismiss) {
+                                            if (enableSwipeDismiss) {
                                                 scope.launch { sheetState.hide() }
-                                            }
-                                            else {
+                                            } else {
                                                 scope.launch { sheetState.show() }
                                             }
                                         }
@@ -456,6 +472,9 @@ fun BottomSheet(
 private fun Modifier.bottomSheetSwipeable(
     sheetState: BottomSheetState,
     expandable: Boolean,
+    stickyBehavior: Boolean,
+    stickyThresholdDownward: Float?,
+    stickyThresholdUpward: Float?,
     peekHeight: Dp,
     fullHeight: Float,
     sheetHeight: Float?,
@@ -490,13 +509,32 @@ private fun Modifier.bottomSheetSwipeable(
                             "if the whole content is visible in Shown state itself"
                 )
             }
-            Modifier.swipeable(
-                state = sheetState,
-                anchors = anchors,
-                orientation = Orientation.Vertical,
-                enabled = sheetState.currentValue != BottomSheetValue.Hidden,
-                resistance = null
-            )
+            if (stickyBehavior) {
+                Modifier.swipeable(
+                    state = sheetState,
+                    anchors = anchors,
+                    orientation = Orientation.Vertical,
+                    enabled = sheetState.currentValue != BottomSheetValue.Hidden,
+                    thresholds = { from, to ->
+                        val fromKey = anchors.entries.firstOrNull { it.value == from }?.key
+                        val toKey = anchors.entries.firstOrNull { it.value == to }?.key
+                        if (fromKey != null && toKey != null && fromKey < toKey) {
+                            FixedThreshold(stickyThresholdUpward!!.dp) // Threshold for drag down
+                        } else {
+                            FixedThreshold(stickyThresholdDownward!!.dp)  // Threshold for drag up
+                        }
+                    },
+                    resistance = null
+                )
+            } else {
+                Modifier.swipeable(
+                    state = sheetState,
+                    anchors = anchors,
+                    orientation = Orientation.Vertical,
+                    enabled = sheetState.currentValue != BottomSheetValue.Hidden,
+                    resistance = null
+                )
+            }
         } else {
             Modifier
         }
@@ -514,13 +552,32 @@ private fun Modifier.bottomSheetSwipeable(
                 fullHeight - peekHeightPx to BottomSheetValue.Shown
             )
         }
-        Modifier.swipeable(
-            state = sheetState,
-            anchors = anchors,
-            orientation = Orientation.Vertical,
-            enabled = sheetState.currentValue != BottomSheetValue.Hidden,
-            resistance = null
-        )
+        if (stickyBehavior) {
+            Modifier.swipeable(
+                state = sheetState,
+                anchors = anchors,
+                orientation = Orientation.Vertical,
+                enabled = sheetState.currentValue != BottomSheetValue.Hidden,
+                thresholds = { from, to ->
+                    val fromKey = anchors.entries.firstOrNull { it.value == from }?.key
+                    val toKey = anchors.entries.firstOrNull { it.value == to }?.key
+                    if (fromKey != null && toKey != null && fromKey < toKey) {
+                        FixedThreshold(stickyThresholdUpward!!.dp) // Threshold for drag up
+                    } else {
+                        FixedThreshold(stickyThresholdDownward!!.dp)  // Threshold for drag down
+                    }
+                },
+                resistance = null
+            )
+        } else {
+            Modifier.swipeable(
+                state = sheetState,
+                anchors = anchors,
+                orientation = Orientation.Vertical,
+                enabled = sheetState.currentValue != BottomSheetValue.Hidden,
+                resistance = null
+            )
+        }
     }
 
     return this.then(modifier)

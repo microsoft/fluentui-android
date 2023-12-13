@@ -11,11 +11,14 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Slider
+import androidx.compose.material.SliderDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.ArrowForward
@@ -32,6 +35,7 @@ import androidx.compose.material.icons.outlined.Share
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -100,6 +104,12 @@ private fun CreateActivityUI() {
 
     var peekHeightState by remember { mutableStateOf(110.dp) }
 
+    //var stickyThreshold by remember { mutableStateOf(Pair(56f,56f)) }
+    var stickyThresholdUpwardDrag: Float? by remember { mutableStateOf(null) }
+    var stickyThresholdDownwardDrag: Float? by remember { mutableStateOf(null) }
+
+    var stickyBehaviorState by remember { mutableStateOf(false) }
+
     var hidden by remember { mutableStateOf(true) }
 
     val bottomSheetState = rememberBottomSheetState(BottomSheetValue.Shown)
@@ -143,7 +153,10 @@ private fun CreateActivityUI() {
         showHandle = showHandleState,
         sheetState = bottomSheetState,
         slideOver = slideOverState,
-        enableSwipeDismiss = enableSwipeDismiss
+        enableSwipeDismiss = enableSwipeDismiss,
+        stickyBehavior = stickyBehaviorState,
+        stickyThresholdUpward = stickyThresholdUpwardDrag,
+        stickyThresholdDownward = stickyThresholdDownwardDrag
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(10.dp),
@@ -289,6 +302,104 @@ private fun CreateActivityUI() {
                     modifier = Modifier.testTag(BOTTOM_SHEET_ENABLE_SWIPE_DISMISS_TEST_TAG),
                     checkedState = enableSwipeDismiss,
                     onValueChange = { enableSwipeDismiss = it }
+                )
+            }
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(30.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                BasicText(
+                    text = "Sticky Behavior",
+                    modifier = Modifier.weight(1F),
+                    style = TextStyle(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
+                    )
+                )
+                ToggleSwitch(checkedState = stickyBehaviorState,
+                    onValueChange = {
+                        stickyBehaviorState = it
+                        if(stickyBehaviorState == false) {
+                            stickyThresholdUpwardDrag = null
+                            stickyThresholdDownwardDrag = null
+                        }
+                        else {
+                            stickyThresholdUpwardDrag = 56f
+                            stickyThresholdDownwardDrag = 56f
+                        }
+                    }
+                )
+            }
+            // New Row for Sticky Threshold
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(30.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                BasicText(
+                    text = "Sticky Threshold Upward Drag",
+                    modifier = Modifier.weight(1F),
+                    style = TextStyle(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
+                    )
+                )
+                Slider(
+                    modifier = Modifier.width(100.dp).height(50.dp).padding(0.dp, 0.dp, 0.dp, 0.dp),
+                    value = stickyThresholdUpwardDrag?:56f,
+                    onValueChange = { stickyThresholdUpwardDrag = it },
+                    valueRange = 0f..500f,
+                    colors = SliderDefaults.colors(
+                        thumbColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color100],
+                        activeTrackColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color10],
+                    ),
+                    enabled = stickyBehaviorState
+                )
+                BasicText(
+                    text = "%.1fdp".format(stickyThresholdUpwardDrag),
+                    style = TextStyle(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
+                    )
+                )
+            }
+            // New Row for Sticky Threshold
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(30.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                BasicText(
+                    text = "Sticky Threshold Downward Drag",
+                    modifier = Modifier.weight(1F),
+                    style = TextStyle(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
+                    )
+                )
+                Slider(
+                    modifier = Modifier.width(100.dp).height(50.dp).padding(0.dp, 0.dp, 0.dp, 0.dp),
+                    value = stickyThresholdDownwardDrag?:56f,
+                    onValueChange = { stickyThresholdDownwardDrag = it },
+                    valueRange = 0f..500f,
+                    colors = SliderDefaults.colors(
+                        thumbColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color100],
+                        activeTrackColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color10],
+                    ),
+                    enabled = stickyBehaviorState
+                )
+                BasicText(
+                    text = "%.1fdp".format(stickyThresholdDownwardDrag),
+                    style = TextStyle(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
+                    )
                 )
             }
             Row(
