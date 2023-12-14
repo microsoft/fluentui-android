@@ -211,7 +211,7 @@ private const val BottomSheetOpenFraction = 0.5f
  * in the visible region. If false then, the sheetContainer placed at the bottom & its height could be at peekHeight, fullheight or hidden when dragged by Handle or swipe down.
  * @param enableSwipeDismiss if false, bottomSheet will not be dismissed after swipe down gesture. Default value is false.
  * @param stickyThresholdUpward The threshold for the upward drag gesture till which the sheet behaves sticky. Default value is 56f.
- * @param stickyThresholdDownward The threshold for the downward drag gesture till which the sheet behaves sticky. Default value is 56f.
+ * @param stickyThresholdDownward The threshold for the downward drag gesture till which the sheet behaves sticky. Default value is 56f.y
  * @param bottomSheetTokens tokens to provide appearance values. If not provided then bottomSheet
  * tokens will be picked from [AppThemeController]
  * @param content The content of rest of the screen.
@@ -513,9 +513,10 @@ private fun Modifier.bottomSheetSwipeable(
                     val toKey = anchors.entries.firstOrNull { it.value == to }?.key
                     if (fromKey != null && toKey != null && fromKey < toKey) {
                         FixedThreshold(stickyThresholdDownward!!.dp) // Threshold for drag down
-                    } else {
+                    } else if(fromKey != null && toKey != null && fromKey > toKey) {
                         FixedThreshold(stickyThresholdUpward!!.dp)  // Threshold for drag up
                     }
+                    else { FixedThreshold(56.dp) } //fallback if null
                 },
                 resistance = null
             )
