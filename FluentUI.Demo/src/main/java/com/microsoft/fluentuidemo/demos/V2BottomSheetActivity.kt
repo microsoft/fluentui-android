@@ -317,8 +317,10 @@ private fun CreateActivityUI() {
                 )
                 Slider(
                     modifier = Modifier.width(100.dp).height(50.dp).padding(0.dp, 0.dp, 0.dp, 0.dp),
-                    value = stickyThresholdUpwardDrag?:56f,
-                    onValueChange = { stickyThresholdUpwardDrag = it },
+                    value = stickyThresholdUpwardDrag,
+                    onValueChange = { stickyThresholdUpwardDrag = it
+                                    peekHeightState+=0.0001.dp
+                                    },
                     valueRange = 0f..500f,
                     colors = SliderDefaults.colors(
                         thumbColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color100],
@@ -351,8 +353,10 @@ private fun CreateActivityUI() {
                 )
                 Slider(
                     modifier = Modifier.width(100.dp).height(50.dp).padding(0.dp, 0.dp, 0.dp, 0.dp),
-                    value = stickyThresholdDownwardDrag?:56f,
-                    onValueChange = { stickyThresholdDownwardDrag = it },
+                    value = stickyThresholdDownwardDrag,
+                    onValueChange = { stickyThresholdDownwardDrag = it
+                                    peekHeightState+=0.0001.dp
+                                    },
                     valueRange = 0f..500f,
                     colors = SliderDefaults.colors(
                         thumbColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color100],

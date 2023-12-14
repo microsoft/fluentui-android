@@ -511,12 +511,10 @@ private fun Modifier.bottomSheetSwipeable(
                 thresholds = { from, to ->
                     val fromKey = anchors.entries.firstOrNull { it.value == from }?.key
                     val toKey = anchors.entries.firstOrNull { it.value == to }?.key
-                    if (fromKey != null && toKey != null && fromKey < toKey) {
-                        FixedThreshold(stickyThresholdDownward!!.dp) // Threshold for drag down
-                    } else if(fromKey != null && toKey != null && fromKey > toKey) {
-                        FixedThreshold(stickyThresholdUpward!!.dp)  // Threshold for drag up
-                    }
-                    else { FixedThreshold(56.dp) } //fallback if null
+
+                    if(fromKey == null || toKey == null) { FixedThreshold(56.dp) } //in case of null defaulting to 56.dp threshold
+                    else if (fromKey < toKey) { FixedThreshold(stickyThresholdDownward.dp) } // Threshold for drag down
+                    else{ FixedThreshold(stickyThresholdUpward.dp) } // Threshold for drag up
                 },
                 resistance = null
             )
@@ -546,11 +544,10 @@ private fun Modifier.bottomSheetSwipeable(
             thresholds = { from, to ->
                 val fromKey = anchors.entries.firstOrNull { it.value == from }?.key
                 val toKey = anchors.entries.firstOrNull { it.value == to }?.key
-                if (fromKey != null && toKey != null && fromKey < toKey) {
-                    FixedThreshold(stickyThresholdUpward!!.dp) // Threshold for drag up
-                } else {
-                    FixedThreshold(stickyThresholdDownward!!.dp)  // Threshold for drag down
-                }
+
+                if(fromKey == null || toKey == null) { FixedThreshold(56.dp) } //in case of null defaulting to 56 as a fallback
+                else if (fromKey < toKey) { FixedThreshold(stickyThresholdDownward.dp) } // Threshold for drag down
+                else{ FixedThreshold(stickyThresholdUpward.dp) } // Threshold for drag up
             },
             resistance = null
         )
