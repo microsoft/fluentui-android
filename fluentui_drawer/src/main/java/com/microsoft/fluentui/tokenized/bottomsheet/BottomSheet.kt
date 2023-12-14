@@ -210,9 +210,8 @@ private const val BottomSheetOpenFraction = 0.5f
  * @param slideOver if true, then sheetContent would be drawn in full length & it just get slided
  * in the visible region. If false then, the sheetContainer placed at the bottom & its height could be at peekHeight, fullheight or hidden when dragged by Handle or swipe down.
  * @param enableSwipeDismiss if false, bottomSheet will not be dismissed after swipe down gesture. Default value is false.
- * @param stickyBehavior if true, bottomSheet will stick to the Expanded and Shown State when dragged beyond the stickyThresholdUpward or stickyThresholdDownward. Default value is false. When it's false the default Up and Down Drag Threshold value is 56dp
- * @param stickyThresholdUpward the threshold value for drag up gesture when stickyBehavior is true. Default value is Null. If StickyBehavior is true then stickyThresholdUpward should be provided.
- * @param stickyThresholdDownward the threshold value for drag down gesture when stickyBehavior is true. Default value is Null. If StickyBehavior is true then stickyThresholdUpward should be provided.
+ * @param stickyThresholdUpward The threshold for the upward drag gesture till which the sheet behaves sticky. Default value is 56f.
+ * @param stickyThresholdDownward The threshold for the downward drag gesture till which the sheet behaves sticky. Default value is 56f.
  * @param bottomSheetTokens tokens to provide appearance values. If not provided then bottomSheet
  * tokens will be picked from [AppThemeController]
  * @param content The content of rest of the screen.
@@ -229,9 +228,8 @@ fun BottomSheet(
     showHandle: Boolean = true,
     slideOver: Boolean = true,
     enableSwipeDismiss: Boolean = false,
-    stickyBehavior: Boolean = false,
-    stickyThresholdUpward: Float? = null,
-    stickyThresholdDownward: Float? = null,
+    stickyThresholdUpward: Float = 56f,
+    stickyThresholdDownward: Float = 56f,
     bottomSheetTokens: BottomSheetTokens? = null,
     content: @Composable () -> Unit
 ) {
@@ -254,11 +252,6 @@ fun BottomSheet(
         tokens.scrimColor(bottomSheetInfo).copy(alpha = scrimOpacity)
 
     val scope = rememberCoroutineScope()
-    if(stickyBehavior){
-        if(stickyThresholdUpward == null || stickyThresholdDownward == null){
-            throw IllegalArgumentException("Sticky threshold should be provided for sticky behavior")
-        }
-    }
 
     BoxWithConstraints(modifier) {
         val fullHeight = constraints.maxHeight.toFloat()
@@ -334,7 +327,6 @@ fun BottomSheet(
                 .bottomSheetSwipeable(
                     sheetState,
                     expandable,
-                    stickyBehavior,
                     stickyThresholdDownward,
                     stickyThresholdUpward,
                     peekHeight,
@@ -475,9 +467,8 @@ fun BottomSheet(
 private fun Modifier.bottomSheetSwipeable(
     sheetState: BottomSheetState,
     expandable: Boolean,
-    stickyBehavior: Boolean,
-    stickyThresholdDownward: Float?,
-    stickyThresholdUpward: Float?,
+    stickyThresholdDownward: Float,
+    stickyThresholdUpward: Float,
     peekHeight: Dp,
     fullHeight: Float,
     sheetHeight: Float?,
@@ -512,32 +503,23 @@ private fun Modifier.bottomSheetSwipeable(
                             "if the whole content is visible in Shown state itself"
                 )
             }
-            if (stickyBehavior) {
-                Modifier.swipeable(
-                    state = sheetState,
-                    anchors = anchors,
-                    orientation = Orientation.Vertical,
-                    enabled = sheetState.currentValue != BottomSheetValue.Hidden,
-                    thresholds = { from, to ->
-                        val fromKey = anchors.entries.firstOrNull { it.value == from }?.key
-                        val toKey = anchors.entries.firstOrNull { it.value == to }?.key
-                        if (fromKey != null && toKey != null && fromKey < toKey) {
-                            FixedThreshold(stickyThresholdDownward!!.dp) // Threshold for drag down
-                        } else {
-                            FixedThreshold(stickyThresholdUpward!!.dp)  // Threshold for drag up
-                        }
-                    },
-                    resistance = null
-                )
-            } else {
-                Modifier.swipeable(
-                    state = sheetState,
-                    anchors = anchors,
-                    orientation = Orientation.Vertical,
-                    enabled = sheetState.currentValue != BottomSheetValue.Hidden,
-                    resistance = null
-                )
-            }
+            Modifier.swipeable(
+                state = sheetState,
+                anchors = anchors,
+                orientation = Orientation.Vertical,
+                enabled = sheetState.currentValue != BottomSheetValue.Hidden,
+                thresholds = { from, to ->
+                    val fromKey = anchors.entries.firstOrNull { it.value == from }?.key
+                    val toKey = anchors.entries.firstOrNull { it.value == to }?.key
+                    if (fromKey != null && toKey != null && fromKey < toKey) {
+                        FixedThreshold(stickyThresholdDownward!!.dp) // Threshold for drag down
+                    } else {
+                        FixedThreshold(stickyThresholdUpward!!.dp)  // Threshold for drag up
+                    }
+                },
+                resistance = null
+            )
+
         } else {
             Modifier
         }
@@ -555,32 +537,23 @@ private fun Modifier.bottomSheetSwipeable(
                 fullHeight - peekHeightPx to BottomSheetValue.Shown
             )
         }
-        if (stickyBehavior) {
-            Modifier.swipeable(
-                state = sheetState,
-                anchors = anchors,
-                orientation = Orientation.Vertical,
-                enabled = sheetState.currentValue != BottomSheetValue.Hidden,
-                thresholds = { from, to ->
-                    val fromKey = anchors.entries.firstOrNull { it.value == from }?.key
-                    val toKey = anchors.entries.firstOrNull { it.value == to }?.key
-                    if (fromKey != null && toKey != null && fromKey < toKey) {
-                        FixedThreshold(stickyThresholdUpward!!.dp) // Threshold for drag up
-                    } else {
-                        FixedThreshold(stickyThresholdDownward!!.dp)  // Threshold for drag down
-                    }
-                },
-                resistance = null
-            )
-        } else {
-            Modifier.swipeable(
-                state = sheetState,
-                anchors = anchors,
-                orientation = Orientation.Vertical,
-                enabled = sheetState.currentValue != BottomSheetValue.Hidden,
-                resistance = null
-            )
-        }
+        Modifier.swipeable(
+            state = sheetState,
+            anchors = anchors,
+            orientation = Orientation.Vertical,
+            enabled = sheetState.currentValue != BottomSheetValue.Hidden,
+            thresholds = { from, to ->
+                val fromKey = anchors.entries.firstOrNull { it.value == from }?.key
+                val toKey = anchors.entries.firstOrNull { it.value == to }?.key
+                if (fromKey != null && toKey != null && fromKey < toKey) {
+                    FixedThreshold(stickyThresholdUpward!!.dp) // Threshold for drag up
+                } else {
+                    FixedThreshold(stickyThresholdDownward!!.dp)  // Threshold for drag down
+                }
+            },
+            resistance = null
+        )
+
     }
 
     return this.then(modifier)

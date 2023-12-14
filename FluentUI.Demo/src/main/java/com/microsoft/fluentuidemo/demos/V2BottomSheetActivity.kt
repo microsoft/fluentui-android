@@ -104,11 +104,8 @@ private fun CreateActivityUI() {
 
     var peekHeightState by remember { mutableStateOf(110.dp) }
 
-    //var stickyThreshold by remember { mutableStateOf(Pair(56f,56f)) }
-    var stickyThresholdUpwardDrag: Float? by remember { mutableStateOf(null) }
-    var stickyThresholdDownwardDrag: Float? by remember { mutableStateOf(null) }
-
-    var stickyBehaviorState by remember { mutableStateOf(false) }
+    var stickyThresholdUpwardDrag: Float by remember { mutableStateOf(56f) }
+    var stickyThresholdDownwardDrag: Float by remember { mutableStateOf(56f) }
 
     var hidden by remember { mutableStateOf(true) }
 
@@ -154,7 +151,6 @@ private fun CreateActivityUI() {
         sheetState = bottomSheetState,
         slideOver = slideOverState,
         enableSwipeDismiss = enableSwipeDismiss,
-        stickyBehavior = stickyBehaviorState,
         stickyThresholdUpward = stickyThresholdUpwardDrag,
         stickyThresholdDownward = stickyThresholdDownwardDrag
     ) {
@@ -304,35 +300,7 @@ private fun CreateActivityUI() {
                     onValueChange = { enableSwipeDismiss = it }
                 )
             }
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(30.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                BasicText(
-                    text = "Sticky Behavior",
-                    modifier = Modifier.weight(1F),
-                    style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            themeMode = ThemeMode.Auto
-                        )
-                    )
-                )
-                ToggleSwitch(checkedState = stickyBehaviorState,
-                    onValueChange = {
-                        stickyBehaviorState = it
-                        if(!stickyBehaviorState) {
-                            stickyThresholdUpwardDrag = null
-                            stickyThresholdDownwardDrag = null
-                        }
-                        else {
-                            stickyThresholdUpwardDrag = 56f
-                            stickyThresholdDownwardDrag = 56f
-                        }
-                    }
-                )
-            }
-            // New Row for Sticky Threshold
+            // New Row for Sticky Threshold Downward Drag
             Row(
                 horizontalArrangement = Arrangement.spacedBy(30.dp),
                 verticalAlignment = Alignment.CenterVertically,
@@ -355,8 +323,7 @@ private fun CreateActivityUI() {
                     colors = SliderDefaults.colors(
                         thumbColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color100],
                         activeTrackColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color10],
-                    ),
-                    enabled = stickyBehaviorState
+                    )
                 )
                 BasicText(
                     text = "%.1fdp".format(stickyThresholdUpwardDrag),
@@ -367,7 +334,7 @@ private fun CreateActivityUI() {
                     )
                 )
             }
-            // New Row for Sticky Threshold
+            // New Row for Sticky Threshold Upward Drag
             Row(
                 horizontalArrangement = Arrangement.spacedBy(30.dp),
                 verticalAlignment = Alignment.CenterVertically,
@@ -390,8 +357,7 @@ private fun CreateActivityUI() {
                     colors = SliderDefaults.colors(
                         thumbColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color100],
                         activeTrackColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color10],
-                    ),
-                    enabled = stickyBehaviorState
+                    )
                 )
                 BasicText(
                     text = "%.1fdp".format(stickyThresholdDownwardDrag),
