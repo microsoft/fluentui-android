@@ -321,7 +321,7 @@ private fun CreateActivityUI() {
                 ToggleSwitch(checkedState = stickyBehaviorState,
                     onValueChange = {
                         stickyBehaviorState = it
-                        if(stickyBehaviorState == false) {
+                        if(!stickyBehaviorState) {
                             stickyThresholdUpwardDrag = null
                             stickyThresholdDownwardDrag = null
                         }
