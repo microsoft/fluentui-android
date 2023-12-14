@@ -168,7 +168,15 @@ fun TextField(
                 Spacer(Modifier.requiredWidth(16.dp))
             }
             Column(Modifier.weight(1F)) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
+                Row(modifier = Modifier.background(
+                    token
+                        .textAreaBackgroundBrush(textFieldInfo)
+                        .getBrushByState(
+                            enabled = enabled,
+                            selected = false,
+                            interactionSource = remember { MutableInteractionSource() }
+                        )
+                ), verticalAlignment = Alignment.CenterVertically) {
                     BasicTextField(
                         value = value,
                         onValueChange = onValueChange,
@@ -216,7 +224,11 @@ fun TextField(
                         },
                         textStyle = token.inputTextTypography(textFieldInfo).merge(
                             TextStyle(
-                                color = token.inputTextColor(textFieldInfo),
+                                color = token.inputTextColor(textFieldInfo).getColorByState(
+                                    enabled = enabled,
+                                    selected = false,
+                                    interactionSource = remember { MutableInteractionSource() }
+                                ),
                                 textDirection = TextDirection.ContentOrLtr
                             )
                         ),
@@ -239,7 +251,7 @@ fun TextField(
                                 )
                         )
                     }
-                    if (value.isNotBlank() && trailingAccessoryIcon?.isIconAvailable() == true) {
+                    if (enabled && value.isNotBlank() && trailingAccessoryIcon?.isIconAvailable() == true) {
                         Icon(
                             trailingAccessoryIcon,
                             Modifier
