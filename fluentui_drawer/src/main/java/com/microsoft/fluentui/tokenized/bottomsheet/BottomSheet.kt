@@ -210,6 +210,9 @@ private const val BottomSheetOpenFraction = 0.5f
  * @param slideOver if true, then sheetContent would be drawn in full length & it just get slided
  * in the visible region. If false then, the sheetContainer placed at the bottom & its height could be at peekHeight, fullheight or hidden when dragged by Handle or swipe down.
  * @param enableSwipeDismiss if false, bottomSheet will not be dismissed after swipe down gesture. Default value is false.
+ * @param stickyBehavior if true, bottomSheet will stick to the Expanded and Shown State when dragged beyond the stickyThresholdUpward or stickyThresholdDownward. Default value is false. When it's false the default Up and Down Drag Threshold value is 56dp
+ * @param stickyThresholdUpward the threshold value for drag up gesture when stickyBehavior is true. Default value is Null. If StickyBehavior is true then stickyThresholdUpward should be provided.
+ * @param stickyThresholdDownward the threshold value for drag down gesture when stickyBehavior is true. Default value is Null. If StickyBehavior is true then stickyThresholdUpward should be provided.
  * @param bottomSheetTokens tokens to provide appearance values. If not provided then bottomSheet
  * tokens will be picked from [AppThemeController]
  * @param content The content of rest of the screen.
@@ -519,9 +522,9 @@ private fun Modifier.bottomSheetSwipeable(
                         val fromKey = anchors.entries.firstOrNull { it.value == from }?.key
                         val toKey = anchors.entries.firstOrNull { it.value == to }?.key
                         if (fromKey != null && toKey != null && fromKey < toKey) {
-                            FixedThreshold(stickyThresholdUpward!!.dp) // Threshold for drag down
+                            FixedThreshold(stickyThresholdDownward!!.dp) // Threshold for drag down
                         } else {
-                            FixedThreshold(stickyThresholdDownward!!.dp)  // Threshold for drag up
+                            FixedThreshold(stickyThresholdUpward!!.dp)  // Threshold for drag up
                         }
                     },
                     resistance = null
