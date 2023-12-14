@@ -88,6 +88,7 @@ fun AppBar(
         ListItemIcons.Chevron,
         contentDescription = LocalContext.current.resources.getString(R.string.fluentui_chevron)
     ),
+    navigationIconModifier: Modifier? = null,
     rightAccessoryView: @Composable (RowScope.() -> Unit)? = null,
     searchBar: @Composable (RowScope.() -> Unit)? = null,
     bottomBar: @Composable (RowScope.() -> Unit)? = null,
@@ -145,11 +146,14 @@ fun AppBar(
                         navigationIcon,
                         modifier =
                         Modifier
-                            .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = rememberRipple(),
-                                enabled = true,
-                                onClick = navigationIcon.onClick ?: {}
+                            .then(
+                                navigationIconModifier
+                                    ?: Modifier.clickable(
+                                        interactionSource = remember { MutableInteractionSource() },
+                                        indication = rememberRipple(),
+                                        enabled = true,
+                                        onClick = navigationIcon.onClick ?: {}
+                                    )
                             )
                             .padding(token.navigationIconPadding(appBarInfo))
                             .size(token.leftIconSize(appBarInfo)),
