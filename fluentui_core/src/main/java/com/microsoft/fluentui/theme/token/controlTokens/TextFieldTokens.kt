@@ -13,6 +13,8 @@ import com.microsoft.fluentui.theme.token.ControlInfo
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.IControlToken
+import com.microsoft.fluentui.theme.token.StateBrush
+import com.microsoft.fluentui.theme.token.StateColor
 import kotlinx.parcelize.Parcelize
 
 open class TextFieldInfo(
@@ -28,6 +30,18 @@ open class TextFieldTokens : IControlToken, Parcelable {
     @Composable
     open fun backgroundBrush(textFieldInfo: TextFieldInfo): Brush {
         return SolidColor(FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value())
+    }
+
+    @Composable
+    open fun textAreaBackgroundBrush(textFieldInfo: TextFieldInfo): StateBrush {
+        return StateBrush(
+            rest = SolidColor(FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value()),
+            disabled = SolidColor(
+                FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                    themeMode = FluentTheme.themeMode
+                )
+            )
+        )
     }
 
     @Composable
@@ -95,8 +109,11 @@ open class TextFieldTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun inputTextColor(textFieldInfo: TextFieldInfo): Color {
-        return FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value()
+    open fun inputTextColor(textFieldInfo: TextFieldInfo): StateColor {
+        return StateColor(
+            rest = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(),
+            disabled = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value()
+        )
     }
 
     @Composable
