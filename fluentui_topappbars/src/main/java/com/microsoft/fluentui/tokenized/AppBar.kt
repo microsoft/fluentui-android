@@ -70,7 +70,6 @@ const val APP_BAR = "Fluent App bar"
 const val APP_BAR_SUBTITLE = "Fluent App bar Subtitle"
 const val APP_BAR_BOTTOM_BAR = "Fluent App bar Bottom bar"
 const val APP_BAR_SEARCH_BAR = "Fluent App bar Search bar"
-
 @OptIn(ExperimentalTextApi::class)
 @Composable
 fun AppBar(
@@ -98,8 +97,10 @@ fun AppBar(
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
+
     val token = appBarTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AppBarControlType] as AppBarTokens
+
 
     val appBarInfo = AppBarInfo(style, appBarSize)
     Box(
@@ -147,7 +148,7 @@ fun AppBar(
                         Modifier
                             .clickable(
                                 interactionSource = remember { MutableInteractionSource() },
-                                indication = rememberRipple(),
+                                indication = rememberRipple(color = token.navigationIconRippleColor()),
                                 enabled = true,
                                 onClick = navigationIcon.onClick ?: {}
                             )
