@@ -1,16 +1,10 @@
-Release Version 0.1.42:
+Release Version 0.1.43:
 
 What's New:
 
 Fluent V2:
         Fix/Enhancement:
-            1. Added padding at the end of the Snackbar for better visual separation and readability.
-            2. Enhanced the accessibility of Cardnudge to ensure a more user-friendly experience.
-            3. Resolved issues causing crashes in the Person and Group classes related to ImageBitmap handling. This fix enhances stability and performance
-            4. Updated ParamsURL to support the latest version of the URLSearchParams API.
-            5. Ripple effect on AppBar's back navigation click has been added as default.
-
-
-Fluent V1:
-        Fix/Enhancement:
-            1. Resolved an issue with the persistent bottom sheet’s hardware keyboard functionality, where focus was incorrectly shifting to the background elements when the bottom sheet was expanded.
+            1. Sticky Behavior for Bottom Sheet: Introducing Sticky Behavior to the bottom sheet, enabling it to adhere to the Shown and Expanded states when dragged within a user-set threshold.
+            2. Custom Color for Label Text: Labels now empower users to define a custom color for the label text, enhancing overall customization options.
+            3. Visual Indication of Disabled State for TextFields: TextFields now provide a visual cue indicating their disabled state, improving user experience and interface clarity
+            4. Custom Ripple Effect Color for Back Navigation Icon: The AppBar now features a property allowing users to set a custom color for the back navigation icon's Ripple effect, providing additional control over the visual aesthetics.
