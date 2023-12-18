@@ -3,6 +3,7 @@ package com.microsoft.fluentui.tokenized.controls
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
@@ -16,6 +17,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.LabelTokens
  * @param text Label text
  * @param textStyle Text styling for the text. Default [TypographyTokens.Display]
  * @param colorStyle Color styling for the text. Default [ColorStyle.Primary]
+ * @param textColorOverride Optional override for text color. Default is null. When set colorStyle is ignored.
  * @param modifier Optional modifier for Label
  * @param labelTokens Option tokens for label styling
  */
@@ -24,6 +26,7 @@ fun Label(
     text: String,
     textStyle: TypographyTokens = TypographyTokens.Display,
     colorStyle: ColorStyle = ColorStyle.Primary,
+    textColorOverride: Color? = null,
     modifier: Modifier = Modifier,
     labelTokens: LabelTokens? = null
 ) {
@@ -33,7 +36,7 @@ fun Label(
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.LabelControlType] as LabelTokens
     val labelInfo = LabelInfo(textStyle, colorStyle)
     val textStyle = tokens.typography(labelInfo = labelInfo)
-    val textColor = tokens.textColor(labelInfo = labelInfo)
+    val textColor = textColorOverride ?: tokens.textColor(labelInfo = labelInfo)
     BasicText(
         modifier = modifier,
         text = text,
