@@ -202,11 +202,7 @@ fun TextField(
                         decorationBox = decorationBox ?: { innerTextField ->
                             if (value.isEmpty() && !hintText.isNullOrBlank()) {
                                 Box(
-                                    Modifier.fillMaxWidth(),
-                                    contentAlignment = if (LocalLayoutDirection.current == LayoutDirection.Rtl)
-                                        Alignment.CenterEnd
-                                    else
-                                        Alignment.CenterStart
+                                    Modifier.fillMaxWidth()
                                 ) {
                                     BasicText(
                                         hintText,
@@ -229,7 +225,7 @@ fun TextField(
                                     selected = false,
                                     interactionSource = remember { MutableInteractionSource() }
                                 ),
-                                textDirection = TextDirection.ContentOrLtr
+                                textDirection = if(LocalLayoutDirection.current == LayoutDirection.Ltr) TextDirection.Ltr else TextDirection.Rtl
                             )
                         ),
                         cursorBrush = token.cursorColor(textFieldInfo)
