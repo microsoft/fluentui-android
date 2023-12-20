@@ -117,11 +117,11 @@ extends:
             publishLocation: "pipeline"
           - output: pipelineArtifact
             displayName: 'Publish dogfood apk to pipeline'
-            targetPath: "$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/dogfood/release/FluentUI.Demo-dogfood-release.apk"
+            targetPath: "$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/dogfood/release"
             artifactName: "dogfood"
             publishLocation: "pipeline"
           - output: pipelineArtifact
             displayName: 'Publish release notes to pipeline'
-            targetPath: "$(build.sourcesdirectory)/FluentUI.Demo/src/main/assets/dogfood-release-notes.txt"
+            targetPath: "$(build.sourcesdirectory)/FluentUI.Demo/src/main/assets"
             artifactName: "notes"
             publishLocation: "pipeline"
