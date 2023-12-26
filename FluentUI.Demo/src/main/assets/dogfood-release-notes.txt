@@ -4,7 +4,7 @@ What's New:
 
 Fluent V2:
         Fix/Enhancement:
-            1. Text field now supports RTL layout
+            1. Text field hint RTL issue fixed
 Fluent V1:
         Fix/Enhancement:
             1. In people picker and persona chip's text getting cut off when font size is changed form Android settings has been fixed.
