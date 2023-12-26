@@ -4,7 +4,7 @@ What's New:
 
 Fluent V2:
         Fix/Enhancement:
-            1. Sticky Behavior for Bottom Sheet: Introducing Sticky Behavior to the bottom sheet, enabling it to adhere to the Shown and Expanded states when dragged within a user-set threshold.
-            2. Custom Color for Label Text: Labels now empower users to define a custom color for the label text, enhancing overall customization options.
-            3. Visual Indication of Disabled State for TextFields: TextFields now provide a visual cue indicating their disabled state, improving user experience and interface clarity
-            4. Custom Ripple Effect Color for Back Navigation Icon: The AppBar now features a property allowing users to set a custom color for the back navigation icon's Ripple effect, providing additional control over the visual aesthetics.
+            1. Text field now supports RTL layout
+Fluent V1:
+        Fix/Enhancement:
+            1. In people picker and persona chip's text getting cut off when font size is changed form Android settings has been fixed.
