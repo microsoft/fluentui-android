@@ -940,6 +940,7 @@
     <string name = "powerpoint_theme">PowerPoint</string>
     <string name = "m365_theme">M365</string>
     <string name = "teams_theme">MS Teams</string>
+    <string name = "loop_theme">Loop</string>
     <string name = "choose_appearance">Choose Appearance</string>
     <string name = "appearance_system_default">System Default</string>
     <string name = "appearance_light">Light</string>
