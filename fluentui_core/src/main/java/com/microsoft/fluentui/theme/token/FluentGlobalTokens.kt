@@ -76,10 +76,13 @@ object FluentGlobalTokens {
 
     /**
      * The set of neutral colors used by Fluent UI.
-     * Maintained for backwards compatibility. Retrieve [NeutralColorTokens] directly instead.
+     * Maintained for backwards compatibility.
      * @param token [NeutralColorTokens]
      * @return [Color]
      */
+    @Deprecated(
+        "Use the property syntax on NeutralColorTokens instead e.g. NeutralColorTokens.Gray90.value ",
+        ReplaceWith("token.value"))
     fun neutralColor(token: NeutralColorTokens): Color = token.value
 
     enum class FontSizeTokens(val value: TextUnit) {
@@ -96,10 +99,13 @@ object FluentGlobalTokens {
 
     /**
      * The set of font sizes used by Fluent UI.
-     * Maintained for backwards compatibility. Retrieve [FontSizeTokens] directly instead.
+     * Maintained for backwards compatibility.
      * @param token [FontSizeTokens]
      * @return [TextUnit]
      */
+    @Deprecated(
+        "Use the property syntax on FontSizeTokens instead e.g. FontSizeTokens.Size100.value ",
+        ReplaceWith("token.value"))
     fun fontSize(token: FontSizeTokens): TextUnit = token.value
 
     enum class LineHeightTokens(val value: TextUnit) {
@@ -116,10 +122,13 @@ object FluentGlobalTokens {
 
     /**
      * The set of line heights used by Fluent UI.
-     * Maintained for backwards compatibility. Retrieve [LineHeightTokens] directly instead.
+     * Maintained for backwards compatibility.
      * @param token [LineHeightTokens]
      * @return [TextUnit]
      */
+    @Deprecated(
+        "Use the property syntax on LineHeightTokens instead e.g. LineHeightTokens.Size100.value ",
+        ReplaceWith("token.value"))
     fun lineHeight(token: LineHeightTokens): TextUnit = token.value
 
     enum class FontWeightTokens(val value: FontWeight) {
@@ -131,10 +140,11 @@ object FluentGlobalTokens {
 
     /**
      * The set of font weights used by Fluent UI.
-     * Maintained for backwards compatibility. Retrieve [FontWeightTokens] directly instead.
      * @param token [FontWeightTokens]
      * @return [FontWeight]
      */
+    @Deprecated("Use the property syntax on FontWeightTokens instead e.g. FontWeightTokens.Regular.value ",
+        ReplaceWith("token.value"))
     fun fontWeight(token: FontWeightTokens): FontWeight = token.value
 
     enum class IconSizeTokens(val value: Dp) {
@@ -151,10 +161,11 @@ object FluentGlobalTokens {
 
     /**
      * The set of icon sizes used by Fluent UI.
-     * Maintained for backwards compatibility. Retrieve [IconSizeTokens] directly instead.
      * @param token [IconSizeTokens]
      * @return [Dp]
      */
+    @Deprecated("Use the property syntax on IconSizeTokens instead e.g. IconSizeTokens.IconSize100.value ",
+        ReplaceWith("token.value"))
     fun iconSize(token: IconSizeTokens): Dp = token.value
 
     enum class SizeTokens(val value: Dp) {
@@ -181,10 +192,11 @@ object FluentGlobalTokens {
 
     /**
      * The set of sizes used by Fluent UI.
-     * Maintained for backwards compatibility. Retrieve [SizeTokens] directly instead.
      * @param token [SizeTokens]
      * @return [Dp]
      */
+    @Deprecated("Use the property syntax on SizeTokens instead e.g. SizeTokens.SizeNone.value ",
+        ReplaceWith("token.value"))
     fun size(token: SizeTokens): Dp = token.value
 
     enum class ShadowTokens(val value: Dp) {
@@ -199,10 +211,11 @@ object FluentGlobalTokens {
 
     /**
      * The set of shadows used by Fluent UI.
-     * Maintained for backwards compatibility. Retrieve [ShadowTokens] directly instead.
      * @param token [ShadowTokens]
      * @return [Dp]
      */
+    @Deprecated("Use the property syntax on ShadowTokens instead e.g. ShadowTokens.Shadow00.value ",
+        ReplaceWith("token.value"))
     fun elevation(token: ShadowTokens): Dp = token.value
 
     enum class CornerRadiusTokens(val value: Dp) {
@@ -216,10 +229,11 @@ object FluentGlobalTokens {
 
     /**
      * The set of corner radii used by Fluent UI.
-     * Maintained for backwards compatibility. Retrieve [CornerRadiusTokens] directly instead.
      * @param token [CornerRadiusTokens]
      * @return [Dp]
      */
+    @Deprecated("Use the property syntax on CornerRadiusTokens instead e.g. CornerRadiusTokens.CornerRadiusNone.value ",
+        ReplaceWith("token.value"))
     fun cornerRadius(token: CornerRadiusTokens): Dp = token.value
 
     enum class StrokeWidthTokens(val value: Dp) {
@@ -235,10 +249,11 @@ object FluentGlobalTokens {
 
     /**
      * The set of stroke widths used by Fluent UI.
-     * Maintained for backwards compatibility. Retrieve [StrokeWidthTokens] directly instead.
      * @param token [StrokeWidthTokens]
      * @return [Dp]
      */
+    @Deprecated("Use the property syntax on StrokeWidthTokens instead e.g. StrokeWidthTokens.StrokeWidthNone.value ",
+        ReplaceWith("token.value"))
     fun strokeWidth(token: StrokeWidthTokens): Dp = token.value
 
     enum class SharedColorsTokens {
@@ -960,11 +975,11 @@ object FluentGlobalTokens {
 
     /**
      * The shared colors in the design system.
-     * Maintained for backwards compatibility. Use [SharedColorSets] to directly access the colors.
      * @param sharedColorSet the [SharedColorSets]
      * @param token the [SharedColorsTokens]
      * @return the [Color] for the [SharedColorsTokens] in the [SharedColorSets]
      */
+    @Deprecated("Use the property syntax on SharedColorSets instead, e.g., SharedColorSets.Anchor.primary")
     fun sharedColors(sharedColorSet: SharedColorSets, token: SharedColorsTokens): Color {
         return when (token) {
             SharedColorsTokens.Primary -> sharedColorSet.primary
