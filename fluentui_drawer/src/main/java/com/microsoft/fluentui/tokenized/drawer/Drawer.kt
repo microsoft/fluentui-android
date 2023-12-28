@@ -628,124 +628,118 @@ private fun TopDrawer(
         val fullHeight = constraints.maxHeight.toFloat()
         var drawerHeight by remember(fullHeight) { mutableStateOf(fullHeight) }
 
-        //Get exact drawerHeight first.
-        val visible = remember { mutableStateOf(true) }
-        if (visible.value) {
-            Box(
-                modifier = Modifier
-                    .layout { measurable, constraints ->
-                        val placeable = measurable.measure(constraints)
-                        layout(placeable.width, placeable.height) {
-                            visible.value = false
-                            drawerHeight =
-                                placeable.height.toFloat() + dpToPx(DrawerHandleHeightOffset)
+        Box(
+            modifier = Modifier
+                .layout { measurable, constraints ->
+                    val placeable = measurable.measure(constraints)
+                    layout(placeable.width, placeable.height) {
+                        drawerHeight =
+                            placeable.height.toFloat() + dpToPx(DrawerHandleHeightOffset)
+                    }
+                }
+        ) {
+            drawerContent()
+        }
+        val maxOpenHeight = fullHeight * DrawerOpenFraction
+        val minHeight = 0f
+        val topCloseHeight = minHeight
+        val topOpenHeight = min(maxOpenHeight, drawerHeight)
+
+        val minValue: Float = topCloseHeight
+        val maxValue: Float = topOpenHeight
+
+        val anchors = mapOf(
+            topCloseHeight to DrawerValue.Closed,
+            topOpenHeight to DrawerValue.Open
+        )
+
+        val drawerConstraints = with(LocalDensity.current) {
+            Modifier
+                .sizeIn(
+                    maxWidth = constraints.maxWidth.toDp(),
+                    maxHeight = constraints.maxHeight.toDp()
+                )
+        }
+
+        Scrim(
+            open = !drawerState.isClosed,
+            onClose = onDismiss,
+            fraction = {
+                calculateFraction(minValue, maxValue, drawerState.offset.value)
+            },
+            color = if (scrimVisible) scrimColor else Color.Transparent,
+            preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+            onScrimClick = onScrimClick
+        )
+
+        Box(
+            drawerConstraints
+                .offset { IntOffset(0, 0) }
+                .semantics {
+                    if (!drawerState.isClosed) {
+                        dismiss {
+                            onDismiss()
+                            true
                         }
                     }
-            ) {
-                drawerContent()
-            }
-        } else {
-            val maxOpenHeight = fullHeight * DrawerOpenFraction
-            val minHeight = 0f
-            val topCloseHeight = minHeight
-            val topOpenHeight = min(maxOpenHeight, drawerHeight)
-
-            val minValue: Float = topCloseHeight
-            val maxValue: Float = topOpenHeight
-
-            val anchors = mapOf(
-                topCloseHeight to DrawerValue.Closed,
-                topOpenHeight to DrawerValue.Open
-            )
-
-            val drawerConstraints = with(LocalDensity.current) {
-                Modifier
-                    .sizeIn(
-                        maxWidth = constraints.maxWidth.toDp(),
-                        maxHeight = constraints.maxHeight.toDp()
-                    )
-            }
-
-            Scrim(
-                open = !drawerState.isClosed,
-                onClose = onDismiss,
-                fraction = {
-                    calculateFraction(minValue, maxValue, drawerState.offset.value)
-                },
-                color = if (scrimVisible) scrimColor else Color.Transparent,
-                preventDismissalOnScrimClick = preventDismissalOnScrimClick,
-                onScrimClick = onScrimClick
-            )
-
-            Box(
-                drawerConstraints
+                }
+                .height(
+                    pxToDp(drawerState.offset.value)
+                )
+                .shadow(drawerElevation)
+                .clip(drawerShape)
+                .background(drawerBackground)
+                .swipeable(
+                    state = drawerState,
+                    anchors = anchors,
+                    orientation = Orientation.Vertical,
+                    enabled = false,
+                    resistance = null
+                )
+                .focusable(false),
+        ) {
+            ConstraintLayout(modifier = Modifier.padding(bottom = 8.dp)) {
+                val (drawerContentConstrain, drawerHandleConstrain) = createRefs()
+                Column(modifier = Modifier
                     .offset { IntOffset(0, 0) }
-                    .semantics {
-                        if (!drawerState.isClosed) {
-                            dismiss {
-                                onDismiss()
-                                true
-                            }
-                        }
+                    .padding(bottom = 8.dp)
+                    .constrainAs(drawerContentConstrain) {
+                        top.linkTo(parent.top)
+                        bottom.linkTo(drawerHandleConstrain.top)
                     }
-                    .height(
-                        pxToDp(drawerState.offset.value)
-                    )
-                    .shadow(drawerElevation)
-                    .clip(drawerShape)
-                    .background(drawerBackground)
-                    .swipeable(
-                        state = drawerState,
-                        anchors = anchors,
-                        orientation = Orientation.Vertical,
-                        enabled = false,
-                        resistance = null
-                    )
-                    .focusable(false),
-            ) {
-                ConstraintLayout(modifier = Modifier.padding(bottom = 8.dp)) {
-                    val (drawerContentConstrain, drawerHandleConstrain) = createRefs()
-                    Column(modifier = Modifier
-                        .offset { IntOffset(0, 0) }
-                        .padding(bottom = 8.dp)
-                        .constrainAs(drawerContentConstrain) {
-                            top.linkTo(parent.top)
-                            bottom.linkTo(drawerHandleConstrain.top)
+                    .focusTarget()
+                    .testTag(DRAWER_CONTENT_TAG), content = { drawerContent() }
+                )
+                Column(horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .constrainAs(drawerHandleConstrain) {
+                            top.linkTo(drawerContentConstrain.bottom)
+                            bottom.linkTo(parent.bottom)
                         }
-                        .focusTarget()
-                        .testTag(DRAWER_CONTENT_TAG), content = { drawerContent() }
-                    )
-                    Column(horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier
-                            .constrainAs(drawerHandleConstrain) {
-                                top.linkTo(drawerContentConstrain.bottom)
-                                bottom.linkTo(parent.bottom)
-                            }
-                            .fillMaxWidth()
-                            .draggable(
-                                orientation = Orientation.Vertical,
-                                state = rememberDraggableState { delta ->
-                                    drawerState.performDrag(delta)
-                                },
-                                onDragStopped = { velocity ->
-                                    launch {
-                                        drawerState.performFling(
-                                            velocity
-                                        )
-                                        if (drawerState.isClosed) {
-                                            onDismiss()
-                                        }
+                        .fillMaxWidth()
+                        .draggable(
+                            orientation = Orientation.Vertical,
+                            state = rememberDraggableState { delta ->
+                                drawerState.performDrag(delta)
+                            },
+                            onDragStopped = { velocity ->
+                                launch {
+                                    drawerState.performFling(
+                                        velocity
+                                    )
+                                    if (drawerState.isClosed) {
+                                        onDismiss()
                                     }
-                                },
-                            )
-                            .testTag(DRAWER_HANDLE_TAG)
-                    ) {
-                        Icon(
-                            painterResource(id = R.drawable.ic_drawer_handle),
-                            contentDescription = null,
-                            tint = drawerHandleColor
+                                }
+                            },
                         )
-                    }
+                        .testTag(DRAWER_HANDLE_TAG)
+                ) {
+                    Icon(
+                        painterResource(id = R.drawable.ic_drawer_handle),
+                        contentDescription = null,
+                        tint = drawerHandleColor
+                    )
                 }
             }
         }
