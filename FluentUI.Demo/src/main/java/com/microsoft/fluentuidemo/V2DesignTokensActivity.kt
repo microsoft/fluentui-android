@@ -37,7 +37,6 @@ import com.microsoft.fluentui.theme.token.FluentGlobalTokens.fontWeight
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens.iconSize
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens.lineHeight
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens.neutralColor
-import com.microsoft.fluentui.theme.token.FluentGlobalTokens.sharedColors
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens.size
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens.strokeWidth
 import com.microsoft.fluentui.theme.token.Icon
@@ -209,6 +208,7 @@ class V2DesignTokensActivity : V2DemoActivity() {
     @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         var buttonBarList: MutableList<PillMetaData>
         lateinit var selectedTokens: MutableState<Tokens>
         lateinit var tokensMap: MutableState<Map<Int, Pair<Array<out Enum<*>>, Any>>>
