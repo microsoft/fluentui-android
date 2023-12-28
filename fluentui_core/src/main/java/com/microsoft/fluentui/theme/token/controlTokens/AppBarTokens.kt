@@ -79,6 +79,11 @@ open class AppBarTokens : IControlToken, Parcelable {
     }
 
     @Composable
+    open fun navigationIconRippleColor(): Color {
+        return Color.Unspecified
+    }
+
+    @Composable
     open fun titleIconColor(info: AppBarInfo): Color {
         return when (info.style) {
             FluentStyle.Neutral ->

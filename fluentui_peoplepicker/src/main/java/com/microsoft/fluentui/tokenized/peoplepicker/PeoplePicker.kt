@@ -163,11 +163,7 @@ fun PeoplePicker(
             Box(
                 Modifier
                     .fillMaxWidth()
-                    .semantics { this.contentDescription = accessibilityAnnouncement },
-                contentAlignment = if (LocalLayoutDirection.current == LayoutDirection.Rtl)
-                    Alignment.CenterEnd
-                else
-                    Alignment.CenterStart
+                    .semantics { this.contentDescription = accessibilityAnnouncement }
             ) {
                 FlowRow {
                     if (selectedPeopleList.isNotEmpty()) {

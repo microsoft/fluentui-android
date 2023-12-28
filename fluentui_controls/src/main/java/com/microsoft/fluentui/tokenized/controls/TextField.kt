@@ -168,7 +168,15 @@ fun TextField(
                 Spacer(Modifier.requiredWidth(16.dp))
             }
             Column(Modifier.weight(1F)) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
+                Row(modifier = Modifier.background(
+                    token
+                        .textAreaBackgroundBrush(textFieldInfo)
+                        .getBrushByState(
+                            enabled = enabled,
+                            selected = false,
+                            interactionSource = remember { MutableInteractionSource() }
+                        )
+                ), verticalAlignment = Alignment.CenterVertically) {
                     BasicTextField(
                         value = value,
                         onValueChange = onValueChange,
@@ -194,11 +202,7 @@ fun TextField(
                         decorationBox = decorationBox ?: { innerTextField ->
                             if (value.isEmpty() && !hintText.isNullOrBlank()) {
                                 Box(
-                                    Modifier.fillMaxWidth(),
-                                    contentAlignment = if (LocalLayoutDirection.current == LayoutDirection.Rtl)
-                                        Alignment.CenterEnd
-                                    else
-                                        Alignment.CenterStart
+                                    Modifier.fillMaxWidth()
                                 ) {
                                     BasicText(
                                         hintText,
@@ -216,8 +220,12 @@ fun TextField(
                         },
                         textStyle = token.inputTextTypography(textFieldInfo).merge(
                             TextStyle(
-                                color = token.inputTextColor(textFieldInfo),
-                                textDirection = TextDirection.ContentOrLtr
+                                color = token.inputTextColor(textFieldInfo).getColorByState(
+                                    enabled = enabled,
+                                    selected = false,
+                                    interactionSource = remember { MutableInteractionSource() }
+                                ),
+                                textDirection = if(LocalLayoutDirection.current == LayoutDirection.Ltr) TextDirection.Ltr else TextDirection.Rtl
                             )
                         ),
                         cursorBrush = token.cursorColor(textFieldInfo)
@@ -239,7 +247,7 @@ fun TextField(
                                 )
                         )
                     }
-                    if (value.isNotBlank() && trailingAccessoryIcon?.isIconAvailable() == true) {
+                    if (enabled && value.isNotBlank() && trailingAccessoryIcon?.isIconAvailable() == true) {
                         Icon(
                             trailingAccessoryIcon,
                             Modifier
