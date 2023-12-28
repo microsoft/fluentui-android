@@ -285,14 +285,14 @@ fun rememberBottomDrawerState(expandable: Boolean = true, skipOpenState: Boolean
         DrawerState(DrawerValue.Closed, expandable, skipOpenState , confirmStateChange)
     }
 }
-private class DrawerPositionProvider : PopupPositionProvider {
+private class DrawerPositionProvider(val offset: IntOffset) : PopupPositionProvider {
     override fun calculatePosition(
         anchorBounds: IntRect,
         windowSize: IntSize,
         layoutDirection: LayoutDirection,
         popupContentSize: IntSize
     ): IntOffset {
-        return IntOffset(0, 0)
+        return IntOffset(anchorBounds.left + offset.x, anchorBounds.top + offset.y)
     }
 }
 
@@ -955,6 +955,7 @@ private fun BottomDrawer(
  * @param behaviorType opening behaviour of drawer. Default is BOTTOM
  * @param drawerState state of the drawer
  * @param scrimVisible create obscures background when scrim visible set to true when the drawer is open. The default value is true
+ * @param offset offset of the drawer from the anchor. The default value is (0,0)
  * @param drawerTokens tokens to provide appearance values. If not provided then drawer tokens will be picked from [FluentTheme]
  * @param drawerContent composable that represents content inside the drawer
  * @param preventDismissalOnScrimClick when true, the drawer will not be dismissed when the scrim is clicked
@@ -969,6 +970,7 @@ fun Drawer(
     behaviorType: BehaviorType = BehaviorType.BOTTOM,
     drawerState: DrawerState = rememberDrawerState(),
     scrimVisible: Boolean = true,
+    offset: IntOffset = IntOffset(0, 0),
     drawerTokens: DrawerTokens? = null,
     drawerContent: @Composable () -> Unit,
     preventDismissalOnScrimClick: Boolean = false,
@@ -980,7 +982,7 @@ fun Drawer(
         val tokens = drawerTokens
             ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DrawerControlType] as DrawerTokens
 
-        val popupPositionProvider = DrawerPositionProvider()
+        val popupPositionProvider = DrawerPositionProvider(offset)
         val scope = rememberCoroutineScope()
         val close: () -> Unit = {
             if (drawerState.confirmStateChange(DrawerValue.Closed)) {
@@ -991,7 +993,7 @@ fun Drawer(
         Popup(
             onDismissRequest = close,
             popupPositionProvider = popupPositionProvider,
-            properties = PopupProperties(focusable = true)
+            properties = PopupProperties(focusable = true, clippingEnabled = false)
         )
         {
             val drawerShape: Shape =
