@@ -293,7 +293,7 @@ private class DrawerPositionProvider(val offset: IntOffset) : PopupPositionProvi
         layoutDirection: LayoutDirection,
         popupContentSize: IntSize
     ): IntOffset {
-        return IntOffset(anchorBounds.left + offset.x, anchorBounds.top + offset.y)
+        return IntOffset(offset.x, offset.y)
     }
 }
 
