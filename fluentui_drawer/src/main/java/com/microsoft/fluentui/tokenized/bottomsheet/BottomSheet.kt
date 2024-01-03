@@ -477,7 +477,7 @@ private fun Modifier.bottomSheetSwipeable(
 ): Modifier {
     var peekHeightPx = min(dpToPx(peekHeight), fullHeight * BottomSheetOpenFraction)
     val modifier = if (slideOver) {
-        if (sheetHeight != null) {
+        if (sheetHeight != null && sheetHeight != 0f) {
             val anchors = if (!expandable) {
                 mapOf(
                     fullHeight to BottomSheetValue.Hidden,
