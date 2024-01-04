@@ -148,7 +148,7 @@ val V1DEMO = arrayListOf(
     Demo(LIST_ITEM_VIEW, ListItemViewActivity::class),
     Demo(PEOPLE_PICKER_VIEW, PeoplePickerViewActivity::class),
     Demo(PERSISTENT_BOTTOM_SHEET, PersistentBottomSheetActivity::class),
-    Demo(PERSONA_CHIP_VIEW, PersonaChipViewActivity::class, Badge.Modified),
+    Demo(PERSONA_CHIP_VIEW, PersonaChipViewActivity::class),
     Demo(PERSONA_LIST_VIEW, PersonaListViewActivity::class),
     Demo(PERSONA_VIEW, PersonaViewActivity::class),
     Demo(POPUP_MENU, PopupMenuActivity::class),
@@ -177,7 +177,7 @@ val V2DEMO = arrayListOf(
     Demo(V2CITATION, V2CitationActivity::class),
     Demo(V2CONTEXTUAL_COMMAND_BAR, V2ContextualCommandBarActivity::class),
     Demo(V2DIALOG, V2DialogActivity::class),
-    Demo(V2DRAWER, V2DrawerActivity::class, Badge.Modified),
+    Demo(V2DRAWER, V2DrawerActivity::class),
     Demo(V2LABEL, V2LabelActivity::class),
     Demo(V2LIST_ITEM, V2ListItemActivity::class),
     Demo(V2MENU, V2MenuActivity::class),
@@ -193,7 +193,7 @@ val V2DEMO = arrayListOf(
     Demo(V2SIDE_RAIL, V2SideRailActivity::class),
     Demo(V2SNACKBAR, V2SnackbarActivity::class),
     Demo(V2TAB_BAR, V2TabBarActivity::class),
-    Demo(V2TEXT_FIELD, V2TextFieldActivity::class, Badge.Modified),
+    Demo(V2TEXT_FIELD, V2TextFieldActivity::class),
     Demo(V2TOOL_TIP, V2ToolTipActivity::class),
     )
 

@@ -1,12 +1,7 @@
-Release Version 0.1.44:
+Release Version 0.1.45:
 
 What's New:
 
 Fluent V2:
         Fix/Enhancement:
-            1. Improved the Drawer component to support seamless transitions between Portrait and Landscape orientations, with adaptive layout and consistent heights.
-            2. Fixed the Drawer’s Pop Up clipping issue when the window origin is at (0,0).
-            3. Text field hint RTL issue fixed
-Fluent V1:
-        Fix/Enhancement:
-            1. In people picker and persona chip's text getting cut off when font size is changed form Android settings has been fixed.
+            1. Fixed Bottomsheet crash when sheet content is empty and showHandle is set to false
