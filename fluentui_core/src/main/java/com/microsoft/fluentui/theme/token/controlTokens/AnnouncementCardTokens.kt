@@ -58,43 +58,43 @@ open class AnnouncementCardTokens : IControlToken, Parcelable {
 
     @Composable
     open fun previewTextSPacing(announcementCardInfo: AnnouncementCardInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)
+        return FluentGlobalTokens.SizeTokens.Size160.value
     }
 
     @Composable
     open fun titleTextSpacing(announcementCardInfo: AnnouncementCardInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
+        return FluentGlobalTokens.SizeTokens.Size40.value
     }
 
     @Composable
     open fun textButtonSpacing(announcementCardInfo: AnnouncementCardInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
+        return FluentGlobalTokens.SizeTokens.Size40.value
     }
 
     @Composable
     open fun textHorizontalPadding(announcementCardInfo: AnnouncementCardInfo): PaddingValues {
-        return PaddingValues(horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80))
+        return PaddingValues(horizontal = FluentGlobalTokens.SizeTokens.Size80.value)
     }
 
     @Composable
     open fun cardPadding(announcementCardInfo: AnnouncementCardInfo): PaddingValues {
-        return PaddingValues(all = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80))
+        return PaddingValues(all = FluentGlobalTokens.SizeTokens.Size80.value)
     }
 
     @Composable
     open fun previewCornerRadius(announcementCardInfo: AnnouncementCardInfo): Dp {
-        return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
+        return FluentGlobalTokens.CornerRadiusTokens.CornerRadius40.value
     }
 
     @Composable
     open fun cornerRadius(announcementCardInfo: AnnouncementCardInfo): Dp {
-        return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius80)
+        return FluentGlobalTokens.CornerRadiusTokens.CornerRadius80.value
     }
 
     @Composable
     open fun elevation(announcementCardInfo: AnnouncementCardInfo): Dp {
         return when (announcementCardInfo.cardType) {
-            CardType.Elevated -> FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow64)
+            CardType.Elevated -> FluentGlobalTokens.ShadowTokens.Shadow64.value
             CardType.Outlined -> 0.dp
         }
     }
@@ -108,7 +108,7 @@ open class AnnouncementCardTokens : IControlToken, Parcelable {
 
     @Composable
     open fun borderStrokeWidth(announcementCardInfo: AnnouncementCardInfo): Dp {
-        return FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05)
+        return FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05.value
     }
 
     @Composable

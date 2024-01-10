@@ -54,7 +54,7 @@ open class TooltipTokens : IControlToken, Parcelable {
 
     @Composable
     open fun titleTextSpacing(tooltipInfo: TooltipInfo): Dp =
-        FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
+        FluentGlobalTokens.SizeTokens.Size80.value
 
     @Composable
     open fun titleTypography(tooltipInfo: TooltipInfo): TextStyle {
@@ -63,20 +63,20 @@ open class TooltipTokens : IControlToken, Parcelable {
 
     @Composable
     open fun cornerRadius(tooltipInfo: TooltipInfo): Dp =
-        FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius80)
+        FluentGlobalTokens.CornerRadiusTokens.CornerRadius80.value
 
     @Composable
     open fun padding(tooltipInfo: TooltipInfo): PaddingValues =
         PaddingValues(
-            horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80),
-            vertical = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120)
+            horizontal = FluentGlobalTokens.SizeTokens.Size80.value,
+            vertical = FluentGlobalTokens.SizeTokens.Size120.value
         )
 
     open fun elevation(tooltipInfo: TooltipInfo): Dp =
-        FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow16)
+        FluentGlobalTokens.ShadowTokens.Shadow16.value
 
     open fun margin(tooltipInfo: TooltipInfo): Dp =
-        FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size20)
+        FluentGlobalTokens.SizeTokens.Size20.value
 
     open fun maxWidth(tooltipInfo: TooltipInfo): Dp = 300.dp
 

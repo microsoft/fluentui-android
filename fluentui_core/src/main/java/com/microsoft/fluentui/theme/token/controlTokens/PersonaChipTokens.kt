@@ -200,8 +200,8 @@ open class PersonaChipTokens : IControlToken, Parcelable {
     @Composable
     open fun cornerRadius(personaChipInfo: PersonaChipControlInfo): Dp {
         return when (personaChipInfo.size) {
-            Small -> FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius20)
-            Medium -> FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
+            Small -> FluentGlobalTokens.CornerRadiusTokens.CornerRadius20.value
+            Medium -> FluentGlobalTokens.CornerRadiusTokens.CornerRadius40.value
         }
     }
 
@@ -216,22 +216,22 @@ open class PersonaChipTokens : IControlToken, Parcelable {
     @Composable
     open fun verticalPadding(personaChipInfo: PersonaChipControlInfo): Dp {
         return when (personaChipInfo.size) {
-            Small -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size20)
-            Medium -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size20)
+            Small -> FluentGlobalTokens.SizeTokens.Size20.value
+            Medium -> FluentGlobalTokens.SizeTokens.Size20.value
         }
     }
 
     @Composable
     open fun horizontalPadding(personaChipInfo: PersonaChipControlInfo): Dp {
         return when (personaChipInfo.size) {
-            Small -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
-            Medium -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
+            Small -> FluentGlobalTokens.SizeTokens.Size40.value
+            Medium -> FluentGlobalTokens.SizeTokens.Size80.value
         }
     }
 
     @Composable
     open fun avatarToTextSpacing(personaChipInfo: PersonaChipControlInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
+        return FluentGlobalTokens.SizeTokens.Size80.value
     }
 
     @Composable

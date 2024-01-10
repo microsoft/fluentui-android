@@ -199,146 +199,146 @@ open class AliasTokens : IAliasTokens, Parcelable {
             when (token) {
                 FluentAliasTokens.NeutralBackgroundColorTokens.Background1 ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.White),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Black)
+                        light = FluentGlobalTokens.NeutralColorTokens.White.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Black.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.Background1Pressed ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey88),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey18)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey88.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey18.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.Background1Selected ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey92),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey14)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey92.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey14.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.Background2 ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.White),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey12)
+                        light = FluentGlobalTokens.NeutralColorTokens.White.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey12.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.Background2Pressed ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey88),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey30)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey88.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey30.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.Background2Selected ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey92),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey26)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey92.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey26.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.Background3 ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.White),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey16)
+                        light = FluentGlobalTokens.NeutralColorTokens.White.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey16.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.Background3Pressed ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey88),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey34)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey88.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey34.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.Background3Selected ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey92),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey30)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey92.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey30.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.Background4 ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey98),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey20)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey98.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey20.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.Background4Pressed ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey86),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey38)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey86.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey38.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.Background4Selected ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey90),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey34)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey90.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey34.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.Background5 ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey94),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey24)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey94.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey24.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.Background5Pressed ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey82),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey42)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey82.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey42.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.Background5Selected ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey86),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey38)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey86.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey38.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.Background6 ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey82),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey36)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey82.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey36.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.CanvasBackground ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey96),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey8)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey96.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey8.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.White),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.White)
+                        light = FluentGlobalTokens.NeutralColorTokens.White.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.White.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.BackgroundLightStaticDisabled ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.White),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey68)
+                        light = FluentGlobalTokens.NeutralColorTokens.White.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey68.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.BackgroundDarkStatic ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey14),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey24)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey14.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey24.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.BackgroundInverted ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey46),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey72)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey46.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey72.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.BackgroundDisabled ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey88),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey32)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey88.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey32.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.Stencil1 ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey90),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey34)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey90.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey34.value
                     )
 
                 FluentAliasTokens.NeutralBackgroundColorTokens.Stencil2 ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey98),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey20)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey98.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey20.value
                     )
             }
         }
@@ -351,43 +351,43 @@ open class AliasTokens : IAliasTokens, Parcelable {
             when (token) {
                 FluentAliasTokens.NeutralForegroundColorTokens.Foreground1 ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey14),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.White)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey14.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.White.value
                     )
                 FluentAliasTokens.NeutralForegroundColorTokens.Foreground2 ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey38),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey84)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey38.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey84.value
                     )
                 FluentAliasTokens.NeutralForegroundColorTokens.Foreground3 ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey50),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey68)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey50.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey68.value
                     )
                 FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1 ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey74),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey36)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey74.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey36.value
                     )
                 FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable2 ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.White),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey18)
+                        light = FluentGlobalTokens.NeutralColorTokens.White.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey18.value
                     )
                 FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.White),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Black)
+                        light = FluentGlobalTokens.NeutralColorTokens.White.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Black.value
                     )
                 FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDarkStatic ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Black),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Black)
+                        light = FluentGlobalTokens.NeutralColorTokens.Black.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Black.value
                     )
                 FluentAliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.White),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.White)
+                        light = FluentGlobalTokens.NeutralColorTokens.White.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.White.value
                     )
             }
         }
@@ -400,38 +400,38 @@ open class AliasTokens : IAliasTokens, Parcelable {
             when (token) {
                 FluentAliasTokens.NeutralStrokeColorTokens.Stroke1 ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey82),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey30)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey82.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey30.value
                     )
 
                 FluentAliasTokens.NeutralStrokeColorTokens.Stroke2 ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey88),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey24)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey88.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey24.value
                     )
 
                 FluentAliasTokens.NeutralStrokeColorTokens.StrokeDisabled ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey88),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey26)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey88.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey26.value
                     )
 
                 FluentAliasTokens.NeutralStrokeColorTokens.StrokeAccessible ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey38),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey62)
+                        light = FluentGlobalTokens.NeutralColorTokens.Grey38.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Grey62.value
                     )
 
                 FluentAliasTokens.NeutralStrokeColorTokens.StrokeFocus1 ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.White),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Black)
+                        light = FluentGlobalTokens.NeutralColorTokens.White.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.Black.value
                     )
 
                 FluentAliasTokens.NeutralStrokeColorTokens.StrokeFocus2 ->
                     FluentColor(
-                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Black),
-                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.White)
+                        light = FluentGlobalTokens.NeutralColorTokens.Black.value,
+                        dark = FluentGlobalTokens.NeutralColorTokens.White.value
                     )
             }
         }
@@ -574,183 +574,87 @@ open class AliasTokens : IAliasTokens, Parcelable {
             when (token) {
                 FluentAliasTokens.ErrorAndStatusColorTokens.DangerBackground1 ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Red,
-                            FluentGlobalTokens.SharedColorsTokens.Tint60
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Red,
-                            FluentGlobalTokens.SharedColorsTokens.Shade40
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Red.tint60,
+                        dark = FluentGlobalTokens.SharedColorSets.Red.shade40
                     )
 
                 FluentAliasTokens.ErrorAndStatusColorTokens.DangerBackground2 ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Red,
-                            FluentGlobalTokens.SharedColorsTokens.Primary
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Red,
-                            FluentGlobalTokens.SharedColorsTokens.Shade10
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Red.primary,
+                        dark = FluentGlobalTokens.SharedColorSets.Red.shade10
                     )
                 FluentAliasTokens.ErrorAndStatusColorTokens.DangerForeground1 ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Red,
-                            FluentGlobalTokens.SharedColorsTokens.Shade10
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Red,
-                            FluentGlobalTokens.SharedColorsTokens.Tint30
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Red.shade10,
+                        dark = FluentGlobalTokens.SharedColorSets.Red.tint30
                     )
                 FluentAliasTokens.ErrorAndStatusColorTokens.DangerForeground2 ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Red,
-                            FluentGlobalTokens.SharedColorsTokens.Primary
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Red,
-                            FluentGlobalTokens.SharedColorsTokens.Tint30
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Red.primary,
+                        dark = FluentGlobalTokens.SharedColorSets.Red.tint30
                     )
                 FluentAliasTokens.ErrorAndStatusColorTokens.SuccessBackground1 ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Green,
-                            FluentGlobalTokens.SharedColorsTokens.Tint60
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Green,
-                            FluentGlobalTokens.SharedColorsTokens.Shade40
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Green.tint60,
+                        dark = FluentGlobalTokens.SharedColorSets.Green.shade40
                     )
 
                 FluentAliasTokens.ErrorAndStatusColorTokens.SuccessBackground2 ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Green,
-                            FluentGlobalTokens.SharedColorsTokens.Primary
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Green,
-                            FluentGlobalTokens.SharedColorsTokens.Shade10
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Green.primary,
+                        dark = FluentGlobalTokens.SharedColorSets.Green.shade10
                     )
                 FluentAliasTokens.ErrorAndStatusColorTokens.SuccessForeground1 ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Green,
-                            FluentGlobalTokens.SharedColorsTokens.Shade10
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Green,
-                            FluentGlobalTokens.SharedColorsTokens.Tint30
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Green.shade10,
+                        dark = FluentGlobalTokens.SharedColorSets.Green.tint30
                     )
                 FluentAliasTokens.ErrorAndStatusColorTokens.SuccessForeground2 ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Green,
-                            FluentGlobalTokens.SharedColorsTokens.Primary
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Green,
-                            FluentGlobalTokens.SharedColorsTokens.Tint30
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Green.primary,
+                        dark = FluentGlobalTokens.SharedColorSets.Green.tint30
                     )
                 FluentAliasTokens.ErrorAndStatusColorTokens.WarningBackground1 ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Yellow,
-                            FluentGlobalTokens.SharedColorsTokens.Tint60
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Yellow,
-                            FluentGlobalTokens.SharedColorsTokens.Shade40
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Yellow.tint60,
+                        dark = FluentGlobalTokens.SharedColorSets.Yellow.shade40
                     )
 
                 FluentAliasTokens.ErrorAndStatusColorTokens.WarningBackground2 ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Yellow,
-                            FluentGlobalTokens.SharedColorsTokens.Primary
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Yellow,
-                            FluentGlobalTokens.SharedColorsTokens.Shade10
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Yellow.primary,
+                        dark = FluentGlobalTokens.SharedColorSets.Yellow.shade10
                     )
                 FluentAliasTokens.ErrorAndStatusColorTokens.WarningForeground1 ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Yellow,
-                            FluentGlobalTokens.SharedColorsTokens.Shade30
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Yellow,
-                            FluentGlobalTokens.SharedColorsTokens.Tint30
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Yellow.shade30,
+                        dark = FluentGlobalTokens.SharedColorSets.Yellow.tint30
                     )
                 FluentAliasTokens.ErrorAndStatusColorTokens.WarningForeground2 ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Yellow,
-                            FluentGlobalTokens.SharedColorsTokens.Shade30
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Yellow,
-                            FluentGlobalTokens.SharedColorsTokens.Tint30
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Yellow.shade30,
+                        dark = FluentGlobalTokens.SharedColorSets.Yellow.tint30
                     )
                 FluentAliasTokens.ErrorAndStatusColorTokens.SevereBackground1 ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Orange,
-                            FluentGlobalTokens.SharedColorsTokens.Tint60
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Green,
-                            FluentGlobalTokens.SharedColorsTokens.Shade40
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Orange.tint60,
+                        dark = FluentGlobalTokens.SharedColorSets.Orange.shade40
                     )
 
                 FluentAliasTokens.ErrorAndStatusColorTokens.SevereBackground2 ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Orange,
-                            FluentGlobalTokens.SharedColorsTokens.Primary
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Orange,
-                            FluentGlobalTokens.SharedColorsTokens.Shade10
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Orange.primary,
+                        dark = FluentGlobalTokens.SharedColorSets.Orange.shade10
                     )
                 FluentAliasTokens.ErrorAndStatusColorTokens.SevereForeground1 ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Orange,
-                            FluentGlobalTokens.SharedColorsTokens.Shade10
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Orange,
-                            FluentGlobalTokens.SharedColorsTokens.Tint30
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Orange.shade10,
+                        dark = FluentGlobalTokens.SharedColorSets.Orange.tint30
                     )
                 FluentAliasTokens.ErrorAndStatusColorTokens.SevereForeground2 ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Orange,
-                            FluentGlobalTokens.SharedColorsTokens.Shade20
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Orange,
-                            FluentGlobalTokens.SharedColorsTokens.Tint30
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Orange.shade20,
+                        dark = FluentGlobalTokens.SharedColorSets.Orange.tint30
                     )
             }
         }
@@ -762,47 +666,23 @@ open class AliasTokens : IAliasTokens, Parcelable {
             when (token) {
                 FluentAliasTokens.PresenceColorTokens.Away ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Marigold,
-                            FluentGlobalTokens.SharedColorsTokens.Primary
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Marigold,
-                            FluentGlobalTokens.SharedColorsTokens.Primary
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Marigold.primary,
+                        dark = FluentGlobalTokens.SharedColorSets.Marigold.primary
                     )
                 FluentAliasTokens.PresenceColorTokens.Busy, FluentAliasTokens.PresenceColorTokens.DND ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Red,
-                            FluentGlobalTokens.SharedColorsTokens.Primary
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Red,
-                            FluentGlobalTokens.SharedColorsTokens.Tint10
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Red.primary,
+                        dark = FluentGlobalTokens.SharedColorSets.Red.tint10
                     )
                 FluentAliasTokens.PresenceColorTokens.Available ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Green,
-                            FluentGlobalTokens.SharedColorsTokens.Primary
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Green,
-                            FluentGlobalTokens.SharedColorsTokens.Tint20
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Green.primary,
+                        dark = FluentGlobalTokens.SharedColorSets.Green.tint20
                     )
                 FluentAliasTokens.PresenceColorTokens.OutOfOffice ->
                     FluentColor(
-                        light = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Berry,
-                            FluentGlobalTokens.SharedColorsTokens.Primary
-                        ),
-                        dark = FluentGlobalTokens.sharedColors(
-                            FluentGlobalTokens.SharedColorSets.Berry,
-                            FluentGlobalTokens.SharedColorsTokens.Tint20
-                        )
+                        light = FluentGlobalTokens.SharedColorSets.Berry.primary,
+                        dark = FluentGlobalTokens.SharedColorSets.Berry.tint20
                     )
             }
         }
@@ -815,86 +695,86 @@ open class AliasTokens : IAliasTokens, Parcelable {
             when (token) {
                 FluentAliasTokens.TypographyTokens.Display ->
                     TextStyle(
-                        fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size900),
-                        lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size900),
-                        fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Regular),
+                        fontSize = FluentGlobalTokens.FontSizeTokens.Size900.value,
+                        lineHeight = FluentGlobalTokens.LineHeightTokens.Size900.value,
+                        fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value,
                         letterSpacing = (-0.5).sp
                     )
                 FluentAliasTokens.TypographyTokens.LargeTitle ->
                     TextStyle(
-                        fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size800),
-                        lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size800),
-                        fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Regular),
+                        fontSize = FluentGlobalTokens.FontSizeTokens.Size800.value,
+                        lineHeight = FluentGlobalTokens.LineHeightTokens.Size800.value,
+                        fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value,
                         letterSpacing = (-0.25).sp
                     )
                 FluentAliasTokens.TypographyTokens.Title1 ->
                     TextStyle(
-                        fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size700),
-                        lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size700),
-                        fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Bold),
+                        fontSize = FluentGlobalTokens.FontSizeTokens.Size700.value,
+                        lineHeight = FluentGlobalTokens.LineHeightTokens.Size700.value,
+                        fontWeight = FluentGlobalTokens.FontWeightTokens.Bold.value,
                         letterSpacing = 0.sp
                     )
                 FluentAliasTokens.TypographyTokens.Title2 ->
                     TextStyle(
-                        fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size600),
-                        lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size600),
-                        fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Medium),
+                        fontSize = FluentGlobalTokens.FontSizeTokens.Size600.value,
+                        lineHeight = FluentGlobalTokens.LineHeightTokens.Size600.value,
+                        fontWeight = FluentGlobalTokens.FontWeightTokens.Medium.value,
                         letterSpacing = 0.sp
                     )
                 FluentAliasTokens.TypographyTokens.Title3 ->
                     TextStyle(
-                        fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size500),
-                        lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size500),
-                        fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Medium),
+                        fontSize = FluentGlobalTokens.FontSizeTokens.Size500.value,
+                        lineHeight = FluentGlobalTokens.LineHeightTokens.Size500.value,
+                        fontWeight = FluentGlobalTokens.FontWeightTokens.Medium.value,
                         letterSpacing = 0.sp
                     )
                 FluentAliasTokens.TypographyTokens.Body1Strong ->
                     TextStyle(
-                        fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size400),
-                        lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size400),
-                        fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.SemiBold),
+                        fontSize = FluentGlobalTokens.FontSizeTokens.Size400.value,
+                        lineHeight = FluentGlobalTokens.LineHeightTokens.Size400.value,
+                        fontWeight = FluentGlobalTokens.FontWeightTokens.SemiBold.value,
                         letterSpacing = 0.sp
                     )
                 FluentAliasTokens.TypographyTokens.Body1 ->
                     TextStyle(
-                        fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size400),
-                        lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size400),
-                        fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Regular),
+                        fontSize = FluentGlobalTokens.FontSizeTokens.Size400.value,
+                        lineHeight = FluentGlobalTokens.LineHeightTokens.Size400.value,
+                        fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value,
                         letterSpacing = 0.sp
                     )
                 FluentAliasTokens.TypographyTokens.Body2Strong ->
                     TextStyle(
-                        fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size300),
-                        lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size300),
-                        fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Medium),
+                        fontSize = FluentGlobalTokens.FontSizeTokens.Size300.value,
+                        lineHeight = FluentGlobalTokens.LineHeightTokens.Size300.value,
+                        fontWeight = FluentGlobalTokens.FontWeightTokens.Medium.value,
                         letterSpacing = 0.sp
                     )
                 FluentAliasTokens.TypographyTokens.Body2 ->
                     TextStyle(
-                        fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size300),
-                        lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size300),
-                        fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Regular),
+                        fontSize = FluentGlobalTokens.FontSizeTokens.Size300.value,
+                        lineHeight = FluentGlobalTokens.LineHeightTokens.Size300.value,
+                        fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value,
                         letterSpacing = 0.sp
                     )
                 FluentAliasTokens.TypographyTokens.Caption1Strong ->
                     TextStyle(
-                        fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size200),
-                        lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size200),
-                        fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Medium),
+                        fontSize = FluentGlobalTokens.FontSizeTokens.Size200.value,
+                        lineHeight = FluentGlobalTokens.LineHeightTokens.Size200.value,
+                        fontWeight = FluentGlobalTokens.FontWeightTokens.Medium.value,
                         letterSpacing = 0.sp
                     )
                 FluentAliasTokens.TypographyTokens.Caption1 ->
                     TextStyle(
-                        fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size200),
-                        lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size200),
-                        fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Regular),
+                        fontSize = FluentGlobalTokens.FontSizeTokens.Size200.value,
+                        lineHeight = FluentGlobalTokens.LineHeightTokens.Size200.value,
+                        fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value,
                         letterSpacing = 0.sp
                     )
                 FluentAliasTokens.TypographyTokens.Caption2 ->
                     TextStyle(
-                        fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size100),
-                        lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size100),
-                        fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Regular),
+                        fontSize = FluentGlobalTokens.FontSizeTokens.Size100.value,
+                        lineHeight = FluentGlobalTokens.LineHeightTokens.Size100.value,
+                        fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value,
                         letterSpacing = 0.sp
                     )
             }

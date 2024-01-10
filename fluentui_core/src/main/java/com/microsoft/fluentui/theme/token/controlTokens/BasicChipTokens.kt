@@ -59,7 +59,7 @@ open class BasicChipTokens : IControlToken, Parcelable {
 
     @Composable
     open fun cornerRadius(basicChipInfo: BasicChipInfo): Dp {
-        return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius80)
+        return FluentGlobalTokens.CornerRadiusTokens.CornerRadius80.value
     }
 
     @Composable
@@ -70,13 +70,13 @@ open class BasicChipTokens : IControlToken, Parcelable {
     @Composable
     open fun padding(basicChipInfo: BasicChipInfo): PaddingValues {
         return PaddingValues(
-            horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120),
-            vertical = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
+            horizontal = FluentGlobalTokens.SizeTokens.Size120.value,
+            vertical = FluentGlobalTokens.SizeTokens.Size80.value
         )
     }
 
     @Composable
     open fun horizontalSpacing(basicChipInfo: BasicChipInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
+        return FluentGlobalTokens.SizeTokens.Size80.value
     }
 }

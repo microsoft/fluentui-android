@@ -260,7 +260,7 @@ class V2CardNudgeActivity : V2DemoActivity() {
                         "Hide",
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)),
+                            .padding(horizontal = FluentGlobalTokens.SizeTokens.Size160.value),
                         style = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1Strong].merge(
                             TextStyle(
                                 textAlign =

@@ -108,13 +108,13 @@ open class FABTokens : IControlToken, Parcelable {
         return StateBorderStroke(
             focused = listOf(
                 BorderStroke(
-                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20.value,
                     aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
                         themeMode = themeMode
                     )
                 ),
                 BorderStroke(
-                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15),
+                    FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15.value,
                     aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
                         themeMode = themeMode
                     )
@@ -126,8 +126,8 @@ open class FABTokens : IControlToken, Parcelable {
     @Composable
     open fun iconSize(fabInfo: FABInfo): Dp {
         return when (fabInfo.size) {
-            FABSize.Small -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize200)
-            FABSize.Large -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize240)
+            FABSize.Small -> FluentGlobalTokens.IconSizeTokens.IconSize200.value
+            FABSize.Large -> FluentGlobalTokens.IconSizeTokens.IconSize240.value
         }
     }
 
@@ -144,13 +144,13 @@ open class FABTokens : IControlToken, Parcelable {
         return when (fabInfo.size) {
             FABSize.Small ->
                 PaddingValues(
-                    horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120),
-                    vertical = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120)
+                    horizontal = FluentGlobalTokens.SizeTokens.Size120.value,
+                    vertical = FluentGlobalTokens.SizeTokens.Size120.value
                 )
             FABSize.Large ->
                 PaddingValues(
-                    horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160),
-                    vertical = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160),
+                    horizontal = FluentGlobalTokens.SizeTokens.Size160.value,
+                    vertical = FluentGlobalTokens.SizeTokens.Size160.value,
                 )
         }
     }
@@ -160,17 +160,17 @@ open class FABTokens : IControlToken, Parcelable {
         return when (fabInfo.size) {
             FABSize.Small ->
                 PaddingValues(
-                    top = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120),
-                    bottom = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120),
-                    start = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120),
-                    end = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)
+                    top = FluentGlobalTokens.SizeTokens.Size120.value,
+                    bottom = FluentGlobalTokens.SizeTokens.Size120.value,
+                    start = FluentGlobalTokens.SizeTokens.Size120.value,
+                    end = FluentGlobalTokens.SizeTokens.Size160.value
                 )
             FABSize.Large ->
                 PaddingValues(
-                    top = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160),
-                    bottom = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160),
-                    start = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160),
-                    end = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size200)
+                    top = FluentGlobalTokens.SizeTokens.Size160.value,
+                    bottom = FluentGlobalTokens.SizeTokens.Size160.value,
+                    start = FluentGlobalTokens.SizeTokens.Size160.value,
+                    end = FluentGlobalTokens.SizeTokens.Size200.value
                 )
         }
     }
@@ -178,8 +178,8 @@ open class FABTokens : IControlToken, Parcelable {
     @Composable
     open fun spacing(fabInfo: FABInfo): Dp {
         return when (fabInfo.size) {
-            FABSize.Small -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
-            FABSize.Large -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
+            FABSize.Small -> FluentGlobalTokens.SizeTokens.Size80.value
+            FABSize.Large -> FluentGlobalTokens.SizeTokens.Size80.value
         }
     }
 
@@ -202,11 +202,11 @@ open class FABTokens : IControlToken, Parcelable {
     @Composable
     open fun elevation(fabInfo: FABInfo): StateElevation {
         return StateElevation(
-            rest = FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow08),
-            pressed = FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow02),
-            selected = FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow02),
-            focused = FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow02),
-            disabled = FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow02)
+            rest = FluentGlobalTokens.ShadowTokens.Shadow08.value,
+            pressed = FluentGlobalTokens.ShadowTokens.Shadow02.value,
+            selected = FluentGlobalTokens.ShadowTokens.Shadow02.value,
+            focused = FluentGlobalTokens.ShadowTokens.Shadow02.value,
+            disabled = FluentGlobalTokens.ShadowTokens.Shadow02.value
         )
     }
 }

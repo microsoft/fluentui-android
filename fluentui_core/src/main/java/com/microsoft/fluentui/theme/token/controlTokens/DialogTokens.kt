@@ -27,12 +27,12 @@ open class DialogTokens : IControlToken, Parcelable {
 
     @Composable
     open fun cornerRadius(dialogInfo: DialogInfo): Dp {
-        return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius120)
+        return FluentGlobalTokens.CornerRadiusTokens.CornerRadius120.value
     }
 
     @Composable
     open fun elevation(dialogInfo: DialogInfo): Dp {
-        return FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow04)
+        return FluentGlobalTokens.ShadowTokens.Shadow04.value
     }
 
     @Composable
@@ -46,6 +46,6 @@ open class DialogTokens : IControlToken, Parcelable {
 
     @Composable
     open fun borderStrokeWidth(dialogInfo: DialogInfo): Dp {
-        return FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05)
+        return FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05.value
     }
 }

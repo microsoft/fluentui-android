@@ -12,11 +12,11 @@ open class PeoplePickerTokens : TextFieldTokens() {
 
     @Composable
     open fun chipHorizontalSpacing(peoplePickerInfo: PeoplePickerInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
+        return FluentGlobalTokens.SizeTokens.Size80.value
     }
 
     @Composable
     open fun chipVerticalSpacing(peoplePickerInfo: PeoplePickerInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
+        return FluentGlobalTokens.SizeTokens.Size40.value
     }
 }

@@ -155,16 +155,16 @@ open class ListItemTokens : IControlToken, Parcelable {
     @Composable
     open fun padding(listItemInfo: ListItemInfo): PaddingValues {
         return PaddingValues(
-            start = FluentGlobalTokens.size(listItemInfo.horizontalSpacing),
-            end = FluentGlobalTokens.size(listItemInfo.horizontalSpacing),
-            top = FluentGlobalTokens.size(listItemInfo.verticalSpacing),
-            bottom = FluentGlobalTokens.size(listItemInfo.verticalSpacing)
+            start = listItemInfo.horizontalSpacing.value,
+            end = listItemInfo.horizontalSpacing.value,
+            top = listItemInfo.verticalSpacing.value,
+            bottom = listItemInfo.verticalSpacing.value
         )
     }
 
     @Composable
     open fun borderSize(listItemInfo: ListItemInfo): Dp {
-        return FluentGlobalTokens.strokeWidth(StrokeWidth15)
+        return StrokeWidth15.value
     }
 
     @Composable
@@ -287,8 +287,8 @@ open class ListItemTokens : IControlToken, Parcelable {
     @Composable
     open fun rippleColor(listItemInfo: ListItemInfo): Color {
         return FluentColor(
-            light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Black),
-            dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.White)
+            light = FluentGlobalTokens.NeutralColorTokens.Black.value,
+            dark = FluentGlobalTokens.NeutralColorTokens.White.value
         ).value(
             FluentTheme.themeMode
         )
@@ -351,6 +351,6 @@ open class ListItemTokens : IControlToken, Parcelable {
 
     @Composable
     open fun textAccessoryContentTextSpacing(listItemInfo: ListItemInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
+        return FluentGlobalTokens.SizeTokens.Size40.value
     }
 }

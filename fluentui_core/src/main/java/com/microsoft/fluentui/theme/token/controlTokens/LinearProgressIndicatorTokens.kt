@@ -25,9 +25,8 @@ open class LinearProgressIndicatorTokens : IControlToken, Parcelable {
     @Composable
     open fun strokeWidth(linearProgressIndicatorInfo: LinearProgressIndicatorInfo): Dp {
         return when (linearProgressIndicatorInfo.linearProgressIndicatorHeight) {
-            LinearProgressIndicatorHeight.XXXSmall -> FluentGlobalTokens.strokeWidth(
-                FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20
-            )
+            LinearProgressIndicatorHeight.XXXSmall -> FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20
+                .value
         }
     }
 
