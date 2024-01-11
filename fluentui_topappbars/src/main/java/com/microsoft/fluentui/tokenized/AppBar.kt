@@ -267,7 +267,7 @@ fun AppBar(
                         modifier = Modifier
                             .padding(token.textPadding(appBarInfo))
                             .weight(1F)
-                            .semantics { heading() },
+                            .semantics { heading()  },
                         style = titleTextStyle.merge(
                             TextStyle(
                                 color = token.titleTextColor(appBarInfo)
