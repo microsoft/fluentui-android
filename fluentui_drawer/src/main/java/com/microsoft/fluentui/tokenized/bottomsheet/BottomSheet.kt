@@ -357,7 +357,7 @@ fun BottomSheet(
                 .shadow(sheetElevation)
                 .clip(sheetShape)
                 .background(sheetBackgroundColor)
-                .semantics(mergeDescendants = true) {
+                .semantics(mergeDescendants = false) {
                     if (sheetState.isVisible) {
                         if (enableSwipeDismiss) {
                             dismiss {
