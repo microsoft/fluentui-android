@@ -18,6 +18,8 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
@@ -264,7 +266,8 @@ fun AppBar(
                         text = title,
                         modifier = Modifier
                             .padding(token.textPadding(appBarInfo))
-                            .weight(1F),
+                            .weight(1F)
+                            .semantics { heading() },
                         style = titleTextStyle.merge(
                             TextStyle(
                                 color = token.titleTextColor(appBarInfo)
