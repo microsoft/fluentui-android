@@ -92,7 +92,7 @@ fun Button(
 
     Box(
         modifier
-            .height(token.fixedHeight(buttonInfo))
+            .heightIn(min = token.fixedHeight(buttonInfo))
             .background(
                 brush = backgroundColor,
                 shape = shape
