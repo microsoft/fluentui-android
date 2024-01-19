@@ -5,12 +5,19 @@ import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.SemanticsPropertyReceiver
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.stateDescription
+import com.microsoft.fluentui.persona.R
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.None
@@ -48,6 +55,8 @@ fun PersonaList(
 ) {
     val scope = rememberCoroutineScope()
     val lazyListState = rememberLazyListState()
+    val positionString: String = LocalContext.current.resources.getString(R.string.position_string)
+    val statusString: String = LocalContext.current.resources.getString(R.string.status_string)
     LazyColumn(
         state = lazyListState, modifier = modifier.draggable(
             orientation = Orientation.Vertical,
@@ -58,9 +67,15 @@ fun PersonaList(
             },
         )
     ) {
-        items(personas) { item ->
+        itemsIndexed(personas) { index, item ->
             ListItem.Item(
                 text = item.title,
+                modifier = Modifier
+                    .clearAndSetSemantics {
+                        contentDescription = "${item.person.getName()}, ${item.subTitle}" + if(enableAvatarPresence) statusString.format( item.person.status )else ""
+                        stateDescription = if (personas.size > 1) positionString.format(index+1, personas.size ) else ""
+                        role = Role.Button
+                                          },
                 subText = item.subTitle,
                 secondarySubText = item.footer,
                 onClick = item.onClick,
