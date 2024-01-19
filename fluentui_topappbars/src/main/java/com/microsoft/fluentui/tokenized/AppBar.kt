@@ -147,13 +147,16 @@ fun AppBar(
                     Icon(
                         navigationIcon,
                         modifier =
-                        Modifier
-                            .clickable(
+                        Modifier.then(
+                            if(navigationIcon.onClick != null)
+                                Modifier.clickable(
                                 interactionSource = remember { MutableInteractionSource() },
                                 indication = rememberRipple(color = token.navigationIconRippleColor()),
                                 enabled = true,
                                 onClick = navigationIcon.onClick ?: {}
                             )
+                            else Modifier
+                        )
                             .padding(token.navigationIconPadding(appBarInfo))
                             .size(token.leftIconSize(appBarInfo)),
                         tint = token.navigationIconColor(appBarInfo)
@@ -264,7 +267,7 @@ fun AppBar(
                         modifier = Modifier
                             .padding(token.textPadding(appBarInfo))
                             .weight(1F)
-                            .semantics { heading()  },
+                            .semantics { heading() },
                         style = titleTextStyle.merge(
                             TextStyle(
                                 color = token.titleTextColor(appBarInfo)

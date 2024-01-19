@@ -156,7 +156,6 @@ fun Icon(
             interactionSource = remember { MutableInteractionSource() },
             indication = LocalIndication.current,
             enabled = enabled,
-            onClickLabel = contentDescription,
             onClick = onClick
         ) else Modifier
     )

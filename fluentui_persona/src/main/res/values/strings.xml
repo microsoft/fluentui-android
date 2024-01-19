@@ -15,4 +15,8 @@
     <string name="Active">Active</string>
     <!-- String specifying the work status of a person -->
     <string name="Inactive">Inactive</string>
+    <!-- Describes the Numbering of Persona List items -->
+    <string name="position_string">Item %d in list of %d</string>
+    <!-- Status of a person -->
+    <string name="status_string">Status: %s</string>
 </resources>
