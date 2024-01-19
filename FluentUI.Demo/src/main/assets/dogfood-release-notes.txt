@@ -1,7 +1,13 @@
-Release Version 0.1.45:
+Release Version 0.1.46:
 
 What's New:
 
 Fluent V2:
         Fix/Enhancement:
-            1. Fixed Bottomsheet crash when sheet content is empty and showHandle is set to false
+            1. Enhanced Bottomsheet (ListContentBuilder) accessibility focus order.
+            2. Fixed Fluent Icon accessibility announcing description twice.
+            3. Upgraded accessibility of Appbar title to heading.
+            4. Fixed PersonaList accessibility focus going to avatar.
+            5. Fluent Button height is not restrictive anymore, but maintains a minimum height based on fluent values.
+
+
