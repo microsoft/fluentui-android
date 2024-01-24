@@ -102,6 +102,12 @@ class BottomSheetState(
     internal val hasExpandedState: Boolean
         get() = anchors.values.contains(BottomSheetValue.Expanded)
 
+    internal val hasShownState: Boolean
+        get() = anchors.values.contains(BottomSheetValue.Shown)
+
+    internal val hasHiddenState: Boolean
+        get() = anchors.values.contains(BottomSheetValue.Hidden)
+
     /**
      * Fully expand the bottom sheet with animation and suspend until it if fully expanded or
      * animation has been cancelled.
@@ -122,7 +128,13 @@ class BottomSheetState(
      *
      * @throws [CancellationException] if the animation is interrupted
      */
-    suspend fun show() = animateTo(BottomSheetValue.Shown)
+    suspend fun show() {
+        val targetValue = when {
+            hasShownState -> BottomSheetValue.Shown
+            else -> BottomSheetValue.Hidden
+        }
+        animateTo(targetValue)
+    }
 
     /**
      * Hide the bottom sheet with animation and suspend until it if fully hidden or animation has
@@ -286,7 +298,10 @@ fun BottomSheet(
                             || !sheetState.anchors.containsValue(BottomSheetValue.Expanded)
                         ) {
                             0.toFloat()
-                        } else {
+                        } else if(sheetHeightState != null && sheetHeightState.value == 0f){
+                            0.toFloat()
+                        }
+                        else {
                             calculateFraction(
                                 sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Shown }?.key!!,
                                 sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Expanded }?.key!!,
@@ -477,22 +492,22 @@ private fun Modifier.bottomSheetSwipeable(
 ): Modifier {
     var peekHeightPx = min(dpToPx(peekHeight), fullHeight * BottomSheetOpenFraction)
     val modifier = if (slideOver) {
-        if (sheetHeight != null && sheetHeight != 0f) {
+        if (sheetHeight != null) {
             val anchors = if (!expandable) {
                 mapOf(
-                    fullHeight to BottomSheetValue.Hidden,
-                    fullHeight - min(sheetHeight, peekHeightPx) to BottomSheetValue.Shown
+                    fullHeight - min(sheetHeight, peekHeightPx) to BottomSheetValue.Shown,
+                    fullHeight to BottomSheetValue.Hidden
                 )
             } else if (sheetHeight <= peekHeightPx) {
                 mapOf(
-                    fullHeight to BottomSheetValue.Hidden,
-                    fullHeight - sheetHeight to BottomSheetValue.Shown
+                    fullHeight - sheetHeight to BottomSheetValue.Shown,
+                    fullHeight to BottomSheetValue.Hidden
                 )
             } else {
                 mapOf(
-                    fullHeight to BottomSheetValue.Hidden,
                     fullHeight - peekHeightPx to BottomSheetValue.Shown,
-                    max(0f, fullHeight - sheetHeight) to BottomSheetValue.Expanded
+                    max(0f, fullHeight - sheetHeight) to BottomSheetValue.Expanded,
+                    fullHeight to BottomSheetValue.Hidden
                 )
             }
             if (sheetState.initialValue == BottomSheetValue.Expanded
@@ -526,14 +541,14 @@ private fun Modifier.bottomSheetSwipeable(
         peekHeightPx = dpToPx(peekHeight)
         val anchors = if (expandable) {
             mapOf(
-                fullHeight to BottomSheetValue.Hidden,
                 fullHeight - peekHeightPx to BottomSheetValue.Shown,
-                0F to BottomSheetValue.Expanded
+                0F to BottomSheetValue.Expanded,
+                fullHeight to BottomSheetValue.Hidden
             )
         } else {
             mapOf(
-                fullHeight to BottomSheetValue.Hidden,
-                fullHeight - peekHeightPx to BottomSheetValue.Shown
+                fullHeight - peekHeightPx to BottomSheetValue.Shown,
+                fullHeight to BottomSheetValue.Hidden
             )
         }
         Modifier.swipeable(
