@@ -386,13 +386,13 @@ private fun Modifier.bottomDrawerSwipeable(
                         *The old anchors won't have Open state, so we need to continue with Expanded state.
                         */
                         mapOf(
+                            bottomOpenStateY to DrawerValue.Expanded,
                             fullHeight to DrawerValue.Closed,
-                            bottomOpenStateY to DrawerValue.Expanded
                         )
                     } else {
                         mapOf(
-                            fullHeight to DrawerValue.Closed,
-                            bottomOpenStateY to DrawerValue.Open
+                            bottomOpenStateY to DrawerValue.Open,
+                            fullHeight to DrawerValue.Closed
                         )
                     }
                 } else {
@@ -404,26 +404,26 @@ private fun Modifier.bottomDrawerSwipeable(
                                 *The old anchors won't have Expanded state, so we need to continue with Open state.
                                 */
                                 mapOf(
-                                    fullHeight to DrawerValue.Closed,
-                                    bottomExpandedStateY to DrawerValue.Open // when drawerHeight is greater than maxOpenHeight but less than fullHeight, then Expanded state starts from fullHeight-drawerHeight
+                                    bottomExpandedStateY to DrawerValue.Open, // when drawerHeight is greater than maxOpenHeight but less than fullHeight, then Expanded state starts from fullHeight-drawerHeight
+                                    fullHeight to DrawerValue.Closed
                                 )
                             } else {
                                 mapOf(
+                                    bottomExpandedStateY to DrawerValue.Expanded, // when drawerHeight is greater than maxOpenHeight but less than fullHeight, then Expanded state starts from fullHeight-drawerHeight
                                     fullHeight to DrawerValue.Closed,
-                                    bottomExpandedStateY to DrawerValue.Expanded // when drawerHeight is greater than maxOpenHeight but less than fullHeight, then Expanded state starts from fullHeight-drawerHeight
                                 )
                             }
                         } else {
                             mapOf(
-                                fullHeight to DrawerValue.Closed,
                                 maxOpenHeight to DrawerValue.Open,
-                                bottomExpandedStateY to DrawerValue.Expanded
+                                bottomExpandedStateY to DrawerValue.Expanded,
+                                fullHeight to DrawerValue.Closed
                             )
                         }
                     } else {
                         mapOf(
-                            fullHeight to DrawerValue.Closed,
-                            maxOpenHeight to DrawerValue.Open
+                            maxOpenHeight to DrawerValue.Open,
+                            fullHeight to DrawerValue.Closed
                         )
                     }
                 }
@@ -441,21 +441,21 @@ private fun Modifier.bottomDrawerSwipeable(
         val anchors = if (drawerState.expandable) {
             if(drawerState.skipOpenState){
                 mapOf(
+                    0F to DrawerValue.Expanded,
                     fullHeight to DrawerValue.Closed,
-                    0F to DrawerValue.Expanded
                 )
             }
             else {
                 mapOf(
-                    fullHeight to DrawerValue.Closed,
                     maxOpenHeight to DrawerValue.Open,
-                    0F to DrawerValue.Expanded
+                    0F to DrawerValue.Expanded,
+                    fullHeight to DrawerValue.Closed
                 )
             }
         } else {
             mapOf(
-                fullHeight to DrawerValue.Closed,
-                maxOpenHeight to DrawerValue.Open
+                maxOpenHeight to DrawerValue.Open,
+                fullHeight to DrawerValue.Closed
             )
         }
         Modifier.swipeable(
@@ -781,12 +781,12 @@ private fun BottomDrawer(
         val scope = rememberCoroutineScope()
 
         Scrim(
-            open = !drawerState.isClosed,
+            open = !drawerState.isClosed || (drawerHeight != null && drawerHeight.value == 0f),
             onClose = onDismiss,
             fraction = {
-                if (drawerState.anchors.isEmpty()) {
+                if (drawerState.anchors.isEmpty() || (drawerHeight != null && drawerHeight.value == 0f)) {
                     0.toFloat()
-                } else {
+                } else{
                     var targetValue: DrawerValue = if(slideOver){
                         drawerState.anchors.maxBy { it.value }?.value!!
                     }
