@@ -105,8 +105,6 @@ class BottomSheetState(
     internal val hasShownState: Boolean
         get() = anchors.values.contains(BottomSheetValue.Shown)
 
-    internal val hasHiddenState: Boolean
-        get() = anchors.values.contains(BottomSheetValue.Hidden)
 
     /**
      * Fully expand the bottom sheet with animation and suspend until it if fully expanded or
@@ -296,12 +294,10 @@ fun BottomSheet(
                     fraction = {
                         if (sheetState.anchors.isEmpty()
                             || !sheetState.anchors.containsValue(BottomSheetValue.Expanded)
+                            || (sheetHeightState != null && sheetHeightState.value == 0f)
                         ) {
                             0.toFloat()
-                        } else if(sheetHeightState != null && sheetHeightState.value == 0f){
-                            0.toFloat()
-                        }
-                        else {
+                        }else {
                             calculateFraction(
                                 sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Shown }?.key!!,
                                 sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Expanded }?.key!!,

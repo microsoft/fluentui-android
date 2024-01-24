@@ -784,9 +784,7 @@ private fun BottomDrawer(
             open = !drawerState.isClosed || (drawerHeight != null && drawerHeight.value == 0f),
             onClose = onDismiss,
             fraction = {
-                if (drawerState.anchors.isEmpty()) {
-                    0.toFloat()
-                } else if(drawerHeight != null && drawerHeight.value == 0f){
+                if (drawerState.anchors.isEmpty() || (drawerHeight != null && drawerHeight.value == 0f)) {
                     0.toFloat()
                 } else{
                     var targetValue: DrawerValue = if(slideOver){
