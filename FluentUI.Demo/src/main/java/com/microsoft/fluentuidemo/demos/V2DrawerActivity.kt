@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.selection.toggleable
-import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -26,11 +25,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
@@ -84,7 +80,7 @@ private fun CreateActivityUI() {
     var preventDismissalOnScrimClick by remember { mutableStateOf(false) }
     var selectedContent by remember { mutableStateOf(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT) }
     var selectedBehaviorType by remember { mutableStateOf(BehaviorType.BOTTOM_SLIDE_OVER) }
-    var relativeBounds by remember {
+    var relativeToParentAnchor by remember {
         mutableStateOf(
             false
         )
@@ -92,15 +88,19 @@ private fun CreateActivityUI() {
     var offsetX by remember { mutableIntStateOf(0) }
     var offsetY by remember { mutableIntStateOf(0) }
     Column {
-        if(relativeBounds){
+        if (relativeToParentAnchor) {
             Row(
                 Modifier
                     .width(500.dp)
                     .height(100.dp)
                     .border(width = 2.dp, color = Color.Red),
                 horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically) {
-                Label(text = "Random composable. Drawer starts from below", textStyle = FluentAliasTokens.TypographyTokens.Body1Strong)
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Label(
+                    text = "Random composable. Drawer starts from below",
+                    textStyle = FluentAliasTokens.TypographyTokens.Body1Strong
+                )
             }
         }
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -115,7 +115,7 @@ private fun CreateActivityUI() {
                     getDynamicListGeneratorAsContent()
                 },
                 scrimVisible = scrimVisible,
-                relativeBounds,
+                relativeToParentAnchor,
                 IntOffset(offsetX, offsetY),
                 preventDismissalOnScrimClick = preventDismissalOnScrimClick
             )
@@ -207,24 +207,27 @@ private fun CreateActivityUI() {
                     )
                 }
                 item {
-                    ListItem.Header(title = "Relative Bounds", modifier = Modifier
+                    ListItem.Header(title = "Relative to parent Anchor", modifier = Modifier
                         .toggleable(
-                            value = relativeBounds,
+                            value = relativeToParentAnchor,
                             role = Role.Switch,
-                            onValueChange = { relativeBounds = !relativeBounds }
+                            onValueChange = { relativeToParentAnchor = !relativeToParentAnchor }
                         )
                         .clearAndSetSemantics {
                             this.contentDescription = "relative bounds"
                         }, trailingAccessoryContent = {
                         ToggleSwitch(
-                            onValueChange = { relativeBounds = !relativeBounds },
-                            checkedState = relativeBounds
+                            onValueChange = {
+                                relativeToParentAnchor = !relativeToParentAnchor
+                            },
+                            checkedState = relativeToParentAnchor
                         )
                     }
                     )
                 }
                 item {
-                    val preventDismissalOnScrimClickText = stringResource(id = R.string.prevent_scrim_click_dismissal)
+                    val preventDismissalOnScrimClickText =
+                        stringResource(id = R.string.prevent_scrim_click_dismissal)
                     ListItem.Header(title = preventDismissalOnScrimClickText,
                         modifier = Modifier
                             .toggleable(
@@ -239,13 +242,15 @@ private fun CreateActivityUI() {
                             },
                         trailingAccessoryContent = {
                             ToggleSwitch(
-                                onValueChange = { preventDismissalOnScrimClick = !preventDismissalOnScrimClick },
+                                onValueChange = {
+                                    preventDismissalOnScrimClick = !preventDismissalOnScrimClick
+                                },
                                 checkedState = preventDismissalOnScrimClick
                             )
                         }
                     )
                 }
-                item{
+                item {
                     ListItem.Header(title = "Offset: X $offsetX.dp",
                         modifier = Modifier.fillMaxWidth(),
                         trailingAccessoryContent = {
@@ -254,36 +259,36 @@ private fun CreateActivityUI() {
                                     style = ButtonStyle.Button,
                                     size = ButtonSize.Medium,
                                     text = "+ 10 dp",
-                                    enabled = relativeBounds,
+                                    enabled = relativeToParentAnchor,
                                     onClick = { offsetX += 10 })
                                 Spacer(modifier = Modifier.width(10.dp))
                                 Button(
                                     style = ButtonStyle.Button,
                                     size = ButtonSize.Medium,
                                     text = "- 10 dp",
-                                    enabled = relativeBounds,
+                                    enabled = relativeToParentAnchor,
                                     onClick = { offsetX -= 10 })
                             }
                         }
                     )
                 }
-                item{
+                item {
                     ListItem.Header(title = "Offset: Y $offsetY.dp",
                         modifier = Modifier.fillMaxWidth(),
                         trailingAccessoryContent = {
-                            Row(){
+                            Row {
                                 Button(
                                     style = ButtonStyle.Button,
                                     size = ButtonSize.Medium,
                                     text = "+ 10 dp",
-                                    enabled = relativeBounds,
+                                    enabled = relativeToParentAnchor,
                                     onClick = { offsetY += 10 })
                                 Spacer(modifier = Modifier.width(10.dp))
                                 Button(
                                     style = ButtonStyle.Button,
                                     size = ButtonSize.Medium,
                                     text = "- 10 dp",
-                                    enabled = relativeBounds,
+                                    enabled = relativeToParentAnchor,
                                     onClick = { offsetY -= 10 })
                             }
                         }
@@ -424,7 +429,7 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     Drawer(
         drawerState = drawerState,
         offset = offset,
-        relativeBounds = relativeBounds,
+        placeRelativeToAnchor = relativeBounds,
         drawerContent = { drawerContent(close) },
         behaviorType = behaviorType,
         scrimVisible = scrimVisible,

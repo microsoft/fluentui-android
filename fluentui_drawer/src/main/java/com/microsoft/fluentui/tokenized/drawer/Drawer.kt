@@ -951,8 +951,8 @@ private fun BottomDrawer(
  * @param behaviorType opening behaviour of drawer. Default is BOTTOM
  * @param drawerState state of the drawer
  * @param scrimVisible create obscures background when scrim visible set to true when the drawer is open. The default value is true
- * @param relativeBounds when true, the drawer will be drawn relative to its parent anchor. The default value is false
- * @param offset offset of the drawer from the anchor. The default value is (0,0). Offset does not work if the [relativeBounds] is set to false.
+ * @param placeRelativeToAnchor when true, the drawer will be drawn relative to its parent anchor. The default value is false
+ * @param offset offset of the drawer from the anchor. The default value is (0,0). Offset does not work if the [placeRelativeToAnchor] is set to false.
  * @param drawerTokens tokens to provide appearance values. If not provided then drawer tokens will be picked from [FluentTheme]
  * @param drawerContent composable that represents content inside the drawer
  * @param preventDismissalOnScrimClick when true, the drawer will not be dismissed when the scrim is clicked
@@ -967,7 +967,7 @@ fun Drawer(
     behaviorType: BehaviorType = BehaviorType.BOTTOM,
     drawerState: DrawerState = rememberDrawerState(),
     scrimVisible: Boolean = true,
-    relativeBounds: Boolean = false,
+    placeRelativeToAnchor: Boolean = false,
     offset: IntOffset = IntOffset(0, 0),
     drawerTokens: DrawerTokens? = null,
     drawerContent: @Composable () -> Unit,
@@ -991,7 +991,7 @@ fun Drawer(
         Popup(
             onDismissRequest = close,
             popupPositionProvider = popupPositionProvider,
-            properties = PopupProperties(focusable = true, clippingEnabled = !relativeBounds)
+            properties = PopupProperties(focusable = true, clippingEnabled = !placeRelativeToAnchor)
         )
         {
             val drawerShape: Shape =
