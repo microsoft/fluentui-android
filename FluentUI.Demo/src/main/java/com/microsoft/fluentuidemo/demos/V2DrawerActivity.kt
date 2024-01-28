@@ -115,7 +115,6 @@ private fun CreateActivityUI() {
                     getDynamicListGeneratorAsContent()
                 },
                 scrimVisible = scrimVisible,
-                relativeToParentAnchor,
                 IntOffset(offsetX, offsetY),
                 preventDismissalOnScrimClick = preventDismissalOnScrimClick
             )
@@ -207,14 +206,16 @@ private fun CreateActivityUI() {
                     )
                 }
                 item {
-                    ListItem.Header(title = "Relative to parent Anchor", modifier = Modifier
+                    val relativeToParentAnchorText =
+                        stringResource(id = R.string.drawer_relative_to_parent_anchor)
+                    ListItem.Header(title = relativeToParentAnchorText, modifier = Modifier
                         .toggleable(
                             value = relativeToParentAnchor,
                             role = Role.Switch,
                             onValueChange = { relativeToParentAnchor = !relativeToParentAnchor }
                         )
                         .clearAndSetSemantics {
-                            this.contentDescription = "relative bounds"
+                            this.contentDescription = relativeToParentAnchorText
                         }, trailingAccessoryContent = {
                         ToggleSwitch(
                             onValueChange = {
@@ -399,7 +400,6 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     behaviorType: BehaviorType,
     drawerContent: @Composable ((() -> Unit) -> Unit),
     scrimVisible: Boolean = true,
-    relativeBounds: Boolean = true,
     offset: IntOffset = IntOffset.Zero,
     preventDismissalOnScrimClick: Boolean
 ) {
@@ -429,7 +429,6 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     Drawer(
         drawerState = drawerState,
         offset = offset,
-        placeRelativeToAnchor = relativeBounds,
         drawerContent = { drawerContent(close) },
         behaviorType = behaviorType,
         scrimVisible = scrimVisible,
