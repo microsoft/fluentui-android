@@ -206,27 +206,6 @@ private fun CreateActivityUI() {
                     )
                 }
                 item {
-                    val relativeToParentAnchorText =
-                        stringResource(id = R.string.drawer_relative_to_parent_anchor)
-                    ListItem.Header(title = relativeToParentAnchorText, modifier = Modifier
-                        .toggleable(
-                            value = relativeToParentAnchor,
-                            role = Role.Switch,
-                            onValueChange = { relativeToParentAnchor = !relativeToParentAnchor }
-                        )
-                        .clearAndSetSemantics {
-                            this.contentDescription = relativeToParentAnchorText
-                        }, trailingAccessoryContent = {
-                        ToggleSwitch(
-                            onValueChange = {
-                                relativeToParentAnchor = !relativeToParentAnchor
-                            },
-                            checkedState = relativeToParentAnchor
-                        )
-                    }
-                    )
-                }
-                item {
                     val preventDismissalOnScrimClickText =
                         stringResource(id = R.string.prevent_scrim_click_dismissal)
                     ListItem.Header(title = preventDismissalOnScrimClickText,
@@ -260,14 +239,14 @@ private fun CreateActivityUI() {
                                     style = ButtonStyle.Button,
                                     size = ButtonSize.Medium,
                                     text = "+ 10 dp",
-                                    enabled = relativeToParentAnchor,
+                                    enabled = true,
                                     onClick = { offsetX += 10 })
                                 Spacer(modifier = Modifier.width(10.dp))
                                 Button(
                                     style = ButtonStyle.Button,
                                     size = ButtonSize.Medium,
                                     text = "- 10 dp",
-                                    enabled = relativeToParentAnchor,
+                                    enabled = true,
                                     onClick = { offsetX -= 10 })
                             }
                         }
@@ -282,14 +261,14 @@ private fun CreateActivityUI() {
                                     style = ButtonStyle.Button,
                                     size = ButtonSize.Medium,
                                     text = "+ 10 dp",
-                                    enabled = relativeToParentAnchor,
+                                    enabled = true,
                                     onClick = { offsetY += 10 })
                                 Spacer(modifier = Modifier.width(10.dp))
                                 Button(
                                     style = ButtonStyle.Button,
                                     size = ButtonSize.Medium,
                                     text = "- 10 dp",
-                                    enabled = relativeToParentAnchor,
+                                    enabled = true,
                                     onClick = { offsetY -= 10 })
                             }
                         }
