@@ -1,13 +1,11 @@
-Release Version 0.1.46:
+Release Version 0.1.47:
 
 What's New:
 
 Fluent V2:
         Fix/Enhancement:
-            1. Enhanced Bottomsheet (ListContentBuilder) accessibility focus order.
-            2. Fixed Fluent Icon accessibility announcing description twice.
-            3. Upgraded accessibility of Appbar title to heading.
-            4. Fixed PersonaList accessibility focus going to avatar.
-            5. Fluent Button height is not restrictive anymore, but maintains a minimum height based on fluent values.
+            1. Enhanced Bottomsheet and Drawer anchor calculations preventing crashes during some edge cases.
+            2. Fixed Bottomsheet and Drawer crashing when the content is not present.
+            3. Updated Drawer's Offset parameter. Now the drawer clips to the screen (0,0) when null but positions relative to parent layout if offset is not null. (Fixes the breaking changes from 0.1.44) 
 
 
