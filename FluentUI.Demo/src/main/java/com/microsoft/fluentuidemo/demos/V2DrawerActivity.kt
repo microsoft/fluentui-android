@@ -13,7 +13,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -85,8 +84,8 @@ private fun CreateActivityUI() {
             false
         )
     }
-    var offsetX by remember { mutableIntStateOf(0) }
-    var offsetY by remember { mutableIntStateOf(0) }
+    var offsetX by remember { mutableStateOf(0) }
+    var offsetY by remember { mutableStateOf(0) }
     Column {
         if (relativeToParentAnchor) {
             Row(
