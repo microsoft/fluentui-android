@@ -44,7 +44,7 @@ allprojects {
         appCompatVersion          =    '1.6.1'
         buildToolVersion          =    '31.0.0'
         composeActivityVersion    =    '1.7.2'
-        composeBomVersion         =    '2023.09.00'
+        composeBomVersion         =    '2023.06.01'
         composeTestVersion        =    '1.4.3'
         composeCompilerVersion    =    '1.4.7'
         constraintLayoutVersion   =    '2.1.4'
