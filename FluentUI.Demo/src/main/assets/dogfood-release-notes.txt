@@ -1,11 +1,8 @@
-Release Version 0.1.47:
+Release Version 0.1.48:
 
 What's New:
 
 Fluent V2:
-        Fix/Enhancement:
-            1. Enhanced Bottomsheet and Drawer anchor calculations preventing crashes during some edge cases.
-            2. Fixed Bottomsheet and Drawer crashing when the content is not present.
-            3. Updated Drawer's Offset parameter. Now the drawer clips to the screen (0,0) when null but positions relative to parent layout if offset is not null. (Fixes the breaking changes from 0.1.44) 
+        Backport support for compose BOM 2023.06.01 (1.4.3)
 
 
