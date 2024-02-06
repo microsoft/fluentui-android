@@ -779,8 +779,10 @@ object ListItem {
                         if (accessoryTextTitle != null) {
                             BasicText(
                                 text = accessoryTextTitle,
-                                Modifier.clickable(role = Role.Button,
-                                    onClick = accessoryTextOnClick ?: {}),
+                                Modifier.clickable(
+                                    onClick = accessoryTextOnClick ?: {})
+                                    .clearAndSetSemantics { contentDescription = accessoryTextTitle
+                                    role = Role.Button },
                                 style = actionTextTypography.merge(TextStyle(color = actionTextColor))
                             )
                         }
@@ -1053,8 +1055,9 @@ object ListItem {
                                 bottom = padding.calculateBottomPadding()
                             )
                             .clickable(
-                                role = Role.Button,
-                                onClick = accessoryTextOnClick ?: {}),
+                                onClick = accessoryTextOnClick ?: {})
+                            .clearAndSetSemantics { contentDescription = accessoryTextTitle
+                                role = Role.Button },
                         style = actionTextTypography.merge(TextStyle(color = actionTextColor))
                     )
                 }
