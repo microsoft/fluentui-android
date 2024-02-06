@@ -301,7 +301,8 @@ object ListItem {
                             rippleColor
                         )
                     } else Modifier
-                )
+                ),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             if (leadingAccessoryContent != null && textAlignment == ListItemTextAlignment.Regular) {
                 Box(
