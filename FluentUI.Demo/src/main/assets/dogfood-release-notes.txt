@@ -5,4 +5,4 @@ What's New:
 Fluent V2:
         Backport support for compose BOM 2023.06.01 (1.4.3)
 
-
+Note: Here on 0.1.x fluent versions support only 1.4.3 Compose version. Please get 0.2.x version for 1.5.1 compose.
