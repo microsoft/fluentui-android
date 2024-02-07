@@ -98,7 +98,7 @@ fun FloatingActionButton(
 
     Box(
         modifier
-            .height(token.fixedHeight(fabInfo))
+            .heightIn(min = token.fixedHeight(fabInfo))
             .defaultMinSize(minWidth = token.minWidth(fabInfo))
             .shadow(
                 elevation = token

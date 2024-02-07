@@ -116,7 +116,7 @@ fun SearchBar(
     ) {
         Row(
             Modifier
-                .requiredHeight(token.height(searchBarInfo))
+                .requiredHeightIn(min = token.height(searchBarInfo))
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(8.dp))
                 .background(
