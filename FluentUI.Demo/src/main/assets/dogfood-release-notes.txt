@@ -1,11 +1,11 @@
-Release Version 0.1.47:
+Release Version 0.2.0:
 
 What's New:
 
 Fluent V2:
         Fix/Enhancement:
-            1. Enhanced Bottomsheet and Drawer anchor calculations preventing crashes during some edge cases.
-            2. Fixed Bottomsheet and Drawer crashing when the content is not present.
-            3. Updated Drawer's Offset parameter. Now the drawer clips to the screen (0,0) when null but positions relative to parent layout if offset is not null. (Fixes the breaking changes from 0.1.44) 
+            1. SearchBar and FAB no longer has restricted height.
+            2. Minor enhancements and accessibitly fixes to Listitem.
+            3. Enhanced Label component to support additional text styling and alignment. 
 
-
+Note: Here on Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will supoort compose version 1.5.1 (BOM 2023.09.00)
