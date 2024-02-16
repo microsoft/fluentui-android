@@ -19,15 +19,6 @@ open class CheckBoxInfo(
 @Parcelize
 open class CheckBoxTokens : IControlToken, Parcelable {
 
-    @IgnoredOnParcel
-    val fixedSize: Dp = 20.dp
-
-    @IgnoredOnParcel
-    val fixedIconSize: Dp = 12.dp
-
-    @IgnoredOnParcel
-    val fixedBorderRadius: Dp = 4.dp
-
     @Composable
     open fun backgroundBrush(checkBoxInfo: CheckBoxInfo): StateBrush {
         return StateBrush(
@@ -100,5 +91,20 @@ open class CheckBoxTokens : IControlToken, Parcelable {
                 )
             )
         )
+    }
+
+    @Composable
+    open fun size(checkBoxInfo: CheckBoxInfo): Dp{
+        return 20.dp
+    }
+
+    @Composable
+    open fun iconSize(checkBoxInfo: CheckBoxInfo): Dp{
+        return 12.dp
+    }
+
+    @Composable
+    open fun borderRadius(checkBoxInfo: CheckBoxInfo): Dp{
+        return 4.dp
     }
 }
