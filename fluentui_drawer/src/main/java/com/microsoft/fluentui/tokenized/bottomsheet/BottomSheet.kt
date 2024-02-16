@@ -21,7 +21,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -102,10 +101,6 @@ class BottomSheetState(
     internal val hasExpandedState: Boolean
         get() = anchors.values.contains(BottomSheetValue.Expanded)
 
-    internal val hasShownState: Boolean
-        get() = anchors.values.contains(BottomSheetValue.Shown)
-
-
     /**
      * Fully expand the bottom sheet with animation and suspend until it if fully expanded or
      * animation has been cancelled.
@@ -126,13 +121,7 @@ class BottomSheetState(
      *
      * @throws [CancellationException] if the animation is interrupted
      */
-    suspend fun show() {
-        val targetValue = when {
-            hasShownState -> BottomSheetValue.Shown
-            else -> BottomSheetValue.Hidden
-        }
-        animateTo(targetValue)
-    }
+    suspend fun show() = animateTo(BottomSheetValue.Shown)
 
     /**
      * Hide the bottom sheet with animation and suspend until it if fully hidden or animation has
@@ -255,7 +244,6 @@ fun BottomSheet(
     )
     val sheetElevation: Dp = tokens.elevation(bottomSheetInfo)
     val sheetBackgroundColor: Brush = tokens.backgroundBrush(bottomSheetInfo)
-    val sheetContentColor: Color = Color.Transparent
     val sheetHandleColor: Color = tokens.handleColor(bottomSheetInfo)
     val scrimOpacity: Float = tokens.scrimOpacity(bottomSheetInfo)
     val scrimColor: Color =
@@ -294,10 +282,10 @@ fun BottomSheet(
                     fraction = {
                         if (sheetState.anchors.isEmpty()
                             || !sheetState.anchors.containsValue(BottomSheetValue.Expanded)
-                            || (sheetHeightState != null && sheetHeightState.value == 0f)
+                            || (sheetHeightState.value != null && sheetHeightState.value == 0f)
                         ) {
                             0.toFloat()
-                        }else {
+                        } else {
                             calculateFraction(
                                 sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Shown }?.key!!,
                                 sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Expanded }?.key!!,
@@ -317,7 +305,7 @@ fun BottomSheet(
             Modifier
                 .fillMaxWidth()
                 .nestedScroll(
-                    if (!enableSwipeDismiss && sheetState.offset.value != null && sheetState.offset.value!! >= (fullHeight - dpToPx(
+                    if (!enableSwipeDismiss && sheetState.offset.value >= (fullHeight - dpToPx(
                             peekHeight
                         ))
                     )
@@ -407,7 +395,7 @@ fun BottomSheet(
                             .draggable(
                                 orientation = Orientation.Vertical,
                                 state = rememberDraggableState { delta ->
-                                    if (!enableSwipeDismiss && sheetState.offset.value != null && sheetState.offset.value!! >= (fullHeight - dpToPx(
+                                    if (!enableSwipeDismiss && sheetState.offset.value >= (fullHeight - dpToPx(
                                             peekHeight
                                         ))
                                     ) {
@@ -488,22 +476,22 @@ private fun Modifier.bottomSheetSwipeable(
 ): Modifier {
     var peekHeightPx = min(dpToPx(peekHeight), fullHeight * BottomSheetOpenFraction)
     val modifier = if (slideOver) {
-        if (sheetHeight != null) {
+        if (sheetHeight != null && sheetHeight != 0f) {
             val anchors = if (!expandable) {
                 mapOf(
-                    fullHeight - min(sheetHeight, peekHeightPx) to BottomSheetValue.Shown,
-                    fullHeight to BottomSheetValue.Hidden
+                    fullHeight to BottomSheetValue.Hidden,
+                    fullHeight - min(sheetHeight, peekHeightPx) to BottomSheetValue.Shown
                 )
             } else if (sheetHeight <= peekHeightPx) {
                 mapOf(
-                    fullHeight - sheetHeight to BottomSheetValue.Shown,
-                    fullHeight to BottomSheetValue.Hidden
+                    fullHeight to BottomSheetValue.Hidden,
+                    fullHeight - sheetHeight to BottomSheetValue.Shown
                 )
             } else {
                 mapOf(
+                    fullHeight to BottomSheetValue.Hidden,
                     fullHeight - peekHeightPx to BottomSheetValue.Shown,
-                    max(0f, fullHeight - sheetHeight) to BottomSheetValue.Expanded,
-                    fullHeight to BottomSheetValue.Hidden
+                    max(0f, fullHeight - sheetHeight) to BottomSheetValue.Expanded
                 )
             }
             if (sheetState.initialValue == BottomSheetValue.Expanded
@@ -537,14 +525,14 @@ private fun Modifier.bottomSheetSwipeable(
         peekHeightPx = dpToPx(peekHeight)
         val anchors = if (expandable) {
             mapOf(
+                fullHeight to BottomSheetValue.Hidden,
                 fullHeight - peekHeightPx to BottomSheetValue.Shown,
-                0F to BottomSheetValue.Expanded,
-                fullHeight to BottomSheetValue.Hidden
+                0F to BottomSheetValue.Expanded
             )
         } else {
             mapOf(
-                fullHeight - peekHeightPx to BottomSheetValue.Shown,
-                fullHeight to BottomSheetValue.Hidden
+                fullHeight to BottomSheetValue.Hidden,
+                fullHeight - peekHeightPx to BottomSheetValue.Shown
             )
         }
         Modifier.swipeable(
