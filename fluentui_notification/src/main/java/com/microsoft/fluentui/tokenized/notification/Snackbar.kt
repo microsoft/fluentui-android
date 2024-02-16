@@ -53,15 +53,27 @@ class SnackbarMetadata(
 ) : NotificationMetadata {
 
     override fun clicked() {
-        if (continuation.isActive) continuation.resume(NotificationResult.CLICKED)
+        try {
+            if (continuation.isActive) continuation.resume(NotificationResult.CLICKED)
+        } catch (e: Exception){
+            // This can happen if there is a race condition b/w two events. In that case, we ignore the second event.
+        }
     }
 
     override fun dismiss() {
-        if (continuation.isActive) continuation.resume(NotificationResult.DISMISSED)
+        try {
+            if (continuation.isActive) continuation.resume(NotificationResult.DISMISSED)
+        } catch (e: Exception){
+            // This can happen if there is a race condition b/w two events. In that case, we ignore the second event.
+        }
     }
 
     override fun timedOut() {
-        if (continuation.isActive) continuation.resume(NotificationResult.TIMEOUT)
+        try {
+            if (continuation.isActive) continuation.resume(NotificationResult.TIMEOUT)
+        } catch (e: Exception) {
+            // This can happen if there is a race condition b/w two events. In that case, we ignore the second event.
+        }
     }
 }
 
