@@ -24,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -308,7 +309,7 @@ private fun Tooltip(
     var tipAlignment: Alignment by rememberSaveable(stateSaver = TipAlignmentSaver) {
         mutableStateOf(Alignment.TopCenter)
     }
-    var tipOffsetX = 0.0f
+    var tipOffsetX by rememberSaveable { mutableStateOf(0.0f) }
     val isRTL = LocalLayoutDirection.current == LayoutDirection.Rtl
 
     val tooltipPositionProvider =
@@ -328,10 +329,10 @@ private fun Tooltip(
             tipOffsetX = dpToPx(offset.x) + if (isRTL) (tooltipCenter - parentCenter).toFloat() else
                 (parentCenter - tooltipCenter).toFloat()
 
-            if(tipOffsetX + tooltipCenter > tooltipContentBounds.right){
+            if(tipOffsetX + tooltipCenter > tooltipContentBounds.right - dpToPx(24.dp)){
                 tipOffsetX =  tooltipContentBounds.right - tooltipCenter - dpToPx(24.dp)
             }
-            else if(tipOffsetX + tooltipCenter < tooltipContentBounds.left) {
+            else if(tipOffsetX + tooltipCenter < tooltipContentBounds.left + dpToPx(24.dp)) {
                 tipOffsetX =  tooltipContentBounds.left - tooltipCenter + dpToPx(24.dp)
             }
         }
