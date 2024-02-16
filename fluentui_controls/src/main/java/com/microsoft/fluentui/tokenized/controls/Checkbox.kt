@@ -59,7 +59,7 @@ fun CheckBox(
         ?: FluentTheme.controlTokens.tokens[ControlType.CheckBoxControlType] as CheckBoxTokens
     val checkBoxInfo = CheckBoxInfo(checked)
     val toggleModifier =
-        modifier.triStateToggleable(
+        Modifier.triStateToggleable(
             state = ToggleableState(checked),
             enabled = enabled,
             onClick = { onCheckedChanged(!checked) },
@@ -83,7 +83,7 @@ fun CheckBox(
             selected = checked,
             interactionSource = interactionSource
         )
-    val shape: Shape = RoundedCornerShape(token.fixedBorderRadius)
+    val shape: Shape = RoundedCornerShape(token.borderRadius(checkBoxInfo))
 
     val borders: List<BorderStroke> =
         token.borderStroke(checkBoxInfo = checkBoxInfo)
@@ -100,12 +100,12 @@ fun CheckBox(
     }
 
     Box(
-        modifier = Modifier.indication(interactionSource, null),
+        modifier = modifier.indication(interactionSource, null),
         contentAlignment = Alignment.Center
     ) {
         Spacer(
             modifier = Modifier
-                .size(token.fixedSize)
+                .size(token.size(checkBoxInfo = checkBoxInfo))
                 .clip(shape)
                 .background(backgroundColor)
                 .then(borderModifier)
@@ -116,7 +116,7 @@ fun CheckBox(
                 Icons.Filled.Done,
                 null,
                 modifier = Modifier
-                    .size(token.fixedIconSize)
+                    .size(token.iconSize(checkBoxInfo = checkBoxInfo))
                     .focusable(false)
                     .clearAndSetSemantics {},
                 tint = iconColor
