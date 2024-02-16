@@ -367,7 +367,7 @@ private fun Tooltip(
                         contentDescription = null,
                         tint = token.tipColor(tooltipInfo),
                         modifier = Modifier
-                            .offset(x = pxToDp(tipOffsetX), y = 0.dp)
+                            .offset { IntOffset(x = tipOffsetX.toInt(), y = 0) }
                             .testTag(TOOLTIP_TIP_TEST_TAG)
                     )
                 }
@@ -394,7 +394,7 @@ private fun Tooltip(
                         imageVector = ToolTipIcons.Tip, contentDescription = null,
                         tint = token.tipColor(tooltipInfo),
                         modifier = Modifier
-                            .offset(x = pxToDp(tipOffsetX), y = 0.dp)
+                            .offset { IntOffset(x = tipOffsetX.toInt(), y = 0) }
                             .rotate(180f)
                             .testTag(TOOLTIP_TIP_TEST_TAG)
                     )
