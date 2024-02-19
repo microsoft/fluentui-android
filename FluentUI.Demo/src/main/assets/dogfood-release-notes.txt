@@ -1,10 +1,12 @@
-Release Version 0.1.48:
+Release Version 0.1.49:
 
 What's New:
 
 Fluent V2:
         Fix/Enhancement:
-            Backport support for compose BOM 2023.06.01 (1.4.3)
-            
-Note: Here on 0.1.x fluent versions support only 1.4.3 Compose version. Please get 0.2.x version for 1.5.1 compose.
+            1. Minor fixes in Checkbox, tooltip offsets and bottomsheet.
+            2. Rare snackbar crash resulting due to race condition is fixed.
+            3. Addtiional tokens added to checkbox component.
+
+Note: 0.1.x fluent versions support only 1.4.3 Compose version. Please get 0.2.x version for 1.5.1 compose.
 
