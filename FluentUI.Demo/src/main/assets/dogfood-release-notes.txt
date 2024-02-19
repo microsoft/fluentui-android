@@ -1,11 +1,11 @@
-Release Version 0.2.0:
+Release Version 0.2.1:
 
 What's New:
 
 Fluent V2:
         Fix/Enhancement:
-            1. SearchBar and FAB no longer has restricted height.
-            2. Minor enhancements and accessibitly fixes to Listitem.
-            3. Enhanced Label component to support additional text styling and alignment. 
+            1. Minor fixes in Checkbox, tooltip offsets and bottomsheet.
+            2. Rare snackbar crash resulting due to race condition is fixed.
+            3. Addtiional tokens added to checkbox component.
 
-Note: Here on Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will supoort compose version 1.5.1 (BOM 2023.09.00)
+Note: Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will supoort compose version 1.5.1 (BOM 2023.09.00)
