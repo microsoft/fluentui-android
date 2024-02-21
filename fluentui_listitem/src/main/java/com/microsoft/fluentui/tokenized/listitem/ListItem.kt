@@ -1,6 +1,5 @@
 package com.microsoft.fluentui.tokenized.listitem
 
-import android.util.Log
 import androidx.compose.animation.*
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Canvas
@@ -21,9 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.focus.focusProperties
-import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
