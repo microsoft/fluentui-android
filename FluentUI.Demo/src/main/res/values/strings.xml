@@ -891,6 +891,7 @@
     <string name="prevent_scrim_click_dismissal">Prevent Dismissal on Scrim Click</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Show Handle</string>
+    <string name="drawer_enable_swipe_dismiss">Enable Swipe Dismiss</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
