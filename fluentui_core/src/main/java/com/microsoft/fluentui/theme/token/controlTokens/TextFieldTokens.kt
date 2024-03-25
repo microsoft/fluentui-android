@@ -134,8 +134,8 @@ open class TextFieldTokens : IControlToken, Parcelable {
     @Composable
     open fun leftRightPadding(textFieldInfo: TextFieldInfo): PaddingValues {
         return PaddingValues(
-            start = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160),
-            end = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)
+            start = FluentGlobalTokens.SizeTokens.Size160.value,
+            end = FluentGlobalTokens.SizeTokens.Size160.value
         )
     }
 
@@ -143,39 +143,39 @@ open class TextFieldTokens : IControlToken, Parcelable {
     open fun labelPadding(textFieldInfo: TextFieldInfo): PaddingValues {
         return if (textFieldInfo.hasIcon)
             PaddingValues(
-                start = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160) + this.leadingIconSize(
+                start = FluentGlobalTokens.SizeTokens.Size160.value + this.leadingIconSize(
                     textFieldInfo
                 )
             )
-        else PaddingValues(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.SizeNone))
+        else PaddingValues(FluentGlobalTokens.SizeTokens.SizeNone.value)
     }
 
     @Composable
     open fun assistiveTextPadding(textFieldInfo: TextFieldInfo): PaddingValues {
         return if (textFieldInfo.hasIcon)
             PaddingValues(
-                start = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160) + this.leadingIconSize(
+                start = FluentGlobalTokens.SizeTokens.Size160.value + this.leadingIconSize(
                     textFieldInfo
                 ),
-                top = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40),
-                bottom = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
+                top = FluentGlobalTokens.SizeTokens.Size40.value,
+                bottom = FluentGlobalTokens.SizeTokens.Size40.value
             )
         else PaddingValues(
-            top = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40),
-            bottom = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
+            top = FluentGlobalTokens.SizeTokens.Size40.value,
+            bottom = FluentGlobalTokens.SizeTokens.Size40.value
         )
     }
 
     @Composable
     open fun leadingIconSize(textFieldInfo: TextFieldInfo): Dp =
-        FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize240)
+        FluentGlobalTokens.IconSizeTokens.IconSize240.value
 
     @Composable
     open fun trailingIconSize(textFieldInfo: TextFieldInfo): Dp =
-        FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize240)
+        FluentGlobalTokens.IconSizeTokens.IconSize240.value
 
     @Composable
     open fun strokeWidth(textFieldInfo: TextFieldInfo): Dp =
-        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05)
+        FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05.value
 
 }

@@ -23,6 +23,6 @@ open class TabBarTokens : IControlToken, Parcelable {
 
     @Composable
     open fun topBorderWidth(tabBarInfo: TabBarInfo): Dp {
-        return FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05)
+        return FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05.value
     }
 }

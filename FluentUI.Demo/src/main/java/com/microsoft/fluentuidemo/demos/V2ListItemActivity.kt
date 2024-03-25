@@ -774,7 +774,7 @@ private fun rightContentIconButton() {
     class Tokens : BasicCardTokens() {
         @Composable
         override fun cornerRadius(basicCardInfo: BasicCardInfo): Dp {
-            return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
+            return FluentGlobalTokens.CornerRadiusTokens.CornerRadius40.value
         }
     }
     Column(

@@ -78,10 +78,10 @@ open class ToggleSwitchTokens : IControlToken, Parcelable {
     @Composable
     open fun elevation(switchInfo: ToggleSwitchInfo): StateElevation {
         return StateElevation(
-            rest = FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow08),
-            pressed = FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow08),
-            selected = FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow08),
-            focused = FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow08),
+            rest = FluentGlobalTokens.ShadowTokens.Shadow08.value,
+            pressed = FluentGlobalTokens.ShadowTokens.Shadow08.value,
+            selected = FluentGlobalTokens.ShadowTokens.Shadow08.value,
+            focused = FluentGlobalTokens.ShadowTokens.Shadow08.value,
             disabled = 0.dp
         )
     }

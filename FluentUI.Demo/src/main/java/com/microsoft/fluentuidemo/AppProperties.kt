@@ -94,7 +94,7 @@ fun AppBarMenu() {
         painter = painterResource(id = R.drawable.ic_fluent_more_vertical_24_regular),
         contentDescription = stringResource(id = R.string.app_bar_more),
         modifier = Modifier
-            .padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120))
+            .padding(FluentGlobalTokens.SizeTokens.Size120.value)
             .clickable { expandedMenu = true },
         tint = if (AppThemeViewModel.appThemeStyle.value == FluentStyle.Neutral) {
             FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(

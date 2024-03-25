@@ -49,16 +49,16 @@ open class BadgeTokens : IControlToken, Parcelable {
     open fun padding(badgeInfo: BadgeInfo): PaddingValues {
         return when (badgeInfo.type) {
             BadgeType.Character -> PaddingValues(
-                horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size60) + borderStroke(
+                horizontal = FluentGlobalTokens.SizeTokens.Size60.value + borderStroke(
                     badgeInfo
                 ).width
             )
 
             BadgeType.List -> PaddingValues(
-                start = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80) + borderStroke(
+                start = FluentGlobalTokens.SizeTokens.Size80.value + borderStroke(
                     badgeInfo
                 ).width,
-                end = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80) + borderStroke(
+                end = FluentGlobalTokens.SizeTokens.Size80.value + borderStroke(
                     badgeInfo
                 ).width,
                 top = 3.dp + borderStroke(badgeInfo).width,
@@ -70,7 +70,7 @@ open class BadgeTokens : IControlToken, Parcelable {
     @Composable
     open fun borderStroke(badgeInfo: BadgeInfo): BorderStroke {
         return BorderStroke(
-            FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+            FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20.value,
             FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value()
         )
     }

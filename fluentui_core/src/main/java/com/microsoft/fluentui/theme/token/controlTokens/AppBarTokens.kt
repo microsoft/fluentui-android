@@ -180,13 +180,13 @@ open class AppBarTokens : IControlToken, Parcelable {
 
     @Composable
     fun leftIconSize(info: AppBarInfo): Dp {
-        return FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize240)
+        return FluentGlobalTokens.IconSizeTokens.IconSize240.value
     }
 
     @Composable
     fun titleIconSize(info: AppBarInfo): Dp {
         return when (info.appBarSize) {
-            AppBarSize.Small -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize160)
+            AppBarSize.Small -> FluentGlobalTokens.IconSizeTokens.IconSize160.value
             else -> 0.dp
         }
     }
@@ -194,8 +194,8 @@ open class AppBarTokens : IControlToken, Parcelable {
     @Composable
     fun subtitleIconSize(info: AppBarInfo): Dp {
         return when (info.appBarSize) {
-            AppBarSize.Small -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize120)
-            AppBarSize.Medium -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize120)
+            AppBarSize.Small -> FluentGlobalTokens.IconSizeTokens.IconSize120.value
+            AppBarSize.Medium -> FluentGlobalTokens.IconSizeTokens.IconSize120.value
             else -> 0.dp
         }
     }
@@ -224,18 +224,18 @@ open class AppBarTokens : IControlToken, Parcelable {
             FluentStyle.Neutral ->
                 if (FluentTheme.themeMode == ThemeMode.Dark || (FluentTheme.themeMode == ThemeMode.Auto && isSystemInDarkTheme())) {
                     BorderStroke(
-                        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidthNone),
+                        FluentGlobalTokens.StrokeWidthTokens.StrokeWidthNone.value,
                         Color.Unspecified
                     )
                 } else {
                     BorderStroke(
-                        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05),
+                        FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05.value,
                         FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke2].value()
                     )
                 }
 
             else -> BorderStroke(
-                FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidthNone),
+                FluentGlobalTokens.StrokeWidthTokens.StrokeWidthNone.value,
                 Color.Unspecified
             )
         }

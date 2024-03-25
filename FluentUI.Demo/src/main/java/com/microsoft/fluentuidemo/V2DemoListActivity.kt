@@ -90,10 +90,10 @@ class V2DemoListActivity : ComponentActivity() {
         Column(
             modifier = Modifier
                 .background(color = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value())
-                .padding(all = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160))
+                .padding(all = FluentGlobalTokens.SizeTokens.Size160.value)
                 .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(
-                FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)
+                FluentGlobalTokens.SizeTokens.Size100.value
             )
         ) {
             Label(
@@ -122,7 +122,7 @@ class V2DemoListActivity : ComponentActivity() {
     @Composable
     fun GetDrawerContent() {
         Column(
-            verticalArrangement = Arrangement.spacedBy(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size320)),
+            verticalArrangement = Arrangement.spacedBy(FluentGlobalTokens.SizeTokens.Size320.value),
             modifier = Modifier
                 .fillMaxHeight()
                 .verticalScroll(rememberScrollState())
@@ -130,13 +130,9 @@ class V2DemoListActivity : ComponentActivity() {
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(
-                    FluentGlobalTokens.size(
-                        FluentGlobalTokens.SizeTokens.Size60
-                    )
-                ),
+                verticalArrangement = Arrangement.spacedBy(FluentGlobalTokens.SizeTokens.Size60.value),
                 modifier = Modifier
-                    .padding(top = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size480))
+                    .padding(top = FluentGlobalTokens.SizeTokens.Size480.value)
                     .fillMaxWidth()
             ) {
                 Image(
@@ -144,7 +140,7 @@ class V2DemoListActivity : ComponentActivity() {
                     contentDescription = stringResource(id = R.string.app_name),
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .size(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size560))
+                        .size(FluentGlobalTokens.SizeTokens.Size560.value)
                         .clip(CircleShape),
                     alignment = Alignment.Center
                 )
@@ -164,11 +160,9 @@ class V2DemoListActivity : ComponentActivity() {
 
             Column(
                 verticalArrangement = Arrangement.spacedBy(
-                    FluentGlobalTokens.size(
-                        FluentGlobalTokens.SizeTokens.Size40
-                    )
+                    FluentGlobalTokens.SizeTokens.Size40.value
                 ),
-                modifier = Modifier.padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100))
+                modifier = Modifier.padding(FluentGlobalTokens.SizeTokens.Size100.value)
             ) {
                 val gradientColors = listOf(
                     FluentColor(
@@ -186,7 +180,7 @@ class V2DemoListActivity : ComponentActivity() {
                     text = stringResource(id = R.string.open_source_cross_platform),
                     textStyle = FluentAliasTokens.TypographyTokens.Title1,
                     modifier = Modifier
-                        .padding(end = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size480))
+                        .padding(end = FluentGlobalTokens.SizeTokens.Size480.value)
                         .graphicsLayer(alpha = 0.99f)
                         .drawWithCache {
                             val brush = Brush.linearGradient(gradientColors)
@@ -209,9 +203,7 @@ class V2DemoListActivity : ComponentActivity() {
 
             Column(
                 verticalArrangement = Arrangement.spacedBy(
-                    FluentGlobalTokens.size(
-                        FluentGlobalTokens.SizeTokens.Size100
-                    )
+                    FluentGlobalTokens.SizeTokens.Size100.value
                 )
             ) {
                 ListItem.Item(
@@ -365,9 +357,9 @@ class V2DemoListActivity : ComponentActivity() {
                                     contentDescription = stringResource(id = R.string.fluent_logo),
                                     contentScale = ContentScale.Crop,
                                     modifier = Modifier
-                                        .padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100))
+                                        .padding(FluentGlobalTokens.SizeTokens.Size100.value)
                                         .clip(CircleShape)
-                                        .size(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size320))
+                                        .size(FluentGlobalTokens.SizeTokens.Size320.value)
                                         .clickable { scope.launch { drawerState.open() } }
                                 )
                             },
@@ -378,9 +370,7 @@ class V2DemoListActivity : ComponentActivity() {
                                     painter = painterResource(id = R.drawable.ic_fluent_search_24_regular),
                                     contentDescription = stringResource(id = R.string.app_bar_layout_menu_search),
                                     modifier = Modifier.padding(
-                                        FluentGlobalTokens.size(
-                                            FluentGlobalTokens.SizeTokens.Size100
-                                        )
+                                        FluentGlobalTokens.SizeTokens.Size100.value
                                     ),
                                     onClick = { searchModeEnabled = true },
                                     tint = if (AppThemeViewModel.appThemeStyle.value == FluentStyle.Neutral) {

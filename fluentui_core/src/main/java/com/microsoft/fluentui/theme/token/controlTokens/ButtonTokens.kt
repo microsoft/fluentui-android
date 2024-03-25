@@ -164,13 +164,13 @@ open class ButtonTokens : IControlToken, Parcelable {
             ButtonStyle.Button, ButtonStyle.TextButton -> StateBorderStroke(
                 focused = listOf(
                     BorderStroke(
-                        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                        FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20.value,
                         aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
                             themeMode = themeMode
                         )
                     ),
                     BorderStroke(
-                        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15),
+                        FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15.value,
                         aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
                             themeMode = themeMode
                         )
@@ -181,7 +181,7 @@ open class ButtonTokens : IControlToken, Parcelable {
             ButtonStyle.OutlinedButton -> StateBorderStroke(
                 pressed = listOf(
                     BorderStroke(
-                        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15),
+                        FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15.value,
                         aliasTokens.brandStroke[FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1Pressed].value(
                             themeMode = themeMode
                         )
@@ -189,7 +189,7 @@ open class ButtonTokens : IControlToken, Parcelable {
                 ),
                 rest = listOf(
                     BorderStroke(
-                        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15),
+                        FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15.value,
                         aliasTokens.brandStroke[FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1].value(
                             themeMode = themeMode
                         )
@@ -197,7 +197,7 @@ open class ButtonTokens : IControlToken, Parcelable {
                 ),
                 disabled = listOf(
                     BorderStroke(
-                        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15),
+                        FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15.value,
                         aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeDisabled].value(
                             themeMode = themeMode
                         )
@@ -205,13 +205,13 @@ open class ButtonTokens : IControlToken, Parcelable {
                 ),
                 focused = listOf(
                     BorderStroke(
-                        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                        FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20.value,
                         aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
                             themeMode = themeMode
                         )
                     ),
                     BorderStroke(
-                        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15),
+                        FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15.value,
                         aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
                             themeMode = themeMode
                         )
@@ -224,9 +224,9 @@ open class ButtonTokens : IControlToken, Parcelable {
     @Composable
     open fun cornerRadius(buttonInfo: ButtonInfo): Dp {
         return when (buttonInfo.size) {
-            ButtonSize.Small -> FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius80)
-            ButtonSize.Medium -> FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
-            ButtonSize.Large -> FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
+            ButtonSize.Small -> FluentGlobalTokens.CornerRadiusTokens.CornerRadius80.value
+            ButtonSize.Medium -> FluentGlobalTokens.CornerRadiusTokens.CornerRadius40.value
+            ButtonSize.Large -> FluentGlobalTokens.CornerRadiusTokens.CornerRadius40.value
         }
     }
 
@@ -235,9 +235,9 @@ open class ButtonTokens : IControlToken, Parcelable {
         return when (buttonInfo.style) {
             ButtonStyle.Button, ButtonStyle.TextButton, ButtonStyle.OutlinedButton ->
                 when (buttonInfo.size) {
-                    ButtonSize.Small -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize160)
-                    ButtonSize.Medium -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize200)
-                    ButtonSize.Large -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize200)
+                    ButtonSize.Small -> FluentGlobalTokens.IconSizeTokens.IconSize160.value
+                    ButtonSize.Medium -> FluentGlobalTokens.IconSizeTokens.IconSize200.value
+                    ButtonSize.Large -> FluentGlobalTokens.IconSizeTokens.IconSize200.value
                 }
         }
     }
@@ -256,16 +256,16 @@ open class ButtonTokens : IControlToken, Parcelable {
         return when (buttonInfo.size) {
             ButtonSize.Small ->
                 PaddingValues(
-                    horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80),
-                    vertical = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
+                    horizontal = FluentGlobalTokens.SizeTokens.Size80.value,
+                    vertical = FluentGlobalTokens.SizeTokens.Size40.value
                 )
             ButtonSize.Medium -> PaddingValues(
-                horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120),
-                vertical = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
+                horizontal = FluentGlobalTokens.SizeTokens.Size120.value,
+                vertical = FluentGlobalTokens.SizeTokens.Size80.value
             )
             ButtonSize.Large -> PaddingValues(
-                horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size200),
-                vertical = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120)
+                horizontal = FluentGlobalTokens.SizeTokens.Size200.value,
+                vertical = FluentGlobalTokens.SizeTokens.Size120.value
             )
         }
     }
@@ -273,9 +273,9 @@ open class ButtonTokens : IControlToken, Parcelable {
     @Composable
     open fun spacing(buttonInfo: ButtonInfo): Dp {
         return when (buttonInfo.size) {
-            ButtonSize.Small -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
-            ButtonSize.Medium -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
-            ButtonSize.Large -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
+            ButtonSize.Small -> FluentGlobalTokens.SizeTokens.Size40.value
+            ButtonSize.Medium -> FluentGlobalTokens.SizeTokens.Size80.value
+            ButtonSize.Large -> FluentGlobalTokens.SizeTokens.Size80.value
         }
     }
 
