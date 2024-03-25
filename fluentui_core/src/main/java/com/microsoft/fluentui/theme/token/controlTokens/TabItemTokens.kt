@@ -56,8 +56,8 @@ open class TabItemTokens : IControlToken, Parcelable {
     @Composable
     open fun rippleColor(tabItemInfo: TabItemInfo): Color {
         return FluentColor(
-            light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Black),
-            dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.White)
+            light = FluentGlobalTokens.NeutralColorTokens.Black.value,
+            dark = FluentGlobalTokens.NeutralColorTokens.White.value
         ).value(
             FluentTheme.themeMode
         )

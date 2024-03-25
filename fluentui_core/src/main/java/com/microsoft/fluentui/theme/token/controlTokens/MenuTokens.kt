@@ -28,14 +28,14 @@ open class MenuTokens : IControlToken, Parcelable {
 
     @Composable
     open fun cornerRadius(menuInfo: MenuInfo): Dp =
-        FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius80)
+        FluentGlobalTokens.CornerRadiusTokens.CornerRadius80.value
 
     open fun elevation(menuInfo: MenuInfo): Dp =
-        FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow08)
+        FluentGlobalTokens.ShadowTokens.Shadow08.value
 
     open fun bottomMargin(menuInfo: MenuInfo): Dp =
-        FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)
+        FluentGlobalTokens.SizeTokens.Size160.value
 
     open fun sideMargin(menuInfo: MenuInfo): Dp =
-        FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)
+        FluentGlobalTokens.SizeTokens.Size160.value
 }

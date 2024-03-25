@@ -40,8 +40,8 @@ open class ContextualCommandBarTokens : IControlToken, Parcelable {
     @Composable
     open fun actionButtonIconPadding(contextualCommandBarInfo: ContextualCommandBarInfo): PaddingValues {
         return PaddingValues(
-            horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120),
-            vertical = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)
+            horizontal = FluentGlobalTokens.SizeTokens.Size120.value,
+            vertical = FluentGlobalTokens.SizeTokens.Size160.value
         )
     }
 
@@ -72,17 +72,17 @@ open class ContextualCommandBarTokens : IControlToken, Parcelable {
 
     @Composable
     open fun itemBorderRadius(contextualCommandBarInfo: ContextualCommandBarInfo): Dp {
-        return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadiusNone)
+        return FluentGlobalTokens.CornerRadiusTokens.CornerRadiusNone.value
     }
 
     @Composable
     open fun groupBorderRadius(contextualCommandBarInfo: ContextualCommandBarInfo): Dp {
-        return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius120)
+        return FluentGlobalTokens.CornerRadiusTokens.CornerRadius120.value
     }
 
     @Composable
     open fun buttonSpacing(contextualCommandBarInfo: ContextualCommandBarInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size20)
+        return FluentGlobalTokens.SizeTokens.Size20.value
     }
 
     @Composable
@@ -97,17 +97,17 @@ open class ContextualCommandBarTokens : IControlToken, Parcelable {
 
     @Composable
     open fun groupSpacing(contextualCommandBarInfo: ContextualCommandBarInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)
+        return FluentGlobalTokens.SizeTokens.Size160.value
     }
 
     @Composable
     open fun iconSize(contextualCommandBarInfo: ContextualCommandBarInfo): Dp {
-        return FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize240)
+        return FluentGlobalTokens.IconSizeTokens.IconSize240.value
     }
 
     @Composable
     open fun iconVerticalPadding(contextualCommandBarInfo: ContextualCommandBarInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
+        return FluentGlobalTokens.SizeTokens.Size80.value
     }
 
     @Composable

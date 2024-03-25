@@ -36,13 +36,13 @@ open class BasicCardTokens : IControlToken, Parcelable {
 
     @Composable
     open fun cornerRadius(basicCardInfo: BasicCardInfo): Dp {
-        return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius120)
+        return FluentGlobalTokens.CornerRadiusTokens.CornerRadius120.value
     }
 
     @Composable
     open fun elevation(basicCardInfo: BasicCardInfo): Dp {
         return when (basicCardInfo.cardType) {
-            CardType.Elevated -> FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow02)
+            CardType.Elevated -> FluentGlobalTokens.ShadowTokens.Shadow02.value
             CardType.Outlined -> 0.dp
         }
     }
@@ -56,6 +56,6 @@ open class BasicCardTokens : IControlToken, Parcelable {
 
     @Composable
     open fun borderStrokeWidth(basicCardInfo: BasicCardInfo): Dp {
-        return FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05)
+        return FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05.value
     }
 }

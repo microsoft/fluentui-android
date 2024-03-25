@@ -34,15 +34,15 @@ open class BottomSheetTokens : IControlToken, Parcelable {
 
     @Composable
     open fun elevation(bottomSheetInfo: BottomSheetInfo): Dp =
-        FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow02)
+        FluentGlobalTokens.ShadowTokens.Shadow02.value
 
     @Composable
     open fun cornerRadius(bottomSheetInfo: BottomSheetInfo): Dp =
-        FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius120)
+        FluentGlobalTokens.CornerRadiusTokens.CornerRadius120.value
 
     @Composable
     open fun scrimColor(bottomSheetInfo: BottomSheetInfo): Color =
-        FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Black)
+        FluentGlobalTokens.NeutralColorTokens.Black.value
 
     @Composable
     open fun scrimOpacity(bottomSheetInfo: BottomSheetInfo): Float = 0.32F

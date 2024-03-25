@@ -86,12 +86,8 @@ open class V2DemoActivity : ComponentActivity() {
         val uriHandler = LocalUriHandler.current
         Column(
             Modifier.padding(
-                top = FluentGlobalTokens.size(
-                    FluentGlobalTokens.SizeTokens.Size120
-                ),
-                bottom = FluentGlobalTokens.size(
-                    FluentGlobalTokens.SizeTokens.Size120
-                )
+                top = FluentGlobalTokens.SizeTokens.Size120.value,
+                bottom = FluentGlobalTokens.SizeTokens.Size120.value
             )
         ) {
             ListItem.Item(
@@ -216,11 +212,7 @@ open class V2DemoActivity : ComponentActivity() {
                                     Icon(
                                         painter = painterResource(id = R.drawable.ic_fluent_info_24_regular),
                                         contentDescription = stringResource(id = R.string.demo_activity_github_link),
-                                        modifier = Modifier.padding(
-                                            FluentGlobalTokens.size(
-                                                FluentGlobalTokens.SizeTokens.Size100
-                                            )
-                                        ),
+                                        modifier = Modifier.padding(FluentGlobalTokens.SizeTokens.Size100.value),
                                         tint = if (AppThemeViewModel.appThemeStyle.value == FluentStyle.Neutral) {
                                             FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                                                 FluentTheme.themeMode

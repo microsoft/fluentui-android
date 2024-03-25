@@ -146,12 +146,12 @@ open class SearchBarTokens : IControlToken, Parcelable {
 
     @Composable
     open fun leftIconSize(searchBarInfo: SearchBarInfo): Dp {
-        return FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize200)
+        return FluentGlobalTokens.IconSizeTokens.IconSize200.value
     }
 
     @Composable
     open fun rightIconSize(searchBarInfo: SearchBarInfo): Dp {
-        return FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize200)
+        return FluentGlobalTokens.IconSizeTokens.IconSize200.value
     }
 
     @Composable
@@ -161,7 +161,7 @@ open class SearchBarTokens : IControlToken, Parcelable {
 
     @Composable
     open fun searchBarPadding(info: SearchBarInfo): PaddingValues {
-        return PaddingValues(horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80))
+        return PaddingValues(horizontal = FluentGlobalTokens.SizeTokens.Size80.value)
     }
 
     @Composable
