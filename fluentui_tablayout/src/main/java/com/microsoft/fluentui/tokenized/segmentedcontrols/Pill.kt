@@ -176,7 +176,7 @@ fun PillButton(
     ) {
         Row(Modifier.width(IntrinsicSize.Max)) {
             if (pillMetaData.icon != null) {
-                Spacer(Modifier.requiredWidth(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size180)))
+                Spacer(Modifier.requiredWidth(FluentGlobalTokens.SizeTokens.Size180.value))
                 Icon(
                     pillMetaData.icon!!,
                     pillMetaData.text,
@@ -186,7 +186,7 @@ fun PillButton(
                     tint = iconColor
                 )
             } else {
-                Spacer(Modifier.requiredWidth(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)))
+                Spacer(Modifier.requiredWidth(FluentGlobalTokens.SizeTokens.Size160.value))
                 BasicText(
                     pillMetaData.text,
                     modifier = Modifier
@@ -208,7 +208,7 @@ fun PillButton(
                             selected = pillMetaData.selected,
                             interactionSource = interactionSource
                         )
-                Spacer(Modifier.requiredWidth(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size20)))
+                Spacer(Modifier.requiredWidth(FluentGlobalTokens.SizeTokens.Size20.value))
                 Canvas(
                     modifier = Modifier
                         .padding(top = 2.dp, bottom = 12.dp)
@@ -219,11 +219,11 @@ fun PillButton(
                     )
                 }
                 if (pillMetaData.icon != null)
-                    Spacer(Modifier.requiredWidth(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)))
+                    Spacer(Modifier.requiredWidth(FluentGlobalTokens.SizeTokens.Size100.value))
                 else
-                    Spacer(Modifier.requiredWidth(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)))
+                    Spacer(Modifier.requiredWidth(FluentGlobalTokens.SizeTokens.Size80.value))
             } else {
-                Spacer(Modifier.requiredWidth(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)))
+                Spacer(Modifier.requiredWidth(FluentGlobalTokens.SizeTokens.Size160.value))
             }
         }
     }

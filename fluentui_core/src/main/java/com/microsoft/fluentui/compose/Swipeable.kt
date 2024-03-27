@@ -957,3 +957,42 @@ val <T> SwipeableState<T>.NonDismissiblePostDownNestedScrollConnection: NestedSc
         private fun Offset.toFloat(): Float = this.y
     }
 
+val <T> SwipeableState<T>.NonDismissiblePreUpPostDownNestedScrollConnection: NestedScrollConnection
+    get() = object : NestedScrollConnection {
+
+        override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
+            val delta = available.toFloat()
+            return if (delta < 0 && source == NestedScrollSource.Drag) {
+                performDrag(delta).toOffset()
+            } else {
+                Offset.Zero
+            }
+        }
+        override fun onPostScroll(
+            consumed: Offset,
+            available: Offset,
+            source: NestedScrollSource
+        ): Offset {
+            return if (source == NestedScrollSource.Drag && available.toFloat() < 0) {
+                performDrag(available.toFloat()).toOffset()
+            } else {
+                Offset.Zero
+            }
+        }
+
+        override suspend fun onPreFling(available: Velocity): Velocity {
+            val toFling = Offset(available.x, available.y).toFloat()
+            return if (toFling < 0 && offset.value > minBound) {
+                performFling(velocity = toFling)
+                // since we go to the anchor with tween settling, consume all for the best UX
+                available
+            } else {
+                Velocity.Zero
+            }
+        }
+
+        private fun Float.toOffset(): Offset = Offset(0f, this)
+
+        private fun Offset.toFloat(): Float = this.y
+    }
+

@@ -31,22 +31,21 @@ open class ProgressTextTokens : IControlToken, Parcelable {
 
     @Composable
     open fun borderWidth(progressTextInfo: ProgressTextInfo): Dp {
-        return FluentGlobalTokens.strokeWidth(
-            FluentGlobalTokens.StrokeWidthTokens.StrokeWidth10
-        )
+        return FluentGlobalTokens.StrokeWidthTokens.StrokeWidth10
+            .value
     }
 
     @Composable
     open fun padding(progressTextInfo: ProgressTextInfo): PaddingValues {
         return PaddingValues(
-            horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160),
-            vertical = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120)
+            horizontal = FluentGlobalTokens.SizeTokens.Size160.value,
+            vertical = FluentGlobalTokens.SizeTokens.Size120.value
         )
     }
 
     @Composable
     open fun iconTextSpacing(progressTextInfo: ProgressTextInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
+        return FluentGlobalTokens.SizeTokens.Size80.value
     }
 
     @Composable
@@ -70,7 +69,7 @@ open class ProgressTextTokens : IControlToken, Parcelable {
 
     @Composable
     open fun iconSize(progressTextInfo: ProgressTextInfo): Dp {
-        return FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize240)
+        return FluentGlobalTokens.IconSizeTokens.IconSize240.value
     }
 
     @Composable
@@ -82,9 +81,7 @@ open class ProgressTextTokens : IControlToken, Parcelable {
 
     @Composable
     open fun progressbarHeight(progressTextInfo: ProgressTextInfo): Dp {
-        return FluentGlobalTokens.strokeWidth(
-            FluentGlobalTokens.StrokeWidthTokens.StrokeWidth40
-        )
+        return FluentGlobalTokens.StrokeWidthTokens.StrokeWidth40.value
     }
 
     @Composable

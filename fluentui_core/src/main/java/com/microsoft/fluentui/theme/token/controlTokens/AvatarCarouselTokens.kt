@@ -98,8 +98,8 @@ open class AvatarCarouselTokens : IControlToken, Parcelable {
     @Composable
     open fun padding(avatarCarouselInfo: AvatarCarouselInfo): Dp {
         return when (avatarCarouselInfo.size) {
-            AvatarCarouselSize.Small -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)
-            AvatarCarouselSize.Large -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
+            AvatarCarouselSize.Small -> FluentGlobalTokens.SizeTokens.Size160.value
+            AvatarCarouselSize.Large -> FluentGlobalTokens.SizeTokens.Size80.value
         }
     }
 }

@@ -26,15 +26,15 @@ open class SideRailTokens : IControlToken, Parcelable {
     }
     @Composable
     open fun topMargin(sideRailInfo: SideRailInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size240)
+        return FluentGlobalTokens.SizeTokens.Size240.value
     }
     @Composable
     open fun bottomMargin(sideRailInfo: SideRailInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)
+        return FluentGlobalTokens.SizeTokens.Size160.value
     }
     @Composable
     open fun borderWidth(sideRailInfo: SideRailInfo): Dp {
-        return FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05)
+        return FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05.value
     }
     @Composable
     open fun headerPadding(sideRailInfo: SideRailInfo): PaddingValues {

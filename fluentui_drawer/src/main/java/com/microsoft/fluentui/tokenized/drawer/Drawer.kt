@@ -64,6 +64,8 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.core.view.WindowInsetsCompat
 import com.microsoft.fluentui.compose.FixedThreshold
 import com.microsoft.fluentui.compose.ModalPopup
+import com.microsoft.fluentui.compose.NonDismissiblePostDownNestedScrollConnection
+import com.microsoft.fluentui.compose.NonDismissiblePreUpPostDownNestedScrollConnection
 import com.microsoft.fluentui.compose.PostDownNestedScrollConnection
 import com.microsoft.fluentui.compose.PreUpPostDownNestedScrollConnection
 import com.microsoft.fluentui.compose.SwipeableState
@@ -817,6 +819,7 @@ private fun BottomDrawer(
     scrimColor: Color,
     scrimVisible: Boolean,
     slideOver: Boolean,
+    enableSwipeDismiss: Boolean = true,
     showHandle: Boolean,
     onDismiss: () -> Unit,
     drawerContent: @Composable () -> Unit,
@@ -867,7 +870,9 @@ private fun BottomDrawer(
         Box(
             drawerConstraints
                 .fillMaxWidth()
-                .nestedScroll(if (slideOver) drawerState.nestedScrollConnection else drawerState.PostDownNestedScrollConnection)
+                .nestedScroll(
+                    if(!enableSwipeDismiss && drawerState.offset.value >= maxOpenHeight) drawerState.NonDismissiblePreUpPostDownNestedScrollConnection else
+                    if (slideOver) drawerState.nestedScrollConnection else drawerState.PostDownNestedScrollConnection)
                 .offset {
                     val y = if (drawerState.anchors == null) {
                         fullHeight.roundToInt()
@@ -947,7 +952,14 @@ private fun BottomDrawer(
                             .draggable(
                                 orientation = Orientation.Vertical,
                                 state = rememberDraggableState { delta ->
-                                    drawerState.performDrag(delta)
+                                    if(!enableSwipeDismiss && drawerState.offset.value >= maxOpenHeight)
+                                    {
+                                        if(delta < 0){
+                                            drawerState.performDrag(delta)
+                                        }
+                                    }else {
+                                        drawerState.performDrag(delta)
+                                    }
                                 },
                                 onDragStopped = { velocity ->
                                     launch {
@@ -955,7 +967,10 @@ private fun BottomDrawer(
                                             velocity
                                         )
                                         if (drawerState.isClosed) {
-                                            onDismiss()
+                                            if(enableSwipeDismiss)
+                                                onDismiss()
+                                            else
+                                                scope.launch { drawerState.open() }
                                         }
                                     }
                                 },
@@ -1154,6 +1169,7 @@ fun BottomDrawer(
     slideOver: Boolean = true,
     scrimVisible: Boolean = true,
     showHandle: Boolean = true,
+    enableSwipeDismiss: Boolean = true,
     windowInsetsType: Int = WindowInsetsCompat.Type.systemBars(),
     drawerTokens: DrawerTokens? = null,
     drawerContent: @Composable () -> Unit,
@@ -1204,6 +1220,7 @@ fun BottomDrawer(
                 scrimVisible = scrimVisible,
                 slideOver = slideOver,
                 showHandle = showHandle,
+                enableSwipeDismiss = enableSwipeDismiss,
                 onDismiss = close,
                 drawerContent = drawerContent,
                 preventDismissalOnScrimClick = preventDismissalOnScrimClick,

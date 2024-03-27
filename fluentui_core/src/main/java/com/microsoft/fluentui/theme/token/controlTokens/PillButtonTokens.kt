@@ -26,11 +26,11 @@ open class PillButtonTokens : IControlToken, Parcelable {
 
     @Composable
     open fun verticalPadding(pillButtonInfo: PillButtonInfo): Dp =
-        FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size60)
+        FluentGlobalTokens.SizeTokens.Size60.value
 
     @Composable
     open fun iconSize(pillButtonInfo: PillButtonInfo): Dp =
-        FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize200)
+        FluentGlobalTokens.IconSizeTokens.IconSize200.value
 
     @Composable
     open fun backgroundBrush(pillButtonInfo: PillButtonInfo): StateBrush {

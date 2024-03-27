@@ -60,6 +60,7 @@ private fun CreateActivityUI() {
     var selectedContent by remember { mutableStateOf(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT) }
     var slideOver by remember { mutableStateOf(false) }
     var showHandle by remember { mutableStateOf(true) }
+    var enableSwipeDismiss by remember { mutableStateOf(true) }
     var preventDismissalOnScrimClick by remember { mutableStateOf(false) }
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
@@ -69,6 +70,7 @@ private fun CreateActivityUI() {
             expandable = expandable,
             showHandle = showHandle,
             preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+            enableSwipeDismiss = enableSwipeDismiss,
             drawerContent =
             if (listContent)
                 getAndroidViewAsContent(selectedContent)
@@ -232,6 +234,26 @@ private fun CreateActivityUI() {
                 )
             }
             item {
+                val showDismissText = stringResource(id = R.string.drawer_enable_swipe_dismiss)
+                ListItem.Header(title = showDismissText,
+                    modifier = Modifier
+                        .toggleable(
+                            value = enableSwipeDismiss,
+                            role = Role.Switch,
+                            onValueChange = { enableSwipeDismiss = !enableSwipeDismiss }
+                        )
+                        .clearAndSetSemantics {
+                            this.contentDescription = showDismissText
+                        },
+                    trailingAccessoryContent = {
+                        ToggleSwitch(
+                            onValueChange = { enableSwipeDismiss = it },
+                            checkedState = enableSwipeDismiss,
+                        )
+                    }
+                )
+            }
+            item {
                 ListItem.Header(title = stringResource(id = R.string.drawer_select_drawer_content))
                 ListItem.Item(text = stringResource(id = R.string.drawer_full_screen_size_scrollable_content),
                     onClick = {
@@ -337,6 +359,7 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     scrimVisible: Boolean,
     showHandle: Boolean,
     preventDismissalOnScrimClick: Boolean,
+    enableSwipeDismiss: Boolean,
     drawerContent: @Composable ((() -> Unit) -> Unit),
 ) {
     val scope = rememberCoroutineScope()
@@ -370,6 +393,7 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
         scrimVisible = scrimVisible,
         slideOver = slideOver,
         showHandle = showHandle,
+        enableSwipeDismiss = enableSwipeDismiss,
         preventDismissalOnScrimClick = preventDismissalOnScrimClick
     )
 }

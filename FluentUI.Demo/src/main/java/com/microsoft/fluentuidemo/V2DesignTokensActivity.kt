@@ -37,8 +37,8 @@ import com.microsoft.fluentui.theme.token.FluentGlobalTokens.fontWeight
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens.iconSize
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens.lineHeight
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens.neutralColor
-import com.microsoft.fluentui.theme.token.FluentGlobalTokens.size
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens.strokeWidth
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens.size
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.TokenSet
 import com.microsoft.fluentui.theme.token.controlTokens.BasicCardInfo
@@ -75,7 +75,7 @@ class V2DesignTokensActivity : V2DemoActivity() {
             @Composable
             override fun elevation(basicCardInfo: BasicCardInfo): Dp {
                 return when (basicCardInfo.cardType) {
-                    CardType.Elevated -> elevation(selectedToken)
+                    CardType.Elevated -> FluentGlobalTokens.ShadowTokens.valueOf(selectedToken.name).value
                     CardType.Outlined -> 0.dp
                 }
             }
@@ -86,7 +86,7 @@ class V2DesignTokensActivity : V2DemoActivity() {
         return object : BasicCardTokens() {
             @Composable
             override fun cornerRadius(basicCardInfo: BasicCardInfo): Dp {
-                return cornerRadius(selectedToken)
+                return FluentGlobalTokens.CornerRadiusTokens.valueOf(selectedToken.name).value
             }
         }
 
@@ -96,7 +96,7 @@ class V2DesignTokensActivity : V2DemoActivity() {
         return object : BasicCardTokens() {
             @Composable
             override fun borderStrokeWidth(basicCardInfo: BasicCardInfo): Dp {
-                return strokeWidth(selectedToken)
+                return FluentGlobalTokens.StrokeWidthTokens.valueOf(selectedToken.name).value
             }
         }
     }
@@ -121,7 +121,7 @@ class V2DesignTokensActivity : V2DemoActivity() {
             BasicCard(
                 modifier = Modifier
                     .size(width = 180.dp, height = 130.dp)
-                    .padding(bottom = size(FluentGlobalTokens.SizeTokens.Size160)),
+                    .padding(bottom = FluentGlobalTokens.SizeTokens.Size160.value),
                 basicCardTokens = if (tokenName == R.string.shadow_tokens) previewShadowToken(
                     tokensList[selectedTokenIndex] as FluentGlobalTokens.ShadowTokens
                 )
@@ -153,7 +153,7 @@ class V2DesignTokensActivity : V2DemoActivity() {
                 Text(
                     text = stringResource(id = R.string.sample_text),
                     color = textColor,
-                    fontSize = fontSize(selectedToken as FluentGlobalTokens.FontSizeTokens)
+                    fontSize = FluentGlobalTokens.FontSizeTokens.valueOf((selectedToken as FluentGlobalTokens.FontSizeTokens).name).value
                 )
 
             R.string.line_height_tokens ->
@@ -161,7 +161,7 @@ class V2DesignTokensActivity : V2DemoActivity() {
                     Text(
                         text = "Text\nText",
                         color = textColor,
-                        lineHeight = lineHeight(selectedToken as FluentGlobalTokens.LineHeightTokens)
+                        lineHeight = FluentGlobalTokens.LineHeightTokens.valueOf((selectedToken as FluentGlobalTokens.LineHeightTokens).name).value
                     )
                 }
 
@@ -169,8 +169,8 @@ class V2DesignTokensActivity : V2DemoActivity() {
                 Text(
                     text = stringResource(id = R.string.sample_text),
                     color = textColor,
-                    fontSize = fontSize(FluentGlobalTokens.FontSizeTokens.Size600),
-                    fontWeight = fontWeight(selectedToken as FluentGlobalTokens.FontWeightTokens)
+                    fontSize = FluentGlobalTokens.FontSizeTokens.Size600.value,
+                    fontWeight = FluentGlobalTokens.FontWeightTokens.valueOf((selectedToken as FluentGlobalTokens.FontWeightTokens).name).value
                 )
 
             R.string.icon_size_tokens ->
@@ -180,21 +180,21 @@ class V2DesignTokensActivity : V2DemoActivity() {
                     tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                         FluentTheme.themeMode
                     ),
-                    modifier = Modifier.size(iconSize(selectedToken as FluentGlobalTokens.IconSizeTokens))
+                    modifier = Modifier.size(FluentGlobalTokens.IconSizeTokens.valueOf((selectedToken as FluentGlobalTokens.IconSizeTokens).name).value)
                 )
 
             R.string.size_tokens ->
-                Row(horizontalArrangement = Arrangement.spacedBy(size(selectedToken as FluentGlobalTokens.SizeTokens))) {
+                Row(horizontalArrangement = Arrangement.spacedBy(FluentGlobalTokens.SizeTokens.valueOf((selectedToken as FluentGlobalTokens.SizeTokens).name).value)) {
                     Text(
                         text = stringResource(id = R.string.sample_text),
                         color = textColor,
-                        fontSize = fontSize(FluentGlobalTokens.FontSizeTokens.Size600),
+                        fontSize = FluentGlobalTokens.FontSizeTokens.Size600.value,
                     )
 
                     Text(
                         text = stringResource(id = R.string.sample_text),
                         color = textColor,
-                        fontSize = fontSize(FluentGlobalTokens.FontSizeTokens.Size600),
+                        fontSize = FluentGlobalTokens.FontSizeTokens.Size600.value,
                     )
                 }
 

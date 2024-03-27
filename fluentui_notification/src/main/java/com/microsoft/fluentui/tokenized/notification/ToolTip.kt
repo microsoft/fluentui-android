@@ -308,7 +308,7 @@ private fun Tooltip(
     var tipAlignment: Alignment by rememberSaveable(stateSaver = TipAlignmentSaver) {
         mutableStateOf(Alignment.TopCenter)
     }
-    var tipOffsetX = 0.0f
+    var tipOffsetX by rememberSaveable { mutableStateOf(0.0f) }
     val isRTL = LocalLayoutDirection.current == LayoutDirection.Rtl
 
     val tooltipPositionProvider =
@@ -328,10 +328,10 @@ private fun Tooltip(
             tipOffsetX = dpToPx(offset.x) + if (isRTL) (tooltipCenter - parentCenter).toFloat() else
                 (parentCenter - tooltipCenter).toFloat()
 
-            if(tipOffsetX + tooltipCenter > tooltipContentBounds.right){
+            if(tipOffsetX + tooltipCenter > tooltipContentBounds.right - dpToPx(24.dp)){
                 tipOffsetX =  tooltipContentBounds.right - tooltipCenter - dpToPx(24.dp)
             }
-            else if(tipOffsetX + tooltipCenter < tooltipContentBounds.left) {
+            else if(tipOffsetX + tooltipCenter < tooltipContentBounds.left + dpToPx(24.dp)) {
                 tipOffsetX =  tooltipContentBounds.left - tooltipCenter + dpToPx(24.dp)
             }
         }
@@ -367,7 +367,7 @@ private fun Tooltip(
                         contentDescription = null,
                         tint = token.tipColor(tooltipInfo),
                         modifier = Modifier
-                            .offset(x = pxToDp(tipOffsetX), y = 0.dp)
+                            .offset { IntOffset(x = tipOffsetX.toInt(), y = 1) }
                             .testTag(TOOLTIP_TIP_TEST_TAG)
                     )
                 }
@@ -394,7 +394,7 @@ private fun Tooltip(
                         imageVector = ToolTipIcons.Tip, contentDescription = null,
                         tint = token.tipColor(tooltipInfo),
                         modifier = Modifier
-                            .offset(x = pxToDp(tipOffsetX), y = 0.dp)
+                            .offset { IntOffset(x = tipOffsetX.toInt(), y = -1) }
                             .rotate(180f)
                             .testTag(TOOLTIP_TIP_TEST_TAG)
                     )

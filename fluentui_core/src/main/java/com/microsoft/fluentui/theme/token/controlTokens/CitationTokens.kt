@@ -31,7 +31,7 @@ open class CitationTokens : IControlToken, Parcelable {
 
     @Composable
     open fun cornerRadius(citationInfo: CitationInfo): Dp {
-        return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
+        return FluentGlobalTokens.CornerRadiusTokens.CornerRadius40.value
     }
 
     @Composable
@@ -45,7 +45,7 @@ open class CitationTokens : IControlToken, Parcelable {
 
     @Composable
     open fun borderStrokeWidth(citationInfo: CitationInfo): Dp {
-        return FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth10)
+        return FluentGlobalTokens.StrokeWidthTokens.StrokeWidth10.value
     }
 
     @Composable
@@ -63,8 +63,8 @@ open class CitationTokens : IControlToken, Parcelable {
     @Composable
     open fun textPadding(citationInfo: CitationInfo): PaddingValues {
         return PaddingValues(
-            horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40),
-            vertical = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size20)
+            horizontal = FluentGlobalTokens.SizeTokens.Size40.value,
+            vertical = FluentGlobalTokens.SizeTokens.Size20.value
         )
     }
 }

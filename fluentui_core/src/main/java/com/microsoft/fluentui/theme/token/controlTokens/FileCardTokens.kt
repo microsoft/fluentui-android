@@ -34,13 +34,13 @@ open class FileCardTokens : IControlToken, Parcelable {
 
     @Composable
     open fun cornerRadius(fileCardInfo: FileCardInfo): Dp {
-        return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius120)
+        return FluentGlobalTokens.CornerRadiusTokens.CornerRadius120.value
     }
 
     @Composable
     open fun elevation(fileCardInfo: FileCardInfo): Dp {
         return when (fileCardInfo.cardType) {
-            CardType.Elevated -> FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow02)
+            CardType.Elevated -> FluentGlobalTokens.ShadowTokens.Shadow02.value
             CardType.Outlined -> 0.dp
         }
     }
@@ -54,7 +54,7 @@ open class FileCardTokens : IControlToken, Parcelable {
 
     @Composable
     open fun borderStrokeWidth(fileCardInfo: FileCardInfo): Dp {
-        return FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05)
+        return FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05.value
     }
 
     @Composable
@@ -97,7 +97,7 @@ open class FileCardTokens : IControlToken, Parcelable {
 
     @Composable
     open fun iconSize(fileCardInfo: FileCardInfo): Dp {
-        return FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize240)
+        return FluentGlobalTokens.IconSizeTokens.IconSize240.value
     }
 
     @Composable
@@ -112,17 +112,17 @@ open class FileCardTokens : IControlToken, Parcelable {
 
     @Composable
     open fun actionOverflowCornerRadius(fileCardInfo: FileCardInfo): Dp {
-        return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
+        return FluentGlobalTokens.CornerRadiusTokens.CornerRadius40.value
     }
 
     @Composable
     open fun actionOverflowIconSize(fileCardInfo: FileCardInfo): Dp {
-        return FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize240)
+        return FluentGlobalTokens.IconSizeTokens.IconSize240.value
     }
 
     @Composable
     open fun iconTextSpacing(fileCardInfo: FileCardInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120)
+        return FluentGlobalTokens.SizeTokens.Size120.value
     }
 
     @Composable
@@ -133,13 +133,13 @@ open class FileCardTokens : IControlToken, Parcelable {
     @Composable
     open fun actionOverflowPadding(fileCardInfo: FileCardInfo): PaddingValues {
         return PaddingValues(
-            top = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80),
-            end = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
+            top = FluentGlobalTokens.SizeTokens.Size80.value,
+            end = FluentGlobalTokens.SizeTokens.Size80.value
         )
     }
 
     @Composable
     open fun textContainerPadding(fileCardInfo: FileCardInfo): PaddingValues {
-        return PaddingValues(all = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120))
+        return PaddingValues(all = FluentGlobalTokens.SizeTokens.Size120.value)
     }
 }

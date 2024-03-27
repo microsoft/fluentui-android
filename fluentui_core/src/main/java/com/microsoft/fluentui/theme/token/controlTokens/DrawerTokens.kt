@@ -40,23 +40,21 @@ open class DrawerTokens : IControlToken, Parcelable {
         )
 
     @Composable
-    open fun elevation(drawerInfo: DrawerInfo): Dp = FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow02)
+    open fun elevation(drawerInfo: DrawerInfo): Dp = FluentGlobalTokens.ShadowTokens.Shadow02.value
 
     @Composable
     open fun borderRadius(drawerInfo: DrawerInfo): Dp {
         return when (drawerInfo.type) {
-            BehaviorType.TOP, BehaviorType.BOTTOM, BehaviorType.BOTTOM_SLIDE_OVER -> FluentGlobalTokens.cornerRadius(
-                FluentGlobalTokens.CornerRadiusTokens.CornerRadius120
-            )
-            BehaviorType.LEFT_SLIDE_OVER, BehaviorType.RIGHT_SLIDE_OVER -> FluentGlobalTokens.cornerRadius(
-                FluentGlobalTokens.CornerRadiusTokens.CornerRadiusNone
-            )
+            BehaviorType.TOP, BehaviorType.BOTTOM, BehaviorType.BOTTOM_SLIDE_OVER -> FluentGlobalTokens.CornerRadiusTokens.CornerRadius120
+                .value
+            BehaviorType.LEFT_SLIDE_OVER, BehaviorType.RIGHT_SLIDE_OVER -> FluentGlobalTokens.CornerRadiusTokens.CornerRadiusNone
+                .value
         }
     }
 
     @Composable
     open fun scrimColor(drawerInfo: DrawerInfo): Color =
-        FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Black)
+        FluentGlobalTokens.NeutralColorTokens.Black.value
 
     @Composable
     open fun scrimOpacity(drawerInfo: DrawerInfo): Float = 0.32F
