@@ -802,6 +802,13 @@ private fun computeTarget(
 private fun <T> Map<Float, T>.getOffset(state: T): Float? {
     return entries.firstOrNull { it.value == state }?.key
 }
+
+/**
+ * This functions return the most probable offset for the given state if exact match isn't found
+ * @param state Int value of the state
+ * @return Float value of the offset
+
+ */
 private fun <T> Map<Float, T>.getFaultTolerantOffset(state: Int): Float? {
     return entries.firstOrNull { it.value == state }?.key ?: when (state) {
         1 -> keys.minOrNull()
