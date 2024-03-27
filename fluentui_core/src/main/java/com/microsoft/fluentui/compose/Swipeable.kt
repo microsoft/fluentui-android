@@ -332,6 +332,30 @@ open class SwipeableState<T>(
             }
         }
     }
+    /**
+     * Set the state to the target value by starting an animation.
+     *
+     * @param targetValue The new value to animate to.
+     * @param anim The animation that will be used to animate to the new value.
+     */
+    suspend fun faultTolerantAnimateTo(targetValue: Int, anim: AnimationSpec<Float> = animationSpec) {
+        latestNonEmptyAnchorsFlow.collect { anchors ->
+            try {
+                val targetOffset = anchors.getFaultTolerantOffset(targetValue)
+                requireNotNull(targetOffset) {
+                    "The target value must have an associated anchor."
+                }
+                animateInternalToOffset(targetOffset, anim)
+            } finally {
+                val endOffset = absoluteOffset.value
+                val endValue = anchors
+                    // fighting rounding error once again, anchor should be as close as 0.5 pixels
+                    .filterKeys { anchorOffset -> abs(anchorOffset - endOffset) < 0.5f }
+                    .values.firstOrNull() ?: currentValue
+                currentValue = endValue
+            }
+        }
+    }
 
     /**
      * Perform fling with settling to one of the anchors which is determined by the given
@@ -778,6 +802,22 @@ private fun computeTarget(
 private fun <T> Map<Float, T>.getOffset(state: T): Float? {
     return entries.firstOrNull { it.value == state }?.key
 }
+
+/**
+ * This functions return the most probable offset for the given state if exact match isn't found
+ * @param state Int value of the state
+ * @return Float value of the offset
+
+ */
+private fun <T> Map<Float, T>.getFaultTolerantOffset(state: Int): Float? {
+    return entries.firstOrNull { it.value == state }?.key ?: when (state) {
+        1 -> keys.minOrNull()
+        2 -> keys.sorted().getOrNull(1)?:keys.minOrNull()
+        3 -> keys.maxOrNull()
+        else -> null
+    }
+}
+
 
 /**
  * Contains useful defaults for [swipeable] and [SwipeableState].
