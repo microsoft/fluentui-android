@@ -7,9 +7,11 @@ package com.microsoft.fluentuidemo.demos
 
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.view.ViewTreeObserver
 import androidx.core.content.ContextCompat
 import com.microsoft.fluentui.calendar.CalendarView
@@ -21,7 +23,8 @@ import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.databinding.ActivityTooltipBinding
 
-class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
+
+class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener, View.OnKeyListener {
     companion object {
         const val BUTTON_ID = "buttonId"
     }
@@ -80,6 +83,14 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
                 tooltip?.show(it, resources.getString(type.messageId), config)
                 buttonId = it.id
             }
+            findViewById<Button>(type.buttonId).setOnKeyListener { v, keyCode, event ->
+                if (keyCode == KeyEvent.KEYCODE_ESCAPE && event?.action == KeyEvent.ACTION_UP) {
+                    // Dismiss tooltip when Escape key is pressed
+                    tooltip?.dismiss()
+                    tooltip = null
+                }
+                false
+            }
         }
 
         tooltipBinding.tooltipAnchorCenter.setOnClickListener {
@@ -91,6 +102,14 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
             tooltip?.onDismissListener = this
             buttonId = it.id
         }
+        tooltipBinding.tooltipAnchorCenter.setOnKeyListener { v, keyCode, event ->
+                if (keyCode == KeyEvent.KEYCODE_ESCAPE && event?.action == KeyEvent.ACTION_UP) {
+                    // Dismiss tooltip when Escape key is pressed
+                    tooltip?.dismiss()
+                    tooltip = null
+                }
+                false
+            }
 
         tooltipBinding.tooltipAnchorCustomView.setOnClickListener {
             tooltip = Tooltip(this).setFocusable(true).show(
@@ -100,16 +119,43 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
             tooltip?.onDismissListener = this
             buttonId = it.id
         }
+        tooltipBinding.tooltipAnchorCustomView.setOnKeyListener { v, keyCode, event ->
+                if (keyCode == KeyEvent.KEYCODE_ESCAPE && event?.action == KeyEvent.ACTION_UP) {
+                    // Dismiss tooltip when Escape key is pressed
+                    tooltip?.dismiss()
+                    tooltip = null
+                }
+                false
+            }
 
         tooltipBinding.tooltipAnchorCalendarDemo.setOnClickListener {
             tooltip = Tooltip(this).show(it, CalendarView(this), Tooltip.Config())
             tooltip?.onDismissListener = this
             buttonId = it.id
         }
+        tooltipBinding.tooltipAnchorCalendarDemo.setOnKeyListener { v, keyCode, event ->
+                if (keyCode == KeyEvent.KEYCODE_ESCAPE && event?.action == KeyEvent.ACTION_UP) {
+                    // Dismiss tooltip when Escape key is pressed
+                    tooltip?.dismiss()
+                    tooltip = null
+                }
+                false
+            }
 
         savedInstanceState?.let {
             buttonId = it.getInt(BUTTON_ID)
         }
+
+    }
+
+    override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_ESCAPE && event?.action == KeyEvent.ACTION_UP) {
+            // Dismiss tooltip when Escape key is pressed
+            tooltip?.dismiss()
+            tooltip = null
+            return true // Event handled
+        }
+        return false // Event not handled
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

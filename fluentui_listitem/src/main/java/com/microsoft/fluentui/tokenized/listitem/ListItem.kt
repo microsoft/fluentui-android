@@ -342,7 +342,7 @@ object ListItem {
                     .then(clearSemantics(textAccessibilityProperties)),
                 contentAlignment = contentAlignment
             ) {
-                Column(Modifier.padding(vertical = padding.calculateTopPadding())) {
+                Column(Modifier.padding(top = padding.calculateTopPadding(), bottom = padding.calculateBottomPadding())) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(textAccessoryContentTextSpacing)
