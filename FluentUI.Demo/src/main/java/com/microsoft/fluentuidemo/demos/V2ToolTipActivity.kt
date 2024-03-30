@@ -27,6 +27,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
@@ -39,6 +42,7 @@ import com.microsoft.fluentui.tokenized.controls.TextField
 import com.microsoft.fluentui.tokenized.divider.Divider
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.notification.ToolTipBox
+import com.microsoft.fluentui.tokenized.notification.TooltipState
 import com.microsoft.fluentui.tokenized.notification.rememberTooltipState
 import com.microsoft.fluentui.util.isAccessibilityEnabled
 import com.microsoft.fluentuidemo.DemoActivity
@@ -86,6 +90,7 @@ fun CreateToolTipActivityUI(context: Context) {
 
     val action = stringResource(id = R.string.tooltip_dismiss_message)
     val scope = rememberCoroutineScope()
+    var currentTooltipState: TooltipState? = null
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -113,9 +118,18 @@ fun CreateToolTipActivityUI(context: Context) {
                 focusable = context.isAccessibilityEnabled,
                 onDismissRequest = { invokeToast(topStartString, context, action) }) {
                 Button(
-                    onClick = { scope.launch { topLeftTooltipState.show() } },
+                    onClick = { scope.launch {
+                        topLeftTooltipState.show()
+                    } },
                     text = stringResource(id = R.string.tooltip_button),
-                    modifier = Modifier.testTag(topStartString)
+                    modifier = Modifier.testTag(topStartString).onKeyEvent {
+                        if (it.key == Key.Escape) {
+                            topLeftTooltipState?.let { tooltipState ->
+                                tooltipState.dismiss()
+                            }
+                        }
+                        false
+                    },
                 )
             }
 
@@ -132,7 +146,14 @@ fun CreateToolTipActivityUI(context: Context) {
                 Button(
                     onClick = { scope.launch { topRightTooltipState.show() } },
                     text = stringResource(id = R.string.tooltip_button),
-                    modifier = Modifier.testTag(topEndString)
+                    modifier = Modifier.testTag(topEndString).onKeyEvent {
+                        if (it.key == Key.Escape) {
+                            topRightTooltipState?.let { tooltipState ->
+                                tooltipState.dismiss()
+                            }
+                        }
+                        false
+                    },
                 )
             }
         }
@@ -204,7 +225,14 @@ fun CreateToolTipActivityUI(context: Context) {
             Button(
                 onClick = { scope.launch { centerCustomizedTooltipState.show() } },
                 text = stringResource(id = R.string.tooltip_custom_content),
-                modifier = Modifier.testTag(customCenterString)
+                modifier = Modifier.testTag(customCenterString).onKeyEvent {
+                    if (it.key == Key.Escape) {
+                        centerCustomizedTooltipState?.let { tooltipState ->
+                            tooltipState.dismiss()
+                        }
+                    }
+                    false
+                },
             )
         }
 
@@ -220,7 +248,14 @@ fun CreateToolTipActivityUI(context: Context) {
             Button(
                 onClick = { scope.launch { centerTooltipState.show() } },
                 text = stringResource(id = R.string.tooltip_button),
-                modifier = Modifier.testTag(centerString)
+                modifier = Modifier.testTag(centerString).onKeyEvent {
+                    if (it.key == Key.Escape) {
+                        centerTooltipState?.let { tooltipState ->
+                            tooltipState.dismiss()
+                        }
+                    }
+                    false
+                },
             )
         }
 
@@ -242,7 +277,14 @@ fun CreateToolTipActivityUI(context: Context) {
                 Button(
                     onClick = { scope.launch { bottomLeftTooltipState.show() } },
                     text = stringResource(id = R.string.tooltip_button),
-                    modifier = Modifier.testTag(bottomStartString)
+                    modifier = Modifier.testTag(bottomStartString).onKeyEvent {
+                        if (it.key == Key.Escape) {
+                            bottomLeftTooltipState?.let { tooltipState ->
+                                tooltipState.dismiss()
+                            }
+                        }
+                        false
+                    },
                 )
             }
 
@@ -259,7 +301,14 @@ fun CreateToolTipActivityUI(context: Context) {
                 Button(
                     onClick = { scope.launch { bottomRightTooltipState.show() } },
                     text = stringResource(id = R.string.tooltip_button),
-                    modifier = Modifier.testTag(bottomEndString)
+                    modifier = Modifier.testTag(bottomEndString).onKeyEvent {
+                        if (it.key == Key.Escape) {
+                            bottomRightTooltipState?.let { tooltipState ->
+                                tooltipState.dismiss()
+                            }
+                        }
+                        false
+                    },
                 )
             }
         }
