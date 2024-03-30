@@ -1,11 +1,14 @@
-Release Version 0.2.1:
+Release Version 0.2.2:
 
 What's New:
 
+Fluent V1:
+        Fix/Enhancements
+            1. Fixed minor accessibility bugs
 Fluent V2:
         Fix/Enhancement:
-            1. Minor fixes in Checkbox, tooltip offsets and bottomsheet.
-            2. Rare snackbar crash resulting due to race condition is fixed.
-            3. Addtiional tokens added to checkbox component.
+            1. Fixed minor accessiblity bugs
+            2. Drawer offset fetching is now more fault tolerant and prevents crashes 
+            3. Added enableSwipeToDismiss flag for BottomDrawer
 
 Note: Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will supoort compose version 1.5.1 (BOM 2023.09.00)

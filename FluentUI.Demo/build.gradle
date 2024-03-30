@@ -13,8 +13,8 @@ android {
         applicationId 'com.microsoft.fluentuidemo'
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 1001
-        versionName '0.2.1'
+        versionCode 1002
+        versionName '0.2.2'
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
 //      Forcing emoji2 version as a workaround for not moving to Android 34 during BOM update.
