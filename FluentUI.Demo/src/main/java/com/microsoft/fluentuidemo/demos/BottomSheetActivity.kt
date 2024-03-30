@@ -182,7 +182,8 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
                         BottomSheetItem(
                             R.id.bottom_sheet_item_clock,
                             R.drawable.ic_clock_24_regular,
-                            getString(R.string.bottom_sheet_item_clock_title)
+                            getString(R.string.bottom_sheet_item_clock_title),
+                            roleDescription = "Button"
                         ),
                         BottomSheetItem(
                             R.id.bottom_sheet_item_alarm,
@@ -193,7 +194,8 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
                         BottomSheetItem(
                             R.id.bottom_sheet_item_time_zone,
                             R.drawable.ic_globe_24_regular,
-                            getString(R.string.bottom_sheet_item_time_zone_title)
+                            getString(R.string.bottom_sheet_item_time_zone_title),
+                            roleDescription = "Button"
                         )
                     )
                 )
