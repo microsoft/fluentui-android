@@ -188,24 +188,6 @@ private fun CreateActivityUI() {
                     )
                 }
                 item {
-                    val scrimVisibleText = stringResource(id = R.string.drawer_scrim_visible)
-                    ListItem.Header(title = scrimVisibleText, modifier = Modifier
-                        .toggleable(
-                            value = scrimVisible,
-                            role = Role.Switch,
-                            onValueChange = { scrimVisible = !scrimVisible }
-                        )
-                        .clearAndSetSemantics {
-                            this.contentDescription = scrimVisibleText
-                        }, trailingAccessoryContent = {
-                        ToggleSwitch(
-                            onValueChange = { scrimVisible = !scrimVisible },
-                            checkedState = scrimVisible
-                        )
-                    }
-                    )
-                }
-                item {
                     val preventDismissalOnScrimClickText =
                         stringResource(id = R.string.prevent_scrim_click_dismissal)
                     ListItem.Header(title = preventDismissalOnScrimClickText,
@@ -228,6 +210,24 @@ private fun CreateActivityUI() {
                                 checkedState = preventDismissalOnScrimClick
                             )
                         }
+                    )
+                }
+                item {
+                    val scrimVisibleText = stringResource(id = R.string.drawer_scrim_visible)
+                    ListItem.Header(title = scrimVisibleText, modifier = Modifier
+                        .toggleable(
+                            value = scrimVisible,
+                            role = Role.Switch,
+                            onValueChange = { scrimVisible = !scrimVisible }
+                        )
+                        .clearAndSetSemantics {
+                            this.contentDescription = scrimVisibleText
+                        }, trailingAccessoryContent = {
+                        ToggleSwitch(
+                            onValueChange = { scrimVisible = !scrimVisible },
+                            checkedState = scrimVisible
+                        )
+                    }
                     )
                 }
                 item {

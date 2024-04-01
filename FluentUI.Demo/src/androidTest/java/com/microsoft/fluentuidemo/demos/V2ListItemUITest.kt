@@ -273,7 +273,8 @@ class V2ListItemUITest {
                 accessoryTextTitle = ACTION_TEXT,
                 accessoryTextOnClick = {})
         }
-        val actionButton = composeTestRule.onNodeWithText(ACTION_TEXT)
+        composeTestRule.onRoot().printToLog("listTestTag")
+        val actionButton = composeTestRule.onNodeWithContentDescription(ACTION_TEXT)
         actionButton.assertExists()
         actionButton.assertIsDisplayed()
         actionButton.assertHasClickAction()
