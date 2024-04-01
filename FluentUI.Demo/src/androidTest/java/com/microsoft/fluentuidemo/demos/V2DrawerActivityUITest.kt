@@ -5,10 +5,13 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.click
 import androidx.compose.ui.test.hasTestTag
+import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTouchInput
+import androidx.compose.ui.test.printToLog
 import androidx.compose.ui.test.swipeDown
 import androidx.compose.ui.test.swipeLeft
 import androidx.compose.ui.test.swipeRight
@@ -309,7 +312,7 @@ class V2DrawerActivityUITest : BaseTest() {
 
     @Test
     fun testPreventDrawerDismissalOnScrimClick(){
-        composeTestRule.onNodeWithText(getString(R.string.prevent_scrim_click_dismissal), useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithContentDescription(getString(R.string.prevent_scrim_click_dismissal), useUnmergedTree = true, ignoreCase = true).performClick()
         composeTestRule.onNodeWithText("Open Drawer").performClick()
         openCheckForVerticalDrawer()
         drawerScrim.performTouchInput {
@@ -317,5 +320,4 @@ class V2DrawerActivityUITest : BaseTest() {
         }
         openCheckForVerticalDrawer()
     }
-
 }

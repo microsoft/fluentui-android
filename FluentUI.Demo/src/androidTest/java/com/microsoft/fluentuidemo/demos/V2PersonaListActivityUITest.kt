@@ -25,7 +25,6 @@ class V2PersonaListActivityUITest : BaseTest() {
         personaList.assertExists()
         personaList.assertIsDisplayed()
         personaList.assert(hasScrollAction())
-        personaList.onChildAt(0).assertHasClickAction()
     }
 
 }

@@ -22,6 +22,7 @@ import com.microsoft.fluentui.tokenized.notification.rememberTooltipState
 import com.microsoft.fluentui.util.dpToPx
 import com.microsoft.fluentuidemo.BaseTest
 import com.microsoft.fluentuidemo.R
+import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.launch
 import org.junit.Before
 import org.junit.Rule
@@ -85,11 +86,8 @@ class V2ToolTipActivityUITest : BaseTest() {
         composeTestRule.waitForIdle()
         //find the Tip
         val tip: UiObject2 = device.findObject(By.res(TOOLTIP_TIP_TEST_TAG))
-
-        val isBottomAligned =
-            composeTestRule.onNodeWithTag(context.resources.getString(R.string.tooltip_top_start))
-                .fetchSemanticsNode().boundsInWindow.bottom >= tip.visibleBounds.top
-        assert(isBottomAligned)
+        assertEquals(composeTestRule.onNodeWithTag(context.resources.getString(R.string.tooltip_top_start))
+            .fetchSemanticsNode().boundsInWindow.bottom.toDouble(), tip.visibleBounds.top.toDouble(), 2.0)
     }
 
     //Test to check top align tooltip
