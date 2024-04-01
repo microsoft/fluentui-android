@@ -195,14 +195,14 @@ class DrawerState(
         }
         if (targetValue != currentValue) {
             try {
-                faultTolerantAnimateTo(targetValue = targetValue.ordinal, AnimationSpec)
+                animateTo(targetValue = targetValue, AnimationSpec)
 
             } catch (e: Exception) {
                 //TODO: When previous instance of drawer changes its content & closed then on
                 // re-triggering the same drawer, it open but stuck to end of screen due to
                 // JobCancellationException thrown with message "ScopeCoroutine was cancelled".
                 // Hence re-triggering "animateTo". Check for better sol
-                faultTolerantAnimateTo(targetValue = targetValue.ordinal, AnimationSpec)
+                animateTo(targetValue = targetValue, AnimationSpec)
             } finally {
                 animationInProgress = false
             }
@@ -221,9 +221,9 @@ class DrawerState(
     suspend fun close() {
         animationInProgress = true
         try {
-            faultTolerantAnimateTo(DrawerValue.Closed.ordinal, AnimationSpec)
+            animateTo(DrawerValue.Closed, AnimationSpec)
         } catch (e: Exception) {
-            faultTolerantAnimateTo(DrawerValue.Closed.ordinal, AnimationSpec)
+            animateTo(DrawerValue.Closed, AnimationSpec)
         } finally {
             animationInProgress = false
             enable = false
@@ -255,9 +255,9 @@ class DrawerState(
         }
         if (targetValue != currentValue) {
             try {
-                faultTolerantAnimateTo(targetValue = targetValue.ordinal, AnimationSpec)
+                animateTo(targetValue = targetValue, AnimationSpec)
             } catch (e: Exception) {
-                faultTolerantAnimateTo(targetValue = targetValue.ordinal, AnimationSpec)
+                animateTo(targetValue = targetValue, AnimationSpec)
             } finally {
                 animationInProgress = false
             }
