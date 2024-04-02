@@ -22,6 +22,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
@@ -456,7 +459,12 @@ fun BottomSheet(
                 }
                 Column(modifier = Modifier
                     .testTag(BOTTOMSHEET_CONTENT_TAG)
-                    .then(if (slideOver) Modifier else Modifier.fillMaxSize()),
+                    .then(if (slideOver) Modifier
+                        .onFocusChanged { focusState ->
+                            if (focusState.hasFocus && sheetState.currentValue != BottomSheetValue.Expanded) {        // this expands the sheet when the content is focused
+                                scope.launch { sheetState.expand() }
+                            }
+                        } else Modifier.fillMaxSize()),
                     content = { sheetContent() })
             }
         }
