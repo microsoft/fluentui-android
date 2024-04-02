@@ -207,22 +207,6 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
         val visibleDividersHeight = dividerHeight * visibleRows - 1
         return config.weekHeadingHeight + visibleRowsHeight + visibleDividersHeight
     }
-    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_SHIFT_LEFT || keyCode == KeyEvent.KEYCODE_SHIFT_RIGHT) {
-            // Find the currently focused view
-
-
-            // Remove focus from the currently focused view
-            this.clearFocus()
-
-            // Find another suitable view to focus on, for example, the root layout
-            val rootView = findViewById<View>(android.R.id.content)
-            rootView.requestFocus()
-
-            return true // Consume the event
-        }
-        return super.onKeyDown(keyCode, event)
-    }
 
     private fun canExpand(): Boolean {
         return displayMode != DisplayMode.FULL_MODE && displayMode != DisplayMode.LENGTHY_MODE && weeksView.isUserTouchOccurring
