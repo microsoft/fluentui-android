@@ -14,7 +14,6 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import android.util.AttributeSet
 import android.util.Property
-import android.view.KeyEvent
 import android.view.View
 import android.widget.LinearLayout
 import com.jakewharton.threetenabp.AndroidThreeTen
