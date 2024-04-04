@@ -8,6 +8,6 @@ Fluent V1:
 Fluent V2:
         Fix/Enhancement:
             1. Fixed Bottomsheet accessiblity bug
-            2. Fixed Drawer offset crashe 
+            2. Fixed Drawer offset crash 
 
 Note: Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will supoort compose version 1.5.1 (BOM 2023.09.00)
