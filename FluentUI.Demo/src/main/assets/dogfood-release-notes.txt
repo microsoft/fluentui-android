@@ -1,14 +1,13 @@
-Release Version 0.2.2:
+Release Version 0.2.3:
 
 What's New:
 
 Fluent V1:
         Fix/Enhancements
-            1. Fixed minor accessibility bugs
+            1. Fixed Calender accessibility bug
 Fluent V2:
         Fix/Enhancement:
-            1. Fixed minor accessiblity bugs
-            2. Drawer offset fetching is now more fault tolerant and prevents crashes 
-            3. Added enableSwipeToDismiss flag for BottomDrawer
+            1. Fixed Bottomsheet accessiblity bug
+            2. Fixed Drawer offset crashe 
 
 Note: Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will supoort compose version 1.5.1 (BOM 2023.09.00)
