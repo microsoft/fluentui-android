@@ -353,8 +353,8 @@ fun BottomSheet(
                     peekHeight,
                     sheetState
                 )
-                .shadow(sheetElevation)
                 .clip(sheetShape)
+                .shadow(sheetElevation)
                 .background(sheetBackgroundColor)
                 .semantics(mergeDescendants = false) {
                     if (sheetState.isVisible) {
