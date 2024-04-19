@@ -38,6 +38,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.ButtonTokens
  * @param enabled Boolean for enabling/disabling button. Default: [true]
  * @param interactionSource Interaction Source to handle user interactions
  * @param icon ImageVector for Icon Content on buttton. Default: [null]
+ * @param trailingIcon ImageVector for trailing Icon Content on buttton. Default: [null]
  * @param text String to be displayed as text on button. Default: [null]
  * @param contentDescription Content Description for Icon. Default: [null]
  * @param buttonTokens Tokens to customize appearance of button. Default: [null]
@@ -51,6 +52,7 @@ fun Button(
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     icon: ImageVector? = null,
+    trailingIcon: ImageVector? = null,
     text: String? = null,
     contentDescription: String? = null,
     buttonTokens: ButtonTokens? = null
@@ -134,7 +136,7 @@ fun Button(
             if (text != null)
                 BasicText(
                     text = text,
-                    modifier = Modifier.clearAndSetSemantics { },
+                    modifier = Modifier.weight(1f, fill = false).clearAndSetSemantics { },
                     style = token.typography(buttonInfo).merge(
                         TextStyle(
                             color = token.textColor(buttonInfo = buttonInfo)
@@ -148,6 +150,23 @@ fun Button(
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
+
+            if(trailingIcon != null){
+                Icon(
+                    imageVector = trailingIcon,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(
+                            token.iconSize(buttonInfo = buttonInfo)
+                        ),
+                    tint = token.iconColor(buttonInfo = buttonInfo)
+                        .getColorByState(
+                            enabled = enabled,
+                            selected = false,
+                            interactionSource = interactionSource
+                        )
+                )
+            }
         }
     }
 }

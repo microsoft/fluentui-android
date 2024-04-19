@@ -82,6 +82,49 @@ open class ButtonTokens : IControlToken, Parcelable {
     }
 
     @Composable
+    open fun trailingIconColor(buttonInfo: ButtonInfo): StateColor {
+        return when (buttonInfo.style) {
+            ButtonStyle.Button ->
+                StateColor(
+                    rest = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                        themeMode = themeMode
+                    ),
+                    pressed = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                        themeMode = themeMode
+                    ),
+                    selected = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                        themeMode = themeMode
+                    ),
+                    focused = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                        themeMode = themeMode
+                    ),
+                    disabled = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                        themeMode = themeMode
+                    )
+                )
+
+            ButtonStyle.OutlinedButton, ButtonStyle.TextButton ->
+                StateColor(
+                    rest = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                        themeMode = themeMode
+                    ),
+                    pressed = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed].value(
+                        themeMode = themeMode
+                    ),
+                    selected = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Selected].value(
+                        themeMode = themeMode
+                    ),
+                    focused = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                        themeMode = themeMode
+                    ),
+                    disabled = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                        themeMode = themeMode
+                    )
+                )
+        }
+    }
+
+    @Composable
     open fun textColor(buttonInfo: ButtonInfo): StateColor {
         return when (buttonInfo.style) {
             ButtonStyle.Button -> StateColor(
@@ -232,6 +275,18 @@ open class ButtonTokens : IControlToken, Parcelable {
 
     @Composable
     open fun iconSize(buttonInfo: ButtonInfo): Dp {
+        return when (buttonInfo.style) {
+            ButtonStyle.Button, ButtonStyle.TextButton, ButtonStyle.OutlinedButton ->
+                when (buttonInfo.size) {
+                    ButtonSize.Small -> FluentGlobalTokens.IconSizeTokens.IconSize160.value
+                    ButtonSize.Medium -> FluentGlobalTokens.IconSizeTokens.IconSize200.value
+                    ButtonSize.Large -> FluentGlobalTokens.IconSizeTokens.IconSize200.value
+                }
+        }
+    }
+
+    @Composable
+    open fun trailingIconSize(buttonInfo: ButtonInfo): Dp {
         return when (buttonInfo.style) {
             ButtonStyle.Button, ButtonStyle.TextButton, ButtonStyle.OutlinedButton ->
                 when (buttonInfo.size) {
