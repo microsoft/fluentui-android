@@ -220,7 +220,8 @@ class V2ButtonsActivity : V2DemoActivity() {
                             Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show()
                         },
                         icon = Icons.Filled.Email,
-                        modifier = Modifier.padding(16.dp)
+                        modifier = Modifier
+                            .padding(16.dp)
                             .testTag("FAB"),
                         text = fabText,
                     )
@@ -271,6 +272,7 @@ class V2ButtonsActivity : V2DemoActivity() {
                     buttonTokens = if (clicks < 3) buttonToken else ButtonTokens(),
                     onClick = onClickLambda,
                     icon = icon(toggleIcon),
+                    trailingIcon = icon(enabled = toggleIcon),
                     text = text
                 )
 
@@ -281,6 +283,7 @@ class V2ButtonsActivity : V2DemoActivity() {
                     buttonTokens = buttonToken,
                     onClick = onClickLambda,
                     icon = icon(toggleIcon),
+                    trailingIcon = icon(enabled = toggleIcon),
                     text = "Long text displayed on this button. This Is long text."
                 )
 
@@ -291,6 +294,7 @@ class V2ButtonsActivity : V2DemoActivity() {
                     buttonTokens = buttonToken,
                     onClick = onClickLambda,
                     icon = icon(toggleIcon),
+                    trailingIcon = icon(enabled = toggleIcon),
                     text = "Outlined $text"
                 )
                 Button(
@@ -300,6 +304,7 @@ class V2ButtonsActivity : V2DemoActivity() {
                     buttonTokens = buttonToken,
                     onClick = onClickLambda,
                     icon = icon(clicks % 2 == 0),
+                    trailingIcon = icon( clicks %2 != 0 ),
                     text = "Text $text"
                 )
             }
