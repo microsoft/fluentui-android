@@ -10,4 +10,4 @@ Fluent V2:
             3. Updated the Button component to include a trailing icon.
             4. Resolved crashes related to the Bottomsheet anchor.
 
-Note: Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will supoort compose version 1.5.1 (BOM 2023.09.00)
+Note: Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00)
