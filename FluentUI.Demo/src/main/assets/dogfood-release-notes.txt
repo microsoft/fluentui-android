@@ -1,13 +1,13 @@
-Release Version 0.2.3:
+Release Version 0.2.4:
 
 What's New:
 
-Fluent V1:
-        Fix/Enhancements
-            1. Fixed Calender accessibility bug
 Fluent V2:
         Fix/Enhancement:
-            1. Fixed Bottomsheet accessiblity bug
-            2. Fixed Drawer offset crash 
+            
+            1. Addressed an issue with the shadow in Bottomsheet.
+            2. Included a new parameter, minmaxLines, in the AvatarCarousel to adjust text and subtext.
+            3. Updated the Button component to include a trailing icon.
+            4. Resolved crashes related to the Bottomsheet anchor.
 
-Note: Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will supoort compose version 1.5.1 (BOM 2023.09.00)
+Note: Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00)
