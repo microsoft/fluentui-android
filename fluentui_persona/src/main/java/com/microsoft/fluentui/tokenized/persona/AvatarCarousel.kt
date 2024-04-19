@@ -47,6 +47,8 @@ import kotlin.math.max
  * @param size size of the carousel
  * @param enablePresence enable/disable presence indicator on avatar
  * @param avatarTokens Token to provide appearance values to Avatar
+ * @param textMinMaxLines Provide [Pair] of minLines and maxLines for text. First value is minLines and second value is maxLines
+ * @param subTextMinMaxLines Provide [Pair] of minLines and maxLines for subText. First value is minLines and second value is maxLines
  * @param avatarCarouselTokens Token to provide appearance values to Avatar Carousel
  */
 @Composable
@@ -56,6 +58,8 @@ fun AvatarCarousel(
     size: AvatarCarouselSize = AvatarCarouselSize.Small,
     enablePresence: Boolean = false,
     avatarTokens: AvatarTokens? = null,
+    textMinMaxLines: Pair<Int, Int> = Pair(1, 1),
+    subTextMinMaxLines: Pair<Int, Int> = Pair(1, 1),
     avatarCarouselTokens: AvatarCarouselTokens? = null
 ) {
     val themeID =
@@ -167,7 +171,8 @@ fun AvatarCarousel(
                                 color = if (item.enabled) textColor.rest else textColor.disabled
                             )
                         ),
-                        maxLines = 1,
+                        minLines = textMinMaxLines.first,
+                        maxLines = textMinMaxLines.second,
                         overflow = TextOverflow.Ellipsis
                     )
                 }
@@ -187,7 +192,8 @@ fun AvatarCarousel(
                                     color = if (item.enabled) subTextColor.rest else subTextColor.disabled
                                 )
                             ),
-                            maxLines = 1,
+                            minLines = subTextMinMaxLines.first,
+                            maxLines = subTextMinMaxLines.second,
                             overflow = TextOverflow.Ellipsis
                         )
                     }
