@@ -353,8 +353,8 @@ fun BottomSheet(
                     peekHeight,
                     sheetState
                 )
-                .shadow(sheetElevation)
                 .clip(sheetShape)
+                .shadow(sheetElevation)
                 .background(sheetBackgroundColor)
                 .semantics(mergeDescendants = false) {
                     if (sheetState.isVisible) {
@@ -475,23 +475,24 @@ private fun Modifier.bottomSheetSwipeable(
 
 ): Modifier {
     var peekHeightPx = min(dpToPx(peekHeight), fullHeight * BottomSheetOpenFraction)
+    val keyCorrection = 0.05f
     val modifier = if (slideOver) {
         if (sheetHeight != null && sheetHeight != 0f) {
             val anchors = if (!expandable) {
                 mapOf(
                     fullHeight to BottomSheetValue.Hidden,
-                    fullHeight - min(sheetHeight, peekHeightPx) to BottomSheetValue.Shown
+                    (fullHeight - min(sheetHeight, peekHeightPx))+keyCorrection to BottomSheetValue.Shown
                 )
             } else if (sheetHeight <= peekHeightPx) {
                 mapOf(
                     fullHeight to BottomSheetValue.Hidden,
-                    fullHeight - sheetHeight to BottomSheetValue.Shown
+                    (fullHeight - sheetHeight)+keyCorrection to BottomSheetValue.Shown
                 )
             } else {
                 mapOf(
                     fullHeight to BottomSheetValue.Hidden,
-                    fullHeight - peekHeightPx to BottomSheetValue.Shown,
-                    max(0f, fullHeight - sheetHeight) to BottomSheetValue.Expanded
+                    (fullHeight - peekHeightPx)+keyCorrection to BottomSheetValue.Shown,
+                    (max(0f, fullHeight - sheetHeight))+(keyCorrection*2) to BottomSheetValue.Expanded
                 )
             }
             if (sheetState.initialValue == BottomSheetValue.Expanded
