@@ -26,21 +26,22 @@ import com.microsoft.fluentui.theme.token.controlTokens.CardType
 fun BasicCard(
     modifier: Modifier = Modifier,
     basicCardTokens: BasicCardTokens? = null,
+    basicCardInfo: BasicCardInfo? = null,
     content: @Composable () -> Unit
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = basicCardTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.BasicCardControlType] as BasicCardTokens
-    val basicCardInfo = BasicCardInfo(CardType.Elevated)
-    val cornerRadius = token.cornerRadius(basicCardInfo = basicCardInfo)
-    val backgroundBrush = token.backgroundBrush(basicCardInfo = basicCardInfo)
-    val elevation = token.elevation(basicCardInfo = basicCardInfo)
-    val borderColor = token.borderColor(basicCardInfo = basicCardInfo)
-    val borderStrokeWidth = token.borderStrokeWidth(basicCardInfo = basicCardInfo)
+    val cardInfo = basicCardInfo?: BasicCardInfo(CardType.Elevated)
+    val cornerRadius = token.cornerRadius(basicCardInfo = cardInfo)
+    val backgroundBrush = token.backgroundBrush(basicCardInfo = cardInfo)
+    val elevation = token.elevation(basicCardInfo = cardInfo)
+    val borderColor = token.borderColor(basicCardInfo = cardInfo)
+    val borderStrokeWidth = token.borderStrokeWidth(basicCardInfo = cardInfo)
     val shape = RoundedCornerShape(cornerRadius)
     Box(
-        modifier = modifier
+        modifier = Modifier
             .shadow(elevation, shape, false)
             .background(
                 backgroundBrush, shape
@@ -49,6 +50,7 @@ fun BasicCard(
                 borderStrokeWidth, borderColor, shape
             )
             .clip(shape)
+            .then(modifier)
     ) {
         content()
     }
