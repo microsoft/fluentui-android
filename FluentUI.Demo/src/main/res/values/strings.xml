@@ -791,6 +791,8 @@
     <string name="menu_xOffset">Offset X (in dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Offset Y (in dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Tip Offset (in dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Content Text</string>
     <!-- UI Label for repeat content text -->
