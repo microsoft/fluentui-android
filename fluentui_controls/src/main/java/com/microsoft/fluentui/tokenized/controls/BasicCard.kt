@@ -16,7 +16,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.CardType
 
 /**
  * Cards are flexible containers that group related content and actions together. They reveal more information upon interaction.
- * A Basic card is a card with an empty container and basic elevation and radius.
+ * A Basic card is a card with an empty container and with radius and basic elevation or outline depending on the cardType.
  *
  * @param modifier Modifier for the card
  * @param basicCardTokens Optional tokens for customizing the card
