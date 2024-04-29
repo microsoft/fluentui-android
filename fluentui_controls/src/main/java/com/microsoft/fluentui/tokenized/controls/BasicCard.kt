@@ -20,20 +20,21 @@ import com.microsoft.fluentui.theme.token.controlTokens.CardType
  *
  * @param modifier Modifier for the card
  * @param basicCardTokens Optional tokens for customizing the card
+ * @param cardType defines the card type, whether Elevated or Outlined
  * @param content Content for the card
  */
 @Composable
 fun BasicCard(
     modifier: Modifier = Modifier,
     basicCardTokens: BasicCardTokens? = null,
-    basicCardInfo: BasicCardInfo? = null,
+    cardType: CardType = CardType.Elevated,
     content: @Composable () -> Unit
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = basicCardTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.BasicCardControlType] as BasicCardTokens
-    val cardInfo = basicCardInfo?: BasicCardInfo(CardType.Elevated)
+    val cardInfo = BasicCardInfo(cardType)
     val cornerRadius = token.cornerRadius(basicCardInfo = cardInfo)
     val backgroundBrush = token.backgroundBrush(basicCardInfo = cardInfo)
     val elevation = token.elevation(basicCardInfo = cardInfo)
