@@ -78,6 +78,7 @@ val TOOLTIP_ACTIVITY_Y_OFFSET_TEXTFIELD_TAG = "yOffset"
 fun CreateToolTipActivityUI(context: Context) {
     val xOffsetState = rememberSaveable { mutableStateOf("0") }
     val yOffsetState = rememberSaveable { mutableStateOf("0") }
+    val tipOffsetState = rememberSaveable { mutableStateOf("0") }
     val toolTipTitle =
         rememberSaveable { mutableStateOf(context.getString(R.string.tooltip_title)) }
     val toolTipText =
@@ -87,6 +88,8 @@ fun CreateToolTipActivityUI(context: Context) {
         if (xOffsetState.value.toFloatOrNull() == null) 0.dp else xOffsetState.value.toFloat().dp
     val yOffset =
         if (yOffsetState.value.toFloatOrNull() == null) 0.dp else yOffsetState.value.toFloat().dp
+    val tipOffset =
+        if (tipOffsetState.value.toFloatOrNull() == null) 0.dp else tipOffsetState.value.toFloat().dp
 
     val action = stringResource(id = R.string.tooltip_dismiss_message)
     val scope = rememberCoroutineScope()
@@ -115,6 +118,7 @@ fun CreateToolTipActivityUI(context: Context) {
                 text = toolTipText.value,
                 tooltipState = topLeftTooltipState,
                 offset = DpOffset(x = xOffset, y = yOffset),
+                tipOffset = tipOffset,
                 focusable = context.isAccessibilityEnabled,
                 onDismissRequest = { invokeToast(topStartString, context, action) }) {
                 Button(
@@ -183,6 +187,17 @@ fun CreateToolTipActivityUI(context: Context) {
                         )
                     }
                 })
+            ListItem.Header(title = context.getString(R.string.menu_tipOffset),
+                trailingAccessoryContent = {
+                    Box(Modifier.widthIn(100.dp,150.dp)) {
+                        TextField(
+                            value = tipOffsetState.value,
+                            onValueChange = { tipOffsetState.value = it.trim() },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                        )
+                    }
+                }
+            )
             ListItem.Header(title = context.getString(R.string.tooltip_title),
                 trailingAccessoryContent = {
                     Box(Modifier.widthIn(100.dp,150.dp)) {

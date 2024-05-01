@@ -181,6 +181,7 @@ fun rememberTooltipState(
  *  @param modifier The modifier to be applied to the tooltip box.
  *  @param focusable Whether the tooltip box is focusable.
  *  @param offset The offset of the tooltip box.
+ *  @param tipOffset The X offset to move tip icon relative to the tooltip box.
  *  @param onDismissRequest The callback to be invoked when the tooltip box is dismissed.
  *  @param tooltipTokens The tooltip tokens that are used to customize the tooltip box.
  *  @param content The content of the tooltip box.*
@@ -193,6 +194,7 @@ fun ToolTipBox(
     modifier: Modifier = Modifier,
     focusable: Boolean = true,
     offset: DpOffset = DpOffset(0.dp, 0.dp),
+    tipOffset: Dp = 0.dp,
     onDismissRequest: (() -> Unit)? = null,
     tooltipTokens: TooltipTokens? = null,
     content: @Composable () -> Unit,
@@ -238,6 +240,7 @@ fun ToolTipBox(
         modifier = modifier,
         focusable = focusable,
         offset = offset,
+        tipOffset = tipOffset,
         onDismissRequest = onDismissRequest,
         tooltipTokens = token,
         content = content
@@ -262,6 +265,7 @@ fun ToolTipBox(
     modifier: Modifier = Modifier,
     focusable: Boolean = true,
     offset: DpOffset = DpOffset(0.dp, 0.dp),
+    tipOffset: Dp = 0.dp,
     onDismissRequest: (() -> Unit)? = null,
     tooltipTokens: TooltipTokens? = null,
     content: @Composable () -> Unit,
@@ -277,6 +281,7 @@ fun ToolTipBox(
                 modifier = modifier,
                 focusable = focusable,
                 offset = offset,
+                tipOffset = tipOffset,
                 onDismissRequest = onDismissRequest,
                 tooltipTokens = tooltipTokens
             )
@@ -299,6 +304,7 @@ private fun Tooltip(
     modifier: Modifier = Modifier,
     focusable: Boolean = true,
     offset: DpOffset = DpOffset(0.dp, 0.dp),
+    tipOffset: Dp = 0.dp,
     onDismissRequest: (() -> Unit)? = null,
     tooltipTokens: TooltipTokens? = null,
 ) {
@@ -325,7 +331,7 @@ private fun Tooltip(
                 }
             val parentCenter = parentBounds.left + parentBounds.width / 2
             val tooltipCenter = tooltipContentBounds.left + tooltipContentBounds.width / 2
-            tipOffsetX = dpToPx(offset.x) + if (isRTL) (tooltipCenter - parentCenter).toFloat() else
+            tipOffsetX = dpToPx(offset.x) + dpToPx(tipOffset) + if (isRTL) (tooltipCenter - parentCenter).toFloat() else
                 (parentCenter - tooltipCenter).toFloat()
 
             if(tipOffsetX + tooltipCenter > tooltipContentBounds.right - dpToPx(24.dp)){
