@@ -1,13 +1,11 @@
-Release Version 0.2.4:
+Release Version 0.2.5:
 
 What's New:
 
 Fluent V2:
         Fix/Enhancement:
             
-            1. Addressed an issue with the shadow in Bottomsheet.
-            2. Included a new parameter, minmaxLines, in the AvatarCarousel to adjust text and subtext.
-            3. Updated the Button component to include a trailing icon.
-            4. Resolved crashes related to the Bottomsheet anchor.
+            1. You can specify the card type as outlined or elevated in the Card component's params.
+            2. You can adjust the tip's position relative to the tooltip box using the tipOffset parameter.
 
 Note: Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00)
