@@ -3,11 +3,13 @@ package com.microsoft.fluentui.tokenized.controls
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BasicCardInfo
@@ -18,16 +20,18 @@ import com.microsoft.fluentui.theme.token.controlTokens.CardType
  * Cards are flexible containers that group related content and actions together. They reveal more information upon interaction.
  * A Basic card is a card with an empty container and with radius and basic elevation or outline depending on the cardType.
  *
- * @param modifier Modifier for the card
- * @param basicCardTokens Optional tokens for customizing the card
+ * @param modifier Modifier for the card which is applied first in order
  * @param cardType defines the card type, whether Elevated or Outlined
+ * @param basicCardTokens Optional tokens for customizing the card
+ * @param sequentiallyLastModifier Modifier for the card which is applied sequentially after the default modifier
  * @param content Content for the card
  */
 @Composable
 fun BasicCard(
     modifier: Modifier = Modifier,
-    basicCardTokens: BasicCardTokens? = null,
     cardType: CardType = CardType.Elevated,
+    basicCardTokens: BasicCardTokens? = null,
+    sequentiallyLastModifier : Modifier? = null,
     content: @Composable () -> Unit
 ) {
     val themeID =
@@ -42,7 +46,7 @@ fun BasicCard(
     val borderStrokeWidth = token.borderStrokeWidth(basicCardInfo = cardInfo)
     val shape = RoundedCornerShape(cornerRadius)
     Box(
-        modifier = Modifier
+        modifier = modifier
             .shadow(elevation, shape, false)
             .background(
                 backgroundBrush, shape
@@ -51,7 +55,10 @@ fun BasicCard(
                 borderStrokeWidth, borderColor, shape
             )
             .clip(shape)
-            .then(modifier)
+            .padding(horizontal = 16.dp)
+            .then(
+                sequentiallyLastModifier ?: Modifier
+            )
     ) {
         content()
     }
