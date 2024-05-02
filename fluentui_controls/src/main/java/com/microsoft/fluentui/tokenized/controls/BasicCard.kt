@@ -23,7 +23,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.CardType
  * @param modifier Modifier for the card which is applied first in order
  * @param cardType defines the card type, whether Elevated or Outlined
  * @param basicCardTokens Optional tokens for customizing the card
- * @param sequentiallyLastModifier Modifier for the card which is applied sequentially after the default modifier
  * @param content Content for the card
  */
 @Composable
@@ -31,7 +30,6 @@ fun BasicCard(
     modifier: Modifier = Modifier,
     cardType: CardType = CardType.Elevated,
     basicCardTokens: BasicCardTokens? = null,
-    sequentiallyLastModifier : Modifier? = null,
     content: @Composable () -> Unit
 ) {
     val themeID =
@@ -56,9 +54,6 @@ fun BasicCard(
             )
             .clip(shape)
             .padding(horizontal = 16.dp)
-            .then(
-                sequentiallyLastModifier ?: Modifier
-            )
     ) {
         content()
     }
