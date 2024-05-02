@@ -126,16 +126,7 @@ fun TextField(
         textAvailable = value.isNotEmpty()
     )
 
-    val focusRequester = remember { FocusRequester() }
-
     Column(modifier = modifier
-        .onFocusChanged { focusState ->
-            when {
-                focusState.isFocused -> {
-                    focusRequester.requestFocus()
-                }
-            }
-        }
         .background(token.backgroundBrush(textFieldInfo))
         .padding(token.leftRightPadding(textFieldInfo))) {
         if (!label.isNullOrBlank()) {
@@ -185,7 +176,6 @@ fun TextField(
                             .testTag(TEXT_FIELD)
                             .padding(vertical = 12.dp)
                             .weight(1F)
-                            .focusRequester(focusRequester)
                             .onFocusChanged { state ->
                                 isFocused = false
                                 when {
