@@ -24,24 +24,6 @@ extends:
     stages:
     - stage: __default
       jobs:
-      - job: compliance
-        displayName: Compliance checks
-        steps:
-        - task: UseDotNet@2
-          condition: succeededOrFailed()
-          displayName: 'Use .NET Core sdk 3.x'
-          inputs:
-            version: 3.x
-            steps: ''
-        - task: AssetRetention@3
-          displayName: "\U0001F9ED Arrow Retention"
-          inputs:
-            ArrowServiceConnection: 'Arrow_uifabric_uifabric_PROD'
-            AssetGroupName: '$(System.TeamProject)_$(Build.DefinitionName)'
-            AssetNumber: '$(Build.BuildId)'
-            IsShipped: false
-            DropsToRetain: 'CodeAnalysisLogs'
-          condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
       - job: Build
         variables:
         - name: BUILDSECMON_OPT_IN
