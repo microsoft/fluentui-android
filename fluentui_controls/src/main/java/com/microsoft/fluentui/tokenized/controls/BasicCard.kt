@@ -18,16 +18,16 @@ import com.microsoft.fluentui.theme.token.controlTokens.CardType
  * Cards are flexible containers that group related content and actions together. They reveal more information upon interaction.
  * A Basic card is a card with an empty container and with radius and basic elevation or outline depending on the cardType.
  *
- * @param modifier Modifier for the card
- * @param basicCardTokens Optional tokens for customizing the card
+ * @param modifier Modifier for the card which is applied first in order
  * @param cardType defines the card type, whether Elevated or Outlined
+ * @param basicCardTokens Optional tokens for customizing the card
  * @param content Content for the card
  */
 @Composable
 fun BasicCard(
     modifier: Modifier = Modifier,
-    basicCardTokens: BasicCardTokens? = null,
     cardType: CardType = CardType.Elevated,
+    basicCardTokens: BasicCardTokens? = null,
     content: @Composable () -> Unit
 ) {
     val themeID =
@@ -42,7 +42,7 @@ fun BasicCard(
     val borderStrokeWidth = token.borderStrokeWidth(basicCardInfo = cardInfo)
     val shape = RoundedCornerShape(cornerRadius)
     Box(
-        modifier = Modifier
+        modifier = modifier
             .shadow(elevation, shape, false)
             .background(
                 backgroundBrush, shape
@@ -51,7 +51,6 @@ fun BasicCard(
                 borderStrokeWidth, borderColor, shape
             )
             .clip(shape)
-            .then(modifier)
     ) {
         content()
     }
