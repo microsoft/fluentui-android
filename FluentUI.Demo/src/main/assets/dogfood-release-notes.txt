@@ -1,11 +1,11 @@
-Release Version 0.2.5:
+Release Version 0.2.6:
 
 What's New:
 
 Fluent V2:
         Fix/Enhancement:
             
-            1. You can specify the card type as outlined or elevated in the Card component's params.
-            2. You can adjust the tip's position relative to the tooltip box using the tipOffset parameter.
+            1. Resolved the issue of recurring focus in Text Field
+            2. The user passed modifier's application order has been changed, now it will be applied first, and then internal modifiers.
 
 Note: Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00)
