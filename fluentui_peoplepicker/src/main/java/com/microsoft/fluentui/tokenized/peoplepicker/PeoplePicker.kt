@@ -45,7 +45,9 @@ import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.theme.token.controlTokens.PeoplePickerInfo
 import com.microsoft.fluentui.theme.token.controlTokens.PeoplePickerTokens
+import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipSize
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle
+import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipTokens
 import com.microsoft.fluentui.tokenized.controls.TextField
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.PersonaChip
@@ -82,11 +84,10 @@ import com.microsoft.fluentui.tokenized.persona.PersonaChip
  * acts as dismiss icon.
  * @param peoplePickerContentDescription String which acts as content description for the PeoplePicker. Add content description for accessibility description.
  * @param peoplePickerTokens Customization options for the PeoplePicker.
+ * @param personaChipSize Size of the PersonaChip. See [PersonaChipSize]
+ * @param personaChipTokens Customization options for the PersonaChip.
  */
-@OptIn(
-    ExperimentalComposeUiApi::class, ExperimentalFoundationApi::class,
-    ExperimentalLayoutApi::class
-)
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun PeoplePicker(
     selectedPeopleList: MutableList<PeoplePickerItemData> = mutableStateListOf(),
@@ -109,7 +110,9 @@ fun PeoplePicker(
         contentDescription = LocalContext.current.resources.getString(R.string.fluentui_clear_text)
     ),
     peoplePickerContentDescription: String? = null,
-    peoplePickerTokens: PeoplePickerTokens? = null
+    peoplePickerTokens: PeoplePickerTokens? = null,
+    personaChipSize: PersonaChipSize? = null,
+    personaChipTokens: PersonaChipTokens? = null
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
@@ -171,6 +174,7 @@ fun PeoplePicker(
                             PersonaChip(
                                 modifier = Modifier.padding(bottom = chipVerticalSpacing),
                                 person = it.person, selected = it.selected.value,
+                                size = personaChipSize ?: PersonaChipSize.Medium,
                                 onCloseClick = if (onChipCloseClick != null) {
                                     {
                                         onChipCloseClick.invoke(it)
@@ -183,7 +187,8 @@ fun PeoplePicker(
                                     onChipClick?.invoke(it)
                                     onValueChange(queryText, selectedPeopleList)
                                 },
-                                style = chipValidation(it.person)
+                                style = chipValidation(it.person),
+                                personaChipTokens = personaChipTokens
                             )
                             Spacer(modifier = Modifier.width(chipHorizontalSpacing))
                         }
