@@ -84,7 +84,6 @@ import com.microsoft.fluentui.tokenized.persona.PersonaChip
  * acts as dismiss icon.
  * @param peoplePickerContentDescription String which acts as content description for the PeoplePicker. Add content description for accessibility description.
  * @param peoplePickerTokens Customization options for the PeoplePicker.
- * @param personaChipSize Size of the PersonaChip. See [PersonaChipSize]
  * @param personaChipTokens Customization options for the PersonaChip.
  */
 @OptIn(ExperimentalLayoutApi::class)
@@ -111,7 +110,6 @@ fun PeoplePicker(
     ),
     peoplePickerContentDescription: String? = null,
     peoplePickerTokens: PeoplePickerTokens? = null,
-    personaChipSize: PersonaChipSize? = null,
     personaChipTokens: PersonaChipTokens? = null
 ) {
     val themeID =
@@ -174,7 +172,6 @@ fun PeoplePicker(
                             PersonaChip(
                                 modifier = Modifier.padding(bottom = chipVerticalSpacing),
                                 person = it.person, selected = it.selected.value,
-                                size = personaChipSize ?: PersonaChipSize.Medium,
                                 onCloseClick = if (onChipCloseClick != null) {
                                     {
                                         onChipCloseClick.invoke(it)
