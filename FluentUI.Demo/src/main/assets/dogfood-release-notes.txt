@@ -1,11 +1,10 @@
-Release Version 0.2.6:
+Release Version 0.2.7:
 
 What's New:
 
 Fluent V2:
         Fix/Enhancement:
             
-            1. Resolved the issue of recurring focus in Text Field
-            2. The user passed modifier's application order has been changed, now it will be applied first, and then internal modifiers.
+            1. People Picker now supports a new param Persona Chip Tokens for finer user control over the customization of the persona chip tokens.
 
 Note: Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00)
