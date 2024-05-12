@@ -1,7 +1,6 @@
 package com.microsoft.fluentui.tokenized.peoplepicker
 
 import android.graphics.Bitmap
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -17,25 +16,19 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.LayoutDirection
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Dismisscircle
 import com.microsoft.fluentui.peoplepicker.R
@@ -46,6 +39,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.theme.token.controlTokens.PeoplePickerInfo
 import com.microsoft.fluentui.theme.token.controlTokens.PeoplePickerTokens
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle
+import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipTokens
 import com.microsoft.fluentui.tokenized.controls.TextField
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.PersonaChip
@@ -82,11 +76,9 @@ import com.microsoft.fluentui.tokenized.persona.PersonaChip
  * acts as dismiss icon.
  * @param peoplePickerContentDescription String which acts as content description for the PeoplePicker. Add content description for accessibility description.
  * @param peoplePickerTokens Customization options for the PeoplePicker.
+ * @param personaChipTokens Customization options for the PersonaChip.
  */
-@OptIn(
-    ExperimentalComposeUiApi::class, ExperimentalFoundationApi::class,
-    ExperimentalLayoutApi::class
-)
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun PeoplePicker(
     selectedPeopleList: MutableList<PeoplePickerItemData> = mutableStateListOf(),
@@ -109,7 +101,8 @@ fun PeoplePicker(
         contentDescription = LocalContext.current.resources.getString(R.string.fluentui_clear_text)
     ),
     peoplePickerContentDescription: String? = null,
-    peoplePickerTokens: PeoplePickerTokens? = null
+    peoplePickerTokens: PeoplePickerTokens? = null,
+    personaChipTokens: PersonaChipTokens? = null
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
@@ -183,7 +176,8 @@ fun PeoplePicker(
                                     onChipClick?.invoke(it)
                                     onValueChange(queryText, selectedPeopleList)
                                 },
-                                style = chipValidation(it.person)
+                                style = chipValidation(it.person),
+                                personaChipTokens = personaChipTokens
                             )
                             Spacer(modifier = Modifier.width(chipHorizontalSpacing))
                         }
