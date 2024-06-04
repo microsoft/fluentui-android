@@ -96,6 +96,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.TooltipActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.TypographyActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.actionbar.ActionBarDemoActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2ModernToastActivity"/>
 
     </application>
 
