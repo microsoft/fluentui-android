@@ -46,4 +46,11 @@ open class BottomSheetTokens : IControlToken, Parcelable {
 
     @Composable
     open fun scrimOpacity(bottomSheetInfo: BottomSheetInfo): Float = 0.32F
+
+    @Composable
+    open fun maxLandscapeWidth (bottomSheetInfo: BottomSheetInfo): Float =
+        0.6F
+
+
+
 }
