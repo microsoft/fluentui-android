@@ -914,7 +914,6 @@ private fun BottomDrawer(
                     fullHeight,
                     drawerState
                 )
-                .shadow(drawerElevation)
                 .clip(drawerShape)
                 .background(drawerBackground)
                 .semantics {
