@@ -5,6 +5,7 @@
 
 package com.microsoft.fluentui.tokenized.bottomsheet
 
+import android.content.res.Configuration
 import android.view.*
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.foundation.*
@@ -29,6 +30,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.*
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
@@ -251,6 +253,7 @@ fun BottomSheet(
         tokens.scrimColor(bottomSheetInfo).copy(alpha = scrimOpacity)
 
     val scope = rememberCoroutineScope()
+    val maxLandscapeWidth :Float= tokens.maxLandscapeWidth(bottomSheetInfo)
 
     BoxWithConstraints(modifier) {
         val fullHeight = constraints.maxHeight.toFloat()
@@ -260,6 +263,7 @@ fun BottomSheet(
         Box(
             Modifier
                 .fillMaxSize()
+                .align(Alignment.Center)
                 .semantics {
                     if (!sheetState.isVisible) {
                         expand {
@@ -301,10 +305,14 @@ fun BottomSheet(
                 )
             }
         }
+        val configuration = LocalConfiguration.current
 
         Box(
             Modifier
-                .fillMaxWidth()
+                .fillMaxWidth(
+                    if(configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)maxLandscapeWidth
+                    else 1F
+                )
                 .nestedScroll(
                     if (!enableSwipeDismiss && sheetState.offset.value >= (fullHeight - dpToPx(
                             peekHeight
