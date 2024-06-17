@@ -1,10 +1,10 @@
-Release Version 0.2.7:
+Release Version 0.2.8:
 
 What's New:
 
 Fluent V2:
         Fix/Enhancement:
             
-            1. People Picker now supports a new param Persona Chip Tokens for finer user control over the customization of the persona chip tokens.
+            1. Added an additional token to enable resizing the drawer's width in landscape mode.
 
 Note: Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00)
