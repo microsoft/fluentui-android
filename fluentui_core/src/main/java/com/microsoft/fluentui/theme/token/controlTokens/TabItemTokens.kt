@@ -3,14 +3,21 @@ package com.microsoft.fluentui.theme.token.controlTokens
 import android.os.Parcelable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
-import com.microsoft.fluentui.theme.token.*
+import com.microsoft.fluentui.theme.token.ControlInfo
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentColor
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
+import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.IControlToken
+import com.microsoft.fluentui.theme.token.StateBrush
+import com.microsoft.fluentui.theme.token.StateColor
 import kotlinx.parcelize.Parcelize
 
 enum class TabTextAlignment {
@@ -73,7 +80,7 @@ open class TabItemTokens : IControlToken, Parcelable {
                 pressed = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                     themeMode = FluentTheme.themeMode
                 ),
-                focused= FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                focused = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                     themeMode = FluentTheme.themeMode
                 ),
                 disabled = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
@@ -158,10 +165,15 @@ open class TabItemTokens : IControlToken, Parcelable {
 
     @Composable
     open fun padding(tabItemInfo: TabItemInfo): PaddingValues {
-        return when(tabItemInfo.tabTextAlignment){
+        return when (tabItemInfo.tabTextAlignment) {
             TabTextAlignment.HORIZONTAL -> PaddingValues(top = 8.dp, start = 4.dp, bottom = 4.dp, end = 8.dp)
             TabTextAlignment.VERTICAL -> PaddingValues(top = 8.dp, start = 8.dp, bottom = 4.dp, end = 8.dp)
             TabTextAlignment.NO_TEXT -> PaddingValues(top = 8.dp, start = 8.dp, bottom = 4.dp, end = 8.dp)
         }
+    }
+
+    @Composable
+    open fun textSize(tabItemInfo: TabItemInfo): TextUnit {
+        return TextUnit.Unspecified
     }
 }

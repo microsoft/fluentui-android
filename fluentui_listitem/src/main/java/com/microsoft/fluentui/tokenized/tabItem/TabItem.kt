@@ -78,6 +78,8 @@ fun TabItem(
             role = Role.Tab,
         )
 
+    val textSize = token.textSize(tabItemInfo)
+
     val widthModifier = if (fixedWidth) {
         Modifier.width(token.width(tabItemInfo = tabItemInfo))
     } else {
@@ -120,7 +122,7 @@ fun TabItem(
                         width = Dimension.preferredWrapContent
                     }
                     .padding(start = 8.dp),
-                style = TextStyle(color = textColor, textAlign = TextAlign.Center),
+                style = TextStyle(color = textColor, textAlign = TextAlign.Center, fontSize = textSize),
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 1
             )
@@ -206,7 +208,7 @@ fun TabItem(
                 Spacer(modifier = Modifier.height(2.dp))
                 BasicText(
                     text = title,
-                    style = TextStyle(color = textColor, textAlign = TextAlign.Center)
+                    style = TextStyle(color = textColor, textAlign = TextAlign.Center, fontSize = textSize)
                 )
             }
         }
