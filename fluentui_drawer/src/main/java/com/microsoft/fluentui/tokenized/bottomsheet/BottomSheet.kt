@@ -5,8 +5,11 @@
 
 package com.microsoft.fluentui.tokenized.bottomsheet
 
+import android.content.Context
 import android.content.res.Configuration
 import android.view.*
+import android.view.accessibility.AccessibilityEvent
+import android.view.accessibility.AccessibilityManager
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.foundation.*
 import androidx.compose.foundation.gestures.Orientation
@@ -428,6 +431,9 @@ fun BottomSheet(
                             )
                             .testTag(BOTTOMSHEET_HANDLE_TAG)
                     ) {
+                        val collapsed = LocalContext.current.resources.getString(R.string.collapsed)
+                        val expanded = LocalContext.current.resources.getString(R.string.expanded)
+                        val accessibilityManager  = LocalContext.current.getSystemService(Context.ACCESSIBILITY_SERVICE) as? AccessibilityManager
                         Icon(
                             painterResource(id = R.drawable.ic_drawer_handle),
                             contentDescription =
@@ -453,10 +459,22 @@ fun BottomSheet(
                                     if (sheetState.currentValue == BottomSheetValue.Expanded) {
                                         if (sheetState.confirmStateChange(BottomSheetValue.Shown)) {
                                             scope.launch { sheetState.show() }
+                                            accessibilityManager?.let { manager ->
+                                                val event = AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
+                                                    text.add(collapsed)
+                                                }
+                                                manager.sendAccessibilityEvent(event)
+                                            }
                                         }
                                     } else if (sheetState.hasExpandedState) {
                                         if (sheetState.confirmStateChange(BottomSheetValue.Expanded)) {
                                             scope.launch { sheetState.expand() }
+                                            accessibilityManager?.let { manager ->
+                                                val event = AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
+                                                    text.add(expanded)
+                                                }
+                                                manager.sendAccessibilityEvent(event)
+                                            }
                                         }
                                     }
                                 }

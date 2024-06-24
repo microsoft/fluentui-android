@@ -11,6 +11,8 @@
     <string name="drag_handle">Drag Handle</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">expand</string>
+    <string name="expanded">expanded</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">collapse</string>
+    <string name="collapsed">collapsed</string>
 </resources>
