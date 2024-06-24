@@ -1,5 +1,8 @@
 package com.microsoft.fluentui.tokenized.drawer
 
+import android.content.Context
+import android.view.accessibility.AccessibilityEvent
+import android.view.accessibility.AccessibilityManager
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -977,6 +980,9 @@ private fun BottomDrawer(
                             )
                             .testTag(DRAWER_HANDLE_TAG)
                     ) {
+                        val collapsed = LocalContext.current.resources.getString(R.string.collapsed)
+                        val expanded = LocalContext.current.resources.getString(R.string.expanded)
+                        val accessibilityManager  = LocalContext.current.getSystemService(Context.ACCESSIBILITY_SERVICE) as? AccessibilityManager
                         Icon(
                             painterResource(id = R.drawable.ic_drawer_handle),
                             contentDescription = LocalContext.current.resources.getString(R.string.drag_handle),
@@ -1000,10 +1006,23 @@ private fun BottomDrawer(
                                             )
                                         ) {
                                             scope.launch { drawerState.open() }
+                                            accessibilityManager?.let { manager ->
+                                                val event = AccessibilityEvent.obtain(
+                                                    AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
+                                                    text.add(collapsed)
+                                                }
+                                                manager.sendAccessibilityEvent(event)
+                                            }
                                         }
                                     } else if (drawerState.hasExpandedState) {
                                         if (drawerState.confirmStateChange(DrawerValue.Expanded)) {
                                             scope.launch { drawerState.expand() }
+                                            accessibilityManager?.let { manager ->
+                                                val event = AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
+                                                    text.add(expanded)
+                                                }
+                                                manager.sendAccessibilityEvent(event)
+                                            }
                                         }
                                     }
                                 }
