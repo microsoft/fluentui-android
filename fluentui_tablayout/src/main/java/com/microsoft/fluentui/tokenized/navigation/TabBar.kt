@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
@@ -59,7 +60,7 @@ fun TabBar(
         )
         Row(
             modifier = Modifier
-                .padding(horizontal = 16.dp)
+                .padding(horizontal = if(LocalConfiguration.current.screenWidthDp.dp > 360.dp )16.dp else 1.dp)       // For small phones we don't want the text overflowing, hence removing padding
                 .fillMaxWidth()
         ) {
             tabDataList.forEachIndexed { index, tabData ->
