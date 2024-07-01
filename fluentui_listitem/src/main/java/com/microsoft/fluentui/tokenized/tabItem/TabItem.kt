@@ -21,12 +21,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.TabItemInfo
@@ -206,8 +207,14 @@ fun TabItem(
                 .then(widthModifier)
         ) {
             badgeWithIcon()
-            var fontSize = remember { mutableStateOf(14.sp) }
-            var textStyle by remember(textColor) { mutableStateOf(TextStyle(color = textColor, textAlign = TextAlign.Center, fontSize = fontSize.value)) }
+
+            val fontStyle = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption2]
+            var fontSize = remember { mutableStateOf(fontStyle.fontSize) }
+            var textStyle by remember(textColor) {
+                mutableStateOf(
+                    fontStyle.merge(TextStyle(color = textColor, fontSize = fontSize.value))
+                )
+            }
 
             if (textAlignment == TabTextAlignment.VERTICAL) {
                 Spacer(modifier = Modifier.height(2.dp))
@@ -218,6 +225,7 @@ fun TabItem(
                     overflow = TextOverflow.Ellipsis,
                     onTextLayout = { textLayoutResult ->
                         if (textLayoutResult.didOverflowHeight) {
+                            textStyle.fontSize
                             fontSize.value *= 0.9
                             textStyle = textStyle.copy(fontSize = fontSize.value)
                         }

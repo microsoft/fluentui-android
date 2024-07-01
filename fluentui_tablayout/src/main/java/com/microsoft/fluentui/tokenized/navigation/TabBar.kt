@@ -59,9 +59,7 @@ fun TabBar(
                 .background(color = token.topBorderColor(tabBarInfo = TabBarInfo()))
         )
         Row(
-            modifier = Modifier
-                .padding(horizontal = if(LocalConfiguration.current.screenWidthDp.dp > 360.dp )16.dp else 1.dp)       // For small phones we don't want the text overflowing, hence removing padding
-                .fillMaxWidth()
+            modifier = Modifier.fillMaxWidth()
         ) {
             tabDataList.forEachIndexed { index, tabData ->
                 tabData.selected = index == selectedIndex
