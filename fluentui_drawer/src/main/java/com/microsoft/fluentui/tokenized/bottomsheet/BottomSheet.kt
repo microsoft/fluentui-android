@@ -312,6 +312,7 @@ fun BottomSheet(
 
         Box(
             Modifier
+                .align(Alignment.Center)
                 .fillMaxWidth(
                     if(configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)maxLandscapeWidth
                     else 1F
