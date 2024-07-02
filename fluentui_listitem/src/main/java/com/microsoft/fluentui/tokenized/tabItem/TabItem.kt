@@ -1,15 +1,31 @@
 package com.microsoft.fluentui.tokenized.tabItem
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandHorizontally
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.layoutId
@@ -23,6 +39,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.TabItemInfo
@@ -51,18 +68,22 @@ fun TabItem(
             ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabItemControlType] as TabItemTokens
 
     val tabItemInfo = TabItemInfo(textAlignment, style)
-    val textColor =
+    val textColor by animateColorAsState(
         token.textColor(tabItemInfo = tabItemInfo).getColorByState(
             enabled = enabled,
             selected = selected,
             interactionSource = interactionSource
-        )
-    val iconColor =
-        token.iconColor(tabItemInfo = tabItemInfo).getColorByState(
+        ),
+        animationSpec = tween(durationMillis = 300)
+    )
+    val iconColor by animateColorAsState (
+        targetValue = token.iconColor(tabItemInfo = tabItemInfo).getColorByState(
             enabled = enabled,
             selected = selected,
             interactionSource = interactionSource
-        )
+        ),
+        animationSpec = tween(durationMillis = 300)
+    )
     val padding = token.padding(tabItemInfo = tabItemInfo)
     val backgroundColor = token.backgroundBrush(tabItemInfo = tabItemInfo).getBrushByState(
         enabled = enabled, selected = selected, interactionSource = interactionSource
@@ -71,7 +92,7 @@ fun TabItem(
     val clickableModifier = Modifier
         .clickable(
             interactionSource = interactionSource,
-            indication = rememberRipple(color = rippleColor),
+            indication = null,
             onClickLabel = null,
             enabled = enabled,
             onClick = onClick,
@@ -96,7 +117,6 @@ fun TabItem(
         ConstraintLayout(
             modifier = modifier
                 .then(clickableModifier)
-                .background(backgroundColor)
                 .padding(padding)
                 .then(widthModifier)
         )
@@ -192,12 +212,13 @@ fun TabItem(
             }
         }
 
+        val indicatorCornerRadiusSize = FluentGlobalTokens.CornerRadiusTokens.CornerRadiusCircle.value
+        val indicatorWidth = FluentGlobalTokens.SizeTokens.Size160.value
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
             modifier = modifier
                 .then(clickableModifier)
-                .background(backgroundColor)
                 .padding(padding)
                 .then(widthModifier)
         ) {
@@ -207,6 +228,21 @@ fun TabItem(
                 BasicText(
                     text = title,
                     style = TextStyle(color = textColor, textAlign = TextAlign.Center)
+                )
+            }
+            Spacer(modifier = Modifier.height(3.5.dp))
+            AnimatedVisibility(
+                    visible = selected,
+                    enter = fadeIn(animationSpec = tween(durationMillis = 300))+ expandHorizontally(animationSpec = tween(durationMillis = 300)),
+                    exit = fadeOut(animationSpec = tween(durationMillis = 300))+ shrinkHorizontally(animationSpec = tween(durationMillis = 300)),
+                )
+            {
+                Box(
+                    modifier = Modifier
+                        .height(3.dp)
+                        .width(indicatorWidth)
+                        .background(shape = RoundedCornerShape(indicatorCornerRadiusSize), color = textColor)
+                        .clip(RoundedCornerShape(indicatorCornerRadiusSize))
                 )
             }
         }
