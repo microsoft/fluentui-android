@@ -1,10 +1,14 @@
-Release Version 0.2.8:
+Release Version 0.2.9:
 
 What's New:
 
 Fluent V2:
         Fix/Enhancement:
-            
-            1. Added an additional token to enable resizing the drawer's width in landscape mode.
+
+            1. The Tab Bar has been enhanced with a bar indicator beneath the icons, along with a fading animation to enhance user interaction.
+            2. The text within Tab Items now automatically adjusts to ensure it remains on a single line without overflowing.
+            3. The BottomSheet & drawers now announce "Collapsed" or "Expanded" after they have collapsed or expanded in talkback mode.
+            4. The BottomSheet, when viewed in landscape mode and set to a custom width, is now centered.
+
 
 Note: Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00)
