@@ -32,6 +32,7 @@ data class TabData(
  *  @param modifier the [Modifier] to be applied to this item
  *  @param selectedIndex Index of selected tax. This should be updated onClick of TabData & provide back to TabBar.
  *  @param tabTextAlignment Placement of text in Tab
+ *  @param showIndicator Add an indicator under the selected icon
  *  @param tabItemTokens [TabItemTokens] to apply on tabs.
  *  @param tabBarTokens provide appearance values. If not provided then tokens will be picked from AppThemeController
  *
@@ -42,6 +43,7 @@ fun TabBar(
     modifier: Modifier = Modifier,
     selectedIndex: Int = 0,
     tabTextAlignment: TabTextAlignment = TabTextAlignment.VERTICAL,
+    showIndicator: Boolean = false,
     tabItemTokens: TabItemTokens? = null,
     tabBarTokens: TabBarTokens? = null
 ) {
@@ -74,6 +76,7 @@ fun TabBar(
                     selected = tabData.selected,
                     onClick = tabData.onClick,
                     accessory = tabData.badge,
+                    showIndicator = showIndicator,
                     tabItemTokens = tabItemTokens
                         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabItemControlType] as TabItemTokens,
                     style = if (tabData.selected) FluentStyle.Brand else FluentStyle.Neutral

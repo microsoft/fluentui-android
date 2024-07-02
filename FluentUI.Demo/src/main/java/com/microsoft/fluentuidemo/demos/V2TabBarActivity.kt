@@ -26,6 +26,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.theme.token.controlTokens.TabTextAlignment
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.RadioButton
+import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.navigation.TabBar
 import com.microsoft.fluentui.tokenized.navigation.TabData
@@ -56,12 +57,17 @@ class V2TabBarActivity : V2DemoActivity() {
 
         val _tabTextAlignment: MutableLiveData<TabTextAlignment> =
             MutableLiveData(TabTextAlignment.VERTICAL)
+        val _tabShowIndicator: MutableLiveData<Boolean> =
+            MutableLiveData(false)
         val _tabItemsCount: MutableLiveData<Int> = MutableLiveData(5)
 
         setActivityContent {
             val content = listOf(0, 1, 2)
             var selectedOption by rememberSaveable { mutableStateOf(content[0]) }
             val tabItemsCount = _tabItemsCount.observeAsState(initial = 5)
+            var showIndicator by rememberSaveable {
+                mutableStateOf(false)
+            }
 
             Column {
                 ListItem.Header(title = resources.getString(R.string.tabBar_text_alignment))
@@ -140,6 +146,18 @@ class V2TabBarActivity : V2DemoActivity() {
                     }
 
                 }
+                ListItem.Header(title = "Show Indicator",
+                    trailingAccessoryContent = {
+                        ToggleSwitch(
+                            onValueChange = {
+                                showIndicator = it
+                                _tabShowIndicator.value = showIndicator
+                            },
+                            modifier = Modifier.testTag(APP_BAR_SUBTITLE_PARAM),
+                            checkedState = showIndicator
+                        )
+                    }
+                )
                 ListItem.Header(title = resources.getString(R.string.tabBar_tab_items),
                     trailingAccessoryContent =
                     {
@@ -175,6 +193,7 @@ class V2TabBarActivity : V2DemoActivity() {
             val tabTextAlignment =
                 _tabTextAlignment.observeAsState(initial = TabTextAlignment.VERTICAL)
             val tabItemsCount = _tabItemsCount.observeAsState(initial = 5)
+            val showIndicator = _tabShowIndicator.observeAsState(initial = false)
 
             val tabDataList = arrayListOf(
                 TabData(
@@ -233,7 +252,8 @@ class V2TabBarActivity : V2DemoActivity() {
                 modifier = Modifier.testTag(TAB_BAR),
                 tabDataList = tabDataList.take(tabItemsCount.value),
                 selectedIndex = selectedIndex,
-                tabTextAlignment = tabTextAlignment.value
+                tabTextAlignment = tabTextAlignment.value,
+                showIndicator = showIndicator.value
             )
         }
     }

@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -58,6 +59,7 @@ fun TabItem(
     enabled: Boolean = true,
     selected: Boolean = false,
     fixedWidth: Boolean = false,
+    showIndicator: Boolean = false,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     tabItemTokens: TabItemTokens? = null
 ) {
@@ -92,7 +94,7 @@ fun TabItem(
     val clickableModifier = Modifier
         .clickable(
             interactionSource = interactionSource,
-            indication = null,
+            indication = if (showIndicator) null else rememberRipple(color = rippleColor),
             onClickLabel = null,
             enabled = enabled,
             onClick = onClick,
@@ -117,6 +119,12 @@ fun TabItem(
         ConstraintLayout(
             modifier = modifier
                 .then(clickableModifier)
+                .then(
+                    if(showIndicator)
+                        Modifier.background(backgroundColor)
+                    else
+                        Modifier
+                )
                 .padding(padding)
                 .then(widthModifier)
         )
@@ -219,6 +227,12 @@ fun TabItem(
             verticalArrangement = Arrangement.Center,
             modifier = modifier
                 .then(clickableModifier)
+                .then(
+                    if(showIndicator)
+                        Modifier.background(backgroundColor)
+                    else
+                        Modifier
+                )
                 .padding(padding)
                 .then(widthModifier)
         ) {
@@ -230,20 +244,22 @@ fun TabItem(
                     style = TextStyle(color = textColor, textAlign = TextAlign.Center)
                 )
             }
-            Spacer(modifier = Modifier.height(3.5.dp))
-            AnimatedVisibility(
+            if(showIndicator){
+                Spacer(modifier = Modifier.height(3.5.dp))
+                AnimatedVisibility(
                     visible = selected,
                     enter = fadeIn(animationSpec = tween(durationMillis = 300))+ expandHorizontally(animationSpec = tween(durationMillis = 300)),
                     exit = fadeOut(animationSpec = tween(durationMillis = 300))+ shrinkHorizontally(animationSpec = tween(durationMillis = 300)),
                 )
-            {
-                Box(
-                    modifier = Modifier
-                        .height(3.dp)
-                        .width(indicatorWidth)
-                        .background(shape = RoundedCornerShape(indicatorCornerRadiusSize), color = textColor)
-                        .clip(RoundedCornerShape(indicatorCornerRadiusSize))
-                )
+                {
+                    Box(
+                        modifier = Modifier
+                            .height(3.dp)
+                            .width(indicatorWidth)
+                            .background(shape = RoundedCornerShape(indicatorCornerRadiusSize), color = textColor)
+                            .clip(RoundedCornerShape(indicatorCornerRadiusSize))
+                    )
+                }
             }
         }
     }
