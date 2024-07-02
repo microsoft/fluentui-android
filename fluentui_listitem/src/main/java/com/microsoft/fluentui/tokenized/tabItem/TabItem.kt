@@ -22,7 +22,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -39,6 +41,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.Icon
@@ -223,11 +226,29 @@ fun TabItem(
                 .then(widthModifier)
         ) {
             badgeWithIcon()
+
+            val fontStyle = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption2]
+            var fontSize = remember { mutableStateOf(fontStyle.fontSize) }
+            var textStyle by remember(textColor) {
+                mutableStateOf(
+                    fontStyle.merge(TextStyle(color = textColor, fontSize = fontSize.value))
+                )
+            }
+
             if (textAlignment == TabTextAlignment.VERTICAL) {
                 Spacer(modifier = Modifier.height(2.dp))
                 BasicText(
                     text = title,
-                    style = TextStyle(color = textColor, textAlign = TextAlign.Center)
+                    style = textStyle,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    onTextLayout = { textLayoutResult ->
+                        if (textLayoutResult.didOverflowHeight) {
+                            textStyle.fontSize
+                            fontSize.value *= 0.9
+                            textStyle = textStyle.copy(fontSize = fontSize.value)
+                        }
+                    }
                 )
             }
             Spacer(modifier = Modifier.height(3.5.dp))
