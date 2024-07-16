@@ -312,7 +312,7 @@ fun BottomSheet(
 
         Box(
             Modifier
-                .align(Alignment.Center)
+                .align(Alignment.TopCenter)
                 .fillMaxWidth(
                     if(configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)maxLandscapeWidth
                     else 1F
@@ -461,20 +461,24 @@ fun BottomSheet(
                                         if (sheetState.confirmStateChange(BottomSheetValue.Shown)) {
                                             scope.launch { sheetState.show() }
                                             accessibilityManager?.let { manager ->
-                                                val event = AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
-                                                    text.add(collapsed)
+                                                if(manager.isEnabled){
+                                                    val event = AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
+                                                        text.add(collapsed)
+                                                    }
+                                                    manager.sendAccessibilityEvent(event)
                                                 }
-                                                manager.sendAccessibilityEvent(event)
                                             }
                                         }
                                     } else if (sheetState.hasExpandedState) {
                                         if (sheetState.confirmStateChange(BottomSheetValue.Expanded)) {
                                             scope.launch { sheetState.expand() }
                                             accessibilityManager?.let { manager ->
-                                                val event = AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
-                                                    text.add(expanded)
+                                                if(manager.isEnabled){
+                                                    val event = AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
+                                                        text.add(expanded)
+                                                    }
+                                                    manager.sendAccessibilityEvent(event)
                                                 }
-                                                manager.sendAccessibilityEvent(event)
                                             }
                                         }
                                     }

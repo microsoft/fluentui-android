@@ -1007,21 +1007,26 @@ private fun BottomDrawer(
                                         ) {
                                             scope.launch { drawerState.open() }
                                             accessibilityManager?.let { manager ->
-                                                val event = AccessibilityEvent.obtain(
-                                                    AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
-                                                    text.add(collapsed)
+                                                if(manager.isEnabled){
+                                                    val event = AccessibilityEvent.obtain(
+                                                        AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
+                                                        text.add(collapsed)
+                                                    }
+                                                    manager.sendAccessibilityEvent(event)
                                                 }
-                                                manager.sendAccessibilityEvent(event)
                                             }
                                         }
                                     } else if (drawerState.hasExpandedState) {
                                         if (drawerState.confirmStateChange(DrawerValue.Expanded)) {
                                             scope.launch { drawerState.expand() }
                                             accessibilityManager?.let { manager ->
-                                                val event = AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
-                                                    text.add(expanded)
+                                                if(manager.isEnabled){
+                                                    val event = AccessibilityEvent.obtain(
+                                                        AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
+                                                        text.add(expanded)
+                                                    }
+                                                    manager.sendAccessibilityEvent(event)
                                                 }
-                                                manager.sendAccessibilityEvent(event)
                                             }
                                         }
                                     }
