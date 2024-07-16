@@ -23,7 +23,9 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.disabled
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -172,7 +174,13 @@ fun TextField(
                         value = value,
                         onValueChange = onValueChange,
                         modifier = Modifier
-                            .semantics { contentDescription = textFieldContentDescription ?: "" }
+                            .semantics {
+                                contentDescription = textFieldContentDescription ?: ""
+                                if(readOnly){
+                                    this.stateDescription = "Read-only."
+                                    this.disabled()
+                                }
+                            }
                             .testTag(TEXT_FIELD)
                             .padding(vertical = 12.dp)
                             .weight(1F)
