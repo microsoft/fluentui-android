@@ -73,7 +73,7 @@ extends:
           inputs:
             testResultsFiles: "$(build.sourcesdirectory)/build/testResult/**/hydra_result_*.xml"
             testRunTitle: "Test-Result"
-            failTaskOnFailedTests: "$(failTaskOnFailedTests)"
+            failTaskOnFailedTests: $(failTaskOnFailedTests)
         - task: Gradle@2
           displayName: "generate artifacts and publish to feed"
           inputs:
