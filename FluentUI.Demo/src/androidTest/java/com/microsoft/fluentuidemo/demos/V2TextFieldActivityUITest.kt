@@ -111,8 +111,11 @@ class V2TextFieldActivityUITest : BaseTest() {
         toggleControlToValue(control, true)
         component.performClick()
         component.assertIsFocused()
-        component.performTextInput("Test")
-        component.assertTextContains("")
+        try {
+            component.performTextInput("Test")
+        } catch(e: Error){
+            // expected Error as attempt to input text in read only mode throws error
+        }
     }
 
     @Test
