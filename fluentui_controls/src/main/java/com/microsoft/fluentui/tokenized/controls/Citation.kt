@@ -14,8 +14,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.text.ExperimentalTextApi
-import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
@@ -30,7 +28,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.CitationTokens
  * @param modifier Optional modifier for the citation
  * @param citationTokens Optional tokens to customize appearance
  */
-@OptIn(ExperimentalTextApi::class)
 @Composable
 fun Citation(
     text: String,
@@ -76,9 +73,7 @@ fun Citation(
             text = text,
             style = typography.merge(
                 TextStyle(
-                    platformStyle = PlatformTextStyle(
-                        includeFontPadding = false
-                    ), color = textColor
+                    color = textColor
                 )
             )
         )
