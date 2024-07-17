@@ -16,6 +16,7 @@ import com.microsoft.fluentui.tokenized.controls.TEXT_FIELD_ICON
 import com.microsoft.fluentui.tokenized.controls.TEXT_FIELD_LABEL
 import com.microsoft.fluentui.tokenized.controls.TEXT_FIELD_SECONDARY_TEXT
 import com.microsoft.fluentuidemo.BaseTest
+import junit.framework.AssertionFailedError
 import org.junit.Before
 import org.junit.Test
 
@@ -111,11 +112,14 @@ class V2TextFieldActivityUITest : BaseTest() {
         toggleControlToValue(control, true)
         component.performClick()
         component.assertIsFocused()
+        var testPass = false
         try {
             component.performTextInput("Test")
         } catch(e: Error){
+            testPass = true
             // expected Error as attempt to input text in read only mode throws error
         }
+        if(!testPass) throw AssertionError("Read only mode did not render properly")
     }
 
     @Test
