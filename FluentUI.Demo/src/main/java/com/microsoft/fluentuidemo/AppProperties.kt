@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
@@ -230,6 +231,7 @@ fun SetAppThemeMode(onThemeModeClick: () -> Unit) {
                         AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Light
                         FluentTheme.updateThemeMode(ThemeMode.Light)
                         onThemeModeClick()
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                     },
                 )
             },
@@ -242,6 +244,7 @@ fun SetAppThemeMode(onThemeModeClick: () -> Unit) {
                 AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Dark
                 FluentTheme.updateThemeMode(ThemeMode.Dark)
                 onThemeModeClick()
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             },
             leadingAccessoryContent = {
                 RadioButton(
@@ -250,6 +253,7 @@ fun SetAppThemeMode(onThemeModeClick: () -> Unit) {
                         AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Dark
                         FluentTheme.updateThemeMode(ThemeMode.Dark)
                         onThemeModeClick()
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                     },
                 )
             },
