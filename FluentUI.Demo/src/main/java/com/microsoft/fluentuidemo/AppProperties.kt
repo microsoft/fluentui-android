@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
@@ -198,19 +199,11 @@ fun SetAppThemeMode(onThemeModeClick: () -> Unit) {
         val selectedThemeMode by AppThemeViewModel.selectedThemeMode_.observeAsState()
         ListItem.Item(
             text = stringResource(id = R.string.appearance_system_default),
-            onClick = {
-                AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Auto
-                FluentTheme.updateThemeMode(ThemeMode.Auto)
-                onThemeModeClick()
-            },
+            onClick = { appThemeToggle(ThemeMode.Auto, onThemeModeClick ) },
             leadingAccessoryContent = {
                 RadioButton(
                     selected = selectedThemeMode == ThemeMode.Auto,
-                    onClick = {
-                        AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Auto
-                        FluentTheme.updateThemeMode(ThemeMode.Auto)
-                        onThemeModeClick()
-                    },
+                    onClick = { appThemeToggle(ThemeMode.Auto, onThemeModeClick ) },
                 )
             },
             listItemTokens = CustomizedTokens.listItemTokens
@@ -218,19 +211,11 @@ fun SetAppThemeMode(onThemeModeClick: () -> Unit) {
 
         ListItem.Item(
             text = stringResource(id = R.string.appearance_light),
-            onClick = {
-                AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Light
-                FluentTheme.updateThemeMode(ThemeMode.Light)
-                onThemeModeClick()
-            },
+            onClick = { appThemeToggle(ThemeMode.Light, onThemeModeClick ) },
             leadingAccessoryContent = {
                 RadioButton(
                     selected = selectedThemeMode == ThemeMode.Light,
-                    onClick = {
-                        AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Light
-                        FluentTheme.updateThemeMode(ThemeMode.Light)
-                        onThemeModeClick()
-                    },
+                    onClick = { appThemeToggle(ThemeMode.Light, onThemeModeClick ) },
                 )
             },
             listItemTokens = CustomizedTokens.listItemTokens
@@ -238,19 +223,11 @@ fun SetAppThemeMode(onThemeModeClick: () -> Unit) {
 
         ListItem.Item(
             text = stringResource(id = R.string.appearance_dark),
-            onClick = {
-                AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Dark
-                FluentTheme.updateThemeMode(ThemeMode.Dark)
-                onThemeModeClick()
-            },
+            onClick = { appThemeToggle(ThemeMode.Dark, onThemeModeClick) },
             leadingAccessoryContent = {
                 RadioButton(
                     selected = selectedThemeMode == ThemeMode.Dark,
-                    onClick = {
-                        AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Dark
-                        FluentTheme.updateThemeMode(ThemeMode.Dark)
-                        onThemeModeClick()
-                    },
+                    onClick = { appThemeToggle(ThemeMode.Dark, onThemeModeClick) },
                 )
             },
             listItemTokens = CustomizedTokens.listItemTokens
@@ -258,6 +235,16 @@ fun SetAppThemeMode(onThemeModeClick: () -> Unit) {
     }
 }
 
+fun appThemeToggle(appThemeMode: ThemeMode, onThemeModeClick: () -> Unit) {
+    AppThemeViewModel.selectedThemeMode_.value = appThemeMode
+    FluentTheme.updateThemeMode(appThemeMode)
+    onThemeModeClick()
+    when(appThemeMode){
+        ThemeMode.Auto -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        ThemeMode.Light -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        ThemeMode.Dark -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+    }
+}
 @Composable
 fun SetAppTheme() {
     val selectedThemeIndex by AppThemeViewModel.selectedThemeIndex_.observeAsState()
