@@ -34,7 +34,7 @@ allprojects {
         constants = [
                 minSdkVersion: 21,
                 targetSdkVersion: 34,
-                compileSdkVersion: 33
+                compileSdkVersion: 34
         ]
 
         androidxRunner            =    '1.5.0'
