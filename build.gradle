@@ -33,7 +33,7 @@ allprojects {
     project.ext {
         constants = [
                 minSdkVersion: 21,
-                targetSdkVersion: 33,
+                targetSdkVersion: 34,
                 compileSdkVersion: 33
         ]
 
