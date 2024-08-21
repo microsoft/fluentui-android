@@ -16,8 +16,6 @@ android {
         versionCode 1010
         versionName '0.2.10'
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
- 
     }
     kotlinOptions {
         jvmTarget = '1.8'
