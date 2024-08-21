@@ -260,6 +260,7 @@ fun PillBar(
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillBarControlType] as PillBarTokens
 
     val pillBarInfo = PillBarInfo(style)
+    val padding = token.padding(pillBarInfo = pillBarInfo)
     val lazyListState = rememberLazyListState()
     val scope = rememberCoroutineScope()
     val positionString: String = LocalContext.current.resources.getString(R.string.position_string)
@@ -268,7 +269,7 @@ fun PillBar(
             .fillMaxWidth()
             .background(if (showBackground) token.backgroundBrush(pillBarInfo) else SolidColor(Color.Unspecified))
             .focusable(enabled = false),
-        contentPadding = PaddingValues(horizontal = 16.dp),
+        contentPadding = PaddingValues(padding),
         horizontalArrangement = Arrangement.spacedBy(8.dp, pillAlignment),
         state = lazyListState
     ) {
@@ -276,18 +277,22 @@ fun PillBar(
             item(index.toString()) {
                 PillButton(
                     pillMetadata,
-                    modifier = Modifier.onFocusEvent { focusState ->
-                        if (focusState.isFocused) {
-                            scope.launch {
-                                lazyListState.animateScrollToItem(
-                                    max(0, index - 2)
-                                )
+                    modifier = Modifier
+                        .onFocusEvent { focusState ->
+                            if (focusState.isFocused) {
+                                scope.launch {
+                                    lazyListState.animateScrollToItem(
+                                        max(0, index - 2)
+                                    )
+                                }
                             }
                         }
-                    }
                         .semantics(mergeDescendants = true) {
                             stateDescription =
-                                if (metadataList.size > 1) positionString.format(index+1, metadataList.size ) else ""
+                                if (metadataList.size > 1) positionString.format(
+                                    index + 1,
+                                    metadataList.size
+                                ) else ""
                         },
                     style = style, pillButtonTokens = pillButtonTokens
                 )

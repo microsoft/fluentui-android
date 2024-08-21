@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.unit.Dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.*
@@ -36,4 +37,8 @@ open class PillBarTokens : IControlToken, Parcelable {
             )
         }
     }
+
+    @Composable
+    open fun padding(pillBarInfo: PillBarInfo): Dp =
+        FluentGlobalTokens.SizeTokens.Size160.value
 }
