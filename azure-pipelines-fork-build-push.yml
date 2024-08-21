@@ -39,7 +39,7 @@ jobs:
           tasks: "testDevelopmentDebugUnitTest"
           publishJUnitResults: false
           javaHomeOption: "JDKVersion"
-          jdkVersionOption: "$(jdkVersion)"
+          jdkVersionOption: "17"
           sonarQubeRunAnalysis: false
           spotBugsAnalysis: false
 
