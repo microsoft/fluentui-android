@@ -63,7 +63,7 @@ jobs:
           jdkVersionOption: "$(jdkVersion)"
           publishJUnitResults: true
 
-      - task: PublishTestResults@3
+      - task: PublishTestResults@2
         displayName: "Publish Test Results"
         inputs:
           testResultsFiles: "$(build.sourcesdirectory)/build/testResult/**/hydra_result_*.xml"
