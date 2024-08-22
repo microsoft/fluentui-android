@@ -17,16 +17,6 @@ android {
         versionName project.ext.fluentui_listitem_versionid
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         consumerProguardFiles 'consumer-rules.pro'
-
-//      Forcing emoji2 version as a workaround for not moving to Android 34 during BOM update.
-//      https://issuetracker.google.com/issues/295457468
-//      Remove once we plan to move to Android 34
-        configurations.all {
-            resolutionStrategy {
-                force("androidx.emoji2:emoji2-views-helper:1.3.0")
-                force("androidx.emoji2:emoji2:1.3.0")
-            }
-        }
     }
     buildTypes {
         release {

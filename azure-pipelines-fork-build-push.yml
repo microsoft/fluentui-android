@@ -24,7 +24,7 @@ jobs:
           sonarQubeRunAnalysis: false
           spotBugsAnalysis: false
 
-      - task: Gradle@2
+      - task: Gradle@3
         displayName: "gradlew build"
         inputs:
           gradleWrapperFile: "gradlew"
@@ -32,18 +32,18 @@ jobs:
           javaHomeOption: "JDKVersion"
           jdkVersionOption: "$(jdkVersion)"
 
-      - task: Gradle@2
+      - task: Gradle@3
         displayName: Unit tests
         inputs:
           gradleWrapperFile: "gradlew"
           tasks: "testDevelopmentDebugUnitTest"
           publishJUnitResults: false
           javaHomeOption: "JDKVersion"
-          jdkVersionOption: "$(jdkVersion)"
+          jdkVersionOption: "17"
           sonarQubeRunAnalysis: false
           spotBugsAnalysis: false
 
-      - task: Gradle@2
+      - task: Gradle@3
         displayName: Generate testApk
         inputs:
           gradleWrapperFile: "gradlew"
@@ -54,7 +54,7 @@ jobs:
           sonarQubeRunAnalysis: false
           spotBugsAnalysis: false
 
-      - task: Gradle@2
+      - task: Gradle@3
         displayName: Hydra Lab UI test
         inputs:
           gradleWrapperFile: "gradlew"
