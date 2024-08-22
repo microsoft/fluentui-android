@@ -80,6 +80,7 @@ fun ContextualCommandBar(
         contentDescription = LocalContext.current.resources.getString(R.string.fluentui_dismiss)
     ),
     scrollable: Boolean = true,
+    selectionStroke: List<BorderStroke>? = null,
     contextualCommandBarToken: ContextualCommandBarTokens? = null
 ) {
 
@@ -111,7 +112,9 @@ fun ContextualCommandBar(
     val focusStroke = token.focusStroke(
         contextualCommandBarInfo
     )
+    val showSelectionBorderStroke = selectionStroke != null
     var focusedBorderModifier: Modifier = Modifier
+    var selectedBorderModifier: Modifier = Modifier
 
     val selectedString = LocalContext.current.resources.getString(R.string.fluentui_selected)
 
@@ -145,6 +148,7 @@ fun ContextualCommandBar(
                             )
                             end.linkTo(parent.end)
                         }
+
                         ActionButtonPosition.End -> {
                             start.linkTo(parent.start)
                             end.linkTo(
@@ -152,6 +156,7 @@ fun ContextualCommandBar(
                                 margin = contentPaddingWithActionButton
                             )
                         }
+
                         ActionButtonPosition.None -> {
                             start.linkTo(parent.start)
                             end.linkTo(parent.end)
@@ -193,6 +198,13 @@ fun ContextualCommandBar(
                             for (borderStroke in focusStroke) {
                                 focusedBorderModifier =
                                     focusedBorderModifier.border(borderStroke, shape)
+                            }
+                            selectedBorderModifier = Modifier
+                            if(showSelectionBorderStroke){
+                                for (borderStroke in selectionStroke!!) {
+                                    selectedBorderModifier =
+                                        selectedBorderModifier.border(borderStroke, shape)
+                                }
                             }
 
                             Row(
@@ -289,6 +301,7 @@ fun ContextualCommandBar(
                             )
                             end.linkTo(parent.end)
                         }
+
                         ActionButtonPosition.End -> {
                             start.linkTo(parent.start)
                             end.linkTo(
@@ -296,6 +309,7 @@ fun ContextualCommandBar(
                                 margin = contentPaddingWithActionButton
                             )
                         }
+
                         ActionButtonPosition.None -> {
                             start.linkTo(parent.start)
                             end.linkTo(parent.end)
@@ -335,6 +349,13 @@ fun ContextualCommandBar(
                             focusedBorderModifier =
                                 focusedBorderModifier.border(borderStroke, shape)
                         }
+                        selectedBorderModifier = Modifier
+                        if(showSelectionBorderStroke){
+                            for (borderStroke in selectionStroke!!) {
+                                selectedBorderModifier =
+                                    selectedBorderModifier.border(borderStroke, shape)
+                            }
+                        }
                         Row(
                             modifier = Modifier
                                 .height(IntrinsicSize.Min)
@@ -359,6 +380,11 @@ fun ContextualCommandBar(
                                     )
                                     .then(clickableModifier)
                                     .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
+                                    .then(
+                                        if (commandGroup.items[itemIndex].selected)
+                                            selectedBorderModifier
+                                        else Modifier
+                                    )
                                     .semantics {
                                         contentDescription =
                                             item.label + if (item.selected) selectedString else ""
