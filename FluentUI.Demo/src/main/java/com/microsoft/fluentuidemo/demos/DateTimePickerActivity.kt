@@ -5,6 +5,7 @@
 
 package com.microsoft.fluentuidemo.demos
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -79,6 +80,7 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
     }
 
     private var dateTimePickerDialog: DateTimePickerDialog? = null
+    private var isDialogShowing: Boolean = false
 
     private lateinit var dateTimeBinding: ActivityDateTimePickerBinding
 
@@ -183,6 +185,7 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
             singleModeTag = it.getString(SINGLE_MODE_TAG)
             dialogMode = it.getSerializable(DIALOG_MODE) as? Mode
             dialogDateTime = it.getSerializable(DIALOG_DATE_TIME) as? ZonedDateTime
+            isDialogShowing = savedInstanceState.getBoolean("isDialogShowing")
         }
 
         // DateTimePickers
@@ -202,7 +205,13 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
         accessibilityManager.addAccessibilityStateChangeListener {
             updateButtonsForAccessibility(it)
         }
+        if(isDialogShowing) {
+            dateTimePickerDialog?.dismiss()
+            createDateTimePickerDialog()
+        }
+
     }
+
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
@@ -215,6 +224,7 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
         outState.putString(FRAGMENT_TAG, fragmentTag)
         outState.putSerializable(DIALOG_MODE, dialogMode)
         outState.putSerializable(DIALOG_DATE_TIME, dialogDateTime)
+        outState.putBoolean("isDialogShowing", dateTimePickerDialog?.isShowing ?: false)
     }
 
     override fun onDestroy() {
@@ -251,6 +261,7 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
             getFragmentDateTime(),
             getFragmentDuration()
         )
+        dateTimePickerDialog?.onDateTimePickedListener = this
         dateTimePicker.show(supportFragmentManager, picker.tag)
     }
 
@@ -268,6 +279,13 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
         dateTimePickerDialog?.onDateTimePickedListener =
             object : DateTimePickerDialog.OnDateTimePickedListener {
                 override fun onDateTimePicked(dateTime: ZonedDateTime, duration: Duration) {
+                    dialogMode = getDialogMode()
+                    dialogDateTime = dateTime
+                }
+            }
+        dateTimePickerDialog?.onDateTimeSelectedListener =
+            object : DateTimePickerDialog.OnDateTimeSelectedListener{
+                override fun onDateTimeSelected(dateTime: ZonedDateTime, duration: Duration) {
                     dialogMode = getDialogMode()
                     dialogDateTime = dateTime
                 }
