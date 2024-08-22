@@ -1,6 +1,7 @@
 package com.microsoft.fluentui.tokenized.drawer
 
 import android.content.Context
+import android.content.res.Configuration
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityManager
 import androidx.compose.animation.core.TweenSpec
@@ -44,6 +45,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -67,7 +69,6 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.core.view.WindowInsetsCompat
 import com.microsoft.fluentui.compose.FixedThreshold
 import com.microsoft.fluentui.compose.ModalPopup
-import com.microsoft.fluentui.compose.NonDismissiblePostDownNestedScrollConnection
 import com.microsoft.fluentui.compose.NonDismissiblePreUpPostDownNestedScrollConnection
 import com.microsoft.fluentui.compose.PostDownNestedScrollConnection
 import com.microsoft.fluentui.compose.PreUpPostDownNestedScrollConnection
@@ -826,6 +827,7 @@ private fun BottomDrawer(
     showHandle: Boolean,
     onDismiss: () -> Unit,
     drawerContent: @Composable () -> Unit,
+    maxLandscapeWidthFraction : Float = 1F,
     preventDismissalOnScrimClick: Boolean = false,
     onScrimClick: () -> Unit = {}
 ) {
@@ -869,13 +871,17 @@ private fun BottomDrawer(
             preventDismissalOnScrimClick = preventDismissalOnScrimClick,
             onScrimClick = onScrimClick
         )
-
+        val configuration = LocalConfiguration.current
         Box(
             drawerConstraints
-                .fillMaxWidth()
+                .fillMaxWidth(
+                    if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) maxLandscapeWidthFraction
+                    else 1F
+                )
                 .nestedScroll(
-                    if(!enableSwipeDismiss && drawerState.offset.value >= maxOpenHeight) drawerState.NonDismissiblePreUpPostDownNestedScrollConnection else
-                    if (slideOver) drawerState.nestedScrollConnection else drawerState.PostDownNestedScrollConnection)
+                    if (!enableSwipeDismiss && drawerState.offset.value >= maxOpenHeight) drawerState.NonDismissiblePreUpPostDownNestedScrollConnection else
+                        if (slideOver) drawerState.nestedScrollConnection else drawerState.PostDownNestedScrollConnection
+                )
                 .offset {
                     val y = if (drawerState.anchors == null) {
                         fullHeight.roundToInt()
@@ -884,6 +890,12 @@ private fun BottomDrawer(
                     }
                     IntOffset(x = 0, y = y)
                 }
+                .then(
+                    if (maxLandscapeWidthFraction != 1F
+                        && configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+                    ) Modifier.align(Alignment.TopCenter)
+                    else Modifier
+                )
                 .onGloballyPositioned { layoutCoordinates ->
                     if (!drawerState.animationInProgress
                         && drawerState.currentValue == DrawerValue.Closed
@@ -955,12 +967,11 @@ private fun BottomDrawer(
                             .draggable(
                                 orientation = Orientation.Vertical,
                                 state = rememberDraggableState { delta ->
-                                    if(!enableSwipeDismiss && drawerState.offset.value >= maxOpenHeight)
-                                    {
-                                        if(delta < 0){
+                                    if (!enableSwipeDismiss && drawerState.offset.value >= maxOpenHeight) {
+                                        if (delta < 0) {
                                             drawerState.performDrag(delta)
                                         }
-                                    }else {
+                                    } else {
                                         drawerState.performDrag(delta)
                                     }
                                 },
@@ -970,7 +981,7 @@ private fun BottomDrawer(
                                             velocity
                                         )
                                         if (drawerState.isClosed) {
-                                            if(enableSwipeDismiss)
+                                            if (enableSwipeDismiss)
                                                 onDismiss()
                                             else
                                                 scope.launch { drawerState.open() }
@@ -1205,7 +1216,6 @@ fun BottomDrawer(
             FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
         val tokens = drawerTokens
             ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DrawerControlType] as DrawerTokens
-
         val scope = rememberCoroutineScope()
         val close: () -> Unit = {
             if (drawerState.confirmStateChange(DrawerValue.Closed)) {
@@ -1233,6 +1243,8 @@ fun BottomDrawer(
             val scrimOpacity: Float = tokens.scrimOpacity(drawerInfo)
             val scrimColor: Color =
                 tokens.scrimColor(drawerInfo).copy(alpha = scrimOpacity)
+            val maxLandscapeWidth :Float=
+                tokens.maxLandscapeWidth(drawerInfo = DrawerInfo(type = BehaviorType.BOTTOM))
             BottomDrawer(
                 modifier = modifier,
                 drawerState = drawerState,
@@ -1248,6 +1260,7 @@ fun BottomDrawer(
                 onDismiss = close,
                 drawerContent = drawerContent,
                 preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+                maxLandscapeWidthFraction = maxLandscapeWidth,
                 onScrimClick = onScrimClick
             )
         }

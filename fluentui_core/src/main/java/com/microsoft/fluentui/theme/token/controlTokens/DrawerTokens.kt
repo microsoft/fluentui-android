@@ -58,4 +58,7 @@ open class DrawerTokens : IControlToken, Parcelable {
 
     @Composable
     open fun scrimOpacity(drawerInfo: DrawerInfo): Float = 0.32F
+
+    @Composable
+    open fun maxLandscapeWidth (drawerInfo: DrawerInfo): Float = 0.6F
 }
