@@ -1,13 +1,17 @@
-Release Version 0.2.10:
+Release Version 0.2.11:
 
 What's New:
+        Fluent UI Android library is now compiled against SDK 34.
 
+Fluent V1:
+        Fix/Enhancement:
+
+           1. Date-Time Picker Dialog now handles orientation changes gracefully.
 Fluent V2:
         Fix/Enhancement:
 
-           1. Improved accessibility for Textfield in readonly mode.
-           2. Fixed issue with bottomsheet not scrolling in landscape mode.
-           3. Resolved crash in bottomsheet/drawer when device accessibility is turned off.
+           1. CCB now supports customizing the border stroke of selected buttons.
+           2. In landscape mode, the Bottom Drawer's width can now be adjusted to a specific fraction of the total screen width.
 
 
 Note: Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00)
