@@ -80,7 +80,7 @@ extends:
             gradleWrapperFile: "gradlew"
             tasks: "publish"
             javaHomeOption: "JDKVersion"
-            jdkVersionOption: "1.11"
+            jdkVersionOption: "$(jdkVersion)"
             options: "-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword) -Pdeveloper_id=$(developer_id) -Pdeveloper_name=\"$(developer_name)\" -Pdeveloper_email=$(developer_email)"
         - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
           displayName: 📒 Generate Manifest
