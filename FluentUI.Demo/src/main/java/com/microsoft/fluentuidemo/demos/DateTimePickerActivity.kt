@@ -42,6 +42,7 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
 
         private const val DIALOG_DATE_TIME = "dialogDateTime"
         private const val DIALOG_MODE = "dialogMode"
+        private const val IS_DIALOG_SHOWING = "isDialogShowing"
     }
 
     enum class DatePickerType(
@@ -184,7 +185,7 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
             singleModeTag = it.getString(SINGLE_MODE_TAG)
             dialogMode = it.getSerializable(DIALOG_MODE) as? Mode
             dialogDateTime = it.getSerializable(DIALOG_DATE_TIME) as? ZonedDateTime
-            isDialogShowing = savedInstanceState.getBoolean("isDialogShowing")
+            isDialogShowing = savedInstanceState.getBoolean(IS_DIALOG_SHOWING)
         }
 
         // DateTimePickers
@@ -223,7 +224,7 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
         outState.putString(FRAGMENT_TAG, fragmentTag)
         outState.putSerializable(DIALOG_MODE, dialogMode)
         outState.putSerializable(DIALOG_DATE_TIME, dialogDateTime)
-        outState.putBoolean("isDialogShowing", dateTimePickerDialog?.isShowing ?: false)
+        outState.putBoolean(IS_DIALOG_SHOWING, dateTimePickerDialog?.isShowing ?: false)
     }
 
     override fun onDestroy() {
