@@ -1191,6 +1191,7 @@ fun Drawer(
  * @param windowInsetsType Type window insets to be passed to the bottom drawer window via PaddingValues params. The default value is WindowInsetsCompat.Type.systemBars()
  * @param drawerTokens tokens to provide appearance values. If not provided then drawer tokens will be picked from [FluentTheme]
  * @param drawerContent composable that represents content inside the drawer
+ * @param maxLandscapeWidthFraction max width of bottomDrawer wrt to screen width in landscape mode. The default value is 1F
  * @param preventDismissalOnScrimClick when true, the drawer will not be dismissed when the scrim is clicked
  * @param onScrimClick callback to be invoked when the scrim is clicked
  *
@@ -1208,6 +1209,7 @@ fun BottomDrawer(
     windowInsetsType: Int = WindowInsetsCompat.Type.systemBars(),
     drawerTokens: DrawerTokens? = null,
     drawerContent: @Composable () -> Unit,
+    maxLandscapeWidthFraction: Float = 1F,
     preventDismissalOnScrimClick: Boolean = false,
     onScrimClick: () -> Unit = {},
 ) {
@@ -1243,8 +1245,6 @@ fun BottomDrawer(
             val scrimOpacity: Float = tokens.scrimOpacity(drawerInfo)
             val scrimColor: Color =
                 tokens.scrimColor(drawerInfo).copy(alpha = scrimOpacity)
-            val maxLandscapeWidth :Float=
-                tokens.maxLandscapeWidth(drawerInfo = DrawerInfo(type = BehaviorType.BOTTOM))
             BottomDrawer(
                 modifier = modifier,
                 drawerState = drawerState,
@@ -1260,7 +1260,7 @@ fun BottomDrawer(
                 onDismiss = close,
                 drawerContent = drawerContent,
                 preventDismissalOnScrimClick = preventDismissalOnScrimClick,
-                maxLandscapeWidthFraction = maxLandscapeWidth,
+                maxLandscapeWidthFraction = maxLandscapeWidthFraction,
                 onScrimClick = onScrimClick
             )
         }

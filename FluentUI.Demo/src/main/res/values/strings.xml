@@ -894,6 +894,7 @@
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Show Handle</string>
     <string name="drawer_enable_swipe_dismiss">Enable Swipe Dismiss</string>
+    <string name="bottom_drawer_max_width_landscape">Max Landscape width</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
