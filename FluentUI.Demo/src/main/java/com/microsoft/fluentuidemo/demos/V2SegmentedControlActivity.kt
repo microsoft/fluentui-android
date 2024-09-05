@@ -105,7 +105,6 @@ class V2SegmentedControlActivity : V2DemoActivity() {
                                 )
                             )
                             PillButton(
-                                modifier = Modifier.testTag(SEGMENTED_CONTROL_PILL_BUTTON_COMPONENT),
                                 pillMetaData = PillMetaData(
                                     onClick = { selectedIcon = !selectedIcon },
                                     icon = AvatarIcons.Icon.Anonymous.Xxlarge,
