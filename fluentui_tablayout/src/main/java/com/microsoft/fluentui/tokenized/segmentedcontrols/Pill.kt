@@ -176,7 +176,7 @@ fun PillButton(
     ) {
         Row(Modifier.width(IntrinsicSize.Max)) {
             if (pillMetaData.icon != null) {
-                Spacer(Modifier.requiredWidth(token.startMarginBeforeIcon(pillButtonInfo = pillButtonInfo)))
+                Spacer(Modifier.requiredWidth(FluentGlobalTokens.SizeTokens.Size180.value))
                 Icon(
                     pillMetaData.icon!!,
                     pillMetaData.text,
@@ -186,7 +186,7 @@ fun PillButton(
                     tint = iconColor
                 )
             } else {
-                Spacer(Modifier.requiredWidth(token.startMarginBeforText(pillButtonInfo = pillButtonInfo)))
+                Spacer(Modifier.requiredWidth(FluentGlobalTokens.SizeTokens.Size160.value))
                 BasicText(
                     pillMetaData.text,
                     modifier = Modifier
@@ -223,7 +223,7 @@ fun PillButton(
                 else
                     Spacer(Modifier.requiredWidth(FluentGlobalTokens.SizeTokens.Size80.value))
             } else {
-                Spacer(Modifier.requiredWidth(token.endMargin(pillButtonInfo = pillButtonInfo)))
+                Spacer(Modifier.requiredWidth(FluentGlobalTokens.SizeTokens.Size160.value))
             }
         }
     }
