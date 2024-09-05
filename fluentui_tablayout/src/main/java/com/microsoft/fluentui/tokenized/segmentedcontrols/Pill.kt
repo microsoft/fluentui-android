@@ -51,7 +51,7 @@ import kotlinx.coroutines.launch
 import kotlin.math.max
 
 data class PillMetaData(
-    var text: String,
+    var text: String? = null,
     var onClick: (() -> Unit),
     var icon: ImageVector? = null,
     var enabled: Boolean = true,
@@ -175,8 +175,9 @@ fun PillButton(
         contentAlignment = Alignment.Center
     ) {
         Row(Modifier.width(IntrinsicSize.Max)) {
+            Spacer(Modifier.requiredWidth(token.horizontalMargin(pillButtonInfo = pillButtonInfo)))
             if (pillMetaData.icon != null) {
-                Spacer(Modifier.requiredWidth(FluentGlobalTokens.SizeTokens.Size180.value))
+                Spacer(Modifier.requiredWidth(token.iconSpace(pillButtonInfo = pillButtonInfo)))
                 Icon(
                     pillMetaData.icon!!,
                     pillMetaData.text,
@@ -185,10 +186,17 @@ fun PillButton(
                         .clearAndSetSemantics { },
                     tint = iconColor
                 )
-            } else {
-                Spacer(Modifier.requiredWidth(FluentGlobalTokens.SizeTokens.Size160.value))
+                if(pillMetaData.text != null){
+                    Spacer(Modifier.requiredWidth(token.iconSpace(pillButtonInfo = pillButtonInfo)))
+                }
+
+            }
+
+
+            if(pillMetaData.text != null){
+
                 BasicText(
-                    pillMetaData.text,
+                    pillMetaData.text!!,
                     modifier = Modifier
                         .weight(1F)
                         .clearAndSetSemantics { },
@@ -198,6 +206,7 @@ fun PillButton(
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
+
             }
 
             if (pillMetaData.notificationDot) {
@@ -223,7 +232,7 @@ fun PillButton(
                 else
                     Spacer(Modifier.requiredWidth(FluentGlobalTokens.SizeTokens.Size80.value))
             } else {
-                Spacer(Modifier.requiredWidth(FluentGlobalTokens.SizeTokens.Size160.value))
+                Spacer(Modifier.requiredWidth(token.horizontalMargin(pillButtonInfo = pillButtonInfo)))
             }
         }
     }
