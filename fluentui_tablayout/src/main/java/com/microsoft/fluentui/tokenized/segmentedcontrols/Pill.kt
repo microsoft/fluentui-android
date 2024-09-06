@@ -50,6 +50,16 @@ import com.microsoft.fluentui.util.dpToPx
 import kotlinx.coroutines.launch
 import kotlin.math.max
 
+/**
+ * Pill Meta Data defines meta data for  a pill.
+ * @param text: the text that's displayed on the Pill
+ * @param onClick: onClick callback for defining the click action on the pill
+ * @param icon: icon that's displayed on the Pill.
+ * @param enabled: to make pill disabled or enabled for click interactions
+ * @param notificationDot: boolean which defines whether to show a notification dot or not on the pill.
+ * @param calloutSelectionState: boolean which let's the user define if "selected" or "not selected" state of pill must be announced for the accessibility purposes
+ * @param semanticContentName: Pill name that must be announced for accessibility purposes, if it's null then @param text is used for accessibility announcement
+ */
 data class PillMetaData(
     var text: String? = null,
     var onClick: (() -> Unit),
