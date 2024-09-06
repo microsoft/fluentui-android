@@ -192,7 +192,6 @@ fun PillButton(
 
             }
 
-
             if(pillMetaData.text != null){
 
                 BasicText(
@@ -208,7 +207,6 @@ fun PillButton(
                 )
 
             }
-
             if (pillMetaData.notificationDot) {
                 val notificationDotColor: Color =
                     token.notificationDotColor(pillButtonInfo)

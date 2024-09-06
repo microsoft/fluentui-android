@@ -46,9 +46,11 @@ open class FileCardTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun borderColor(fileCardInfo: FileCardInfo): Color {
-        return FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke1].value(
-            themeMode = FluentTheme.themeMode
+    open fun borderColor(fileCardInfo: FileCardInfo): Brush {
+        return SolidColor(
+            FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke1].value(
+                themeMode = FluentTheme.themeMode
+            )
         )
     }
 

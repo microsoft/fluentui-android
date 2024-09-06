@@ -100,9 +100,11 @@ open class AnnouncementCardTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun borderColor(announcementCardInfo: AnnouncementCardInfo): Color {
-        return FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke1].value(
-            themeMode = FluentTheme.themeMode
+    open fun borderColor(announcementCardInfo: AnnouncementCardInfo): Brush {
+        return SolidColor(
+            FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke1].value(
+                themeMode = FluentTheme.themeMode
+            )
         )
     }
 
