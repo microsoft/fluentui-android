@@ -58,6 +58,7 @@ data class PillMetaData(
     var selected: Boolean = false,
     var notificationDot: Boolean = false,
     var calloutSelectionState: Boolean = true,
+    var semanticContentName: String? = null,
 )
 
 /**
@@ -168,9 +169,8 @@ fun PillButton(
             .padding(vertical = token.verticalPadding(pillButtonInfo))
             .semantics(true) {
                 contentDescription =
-                    if (pillMetaData.enabled) "${pillMetaData.text} $selectedString"
-                    else "${pillMetaData.text} $enabledString"
-
+                    if (pillMetaData.enabled) "${pillMetaData.semanticContentName ?: pillMetaData.text ?:  ""} $selectedString"
+                    else "${pillMetaData.semanticContentName ?: pillMetaData.text ?: ""} $enabledString"
             },
         contentAlignment = Alignment.Center
     ) {

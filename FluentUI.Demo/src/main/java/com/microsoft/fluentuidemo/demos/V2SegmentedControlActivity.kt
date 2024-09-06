@@ -110,6 +110,7 @@ class V2SegmentedControlActivity : V2DemoActivity() {
                                     icon = AvatarIcons.Icon.Anonymous.Xxlarge,
                                     selected = selectedIcon,
                                     enabled = enabled,
+                                    semanticContentName = "anonymous"
                                 )
                             )
                         },
@@ -140,7 +141,8 @@ class V2SegmentedControlActivity : V2DemoActivity() {
                                     icon = AvatarIcons.Icon.Anonymous.Xxlarge,
                                     selected = selectedBrandIcon,
                                     enabled = enabled,
-                                    notificationDot = true
+                                    notificationDot = true,
+                                    semanticContentName = "anonymous"
                                 ),
                                 style = FluentStyle.Brand,
                             )
