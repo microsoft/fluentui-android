@@ -189,9 +189,7 @@ fun PillButton(
                 if(pillMetaData.text != null){
                     Spacer(Modifier.requiredWidth(token.iconSpace(pillButtonInfo = pillButtonInfo)))
                 }
-
             }
-
             if(pillMetaData.text != null){
 
                 BasicText(
@@ -205,7 +203,6 @@ fun PillButton(
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
-
             }
             if (pillMetaData.notificationDot) {
                 val notificationDotColor: Color =
