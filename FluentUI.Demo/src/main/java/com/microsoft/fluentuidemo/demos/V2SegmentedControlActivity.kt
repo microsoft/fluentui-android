@@ -104,6 +104,15 @@ class V2SegmentedControlActivity : V2DemoActivity() {
                                     enabled = enabled,
                                 )
                             )
+                            PillButton(
+                                pillMetaData = PillMetaData(
+                                    onClick = { selectedIcon = !selectedIcon },
+                                    icon = AvatarIcons.Icon.Anonymous.Xxlarge,
+                                    selected = selectedIcon,
+                                    enabled = enabled,
+                                    semanticContentName = "anonymous"
+                                )
+                            )
                         },
                         brandContent = {
                             PillButton(
@@ -123,6 +132,17 @@ class V2SegmentedControlActivity : V2DemoActivity() {
                                     selected = selectedBrandIcon,
                                     enabled = enabled,
                                     notificationDot = true
+                                ),
+                                style = FluentStyle.Brand,
+                            )
+                            PillButton(
+                                PillMetaData(
+                                    onClick = { selectedBrandIcon = !selectedBrandIcon },
+                                    icon = AvatarIcons.Icon.Anonymous.Xxlarge,
+                                    selected = selectedBrandIcon,
+                                    enabled = enabled,
+                                    notificationDot = true,
+                                    semanticContentName = "anonymous"
                                 ),
                                 style = FluentStyle.Brand,
                             )

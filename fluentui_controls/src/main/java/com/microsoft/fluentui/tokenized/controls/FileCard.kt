@@ -99,7 +99,7 @@ fun FileCard(
         }
 
         @Composable
-        override fun borderColor(basicCardInfo: BasicCardInfo): Color {
+        override fun borderColor(basicCardInfo: BasicCardInfo): Brush {
             return token.borderColor(fileCardInfo = fileCardInfo)
         }
 
