@@ -458,4 +458,15 @@ open class PillButtonTokens : IControlToken, Parcelable {
             )
         }
     }
+
+    @Composable
+    open fun iconSpace(pillButtonInfo: PillButtonInfo): Dp {
+        return FluentGlobalTokens.SizeTokens.Size20.value
+    }
+
+    @Composable
+    open fun horizontalMargin(pillButtonInfo: PillButtonInfo): Dp {
+        return FluentGlobalTokens.SizeTokens.Size160.value
+    }
+
 }

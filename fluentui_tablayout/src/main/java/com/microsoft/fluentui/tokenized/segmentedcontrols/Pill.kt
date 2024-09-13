@@ -50,14 +50,25 @@ import com.microsoft.fluentui.util.dpToPx
 import kotlinx.coroutines.launch
 import kotlin.math.max
 
+/**
+ * Pill Meta Data defines meta data for  a pill.
+ * @param text: the text that's displayed on the Pill
+ * @param onClick: onClick callback for defining the click action on the pill
+ * @param icon: icon that's displayed on the Pill.
+ * @param enabled: to make pill disabled or enabled for click interactions
+ * @param notificationDot: boolean which defines whether to show a notification dot or not on the pill.
+ * @param calloutSelectionState: boolean which let's the user define if "selected" or "not selected" state of pill must be announced for the accessibility purposes
+ * @param semanticContentName: Pill name that must be announced for accessibility purposes, if it's null then @param text is used for accessibility announcement
+ */
 data class PillMetaData(
-    var text: String,
+    var text: String? = null,
     var onClick: (() -> Unit),
     var icon: ImageVector? = null,
     var enabled: Boolean = true,
     var selected: Boolean = false,
     var notificationDot: Boolean = false,
     var calloutSelectionState: Boolean = true,
+    var semanticContentName: String? = null,
 )
 
 /**
@@ -168,15 +179,15 @@ fun PillButton(
             .padding(vertical = token.verticalPadding(pillButtonInfo))
             .semantics(true) {
                 contentDescription =
-                    if (pillMetaData.enabled) "${pillMetaData.text} $selectedString"
-                    else "${pillMetaData.text} $enabledString"
-
+                    if (pillMetaData.enabled) "${pillMetaData.semanticContentName ?: pillMetaData.text ?:  ""} $selectedString"
+                    else "${pillMetaData.semanticContentName ?: pillMetaData.text ?: ""} $enabledString"
             },
         contentAlignment = Alignment.Center
     ) {
         Row(Modifier.width(IntrinsicSize.Max)) {
+            Spacer(Modifier.requiredWidth(token.horizontalMargin(pillButtonInfo = pillButtonInfo)))
             if (pillMetaData.icon != null) {
-                Spacer(Modifier.requiredWidth(FluentGlobalTokens.SizeTokens.Size180.value))
+                Spacer(Modifier.requiredWidth(token.iconSpace(pillButtonInfo = pillButtonInfo)))
                 Icon(
                     pillMetaData.icon!!,
                     pillMetaData.text,
@@ -185,10 +196,14 @@ fun PillButton(
                         .clearAndSetSemantics { },
                     tint = iconColor
                 )
-            } else {
-                Spacer(Modifier.requiredWidth(FluentGlobalTokens.SizeTokens.Size160.value))
+                if(pillMetaData.text != null){
+                    Spacer(Modifier.requiredWidth(token.iconSpace(pillButtonInfo = pillButtonInfo)))
+                }
+            }
+            if(pillMetaData.text != null){
+
                 BasicText(
-                    pillMetaData.text,
+                    pillMetaData.text!!,
                     modifier = Modifier
                         .weight(1F)
                         .clearAndSetSemantics { },
@@ -199,7 +214,6 @@ fun PillButton(
                     overflow = TextOverflow.Ellipsis
                 )
             }
-
             if (pillMetaData.notificationDot) {
                 val notificationDotColor: Color =
                     token.notificationDotColor(pillButtonInfo)
@@ -223,7 +237,7 @@ fun PillButton(
                 else
                     Spacer(Modifier.requiredWidth(FluentGlobalTokens.SizeTokens.Size80.value))
             } else {
-                Spacer(Modifier.requiredWidth(FluentGlobalTokens.SizeTokens.Size160.value))
+                Spacer(Modifier.requiredWidth(token.horizontalMargin(pillButtonInfo = pillButtonInfo)))
             }
         }
     }
