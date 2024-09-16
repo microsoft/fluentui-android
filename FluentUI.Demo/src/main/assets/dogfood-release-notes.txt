@@ -1,17 +1,12 @@
-Release Version 0.2.11:
+Release Version 0.2.12:
 
 What's New:
-        Fluent UI Android library is now compiled against SDK 34.
-
-Fluent V1:
-        Fix/Enhancement:
-
-           1. Date-Time Picker Dialog now handles orientation changes gracefully.
 Fluent V2:
         Fix/Enhancement:
 
-           1. CCB now supports customizing the border stroke of selected buttons.
-           2. In landscape mode, the Bottom Drawer's width can now be adjusted to a specific fraction of the total screen width.
+           1. Pill Buttons have been updated to support both icons and text simultaneously, with added spacing tokens for customizable padding around the pill content.
+           2. Basic Card now features a Brush type border Color token, enabling more styling options.
+
 
 
 Note: Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00)

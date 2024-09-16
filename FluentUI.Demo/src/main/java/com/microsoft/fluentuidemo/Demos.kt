@@ -188,7 +188,7 @@ val V2DEMO = arrayListOf(
     Demo(V2PROGRESS, V2ProgressActivity::class),
     Demo(V2SCAFFOLD, V2ScaffoldActivity::class),
     Demo(V2SEARCHBAR, V2SearchBarActivity::class),
-    Demo(V2SEGMENTED_CONTROL, V2SegmentedControlActivity::class),
+    Demo(V2SEGMENTED_CONTROL, V2SegmentedControlActivity::class, Badge.Modified),
     Demo(V2SHIMMER, V2ShimmerActivity::class),
     Demo(V2SIDE_RAIL, V2SideRailActivity::class),
     Demo(V2SNACKBAR, V2SnackbarActivity::class),
