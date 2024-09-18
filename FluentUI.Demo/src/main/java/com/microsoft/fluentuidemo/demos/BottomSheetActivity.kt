@@ -7,6 +7,7 @@ package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.Switch
 import android.widget.TextView
 import com.microsoft.fluentui.bottomsheet.BottomSheet
 import com.microsoft.fluentui.bottomsheet.BottomSheetDialog
@@ -67,6 +68,12 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
                         R.id.bottom_sheet_item_delete,
                         R.drawable.ic_delete_24_regular,
                         getString(R.string.bottom_sheet_item_delete_title)
+                    ),
+                    BottomSheetItem(
+                        R.id.bottom_sheet_item_toggle,
+                        R.drawable.ic_fluent_toggle_multiple_24_regular,
+                        getString(R.string.bottom_sheet_item_toggle_title),
+                        customAccessoryView = Switch(this)
                     )
                 )
             )
@@ -218,6 +225,7 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
             R.id.bottom_sheet_item_reply -> showSnackbar(resources.getString(R.string.bottom_sheet_item_reply_toast))
             R.id.bottom_sheet_item_forward -> showSnackbar(resources.getString(R.string.bottom_sheet_item_forward_toast))
             R.id.bottom_sheet_item_delete -> showSnackbar(resources.getString(R.string.bottom_sheet_item_delete_toast))
+            R.id.bottom_sheet_item_toggle -> showSnackbar(resources.getString(R.string.bottom_sheet_item_toggle_toast))
 
             // Double line items
             R.id.bottom_sheet_item_camera -> showSnackbar(resources.getString(R.string.bottom_sheet_item_camera_toast))
