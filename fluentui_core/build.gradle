@@ -69,6 +69,7 @@ dependencies {
     implementation "com.microsoft.device:dualscreen-layout:$duoVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
     implementation "androidx.compose.material:material"
+    implementation "androidx.compose.foundation:foundation:$anchoredDraggableVersion"
 
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.robolectric:robolectric:$robolectric"

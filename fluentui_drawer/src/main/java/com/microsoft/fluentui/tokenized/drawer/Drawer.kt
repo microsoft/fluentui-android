@@ -348,67 +348,6 @@ fun rememberBottomDrawerState(
     }
 }
 
-private class DrawerPositionProvider(val offset: IntOffset?) : PopupPositionProvider {
-    override fun calculatePosition(
-        anchorBounds: IntRect,
-        windowSize: IntSize,
-        layoutDirection: LayoutDirection,
-        popupContentSize: IntSize
-    ): IntOffset {
-        if (offset != null) {
-            return IntOffset(anchorBounds.left + offset.x, anchorBounds.top + offset.y)
-        }
-        return IntOffset(0, 0)
-    }
-}
-
-@Composable
-private fun Scrim(
-    open: Boolean,
-    onClose: () -> Unit,
-    fraction: () -> Float,
-    color: Color,
-    preventDismissalOnScrimClick: Boolean = false,
-    onScrimClick: () -> Unit = {},
-) {
-    val dismissDrawer = if (open) {
-        Modifier.pointerInput(onClose) {
-            detectTapGestures {
-                if (!preventDismissalOnScrimClick) {
-                    onClose()
-                }
-                onScrimClick() //this function runs post onClose() so that the drawer is closed before the callback is invoked
-            }
-        }
-    } else {
-        Modifier
-    }
-
-    Canvas(
-        Modifier
-            .fillMaxSize()
-            .then(dismissDrawer)
-            .testTag(DRAWER_SCRIM_TAG)
-    ) {
-        drawRect(color, alpha = fraction())
-    }
-}
-
-private val EndDrawerPadding = 56.dp
-private val DrawerVelocityThreshold = 400.dp
-
-private val AnimationSpec = TweenSpec<Float>(durationMillis = 256)
-
-private const val DrawerOpenFraction = 0.5f
-
-//Tag use for testing
-const val DRAWER_HANDLE_TAG = "Fluent Drawer Handle"
-const val DRAWER_CONTENT_TAG = "Fluent Drawer Content"
-const val DRAWER_SCRIM_TAG = "Fluent Drawer Scrim"
-
-//Drawer Handle height + padding
-private val DrawerHandleHeightOffset = 20.dp
-
 private fun Modifier.drawerHeight(
     slideOver: Boolean,
     fixedHeight: Float,
