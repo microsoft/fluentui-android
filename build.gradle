@@ -67,6 +67,7 @@ allprojects {
         tokenautocompleteVersion  =    '2.0.8'
         threetenabpVersion        =    '1.1.0'
         universalPkgDir           =    "universal"
+        anchoredDraggableVersion  =    '1.6.0-alpha01'
     }
     repositories {
         google()
