@@ -41,8 +41,6 @@ fun convertDpToFloat(dpValue: Dp): Float {
 val EndDrawerPadding = 56.dp
 val DrawerVelocityThreshold = 400.dp
 
-val AnimationSpec = TweenSpec<Float>(durationMillis = 256)
-
 const val DrawerOpenFraction = 0.5f
 
 //Tag use for testing

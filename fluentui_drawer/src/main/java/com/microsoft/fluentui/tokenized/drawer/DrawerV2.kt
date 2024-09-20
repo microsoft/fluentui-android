@@ -1,11 +1,11 @@
 package com.microsoft.fluentui.tokenized.drawer
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.gestures.AnchoredDraggableState
-import androidx.compose.foundation.gestures.DraggableAnchors
+import com.microsoft.fluentui.compose.AnchoredDraggableState
+import com.microsoft.fluentui.compose.DraggableAnchors
 import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.anchoredDraggable
-import androidx.compose.foundation.gestures.animateTo
+import com.microsoft.fluentui.compose.anchoredDraggable
+import com.microsoft.fluentui.compose.animateTo
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -40,17 +40,17 @@ import kotlin.math.max
 @OptIn(ExperimentalFoundationApi::class)
 class DrawerStateV2(
     private val initialValue: DrawerValue = DrawerValue.Closed,
-    internal val confirmValueChange: (DrawerValue) -> Boolean,
+    internal val confirmValueChange: (DrawerValue) -> Boolean = { true },
     internal val expandable: Boolean = true,
     internal val skipOpenState: Boolean = false
 ) {
     internal val anchoredDraggableState: AnchoredDraggableState<DrawerValue> = AnchoredDraggableState(
         initialValue,
         anchors = DraggableAnchors {},
-        animationSpec = AnimationSpec,
-        confirmValueChange = confirmValueChange,
         positionalThreshold = { PositionalThreshold },
-        velocityThreshold = { VelocityThreshold }
+        velocityThreshold = { VelocityThreshold },
+        animationSpec = AnimationSpec,
+        confirmValueChange = confirmValueChange
     )
 
     init {
@@ -171,7 +171,6 @@ class DrawerStateV2(
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun rememberDrawerStateV2(confirmValueChange: (DrawerValue) -> Boolean = { true }): DrawerStateV2 {
     return rememberSaveable(
