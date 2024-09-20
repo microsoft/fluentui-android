@@ -6,6 +6,7 @@ Fluent V2:
 
            1. Pill Buttons have been updated to support both icons and text simultaneously, with added spacing tokens for customizable padding around the pill content.
            2. Basic Card now features a Brush type border Color token, enabling more styling options.
+           3. In deo app, bottom drawer's disappearance on orientation change has been fixed.
 
 
 
