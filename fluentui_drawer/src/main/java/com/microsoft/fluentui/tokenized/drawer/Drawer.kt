@@ -82,6 +82,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
 import com.microsoft.fluentui.theme.token.controlTokens.DrawerInfo
 import com.microsoft.fluentui.theme.token.controlTokens.DrawerTokens
 import com.microsoft.fluentui.tokenized.calculateFraction
+import com.microsoft.fluentui.tokenized.drawer.DraggableDefaults.AnimationSpec
 import com.microsoft.fluentui.util.dpToPx
 import com.microsoft.fluentui.util.pxToDp
 import kotlinx.coroutines.CancellationException
