@@ -1,6 +1,5 @@
 package com.microsoft.fluentui.tokenized.drawer
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import com.microsoft.fluentui.compose.AnchoredDraggableState
 import com.microsoft.fluentui.compose.DraggableAnchors
 import androidx.compose.foundation.gestures.Orientation
@@ -32,12 +31,11 @@ import com.microsoft.fluentui.theme.token.controlTokens.DrawerTokens
 import com.microsoft.fluentui.tokenized.drawer.DraggableDefaults.AnimationSpec
 import com.microsoft.fluentui.tokenized.drawer.DraggableDefaults.PositionalThreshold
 import com.microsoft.fluentui.tokenized.drawer.DraggableDefaults.VelocityThreshold
-import com.microsoft.fluentui.tokenized.drawer.DrawerState.Companion.Saver
+import com.microsoft.fluentui.tokenized.drawer.DrawerStateV2.Companion.Saver
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.max
 
-
-@OptIn(ExperimentalFoundationApi::class)
 class DrawerStateV2(
     private val initialValue: DrawerValue = DrawerValue.Closed,
     internal val confirmValueChange: (DrawerValue) -> Boolean = { true },
@@ -98,6 +96,9 @@ class DrawerStateV2(
     suspend fun open() {
         enable = true
         animationInProgress = true
+        do {
+            delay(50)
+        } while (!anchoredDraggableState.anchorsFilled)
         /*
        * first try to open the drawer
        * if not possible then try to expand the drawer
@@ -174,7 +175,7 @@ class DrawerStateV2(
 @Composable
 fun rememberDrawerStateV2(confirmValueChange: (DrawerValue) -> Boolean = { true }): DrawerStateV2 {
     return rememberSaveable(
-        saver = DrawerStateV2.Saver(
+        saver = Saver(
             expandable = true,
             skipOpenState = false,
             confirmValueChange = confirmValueChange
@@ -197,13 +198,12 @@ fun rememberBottomDrawerStateV2(
 ): DrawerStateV2 {
     return rememberSaveable(
         confirmValueChange, expandable, skipOpenState,
-        saver = DrawerStateV2.Saver(expandable, skipOpenState, confirmValueChange)
+        saver = Saver(expandable, skipOpenState, confirmValueChange)
     ) {
         DrawerStateV2(DrawerValue.Closed, confirmValueChange, expandable, skipOpenState)
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 fun Modifier.bottomDrawerAnchoredDraggable(
     drawerState: DrawerStateV2,
     slideOver: Boolean,

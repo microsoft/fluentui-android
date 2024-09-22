@@ -77,7 +77,6 @@ private fun Modifier.drawerHeight(
     return this.then(modifier)
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun BottomDrawerV2(
     modifier: Modifier,
