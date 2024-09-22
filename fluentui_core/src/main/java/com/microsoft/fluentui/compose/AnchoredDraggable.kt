@@ -18,7 +18,6 @@ package com.microsoft.fluentui.compose
 
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.animate
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.MutatePriority
 import androidx.compose.foundation.MutatorMutex
 import androidx.compose.foundation.gestures.DragScope
@@ -50,7 +49,6 @@ import kotlinx.coroutines.launch
  *
  * See the DraggableAnchors factory method to construct drag anchors using a default implementation.
  */
-@ExperimentalFoundationApi
 interface DraggableAnchors<T> {
 
     /**
@@ -111,7 +109,6 @@ interface DraggableAnchors<T> {
  * corresponding [Float] positions. This [DraggableAnchorsConfig] is used to construct an immutable
  * [DraggableAnchors] instance later on.
  */
-@ExperimentalFoundationApi
 class DraggableAnchorsConfig<T> {
 
     internal val anchors = mutableMapOf<T, Float>()
@@ -134,7 +131,6 @@ class DraggableAnchorsConfig<T> {
  * @return A new [DraggableAnchors] instance with the anchor positions set by the `builder`
  * function.
  */
-@ExperimentalFoundationApi
 fun <T : Any> DraggableAnchors(
     builder: DraggableAnchorsConfig<T>.() -> Unit
 ): DraggableAnchors<T> = MapDraggableAnchors(DraggableAnchorsConfig<T>().apply(builder).anchors)
@@ -158,7 +154,6 @@ fun <T : Any> DraggableAnchors(
  * @param interactionSource Optional [MutableInteractionSource] that will passed on to
  * the internal [Modifier.draggable].
  */
-@ExperimentalFoundationApi
 fun <T> Modifier.anchoredDraggable(
     state: AnchoredDraggableState<T>,
     orientation: Orientation,
@@ -182,7 +177,6 @@ fun <T> Modifier.anchoredDraggable(
  * @see [AnchoredDraggableState.anchoredDrag] to learn how to start the anchored drag and get the
  * access to this scope.
  */
-@ExperimentalFoundationApi
 interface AnchoredDragScope {
     /**
      * Assign a new value for an offset value for [AnchoredDraggableState].
@@ -216,7 +210,6 @@ interface AnchoredDragScope {
  * @param confirmValueChange Optional callback invoked to confirm or veto a pending state change.
  */
 @Stable
-@ExperimentalFoundationApi
 class AnchoredDraggableState<T>(
     initialValue: T,
     internal val positionalThreshold: (totalDistance: Float) -> Float,
@@ -242,7 +235,6 @@ class AnchoredDraggableState<T>(
      * to exceed in order to animate to the next state, even if the [positionalThreshold] has not
      * been reached.
      */
-    @ExperimentalFoundationApi
     constructor(
         initialValue: T,
         anchors: DraggableAnchors<T>,
@@ -347,6 +339,13 @@ class AnchoredDraggableState<T>(
         return offset
     }
 
+    /*
+It's a flag to indicate whether anchors are filled or not.
+Useful as a flag to let expand(), open() to get to know whether anchors are filled or not
+when launched for the very first time
+ */
+    var anchorsFilled: Boolean by mutableStateOf(false)
+
     /**
      * Whether an animation is currently in progress.
      */
@@ -413,6 +412,7 @@ class AnchoredDraggableState<T>(
                 dragTarget = newTarget
             }
         }
+        anchorsFilled = true
     }
 
     /**
@@ -628,7 +628,6 @@ class AnchoredDraggableState<T>(
         /**
          * The default [Saver] implementation for [AnchoredDraggableState].
          */
-        @ExperimentalFoundationApi
         fun <T : Any> Saver(
             animationSpec: AnimationSpec<Float>,
             positionalThreshold: (distance: Float) -> Float,
@@ -659,7 +658,6 @@ class AnchoredDraggableState<T>(
  *
  * @param targetValue The target value of the animation
  */
-@ExperimentalFoundationApi
 suspend fun <T> AnchoredDraggableState<T>.snapTo(targetValue: T) {
     anchoredDrag(targetValue = targetValue) { anchors, latestTarget ->
         val targetOffset = anchors.positionOf(latestTarget)
@@ -678,7 +676,6 @@ suspend fun <T> AnchoredDraggableState<T>.snapTo(targetValue: T) {
  * @param targetValue The target value of the animation
  * @param velocity The velocity the animation should start with
  */
-@ExperimentalFoundationApi
 suspend fun <T> AnchoredDraggableState<T>.animateTo(
     targetValue: T,
     velocity: Float = this.lastVelocity,
@@ -729,7 +726,6 @@ private suspend fun <I> restartable(inputs: () -> I, block: suspend (I) -> Unit)
 
 private fun <T> emptyDraggableAnchors() = MapDraggableAnchors<T>(emptyMap())
 
-@OptIn(ExperimentalFoundationApi::class)
 private class MapDraggableAnchors<T>(private val anchors: Map<T, Float>) : DraggableAnchors<T> {
 
     override fun positionOf(value: T): Float = anchors[value] ?: Float.NaN
