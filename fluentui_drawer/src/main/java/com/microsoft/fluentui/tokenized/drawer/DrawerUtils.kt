@@ -1,22 +1,10 @@
 package com.microsoft.fluentui.tokenized.drawer
 
 import androidx.compose.animation.core.TweenSpec
-import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.IntOffset
-import androidx.compose.ui.unit.IntRect
-import androidx.compose.ui.unit.IntSize
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.PopupPositionProvider
 
 object DraggableDefaults {
     val AnimationSpec = TweenSpec<Float>(durationMillis = 256)
@@ -47,48 +35,22 @@ const val DRAWER_SCRIM_TAG = "Fluent Drawer Scrim"
 //Drawer Handle height + padding
 val DrawerHandleHeightOffset = 20.dp
 
-class DrawerPositionProvider(val offset: IntOffset?) : PopupPositionProvider {
-    override fun calculatePosition(
-        anchorBounds: IntRect,
-        windowSize: IntSize,
-        layoutDirection: LayoutDirection,
-        popupContentSize: IntSize
-    ): IntOffset {
-        if (offset != null) {
-            return IntOffset(anchorBounds.left + offset.x, anchorBounds.top + offset.y)
-        }
-        return IntOffset(0, 0)
-    }
-}
+/**
+ * Possible values of [DrawerState].
+ */
+enum class DrawerValue {
+    /**
+     * The state of the drawer when it is closed.
+     */
+    Closed,
 
-@Composable
-fun Scrim(
-    open: Boolean,
-    onClose: () -> Unit,
-    fraction: () -> Float,
-    color: Color,
-    preventDismissalOnScrimClick: Boolean = false,
-    onScrimClick: () -> Unit = {},
-) {
-    val dismissDrawer = if (open) {
-        Modifier.pointerInput(onClose) {
-            detectTapGestures {
-                if (!preventDismissalOnScrimClick) {
-                    onClose()
-                }
-                onScrimClick() //this function runs post onClose() so that the drawer is closed before the callback is invoked
-            }
-        }
-    } else {
-        Modifier
-    }
+    /**
+     * The state of the drawer when it is open.
+     */
+    Open,
 
-    Canvas(
-        Modifier
-            .fillMaxSize()
-            .then(dismissDrawer)
-            .testTag(DRAWER_SCRIM_TAG)
-    ) {
-        drawRect(color, alpha = fraction())
-    }
+    /**
+     * The state of the bottom drawer when it is expanded (i.e. at 100% height).
+     */
+    Expanded
 }

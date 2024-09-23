@@ -258,8 +258,7 @@ class AnchoredDraggableState<T>(
     }
 
     private val dragMutex = MutatorMutex()
-    var minBound = Float.NEGATIVE_INFINITY
-    internal var maxBound = Float.POSITIVE_INFINITY
+    internal var minBound = Float.NEGATIVE_INFINITY
 
     internal val draggableState = object : DraggableState {
 

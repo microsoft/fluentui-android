@@ -122,7 +122,7 @@ open class SwipeableState<T>(
                     .filter { it.isNotEmpty() }
                     .take(1)
 
-    var minBound = Float.NEGATIVE_INFINITY
+    internal var minBound = Float.NEGATIVE_INFINITY
     internal var maxBound = Float.POSITIVE_INFINITY
 
     internal fun ensureInit(newAnchors: Map<Float, T>) {

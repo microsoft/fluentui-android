@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.res.Configuration
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityManager
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.focusable
@@ -47,13 +46,16 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import com.microsoft.fluentui.compose.DraggableAnchors
 import com.microsoft.fluentui.compose.NonDismissiblePreUpPostDownNestedScrollConnection
 import com.microsoft.fluentui.compose.PostDownNestedScrollConnection
+import com.microsoft.fluentui.compose.anchoredDraggable
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.tokenized.calculateFraction
 import com.microsoft.fluentui.util.pxToDp
 import kotlinx.coroutines.launch
+import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
 
@@ -61,7 +63,7 @@ private fun Modifier.drawerHeight(
     slideOver: Boolean,
     fixedHeight: Float,
     fullHeight: Float,
-    drawerState: DrawerStateV2
+    drawerState: DrawerState
 ): Modifier {
     val modifier = if (slideOver) {
         if (drawerState.expandable) {
@@ -80,9 +82,9 @@ private fun Modifier.drawerHeight(
 }
 
 @Composable
-fun BottomDrawerV2(
+fun BottomDrawer(
     modifier: Modifier,
-    drawerState: DrawerStateV2,
+    drawerState: DrawerState,
     drawerShape: Shape,
     drawerElevation: Dp,
     drawerBackground: Brush,
@@ -326,4 +328,105 @@ fun BottomDrawerV2(
             }
         }
     }
+}
+
+private fun Modifier.bottomDrawerAnchoredDraggable(
+    drawerState: DrawerState,
+    slideOver: Boolean,
+    maxOpenHeight: Float,
+    fullHeight: Float,
+    drawerHeight: Float?
+): Modifier {
+    val modifier = if (slideOver) {
+        if (drawerHeight != null) {
+            val minHeight = 0f
+            val bottomOpenStateY = max(maxOpenHeight, fullHeight - drawerHeight)
+            val bottomExpandedStateY = max(minHeight, fullHeight - drawerHeight)
+            val drawerStateAnchors = drawerState.anchoredDraggableState.anchors
+            val anchors: DraggableAnchors<DrawerValue> =
+                if (drawerHeight <= maxOpenHeight) {  // when contentHeight is less than maxOpenHeight
+                    if (drawerStateAnchors.hasAnchorFor(DrawerValue.Expanded)) {
+                        /*
+                        *For dynamic content when drawerHeight was previously greater than maxOpenHeight and now less than maxOpenHEight
+                        *The old anchors won't have Open state, so we need to continue with Expanded state.
+                        */
+                        DraggableAnchors {
+                            DrawerValue.Expanded at bottomOpenStateY
+                            DrawerValue.Closed at fullHeight
+                        }
+                    } else {
+                        DraggableAnchors {
+                            DrawerValue.Open at bottomOpenStateY
+                            DrawerValue.Closed at fullHeight
+                        }
+                    }
+                } else {
+                    if (drawerState.expandable) {
+                        if (drawerState.skipOpenState) {
+                            if (drawerStateAnchors.hasAnchorFor(DrawerValue.Open)) {
+                                /*
+                                *For dynamic content when drawerHeight was previously less than maxOpenHeight and now greater than maxOpenHEight
+                                *The old anchors won't have Expanded state, so we need to continue with Open state.
+                                */
+                                DraggableAnchors {
+                                    DrawerValue.Open at bottomExpandedStateY // when drawerHeight is greater than maxOpenHeight but less than fullHeight, then Expanded state starts from fullHeight-drawerHeight
+                                    DrawerValue.Closed at fullHeight
+                                }
+                            } else {
+                                DraggableAnchors {
+                                    DrawerValue.Expanded at bottomExpandedStateY // when drawerHeight is greater than maxOpenHeight but less than fullHeight, then Expanded state starts from fullHeight-drawerHeight
+                                    DrawerValue.Closed at fullHeight
+                                }
+                            }
+                        } else {
+                            DraggableAnchors {
+                                DrawerValue.Open at maxOpenHeight
+                                DrawerValue.Expanded at bottomExpandedStateY
+                                DrawerValue.Closed at fullHeight
+                            }
+                        }
+                    } else {
+                        DraggableAnchors {
+                            DrawerValue.Open at maxOpenHeight
+                            DrawerValue.Closed at fullHeight
+                        }
+                    }
+                }
+            drawerState.anchoredDraggableState.updateAnchors(anchors)
+            Modifier.anchoredDraggable(
+                state = drawerState.anchoredDraggableState,
+                orientation = Orientation.Vertical,
+                enabled = false
+            )
+        } else {
+            Modifier
+        }
+    } else {
+        val anchors: DraggableAnchors<DrawerValue> = if (drawerState.expandable) {
+            if (drawerState.skipOpenState) {
+                DraggableAnchors {
+                    DrawerValue.Expanded at 0f
+                    DrawerValue.Closed at fullHeight
+                }
+            } else {
+                DraggableAnchors {
+                    DrawerValue.Open at maxOpenHeight
+                    DrawerValue.Expanded at 0F
+                    DrawerValue.Closed at fullHeight
+                }
+            }
+        } else {
+            DraggableAnchors {
+                DrawerValue.Open at maxOpenHeight
+                DrawerValue.Closed at fullHeight
+            }
+        }
+        drawerState.anchoredDraggableState.updateAnchors(anchors)
+        Modifier.anchoredDraggable(
+            state = drawerState.anchoredDraggableState,
+            orientation = Orientation.Vertical,
+            enabled = false
+        )
+    }
+    return this.then(modifier)
 }
