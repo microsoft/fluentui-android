@@ -1,6 +1,5 @@
 package com.microsoft.fluentui.tokenized.drawer
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import com.microsoft.fluentui.compose.DraggableAnchors
 import androidx.compose.foundation.gestures.Orientation
@@ -35,6 +34,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import com.microsoft.fluentui.compose.FixedThreshold
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
 import com.microsoft.fluentui.tokenized.calculateFraction
 import com.microsoft.fluentui.util.dpToPx
@@ -43,7 +43,6 @@ import kotlinx.coroutines.launch
 import kotlin.math.max
 import kotlin.math.roundToInt
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HorizontalDrawerV2(
     modifier: Modifier,
@@ -99,6 +98,9 @@ fun HorizontalDrawerV2(
             drawerState.anchoredDraggableState.updateAnchors(anchors)
             val isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
             val offset = drawerState.anchoredDraggableState.offset
+            drawerState.positionalThreshold =  { fl: Float -> drawerWidth / 2 }
+            val drawerVelocityThreshold = convertDpToFloat(DrawerVelocityThreshold)
+            drawerState.velocityThreshold = { drawerVelocityThreshold }
             Scrim(
                 open = !drawerState.isClosed,
                 onClose = onDismiss,
@@ -138,11 +140,9 @@ fun HorizontalDrawerV2(
                     .background(drawerBackground)
                     .anchoredDraggable(
                         state = drawerState.anchoredDraggableState,
-//                        thresholds = { _, _ -> FixedThreshold(pxToDp(value = drawerWidth / 2)) },
                         orientation = Orientation.Horizontal,
                         enabled = false,
-                        reverseDirection = isRtl,
-//                        velocityThreshold = DrawerVelocityThreshold,
+                        reverseDirection = isRtl
                     ),
             ) {
                 Column(

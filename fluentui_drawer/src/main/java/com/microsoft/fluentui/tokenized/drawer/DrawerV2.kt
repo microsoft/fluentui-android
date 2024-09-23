@@ -23,6 +23,7 @@ import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
 import androidx.core.view.WindowInsetsCompat
 import com.microsoft.fluentui.compose.ModalPopup
+import com.microsoft.fluentui.compose.PreUpPostDownNestedScrollConnection
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
@@ -40,13 +41,16 @@ class DrawerStateV2(
     private val initialValue: DrawerValue = DrawerValue.Closed,
     internal val confirmValueChange: (DrawerValue) -> Boolean = { true },
     internal val expandable: Boolean = true,
-    internal val skipOpenState: Boolean = false
+    internal val skipOpenState: Boolean = false,
 ) {
+    internal var velocityThreshold: () -> Float = { VelocityThreshold }
+    internal var positionalThreshold: (Float) -> Float = { PositionalThreshold }
+
     internal val anchoredDraggableState: AnchoredDraggableState<DrawerValue> = AnchoredDraggableState(
         initialValue,
         anchors = DraggableAnchors {},
-        positionalThreshold = { PositionalThreshold },
-        velocityThreshold = { VelocityThreshold },
+        positionalThreshold,
+        velocityThreshold,
         animationSpec = AnimationSpec,
         confirmValueChange = confirmValueChange
     )
@@ -90,6 +94,7 @@ class DrawerStateV2(
     internal val hasExpandedState: Boolean
         get() = anchoredDraggableState.anchors.hasAnchorFor(DrawerValue.Expanded)
 
+    val nestedScrollConnection = this.anchoredDraggableState.PreUpPostDownNestedScrollConnection
 
     var animationInProgress: Boolean = false
 
@@ -126,12 +131,16 @@ class DrawerStateV2(
             animationInProgress = false
             enable = false
             anchoredDraggableState.updateAnchors(DraggableAnchors { })
+            anchoredDraggableState.anchorsFilled = false
         }
     }
 
     suspend fun expand() {
         enable = true
         animationInProgress = true
+        do {
+            delay(50)
+        } while (!anchoredDraggableState.anchorsFilled)
         /*
         * first try to expand the drawer
         * if not possible then try to open the drawer
@@ -156,7 +165,9 @@ class DrawerStateV2(
         fun Saver(
             expandable: Boolean,
             skipOpenState: Boolean,
-            confirmValueChange: (DrawerValue) -> Boolean
+            confirmValueChange: (DrawerValue) -> Boolean,
+            velocityThreshold: () -> Float= { VelocityThreshold },
+            positionalThreshold: (Float) -> Float= { PositionalThreshold }
         ) =
             Saver<DrawerStateV2, DrawerValue>(
                 save = { it.anchoredDraggableState.currentValue },
