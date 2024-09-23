@@ -32,6 +32,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -46,6 +47,8 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import com.microsoft.fluentui.compose.NonDismissiblePreUpPostDownNestedScrollConnection
+import com.microsoft.fluentui.compose.PostDownNestedScrollConnection
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.tokenized.calculateFraction
@@ -54,7 +57,6 @@ import kotlinx.coroutines.launch
 import kotlin.math.min
 import kotlin.math.roundToInt
 
-@OptIn(ExperimentalFoundationApi::class)
 private fun Modifier.drawerHeight(
     slideOver: Boolean,
     fixedHeight: Float,
@@ -121,7 +123,13 @@ fun BottomDrawerV2(
                     0.toFloat()
                 } else {
                     val targetValue: DrawerValue = if (slideOver) {
-                        drawerStateAnchors.closestAnchor(drawerStateAnchors.maxAnchor())!!
+                        drawerStateAnchors.let {
+                            if (drawerState.anchoredDraggableState.currentValue == DrawerValue.Expanded) {
+                                DrawerValue.Expanded
+                            } else {
+                                DrawerValue.Open
+                            }
+                        }
 
                     } else if (drawerState.skipOpenState) {
                         DrawerValue.Expanded
@@ -146,10 +154,10 @@ fun BottomDrawerV2(
                     if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) maxLandscapeWidthFraction
                     else 1F
                 )
-//                .nestedScroll(
-//                    if (!enableSwipeDismiss && drawerStateOffset >= maxOpenHeight) drawerState.NonDismissiblePreUpPostDownNestedScrollConnection else
-//                        if (slideOver) drawerState.nestedScrollConnection else drawerState.PostDownNestedScrollConnection
-//                )
+                .nestedScroll(
+                    if (!enableSwipeDismiss && drawerStateOffset >= maxOpenHeight) drawerState.anchoredDraggableState.NonDismissiblePreUpPostDownNestedScrollConnection else
+                        if (slideOver) drawerState.nestedScrollConnection else drawerState.anchoredDraggableState.PostDownNestedScrollConnection
+                )
                 .offset {
                     val y = if (drawerStateAnchors.size == 0) {
                         fullHeight.roundToInt()

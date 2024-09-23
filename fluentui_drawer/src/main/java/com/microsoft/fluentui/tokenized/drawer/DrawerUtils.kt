@@ -4,8 +4,6 @@ import androidx.compose.animation.core.TweenSpec
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,7 +17,6 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.PopupPositionProvider
-import com.microsoft.fluentui.util.pxToDp
 
 object DraggableDefaults {
     val AnimationSpec = TweenSpec<Float>(durationMillis = 256)
@@ -30,13 +27,12 @@ object DraggableDefaults {
     val VelocityThreshold = 0.5f
 
     val PositionalThreshold = 0.5f
-}
 
+}
 @Composable
 fun convertDpToFloat(dpValue: Dp): Float {
     return with(LocalDensity.current) { dpValue.toPx() }
 }
-
 
 val EndDrawerPadding = 56.dp
 val DrawerVelocityThreshold = 400.dp

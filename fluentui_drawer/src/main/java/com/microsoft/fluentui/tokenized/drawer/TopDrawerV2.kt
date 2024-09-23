@@ -1,6 +1,5 @@
 package com.microsoft.fluentui.tokenized.drawer
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.focusable
 import com.microsoft.fluentui.compose.DraggableAnchors
@@ -49,7 +48,6 @@ import com.microsoft.fluentui.util.pxToDp
 import kotlinx.coroutines.launch
 import kotlin.math.min
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun TopDrawerV2(
     modifier: Modifier,
@@ -90,7 +88,7 @@ fun TopDrawerV2(
         val minValue: Float = topCloseHeight
         val maxValue: Float = topOpenHeight
 
-        val anchors = DraggableAnchors<DrawerValue> {
+        val anchors = DraggableAnchors {
             DrawerValue.Closed at topCloseHeight
             DrawerValue.Open at topOpenHeight
         }
