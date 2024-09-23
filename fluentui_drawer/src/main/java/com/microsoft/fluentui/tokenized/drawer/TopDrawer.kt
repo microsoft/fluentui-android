@@ -49,9 +49,9 @@ import kotlinx.coroutines.launch
 import kotlin.math.min
 
 @Composable
-fun TopDrawerV2(
+fun TopDrawer(
     modifier: Modifier,
-    drawerState: DrawerStateV2,
+    drawerState: DrawerState,
     drawerShape: Shape,
     drawerElevation: Dp,
     drawerBackground: Brush,

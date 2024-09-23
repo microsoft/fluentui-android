@@ -34,7 +34,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.compose.FixedThreshold
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
 import com.microsoft.fluentui.tokenized.calculateFraction
 import com.microsoft.fluentui.util.dpToPx
@@ -43,11 +42,30 @@ import kotlinx.coroutines.launch
 import kotlin.math.max
 import kotlin.math.roundToInt
 
+/**
+ *
+ *
+ * Side drawers block interaction with the rest of an app’s content with a scrim.
+ * They are elevated above most of the app’s UI and don’t affect the screen’s layout grid.
+ *
+ * @param drawerContent composable that represents content inside the drawer
+ * @param modifier optional modifier for the drawer
+ * @param drawerState state of the drawer
+ * @param drawerShape shape of the drawer sheet
+ * @param drawerElevation drawer sheet elevation. This controls the size of the shadow below the
+ * drawer sheet
+ * @param drawerBackground background color to be used for the drawer sheet
+ * @param scrimColor color of the scrim that obscures content when the drawer is open
+ * @param preventDismissalOnScrimClick when true, the drawer will not be dismissed when the scrim is clicked
+ * @param onScrimClick callback to be invoked when the scrim is clicked
+ *
+ * @throws IllegalStateException when parent has [Float.POSITIVE_INFINITY] width
+ */
 @Composable
-fun HorizontalDrawerV2(
+fun HorizontalDrawer(
     modifier: Modifier,
     behaviorType: BehaviorType,
-    drawerState: DrawerStateV2,
+    drawerState: DrawerState,
     drawerShape: Shape,
     drawerElevation: Dp,
     drawerBackground: Brush,
