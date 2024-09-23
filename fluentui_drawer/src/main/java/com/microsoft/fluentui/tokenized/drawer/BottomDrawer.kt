@@ -126,13 +126,14 @@ fun BottomDrawer(
                 } else {
                     val targetValue: DrawerValue = if (slideOver) {
                         drawerStateAnchors.let {
-                            if (drawerState.anchoredDraggableState.currentValue == DrawerValue.Expanded) {
+                            if (drawerState.anchoredDraggableState.anchors.hasAnchorFor(DrawerValue.Expanded)) {
                                 DrawerValue.Expanded
-                            } else {
+                            } else if (drawerState.anchoredDraggableState.anchors.hasAnchorFor(DrawerValue.Open)) {
                                 DrawerValue.Open
+                            } else {
+                                DrawerValue.Closed
                             }
                         }
-
                     } else if (drawerState.skipOpenState) {
                         DrawerValue.Expanded
                     } else {
