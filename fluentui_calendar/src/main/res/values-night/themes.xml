@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+
+    <style name="Theme.FluentUI.Calendar" parent="Theme.FluentUI.Calendar.Base">
+     
+        <!--CalendarView-->
+        <item name="fluentuiCalendarBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+        <item name="fluentuiCalendarWeekHeadingBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+        <item name="fluentuiCalendarWeekHeadingWeekDayTextColor">@color/fluentui_gray_300</item>
+        <item name="fluentuiCalendarWeekHeadingWeekendTextColor">@color/fluentui_gray_400</item>
+        <item name="fluentuiCalendarOtherMonthBackgroundColor">@color/fluentui_gray_700</item>
+        <item name="fluentuiCalendarDayTodayBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+        <item name="fluentuiCalendarDayTextActiveColor">?attr/fluentuiForegroundColor</item>
+        
+    </style>
+</resources>
