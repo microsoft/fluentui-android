@@ -28,6 +28,7 @@
         <item name="fluentuiCalendarDayTextActiveCheckedColor">?attr/fluentuiForegroundOnPrimaryColor</item>
         <item name="fluentuiCalendarDayTextInactiveCheckedColor">?attr/fluentuiForegroundOnPrimaryColor</item>
         <item name="fluentuiCalendarDayTextDefaultColor">?attr/fluentuiForegroundSecondaryColor</item>
+        <item name="fluentuiCalendarDayKeyboardFocusTextColor">@color/fluentui_gray_600</item>
 
         <!--DateTimePicker-->
         <item name="fluentuiDateTimePickerToolbarTitleTextColor">?attr/colorPrimary</item>
