@@ -95,18 +95,6 @@
         <item name="fluentuiCompoundButtonTintDefaultColor">?attr/fluentuiForegroundSecondaryIconColor</item>
         <item name="fluentuiCompoundButtonTintCheckedColor">?attr/fluentuiForegroundSelectedColor</item>
 
-        <!--CalendarView-->
-        <item name="fluentuiCalendarBackgroundColor">?attr/fluentuiBackgroundColor</item>
-        <item name="fluentuiCalendarWeekHeadingBackgroundColor">?attr/fluentuiBackgroundColor</item>
-        <item name="fluentuiCalendarWeekHeadingWeekDayTextColor">?attr/fluentuiForegroundSecondaryColor</item>
-        <item name="fluentuiCalendarWeekHeadingWeekendTextColor">@color/fluentui_gray_400</item>
-        <item name="fluentuiCalendarMonthOverlayBackgroundColor">?attr/fluentuiBackgroundColor</item>
-        <item name="fluentuiCalendarMonthOverlayTextColor">?attr/fluentuiForegroundColor</item>
-        <item name="fluentuiCalendarOtherMonthBackgroundColor">@color/fluentui_gray_25</item>
-        <item name="fluentuiCalendarSelectedColor">?attr/fluentuiForegroundSelectedColor</item>
-        <item name="fluentuiCalendarDayTodayBackgroundColor">?attr/fluentuiColorPrimaryLighter</item>
-        <item name="fluentuiCalendarDayKeyboardFocusTextColor">@color/fluentui_gray_600</item>
-
         <!--ContextualCommandBar-->
         <item name="fluentuiContextualCommandBarBackgroundColor">@color/fluentui_gray_50</item>
         <item name="fluentuiContextualCommandBarBackgroundColorPressed">@color/fluentui_gray_100</item>

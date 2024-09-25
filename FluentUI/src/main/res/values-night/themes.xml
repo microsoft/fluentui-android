@@ -51,14 +51,6 @@
         <item name="FluentuiButtonOutlinedStrokePressedColor">@color/fluentui_communication_tint_40</item>
         <item name="FluentuiButtonOutlinedStrokeDisabledColor">@color/fluentui_gray_800</item>
 
-        <!--CalendarView-->
-        <item name="fluentuiCalendarBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
-        <item name="fluentuiCalendarWeekHeadingBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
-        <item name="fluentuiCalendarOtherMonthBackgroundColor">@color/fluentui_gray_700</item>
-        <item name="fluentuiCalendarDayTodayBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
-        <item name="fluentuiCalendarDayTextActiveColor">?attr/fluentuiForegroundColor</item>
-        <item name="fluentuiCalendarWeekHeadingWeekendTextColor">@color/fluentui_gray_600</item>
-
         <!--ContextualCommandBar-->
         <item name="fluentuiContextualCommandBarBackgroundColor">@color/fluentui_gray_600</item>
         <item name="fluentuiContextualCommandBarBackgroundColorPressed">@color/fluentui_gray_900</item>
