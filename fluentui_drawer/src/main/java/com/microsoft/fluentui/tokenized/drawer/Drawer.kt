@@ -1,116 +1,47 @@
 package com.microsoft.fluentui.tokenized.drawer
 
-import android.content.Context
-import android.content.res.Configuration
-import android.view.accessibility.AccessibilityEvent
-import android.view.accessibility.AccessibilityManager
-import androidx.compose.animation.core.TweenSpec
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.focusable
-import androidx.compose.foundation.gestures.Orientation
+import com.microsoft.fluentui.compose.AnchoredDraggableState
+import com.microsoft.fluentui.compose.DraggableAnchors
 import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.gestures.draggable
-import androidx.compose.foundation.gestures.rememberDraggableState
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.sizeIn
+import com.microsoft.fluentui.compose.animateTo
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.focus.focusTarget
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.layout.layout
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.collapse
-import androidx.compose.ui.semantics.dismiss
-import androidx.compose.ui.semantics.expand
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntRect
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.LayoutDirection
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupPositionProvider
 import androidx.compose.ui.window.PopupProperties
-import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.core.view.WindowInsetsCompat
-import com.microsoft.fluentui.compose.FixedThreshold
 import com.microsoft.fluentui.compose.ModalPopup
-import com.microsoft.fluentui.compose.NonDismissiblePreUpPostDownNestedScrollConnection
-import com.microsoft.fluentui.compose.PostDownNestedScrollConnection
 import com.microsoft.fluentui.compose.PreUpPostDownNestedScrollConnection
-import com.microsoft.fluentui.compose.SwipeableState
-import com.microsoft.fluentui.compose.swipeable
-import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
 import com.microsoft.fluentui.theme.token.controlTokens.DrawerInfo
 import com.microsoft.fluentui.theme.token.controlTokens.DrawerTokens
-import com.microsoft.fluentui.tokenized.calculateFraction
-import com.microsoft.fluentui.util.dpToPx
-import com.microsoft.fluentui.util.pxToDp
-import kotlinx.coroutines.CancellationException
+import com.microsoft.fluentui.tokenized.drawer.DraggableDefaults.AnimationSpec
+import com.microsoft.fluentui.tokenized.drawer.DraggableDefaults.PositionalThreshold
+import com.microsoft.fluentui.tokenized.drawer.DraggableDefaults.VelocityThreshold
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.max
-import kotlin.math.min
-import kotlin.math.roundToInt
-
-
-/**
- * Possible values of [DrawerState].
- */
-enum class DrawerValue {
-    /**
-     * The state of the drawer when it is closed.
-     */
-    Closed,
-
-    /**
-     * The state of the drawer when it is open.
-     */
-    Open,
-
-    /**
-     * The state of the bottom drawer when it is expanded (i.e. at 100% height).
-     */
-    Expanded
-}
 
 /**
  * State of the [Drawer] composable.
@@ -122,18 +53,26 @@ enum class DrawerValue {
  * expandable = true & skipOpenState = true -> Drawer can take only Closed & Expanded states.
  * expandable = false & skipOpenState = false -> Drawer can take only Closed & Open states.
  * expandable = false & skipOpenState = true -> Invalid state.
- * @param confirmStateChange Optional callback invoked to confirm or veto a pending state change.
+ * @param confirmValueChange Optional callback invoked to confirm or veto a pending state change.
  */
 class DrawerState(
     private val initialValue: DrawerValue = DrawerValue.Closed,
+    internal val confirmValueChange: (DrawerValue) -> Boolean = { true },
     internal val expandable: Boolean = true,
     internal val skipOpenState: Boolean = false,
-    confirmStateChange: (DrawerValue) -> Boolean = { true }
-) : SwipeableState<DrawerValue>(
-    initialValue = initialValue,
-    animationSpec = AnimationSpec,
-    confirmStateChange = confirmStateChange
 ) {
+    internal var velocityThreshold: () -> Float = { VelocityThreshold }
+    internal var positionalThreshold: (Float) -> Float = { PositionalThreshold }
+
+    internal val anchoredDraggableState: AnchoredDraggableState<DrawerValue> = AnchoredDraggableState(
+        initialValue,
+        anchors = DraggableAnchors {},
+        positionalThreshold,
+        velocityThreshold,
+        animationSpec = AnimationSpec,
+        confirmValueChange = confirmValueChange
+    )
+
     init {
         if (skipOpenState) {
             require(initialValue != DrawerValue.Open) {
@@ -159,19 +98,20 @@ class DrawerState(
      * It is false in case of skipOpenState is true.
      */
     internal val hasOpenedState: Boolean
-        get() = anchors.values.contains(DrawerValue.Open)
+        get() = anchoredDraggableState.anchors.hasAnchorFor(DrawerValue.Open)
 
     /**
      * Whether the drawer is closed.
      */
     val isClosed: Boolean
-        get() = currentValue == DrawerValue.Closed
+        get() = anchoredDraggableState.currentValue == DrawerValue.Closed
 
     /**
      * Whether drawer has expanded state.
      */
     internal val hasExpandedState: Boolean
-        get() = anchors.values.contains(DrawerValue.Expanded)
+        get() = anchoredDraggableState.anchors.hasAnchorFor(DrawerValue.Expanded)
+
 
     var animationInProgress: Boolean = false
 
@@ -187,28 +127,24 @@ class DrawerState(
         animationInProgress = true
         do {
             delay(50)
-        } while (!anchorsFilled)
+        } while (!anchoredDraggableState.anchorsFilled)
         /*
-        * first try to open the drawer
-        * if not possible then try to expand the drawer
-         */
-        var targetValue = when {
+       * first try to open the drawer
+       * if not possible then try to expand the drawer
+        */
+        val targetValue = when {
             hasOpenedState -> DrawerValue.Open
             hasExpandedState -> DrawerValue.Expanded
             else -> DrawerValue.Closed
         }
-        if (targetValue != currentValue) {
+        if (targetValue != anchoredDraggableState.currentValue) {
             try {
-                animateTo(targetValue = targetValue, AnimationSpec)
-
-            } catch (e: Exception) {
-                //TODO: When previous instance of drawer changes its content & closed then on
-                // re-triggering the same drawer, it open but stuck to end of screen due to
-                // JobCancellationException thrown with message "ScopeCoroutine was cancelled".
-                // Hence re-triggering "animateTo". Check for better sol
-                animateTo(targetValue = targetValue, AnimationSpec)
-            } finally {
-                animationInProgress = false
+                anchoredDraggableState.animateTo(targetValue, velocityThreshold())
+            } catch(e: Exception) {
+                anchoredDraggableState.animateTo(targetValue = targetValue, VelocityThreshold)
+            }
+            finally {
+                    animationInProgress = false
             }
         } else {
             animationInProgress = false
@@ -225,14 +161,14 @@ class DrawerState(
     suspend fun close() {
         animationInProgress = true
         try {
-            animateTo(DrawerValue.Closed, AnimationSpec)
+            anchoredDraggableState.animateTo(DrawerValue.Closed, VelocityThreshold)
         } catch (e: Exception) {
-            animateTo(DrawerValue.Closed, AnimationSpec)
+            anchoredDraggableState.animateTo(DrawerValue.Closed, VelocityThreshold)
         } finally {
             animationInProgress = false
             enable = false
-            anchors = emptyMap()
-            anchorsFilled = false
+            anchoredDraggableState.updateAnchors(DraggableAnchors { })
+            anchoredDraggableState.anchorsFilled = false
         }
     }
 
@@ -247,7 +183,7 @@ class DrawerState(
         animationInProgress = true
         do {
             delay(50)
-        } while (!anchorsFilled)
+        } while (!anchoredDraggableState.anchorsFilled)
         /*
         * first try to expand the drawer
         * if not possible then try to open the drawer
@@ -257,11 +193,11 @@ class DrawerState(
             hasOpenedState -> DrawerValue.Open
             else -> DrawerValue.Closed
         }
-        if (targetValue != currentValue) {
+        if (targetValue != anchoredDraggableState.currentValue) {
             try {
-                animateTo(targetValue = targetValue, AnimationSpec)
+                anchoredDraggableState.animateTo(targetValue = targetValue, VelocityThreshold)
             } catch (e: Exception) {
-                animateTo(targetValue = targetValue, AnimationSpec)
+                anchoredDraggableState.animateTo(targetValue = targetValue, VelocityThreshold)
             } finally {
                 animationInProgress = false
             }
@@ -270,7 +206,7 @@ class DrawerState(
         }
     }
 
-    val nestedScrollConnection = this.PreUpPostDownNestedScrollConnection
+    val nestedScrollConnection = this.anchoredDraggableState.PreUpPostDownNestedScrollConnection
 
     companion object {
         /**
@@ -279,57 +215,40 @@ class DrawerState(
         fun Saver(
             expandable: Boolean,
             skipOpenState: Boolean,
-            confirmStateChange: (DrawerValue) -> Boolean
+            confirmValueChange: (DrawerValue) -> Boolean
         ) =
             Saver<DrawerState, DrawerValue>(
-                save = { it.currentValue },
+                save = { it.anchoredDraggableState.currentValue },
                 restore = {
                     DrawerState(
                         initialValue = it,
                         expandable = expandable,
                         skipOpenState = skipOpenState,
-                        confirmStateChange = confirmStateChange
+                        confirmValueChange = confirmValueChange
                     )
                 }
             )
-
-        /**
-         * The default [Saver] implementation for [DrawerState].
-         */
-        @Deprecated(
-            message = "Please specify the expandable And/Or skipOpenState parameter",
-            replaceWith = ReplaceWith(
-                "DrawerState.Saver(" +
-                        "expandable = ," +
-                        "skipOpenState = ," +
-                        "confirmStateChange = confirmStateChange" +
-                        ")"
-            )
-        )
-        fun Saver(confirmStateChange: (DrawerValue) -> Boolean): Saver<DrawerState, DrawerValue> =
-            Saver(expandable = true, skipOpenState = false, confirmStateChange = confirmStateChange)
-
     }
 }
 
 /**
  * Create and [remember] a [DrawerState].
- * @param confirmStateChange Optional callback invoked to confirm or veto a pending state change.
+ * @param confirmValueChange Optional callback invoked to confirm or veto a pending state change.
  */
 @Composable
-fun rememberDrawerState(confirmStateChange: (DrawerValue) -> Boolean = { true }): DrawerState {
+fun rememberDrawerState(confirmValueChange: (DrawerValue) -> Boolean = { true }): DrawerState {
     return rememberSaveable(
         saver = DrawerState.Saver(
             expandable = true,
             skipOpenState = false,
-            confirmStateChange = confirmStateChange
+            confirmValueChange = confirmValueChange
         )
     ) {
         DrawerState(
             initialValue = DrawerValue.Closed,
             expandable = true,
             skipOpenState = false,
-            confirmStateChange
+            confirmValueChange = confirmValueChange
         )
     }
 }
@@ -338,17 +257,17 @@ fun rememberDrawerState(confirmStateChange: (DrawerValue) -> Boolean = { true })
 fun rememberBottomDrawerState(
     expandable: Boolean = true,
     skipOpenState: Boolean = false,
-    confirmStateChange: (DrawerValue) -> Boolean = { true }
+    confirmValueChange: (DrawerValue) -> Boolean = { true }
 ): DrawerState {
     return rememberSaveable(
-        confirmStateChange, expandable, skipOpenState,
-        saver = DrawerState.Saver(expandable, skipOpenState, confirmStateChange)
+        confirmValueChange, expandable, skipOpenState,
+        saver = DrawerState.Saver(expandable, skipOpenState, confirmValueChange)
     ) {
-        DrawerState(DrawerValue.Closed, expandable, skipOpenState, confirmStateChange)
+        DrawerState(DrawerValue.Closed, confirmValueChange, expandable, skipOpenState)
     }
 }
 
-private class DrawerPositionProvider(val offset: IntOffset?) : PopupPositionProvider {
+class DrawerPositionProvider(val offset: IntOffset?) : PopupPositionProvider {
     override fun calculatePosition(
         anchorBounds: IntRect,
         windowSize: IntSize,
@@ -363,7 +282,7 @@ private class DrawerPositionProvider(val offset: IntOffset?) : PopupPositionProv
 }
 
 @Composable
-private fun Scrim(
+fun Scrim(
     open: Boolean,
     onClose: () -> Unit,
     fraction: () -> Float,
@@ -394,664 +313,6 @@ private fun Scrim(
     }
 }
 
-private val EndDrawerPadding = 56.dp
-private val DrawerVelocityThreshold = 400.dp
-
-private val AnimationSpec = TweenSpec<Float>(durationMillis = 256)
-
-private const val DrawerOpenFraction = 0.5f
-
-//Tag use for testing
-const val DRAWER_HANDLE_TAG = "Fluent Drawer Handle"
-const val DRAWER_CONTENT_TAG = "Fluent Drawer Content"
-const val DRAWER_SCRIM_TAG = "Fluent Drawer Scrim"
-
-//Drawer Handle height + padding
-private val DrawerHandleHeightOffset = 20.dp
-
-private fun Modifier.drawerHeight(
-    slideOver: Boolean,
-    fixedHeight: Float,
-    fullHeight: Float,
-    drawerState: DrawerState
-): Modifier {
-    val modifier = if (slideOver) {
-        if (drawerState.expandable) {
-            Modifier
-        } else {
-            Modifier.heightIn(
-                0.dp,
-                pxToDp(fixedHeight)
-            )
-        }
-    } else {
-        Modifier.height(pxToDp(fullHeight - drawerState.offset.value))
-    }
-
-    return this.then(modifier)
-}
-
-private fun Modifier.bottomDrawerSwipeable(
-    drawerState: DrawerState,
-    slideOver: Boolean,
-    maxOpenHeight: Float,
-    fullHeight: Float,
-    drawerHeight: Float?
-): Modifier {
-    val modifier = if (slideOver) {
-        if (drawerHeight != null) {
-            val minHeight = 0f
-            val bottomOpenStateY = max(maxOpenHeight, fullHeight - drawerHeight)
-            val bottomExpandedStateY = max(minHeight, fullHeight - drawerHeight)
-            val anchors =
-                if (drawerHeight <= maxOpenHeight) {  // when contentHeight is less than maxOpenHeight
-                    if (drawerState.anchors.containsValue(DrawerValue.Expanded)) {
-                        /*
-                        *For dynamic content when drawerHeight was previously greater than maxOpenHeight and now less than maxOpenHEight
-                        *The old anchors won't have Open state, so we need to continue with Expanded state.
-                        */
-                        mapOf(
-                            bottomOpenStateY to DrawerValue.Expanded,
-                            fullHeight to DrawerValue.Closed,
-                        )
-                    } else {
-                        mapOf(
-                            bottomOpenStateY to DrawerValue.Open,
-                            fullHeight to DrawerValue.Closed
-                        )
-                    }
-                } else {
-                    if (drawerState.expandable) {
-                        if (drawerState.skipOpenState) {
-                            if (drawerState.anchors.containsValue(DrawerValue.Open)) {
-                                /*
-                                *For dynamic content when drawerHeight was previously less than maxOpenHeight and now greater than maxOpenHEight
-                                *The old anchors won't have Expanded state, so we need to continue with Open state.
-                                */
-                                mapOf(
-                                    bottomExpandedStateY to DrawerValue.Open, // when drawerHeight is greater than maxOpenHeight but less than fullHeight, then Expanded state starts from fullHeight-drawerHeight
-                                    fullHeight to DrawerValue.Closed
-                                )
-                            } else {
-                                mapOf(
-                                    bottomExpandedStateY to DrawerValue.Expanded, // when drawerHeight is greater than maxOpenHeight but less than fullHeight, then Expanded state starts from fullHeight-drawerHeight
-                                    fullHeight to DrawerValue.Closed,
-                                )
-                            }
-                        } else {
-                            mapOf(
-                                maxOpenHeight to DrawerValue.Open,
-                                bottomExpandedStateY to DrawerValue.Expanded,
-                                fullHeight to DrawerValue.Closed
-                            )
-                        }
-                    } else {
-                        mapOf(
-                            maxOpenHeight to DrawerValue.Open,
-                            fullHeight to DrawerValue.Closed
-                        )
-                    }
-                }
-            Modifier.swipeable(
-                state = drawerState,
-                anchors = anchors,
-                orientation = Orientation.Vertical,
-                enabled = false,
-                resistance = null
-            )
-        } else {
-            Modifier
-        }
-    } else {
-        val anchors = if (drawerState.expandable) {
-            if (drawerState.skipOpenState) {
-                mapOf(
-                    0F to DrawerValue.Expanded,
-                    fullHeight to DrawerValue.Closed,
-                )
-            } else {
-                mapOf(
-                    maxOpenHeight to DrawerValue.Open,
-                    0F to DrawerValue.Expanded,
-                    fullHeight to DrawerValue.Closed
-                )
-            }
-        } else {
-            mapOf(
-                maxOpenHeight to DrawerValue.Open,
-                fullHeight to DrawerValue.Closed
-            )
-        }
-        Modifier.swipeable(
-            state = drawerState,
-            anchors = anchors,
-            orientation = Orientation.Vertical,
-            enabled = false,
-            resistance = null
-        )
-    }
-    return this.then(modifier)
-}
-
-/**
- *
- *
- * Side drawers block interaction with the rest of an app’s content with a scrim.
- * They are elevated above most of the app’s UI and don’t affect the screen’s layout grid.
- *
- * @param drawerContent composable that represents content inside the drawer
- * @param modifier optional modifier for the drawer
- * @param drawerState state of the drawer
- * @param drawerShape shape of the drawer sheet
- * @param drawerElevation drawer sheet elevation. This controls the size of the shadow below the
- * drawer sheet
- * @param drawerBackground background color to be used for the drawer sheet
- * @param scrimColor color of the scrim that obscures content when the drawer is open
- * @param preventDismissalOnScrimClick when true, the drawer will not be dismissed when the scrim is clicked
- * @param onScrimClick callback to be invoked when the scrim is clicked
- *
- * @throws IllegalStateException when parent has [Float.POSITIVE_INFINITY] width
- */
-@Composable
-private fun HorizontalDrawer(
-    modifier: Modifier,
-    behaviorType: BehaviorType,
-    drawerState: DrawerState,
-    drawerShape: Shape,
-    drawerElevation: Dp,
-    drawerBackground: Brush,
-    scrimColor: Color,
-    scrimVisible: Boolean,
-    onDismiss: () -> Unit,
-    drawerContent: @Composable () -> Unit,
-    preventDismissalOnScrimClick: Boolean = false,
-    onScrimClick: () -> Unit = {}
-) {
-    BoxWithConstraints(modifier.fillMaxSize()) {
-        val modalDrawerConstraints = constraints
-
-        // TODO : think about Infinite max bounds case
-        if (!modalDrawerConstraints.hasBoundedWidth) {
-            throw IllegalStateException("Drawer shouldn't have infinite width")
-        }
-
-        val fullWidth = modalDrawerConstraints.maxWidth.toFloat()
-        var drawerWidth by remember(fullWidth) { mutableStateOf(fullWidth) }
-        //Hack to get exact drawerHeight wrt to content.
-        val visible = remember { mutableStateOf(true) }
-        if (visible.value) {
-            Box(
-                modifier = Modifier
-                    .layout { measurable, constraints ->
-                        val placeable = measurable.measure(constraints)
-                        layout(placeable.width, placeable.height) {
-                            drawerWidth = placeable.width.toFloat()
-                            visible.value = false
-                        }
-                    }
-            ) {
-                drawerContent()
-            }
-        } else {
-            val paddingPx = pxToDp(max(dpToPx(EndDrawerPadding), (fullWidth - drawerWidth)))
-            val leftSlide = behaviorType == BehaviorType.LEFT_SLIDE_OVER
-
-            val minValue =
-                modalDrawerConstraints.maxWidth.toFloat() * (if (leftSlide) (-1F) else (1F))
-            val maxValue = 0f
-
-            val anchors = mapOf(minValue to DrawerValue.Closed, maxValue to DrawerValue.Open)
-            val isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
-            Scrim(
-                open = !drawerState.isClosed,
-                onClose = onDismiss,
-                fraction = {
-                    calculateFraction(minValue, maxValue, drawerState.offset.value)
-                },
-                color = if (scrimVisible) scrimColor else Color.Transparent,
-                preventDismissalOnScrimClick = preventDismissalOnScrimClick,
-                onScrimClick = onScrimClick
-            )
-
-            Box(
-                modifier = with(LocalDensity.current) {
-                    Modifier
-                        .sizeIn(
-                            minWidth = modalDrawerConstraints.minWidth.toDp(),
-                            minHeight = modalDrawerConstraints.minHeight.toDp(),
-                            maxWidth = modalDrawerConstraints.maxWidth.toDp(),
-                            maxHeight = modalDrawerConstraints.maxHeight.toDp()
-                        )
-                }
-                    .offset { IntOffset(drawerState.offset.value.roundToInt(), 0) }
-                    .padding(
-                        start = if (leftSlide) 0.dp else paddingPx,
-                        end = if (leftSlide) paddingPx else 0.dp
-                    )
-                    .semantics {
-                        if (!drawerState.isClosed) {
-                            dismiss {
-                                onDismiss()
-                                true
-                            }
-                        }
-                    }
-                    .shadow(drawerElevation)
-                    .clip(drawerShape)
-                    .background(drawerBackground)
-                    .swipeable(
-                        state = drawerState,
-                        anchors = anchors,
-                        thresholds = { _, _ -> FixedThreshold(pxToDp(value = drawerWidth / 2)) },
-                        orientation = Orientation.Horizontal,
-                        enabled = false,
-                        reverseDirection = isRtl,
-                        velocityThreshold = DrawerVelocityThreshold,
-                        resistance = null
-                    ),
-            ) {
-                Column(
-                    Modifier
-                        .draggable(
-                            orientation = Orientation.Horizontal,
-                            state = rememberDraggableState { delta ->
-                                drawerState.performDrag(delta)
-                            },
-                            onDragStopped = { velocity ->
-                                launch {
-                                    drawerState.performFling(
-                                        velocity
-                                    )
-                                    if (drawerState.isClosed) {
-                                        onDismiss()
-                                    }
-                                }
-                            },
-                        )
-                        .testTag(DRAWER_CONTENT_TAG), content = { drawerContent() })
-            }
-        }
-    }
-}
-
-@Composable
-private fun TopDrawer(
-    modifier: Modifier,
-    drawerState: DrawerState,
-    drawerShape: Shape,
-    drawerElevation: Dp,
-    drawerBackground: Brush,
-    drawerHandleColor: Color,
-    scrimColor: Color,
-    scrimVisible: Boolean,
-    onDismiss: () -> Unit,
-    drawerContent: @Composable () -> Unit,
-    preventDismissalOnScrimClick: Boolean = false,
-    onScrimClick: () -> Unit = {}
-) {
-    BoxWithConstraints(modifier.fillMaxSize()) {
-        val fullHeight = constraints.maxHeight.toFloat()
-        var drawerHeight by remember(fullHeight) { mutableStateOf(fullHeight) }
-
-        Box(
-            modifier = Modifier
-                .alpha(0f)
-                .layout { measurable, constraints ->
-                    val placeable = measurable.measure(constraints)
-                    layout(placeable.width, placeable.height) {
-                        drawerHeight =
-                            placeable.height.toFloat() + dpToPx(DrawerHandleHeightOffset)
-                    }
-                }
-        ) {
-            drawerContent()
-        }
-        val maxOpenHeight = fullHeight * DrawerOpenFraction
-        val minHeight = 0f
-        val topCloseHeight = minHeight
-        val topOpenHeight = min(maxOpenHeight, drawerHeight)
-
-        val minValue: Float = topCloseHeight
-        val maxValue: Float = topOpenHeight
-
-        val anchors = mapOf(
-            topCloseHeight to DrawerValue.Closed,
-            topOpenHeight to DrawerValue.Open
-        )
-
-        val drawerConstraints = with(LocalDensity.current) {
-            Modifier
-                .sizeIn(
-                    maxWidth = constraints.maxWidth.toDp(),
-                    maxHeight = constraints.maxHeight.toDp()
-                )
-        }
-
-        Scrim(
-            open = !drawerState.isClosed,
-            onClose = onDismiss,
-            fraction = {
-                calculateFraction(minValue, maxValue, drawerState.offset.value)
-            },
-            color = if (scrimVisible) scrimColor else Color.Transparent,
-            preventDismissalOnScrimClick = preventDismissalOnScrimClick,
-            onScrimClick = onScrimClick
-        )
-
-        Box(
-            drawerConstraints
-                .offset { IntOffset(0, 0) }
-                .semantics {
-                    if (!drawerState.isClosed) {
-                        dismiss {
-                            onDismiss()
-                            true
-                        }
-                    }
-                }
-                .height(
-                    pxToDp(drawerState.offset.value)
-                )
-                .shadow(drawerElevation)
-                .clip(drawerShape)
-                .background(drawerBackground)
-                .swipeable(
-                    state = drawerState,
-                    anchors = anchors,
-                    orientation = Orientation.Vertical,
-                    enabled = false,
-                    resistance = null
-                )
-                .focusable(false),
-        ) {
-            ConstraintLayout(modifier = Modifier.padding(bottom = 8.dp)) {
-                val (drawerContentConstrain, drawerHandleConstrain) = createRefs()
-                Column(modifier = Modifier
-                    .offset { IntOffset(0, 0) }
-                    .padding(bottom = 8.dp)
-                    .constrainAs(drawerContentConstrain) {
-                        top.linkTo(parent.top)
-                        bottom.linkTo(drawerHandleConstrain.top)
-                    }
-                    .focusTarget()
-                    .testTag(DRAWER_CONTENT_TAG), content = { drawerContent() }
-                )
-                Column(horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .constrainAs(drawerHandleConstrain) {
-                            top.linkTo(drawerContentConstrain.bottom)
-                            bottom.linkTo(parent.bottom)
-                        }
-                        .fillMaxWidth()
-                        .draggable(
-                            orientation = Orientation.Vertical,
-                            state = rememberDraggableState { delta ->
-                                drawerState.performDrag(delta)
-                            },
-                            onDragStopped = { velocity ->
-                                launch {
-                                    drawerState.performFling(
-                                        velocity
-                                    )
-                                    if (drawerState.isClosed) {
-                                        onDismiss()
-                                    }
-                                }
-                            },
-                        )
-                        .testTag(DRAWER_HANDLE_TAG)
-                ) {
-                    Icon(
-                        painterResource(id = R.drawable.ic_drawer_handle),
-                        contentDescription = null,
-                        tint = drawerHandleColor
-                    )
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun BottomDrawer(
-    modifier: Modifier,
-    drawerState: DrawerState,
-    drawerShape: Shape,
-    drawerElevation: Dp,
-    drawerBackground: Brush,
-    drawerHandleColor: Color,
-    scrimColor: Color,
-    scrimVisible: Boolean,
-    slideOver: Boolean,
-    enableSwipeDismiss: Boolean = true,
-    showHandle: Boolean,
-    onDismiss: () -> Unit,
-    drawerContent: @Composable () -> Unit,
-    maxLandscapeWidthFraction : Float = 1F,
-    preventDismissalOnScrimClick: Boolean = false,
-    onScrimClick: () -> Unit = {}
-) {
-    BoxWithConstraints(modifier.fillMaxSize()) {
-        val fullHeight = constraints.maxHeight.toFloat()
-        val drawerHeight =
-            remember(drawerContent.hashCode()) { mutableStateOf<Float?>(null) }
-        val maxOpenHeight = fullHeight * DrawerOpenFraction
-
-        val drawerConstraints = with(LocalDensity.current) {
-            Modifier
-                .sizeIn(
-                    maxWidth = constraints.maxWidth.toDp(),
-                    maxHeight = constraints.maxHeight.toDp()
-                )
-        }
-        val scope = rememberCoroutineScope()
-
-        Scrim(
-            open = !drawerState.isClosed || (drawerHeight != null && drawerHeight.value == 0f),
-            onClose = onDismiss,
-            fraction = {
-                if (drawerState.anchors.isEmpty() || (drawerHeight != null && drawerHeight.value == 0f)) {
-                    0.toFloat()
-                } else {
-                    var targetValue: DrawerValue = if (slideOver) {
-                        drawerState.anchors.maxBy { it.value }.value
-                    } else if (drawerState.skipOpenState) {
-                        DrawerValue.Expanded
-                    } else {
-                        DrawerValue.Open
-                    }
-                    calculateFraction(
-                        drawerState.anchors.entries.firstOrNull { it.value == DrawerValue.Closed }?.key!!,
-                        drawerState.anchors.entries.firstOrNull { it.value == targetValue }?.key!!,
-                        drawerState.offset.value
-                    )
-                }
-            },
-            color = if (scrimVisible) scrimColor else Color.Transparent,
-            preventDismissalOnScrimClick = preventDismissalOnScrimClick,
-            onScrimClick = onScrimClick
-        )
-        val configuration = LocalConfiguration.current
-        Box(
-            drawerConstraints
-                .fillMaxWidth(
-                    if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) maxLandscapeWidthFraction
-                    else 1F
-                )
-                .nestedScroll(
-                    if (!enableSwipeDismiss && drawerState.offset.value >= maxOpenHeight) drawerState.NonDismissiblePreUpPostDownNestedScrollConnection else
-                        if (slideOver) drawerState.nestedScrollConnection else drawerState.PostDownNestedScrollConnection
-                )
-                .offset {
-                    val y = if (drawerState.anchors == null) {
-                        fullHeight.roundToInt()
-                    } else {
-                        drawerState.offset.value.roundToInt()
-                    }
-                    IntOffset(x = 0, y = y)
-                }
-                .then(
-                    if (maxLandscapeWidthFraction != 1F
-                        && configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-                    ) Modifier.align(Alignment.TopCenter)
-                    else Modifier
-                )
-                .onGloballyPositioned { layoutCoordinates ->
-                    if (!drawerState.animationInProgress
-                        && drawerState.currentValue == DrawerValue.Closed
-                        && drawerState.targetValue == DrawerValue.Closed
-                    ) {
-                        onDismiss()
-                    }
-
-                    if (slideOver) {
-                        val originalSize = layoutCoordinates.size.height.toFloat()
-                        drawerHeight.value = if (drawerState.expandable) {
-                            originalSize
-                        } else {
-                            min(
-                                originalSize,
-                                maxOpenHeight
-                            )
-                        }
-                    }
-                }
-                .bottomDrawerSwipeable(
-                    drawerState,
-                    slideOver,
-                    maxOpenHeight,
-                    fullHeight,
-                    drawerHeight.value
-                )
-                .drawerHeight(
-                    slideOver,
-                    maxOpenHeight,
-                    fullHeight,
-                    drawerState
-                )
-                .shadow(drawerElevation)
-                .clip(drawerShape)
-                .background(drawerBackground)
-                .semantics {
-                    if (!drawerState.isClosed) {
-                        dismiss {
-                            onDismiss()
-                            true
-                        }
-                        if (drawerState.currentValue == DrawerValue.Open && drawerState.hasExpandedState) {
-                            expand {
-                                if (drawerState.confirmStateChange(DrawerValue.Expanded)) {
-                                    scope.launch { drawerState.expand() }
-                                }
-                                true
-                            }
-                        } else if (drawerState.hasExpandedState && drawerState.hasOpenedState) {
-                            collapse {
-                                if (drawerState.confirmStateChange(DrawerValue.Open)) {
-                                    scope.launch { drawerState.open() }
-                                }
-                                true
-                            }
-                        }
-                    }
-                }
-                .focusable(false),
-        ) {
-            Column {
-                if (showHandle) {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier
-                            .padding(vertical = 8.dp)
-                            .fillMaxWidth()
-                            .draggable(
-                                orientation = Orientation.Vertical,
-                                state = rememberDraggableState { delta ->
-                                    if (!enableSwipeDismiss && drawerState.offset.value >= maxOpenHeight) {
-                                        if (delta < 0) {
-                                            drawerState.performDrag(delta)
-                                        }
-                                    } else {
-                                        drawerState.performDrag(delta)
-                                    }
-                                },
-                                onDragStopped = { velocity ->
-                                    launch {
-                                        drawerState.performFling(
-                                            velocity
-                                        )
-                                        if (drawerState.isClosed) {
-                                            if (enableSwipeDismiss)
-                                                onDismiss()
-                                            else
-                                                scope.launch { drawerState.open() }
-                                        }
-                                    }
-                                },
-                            )
-                            .testTag(DRAWER_HANDLE_TAG)
-                    ) {
-                        val collapsed = LocalContext.current.resources.getString(R.string.collapsed)
-                        val expanded = LocalContext.current.resources.getString(R.string.expanded)
-                        val accessibilityManager  = LocalContext.current.getSystemService(Context.ACCESSIBILITY_SERVICE) as? AccessibilityManager
-                        Icon(
-                            painterResource(id = R.drawable.ic_drawer_handle),
-                            contentDescription = LocalContext.current.resources.getString(R.string.drag_handle),
-                            tint = drawerHandleColor,
-                            modifier = Modifier
-                                .clickable(
-                                    enabled = drawerState.hasExpandedState,
-                                    role = Role.Button,
-                                    onClickLabel =
-                                    if (drawerState.currentValue == DrawerValue.Expanded) {
-                                        LocalContext.current.resources.getString(R.string.collapse)
-                                    } else {
-                                        if (drawerState.hasExpandedState && !drawerState.isClosed) LocalContext.current.resources.getString(
-                                            R.string.expand
-                                        ) else null
-                                    }
-                                ) {
-                                    if (drawerState.currentValue == DrawerValue.Expanded) {
-                                        if (drawerState.hasOpenedState && drawerState.confirmStateChange(
-                                                DrawerValue.Open
-                                            )
-                                        ) {
-                                            scope.launch { drawerState.open() }
-                                            accessibilityManager?.let { manager ->
-                                                if(manager.isEnabled){
-                                                    val event = AccessibilityEvent.obtain(
-                                                        AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
-                                                        text.add(collapsed)
-                                                    }
-                                                    manager.sendAccessibilityEvent(event)
-                                                }
-                                            }
-                                        }
-                                    } else if (drawerState.hasExpandedState) {
-                                        if (drawerState.confirmStateChange(DrawerValue.Expanded)) {
-                                            scope.launch { drawerState.expand() }
-                                            accessibilityManager?.let { manager ->
-                                                if(manager.isEnabled){
-                                                    val event = AccessibilityEvent.obtain(
-                                                        AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
-                                                        text.add(expanded)
-                                                    }
-                                                    manager.sendAccessibilityEvent(event)
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                        )
-                    }
-                }
-                Column(modifier = Modifier
-                    .testTag(DRAWER_CONTENT_TAG), content = { drawerContent() })
-            }
-        }
-    }
-}
-
 /**
  *
  * Drawer block interaction with the rest of an app’s content with a scrim.
@@ -1069,7 +330,6 @@ private fun BottomDrawer(
  *
  * @throws IllegalStateException when parent has [Float.POSITIVE_INFINITY] width
  */
-
 @Composable
 fun Drawer(
     modifier: Modifier = Modifier,
@@ -1091,7 +351,7 @@ fun Drawer(
         val popupPositionProvider = DrawerPositionProvider(offset)
         val scope = rememberCoroutineScope()
         val close: () -> Unit = {
-            if (drawerState.confirmStateChange(DrawerValue.Closed)) {
+            if (drawerState.confirmValueChange(DrawerValue.Closed)) {
                 scope.launch { drawerState.close() }
             }
         }
@@ -1176,7 +436,6 @@ fun Drawer(
     }
 }
 
-
 /**
  *
  * BottomDrawer block interaction with the rest of an app’s content with a scrim.
@@ -1197,7 +456,6 @@ fun Drawer(
  *
  * @throws IllegalStateException when parent has [Float.POSITIVE_INFINITY] width
  */
-
 @Composable
 fun BottomDrawer(
     modifier: Modifier = Modifier,
@@ -1220,7 +478,7 @@ fun BottomDrawer(
             ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DrawerControlType] as DrawerTokens
         val scope = rememberCoroutineScope()
         val close: () -> Unit = {
-            if (drawerState.confirmStateChange(DrawerValue.Closed)) {
+            if (drawerState.confirmValueChange(DrawerValue.Closed)) {
                 scope.launch { drawerState.close() }
             }
         }

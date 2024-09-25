@@ -67,6 +67,7 @@ allprojects {
         tokenautocompleteVersion  =    '2.0.8'
         threetenabpVersion        =    '1.1.0'
         universalPkgDir           =    "universal"
+        composeFoundationVersion  =    '1.6.0'
     }
     repositories {
         google()
