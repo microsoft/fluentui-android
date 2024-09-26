@@ -13,9 +13,11 @@ import androidx.compose.material.SliderDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -412,17 +414,23 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
 ) {
     val scope = rememberCoroutineScope()
 
-    val drawerState = rememberBottomDrawerState(expandable = expandable, skipOpenState = skipOpenState)
+    var drawerState = rememberBottomDrawerState(expandable = expandable, skipOpenState = skipOpenState)
+
+    var drawerAppearanceValue by rememberSaveable { mutableIntStateOf(0) }
 
     val open: () -> Unit = {
         scope.launch { drawerState.open() }
+        drawerAppearanceValue = 1
     }
     val expand: () -> Unit = {
         scope.launch { drawerState.expand() }
+        drawerAppearanceValue = 2
     }
     val close: () -> Unit = {
         scope.launch { drawerState.close() }
+        drawerAppearanceValue = 0
     }
+
     Row {
         PrimarySurfaceContent(
             open,
@@ -445,6 +453,18 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
         maxLandscapeWidthFraction = maxLandscapeWidthFraction,
         preventDismissalOnScrimClick = preventDismissalOnScrimClick
     )
+
+    when (drawerAppearanceValue) {
+        1 -> {
+            open()
+        }
+        2 -> {
+            expand()
+        }
+        else -> {
+            close()
+        }
+    }
 }
 
 
