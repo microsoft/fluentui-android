@@ -1,0 +1,78 @@
+trigger: none
+name: $(Date:yyyyMMdd).$(Rev:r)
+resources:
+  pipelines:
+  - pipeline: 'fluentui-android-maven-publish'
+    project: 'fluentui-native'
+    source: 'fluentui-maven-central-publish [1es-pt]'
+  repositories:
+  - repository: 1ESPipelineTemplates
+    type: git
+    name: 1ESPipelineTemplates/1ESPipelineTemplates
+    ref: refs/tags/release
+extends:
+  template: v1/1ES.Official.PipelineTemplate.yml@1ESPipelineTemplates
+  parameters:
+    pool:
+      name: Azure-Pipelines-1ESPT-ExDShared
+      image: windows-2022
+      os: windows
+    customBuildTags:
+    - ES365AIMigrationTooling-Release
+    stages:
+    - stage: Stage_1
+      displayName: ESRP Release
+      jobs:
+      - job: Job_1
+        displayName: Agent job
+        condition: succeeded()
+        timeoutInMinutes: 0
+        templateContext:
+          type: releaseJob
+          isProduction: true
+          inputs:
+          - input: pipelineArtifact
+            pipeline: 'fluentui-android-maven-publish'
+            artifactName: 'Build'
+            targetPath: '$(Pipeline.Workspace)/Build'
+        steps:
+        - task: SFP.release-tasks.custom-build-release-task.EsrpRelease@7
+          displayName: ESRP Release
+          inputs:
+            connectedservicename: $(connectedServiceName)
+            keyvaultname: $(keyVaultName)
+            authcertname: $(authCertName)
+            signcertname: '$(signCertName)'
+            clientid: $(clientId)
+            folderlocation: $(System.DefaultWorkingDirectory)/fluentui-android-maven-publish/Build
+            owners: $(owners)
+            approvers: $(approvers)
+            mainpublisher: fluentuiandroidrelease
+    - stage: Stage_2
+      displayName: AppCenter Release
+      jobs:
+      - job: Job_1
+        displayName: Agent job
+        condition: succeeded()
+        timeoutInMinutes: 0
+        templateContext:
+          inputs:
+          - input: pipelineArtifact
+            pipeline: 'fluentui-android-maven-publish'
+            artifactName: 'dogfood'
+            targetPath: '$(Pipeline.Workspace)/dogfood'
+          - input: pipelineArtifact
+            pipeline: 'fluentui-android-maven-publish'
+            artifactName: 'notes'
+            targetPath: '$(Pipeline.Workspace)/notes'
+        steps:
+        - task: AppCenterDistribute@3
+          displayName: Deploy $(System.DefaultWorkingDirectory)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk to Visual Studio App Center
+          inputs:
+            serverEndpoint: $(serverEndpoint)
+            appSlug: $(appSlug)
+            app: $(System.DefaultWorkingDirectory)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk
+            symbolsType: Android
+            releaseNotesSelection: file
+            releaseNotesFile: $(System.DefaultWorkingDirectory)/fluentui-android-maven-publish/notes/dogfood-release-notes.txt
+            isSilent: false
