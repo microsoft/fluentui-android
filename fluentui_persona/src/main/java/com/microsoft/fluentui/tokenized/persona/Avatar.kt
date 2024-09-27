@@ -13,6 +13,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
@@ -109,6 +110,7 @@ fun Avatar(
                 person.image != null -> {
                     Image(
                         painter = painterResource(person.image), null,
+                        contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .size(avatarSize)
                             .clip(CircleShape)
@@ -120,6 +122,7 @@ fun Avatar(
                 person.bitmap != null -> {
                     Image(
                         bitmap = person.bitmap.asImageBitmap(), null,
+                        contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .size(avatarSize)
                             .clip(CircleShape)
@@ -164,6 +167,7 @@ fun Avatar(
                     if (cutoutIconDrawable != null) {
                         Image(
                             painter = painterResource(cutoutIconDrawable),
+                            contentScale = ContentScale.Crop,
                             modifier = Modifier
                                 .background(cutoutBackgroundColor)
                                 .border(
@@ -178,6 +182,7 @@ fun Avatar(
                     } else if (cutoutIconImageVector != null) {
                         Image(
                             imageVector = cutoutIconImageVector,
+                            contentScale = ContentScale.Crop,
                             modifier = Modifier
                                 .background(cutoutBackgroundColor)
                                 .border(
@@ -202,7 +207,8 @@ fun Avatar(
                     Modifier
                         .align(Alignment.BottomEnd)
                         // Adding 2.dp to both side to incorporate border which is an image in Fluent Android.
-                        .offset(presenceOffset.x + 2.dp, -presenceOffset.y + 2.dp)
+                        .offset(presenceOffset.x + 2.dp, -presenceOffset.y + 2.dp),
+                    contentScale = ContentScale.Crop
                 )
             }
         }
@@ -266,6 +272,7 @@ fun Avatar(
             if (group.image != null) {
                 Image(
                     painter = painterResource(group.image),
+                    contentScale = ContentScale.Crop,
                     contentDescription = null,
                     modifier = Modifier
                         .size(avatarSize)
@@ -277,6 +284,7 @@ fun Avatar(
             } else if (group.bitmap != null) {
                 Image(
                     bitmap = group.bitmap.asImageBitmap(),
+                    contentScale = ContentScale.Crop,
                     contentDescription = null,
                     modifier = Modifier
                         .size(avatarSize)
