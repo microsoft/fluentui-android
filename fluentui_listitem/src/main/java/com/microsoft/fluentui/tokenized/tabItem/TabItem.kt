@@ -241,11 +241,11 @@ fun TabItem(
         ) {
             badgeWithIcon()
 
-            val fontStyle = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption2]
-            var fontSize = remember { mutableStateOf(fontStyle.fontSize) }
+            val textTypography = token.textTypography(tabItemInfo = tabItemInfo)
+            var fontSize = remember { mutableStateOf(textTypography.fontSize) }
             var textStyle by remember(textColor) {
                 mutableStateOf(
-                    fontStyle.merge(TextStyle(color = textColor, fontSize = fontSize.value))
+                    textTypography.merge(TextStyle(color = textColor, fontSize = fontSize.value))
                 )
             }
 
