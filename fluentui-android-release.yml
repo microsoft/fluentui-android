@@ -33,20 +33,8 @@ extends:
           inputs:
           - input: pipelineArtifact
             pipeline: 'fluentui-android-maven-publish'
-            artifactName: 'SBom-1'
-            targetPath: '$(Pipeline.Workspace)/SBom-1'
-          - input: pipelineArtifact
-            pipeline: 'fluentui-android-maven-publish'
             artifactName: 'Build'
             targetPath: '$(Pipeline.Workspace)/Build'
-          - input: pipelineArtifact
-            pipeline: 'fluentui-android-maven-publish'
-            artifactName: 'dogfood'
-            targetPath: '$(Pipeline.Workspace)/dogfood'
-          - input: pipelineArtifact
-            pipeline: 'fluentui-android-maven-publish'
-            artifactName: 'notes'
-            targetPath: '$(Pipeline.Workspace)/notes'
         steps:
         - task: SFP.release-tasks.custom-build-release-task.EsrpRelease@7
           displayName: ESRP Release
@@ -69,14 +57,6 @@ extends:
         timeoutInMinutes: 0
         templateContext:
           inputs:
-          - input: pipelineArtifact
-            pipeline: 'fluentui-android-maven-publish'
-            artifactName: 'SBom-1'
-            targetPath: '$(Pipeline.Workspace)/SBom-1'
-          - input: pipelineArtifact
-            pipeline: 'fluentui-android-maven-publish'
-            artifactName: 'Build'
-            targetPath: '$(Pipeline.Workspace)/Build'
           - input: pipelineArtifact
             pipeline: 'fluentui-android-maven-publish'
             artifactName: 'dogfood'
