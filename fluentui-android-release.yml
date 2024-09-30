@@ -39,14 +39,14 @@ extends:
         - task: SFP.release-tasks.custom-build-release-task.EsrpRelease@7
           displayName: ESRP Release
           inputs:
-            connectedservicename: ''
-            keyvaultname: ''
-            authcertname: ''
-            signcertname: ''
-            clientid: ''
+            connectedservicename: $(connectedServiceName)
+            keyvaultname: $(keyVaultName)
+            authcertname: $(authCertName)
+            signcertname: '$(signCertName) '
+            clientid: $(clientId)
             folderlocation: $(System.DefaultWorkingDirectory)/fluentui-android-maven-publish/Build
-            owners: ''
-            approvers: ''
+            owners: $(owners)
+            approvers: $(approvers)
             mainpublisher: fluentuiandroidrelease
     - stage: Stage_2
       displayName: AppCenter Release
@@ -69,8 +69,8 @@ extends:
         - task: AppCenterDistribute@3
           displayName: Deploy $(System.DefaultWorkingDirectory)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk to Visual Studio App Center
           inputs:
-            serverEndpoint: ''
-            appSlug: ''
+            serverEndpoint: $(serverEndpoint)
+            appSlug: $(appSlug)
             app: $(System.DefaultWorkingDirectory)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk
             symbolsType: Android
             releaseNotesSelection: file
