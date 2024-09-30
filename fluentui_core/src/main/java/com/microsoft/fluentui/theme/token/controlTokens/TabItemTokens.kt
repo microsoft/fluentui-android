@@ -169,6 +169,6 @@ open class TabItemTokens : IControlToken, Parcelable {
 
     @Composable
     open fun textTypography(tabItemInfo: TabItemInfo): TextStyle {
-        return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1]
+        return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption2]
     }
 }
