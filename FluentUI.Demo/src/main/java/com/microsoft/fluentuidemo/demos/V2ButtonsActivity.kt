@@ -15,7 +15,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Divider
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Create
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.ThumbUp
@@ -204,27 +208,63 @@ class V2ButtonsActivity : V2DemoActivity() {
                         .fillMaxSize()
                         .focusable(false)
                 ) {
-                    val fabText = "FAB Text"
-                    FloatingActionButton(
-                        size = FABSize.Small,
-                        state = fabState,
-                        onClick = {
-                            val toastText: String
-                            if (fabState == FABState.Expanded) {
-                                toastText = "FAB Collapsed"
-                                fabState = FABState.Collapsed
-                            } else {
-                                toastText = "FAB Expanded"
-                                fabState = FABState.Expanded
-                            }
-                            Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show()
-                        },
-                        icon = Icons.Filled.Email,
-                        modifier = Modifier
-                            .padding(16.dp)
-                            .testTag("FAB"),
-                        text = fabText,
-                    )
+                    val showTwoFabs = rememberSaveable {
+                        mutableStateOf(false)
+                    }
+                    if(showTwoFabs.value) {
+                        //Smallest Fab
+                        Row(
+                            modifier = Modifier.padding(bottom = (16 + 56 + 16).dp, end = 16.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically) {
+                            Text("Smallest FAB", style = TextStyle(
+                                color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                    themeMode
+                                )
+                            ))
+                            FloatingActionButton(
+                                size = FABSize.Small,
+                                state = FABState.Collapsed,
+                                onClick = {},
+                                icon = Icons.Filled.Create,
+                                modifier = Modifier.padding(start = 16.dp)
+                            )
+                        }
+
+                        val fabText = "FAB Text"
+                        Row(horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically) {
+                            Text(
+                                "Second FAB", style = TextStyle(
+                                    color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                        themeMode
+                                    )
+                                )
+                            )
+                            FloatingActionButton(
+                                size = FABSize.Large,
+                                state = FABState.Collapsed,
+                                onClick = {},
+                                icon = Icons.Filled.Email,
+                                modifier = Modifier
+                                    .padding(16.dp)
+                                    .testTag("FAB"),
+                                text = fabText,
+                            )
+                        }
+                    }
+                    else {
+                        FloatingActionButton(
+                            size = FABSize.Large,
+                            state = FABState.Collapsed,
+                            onClick = {
+                                showTwoFabs.value = true
+                            },
+                            icon = Icons.Filled.Add,
+                            modifier = Modifier
+                                .padding(16.dp)
+                        )
+                    }
                 }
             }
         }
