@@ -391,7 +391,6 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
         scope.launch { drawerState.expand() }
     }
     val close: () -> Unit = {
-        println("DRAWER: " + "CLOSE1 CALLED")
         scope.launch { drawerState.close() }
     }
     Row {
