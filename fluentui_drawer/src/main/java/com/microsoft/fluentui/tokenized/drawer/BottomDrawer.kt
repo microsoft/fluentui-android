@@ -178,7 +178,7 @@ fun BottomDrawer(
                 .onGloballyPositioned { layoutCoordinates ->
                     if (!drawerState.animationInProgress
                         && drawerState.anchoredDraggableState.currentValue == DrawerValue.Closed
-                        && drawerState.initialValue == DrawerValue.Closed
+                        && drawerState.anchoredDraggableState.targetValue == DrawerValue.Closed
                     ) {
                        //onDismiss()
                     }
@@ -214,7 +214,6 @@ fun BottomDrawer(
                 .semantics {
                     if (!drawerState.isClosed) {
                         dismiss {
-                            println("DRAWER: close6 called")
                             onDismiss()
                             true
                         }
@@ -262,7 +261,6 @@ fun BottomDrawer(
                                         )
                                         if (drawerState.isClosed) {
                                             if (enableSwipeDismiss) {
-                                                println("DRAWER: close7 called")
                                                 onDismiss()
                                             }
                                             else

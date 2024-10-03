@@ -227,7 +227,6 @@ open class V2DemoActivity : ComponentActivity() {
                                                 scope.launch { bottomDrawerState.open() }
                                                 !isHiddenBottomDrawer
                                             } else {
-                                                println("DRAWER CLOSE2 CALLED")
                                                 scope.launch { bottomDrawerState.close() }
                                                 !isHiddenBottomDrawer
                                             }
