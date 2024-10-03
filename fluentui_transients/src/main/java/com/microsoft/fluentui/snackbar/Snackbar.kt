@@ -216,7 +216,8 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
         actionButtonView.visibility = View.VISIBLE
         actionButtonView.setOnClickListener { view ->
             listener.onClick(view)
-            dismiss()
+            // dismiss the Snackbar
+            dispatchDismiss(BaseCallback.DISMISS_EVENT_ACTION)
         }
 
         updateStyle()
