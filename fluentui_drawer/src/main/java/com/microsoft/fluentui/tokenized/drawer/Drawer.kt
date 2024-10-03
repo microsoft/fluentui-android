@@ -56,7 +56,7 @@ import kotlin.math.max
  * @param confirmValueChange Optional callback invoked to confirm or veto a pending state change.
  */
 class DrawerState(
-     var initialValue: DrawerValue = DrawerValue.Closed,
+    private var initialValue: DrawerValue = DrawerValue.Closed,
     internal val confirmValueChange: (DrawerValue) -> Boolean = { true },
     internal val expandable: Boolean = true,
     internal val skipOpenState: Boolean = false,
@@ -64,7 +64,7 @@ class DrawerState(
     internal var velocityThreshold: () -> Float = { VelocityThreshold }
     internal var positionalThreshold: (Float) -> Float = { PositionalThreshold }
 
-    val anchoredDraggableState: AnchoredDraggableState<DrawerValue> = AnchoredDraggableState(
+    internal val anchoredDraggableState: AnchoredDraggableState<DrawerValue> = AnchoredDraggableState(
         initialValue,
         anchors = DraggableAnchors {},
         positionalThreshold,
