@@ -470,7 +470,9 @@ fun BottomDrawer(
     maxLandscapeWidthFraction: Float = 1F,
     preventDismissalOnScrimClick: Boolean = false,
     onScrimClick: () -> Unit = {},
+    initialValue: DrawerValue = DrawerValue.Closed
 ) {
+    var scope = rememberCoroutineScope()
     if (drawerState.enable) {
         val themeID =
             FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
@@ -522,5 +524,17 @@ fun BottomDrawer(
                 onScrimClick = onScrimClick
             )
         }
+    }
+    val open: () -> Unit = {
+        scope.launch { drawerState.open() }
+    }
+    val expand: () -> Unit = {
+        scope.launch { drawerState.expand() }
+    }
+    if(initialValue == DrawerValue.Open) {
+        open()
+    }
+    else if(initialValue == DrawerValue.Expanded) {
+        expand()
     }
 }

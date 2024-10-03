@@ -30,6 +30,8 @@ import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.drawer.BottomDrawer
+import com.microsoft.fluentui.tokenized.drawer.DrawerState
+import com.microsoft.fluentui.tokenized.drawer.DrawerValue
 import com.microsoft.fluentui.tokenized.drawer.rememberBottomDrawerState
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentuidemo.R
@@ -411,18 +413,22 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     drawerContent: @Composable ((() -> Unit) -> Unit),
 ) {
     val scope = rememberCoroutineScope()
-
+    var initialState by remember { mutableStateOf(DrawerValue.Closed) }
     val drawerState = rememberBottomDrawerState(expandable = expandable, skipOpenState = skipOpenState)
 
     val open: () -> Unit = {
         scope.launch { drawerState.open() }
+        initialState = DrawerValue.Open
     }
     val expand: () -> Unit = {
         scope.launch { drawerState.expand() }
+        initialState = DrawerValue.Expanded
     }
     val close: () -> Unit = {
         scope.launch { drawerState.close() }
+        initialState = DrawerValue.Closed
     }
+
     Row {
         PrimarySurfaceContent(
             open,
@@ -443,7 +449,8 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
         showHandle = showHandle,
         enableSwipeDismiss = enableSwipeDismiss,
         maxLandscapeWidthFraction = maxLandscapeWidthFraction,
-        preventDismissalOnScrimClick = preventDismissalOnScrimClick
+        preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+        initialValue = initialState
     )
 }
 
