@@ -178,9 +178,9 @@ fun BottomDrawer(
                 .onGloballyPositioned { layoutCoordinates ->
                     if (!drawerState.animationInProgress
                         && drawerState.anchoredDraggableState.currentValue == DrawerValue.Closed
-                        && drawerState.anchoredDraggableState.targetValue == DrawerValue.Closed
+                        && drawerState.initialValue == DrawerValue.Closed
                     ) {
-                        onDismiss()
+                       //onDismiss()
                     }
 
                     if (slideOver) {
@@ -214,6 +214,7 @@ fun BottomDrawer(
                 .semantics {
                     if (!drawerState.isClosed) {
                         dismiss {
+                            println("DRAWER: close6 called")
                             onDismiss()
                             true
                         }
@@ -260,8 +261,10 @@ fun BottomDrawer(
                                             velocity
                                         )
                                         if (drawerState.isClosed) {
-                                            if (enableSwipeDismiss)
+                                            if (enableSwipeDismiss) {
+                                                println("DRAWER: close7 called")
                                                 onDismiss()
+                                            }
                                             else
                                                 scope.launch { drawerState.open() }
                                         }

@@ -56,7 +56,7 @@ import kotlin.math.max
  * @param confirmValueChange Optional callback invoked to confirm or veto a pending state change.
  */
 class DrawerState(
-    private val initialValue: DrawerValue = DrawerValue.Closed,
+     var initialValue: DrawerValue = DrawerValue.Closed,
     internal val confirmValueChange: (DrawerValue) -> Boolean = { true },
     internal val expandable: Boolean = true,
     internal val skipOpenState: Boolean = false,
@@ -64,7 +64,7 @@ class DrawerState(
     internal var velocityThreshold: () -> Float = { VelocityThreshold }
     internal var positionalThreshold: (Float) -> Float = { PositionalThreshold }
 
-    internal val anchoredDraggableState: AnchoredDraggableState<DrawerValue> = AnchoredDraggableState(
+    val anchoredDraggableState: AnchoredDraggableState<DrawerValue> = AnchoredDraggableState(
         initialValue,
         anchors = DraggableAnchors {},
         positionalThreshold,
@@ -74,6 +74,7 @@ class DrawerState(
     )
 
     init {
+        println("DRAWER STATE: INITIAL VALUE: $initialValue" + " ANCHORED DRAGGABLE STATE: " + anchoredDraggableState.currentValue)
         if (skipOpenState) {
             require(initialValue != DrawerValue.Open) {
                 "The initial value must not be set to Open if skipOpenState is set to" +
@@ -91,7 +92,7 @@ class DrawerState(
         }
     }
 
-    var enable: Boolean by mutableStateOf(false)
+    var enable: Boolean by mutableStateOf(initialValue != DrawerValue.Closed)
 
     /**
      * Whether drawer has Open state.
@@ -104,7 +105,7 @@ class DrawerState(
      * Whether the drawer is closed.
      */
     val isClosed: Boolean
-        get() = anchoredDraggableState.currentValue == DrawerValue.Closed
+        get() = (initialValue == DrawerValue.Closed && anchoredDraggableState.currentValue == DrawerValue.Closed)
 
     /**
      * Whether drawer has expanded state.
@@ -149,6 +150,7 @@ class DrawerState(
         } else {
             animationInProgress = false
         }
+        initialValue = anchoredDraggableState.currentValue
     }
 
     /**
@@ -159,6 +161,7 @@ class DrawerState(
      * @return the reason the close animation ended
      */
     suspend fun close() {
+        println("DRAWER: Closing Drawer")
         animationInProgress = true
         try {
             anchoredDraggableState.animateTo(DrawerValue.Closed, VelocityThreshold)
@@ -170,6 +173,7 @@ class DrawerState(
             anchoredDraggableState.updateAnchors(DraggableAnchors { })
             anchoredDraggableState.anchorsFilled = false
         }
+        initialValue = anchoredDraggableState.currentValue
     }
 
     /**
@@ -204,6 +208,7 @@ class DrawerState(
         } else {
             animationInProgress = false
         }
+        initialValue = anchoredDraggableState.currentValue
     }
 
     val nestedScrollConnection = this.anchoredDraggableState.PreUpPostDownNestedScrollConnection
@@ -255,15 +260,16 @@ fun rememberDrawerState(confirmValueChange: (DrawerValue) -> Boolean = { true })
 
 @Composable
 fun rememberBottomDrawerState(
+    initialState: DrawerValue = DrawerValue.Closed,
     expandable: Boolean = true,
     skipOpenState: Boolean = false,
     confirmValueChange: (DrawerValue) -> Boolean = { true }
 ): DrawerState {
     return rememberSaveable(
-        confirmValueChange, expandable, skipOpenState,
+        initialState, confirmValueChange, expandable, skipOpenState,
         saver = DrawerState.Saver(expandable, skipOpenState, confirmValueChange)
     ) {
-        DrawerState(DrawerValue.Closed, confirmValueChange, expandable, skipOpenState)
+        DrawerState(initialState, confirmValueChange, expandable, skipOpenState)
     }
 }
 
@@ -294,6 +300,7 @@ fun Scrim(
         Modifier.pointerInput(onClose) {
             detectTapGestures {
                 if (!preventDismissalOnScrimClick) {
+                    println("DRAWER: close8 called")
                     onClose()
                 }
                 onScrimClick() //this function runs post onClose() so that the drawer is closed before the callback is invoked
@@ -471,6 +478,7 @@ fun BottomDrawer(
     preventDismissalOnScrimClick: Boolean = false,
     onScrimClick: () -> Unit = {},
 ) {
+    println("DRAWER: AnchoredDraggableState: " + drawerState.anchoredDraggableState.currentValue + " initialState: "+ drawerState.initialValue + " Progress: " + drawerState.anchoredDraggableState.progress)
     if (drawerState.enable) {
         val themeID =
             FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
@@ -479,6 +487,7 @@ fun BottomDrawer(
         val scope = rememberCoroutineScope()
         val close: () -> Unit = {
             if (drawerState.confirmValueChange(DrawerValue.Closed)) {
+                println("DRAWER: Close3 called")
                 scope.launch { drawerState.close() }
             }
         }
