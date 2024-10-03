@@ -260,9 +260,8 @@ fun BottomDrawer(
                                             velocity
                                         )
                                         if (drawerState.isClosed) {
-                                            if (enableSwipeDismiss) {
+                                            if (enableSwipeDismiss)
                                                 onDismiss()
-                                            }
                                             else
                                                 scope.launch { drawerState.open() }
                                         }
