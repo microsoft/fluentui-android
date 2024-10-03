@@ -30,6 +30,7 @@ import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.drawer.BottomDrawer
+import com.microsoft.fluentui.tokenized.drawer.DrawerValue
 import com.microsoft.fluentui.tokenized.drawer.rememberBottomDrawerState
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentuidemo.R
@@ -412,7 +413,7 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
 ) {
     val scope = rememberCoroutineScope()
 
-    val drawerState = rememberBottomDrawerState(expandable = expandable, skipOpenState = skipOpenState)
+    val drawerState = rememberBottomDrawerState(initialState = DrawerValue.Open, expandable = expandable, skipOpenState = skipOpenState)
 
     val open: () -> Unit = {
         scope.launch { drawerState.open() }
@@ -421,6 +422,7 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
         scope.launch { drawerState.expand() }
     }
     val close: () -> Unit = {
+        println("DRAWER: " + "close1 called")
         scope.launch { drawerState.close() }
     }
     Row {
