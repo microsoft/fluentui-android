@@ -75,8 +75,9 @@ class DrawerState(
 
     init {
         if (skipOpenState) {
-            require(initialValue != DrawerValue.Open) {
+            require(anchoredDraggableState.currentValue != DrawerValue.Open) {
                 "The initial value must not be set to Open if skipOpenState is set to" +
+
                         " true."
             }
             require(expandable) {
@@ -98,7 +99,7 @@ class DrawerState(
      * It is false in case of skipOpenState is true.
      */
     internal val hasOpenedState: Boolean
-        get() = anchoredDraggableState.anchors.hasAnchorFor(DrawerValue.Open)
+        get() = !skipOpenState && anchoredDraggableState.anchors.hasAnchorFor(DrawerValue.Open)
 
     /**
      * Whether the drawer is closed.
@@ -110,7 +111,7 @@ class DrawerState(
      * Whether drawer has expanded state.
      */
     internal val hasExpandedState: Boolean
-        get() = anchoredDraggableState.anchors.hasAnchorFor(DrawerValue.Expanded)
+        get() = expandable && anchoredDraggableState.anchors.hasAnchorFor(DrawerValue.Expanded)
 
 
     var animationInProgress: Boolean = false
