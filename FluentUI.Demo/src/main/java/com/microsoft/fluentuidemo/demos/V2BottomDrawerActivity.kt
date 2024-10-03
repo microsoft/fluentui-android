@@ -413,7 +413,7 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
 ) {
     val scope = rememberCoroutineScope()
 
-    val drawerState = rememberBottomDrawerState(initialState = DrawerValue.Closed, expandable = expandable, skipOpenState = skipOpenState)
+    val drawerState = rememberBottomDrawerState(initialState = DrawerValue.Open, expandable = expandable, skipOpenState = skipOpenState)
 
     val open: () -> Unit = {
         scope.launch { drawerState.open() }

@@ -149,7 +149,6 @@ class DrawerState(
         } else {
             animationInProgress = false
         }
-        initialValue = anchoredDraggableState.currentValue
     }
 
     /**
@@ -171,7 +170,6 @@ class DrawerState(
             anchoredDraggableState.updateAnchors(DraggableAnchors { })
             anchoredDraggableState.anchorsFilled = false
         }
-        initialValue = anchoredDraggableState.currentValue
     }
 
     /**
@@ -206,7 +204,6 @@ class DrawerState(
         } else {
             animationInProgress = false
         }
-        initialValue = anchoredDraggableState.currentValue
     }
 
     val nestedScrollConnection = this.anchoredDraggableState.PreUpPostDownNestedScrollConnection
