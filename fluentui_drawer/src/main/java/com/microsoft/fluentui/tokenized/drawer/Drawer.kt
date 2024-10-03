@@ -77,7 +77,6 @@ class DrawerState(
         if (skipOpenState) {
             require(anchoredDraggableState.currentValue != DrawerValue.Open) {
                 "The initial value must not be set to Open if skipOpenState is set to" +
-
                         " true."
             }
             require(expandable) {
