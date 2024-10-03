@@ -74,7 +74,6 @@ class DrawerState(
     )
 
     init {
-        println("DRAWER STATE: INITIAL VALUE: $initialValue" + " ANCHORED DRAGGABLE STATE: " + anchoredDraggableState.currentValue)
         if (skipOpenState) {
             require(initialValue != DrawerValue.Open) {
                 "The initial value must not be set to Open if skipOpenState is set to" +
@@ -161,7 +160,6 @@ class DrawerState(
      * @return the reason the close animation ended
      */
     suspend fun close() {
-        println("DRAWER: Closing Drawer")
         animationInProgress = true
         try {
             anchoredDraggableState.animateTo(DrawerValue.Closed, VelocityThreshold)
@@ -300,7 +298,6 @@ fun Scrim(
         Modifier.pointerInput(onClose) {
             detectTapGestures {
                 if (!preventDismissalOnScrimClick) {
-                    println("DRAWER: close8 called")
                     onClose()
                 }
                 onScrimClick() //this function runs post onClose() so that the drawer is closed before the callback is invoked
@@ -467,7 +464,7 @@ fun Drawer(
 fun BottomDrawer(
     modifier: Modifier = Modifier,
     drawerState: DrawerState = rememberDrawerState(),
-    slideOver: Boolean = true,
+    slideOver: Boolean = false,
     scrimVisible: Boolean = true,
     showHandle: Boolean = true,
     enableSwipeDismiss: Boolean = true,
@@ -478,7 +475,6 @@ fun BottomDrawer(
     preventDismissalOnScrimClick: Boolean = false,
     onScrimClick: () -> Unit = {},
 ) {
-    println("DRAWER: AnchoredDraggableState: " + drawerState.anchoredDraggableState.currentValue + " initialState: "+ drawerState.initialValue + " Progress: " + drawerState.anchoredDraggableState.progress)
     if (drawerState.enable) {
         val themeID =
             FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
@@ -487,7 +483,6 @@ fun BottomDrawer(
         val scope = rememberCoroutineScope()
         val close: () -> Unit = {
             if (drawerState.confirmValueChange(DrawerValue.Closed)) {
-                println("DRAWER: Close3 called")
                 scope.launch { drawerState.close() }
             }
         }
