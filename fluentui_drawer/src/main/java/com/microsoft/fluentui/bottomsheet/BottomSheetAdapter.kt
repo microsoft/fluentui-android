@@ -103,15 +103,22 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 image.imageAlpha = ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI_Drawer), R.attr.fluentuiBottomSheetDisabledIconColor)
             listItemView.customView = image
 
-            var accessoryImage: ImageView ?= null
-            if (item.accessoryBitmap != null) {
-                accessoryImage = context.createImageView(item.accessoryBitmap)
+            var accessoryView: View ?= null
+            var accessoryImageView: ImageView ?= null
+            if (item.customAccessoryView != null) {
+                accessoryView = item.customAccessoryView
+            } else if (item.accessoryBitmap != null) {
+                accessoryImageView = context.createImageView(item.accessoryBitmap)
             } else if (item.accessoryImageId != NO_ID) {
-                accessoryImage = context.createImageView(item.accessoryImageId, item.getImageTint(context))
+                accessoryImageView = context.createImageView(item.accessoryImageId, item.getImageTint(context))
             }
-            if (accessoryImage != null && item.disabled)
-                accessoryImage.imageAlpha = ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI_Drawer), R.attr.fluentuiBottomSheetDisabledIconColor)
-            listItemView.customAccessoryView = accessoryImage
+            if (accessoryView != null) {
+                accessoryView.isEnabled = !item.disabled
+            } else if (accessoryImageView != null && item.disabled) {
+                accessoryImageView.imageAlpha =
+                    ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI_Drawer), R.attr.fluentuiBottomSheetDisabledIconColor)
+            }
+            listItemView.customAccessoryView = accessoryView ?: accessoryImageView
 
             listItemView.setOnClickListener {
                 onBottomSheetItemClickListener?.onBottomSheetItemClick(item)

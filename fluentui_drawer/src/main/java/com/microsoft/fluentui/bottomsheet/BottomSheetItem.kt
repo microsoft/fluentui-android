@@ -44,6 +44,7 @@ class BottomSheetItem : Parcelable {
     val accessoryBitmap: Bitmap?
 
     val roleDescription: String
+    val customAccessoryView: View?
 
     @JvmOverloads
     constructor(
@@ -59,6 +60,7 @@ class BottomSheetItem : Parcelable {
         @DrawableRes accessoryImageId: Int = NO_ID,
         accessoryBitmap: Bitmap? = null,
         roleDescription: String = "",
+        customAccessoryView: View? = null
     ) {
         this.id = id
         this.imageId = imageId
@@ -72,6 +74,7 @@ class BottomSheetItem : Parcelable {
         this.accessoryImageId = accessoryImageId
         this.accessoryBitmap = accessoryBitmap
         this.roleDescription = roleDescription
+        this.customAccessoryView = customAccessoryView
     }
 
     private constructor(parcel: Parcel) : this(
@@ -123,6 +126,7 @@ class BottomSheetItem : Parcelable {
         if (accessoryImageId != other.accessoryImageId) return false
         if (accessoryBitmap != other.accessoryBitmap) return false
         if (roleDescription != other.roleDescription) return false
+        if (customAccessoryView != other.customAccessoryView) return false
 
         return true
     }
@@ -140,6 +144,7 @@ class BottomSheetItem : Parcelable {
         result = 31 * result + accessoryImageId.hashCode()
         result = 31 * result + (accessoryBitmap?.hashCode() ?: 0)
         result = 31 * result + roleDescription.hashCode()
+        result = 31 * result + (customAccessoryView?.hashCode() ?: 0)
         return result
     }
 

@@ -248,6 +248,10 @@
     <string name="bottom_sheet_item_delete_title">Delete</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Delete item clicked</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Toggle</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Toggle item clicked</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
