@@ -464,7 +464,7 @@ fun Drawer(
 fun BottomDrawer(
     modifier: Modifier = Modifier,
     drawerState: DrawerState = rememberDrawerState(),
-    slideOver: Boolean = false,
+    slideOver: Boolean = true,
     scrimVisible: Boolean = true,
     showHandle: Boolean = true,
     enableSwipeDismiss: Boolean = true,
