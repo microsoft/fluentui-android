@@ -221,7 +221,6 @@ private class ModalWindow(
             } else if (event.action == KeyEvent.ACTION_UP) {
                 val state = keyDispatcherState
                 if (state != null && state.isTracking(event) && !event.isCanceled) {
-                    println("DRAWER: CLOSE4 CALLED")
                     onDismissRequest()
                     return true
                 }
