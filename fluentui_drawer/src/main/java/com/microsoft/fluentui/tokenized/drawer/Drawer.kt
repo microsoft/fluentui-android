@@ -104,7 +104,7 @@ class DrawerState(
      * Whether the drawer is closed.
      */
     val isClosed: Boolean
-        get() = (initialValue == DrawerValue.Closed && anchoredDraggableState.currentValue == DrawerValue.Closed)
+        get() = anchoredDraggableState.currentValue == DrawerValue.Closed
 
     /**
      * Whether drawer has expanded state.
