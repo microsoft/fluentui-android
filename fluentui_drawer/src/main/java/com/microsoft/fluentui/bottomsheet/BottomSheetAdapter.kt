@@ -114,9 +114,10 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
             if (accessoryView != null) {
                 accessoryView.isEnabled = !item.disabled
+            } else if (accessoryImageView != null && item.disabled) {
+                accessoryImageView.imageAlpha =
+                    ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI_Drawer), R.attr.fluentuiBottomSheetDisabledIconColor)
             }
-            if (accessoryImageView != null && item.disabled)
-                accessoryImageView.imageAlpha = ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI_Drawer), R.attr.fluentuiBottomSheetDisabledIconColor)
             listItemView.customAccessoryView = accessoryView ?: accessoryImageView
 
             listItemView.setOnClickListener {
