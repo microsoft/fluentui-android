@@ -180,7 +180,7 @@ fun BottomDrawer(
                         && drawerState.anchoredDraggableState.currentValue == DrawerValue.Closed
                         && drawerState.anchoredDraggableState.targetValue == DrawerValue.Closed
                     ) {
-                       onDismiss()
+                        onDismiss()
                     }
 
                     if (slideOver) {
