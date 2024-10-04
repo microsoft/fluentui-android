@@ -16,6 +16,7 @@ import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -59,18 +60,18 @@ class V2BottomDrawerActivity : V2DemoActivity() {
 
 @Composable
 private fun CreateActivityUI() {
-    var scrimVisible by remember { mutableStateOf(true) }
-    var dynamicSizeContent by remember { mutableStateOf(false) }
-    var nestedDrawerContent by remember { mutableStateOf(false) }
-    var listContent by remember { mutableStateOf(true) }
-    var expandable by remember { mutableStateOf(true) }
-    var skipOpenState by remember { mutableStateOf(false) }
-    var selectedContent by remember { mutableStateOf(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT) }
-    var slideOver by remember { mutableStateOf(false) }
-    var showHandle by remember { mutableStateOf(true) }
-    var enableSwipeDismiss by remember { mutableStateOf(true) }
-    var maxLandscapeWidthFraction by remember { mutableFloatStateOf(1F) }
-    var preventDismissalOnScrimClick by remember { mutableStateOf(false) }
+    var scrimVisible by rememberSaveable { mutableStateOf(true) }
+    var dynamicSizeContent by rememberSaveable { mutableStateOf(false) }
+    var nestedDrawerContent by rememberSaveable { mutableStateOf(false) }
+    var listContent by rememberSaveable { mutableStateOf(true) }
+    var expandable by rememberSaveable { mutableStateOf(true) }
+    var skipOpenState by rememberSaveable { mutableStateOf(false) }
+    var selectedContent by rememberSaveable { mutableStateOf(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT) }
+    var slideOver by rememberSaveable { mutableStateOf(false) }
+    var showHandle by rememberSaveable { mutableStateOf(true) }
+    var enableSwipeDismiss by rememberSaveable { mutableStateOf(true) }
+    var maxLandscapeWidthFraction by rememberSaveable { mutableFloatStateOf(1F) }
+    var preventDismissalOnScrimClick by rememberSaveable { mutableStateOf(false) }
     var isLandscapeOrientation: Boolean = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(

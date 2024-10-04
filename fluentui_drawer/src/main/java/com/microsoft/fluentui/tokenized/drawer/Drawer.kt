@@ -259,7 +259,7 @@ fun rememberDrawerState(confirmValueChange: (DrawerValue) -> Boolean = { true })
 
 @Composable
 fun rememberBottomDrawerState(
-    initialValue: DrawerValue,
+    initialValue: DrawerValue = DrawerValue.Closed,
     expandable: Boolean = true,
     skipOpenState: Boolean = false,
     confirmValueChange: (DrawerValue) -> Boolean = { true }
