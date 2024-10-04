@@ -91,6 +91,10 @@ class DrawerState(
         }
     }
 
+    /**
+     * Whether drawer is enabled on initialization
+     * It is false if drawer should not initially be opened.
+     */
     var enable: Boolean by mutableStateOf(initialValue != DrawerValue.Closed)
 
     /**
@@ -255,16 +259,16 @@ fun rememberDrawerState(confirmValueChange: (DrawerValue) -> Boolean = { true })
 
 @Composable
 fun rememberBottomDrawerState(
-    initialState: DrawerValue = DrawerValue.Closed,
+    initialValue: DrawerValue,
     expandable: Boolean = true,
     skipOpenState: Boolean = false,
     confirmValueChange: (DrawerValue) -> Boolean = { true }
 ): DrawerState {
     return rememberSaveable(
-        initialState, confirmValueChange, expandable, skipOpenState,
+        initialValue, confirmValueChange, expandable, skipOpenState,
         saver = DrawerState.Saver(expandable, skipOpenState, confirmValueChange)
     ) {
-        DrawerState(initialState, confirmValueChange, expandable, skipOpenState)
+        DrawerState(initialValue, confirmValueChange, expandable, skipOpenState)
     }
 }
 
