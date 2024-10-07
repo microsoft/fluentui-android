@@ -33,6 +33,7 @@ extends:
           inputs:
           - input: pipelineArtifact
             buildType: 'specific'
+            project: '$(projectName)'
             definition: '$(pipelineDefinition)'
             buildVersionToDownload: 'specific'
             pipelineId: '$(buildId)'
