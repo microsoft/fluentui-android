@@ -37,16 +37,16 @@ extends:
             targetPath: '$(Pipeline.Workspace)/Build'
         steps:
         - task: SFP.release-tasks.custom-build-release-task.EsrpRelease@7
-          displayName: ESRP Release
+          displayName: 'ESRP Release'
           inputs:
-            connectedservicename: $(connectedServiceName)
+            connectedservicename: '$(connectedServiceName)'
             keyvaultname: $(keyVaultName)
             authcertname: $(authCertName)
             signcertname: '$(signCertName) '
-            clientid: $(clientId)
-            folderlocation: $(System.DefaultWorkingDirectory)/fluentui-android-maven-publish/Build
-            owners: $(owners)
-            approvers: $(approvers)
+            clientid: '$(clientId)'
+            folderlocation: '$(System.DefaultWorkingDirectory)/fluentui-android-maven-publish/Build'
+            owners: '$(owners)'
+            approvers: '$(approvers)'
             mainpublisher: fluentuiandroidrelease
     - stage: Stage_2
       displayName: AppCenter Release
