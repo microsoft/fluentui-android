@@ -34,7 +34,8 @@ extends:
           - input: pipelineArtifact
             buildType: 'specific'
             definition: '$(pipelineDefinition)'
-            buildVersionToDownload: '$(buildVersionToDownload)'
+            buildVersionToDownload: 'specific'
+            pipelineId: '$(buildId)'
             artifactName: 'Build'
             targetPath: '$(Pipeline.Workspace)/fluentui-android-maven-publish/Build'
         steps:
