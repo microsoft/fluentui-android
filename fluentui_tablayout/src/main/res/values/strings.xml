@@ -4,5 +4,5 @@
     <string name="tab_content_description">\u0020 tab %1$d of %2$d</string>
 
     <!-- Describes the Numbering of Pill Butons Inside PillBar -->
-    <string name="position_string">Item %d in list of %d</string>
+    <string name="position_string">Item %1$d in list of %2$d</string>
 </resources>
