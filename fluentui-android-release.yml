@@ -67,12 +67,12 @@ extends:
             targetPath: '$(Pipeline.Workspace)/notes'
         steps:
         - task: AppCenterDistribute@3
-          displayName: Deploy $(System.DefaultWorkingDirectory)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk to Visual Studio App Center
+          displayName: Deploy $(System.DefaultWorkingDirectory)/dogfood/FluentUI.Demo-dogfood-release.apk to Visual Studio App Center
           inputs:
             serverEndpoint: $(serverEndpoint)
             appSlug: $(appSlug)
-            app:  $(System.DefaultWorkingDirectory)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk
+            app:  $(System.DefaultWorkingDirectory)/dogfood/FluentUI.Demo-dogfood-release.apk
             symbolsType: Android
             releaseNotesSelection: file
-            releaseNotesFile: $(System.DefaultWorkingDirectory)/fluentui-android-maven-publish/notes/dogfood-release-notes.txt
+            releaseNotesFile: $(System.DefaultWorkingDirectory)/notes/dogfood-release-notes.txt
             isSilent: false
