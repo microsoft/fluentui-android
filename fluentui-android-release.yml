@@ -34,7 +34,7 @@ extends:
           - input: pipelineArtifact
             pipeline: 'fluentui-android-maven-publish'
             artifactName: 'Build'
-            targetPath: '$(Pipeline.Workspace)/Build'
+            targetPath: '$(build.sourcesdirectory)/build'
         steps:
         - task: SFP.release-tasks.custom-build-release-task.EsrpRelease@7
           displayName: 'ESRP Release'
@@ -44,7 +44,7 @@ extends:
             authcertname: $(authCertName)
             signcertname: '$(signCertName) '
             clientid: '$(clientId)'
-            folderlocation: '$(System.DefaultWorkingDirectory)/fluentui-android-maven-publish/Build'
+            folderlocation: '$(build.sourcesdirectory)/build/artifacts/com/microsoft/fluentui'
             owners: '$(owners)'
             approvers: '$(approvers)'
             mainpublisher: fluentuiandroidrelease
@@ -60,19 +60,19 @@ extends:
           - input: pipelineArtifact
             pipeline: 'fluentui-android-maven-publish'
             artifactName: 'dogfood'
-            targetPath: '$(Pipeline.Workspace)/dogfood'
+            targetPath: '$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/dogfood/release'
           - input: pipelineArtifact
             pipeline: 'fluentui-android-maven-publish'
             artifactName: 'notes'
-            targetPath: '$(Pipeline.Workspace)/notes'
+            targetPath: '$(build.sourcesdirectory)/FluentUI.Demo/src/main/assets'
         steps:
         - task: AppCenterDistribute@3
-          displayName: Deploy $(System.DefaultWorkingDirectory)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk to Visual Studio App Center
+          displayName: Deploy $(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/dogfood/release/FluentUI.Demo-dogfood-release.apk to Visual Studio App Center
           inputs:
             serverEndpoint: $(serverEndpoint)
             appSlug: $(appSlug)
-            app: $(System.DefaultWorkingDirectory)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk
+            app: $(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/dogfood/release/FluentUI.Demo-dogfood-release.apk
             symbolsType: Android
             releaseNotesSelection: file
-            releaseNotesFile: $(System.DefaultWorkingDirectory)/fluentui-android-maven-publish/notes/dogfood-release-notes.txt
+            releaseNotesFile: $(build.sourcesdirectory)/FluentUI.Demo/src/main/assets/dogfood-release-notes.txt
             isSilent: false
