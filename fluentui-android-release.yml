@@ -32,7 +32,9 @@ extends:
           isProduction: true
           inputs:
           - input: pipelineArtifact
-            pipeline: 'fluentui-android-maven-publish'
+            buildType: specific
+            definition: $(pipelineDefinition)
+            buildVersionToDownload: $(buildVersionToDownload)
             artifactName: 'Build'
             targetPath: '$(Pipeline.Workspace)/fluentui-android-maven-publish/Build'
         steps:
