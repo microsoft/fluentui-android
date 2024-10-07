@@ -62,11 +62,19 @@ extends:
         templateContext:
           inputs:
           - input: pipelineArtifact
-            pipeline: 'fluentui-android-maven-publish'
+            buildType: 'specific'
+            project: '$(projectName)'
+            definition: '$(pipelineDefinition)'
+            buildVersionToDownload: 'specific'
+            pipelineId: '$(buildId)'
             artifactName: 'dogfood'
             targetPath: '$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood'
           - input: pipelineArtifact
-            pipeline: 'fluentui-android-maven-publish'
+            buildType: 'specific'
+            project: '$(projectName)'
+            definition: '$(pipelineDefinition)'
+            buildVersionToDownload: 'specific'
+            pipelineId: '$(buildId)'
             artifactName: 'notes'
             targetPath: '$(Pipeline.Workspace)/fluentui-android-maven-publish/notes'
         steps:
