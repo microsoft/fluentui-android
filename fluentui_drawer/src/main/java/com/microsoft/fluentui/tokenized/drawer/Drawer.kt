@@ -75,7 +75,7 @@ class DrawerState(
 
     init {
         if (skipOpenState) {
-            require(initialValue != DrawerValue.Open) {
+            require(anchoredDraggableState.currentValue != DrawerValue.Open) {
                 "The initial value must not be set to Open if skipOpenState is set to" +
                         " true."
             }
@@ -91,14 +91,18 @@ class DrawerState(
         }
     }
 
-    var enable: Boolean by mutableStateOf(false)
+    /**
+     * Whether drawer is enabled on initialization
+     * It is false if drawer should not initially be opened.
+     */
+    var enable: Boolean by mutableStateOf(initialValue != DrawerValue.Closed)
 
     /**
      * Whether drawer has Open state.
      * It is false in case of skipOpenState is true.
      */
     internal val hasOpenedState: Boolean
-        get() = anchoredDraggableState.anchors.hasAnchorFor(DrawerValue.Open)
+        get() = !skipOpenState && anchoredDraggableState.anchors.hasAnchorFor(DrawerValue.Open)
 
     /**
      * Whether the drawer is closed.
@@ -110,7 +114,7 @@ class DrawerState(
      * Whether drawer has expanded state.
      */
     internal val hasExpandedState: Boolean
-        get() = anchoredDraggableState.anchors.hasAnchorFor(DrawerValue.Expanded)
+        get() = expandable && anchoredDraggableState.anchors.hasAnchorFor(DrawerValue.Expanded)
 
 
     var animationInProgress: Boolean = false
@@ -255,15 +259,16 @@ fun rememberDrawerState(confirmValueChange: (DrawerValue) -> Boolean = { true })
 
 @Composable
 fun rememberBottomDrawerState(
+    initialValue: DrawerValue = DrawerValue.Closed,
     expandable: Boolean = true,
     skipOpenState: Boolean = false,
     confirmValueChange: (DrawerValue) -> Boolean = { true }
 ): DrawerState {
     return rememberSaveable(
-        confirmValueChange, expandable, skipOpenState,
+        initialValue, confirmValueChange, expandable, skipOpenState,
         saver = DrawerState.Saver(expandable, skipOpenState, confirmValueChange)
     ) {
-        DrawerState(DrawerValue.Closed, confirmValueChange, expandable, skipOpenState)
+        DrawerState(initialValue, confirmValueChange, expandable, skipOpenState)
     }
 }
 

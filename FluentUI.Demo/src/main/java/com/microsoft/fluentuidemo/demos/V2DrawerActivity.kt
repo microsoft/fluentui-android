@@ -17,6 +17,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -73,20 +74,20 @@ enum class ContentType {
 
 @Composable
 private fun CreateActivityUI() {
-    var scrimVisible by remember { mutableStateOf(true) }
-    var dynamicSizeContent by remember { mutableStateOf(false) }
-    var nestedDrawerContent by remember { mutableStateOf(false) }
-    var listContent by remember { mutableStateOf(true) }
-    var preventDismissalOnScrimClick by remember { mutableStateOf(false) }
-    var selectedContent by remember { mutableStateOf(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT) }
-    var selectedBehaviorType by remember { mutableStateOf(BehaviorType.BOTTOM_SLIDE_OVER) }
-    var relativeToParentAnchor by remember {
+    var scrimVisible by rememberSaveable { mutableStateOf(true) }
+    var dynamicSizeContent by rememberSaveable { mutableStateOf(false) }
+    var nestedDrawerContent by rememberSaveable { mutableStateOf(false) }
+    var listContent by rememberSaveable { mutableStateOf(true) }
+    var preventDismissalOnScrimClick by rememberSaveable { mutableStateOf(false) }
+    var selectedContent by rememberSaveable { mutableStateOf(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT) }
+    var selectedBehaviorType by rememberSaveable { mutableStateOf(BehaviorType.BOTTOM_SLIDE_OVER) }
+    var relativeToParentAnchor by rememberSaveable {
         mutableStateOf(
             false
         )
     }
-    var offsetX by remember { mutableIntStateOf(0) }
-    var offsetY by remember { mutableIntStateOf(0) }
+    var offsetX by rememberSaveable { mutableIntStateOf(0) }
+    var offsetY by rememberSaveable { mutableIntStateOf(0) }
     Column {
         if (relativeToParentAnchor) {
             Row(
