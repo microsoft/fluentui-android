@@ -240,7 +240,7 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
                     ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
                     disabled = true
                 )
-            ), 0, marginBetweenView
+            ), 0, marginBetweenView, drawerTint = ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint).toInt()
         )
         horizontalListAdapter.mOnSheetItemClickListener = this
         persistentSheetContentBinding.sheetHorizontalItemList3.layoutManager =
