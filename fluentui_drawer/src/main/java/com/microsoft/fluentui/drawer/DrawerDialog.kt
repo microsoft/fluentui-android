@@ -194,7 +194,11 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
 
         val displaySize: Point = context.displaySize
         val layoutParams: WindowManager.LayoutParams? = window?.attributes
-        layoutParams?.gravity = Gravity.TOP
+        if(behaviorType == BehaviorType.TOP) {
+            layoutParams?.gravity = Gravity.TOP
+        } else {
+            layoutParams?.gravity = Gravity.BOTTOM
+        }
         layoutParams?.y = topMargin
         layoutParams?.dimAmount = this.dimValue
         window?.attributes = layoutParams
