@@ -7,6 +7,7 @@ Fix/enhancement
 	2. Update with correct event on snackbar action dismiss
 	3. Added custom accessory view property to BottomSheetItem class
 	4. Fixed issue related to multiple substitutions specified in non-positional format of string resource `position_string`
+	5. Accessibility: Fixed talkback incorrectly pronouncing 'Persistent Bottomsheets'
 
 Fluent v2:
 Fix/enhancement
