@@ -1,13 +1,24 @@
-Release Version 0.2.12:
+Release Version 0.3.1:
 
-What's New:
-Fluent V2:
-        Fix/Enhancement:
+What's new
+Fluent v1:
+Fix/enhancement
+	1. Theming fixes for calendar view
+	2. Update with correct event on snackbar action dismiss
+	3. Added custom accessory view property to BottomSheetItem class
+	4. Fixed issue related to multiple substitutions specified in non-positional format of string resource `position_string`
 
-           1. Pill Buttons have been updated to support both icons and text simultaneously, with added spacing tokens for customizable padding around the pill content.
-           2. Basic Card now features a Brush type border Color token, enabling more styling options.
-           3. In deo app, bottom drawer's disappearance on orientation change has been fixed.
+Fluent v2:
+Fix/enhancement
+
+    1. Migration from Swipeable to Anchored Draggable & other refactor for Drawer and Bottom Drawer
+    2. Profile pic fixes for Avatar
+    3. Allowing text style configuration for tab bar items
+    4. Added ability to initialize bottom drawers with initial state
+    5. Fixed loss of activity UI state on recomposition for Drawers
+    6. Fixed drawers disappearing on recomposition
+    7. Added new dependency in fluentui_core -> compose foundation version 1.6.0
 
 
-
-Note: Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00)
+Note: Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00).
+      Fluent version 0.3.x will support compose foundation version 1.6.0.
