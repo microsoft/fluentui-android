@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.ColorInt
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.util.createImageView
 
@@ -18,7 +19,7 @@ import com.microsoft.fluentui.util.createImageView
 /**
  * [SheetHorizontalItemAdapter] is used for horizontal list in bottomSheet
  */
-class SheetHorizontalItemAdapter(private val context: Context, items: ArrayList<SheetItem>, @StyleRes private val themeId: Int = R.style.Theme_FluentUI_Drawer, private val marginBetweenView: Int = 0) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SheetHorizontalItemAdapter(private val context: Context, items: ArrayList<SheetItem>, @StyleRes private val themeId: Int = R.style.Theme_FluentUI_Drawer, private val marginBetweenView: Int = 0, @ColorInt private val drawerTint: Int? = null) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var mOnSheetItemClickListener: SheetItem.OnClickListener? = null
     private val mItems: ArrayList<SheetItem> = items
 
@@ -49,7 +50,7 @@ class SheetHorizontalItemAdapter(private val context: Context, items: ArrayList<
                 if (it != null) {
                     listItemView.update(item.title, context.createImageView(it), item.disabled)
                 } else {
-                    listItemView.update(item.title, context.createImageView(item.drawable), item.disabled)
+                    listItemView.update(item.title, context.createImageView(item.drawable, imageTint = drawerTint), item.disabled)
                 }
             }
             listItemView.setOnClickListener {
