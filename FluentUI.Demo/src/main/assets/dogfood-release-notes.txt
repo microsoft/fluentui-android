@@ -8,6 +8,8 @@ Fix/enhancement
 	3. Added custom accessory view property to BottomSheetItem class
 	4. Fixed issue related to multiple substitutions specified in non-positional format of string resource `position_string`
 	5. Accessibility: Fixed talkback incorrectly pronouncing 'Persistent Bottomsheets'
+	6. Fixed issue with DrawerDialogs not anchored to the bottom when display Cutout Support is enabled
+	7. Fixed issue with Icons not properly visible in PersistentBottomSheet by adding color tint in HorizontalListAdapter
 
 Fluent v2:
 Fix/enhancement
