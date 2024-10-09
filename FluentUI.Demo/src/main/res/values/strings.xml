@@ -443,9 +443,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Expand Persistent BottomSheet</string>
-    <string name="collapse_persistent_sheet_button"> Hide Persistent BottomSheet</string>
-    <string name="show_persistent_sheet_button"> Show Persistent BottomSheet</string>
+    <string name="expand_bottom_sheet_button">Expand Persistent Bottom Sheet</string>
+    <string name="collapse_persistent_sheet_button"> Hide Persistent Bottom Sheet</string>
+    <string name="show_persistent_sheet_button"> Show Persistent Bottom Sheet</string>
     <string name="new_view">This is New View</string>
     <string name="toggle_sheet_content">Toggle Bottomsheet Content</string>
     <string name="switch_to_custom_content">Switch to custom Content</string>
