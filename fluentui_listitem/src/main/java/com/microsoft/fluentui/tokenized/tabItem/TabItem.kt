@@ -91,6 +91,11 @@ fun TabItem(
         selected = selected,
         interactionSource = interactionSource
     )
+
+    val indicatorColor: Brush = token.indicatorColor(tabItemInfo = tabItemInfo).getBrushByState(
+        enabled = enabled, selected = selected, interactionSource = interactionSource
+    )
+
     val padding = token.padding(tabItemInfo = tabItemInfo)
     val backgroundColor = token.backgroundBrush(tabItemInfo = tabItemInfo).getBrushByState(
         enabled = enabled, selected = selected, interactionSource = interactionSource
@@ -285,7 +290,7 @@ fun TabItem(
                         modifier = Modifier
                             .height(3.dp)
                             .width(indicatorWidth)
-                            .background(shape = RoundedCornerShape(indicatorCornerRadiusSize), color = textColor)
+                            .background(shape = RoundedCornerShape(indicatorCornerRadiusSize), brush = indicatorColor)
                             .clip(RoundedCornerShape(indicatorCornerRadiusSize))
                     )
                 }
