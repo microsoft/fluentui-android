@@ -21,6 +21,8 @@ Fix/enhancement
     5. Fixed loss of activity UI state on recomposition for Drawers
     6. Fixed drawers disappearing on recomposition
     7. Added new dependency in fluentui_core -> compose foundation version 1.6.0
+    8. Tab bar indicator now supports custom colors and gradients
+    9. Icons in Tab bar can now use gradients instead of single colors
 
 
 Note: Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00).
