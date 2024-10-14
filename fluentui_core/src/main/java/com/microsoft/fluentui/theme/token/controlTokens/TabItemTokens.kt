@@ -3,6 +3,7 @@ package com.microsoft.fluentui.theme.token.controlTokens
 import android.os.Parcelable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
@@ -23,7 +24,8 @@ enum class TabTextAlignment {
 
 open class TabItemInfo(
     val tabTextAlignment: TabTextAlignment = TabTextAlignment.VERTICAL,
-    val fluentStyle: FluentStyle = FluentStyle.Neutral
+    val fluentStyle: FluentStyle = FluentStyle.Neutral,
+    val indicatorColor: StateBrush? = null
 ) : ControlInfo
 
 @Parcelize
@@ -170,5 +172,10 @@ open class TabItemTokens : IControlToken, Parcelable {
     @Composable
     open fun textTypography(tabItemInfo: TabItemInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption2]
+    }
+
+    @Composable
+    open fun indicatorColor(tabItemInfo: TabItemInfo): StateBrush? {
+        return tabItemInfo.indicatorColor
     }
 }

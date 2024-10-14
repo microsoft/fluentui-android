@@ -13,6 +13,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
@@ -20,9 +22,11 @@ import androidx.lifecycle.MutableLiveData
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.StateBrush
 import com.microsoft.fluentui.theme.token.controlTokens.BadgeType
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
+import com.microsoft.fluentui.theme.token.controlTokens.TabItemInfo
 import com.microsoft.fluentui.theme.token.controlTokens.TabTextAlignment
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.RadioButton
@@ -195,6 +199,12 @@ class V2TabBarActivity : V2DemoActivity() {
             val tabItemsCount = _tabItemsCount.observeAsState(initial = 5)
             val showIndicator = _tabShowIndicator.observeAsState(initial = false)
 
+            val indicatorColor = StateBrush(
+                rest = Brush.sweepGradient(listOf(Color.Blue, Color.Green)),
+                pressed = Brush.linearGradient(listOf(Color.Blue, Color.Black)),
+                selected = Brush.radialGradient(listOf(Color.Blue, Color.Red)),
+            )
+
             val tabDataList = arrayListOf(
                 TabData(
                     title = resources.getString(R.string.tabBar_home),
@@ -253,7 +263,8 @@ class V2TabBarActivity : V2DemoActivity() {
                 tabDataList = tabDataList.take(tabItemsCount.value),
                 selectedIndex = selectedIndex,
                 tabTextAlignment = tabTextAlignment.value,
-                showIndicator = showIndicator.value
+                showIndicator = showIndicator.value,
+                indicatorStyle = indicatorColor,
             )
         }
     }

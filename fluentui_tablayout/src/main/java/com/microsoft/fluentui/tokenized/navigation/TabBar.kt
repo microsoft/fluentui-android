@@ -10,6 +10,7 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.StateBrush
 import com.microsoft.fluentui.theme.token.controlTokens.TabBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.TabBarTokens
 import com.microsoft.fluentui.theme.token.controlTokens.TabItemTokens
@@ -45,6 +46,7 @@ fun TabBar(
     selectedIndex: Int = 0,
     tabTextAlignment: TabTextAlignment = TabTextAlignment.VERTICAL,
     showIndicator: Boolean = false,
+    indicatorStyle: StateBrush? = null,
     tabItemTokens: TabItemTokens? = null,
     tabBarTokens: TabBarTokens? = null
 ) {
@@ -76,6 +78,7 @@ fun TabBar(
                     onClick = tabData.onClick,
                     accessory = tabData.badge,
                     showIndicator = showIndicator,
+                    indicatorStyle = indicatorStyle,
                     tabItemTokens = tabItemTokens
                         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabItemControlType] as TabItemTokens,
                     style = if (tabData.selected) FluentStyle.Brand else FluentStyle.Neutral

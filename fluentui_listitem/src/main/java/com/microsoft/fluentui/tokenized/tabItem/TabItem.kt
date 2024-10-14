@@ -2,6 +2,7 @@ package com.microsoft.fluentui.tokenized.tabItem
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateValueAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandHorizontally
 import androidx.compose.animation.fadeIn
@@ -22,6 +23,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -29,6 +31,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.layoutId
@@ -46,6 +50,7 @@ import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.Icon
+import com.microsoft.fluentui.theme.token.StateBrush
 import com.microsoft.fluentui.theme.token.controlTokens.TabItemInfo
 import com.microsoft.fluentui.theme.token.controlTokens.TabItemTokens
 import com.microsoft.fluentui.theme.token.controlTokens.TabTextAlignment
@@ -59,6 +64,7 @@ fun TabItem(
     modifier: Modifier = Modifier,
     style: FluentStyle = FluentStyle.Neutral,
     textAlignment: TabTextAlignment = TabTextAlignment.VERTICAL,
+    indicatorStyle: StateBrush? = null,
     enabled: Boolean = true,
     selected: Boolean = false,
     fixedWidth: Boolean = false,
@@ -72,7 +78,7 @@ fun TabItem(
         tabItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabItemControlType] as TabItemTokens
 
-    val tabItemInfo = TabItemInfo(textAlignment, style)
+    val tabItemInfo = TabItemInfo(textAlignment, style, indicatorColor = indicatorStyle)
     val textColor by animateColorAsState(
         token.textColor(tabItemInfo = tabItemInfo).getColorByState(
             enabled = enabled,
@@ -94,6 +100,9 @@ fun TabItem(
         enabled = enabled, selected = selected, interactionSource = interactionSource
     )
     val rippleColor = token.rippleColor(tabItemInfo = tabItemInfo)
+    val indicatorColor: Brush? = token.indicatorColor(tabItemInfo = tabItemInfo)?.getBrushByState(
+        enabled = enabled, selected = selected, interactionSource = interactionSource
+    )
     val clickableModifier = Modifier
         .clickable(
             interactionSource = interactionSource,
@@ -274,11 +283,19 @@ fun TabItem(
                 )
                 {
                     Box(
-                        modifier = Modifier
+                        modifier = if(indicatorColor != null) {
+                            Modifier
                             .height(3.dp)
                             .width(indicatorWidth)
-                            .background(shape = RoundedCornerShape(indicatorCornerRadiusSize), color = textColor)
+                            .background(shape = RoundedCornerShape(indicatorCornerRadiusSize), brush = indicatorColor)
                             .clip(RoundedCornerShape(indicatorCornerRadiusSize))
+                        } else {
+                            Modifier
+                                .height(3.dp)
+                                .width(indicatorWidth)
+                                .background(shape = RoundedCornerShape(indicatorCornerRadiusSize), color = textColor)
+                                .clip(RoundedCornerShape(indicatorCornerRadiusSize))
+                        }
                     )
                 }
             }
