@@ -29,6 +29,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.layoutId
@@ -89,6 +90,11 @@ fun TabItem(
         ),
         animationSpec = tween(durationMillis = 300)
     )
+
+    val indicatorColor: Brush = token.indicatorColor(tabItemInfo = tabItemInfo).getBrushByState(
+        enabled = enabled, selected = selected, interactionSource = interactionSource
+    )
+
     val padding = token.padding(tabItemInfo = tabItemInfo)
     val backgroundColor = token.backgroundBrush(tabItemInfo = tabItemInfo).getBrushByState(
         enabled = enabled, selected = selected, interactionSource = interactionSource
@@ -277,7 +283,7 @@ fun TabItem(
                         modifier = Modifier
                             .height(3.dp)
                             .width(indicatorWidth)
-                            .background(shape = RoundedCornerShape(indicatorCornerRadiusSize), color = textColor)
+                            .background(shape = RoundedCornerShape(indicatorCornerRadiusSize), brush = indicatorColor)
                             .clip(RoundedCornerShape(indicatorCornerRadiusSize))
                     )
                 }
