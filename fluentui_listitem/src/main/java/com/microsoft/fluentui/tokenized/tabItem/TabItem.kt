@@ -29,7 +29,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithCache
+import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.layoutId
@@ -82,13 +86,10 @@ fun TabItem(
         ),
         animationSpec = tween(durationMillis = 300)
     )
-    val iconColor by animateColorAsState (
-        targetValue = token.iconColor(tabItemInfo = tabItemInfo).getColorByState(
-            enabled = enabled,
-            selected = selected,
-            interactionSource = interactionSource
-        ),
-        animationSpec = tween(durationMillis = 300)
+    val iconColorBrush: Brush = token.iconColor(tabItemInfo = tabItemInfo).getBrushByState(
+        enabled = enabled,
+        selected = selected,
+        interactionSource = interactionSource
     )
 
     val indicatorColor: Brush = token.indicatorColor(tabItemInfo = tabItemInfo).getBrushByState(
@@ -118,9 +119,15 @@ fun TabItem(
     val iconContent: @Composable () -> Unit = {
         Icon(
             imageVector = icon,
-            modifier = Modifier.size(if (textAlignment == TabTextAlignment.NO_TEXT) 28.dp else 24.dp),
+            modifier = Modifier.size(if (textAlignment == TabTextAlignment.NO_TEXT) 28.dp else 24.dp)
+                        .graphicsLayer(alpha = 0.99f)
+                        .drawWithCache {
+                            onDrawWithContent {
+                                drawContent()
+                                drawRect(brush = iconColorBrush, blendMode = BlendMode.SrcAtop)
+                            }
+                        },
             contentDescription = if (textAlignment == TabTextAlignment.NO_TEXT) title else null,
-            tint = iconColor
         )
     }
 
