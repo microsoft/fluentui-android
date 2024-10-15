@@ -184,7 +184,7 @@ class V2CardActivity : V2DemoActivity() {
         Box(
             modifier = Modifier
                 .clickable(
-                    interactionSource = MutableInteractionSource(),
+                    interactionSource = remember { MutableInteractionSource() },
                     indication = rememberRipple(),
                     enabled = true,
                     onClick = { },
