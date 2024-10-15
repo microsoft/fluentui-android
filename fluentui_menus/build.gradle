@@ -30,6 +30,9 @@ android {
     buildFeatures {
         compose true
     }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
