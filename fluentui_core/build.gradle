@@ -46,6 +46,9 @@ android {
     }
     productFlavors {
     }
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
 }
 
 gradle.taskGraph.whenReady { taskGraph ->
