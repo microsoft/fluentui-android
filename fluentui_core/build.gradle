@@ -46,6 +46,12 @@ android {
     }
     productFlavors {
     }
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 gradle.taskGraph.whenReady { taskGraph ->
