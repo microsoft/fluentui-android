@@ -16,6 +16,7 @@
 
 package com.microsoft.fluentui.compose
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.animate
 import androidx.compose.foundation.MutatePriority
@@ -158,6 +159,7 @@ fun <T : Any> DraggableAnchors(
  * @param interactionSource Optional [MutableInteractionSource] that will passed on to
  * the internal [Modifier.draggable].
  */
+@Suppress("ModifierFactoryUnreferencedReceiver")
 fun <T> Modifier.anchoredDraggable(
     state: AnchoredDraggableState<T>,
     orientation: Orientation,
