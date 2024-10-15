@@ -16,6 +16,7 @@
 
 package com.microsoft.fluentui.compose
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.SpringSpec
@@ -544,6 +545,7 @@ internal fun <T : Any> rememberSwipeableStateFor(
  * @param velocityThreshold The threshold (in dp per second) that the end velocity has to exceed
  * in order to animate to the next state, even if the positional [thresholds] have not been reached.
  */
+@SuppressLint("ModifierFactoryUnreferencedReceiver")
 fun <T> Modifier.swipeable(
         state: SwipeableState<T>,
         anchors: Map<Float, T>,
