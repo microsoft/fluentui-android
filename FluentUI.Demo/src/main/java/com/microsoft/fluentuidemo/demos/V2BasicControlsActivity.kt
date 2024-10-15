@@ -170,7 +170,7 @@ class V2BasicControlsActivity : V2DemoActivity() {
                                 selected = (theme == selectedOption.value),
                                 onClick = { },
                                 role = Role.RadioButton,
-                                interactionSource = MutableInteractionSource(),
+                                interactionSource = remember { MutableInteractionSource() },
                                 indication = null
                             )
                     ) {
