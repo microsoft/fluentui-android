@@ -34,6 +34,7 @@ import com.example.theme.token.MyAppBarToken
 import com.example.theme.token.MyButtonTokens
 import com.example.theme.token.MyFABToken
 import com.example.theme.token.OneNoteAliasTokens
+import com.microsoft.fluentui.materialized.controls.ButtonV3
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.AliasTokens
@@ -87,7 +88,7 @@ class V2ButtonsActivity : V2DemoActivity() {
                             ),
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            Button(
+                            ButtonV3(
                                 style = ButtonStyle.OutlinedButton,
                                 size = ButtonSize.Medium,
                                 onClick = {
@@ -102,7 +103,7 @@ class V2ButtonsActivity : V2DemoActivity() {
                                 text = "Theme 1"
                             )
 
-                            Button(
+                            ButtonV3(
                                 style = ButtonStyle.OutlinedButton,
                                 size = ButtonSize.Medium,
                                 onClick = {
@@ -117,7 +118,7 @@ class V2ButtonsActivity : V2DemoActivity() {
                                 text = "Theme 2"
                             )
 
-                            Button(
+                            ButtonV3(
                                 style = ButtonStyle.OutlinedButton,
                                 size = ButtonSize.Medium,
                                 onClick = {
@@ -168,11 +169,11 @@ class V2ButtonsActivity : V2DemoActivity() {
                                     ),
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
-                                    Button(
+                                    ButtonV3(
                                         onClick = { aliasTokens = AliasTokens() },
                                         text = "Theme1"
                                     )
-                                    Button(
+                                    ButtonV3(
                                         onClick = { aliasTokens = OneNoteAliasTokens() },
                                         text = "Theme2"
                                     )
@@ -243,7 +244,7 @@ class V2ButtonsActivity : V2DemoActivity() {
         var enabled by rememberSaveable { mutableStateOf(true) }
         Column {
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                Button(
+                ButtonV3(
                     modifier = Modifier.testTag("testButton"),
                     style = ButtonStyle.Button,
                     size = ButtonSize.Large,
@@ -265,7 +266,7 @@ class V2ButtonsActivity : V2DemoActivity() {
                 val text = "Button $clicks"
                 val toggleIcon = clicks % 2 == 0
 
-                Button(
+                ButtonV3(
                     style = if (clicks < 3) ButtonStyle.Button else ButtonStyle.TextButton,
                     size = if (clicks < 3) ButtonSize.Large else ButtonSize.Small,
                     enabled = enabled,
@@ -276,7 +277,7 @@ class V2ButtonsActivity : V2DemoActivity() {
                     text = text
                 )
 
-                Button(
+                ButtonV3(
                     style = ButtonStyle.Button,
                     size = ButtonSize.Medium,
                     enabled = enabled,
@@ -287,7 +288,7 @@ class V2ButtonsActivity : V2DemoActivity() {
                     text = "Long text displayed on this button. This Is long text."
                 )
 
-                Button(
+                ButtonV3(
                     style = ButtonStyle.OutlinedButton,
                     size = ButtonSize.Small,
                     enabled = enabled,
@@ -297,7 +298,7 @@ class V2ButtonsActivity : V2DemoActivity() {
                     trailingIcon = icon(enabled = toggleIcon),
                     text = "Outlined $text"
                 )
-                Button(
+                ButtonV3(
                     style = ButtonStyle.TextButton,
                     size = ButtonSize.Small,
                     enabled = enabled,
