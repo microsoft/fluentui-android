@@ -52,6 +52,7 @@ import com.microsoft.fluentui.compose.PostDownNestedScrollConnection
 import com.microsoft.fluentui.compose.anchoredDraggable
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.theme.token.Icon
+import com.microsoft.fluentui.tokenized.Scrim
 import com.microsoft.fluentui.tokenized.calculateFraction
 import com.microsoft.fluentui.util.pxToDp
 import kotlinx.coroutines.launch
@@ -148,7 +149,8 @@ fun BottomDrawer(
             },
             color = if (scrimVisible) scrimColor else Color.Transparent,
             preventDismissalOnScrimClick = preventDismissalOnScrimClick,
-            onScrimClick = onScrimClick
+            onScrimClick = onScrimClick,
+            tag = DRAWER_SCRIM_TAG
         )
         val configuration = LocalConfiguration.current
         Box(

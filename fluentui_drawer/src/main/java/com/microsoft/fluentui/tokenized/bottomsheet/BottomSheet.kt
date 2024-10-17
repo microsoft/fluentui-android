@@ -13,7 +13,6 @@ import android.view.accessibility.AccessibilityManager
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.foundation.*
 import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.*
@@ -31,7 +30,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.*
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -58,6 +56,7 @@ import kotlinx.coroutines.launch
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
+import com.microsoft.fluentui.tokenized.Scrim
 
 /**
  * Possible values of [BottomSheetState].
@@ -101,7 +100,7 @@ class BottomSheetState(
     /**
      * Whether the bottom sheet is visible.
      */
-    val isVisible: Boolean
+    var isVisible: Boolean = false
         get() = currentValue != BottomSheetValue.Hidden
 
     internal val hasExpandedState: Boolean
@@ -135,7 +134,13 @@ class BottomSheetState(
      *
      * @throws [CancellationException] if the animation is interrupted
      */
-    suspend fun hide() = animateTo(BottomSheetValue.Hidden)
+    suspend fun hide() {
+        try {
+            animateTo(BottomSheetValue.Hidden)
+        } finally {
+            isVisible = false
+        }
+    }
 
     companion object {
         /**
@@ -233,9 +238,11 @@ fun BottomSheet(
     showHandle: Boolean = true,
     slideOver: Boolean = true,
     enableSwipeDismiss: Boolean = false,
+    preventDismissalOnScrimClick: Boolean = false,
     stickyThresholdUpward: Float = 56f,
     stickyThresholdDownward: Float = 56f,
     bottomSheetTokens: BottomSheetTokens? = null,
+    onScrimClick: () -> Unit = {},
     content: @Composable () -> Unit
 ) {
     val themeID =
@@ -280,11 +287,11 @@ fun BottomSheet(
         ) {
             content()
             if (slideOver) {
-                Scrim(
+            Scrim(
                     color = if (scrimVisible) scrimColor else Color.Transparent,
-                    onDismiss = {
+                    onClose = {
                         if (sheetState.confirmStateChange(BottomSheetValue.Hidden)) {
-                            scope.launch { sheetState.show() }
+                            scope.launch { sheetState.hide() }
                         }
                     },
                     fraction = {
@@ -301,10 +308,10 @@ fun BottomSheet(
                             )
                         }
                     },
-                    visible = (sheetState.targetValue == BottomSheetValue.Expanded
-                            || (sheetState.targetValue == BottomSheetValue.Shown
-                            && sheetState.currentValue == BottomSheetValue.Expanded)
-                            )
+                    open = sheetState.isVisible,
+                    onScrimClick = onScrimClick,
+                    preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+                    tag = BOTTOMSHEET_SCRIM_TAG
                 )
             }
         }
@@ -615,33 +622,4 @@ private fun Modifier.sheetHeight(
             Modifier.heightIn(0.dp, pxToDp(fullHeight - sheetState.offset.value))
         }
     return this.then(modifier)
-}
-
-//TODO : Revisit Scrim usage across module to check single scrim implementation across module.
-@Composable
-private fun Scrim(
-    color: Color,
-    onDismiss: () -> Unit,
-    fraction: () -> Float,
-    visible: Boolean
-) {
-    if (visible) {
-        val closeSheet = LocalContext.current.resources.getString(R.string.fluentui_close_sheet)
-        val dismissModifier = Modifier
-            .pointerInput(onDismiss) { detectTapGestures { onDismiss() } }
-            .semantics(mergeDescendants = true) {
-                contentDescription = closeSheet
-                onClick { onDismiss(); true }
-            }
-
-        Canvas(
-            Modifier
-                .fillMaxSize()
-                .then(dismissModifier)
-                .testTag(BOTTOMSHEET_SCRIM_TAG)
-
-        ) {
-            drawRect(color = color, alpha = fraction())
-        }
-    }
 }

@@ -286,38 +286,6 @@ class DrawerPositionProvider(val offset: IntOffset?) : PopupPositionProvider {
     }
 }
 
-@Composable
-fun Scrim(
-    open: Boolean,
-    onClose: () -> Unit,
-    fraction: () -> Float,
-    color: Color,
-    preventDismissalOnScrimClick: Boolean = false,
-    onScrimClick: () -> Unit = {},
-) {
-    val dismissDrawer = if (open) {
-        Modifier.pointerInput(onClose) {
-            detectTapGestures {
-                if (!preventDismissalOnScrimClick) {
-                    onClose()
-                }
-                onScrimClick() //this function runs post onClose() so that the drawer is closed before the callback is invoked
-            }
-        }
-    } else {
-        Modifier
-    }
-
-    Canvas(
-        Modifier
-            .fillMaxSize()
-            .then(dismissDrawer)
-            .testTag(DRAWER_SCRIM_TAG)
-    ) {
-        drawRect(color, alpha = fraction())
-    }
-}
-
 /**
  *
  * Drawer block interaction with the rest of an app’s content with a scrim.

@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.theme.token.Icon
+import com.microsoft.fluentui.tokenized.Scrim
 import com.microsoft.fluentui.tokenized.calculateFraction
 import com.microsoft.fluentui.util.dpToPx
 import com.microsoft.fluentui.util.pxToDp
@@ -111,7 +112,8 @@ fun TopDrawer(
             },
             color = if (scrimVisible) scrimColor else Color.Transparent,
             preventDismissalOnScrimClick = preventDismissalOnScrimClick,
-            onScrimClick = onScrimClick
+            onScrimClick = onScrimClick,
+            tag= DRAWER_SCRIM_TAG
         )
 
         Box(
