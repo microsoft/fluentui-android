@@ -286,7 +286,6 @@ fun BottomSheet(
                 }
         ) {
             content()
-            if (slideOver) {
             Scrim(
                     color = if (scrimVisible) scrimColor else Color.Transparent,
                     onClose = {
@@ -296,14 +295,24 @@ fun BottomSheet(
                     },
                     fraction = {
                         if (sheetState.anchors.isEmpty()
-                            || !sheetState.anchors.containsValue(BottomSheetValue.Expanded)
                             || (sheetHeightState.value != null && sheetHeightState.value == 0f)
                         ) {
                             0.toFloat()
                         } else {
+                            val targetValue: BottomSheetValue = if(slideOver) {
+                                if(sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Expanded } != null) {
+                                    BottomSheetValue.Expanded
+                                } else if(sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Shown } != null) {
+                                    BottomSheetValue.Shown
+                                } else {
+                                    BottomSheetValue.Hidden
+                                }
+                            } else {
+                                BottomSheetValue.Shown
+                            }
                             calculateFraction(
-                                sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Shown }?.key!!,
-                                sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Expanded }?.key!!,
+                                sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Hidden }?.key!!,
+                                sheetState.anchors.entries.firstOrNull { it.value == targetValue }?.key!!,
                                 sheetState.offset.value
                             )
                         }
@@ -313,7 +322,6 @@ fun BottomSheet(
                     preventDismissalOnScrimClick = preventDismissalOnScrimClick,
                     tag = BOTTOMSHEET_SCRIM_TAG
                 )
-            }
         }
         val configuration = LocalConfiguration.current
 

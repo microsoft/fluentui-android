@@ -114,7 +114,7 @@ private fun CreateActivityUI() {
 
     var hidden by remember { mutableStateOf(true) }
 
-    val bottomSheetState = rememberBottomSheetState(BottomSheetValue.Shown)
+    val bottomSheetState = rememberBottomSheetState(BottomSheetValue.Hidden)
 
     val scope = rememberCoroutineScope()
 
