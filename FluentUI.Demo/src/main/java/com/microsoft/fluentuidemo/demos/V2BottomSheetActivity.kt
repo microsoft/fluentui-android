@@ -39,6 +39,7 @@ import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -94,6 +95,8 @@ class V2BottomSheetActivity : V2DemoActivity() {
 
 @Composable
 private fun CreateActivityUI() {
+    var scrimVisible by rememberSaveable { mutableStateOf(true) }
+
     var enableSwipeDismiss by remember { mutableStateOf(true) }
 
     var showHandleState by remember { mutableStateOf(true) }
@@ -103,6 +106,8 @@ private fun CreateActivityUI() {
     var slideOverState by remember { mutableStateOf(true) }
 
     var peekHeightState by remember { mutableStateOf(110.dp) }
+
+    var preventDismissalOnScrimClick by rememberSaveable { mutableStateOf(false) }
 
     var stickyThresholdUpwardDrag: Float by remember { mutableStateOf(56f) }
     var stickyThresholdDownwardDrag: Float by remember { mutableStateOf(56f) }
@@ -147,10 +152,12 @@ private fun CreateActivityUI() {
         sheetContent = sheetContentState,
         expandable = expandableState,
         peekHeight = peekHeightState,
+        scrimVisible = scrimVisible,
         showHandle = showHandleState,
         sheetState = bottomSheetState,
         slideOver = slideOverState,
         enableSwipeDismiss = enableSwipeDismiss,
+        preventDismissalOnScrimClick = preventDismissalOnScrimClick,
         stickyThresholdUpward = stickyThresholdUpwardDrag,
         stickyThresholdDownward = stickyThresholdDownwardDrag
     ) {
@@ -300,6 +307,44 @@ private fun CreateActivityUI() {
                     onValueChange = { enableSwipeDismiss = it }
                 )
             }
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(30.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                BasicText(
+                    text = "Scrim Visible",
+                    modifier = Modifier.weight(1F),
+                    style = TextStyle(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
+                    )
+                )
+                ToggleSwitch(checkedState = scrimVisible,
+                    onValueChange = { scrimVisible = it }
+                )
+            }
+
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(30.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                BasicText(
+                    text = "Prevent Dismissal On Scrim Click",
+                    modifier = Modifier.weight(1F),
+                    style = TextStyle(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
+                    )
+                )
+                ToggleSwitch(checkedState = preventDismissalOnScrimClick,
+                    onValueChange = { preventDismissalOnScrimClick = it }
+                )
+            }
+
             // New Row for Sticky Threshold Downward Drag
             Row(
                 horizontalArrangement = Arrangement.spacedBy(30.dp),

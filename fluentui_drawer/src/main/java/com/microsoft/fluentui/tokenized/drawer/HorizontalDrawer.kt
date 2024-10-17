@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
+import com.microsoft.fluentui.tokenized.Scrim
 import com.microsoft.fluentui.tokenized.calculateFraction
 import com.microsoft.fluentui.util.dpToPx
 import com.microsoft.fluentui.util.pxToDp
@@ -127,7 +128,8 @@ fun HorizontalDrawer(
                 },
                 color = if (scrimVisible) scrimColor else Color.Transparent,
                 preventDismissalOnScrimClick = preventDismissalOnScrimClick,
-                onScrimClick = onScrimClick
+                onScrimClick = onScrimClick,
+                tag = DRAWER_SCRIM_TAG
             )
 
             Box(
