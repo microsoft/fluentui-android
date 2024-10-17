@@ -72,7 +72,7 @@ fun ButtonV3(
 //            shape = shape,
             border = borderStroke.get(0),
             colors = ButtonDefaults.buttonColors(
-                containerColor = backgroundColor,
+                backgroundColor = backgroundColor,
                 contentColor = contentColor
             ),
             contentPadding = contentPadding,
@@ -123,7 +123,7 @@ fun ButtonV3(
 //            shape = shape,
             border = borderStroke.get(0),
             colors = ButtonDefaults.textButtonColors(
-                containerColor = backgroundColor,
+                backgroundColor = backgroundColor,
                 contentColor = contentColor
             ),
             contentPadding = contentPadding,

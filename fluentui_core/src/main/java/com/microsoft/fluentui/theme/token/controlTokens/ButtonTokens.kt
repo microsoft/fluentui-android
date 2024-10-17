@@ -9,6 +9,7 @@ import android.os.Parcelable
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
@@ -198,6 +199,42 @@ open class ButtonTokens : IControlToken, Parcelable {
                 )
             ButtonStyle.OutlinedButton -> StateBrush()
             ButtonStyle.TextButton -> StateBrush()
+        }
+    }
+
+    @Composable
+    open fun backgroundColor(buttonInfo: ButtonInfo): StateColor {
+        return when (buttonInfo.style) {
+            ButtonStyle.Button ->
+                StateColor(
+                    rest =
+                        aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                            themeMode = themeMode
+                        )
+                    ,
+                    pressed =
+                        aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1Pressed].value(
+                            themeMode = themeMode
+                        )
+                    ,
+                    selected =
+                        aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1Selected].value(
+                            themeMode = themeMode
+                        )
+                    ,
+                    focused =
+                        aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                            themeMode = themeMode
+                        )
+                    ,
+                    disabled =
+                        aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                            themeMode = themeMode
+                        )
+                    )
+
+            ButtonStyle.OutlinedButton -> StateColor()
+            ButtonStyle.TextButton -> StateColor()
         }
     }
 
