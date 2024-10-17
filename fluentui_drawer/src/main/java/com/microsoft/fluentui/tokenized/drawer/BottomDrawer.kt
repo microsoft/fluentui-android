@@ -61,18 +61,14 @@ import kotlin.math.min
 import kotlin.math.roundToInt
 
 private fun Modifier.drawerHeight(
-    slideOver: Boolean,
-    fixedHeight: Float,
-    fullHeight: Float,
-    drawerState: DrawerState
+    slideOver: Boolean, fixedHeight: Float, fullHeight: Float, drawerState: DrawerState
 ): Modifier {
     val modifier = if (slideOver) {
         if (drawerState.expandable) {
             Modifier
         } else {
             Modifier.heightIn(
-                0.dp,
-                pxToDp(fixedHeight)
+                0.dp, pxToDp(fixedHeight)
             )
         }
     } else {
@@ -97,21 +93,18 @@ fun BottomDrawer(
     showHandle: Boolean,
     onDismiss: () -> Unit,
     drawerContent: @Composable () -> Unit,
-    maxLandscapeWidthFraction : Float = 1F,
+    maxLandscapeWidthFraction: Float = 1F,
     preventDismissalOnScrimClick: Boolean = false,
     onScrimClick: () -> Unit = {}
 ) {
     BoxWithConstraints(modifier.fillMaxSize()) {
         val fullHeight = constraints.maxHeight.toFloat()
-        val drawerHeight =
-            remember(drawerContent.hashCode()) { mutableStateOf<Float?>(null) }
+        val drawerHeight = remember(drawerContent.hashCode()) { mutableStateOf<Float?>(null) }
         val maxOpenHeight = fullHeight * DrawerOpenFraction
 
         val drawerConstraints = with(LocalDensity.current) {
-            Modifier
-                .sizeIn(
-                    maxWidth = constraints.maxWidth.toDp(),
-                    maxHeight = constraints.maxHeight.toDp()
+            Modifier.sizeIn(
+                    maxWidth = constraints.maxWidth.toDp(), maxHeight = constraints.maxHeight.toDp()
                 )
         }
         val scope = rememberCoroutineScope()
@@ -129,7 +122,10 @@ fun BottomDrawer(
                         drawerStateAnchors.let {
                             if (drawerState.anchoredDraggableState.anchors.hasAnchorFor(DrawerValue.Expanded)) {
                                 DrawerValue.Expanded
-                            } else if (drawerState.anchoredDraggableState.anchors.hasAnchorFor(DrawerValue.Open)) {
+                            } else if (drawerState.anchoredDraggableState.anchors.hasAnchorFor(
+                                    DrawerValue.Open
+                                )
+                            ) {
                                 DrawerValue.Open
                             } else {
                                 DrawerValue.Closed
@@ -160,8 +156,7 @@ fun BottomDrawer(
                     else 1F
                 )
                 .nestedScroll(
-                    if (!enableSwipeDismiss && drawerStateOffset >= maxOpenHeight) drawerState.anchoredDraggableState.NonDismissiblePreUpPostDownNestedScrollConnection else
-                        if (slideOver) drawerState.nestedScrollConnection else drawerState.anchoredDraggableState.PostDownNestedScrollConnection
+                    if (!enableSwipeDismiss && drawerStateOffset >= maxOpenHeight) drawerState.anchoredDraggableState.NonDismissiblePreUpPostDownNestedScrollConnection else if (slideOver) drawerState.nestedScrollConnection else drawerState.anchoredDraggableState.PostDownNestedScrollConnection
                 )
                 .offset {
                     val y = if (drawerStateAnchors.size == 0) {
@@ -172,16 +167,13 @@ fun BottomDrawer(
                     IntOffset(x = 0, y = y)
                 }
                 .then(
-                    if (maxLandscapeWidthFraction != 1F
-                        && configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-                    ) Modifier.align(Alignment.TopCenter)
+                    if (maxLandscapeWidthFraction != 1F && configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) Modifier.align(
+                        Alignment.TopCenter
+                    )
                     else Modifier
                 )
                 .onGloballyPositioned { layoutCoordinates ->
-                    if (!drawerState.animationInProgress
-                        && drawerState.anchoredDraggableState.currentValue == DrawerValue.Closed
-                        && drawerState.anchoredDraggableState.targetValue == DrawerValue.Closed
-                    ) {
+                    if (!drawerState.animationInProgress && drawerState.anchoredDraggableState.currentValue == DrawerValue.Closed && drawerState.anchoredDraggableState.targetValue == DrawerValue.Closed) {
                         onDismiss()
                     }
 
@@ -191,24 +183,16 @@ fun BottomDrawer(
                             originalSize
                         } else {
                             min(
-                                originalSize,
-                                maxOpenHeight
+                                originalSize, maxOpenHeight
                             )
                         }
                     }
                 }
                 .bottomDrawerAnchoredDraggable(
-                    drawerState,
-                    slideOver,
-                    maxOpenHeight,
-                    fullHeight,
-                    drawerHeight.value
+                    drawerState, slideOver, maxOpenHeight, fullHeight, drawerHeight.value
                 )
                 .drawerHeight(
-                    slideOver,
-                    maxOpenHeight,
-                    fullHeight,
-                    drawerState
+                    slideOver, maxOpenHeight, fullHeight, drawerState
                 )
                 .shadow(drawerElevation)
                 .clip(drawerShape)
@@ -250,7 +234,9 @@ fun BottomDrawer(
                                 state = rememberDraggableState { delta ->
                                     if (!enableSwipeDismiss && drawerStateOffset >= maxOpenHeight) {
                                         if (delta < 0) {
-                                            drawerState.anchoredDraggableState.dispatchRawDelta(delta)
+                                            drawerState.anchoredDraggableState.dispatchRawDelta(
+                                                delta
+                                            )
                                         }
                                     } else {
                                         drawerState.anchoredDraggableState.dispatchRawDelta(delta)
@@ -262,10 +248,8 @@ fun BottomDrawer(
                                             velocity
                                         )
                                         if (drawerState.isClosed) {
-                                            if (enableSwipeDismiss)
-                                                onDismiss()
-                                            else
-                                                scope.launch { drawerState.open() }
+                                            if (enableSwipeDismiss) onDismiss()
+                                            else scope.launch { drawerState.open() }
                                         }
                                     }
                                 },
@@ -274,17 +258,15 @@ fun BottomDrawer(
                     ) {
                         val collapsed = LocalContext.current.resources.getString(R.string.collapsed)
                         val expanded = LocalContext.current.resources.getString(R.string.expanded)
-                        val accessibilityManager  = LocalContext.current.getSystemService(Context.ACCESSIBILITY_SERVICE) as? AccessibilityManager
-                        Icon(
-                            painterResource(id = R.drawable.ic_drawer_handle),
+                        val accessibilityManager =
+                            LocalContext.current.getSystemService(Context.ACCESSIBILITY_SERVICE) as? AccessibilityManager
+                        Icon(painterResource(id = R.drawable.ic_drawer_handle),
                             contentDescription = LocalContext.current.resources.getString(R.string.drag_handle),
                             tint = drawerHandleColor,
-                            modifier = Modifier
-                                .clickable(
+                            modifier = Modifier.clickable(
                                     enabled = drawerState.hasExpandedState,
                                     role = Role.Button,
-                                    onClickLabel =
-                                    if (drawerState.anchoredDraggableState.currentValue == DrawerValue.Expanded) {
+                                    onClickLabel = if (drawerState.anchoredDraggableState.currentValue == DrawerValue.Expanded) {
                                         LocalContext.current.resources.getString(R.string.collapse)
                                     } else {
                                         if (drawerState.hasExpandedState && !drawerState.isClosed) LocalContext.current.resources.getString(
@@ -299,9 +281,10 @@ fun BottomDrawer(
                                         ) {
                                             scope.launch { drawerState.open() }
                                             accessibilityManager?.let { manager ->
-                                                if(manager.isEnabled){
+                                                if (manager.isEnabled) {
                                                     val event = AccessibilityEvent.obtain(
-                                                        AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
+                                                        AccessibilityEvent.TYPE_ANNOUNCEMENT
+                                                    ).apply {
                                                         text.add(collapsed)
                                                     }
                                                     manager.sendAccessibilityEvent(event)
@@ -312,9 +295,10 @@ fun BottomDrawer(
                                         if (drawerState.confirmValueChange(DrawerValue.Expanded)) {
                                             scope.launch { drawerState.expand() }
                                             accessibilityManager?.let { manager ->
-                                                if(manager.isEnabled){
+                                                if (manager.isEnabled) {
                                                     val event = AccessibilityEvent.obtain(
-                                                        AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
+                                                        AccessibilityEvent.TYPE_ANNOUNCEMENT
+                                                    ).apply {
                                                         text.add(expanded)
                                                     }
                                                     manager.sendAccessibilityEvent(event)
@@ -322,12 +306,12 @@ fun BottomDrawer(
                                             }
                                         }
                                     }
-                                }
-                        )
+                                })
                     }
                 }
-                Column(modifier = Modifier
-                    .testTag(DRAWER_CONTENT_TAG), content = { drawerContent() })
+                Column(
+                    modifier = Modifier.testTag(DRAWER_CONTENT_TAG),
+                    content = { drawerContent() })
             }
         }
     }
@@ -348,8 +332,7 @@ private fun Modifier.bottomDrawerAnchoredDraggable(
             val drawerStateAnchors = drawerState.anchoredDraggableState.anchors
             val anchors: DraggableAnchors<DrawerValue> =
                 if (drawerHeight <= maxOpenHeight) {  // when contentHeight is less than maxOpenHeight
-                    if (drawerStateAnchors.hasAnchorFor(DrawerValue.Expanded)) {
-                        /*
+                    if (drawerStateAnchors.hasAnchorFor(DrawerValue.Expanded)) {/*
                         *For dynamic content when drawerHeight was previously greater than maxOpenHeight and now less than maxOpenHEight
                         *The old anchors won't have Open state, so we need to continue with Expanded state.
                         */
@@ -366,8 +349,7 @@ private fun Modifier.bottomDrawerAnchoredDraggable(
                 } else {
                     if (drawerState.expandable) {
                         if (drawerState.skipOpenState) {
-                            if (drawerStateAnchors.hasAnchorFor(DrawerValue.Open)) {
-                                /*
+                            if (drawerStateAnchors.hasAnchorFor(DrawerValue.Open)) {/*
                                 *For dynamic content when drawerHeight was previously less than maxOpenHeight and now greater than maxOpenHEight
                                 *The old anchors won't have Expanded state, so we need to continue with Open state.
                                 */

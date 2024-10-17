@@ -76,13 +76,15 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 const val BOTTOM_SHEET_ENABLE_SWIPE_DISMISS_TEST_TAG = "enableSwipeDismiss"
+
 class V2BottomSheetActivity : V2DemoActivity() {
     init {
         setupActivity(this)
     }
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-10"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-10"
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-10"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -204,7 +206,6 @@ private fun CreateActivityUI() {
                     }
                 )
 
-
                 Button(
                     style = ButtonStyle.OutlinedButton,
                     size = ButtonSize.Medium,
@@ -278,7 +279,7 @@ private fun CreateActivityUI() {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 BasicText(
-                    text = stringResource(id =R.string.bottom_sheet_text_enable_swipe_dismiss),
+                    text = stringResource(id = R.string.bottom_sheet_text_enable_swipe_dismiss),
                     modifier = Modifier.weight(1F),
                     style = TextStyle(
                         color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
@@ -346,11 +347,15 @@ private fun CreateActivityUI() {
                     )
                 )
                 Slider(
-                    modifier = Modifier.width(100.dp).height(50.dp).padding(0.dp, 0.dp, 0.dp, 0.dp),
+                    modifier = Modifier
+                        .width(100.dp)
+                        .height(50.dp)
+                        .padding(0.dp, 0.dp, 0.dp, 0.dp),
                     value = stickyThresholdUpwardDrag,
-                    onValueChange = { stickyThresholdUpwardDrag = it
-                                    peekHeightState+=0.0001.dp
-                                    },
+                    onValueChange = {
+                        stickyThresholdUpwardDrag = it
+                        peekHeightState += 0.0001.dp
+                    },
                     valueRange = 0f..500f,
                     colors = SliderDefaults.colors(
                         thumbColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color100],
@@ -382,11 +387,15 @@ private fun CreateActivityUI() {
                     )
                 )
                 Slider(
-                    modifier = Modifier.width(100.dp).height(50.dp).padding(0.dp, 0.dp, 0.dp, 0.dp),
+                    modifier = Modifier
+                        .width(100.dp)
+                        .height(50.dp)
+                        .padding(0.dp, 0.dp, 0.dp, 0.dp),
                     value = stickyThresholdDownwardDrag,
-                    onValueChange = { stickyThresholdDownwardDrag = it
-                                    peekHeightState+=0.0001.dp
-                                    },
+                    onValueChange = {
+                        stickyThresholdDownwardDrag = it
+                        peekHeightState += 0.0001.dp
+                    },
                     valueRange = 0f..500f,
                     colors = SliderDefaults.colors(
                         thumbColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color100],

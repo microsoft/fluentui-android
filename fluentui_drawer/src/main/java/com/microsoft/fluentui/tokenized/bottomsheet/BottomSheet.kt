@@ -263,7 +263,7 @@ fun BottomSheet(
         tokens.scrimColor(bottomSheetInfo).copy(alpha = scrimOpacity)
 
     val scope = rememberCoroutineScope()
-    val maxLandscapeWidth :Float= tokens.maxLandscapeWidth(bottomSheetInfo)
+    val maxLandscapeWidth: Float = tokens.maxLandscapeWidth(bottomSheetInfo)
 
     BoxWithConstraints(modifier) {
         val fullHeight = constraints.maxHeight.toFloat()
@@ -287,41 +287,41 @@ fun BottomSheet(
         ) {
             content()
             Scrim(
-                    color = if (scrimVisible) scrimColor else Color.Transparent,
-                    onClose = {
-                        if (sheetState.confirmStateChange(BottomSheetValue.Hidden)) {
-                            scope.launch { sheetState.hide() }
-                        }
-                    },
-                    fraction = {
-                        if (sheetState.anchors.isEmpty()
-                            || (sheetHeightState.value != null && sheetHeightState.value == 0f)
-                        ) {
-                            0.toFloat()
-                        } else {
-                            val targetValue: BottomSheetValue = if(slideOver) {
-                                if(sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Expanded } != null) {
-                                    BottomSheetValue.Expanded
-                                } else if(sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Shown } != null) {
-                                    BottomSheetValue.Shown
-                                } else {
-                                    BottomSheetValue.Hidden
-                                }
-                            } else {
+                color = if (scrimVisible) scrimColor else Color.Transparent,
+                onClose = {
+                    if (sheetState.confirmStateChange(BottomSheetValue.Hidden)) {
+                        scope.launch { sheetState.hide() }
+                    }
+                },
+                fraction = {
+                    if (sheetState.anchors.isEmpty()
+                        || (sheetHeightState.value != null && sheetHeightState.value == 0f)
+                    ) {
+                        0.toFloat()
+                    } else {
+                        val targetValue: BottomSheetValue = if (slideOver) {
+                            if (sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Expanded } != null) {
+                                BottomSheetValue.Expanded
+                            } else if (sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Shown } != null) {
                                 BottomSheetValue.Shown
+                            } else {
+                                BottomSheetValue.Hidden
                             }
-                            calculateFraction(
-                                sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Hidden }?.key!!,
-                                sheetState.anchors.entries.firstOrNull { it.value == targetValue }?.key!!,
-                                sheetState.offset.value
-                            )
+                        } else {
+                            BottomSheetValue.Shown
                         }
-                    },
-                    open = sheetState.isVisible,
-                    onScrimClick = onScrimClick,
-                    preventDismissalOnScrimClick = preventDismissalOnScrimClick,
-                    tag = BOTTOMSHEET_SCRIM_TAG
-                )
+                        calculateFraction(
+                            sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Hidden }?.key!!,
+                            sheetState.anchors.entries.firstOrNull { it.value == targetValue }?.key!!,
+                            sheetState.offset.value
+                        )
+                    }
+                },
+                open = sheetState.isVisible,
+                onScrimClick = onScrimClick,
+                preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+                tag = BOTTOMSHEET_SCRIM_TAG
+            )
         }
         val configuration = LocalConfiguration.current
 
@@ -329,7 +329,7 @@ fun BottomSheet(
             Modifier
                 .align(Alignment.TopCenter)
                 .fillMaxWidth(
-                    if(configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)maxLandscapeWidth
+                    if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) maxLandscapeWidth
                     else 1F
                 )
                 .nestedScroll(
@@ -449,7 +449,8 @@ fun BottomSheet(
                     ) {
                         val collapsed = LocalContext.current.resources.getString(R.string.collapsed)
                         val expanded = LocalContext.current.resources.getString(R.string.expanded)
-                        val accessibilityManager  = LocalContext.current.getSystemService(Context.ACCESSIBILITY_SERVICE) as? AccessibilityManager
+                        val accessibilityManager =
+                            LocalContext.current.getSystemService(Context.ACCESSIBILITY_SERVICE) as? AccessibilityManager
                         Icon(
                             painterResource(id = R.drawable.ic_drawer_handle),
                             contentDescription =
@@ -476,10 +477,12 @@ fun BottomSheet(
                                         if (sheetState.confirmStateChange(BottomSheetValue.Shown)) {
                                             scope.launch { sheetState.show() }
                                             accessibilityManager?.let { manager ->
-                                                if(manager.isEnabled){
-                                                    val event = AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
-                                                        text.add(collapsed)
-                                                    }
+                                                if (manager.isEnabled) {
+                                                    val event =
+                                                        AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT)
+                                                            .apply {
+                                                                text.add(collapsed)
+                                                            }
                                                     manager.sendAccessibilityEvent(event)
                                                 }
                                             }
@@ -488,10 +491,12 @@ fun BottomSheet(
                                         if (sheetState.confirmStateChange(BottomSheetValue.Expanded)) {
                                             scope.launch { sheetState.expand() }
                                             accessibilityManager?.let { manager ->
-                                                if(manager.isEnabled){
-                                                    val event = AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
-                                                        text.add(expanded)
-                                                    }
+                                                if (manager.isEnabled) {
+                                                    val event =
+                                                        AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT)
+                                                            .apply {
+                                                                text.add(expanded)
+                                                            }
                                                     manager.sendAccessibilityEvent(event)
                                                 }
                                             }
@@ -533,18 +538,24 @@ private fun Modifier.bottomSheetSwipeable(
             val anchors = if (!expandable) {
                 mapOf(
                     fullHeight to BottomSheetValue.Hidden,
-                    (fullHeight - min(sheetHeight, peekHeightPx))+keyCorrection to BottomSheetValue.Shown
+                    (fullHeight - min(
+                        sheetHeight,
+                        peekHeightPx
+                    )) + keyCorrection to BottomSheetValue.Shown
                 )
             } else if (sheetHeight <= peekHeightPx) {
                 mapOf(
                     fullHeight to BottomSheetValue.Hidden,
-                    (fullHeight - sheetHeight)+keyCorrection to BottomSheetValue.Shown
+                    (fullHeight - sheetHeight) + keyCorrection to BottomSheetValue.Shown
                 )
             } else {
                 mapOf(
                     fullHeight to BottomSheetValue.Hidden,
-                    (fullHeight - peekHeightPx)+keyCorrection to BottomSheetValue.Shown,
-                    (max(0f, fullHeight - sheetHeight))+(keyCorrection*2) to BottomSheetValue.Expanded
+                    (fullHeight - peekHeightPx) + keyCorrection to BottomSheetValue.Shown,
+                    (max(
+                        0f,
+                        fullHeight - sheetHeight
+                    )) + (keyCorrection * 2) to BottomSheetValue.Expanded
                 )
             }
             if (sheetState.initialValue == BottomSheetValue.Expanded
@@ -564,9 +575,15 @@ private fun Modifier.bottomSheetSwipeable(
                     val fromKey = anchors.entries.firstOrNull { it.value == from }?.key
                     val toKey = anchors.entries.firstOrNull { it.value == to }?.key
 
-                    if(fromKey == null || toKey == null) { FixedThreshold(56.dp) } //in case of null defaulting to 56.dp threshold
-                    else if (fromKey < toKey) { FixedThreshold(stickyThresholdDownward.dp) } // Threshold for drag down
-                    else{ FixedThreshold(stickyThresholdUpward.dp) } // Threshold for drag up
+                    if (fromKey == null || toKey == null) {
+                        FixedThreshold(56.dp)
+                    } //in case of null defaulting to 56.dp threshold
+                    else if (fromKey < toKey) {
+                        FixedThreshold(stickyThresholdDownward.dp)
+                    } // Threshold for drag down
+                    else {
+                        FixedThreshold(stickyThresholdUpward.dp)
+                    } // Threshold for drag up
                 },
                 resistance = null
             )
@@ -597,9 +614,15 @@ private fun Modifier.bottomSheetSwipeable(
                 val fromKey = anchors.entries.firstOrNull { it.value == from }?.key
                 val toKey = anchors.entries.firstOrNull { it.value == to }?.key
 
-                if(fromKey == null || toKey == null) { FixedThreshold(56.dp) } //in case of null defaulting to 56 as a fallback
-                else if (fromKey < toKey) { FixedThreshold(stickyThresholdDownward.dp) } // Threshold for drag down
-                else{ FixedThreshold(stickyThresholdUpward.dp) } // Threshold for drag up
+                if (fromKey == null || toKey == null) {
+                    FixedThreshold(56.dp)
+                } //in case of null defaulting to 56 as a fallback
+                else if (fromKey < toKey) {
+                    FixedThreshold(stickyThresholdDownward.dp)
+                } // Threshold for drag down
+                else {
+                    FixedThreshold(stickyThresholdUpward.dp)
+                } // Threshold for drag up
             },
             resistance = null
         )
