@@ -203,28 +203,13 @@ private fun CreateActivityUI() {
                         }
                     }
                 )
-            }
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Button(
-                    style = ButtonStyle.OutlinedButton,
-                    size = ButtonSize.Medium,
-                    text = "Hide",
-                    enabled = !hidden,
-                    onClick = {
-                        hidden = true
-                        scope.launch { bottomSheetState.hide() }
-                    }
-                )
+
 
                 Button(
                     style = ButtonStyle.OutlinedButton,
                     size = ButtonSize.Medium,
                     text = "Expand",
-                    enabled = !hidden && expandableState,
+                    enabled = expandableState,
                     onClick = {
                         scope.launch { bottomSheetState.expand() }
                     }
