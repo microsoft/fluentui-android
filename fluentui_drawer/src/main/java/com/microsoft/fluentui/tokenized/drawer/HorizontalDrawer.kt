@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
+import com.microsoft.fluentui.tokenized.Scrim
 import com.microsoft.fluentui.tokenized.calculateFraction
 import com.microsoft.fluentui.util.dpToPx
 import com.microsoft.fluentui.util.pxToDp
@@ -89,16 +90,13 @@ fun HorizontalDrawer(
         //Hack to get exact drawerHeight wrt to content.
         val visible = remember { mutableStateOf(true) }
         if (visible.value) {
-            Box(
-                modifier = Modifier
-                    .layout { measurable, constraints ->
-                        val placeable = measurable.measure(constraints)
-                        layout(placeable.width, placeable.height) {
-                            drawerWidth = placeable.width.toFloat()
-                            visible.value = false
-                        }
+            Box(modifier = Modifier.layout { measurable, constraints ->
+                    val placeable = measurable.measure(constraints)
+                    layout(placeable.width, placeable.height) {
+                        drawerWidth = placeable.width.toFloat()
+                        visible.value = false
                     }
-            ) {
+                }) {
                 drawerContent()
             }
         } else {
@@ -116,7 +114,7 @@ fun HorizontalDrawer(
             drawerState.anchoredDraggableState.updateAnchors(anchors)
             val isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
             val offset = drawerState.anchoredDraggableState.offset
-            drawerState.positionalThreshold =  { fl: Float -> drawerWidth / 2 }
+            drawerState.positionalThreshold = { fl: Float -> drawerWidth / 2 }
             val drawerVelocityThreshold = convertDpToFloat(DrawerVelocityThreshold)
             drawerState.velocityThreshold = { drawerVelocityThreshold }
             Scrim(
@@ -127,18 +125,18 @@ fun HorizontalDrawer(
                 },
                 color = if (scrimVisible) scrimColor else Color.Transparent,
                 preventDismissalOnScrimClick = preventDismissalOnScrimClick,
-                onScrimClick = onScrimClick
+                onScrimClick = onScrimClick,
+                tag = DRAWER_SCRIM_TAG
             )
 
             Box(
                 modifier = with(LocalDensity.current) {
-                    Modifier
-                        .sizeIn(
-                            minWidth = modalDrawerConstraints.minWidth.toDp(),
-                            minHeight = modalDrawerConstraints.minHeight.toDp(),
-                            maxWidth = modalDrawerConstraints.maxWidth.toDp(),
-                            maxHeight = modalDrawerConstraints.maxHeight.toDp()
-                        )
+                    Modifier.sizeIn(
+                        minWidth = modalDrawerConstraints.minWidth.toDp(),
+                        minHeight = modalDrawerConstraints.minHeight.toDp(),
+                        maxWidth = modalDrawerConstraints.maxWidth.toDp(),
+                        maxHeight = modalDrawerConstraints.maxHeight.toDp()
+                    )
                 }
                     .offset { IntOffset(offset.roundToInt(), 0) }
                     .padding(

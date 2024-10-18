@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.theme.token.Icon
+import com.microsoft.fluentui.tokenized.Scrim
 import com.microsoft.fluentui.tokenized.calculateFraction
 import com.microsoft.fluentui.util.dpToPx
 import com.microsoft.fluentui.util.pxToDp
@@ -67,17 +68,14 @@ fun TopDrawer(
         val fullHeight = constraints.maxHeight.toFloat()
         var drawerHeight by remember(fullHeight) { mutableStateOf(fullHeight) }
 
-        Box(
-            modifier = Modifier
-                .alpha(0f)
-                .layout { measurable, constraints ->
-                    val placeable = measurable.measure(constraints)
-                    layout(placeable.width, placeable.height) {
-                        drawerHeight =
-                            placeable.height.toFloat() + dpToPx(DrawerHandleHeightOffset)
-                    }
+        Box(modifier = Modifier
+            .alpha(0f)
+            .layout { measurable, constraints ->
+                val placeable = measurable.measure(constraints)
+                layout(placeable.width, placeable.height) {
+                    drawerHeight = placeable.height.toFloat() + dpToPx(DrawerHandleHeightOffset)
                 }
-        ) {
+            }) {
             drawerContent()
         }
         val maxOpenHeight = fullHeight * DrawerOpenFraction
@@ -95,10 +93,8 @@ fun TopDrawer(
         drawerState.anchoredDraggableState.updateAnchors(anchors)
 
         val drawerConstraints = with(LocalDensity.current) {
-            Modifier
-                .sizeIn(
-                    maxWidth = constraints.maxWidth.toDp(),
-                    maxHeight = constraints.maxHeight.toDp()
+            Modifier.sizeIn(
+                    maxWidth = constraints.maxWidth.toDp(), maxHeight = constraints.maxHeight.toDp()
                 )
         }
         val drawerStateOffset = drawerState.anchoredDraggableState.offset
@@ -111,7 +107,8 @@ fun TopDrawer(
             },
             color = if (scrimVisible) scrimColor else Color.Transparent,
             preventDismissalOnScrimClick = preventDismissalOnScrimClick,
-            onScrimClick = onScrimClick
+            onScrimClick = onScrimClick,
+            tag = DRAWER_SCRIM_TAG
         )
 
         Box(
@@ -148,8 +145,7 @@ fun TopDrawer(
                         bottom.linkTo(drawerHandleConstrain.top)
                     }
                     .focusTarget()
-                    .testTag(DRAWER_CONTENT_TAG), content = { drawerContent() }
-                )
+                    .testTag(DRAWER_CONTENT_TAG), content = { drawerContent() })
                 Column(horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier
                         .constrainAs(drawerHandleConstrain) {

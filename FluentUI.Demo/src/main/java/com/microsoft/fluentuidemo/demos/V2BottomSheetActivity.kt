@@ -39,6 +39,7 @@ import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -75,13 +76,15 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 const val BOTTOM_SHEET_ENABLE_SWIPE_DISMISS_TEST_TAG = "enableSwipeDismiss"
+
 class V2BottomSheetActivity : V2DemoActivity() {
     init {
         setupActivity(this)
     }
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-10"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-10"
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-10"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,6 +97,8 @@ class V2BottomSheetActivity : V2DemoActivity() {
 
 @Composable
 private fun CreateActivityUI() {
+    var scrimVisible by rememberSaveable { mutableStateOf(true) }
+
     var enableSwipeDismiss by remember { mutableStateOf(true) }
 
     var showHandleState by remember { mutableStateOf(true) }
@@ -104,12 +109,14 @@ private fun CreateActivityUI() {
 
     var peekHeightState by remember { mutableStateOf(110.dp) }
 
+    var preventDismissalOnScrimClick by rememberSaveable { mutableStateOf(false) }
+
     var stickyThresholdUpwardDrag: Float by remember { mutableStateOf(56f) }
     var stickyThresholdDownwardDrag: Float by remember { mutableStateOf(56f) }
 
     var hidden by remember { mutableStateOf(true) }
 
-    val bottomSheetState = rememberBottomSheetState(BottomSheetValue.Shown)
+    val bottomSheetState = rememberBottomSheetState(BottomSheetValue.Hidden)
 
     val scope = rememberCoroutineScope()
 
@@ -147,10 +154,12 @@ private fun CreateActivityUI() {
         sheetContent = sheetContentState,
         expandable = expandableState,
         peekHeight = peekHeightState,
+        scrimVisible = scrimVisible,
         showHandle = showHandleState,
         sheetState = bottomSheetState,
         slideOver = slideOverState,
         enableSwipeDismiss = enableSwipeDismiss,
+        preventDismissalOnScrimClick = preventDismissalOnScrimClick,
         stickyThresholdUpward = stickyThresholdUpwardDrag,
         stickyThresholdDownward = stickyThresholdDownwardDrag
     ) {
@@ -196,28 +205,12 @@ private fun CreateActivityUI() {
                         }
                     }
                 )
-            }
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Button(
-                    style = ButtonStyle.OutlinedButton,
-                    size = ButtonSize.Medium,
-                    text = "Hide",
-                    enabled = !hidden,
-                    onClick = {
-                        hidden = true
-                        scope.launch { bottomSheetState.hide() }
-                    }
-                )
 
                 Button(
                     style = ButtonStyle.OutlinedButton,
                     size = ButtonSize.Medium,
                     text = "Expand",
-                    enabled = !hidden && expandableState,
+                    enabled = expandableState,
                     onClick = {
                         scope.launch { bottomSheetState.expand() }
                     }
@@ -286,7 +279,7 @@ private fun CreateActivityUI() {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 BasicText(
-                    text = stringResource(id =R.string.bottom_sheet_text_enable_swipe_dismiss),
+                    text = stringResource(id = R.string.bottom_sheet_text_enable_swipe_dismiss),
                     modifier = Modifier.weight(1F),
                     style = TextStyle(
                         color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
@@ -300,6 +293,44 @@ private fun CreateActivityUI() {
                     onValueChange = { enableSwipeDismiss = it }
                 )
             }
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(30.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                BasicText(
+                    text = "Scrim Visible",
+                    modifier = Modifier.weight(1F),
+                    style = TextStyle(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
+                    )
+                )
+                ToggleSwitch(checkedState = scrimVisible,
+                    onValueChange = { scrimVisible = it }
+                )
+            }
+
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(30.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                BasicText(
+                    text = "Prevent Dismissal On Scrim Click",
+                    modifier = Modifier.weight(1F),
+                    style = TextStyle(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
+                    )
+                )
+                ToggleSwitch(checkedState = preventDismissalOnScrimClick,
+                    onValueChange = { preventDismissalOnScrimClick = it }
+                )
+            }
+
             // New Row for Sticky Threshold Downward Drag
             Row(
                 horizontalArrangement = Arrangement.spacedBy(30.dp),
@@ -316,11 +347,15 @@ private fun CreateActivityUI() {
                     )
                 )
                 Slider(
-                    modifier = Modifier.width(100.dp).height(50.dp).padding(0.dp, 0.dp, 0.dp, 0.dp),
+                    modifier = Modifier
+                        .width(100.dp)
+                        .height(50.dp)
+                        .padding(0.dp, 0.dp, 0.dp, 0.dp),
                     value = stickyThresholdUpwardDrag,
-                    onValueChange = { stickyThresholdUpwardDrag = it
-                                    peekHeightState+=0.0001.dp
-                                    },
+                    onValueChange = {
+                        stickyThresholdUpwardDrag = it
+                        peekHeightState += 0.0001.dp
+                    },
                     valueRange = 0f..500f,
                     colors = SliderDefaults.colors(
                         thumbColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color100],
@@ -352,11 +387,15 @@ private fun CreateActivityUI() {
                     )
                 )
                 Slider(
-                    modifier = Modifier.width(100.dp).height(50.dp).padding(0.dp, 0.dp, 0.dp, 0.dp),
+                    modifier = Modifier
+                        .width(100.dp)
+                        .height(50.dp)
+                        .padding(0.dp, 0.dp, 0.dp, 0.dp),
                     value = stickyThresholdDownwardDrag,
-                    onValueChange = { stickyThresholdDownwardDrag = it
-                                    peekHeightState+=0.0001.dp
-                                    },
+                    onValueChange = {
+                        stickyThresholdDownwardDrag = it
+                        peekHeightState += 0.0001.dp
+                    },
                     valueRange = 0f..500f,
                     colors = SliderDefaults.colors(
                         thumbColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color100],
