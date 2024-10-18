@@ -242,7 +242,7 @@ fun BottomSheet(
     stickyThresholdUpward: Float = 56f,
     stickyThresholdDownward: Float = 56f,
     bottomSheetTokens: BottomSheetTokens? = null,
-    onScrimClick: () -> Unit = {},
+    onDismiss: () -> Unit = {},
     content: @Composable () -> Unit
 ) {
     val themeID =
@@ -318,7 +318,7 @@ fun BottomSheet(
                     }
                 },
                 open = sheetState.isVisible,
-                onScrimClick = onScrimClick,
+                onScrimClick = onDismiss,
                 preventDismissalOnScrimClick = preventDismissalOnScrimClick,
                 tag = BOTTOMSHEET_SCRIM_TAG
             )
@@ -391,6 +391,7 @@ fun BottomSheet(
                                 if (sheetState.confirmStateChange(BottomSheetValue.Hidden)) {
                                     scope.launch { sheetState.hide() }
                                 }
+                                onDismiss()
                                 true
                             }
                         }
@@ -438,6 +439,7 @@ fun BottomSheet(
                                         if (!sheetState.isVisible) {
                                             if (enableSwipeDismiss) {
                                                 scope.launch { sheetState.hide() }
+                                                onDismiss()
                                             } else {
                                                 scope.launch { sheetState.show() }
                                             }
