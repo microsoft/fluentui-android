@@ -64,20 +64,20 @@ class DrawerState(
     internal var velocityThreshold: () -> Float = { VelocityThreshold }
     internal var positionalThreshold: (Float) -> Float = { PositionalThreshold }
 
-    internal val anchoredDraggableState: AnchoredDraggableState<DrawerValue> = AnchoredDraggableState(
-        initialValue,
-        anchors = DraggableAnchors {},
-        positionalThreshold,
-        velocityThreshold,
-        animationSpec = AnimationSpec,
-        confirmValueChange = confirmValueChange
-    )
+    internal val anchoredDraggableState: AnchoredDraggableState<DrawerValue> =
+        AnchoredDraggableState(
+            initialValue,
+            anchors = DraggableAnchors {},
+            positionalThreshold,
+            velocityThreshold,
+            animationSpec = AnimationSpec,
+            confirmValueChange = confirmValueChange
+        )
 
     init {
         if (skipOpenState) {
             require(anchoredDraggableState.currentValue != DrawerValue.Open) {
-                "The initial value must not be set to Open if skipOpenState is set to" +
-                        " true."
+                "The initial value must not be set to Open if skipOpenState is set to" + " true."
             }
             require(expandable) {
                 "Invalid state: expandable = false & skipOpenState = true"
@@ -85,8 +85,7 @@ class DrawerState(
         }
         if (!expandable) {
             require(initialValue != DrawerValue.Expanded) {
-                "The initial value must not be set to Expanded if expandable is set to" +
-                        " false."
+                "The initial value must not be set to Expanded if expandable is set to" + " false."
             }
         }
     }
@@ -131,8 +130,7 @@ class DrawerState(
         animationInProgress = true
         do {
             delay(50)
-        } while (!anchoredDraggableState.anchorsFilled)
-        /*
+        } while (!anchoredDraggableState.anchorsFilled)/*
        * first try to open the drawer
        * if not possible then try to expand the drawer
         */
@@ -144,11 +142,10 @@ class DrawerState(
         if (targetValue != anchoredDraggableState.currentValue) {
             try {
                 anchoredDraggableState.animateTo(targetValue, velocityThreshold())
-            } catch(e: Exception) {
+            } catch (e: Exception) {
                 anchoredDraggableState.animateTo(targetValue = targetValue, VelocityThreshold)
-            }
-            finally {
-                    animationInProgress = false
+            } finally {
+                animationInProgress = false
             }
         } else {
             animationInProgress = false
@@ -187,8 +184,7 @@ class DrawerState(
         animationInProgress = true
         do {
             delay(50)
-        } while (!anchoredDraggableState.anchorsFilled)
-        /*
+        } while (!anchoredDraggableState.anchorsFilled)/*
         * first try to expand the drawer
         * if not possible then try to open the drawer
          */
@@ -220,18 +216,15 @@ class DrawerState(
             expandable: Boolean,
             skipOpenState: Boolean,
             confirmValueChange: (DrawerValue) -> Boolean
-        ) =
-            Saver<DrawerState, DrawerValue>(
-                save = { it.anchoredDraggableState.currentValue },
-                restore = {
-                    DrawerState(
-                        initialValue = it,
-                        expandable = expandable,
-                        skipOpenState = skipOpenState,
-                        confirmValueChange = confirmValueChange
-                    )
-                }
-            )
+        ) = Saver<DrawerState, DrawerValue>(save = { it.anchoredDraggableState.currentValue },
+            restore = {
+                DrawerState(
+                    initialValue = it,
+                    expandable = expandable,
+                    skipOpenState = skipOpenState,
+                    confirmValueChange = confirmValueChange
+                )
+            })
     }
 }
 
@@ -243,9 +236,7 @@ class DrawerState(
 fun rememberDrawerState(confirmValueChange: (DrawerValue) -> Boolean = { true }): DrawerState {
     return rememberSaveable(
         saver = DrawerState.Saver(
-            expandable = true,
-            skipOpenState = false,
-            confirmValueChange = confirmValueChange
+            expandable = true, skipOpenState = false, confirmValueChange = confirmValueChange
         )
     ) {
         DrawerState(
@@ -265,7 +256,10 @@ fun rememberBottomDrawerState(
     confirmValueChange: (DrawerValue) -> Boolean = { true }
 ): DrawerState {
     return rememberSaveable(
-        initialValue, confirmValueChange, expandable, skipOpenState,
+        initialValue,
+        confirmValueChange,
+        expandable,
+        skipOpenState,
         saver = DrawerState.Saver(expandable, skipOpenState, confirmValueChange)
     ) {
         DrawerState(initialValue, confirmValueChange, expandable, skipOpenState)
@@ -283,38 +277,6 @@ class DrawerPositionProvider(val offset: IntOffset?) : PopupPositionProvider {
             return IntOffset(anchorBounds.left + offset.x, anchorBounds.top + offset.y)
         }
         return IntOffset(0, 0)
-    }
-}
-
-@Composable
-fun Scrim(
-    open: Boolean,
-    onClose: () -> Unit,
-    fraction: () -> Float,
-    color: Color,
-    preventDismissalOnScrimClick: Boolean = false,
-    onScrimClick: () -> Unit = {},
-) {
-    val dismissDrawer = if (open) {
-        Modifier.pointerInput(onClose) {
-            detectTapGestures {
-                if (!preventDismissalOnScrimClick) {
-                    onClose()
-                }
-                onScrimClick() //this function runs post onClose() so that the drawer is closed before the callback is invoked
-            }
-        }
-    } else {
-        Modifier
-    }
-
-    Canvas(
-        Modifier
-            .fillMaxSize()
-            .then(dismissDrawer)
-            .testTag(DRAWER_SCRIM_TAG)
-    ) {
-        drawRect(color, alpha = fraction())
     }
 }
 
@@ -365,29 +327,25 @@ fun Drawer(
             onDismissRequest = close,
             popupPositionProvider = popupPositionProvider,
             properties = PopupProperties(focusable = true, clippingEnabled = (offset == null))
-        )
-        {
-            val drawerShape: Shape =
-                when (behaviorType) {
-                    BehaviorType.BOTTOM, BehaviorType.BOTTOM_SLIDE_OVER -> RoundedCornerShape(
-                        topStart = tokens.borderRadius(drawerInfo),
-                        topEnd = tokens.borderRadius(drawerInfo)
-                    )
+        ) {
+            val drawerShape: Shape = when (behaviorType) {
+                BehaviorType.BOTTOM, BehaviorType.BOTTOM_SLIDE_OVER -> RoundedCornerShape(
+                    topStart = tokens.borderRadius(drawerInfo),
+                    topEnd = tokens.borderRadius(drawerInfo)
+                )
 
-                    BehaviorType.TOP -> RoundedCornerShape(
-                        bottomStart = tokens.borderRadius(drawerInfo),
-                        bottomEnd = tokens.borderRadius(drawerInfo)
-                    )
+                BehaviorType.TOP -> RoundedCornerShape(
+                    bottomStart = tokens.borderRadius(drawerInfo),
+                    bottomEnd = tokens.borderRadius(drawerInfo)
+                )
 
-                    else -> RoundedCornerShape(tokens.borderRadius(drawerInfo))
-                }
+                else -> RoundedCornerShape(tokens.borderRadius(drawerInfo))
+            }
             val drawerElevation: Dp = tokens.elevation(drawerInfo)
-            val drawerBackgroundColor: Brush =
-                tokens.backgroundBrush(drawerInfo)
+            val drawerBackgroundColor: Brush = tokens.backgroundBrush(drawerInfo)
             val drawerHandleColor: Color = tokens.handleColor(drawerInfo)
             val scrimOpacity: Float = tokens.scrimOpacity(drawerInfo)
-            val scrimColor: Color =
-                tokens.scrimColor(drawerInfo).copy(alpha = scrimOpacity)
+            val scrimColor: Color = tokens.scrimColor(drawerInfo).copy(alpha = scrimOpacity)
 
             when (behaviorType) {
                 BehaviorType.BOTTOM, BehaviorType.BOTTOM_SLIDE_OVER -> BottomDrawer(
@@ -487,27 +445,20 @@ fun BottomDrawer(
                 scope.launch { drawerState.close() }
             }
         }
-        val behaviorType =
-            if (slideOver) BehaviorType.BOTTOM_SLIDE_OVER else BehaviorType.BOTTOM
+        val behaviorType = if (slideOver) BehaviorType.BOTTOM_SLIDE_OVER else BehaviorType.BOTTOM
         val drawerInfo = DrawerInfo(type = behaviorType)
         ModalPopup(
-            onDismissRequest = close,
-            windowInsetsType = windowInsetsType
-        )
-        {
-            val drawerShape: Shape =
-                RoundedCornerShape(
-                    topStart = tokens.borderRadius(drawerInfo),
-                    topEnd = tokens.borderRadius(drawerInfo)
-                )
+            onDismissRequest = close, windowInsetsType = windowInsetsType
+        ) {
+            val drawerShape: Shape = RoundedCornerShape(
+                topStart = tokens.borderRadius(drawerInfo), topEnd = tokens.borderRadius(drawerInfo)
+            )
 
             val drawerElevation: Dp = tokens.elevation(drawerInfo)
-            val drawerBackgroundColor: Brush =
-                tokens.backgroundBrush(drawerInfo)
+            val drawerBackgroundColor: Brush = tokens.backgroundBrush(drawerInfo)
             val drawerHandleColor: Color = tokens.handleColor(drawerInfo)
             val scrimOpacity: Float = tokens.scrimOpacity(drawerInfo)
-            val scrimColor: Color =
-                tokens.scrimColor(drawerInfo).copy(alpha = scrimOpacity)
+            val scrimColor: Color = tokens.scrimColor(drawerInfo).copy(alpha = scrimOpacity)
             BottomDrawer(
                 modifier = modifier,
                 drawerState = drawerState,

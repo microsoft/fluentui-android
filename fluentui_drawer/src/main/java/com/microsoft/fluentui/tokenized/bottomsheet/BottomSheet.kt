@@ -13,7 +13,6 @@ import android.view.accessibility.AccessibilityManager
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.foundation.*
 import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.*
@@ -31,7 +30,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.*
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -58,6 +56,7 @@ import kotlinx.coroutines.launch
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
+import com.microsoft.fluentui.tokenized.Scrim
 
 /**
  * Possible values of [BottomSheetState].
@@ -101,7 +100,7 @@ class BottomSheetState(
     /**
      * Whether the bottom sheet is visible.
      */
-    val isVisible: Boolean
+    var isVisible: Boolean = false
         get() = currentValue != BottomSheetValue.Hidden
 
     internal val hasExpandedState: Boolean
@@ -135,25 +134,27 @@ class BottomSheetState(
      *
      * @throws [CancellationException] if the animation is interrupted
      */
-    suspend fun hide() = animateTo(BottomSheetValue.Hidden)
+    suspend fun hide() {
+        try {
+            animateTo(BottomSheetValue.Hidden)
+        } finally {
+            isVisible = false
+        }
+    }
 
     companion object {
         /**
          * The default [Saver] implementation for [BottomSheetState].
          */
         fun Saver(
-            animationSpec: AnimationSpec<Float>,
-            confirmStateChange: (BottomSheetValue) -> Boolean
-        ): Saver<BottomSheetState, *> = Saver(
-            save = { it.currentValue },
-            restore = {
-                BottomSheetState(
-                    initialValue = it,
-                    animationSpec = animationSpec,
-                    confirmStateChange = confirmStateChange
-                )
-            }
-        )
+            animationSpec: AnimationSpec<Float>, confirmStateChange: (BottomSheetValue) -> Boolean
+        ): Saver<BottomSheetState, *> = Saver(save = { it.currentValue }, restore = {
+            BottomSheetState(
+                initialValue = it,
+                animationSpec = animationSpec,
+                confirmStateChange = confirmStateChange
+            )
+        })
     }
 }
 
@@ -171,10 +172,8 @@ fun rememberBottomSheetState(
     confirmStateChange: (BottomSheetValue) -> Boolean = { true }
 ): BottomSheetState {
     return rememberSaveable(
-        initialValue, animationSpec, confirmStateChange,
-        saver = BottomSheetState.Saver(
-            animationSpec = animationSpec,
-            confirmStateChange = confirmStateChange
+        initialValue, animationSpec, confirmStateChange, saver = BottomSheetState.Saver(
+            animationSpec = animationSpec, confirmStateChange = confirmStateChange
         )
     ) {
         BottomSheetState(
@@ -233,9 +232,11 @@ fun BottomSheet(
     showHandle: Boolean = true,
     slideOver: Boolean = true,
     enableSwipeDismiss: Boolean = false,
+    preventDismissalOnScrimClick: Boolean = false,  // if true, the sheet will not be dismissed when the scrim is clicked
     stickyThresholdUpward: Float = 56f,
     stickyThresholdDownward: Float = 56f,
     bottomSheetTokens: BottomSheetTokens? = null,
+    onDismiss: () -> Unit = {}, // callback to be invoked after the sheet is closed
     content: @Composable () -> Unit
 ) {
     val themeID =
@@ -252,16 +253,14 @@ fun BottomSheet(
     val sheetBackgroundColor: Brush = tokens.backgroundBrush(bottomSheetInfo)
     val sheetHandleColor: Color = tokens.handleColor(bottomSheetInfo)
     val scrimOpacity: Float = tokens.scrimOpacity(bottomSheetInfo)
-    val scrimColor: Color =
-        tokens.scrimColor(bottomSheetInfo).copy(alpha = scrimOpacity)
+    val scrimColor: Color = tokens.scrimColor(bottomSheetInfo).copy(alpha = scrimOpacity)
 
     val scope = rememberCoroutineScope()
-    val maxLandscapeWidth :Float= tokens.maxLandscapeWidth(bottomSheetInfo)
+    val maxLandscapeWidth: Float = tokens.maxLandscapeWidth(bottomSheetInfo)
 
     BoxWithConstraints(modifier) {
         val fullHeight = constraints.maxHeight.toFloat()
-        val sheetHeightState =
-            remember(sheetContent.hashCode()) { mutableStateOf<Float?>(null) }
+        val sheetHeightState = remember(sheetContent.hashCode()) { mutableStateOf<Float?>(null) }
 
         Box(
             Modifier
@@ -276,37 +275,41 @@ fun BottomSheet(
                             true
                         }
                     }
-                }
-        ) {
+                }) {
             content()
-            if (slideOver) {
-                Scrim(
-                    color = if (scrimVisible) scrimColor else Color.Transparent,
-                    onDismiss = {
-                        if (sheetState.confirmStateChange(BottomSheetValue.Hidden)) {
-                            scope.launch { sheetState.show() }
-                        }
-                    },
-                    fraction = {
-                        if (sheetState.anchors.isEmpty()
-                            || !sheetState.anchors.containsValue(BottomSheetValue.Expanded)
-                            || (sheetHeightState.value != null && sheetHeightState.value == 0f)
-                        ) {
-                            0.toFloat()
+            Scrim(color = if (scrimVisible) scrimColor else Color.Transparent,
+                onClose = {
+                    if (sheetState.confirmStateChange(BottomSheetValue.Hidden)) {
+                        scope.launch { sheetState.hide() }
+                    }
+                },
+                fraction = {
+                    if (sheetState.anchors.isEmpty() || (sheetHeightState.value != null && sheetHeightState.value == 0f)) {
+                        0.toFloat()
+                    } else {
+                        val targetValue: BottomSheetValue = if (slideOver) {
+                            if (sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Expanded } != null) {
+                                BottomSheetValue.Expanded
+                            } else if (sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Shown } != null) {
+                                BottomSheetValue.Shown
+                            } else {
+                                BottomSheetValue.Hidden
+                            }
                         } else {
-                            calculateFraction(
-                                sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Shown }?.key!!,
-                                sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Expanded }?.key!!,
-                                sheetState.offset.value
-                            )
+                            BottomSheetValue.Shown
                         }
-                    },
-                    visible = (sheetState.targetValue == BottomSheetValue.Expanded
-                            || (sheetState.targetValue == BottomSheetValue.Shown
-                            && sheetState.currentValue == BottomSheetValue.Expanded)
-                            )
-                )
-            }
+                        calculateFraction(
+                            sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Hidden }?.key!!,
+                            sheetState.anchors.entries.firstOrNull { it.value == targetValue }?.key!!,
+                            sheetState.offset.value
+                        )
+                    }
+                },
+                open = sheetState.isVisible,
+                onScrimClick = onDismiss,
+                preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+                tag = BOTTOMSHEET_SCRIM_TAG
+            )
         }
         val configuration = LocalConfiguration.current
 
@@ -314,15 +317,14 @@ fun BottomSheet(
             Modifier
                 .align(Alignment.TopCenter)
                 .fillMaxWidth(
-                    if(configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)maxLandscapeWidth
+                    if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) maxLandscapeWidth
                     else 1F
                 )
                 .nestedScroll(
                     if (!enableSwipeDismiss && sheetState.offset.value >= (fullHeight - dpToPx(
                             peekHeight
                         ))
-                    )
-                        sheetState.NonDismissiblePostDownNestedScrollConnection
+                    ) sheetState.NonDismissiblePostDownNestedScrollConnection
                     else if (slideOver) sheetState.PreUpPostDownNestedScrollConnection
                     else sheetState.PostDownNestedScrollConnection
                 )
@@ -360,11 +362,7 @@ fun BottomSheet(
                     }
                 }
                 .sheetHeight(
-                    expandable,
-                    slideOver,
-                    fullHeight,
-                    peekHeight,
-                    sheetState
+                    expandable, slideOver, fullHeight, peekHeight, sheetState
                 )
                 .clip(sheetShape)
                 .shadow(sheetElevation)
@@ -376,6 +374,7 @@ fun BottomSheet(
                                 if (sheetState.confirmStateChange(BottomSheetValue.Hidden)) {
                                     scope.launch { sheetState.hide() }
                                 }
+                                onDismiss()
                                 true
                             }
                         }
@@ -423,6 +422,7 @@ fun BottomSheet(
                                         if (!sheetState.isVisible) {
                                             if (enableSwipeDismiss) {
                                                 scope.launch { sheetState.hide() }
+                                                onDismiss()
                                             } else {
                                                 scope.launch { sheetState.show() }
                                             }
@@ -434,22 +434,19 @@ fun BottomSheet(
                     ) {
                         val collapsed = LocalContext.current.resources.getString(R.string.collapsed)
                         val expanded = LocalContext.current.resources.getString(R.string.expanded)
-                        val accessibilityManager  = LocalContext.current.getSystemService(Context.ACCESSIBILITY_SERVICE) as? AccessibilityManager
-                        Icon(
-                            painterResource(id = R.drawable.ic_drawer_handle),
-                            contentDescription =
-                            if (sheetState.currentValue == BottomSheetValue.Expanded || (sheetState.hasExpandedState && sheetState.isVisible)) {
+                        val accessibilityManager =
+                            LocalContext.current.getSystemService(Context.ACCESSIBILITY_SERVICE) as? AccessibilityManager
+                        Icon(painterResource(id = R.drawable.ic_drawer_handle),
+                            contentDescription = if (sheetState.currentValue == BottomSheetValue.Expanded || (sheetState.hasExpandedState && sheetState.isVisible)) {
                                 LocalContext.current.resources.getString(R.string.drag_handle)
                             } else {
                                 null
                             },
                             tint = sheetHandleColor,
-                            modifier = Modifier
-                                .clickable(
+                            modifier = Modifier.clickable(
                                     enabled = sheetState.hasExpandedState,
                                     role = Role.Button,
-                                    onClickLabel =
-                                    if (sheetState.currentValue == BottomSheetValue.Expanded) {
+                                    onClickLabel = if (sheetState.currentValue == BottomSheetValue.Expanded) {
                                         LocalContext.current.resources.getString(R.string.collapse)
                                     } else {
                                         if (sheetState.hasExpandedState && sheetState.isVisible) LocalContext.current.resources.getString(
@@ -461,10 +458,12 @@ fun BottomSheet(
                                         if (sheetState.confirmStateChange(BottomSheetValue.Shown)) {
                                             scope.launch { sheetState.show() }
                                             accessibilityManager?.let { manager ->
-                                                if(manager.isEnabled){
-                                                    val event = AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
-                                                        text.add(collapsed)
-                                                    }
+                                                if (manager.isEnabled) {
+                                                    val event =
+                                                        AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT)
+                                                            .apply {
+                                                                text.add(collapsed)
+                                                            }
                                                     manager.sendAccessibilityEvent(event)
                                                 }
                                             }
@@ -473,28 +472,27 @@ fun BottomSheet(
                                         if (sheetState.confirmStateChange(BottomSheetValue.Expanded)) {
                                             scope.launch { sheetState.expand() }
                                             accessibilityManager?.let { manager ->
-                                                if(manager.isEnabled){
-                                                    val event = AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT).apply {
-                                                        text.add(expanded)
-                                                    }
+                                                if (manager.isEnabled) {
+                                                    val event =
+                                                        AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT)
+                                                            .apply {
+                                                                text.add(expanded)
+                                                            }
                                                     manager.sendAccessibilityEvent(event)
                                                 }
                                             }
                                         }
                                     }
-                                }
-                        )
+                                })
                     }
                 }
                 Column(modifier = Modifier
                     .testTag(BOTTOMSHEET_CONTENT_TAG)
-                    .then(if (slideOver) Modifier
-                        .onFocusChanged { focusState ->
-                            if (focusState.hasFocus && sheetState.currentValue != BottomSheetValue.Expanded) {        // this expands the sheet when the content is focused
-                                scope.launch { sheetState.expand() }
-                            }
-                        } else Modifier.fillMaxSize()),
-                    content = { sheetContent() })
+                    .then(if (slideOver) Modifier.onFocusChanged { focusState ->
+                        if (focusState.hasFocus && sheetState.currentValue != BottomSheetValue.Expanded) {        // this expands the sheet when the content is focused
+                            scope.launch { sheetState.expand() }
+                        }
+                    } else Modifier.fillMaxSize()), content = { sheetContent() })
             }
         }
     }
@@ -517,27 +515,27 @@ private fun Modifier.bottomSheetSwipeable(
         if (sheetHeight != null && sheetHeight != 0f) {
             val anchors = if (!expandable) {
                 mapOf(
-                    fullHeight to BottomSheetValue.Hidden,
-                    (fullHeight - min(sheetHeight, peekHeightPx))+keyCorrection to BottomSheetValue.Shown
+                    fullHeight to BottomSheetValue.Hidden, (fullHeight - min(
+                        sheetHeight, peekHeightPx
+                    )) + keyCorrection to BottomSheetValue.Shown
                 )
             } else if (sheetHeight <= peekHeightPx) {
                 mapOf(
                     fullHeight to BottomSheetValue.Hidden,
-                    (fullHeight - sheetHeight)+keyCorrection to BottomSheetValue.Shown
+                    (fullHeight - sheetHeight) + keyCorrection to BottomSheetValue.Shown
                 )
             } else {
                 mapOf(
                     fullHeight to BottomSheetValue.Hidden,
-                    (fullHeight - peekHeightPx)+keyCorrection to BottomSheetValue.Shown,
-                    (max(0f, fullHeight - sheetHeight))+(keyCorrection*2) to BottomSheetValue.Expanded
+                    (fullHeight - peekHeightPx) + keyCorrection to BottomSheetValue.Shown,
+                    (max(
+                        0f, fullHeight - sheetHeight
+                    )) + (keyCorrection * 2) to BottomSheetValue.Expanded
                 )
             }
-            if (sheetState.initialValue == BottomSheetValue.Expanded
-                && anchors.entries.firstOrNull { it.value == BottomSheetValue.Expanded } == null
-            ) {
+            if (sheetState.initialValue == BottomSheetValue.Expanded && anchors.entries.firstOrNull { it.value == BottomSheetValue.Expanded } == null) {
                 throw IllegalArgumentException(
-                    "BottomSheet initial value must not be set to Expanded " +
-                            "if the whole content is visible in Shown state itself"
+                    "BottomSheet initial value must not be set to Expanded " + "if the whole content is visible in Shown state itself"
                 )
             }
             Modifier.swipeable(
@@ -549,9 +547,15 @@ private fun Modifier.bottomSheetSwipeable(
                     val fromKey = anchors.entries.firstOrNull { it.value == from }?.key
                     val toKey = anchors.entries.firstOrNull { it.value == to }?.key
 
-                    if(fromKey == null || toKey == null) { FixedThreshold(56.dp) } //in case of null defaulting to 56.dp threshold
-                    else if (fromKey < toKey) { FixedThreshold(stickyThresholdDownward.dp) } // Threshold for drag down
-                    else{ FixedThreshold(stickyThresholdUpward.dp) } // Threshold for drag up
+                    if (fromKey == null || toKey == null) {
+                        FixedThreshold(56.dp)
+                    } //in case of null defaulting to 56.dp threshold
+                    else if (fromKey < toKey) {
+                        FixedThreshold(stickyThresholdDownward.dp)
+                    } // Threshold for drag down
+                    else {
+                        FixedThreshold(stickyThresholdUpward.dp)
+                    } // Threshold for drag up
                 },
                 resistance = null
             )
@@ -582,9 +586,15 @@ private fun Modifier.bottomSheetSwipeable(
                 val fromKey = anchors.entries.firstOrNull { it.value == from }?.key
                 val toKey = anchors.entries.firstOrNull { it.value == to }?.key
 
-                if(fromKey == null || toKey == null) { FixedThreshold(56.dp) } //in case of null defaulting to 56 as a fallback
-                else if (fromKey < toKey) { FixedThreshold(stickyThresholdDownward.dp) } // Threshold for drag down
-                else{ FixedThreshold(stickyThresholdUpward.dp) } // Threshold for drag up
+                if (fromKey == null || toKey == null) {
+                    FixedThreshold(56.dp)
+                } //in case of null defaulting to 56 as a fallback
+                else if (fromKey < toKey) {
+                    FixedThreshold(stickyThresholdDownward.dp)
+                } // Threshold for drag down
+                else {
+                    FixedThreshold(stickyThresholdUpward.dp)
+                } // Threshold for drag up
             },
             resistance = null
         )
@@ -601,47 +611,16 @@ private fun Modifier.sheetHeight(
     peekHeight: Dp,
     sheetState: BottomSheetState
 ): Modifier {
-    val modifier =
-        if (slideOver) {
-            if (expandable) {
-                Modifier
-            } else {
-                Modifier.heightIn(
-                    0.dp,
-                    pxToDp(min(fullHeight * BottomSheetOpenFraction, dpToPx(peekHeight)))
-                )
-            }
-        } else {
-            Modifier.heightIn(0.dp, pxToDp(fullHeight - sheetState.offset.value))
-        }
-    return this.then(modifier)
-}
-
-//TODO : Revisit Scrim usage across module to check single scrim implementation across module.
-@Composable
-private fun Scrim(
-    color: Color,
-    onDismiss: () -> Unit,
-    fraction: () -> Float,
-    visible: Boolean
-) {
-    if (visible) {
-        val closeSheet = LocalContext.current.resources.getString(R.string.fluentui_close_sheet)
-        val dismissModifier = Modifier
-            .pointerInput(onDismiss) { detectTapGestures { onDismiss() } }
-            .semantics(mergeDescendants = true) {
-                contentDescription = closeSheet
-                onClick { onDismiss(); true }
-            }
-
-        Canvas(
+    val modifier = if (slideOver) {
+        if (expandable) {
             Modifier
-                .fillMaxSize()
-                .then(dismissModifier)
-                .testTag(BOTTOMSHEET_SCRIM_TAG)
-
-        ) {
-            drawRect(color = color, alpha = fraction())
+        } else {
+            Modifier.heightIn(
+                0.dp, pxToDp(min(fullHeight * BottomSheetOpenFraction, dpToPx(peekHeight)))
+            )
         }
+    } else {
+        Modifier.heightIn(0.dp, pxToDp(fullHeight - sheetState.offset.value))
     }
+    return this.then(modifier)
 }
