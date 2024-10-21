@@ -116,7 +116,7 @@ fun AvatarPie(
                     )
                     AddHorizontalSpacer()
                     SlicedAvatar(
-                        group.members[3],
+                        group.members[2],
                         slicedAvatarSize = getSlicedAvatarSize(slicedAvatarDimen),
                         width = slicedAvatarDimen,
                         modifier = Modifier

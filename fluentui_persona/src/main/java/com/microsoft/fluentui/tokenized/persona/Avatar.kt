@@ -216,8 +216,8 @@ fun SlicedAvatar(
     avatarToken: AvatarTokens? = null,
     slicedAvatarSize: SlicedAvatarSize = SlicedAvatarSize.Size32,
 ) {
-    val personInitials =
-        if (width >= 19.dp) person.getInitials() else person.getInitials().slice(0..0)
+    val personInitials = person.getInitials()
+    val personInitialsToDisplay = if (personInitials.length >= 2 && width < 19.dp) personInitials[0].toString() else personInitials
     val token = avatarToken
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarControlType] as AvatarTokens
     val avatarInfo = AvatarInfo(
@@ -248,13 +248,13 @@ fun SlicedAvatar(
             )
         }
 
-        personInitials.isNotEmpty() -> {
+        personInitialsToDisplay.isNotEmpty() -> {
             Box(
                 modifier = modifier.background(
                         brush = backgroundBrush
                     ), contentAlignment = Alignment.Center
             ) {
-                BasicText(personInitials, style = fontTextStyle.merge(
+                BasicText(personInitialsToDisplay, style = fontTextStyle.merge(
                     TextStyle(color = foregroundColor)
                 ), modifier = Modifier.clearAndSetSemantics { })
             }
