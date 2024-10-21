@@ -8,6 +8,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
@@ -149,6 +150,24 @@ enum class AvatarSize {
     Size56,
     Size72
 }
+
+enum class SlicedAvatarSize {
+    Size7,
+    Size9,
+    Size11,
+    Size15,
+    Size16,
+    Size19,
+    Size20,
+    Size24,
+    Size27,
+    Size32,
+    Size35,
+    Size40,
+    Size56,
+    Size72
+}
+
 
 enum class AvatarStatus {
     Available,

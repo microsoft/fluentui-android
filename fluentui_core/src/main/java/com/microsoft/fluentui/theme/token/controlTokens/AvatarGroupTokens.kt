@@ -13,7 +13,8 @@ import kotlinx.parcelize.Parcelize
 
 enum class AvatarGroupStyle {
     Stack,
-    Pile
+    Pile,
+    Pie
 }
 
 open class AvatarGroupInfo(
@@ -107,6 +108,8 @@ open class AvatarGroupTokens : IControlToken, Parcelable {
                 AvatarSize.Size72 -> FluentGlobalTokens.SizeTokens.Size80
                     .value
             }
+
+            AvatarGroupStyle.Pie -> 0.dp
         }
     }
 
