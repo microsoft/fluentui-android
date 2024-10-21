@@ -407,6 +407,143 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                             }
                         }
                     }
+
+                    item {
+                        Row(horizontalArrangement = Arrangement.Center) {
+                            BasicText(
+                                "Pie Group Style",
+                                style = aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title2]
+                            )
+                        }
+                    }
+                    item {
+                        LazyRow(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.fillMaxSize()
+                        ) {
+                            item {
+                                BasicText("Size 16: ")
+                            }
+                            item {
+                                AvatarGroup(
+                                    group,
+                                    size = AvatarSize.Size16,
+                                    style = AvatarGroupStyle.Pie,
+                                    maxVisibleAvatar = maxVisibleAvatar
+                                )
+                            }
+                        }
+                    }
+                    item {
+                        LazyRow(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.fillMaxSize()
+                        ) {
+                            item {
+                                BasicText("Size 20: ")
+                            }
+                            item {
+                                AvatarGroup(
+                                    group,
+                                    size = AvatarSize.Size20,
+                                    style = AvatarGroupStyle.Pie,
+                                    maxVisibleAvatar = maxVisibleAvatar,
+                                    avatarToken = AnonymousAvatarTokens()
+                                )
+                            }
+                        }
+                    }
+                    item {
+                        LazyRow(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.fillMaxSize()
+                        ) {
+                            item {
+                                BasicText("Size 24: ")
+                            }
+                            item {
+                                AvatarGroup(
+                                    group,
+                                    size = AvatarSize.Size24,
+                                    style = AvatarGroupStyle.Pie,
+                                    maxVisibleAvatar = maxVisibleAvatar,
+                                    avatarToken = AnonymousAvatarTokens()
+                                )
+                            }
+                        }
+                    }
+                    item {
+                        LazyRow(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.fillMaxSize()
+                        ) {
+                            item {
+                                BasicText("Size 32: ")
+                            }
+                            item {
+                                AvatarGroup(
+                                    group,
+                                    size = AvatarSize.Size32,
+                                    style = AvatarGroupStyle.Pie,
+                                    maxVisibleAvatar = maxVisibleAvatar,
+                                )
+                            }
+                        }
+                    }
+                    item {
+                        LazyRow(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.fillMaxSize()
+                        ) {
+                            item {
+                                BasicText("Size 40: ")
+                            }
+                            item {
+                                AvatarGroup(
+                                    group,
+                                    size = AvatarSize.Size40,
+                                    style = AvatarGroupStyle.Pie,
+                                    maxVisibleAvatar = maxVisibleAvatar,
+                                    avatarToken = AnonymousAccentAvatarTokens()
+                                )
+                            }
+                        }
+                    }
+                    item {
+                        LazyRow(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.fillMaxSize()
+                        ) {
+                            item {
+                                BasicText("Size 56: ")
+                            }
+                            item {
+                                AvatarGroup(
+                                    group,
+                                    size = AvatarSize.Size56,
+                                    style = AvatarGroupStyle.Pie,
+                                    maxVisibleAvatar = maxVisibleAvatar,
+                                )
+                            }
+                        }
+                    }
+                    item {
+                        LazyRow(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.fillMaxSize()
+                        ) {
+                            item { BasicText("Size 72: ") }
+                            item {
+                                AvatarGroup(
+                                    group,
+                                    size = AvatarSize.Size72,
+                                    style = AvatarGroupStyle.Pie,
+                                    maxVisibleAvatar = maxVisibleAvatar,
+                                    avatarToken = StandardInvertedAvatarTokens()
+                                )
+                            }
+                        }
+                    }
                 }
             }
         }

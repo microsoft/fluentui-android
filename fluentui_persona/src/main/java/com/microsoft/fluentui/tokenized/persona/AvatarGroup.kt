@@ -78,53 +78,63 @@ fun AvatarGroup(
             "Group Name: ${group.groupName}. Total ${group.members.size} members. "
     }
 
-    Layout(modifier = modifier
-        .padding(8.dp)
-        .then(semanticModifier), content = {
-        for (i in 0 until visibleAvatar) {
-            val person = group.members[i]
+        Layout(modifier = modifier
+            .padding(8.dp)
+            .then(semanticModifier), content = {
+            if (style == AvatarGroupStyle.Pie && group.members.size > 1) {
+                AvatarPie(
+                    group = group,
+                    size = size,
+                    noOfVisibleAvatars = visibleAvatar,
+                    avatarTokens = avatarToken
+                )
+            } else {
+                for (i in 0 until visibleAvatar) {
+                    val person = group.members[i]
 
-            var paddingModifier: Modifier = Modifier
-            if (style == AvatarGroupStyle.Pile && person.isActive) {
-                val padding = token.pilePadding(avatarGroupInfo)
-                paddingModifier = paddingModifier.padding(start = padding, end = padding)
+                    var paddingModifier: Modifier = Modifier
+                    if (style == AvatarGroupStyle.Pile && person.isActive) {
+                        val padding = token.pilePadding(avatarGroupInfo)
+                        paddingModifier = paddingModifier.padding(start = padding, end = padding)
+                    }
+
+                    Avatar(
+                        person,
+                        modifier = paddingModifier,
+                        size = size,
+                        enableActivityRings = true,
+                        enablePresence = enablePresence,
+                        avatarToken = avatarToken
+                    )
+                }
+                if (group.members.size > visibleAvatar || group.members.isEmpty()) {
+                    Avatar(
+                        group.members.size - visibleAvatar, size = size,
+                        enableActivityRings = true, avatarToken = avatarToken
+                    )
+                }
+            }
+        }) { measurables, constraints ->
+            val placeables = measurables.map { measurable ->
+                measurable.measure(constraints)
             }
 
-            Avatar(
-                person,
-                modifier = paddingModifier,
-                size = size,
-                enableActivityRings = true,
-                enablePresence = enablePresence,
-                avatarToken = avatarToken
-            )
-        }
-        if (group.members.size > visibleAvatar || group.members.isEmpty()) {
-            Avatar(
-                group.members.size - visibleAvatar, size = size,
-                enableActivityRings = true, avatarToken = avatarToken
-            )
-        }
-    }) { measurables, constraints ->
-        val placeables = measurables.map { measurable ->
-            measurable.measure(constraints)
-        }
+            var layoutHeight = 0
+            var layoutWidth = 0
+            placeables.forEach {
+                layoutHeight = max(layoutHeight, it.height)
+                layoutWidth += it.width
+            }
+            layoutWidth += spacing.sum()
 
-        var layoutHeight = 0
-        var layoutWidth = 0
-        placeables.forEach {
-            layoutHeight = max(layoutHeight, it.height)
-            layoutWidth += it.width
-        }
-        layoutWidth += spacing.sum()
-
-        layout(layoutWidth, layoutHeight) {
-            var xPosition = 0
-            placeables.forEach { placeable ->
-                placeable.placeRelative(y = 0, x = xPosition)
-                if (placeable != placeables.last())
-                    xPosition += placeable.width + spacing[placeables.indexOf(placeable)]
+            layout(layoutWidth, layoutHeight) {
+                var xPosition = 0
+                placeables.forEach { placeable ->
+                    placeable.placeRelative(y = 0, x = xPosition)
+                    if (placeable != placeables.last())
+                        xPosition += placeable.width + spacing[placeables.indexOf(placeable)]
+                }
             }
         }
     }
-}
+

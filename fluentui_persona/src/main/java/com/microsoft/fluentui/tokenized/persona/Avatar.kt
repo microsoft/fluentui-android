@@ -72,10 +72,15 @@ fun Avatar(
 
     val personInitials = person.getInitials()
     val avatarInfo = AvatarInfo(
-        size, AvatarType.Person, person.isActive,
-
-        person.status, person.isOOO, person.isImageAvailable(),
-        personInitials.isNotEmpty(), person.getName(), cutoutStyle
+        size,
+        AvatarType.Person,
+        person.isActive,
+        person.status,
+        person.isOOO,
+        person.isImageAvailable(),
+        personInitials.isNotEmpty(),
+        person.getName(),
+        cutoutStyle
     )
     val avatarSize = token.avatarSize(avatarInfo)
     val backgroundColor = token.backgroundBrush(avatarInfo)
@@ -83,23 +88,18 @@ fun Avatar(
     val borders = token.borderStroke(avatarInfo)
     val fontTextStyle = token.fontTypography(avatarInfo)
     val cutoutCornerRadius = token.cutoutCornerRadius(avatarInfo)
-    val cutoutBackgroundColor =
-        token.cutoutBackgroundColor(avatarInfo = avatarInfo)
+    val cutoutBackgroundColor = token.cutoutBackgroundColor(avatarInfo = avatarInfo)
     val cutoutBorderColor = token.cutoutBorderColor(avatarInfo = avatarInfo)
     val cutoutIconSize = token.cutoutIconSize(avatarInfo = avatarInfo)
     val isCutoutEnabled = (cutoutIconDrawable != null || cutoutIconImageVector != null)
     var isImageOrInitialsAvailable = true
 
-    Box(modifier = Modifier
-        .semantics(mergeDescendants = true) {
-            contentDescription = "${person.getName()}. " +
-                    "${if (enablePresence) "Status, ${person.status}," else ""} " +
-                    "${if (enablePresence && person.isOOO) "Out Of Office," else ""} " +
-                    if (enableActivityRings) {
-                        if (person.isActive) "Active" else "Inactive"
-                    } else ""
-        }
-    ) {
+    Box(modifier = Modifier.semantics(mergeDescendants = true) {
+            contentDescription =
+                "${person.getName()}. " + "${if (enablePresence) "Status, ${person.status}," else ""} " + "${if (enablePresence && person.isOOO) "Out Of Office," else ""} " + if (enableActivityRings) {
+                    if (person.isActive) "Active" else "Inactive"
+                } else ""
+        }) {
         Box(
             Modifier
                 .then(modifier)
@@ -108,37 +108,35 @@ fun Avatar(
         ) {
             when {
                 person.image != null -> {
-                    Image(
-                        painter = painterResource(person.image), null,
+                    Image(painter = painterResource(person.image),
+                        null,
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .size(avatarSize)
                             .clip(CircleShape)
                             .semantics {
                                 testTag = AVATAR_IMAGE
-                            }
-                    )
+                            })
                 }
+
                 person.bitmap != null -> {
-                    Image(
-                        bitmap = person.bitmap.asImageBitmap(), null,
+                    Image(bitmap = person.bitmap.asImageBitmap(),
+                        null,
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .size(avatarSize)
                             .clip(CircleShape)
                             .semantics {
                                 testTag = AVATAR_IMAGE
-                            }
-                    )
+                            })
                 }
+
                 personInitials.isNotEmpty() -> {
-                    BasicText(personInitials,
-                        style = fontTextStyle.merge(
-                            TextStyle(color = foregroundColor)
-                        ),
-                        modifier = Modifier
-                            .clearAndSetSemantics { })
+                    BasicText(personInitials, style = fontTextStyle.merge(
+                        TextStyle(color = foregroundColor)
+                    ), modifier = Modifier.clearAndSetSemantics { })
                 }
+
                 else -> {
                     isImageOrInitialsAvailable = false
                     Icon(
@@ -154,8 +152,7 @@ fun Avatar(
                 }
             }
 
-            if (enableActivityRings)
-                ActivityRing(radius = avatarSize / 2, borders)
+            if (enableActivityRings) ActivityRing(radius = avatarSize / 2, borders)
 
             if (isCutoutEnabled && isImageOrInitialsAvailable && cutoutIconSize > 0.dp) {
                 Box(
@@ -171,9 +168,7 @@ fun Avatar(
                             modifier = Modifier
                                 .background(cutoutBackgroundColor)
                                 .border(
-                                    2.dp,
-                                    cutoutBorderColor,
-                                    RoundedCornerShape(cutoutCornerRadius)
+                                    2.dp, cutoutBorderColor, RoundedCornerShape(cutoutCornerRadius)
                                 )
                                 .padding(4.dp)
                                 .size(cutoutIconSize),
@@ -186,9 +181,7 @@ fun Avatar(
                             modifier = Modifier
                                 .background(cutoutBackgroundColor)
                                 .border(
-                                    2.dp,
-                                    cutoutBorderColor,
-                                    RoundedCornerShape(cutoutCornerRadius)
+                                    2.dp, cutoutBorderColor, RoundedCornerShape(cutoutCornerRadius)
                                 )
                                 .padding(4.dp)
                                 .size(cutoutIconSize),
@@ -209,6 +202,79 @@ fun Avatar(
                         // Adding 2.dp to both side to incorporate border which is an image in Fluent Android.
                         .offset(presenceOffset.x + 2.dp, -presenceOffset.y + 2.dp),
                     contentScale = ContentScale.Crop
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun SlicedAvatar(
+    person: Person,
+    modifier: Modifier = Modifier,
+    width: Dp = 32.dp,
+    avatarToken: AvatarTokens? = null,
+    slicedAvatarSize: SlicedAvatarSize = SlicedAvatarSize.Size32,
+) {
+    val personInitials =
+        if (width >= 19.dp) person.getInitials() else person.getInitials().slice(0..0)
+    val token = avatarToken
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarControlType] as AvatarTokens
+    val avatarInfo = AvatarInfo(
+        type = AvatarType.Person,
+        isImageAvailable = person.isImageAvailable(),
+        hasValidInitials = personInitials.isNotEmpty(),
+        calculatedColorKey = person.getName()
+    )
+    val foregroundColor = token.foregroundColor(avatarInfo)
+    val fontTextStyle = fontTypographyForSlicedAvatar(slicedAvatarSize)
+    val backgroundBrush = token.backgroundBrush(avatarInfo)
+    when {
+        person.image != null -> {
+            Image(
+                painter = painterResource(person.image),
+                null,
+                contentScale = ContentScale.Crop,
+                modifier = modifier
+            )
+        }
+
+        person.bitmap != null -> {
+            Image(
+                bitmap = person.bitmap.asImageBitmap(),
+                null,
+                contentScale = ContentScale.Crop,
+                modifier = modifier
+            )
+        }
+
+        personInitials.isNotEmpty() -> {
+            Box(
+                modifier = modifier.background(
+                        brush = backgroundBrush
+                    ), contentAlignment = Alignment.Center
+            ) {
+                BasicText(personInitials, style = fontTextStyle.merge(
+                    TextStyle(color = foregroundColor)
+                ), modifier = Modifier.clearAndSetSemantics { })
+            }
+        }
+
+        else -> {
+            Box(
+                modifier = modifier.background(
+                        brush = backgroundBrush
+                    ), contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    token.icon(avatarInfo),
+                    null,
+                    modifier = Modifier
+                        .background(backgroundBrush, CircleShape)
+                        .semantics {
+                            testTag = AVATAR_ICON
+                        },
+                    tint = foregroundColor,
                 )
             }
         }
@@ -239,7 +305,8 @@ fun Avatar(
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarControlType] as AvatarTokens
 
     val avatarInfo = AvatarInfo(
-        size, AvatarType.Group,
+        size,
+        AvatarType.Group,
         isImageAvailable = group.isImageAvailable(),
         hasValidInitials = group.getInitials().isNotEmpty(),
         calculatedColorKey = group.groupName
@@ -251,8 +318,7 @@ fun Avatar(
     val foregroundColor = token.foregroundColor(avatarInfo)
 
     var membersList = ""
-    for (person in group.members)
-        membersList += (person.firstName + person.lastName + "\n")
+    for (person in group.members) membersList += (person.firstName + person.lastName + "\n")
 
     Box(
         modifier
@@ -266,12 +332,10 @@ fun Avatar(
             Modifier
                 .clip(RoundedCornerShape(cornerRadius))
                 .background(backgroundColor)
-                .fillMaxSize(),
-            contentAlignment = Alignment.Center
+                .fillMaxSize(), contentAlignment = Alignment.Center
         ) {
             if (group.image != null) {
-                Image(
-                    painter = painterResource(group.image),
+                Image(painter = painterResource(group.image),
                     contentScale = ContentScale.Crop,
                     contentDescription = null,
                     modifier = Modifier
@@ -279,11 +343,9 @@ fun Avatar(
                         .clip(RoundedCornerShape(cornerRadius))
                         .semantics {
                             testTag = AVATAR_IMAGE
-                        }
-                )
+                        })
             } else if (group.bitmap != null) {
-                Image(
-                    bitmap = group.bitmap.asImageBitmap(),
+                Image(bitmap = group.bitmap.asImageBitmap(),
                     contentScale = ContentScale.Crop,
                     contentDescription = null,
                     modifier = Modifier
@@ -291,20 +353,16 @@ fun Avatar(
                         .clip(RoundedCornerShape(cornerRadius))
                         .semantics {
                             testTag = AVATAR_IMAGE
-                        }
-                )
+                        })
             } else if (group.groupName.isNotEmpty()) {
                 BasicText(group.getInitials(),
                     style = fontTextStyle.merge(TextStyle(color = foregroundColor)),
                     modifier = Modifier.clearAndSetSemantics { })
             } else {
                 Icon(
-                    token.icon(avatarInfo),
-                    null,
-                    modifier = Modifier.semantics {
+                    token.icon(avatarInfo), null, modifier = Modifier.semantics {
                         testTag = AVATAR_ICON
-                    },
-                    tint = foregroundColor
+                    }, tint = foregroundColor
                 )
             }
         }
@@ -357,8 +415,7 @@ fun Avatar(
                 modifier = Modifier.clearAndSetSemantics { })
         }
 
-        if (enableActivityRings)
-            ActivityRing(radius = avatarSize / 2, borders)
+        if (enableActivityRings) ActivityRing(radius = avatarSize / 2, borders)
     }
 }
 
