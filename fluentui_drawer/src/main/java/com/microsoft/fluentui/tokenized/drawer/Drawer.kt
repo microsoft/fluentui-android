@@ -94,7 +94,7 @@ class DrawerState(
      * Whether drawer is enabled on initialization
      * It is false if drawer should not initially be opened.
      */
-    var enable: Boolean by mutableStateOf(initialValue != DrawerValue.Closed)
+    var enable: Boolean by mutableStateOf(false)
 
     /**
      * Whether drawer has Open state.
