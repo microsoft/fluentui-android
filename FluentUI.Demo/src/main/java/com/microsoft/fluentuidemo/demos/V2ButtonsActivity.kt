@@ -12,14 +12,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Divider
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.ThumbUp
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -46,7 +49,9 @@ import com.microsoft.fluentui.theme.token.controlTokens.FABSize
 import com.microsoft.fluentui.theme.token.controlTokens.FABState
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.FloatingActionButton
+import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentuidemo.V2DemoActivity
+import kotlinx.coroutines.selects.select
 
 class V2ButtonsActivity : V2DemoActivity() {
     init {
@@ -181,8 +186,8 @@ class V2ButtonsActivity : V2DemoActivity() {
                             }
                         }
                     }
-
                     item {
+                        Divider()
                         FluentTheme {
                             BasicText(
                                 "Button with selected theme, auto mode and overridden control token",
@@ -193,6 +198,39 @@ class V2ButtonsActivity : V2DemoActivity() {
                                 )
                             )
                             CreateButtons(MyButtonTokens())
+                        }
+                    }
+                    item {
+                        Divider()
+                        var checkBoxSelectedValues = List(4) { rememberSaveable { mutableStateOf(false) } }
+                        FluentTheme {
+                            BasicText(
+                                "Radio Button Group with selected theme",
+                                style = TextStyle(
+                                    color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                        themeMode
+                                    )
+                                )
+                            )
+                            for(i in 0..3) {
+                                Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(horizontal = 10.dp, vertical = 3.dp)) {
+                                    BasicText(
+                                        "Text",
+                                        style = TextStyle(
+                                            color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                                themeMode
+                                            )
+                                        )
+                                    )
+                                    Spacer(Modifier.width(20.dp))
+                                    RadioButton(
+                                        onClick = {
+                                            selectRadioGroupButton(i, checkBoxSelectedValues)
+                                        },
+                                        selected = checkBoxSelectedValues[i].value
+                                    )
+                                }
+                            }
                         }
                     }
                 }
@@ -309,5 +347,11 @@ class V2ButtonsActivity : V2DemoActivity() {
                 )
             }
         }
+    }
+}
+
+fun selectRadioGroupButton(buttonNumber: Int, saveableCheckbox: List<MutableState<Boolean>>){
+    saveableCheckbox.forEachIndexed { index, mutableState ->
+        mutableState.value = index == buttonNumber
     }
 }
