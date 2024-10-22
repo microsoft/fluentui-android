@@ -135,32 +135,69 @@ import kotlinx.parcelize.Parcelize
 import kotlin.math.abs
 
 enum class AvatarType {
-    Person, Group, Overflow
+    Person,
+    Group,
+    Overflow
 }
 
 enum class AvatarSize {
-    Size16, Size20, Size24, Size32, Size40, Size56, Size72
+    Size16,
+    Size20,
+    Size24,
+    Size32,
+    Size40,
+    Size56,
+    Size72
 }
 
 enum class SlicedAvatarSize {
-    Size7, Size9, Size11, Size15, Size16, Size19, Size20, Size24, Size27, Size32, Size35, Size40, Size56, Size72
+    Size7,
+    Size9,
+    Size11,
+    Size15,
+    Size16,
+    Size19,
+    Size20,
+    Size24,
+    Size27,
+    Size32,
+    Size35,
+    Size40,
+    Size56,
+    Size72
 }
 
 
 enum class AvatarStatus {
-    Available, Away, Busy, DND, Blocked, Unknown, Offline
+    Available,
+    Away,
+    Busy,
+    DND,
+    Blocked,
+    Unknown,
+    Offline
 }
 
 enum class AvatarStyle {
-    Standard, StandardInverted, Anonymous, AnonymousAccent
+    Standard,
+    StandardInverted,
+    Anonymous,
+    AnonymousAccent
 }
 
 enum class ActivityRingSize {
-    Size16, Size20, Size24, Size32, Size40, Size56, Size72
+    Size16,
+    Size20,
+    Size24,
+    Size32,
+    Size40,
+    Size56,
+    Size72
 }
 
 enum class CutoutStyle {
-    Square, Circle
+    Square,
+    Circle
 }
 
 open class AvatarInfo(

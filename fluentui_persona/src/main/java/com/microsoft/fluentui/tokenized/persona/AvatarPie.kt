@@ -55,77 +55,90 @@ fun AvatarPie(
     ) {
         val slicedAvatarDimen = avatarSize / 2 - SPACER_SIZE / 2
         if (noOfVisibleAvatars == 2) {
-            Row(
-                modifier = Modifier
-                    .requiredSize(avatarSize)
-                    .clip(CircleShape)
-            ) {
-                SlicedAvatar(
-                    group.members[0],
-                    slicedAvatarSize = getSlicedAvatarSize(avatarSize),
-                    width = slicedAvatarDimen,
-                    modifier = Modifier
-                        .height(avatarSize)
-                        .width(slicedAvatarDimen),
-                    size = size
-                )
-                AddVerticalSpacer()
-                SlicedAvatar(
-                    group.members[1],
-                    slicedAvatarSize = getSlicedAvatarSize(avatarSize),
-                    width = slicedAvatarDimen,
-                    modifier = Modifier
-                        .height(avatarSize)
-                        .width(slicedAvatarDimen),
-                    size = size
-                )
-            }
-
+            RenderTwoSlices(avatarSize, slicedAvatarDimen, group, size)
         } else if (noOfVisibleAvatars >= 3) {
-            Row(
-                modifier = Modifier
-                    .requiredSize(avatarSize)
-                    .clip(CircleShape)
-            ) {
-                SlicedAvatar(
-                    group.members[0],
-                    slicedAvatarSize = getSlicedAvatarSize(avatarSize),
-                    width = slicedAvatarDimen,
-                    modifier = Modifier
-                        .height(avatarSize)
-                        .width(slicedAvatarDimen)
-                        .align(Alignment.CenterVertically),
-                    size = size
-                )
-                AddVerticalSpacer()
-                Column(
-                    modifier = Modifier
-                        .height(avatarSize)
-                        .width(slicedAvatarDimen),
-                ) {
-                    SlicedAvatar(
-                        group.members[1],
-                        slicedAvatarSize = getSlicedAvatarSize(slicedAvatarDimen),
-                        width = slicedAvatarDimen,
-                        modifier = Modifier
-                            .height(slicedAvatarDimen)
-                            .width(slicedAvatarDimen),
-                        size = size
-                    )
-                    AddHorizontalSpacer()
-                    SlicedAvatar(
-                        group.members[2],
-                        slicedAvatarSize = getSlicedAvatarSize(slicedAvatarDimen),
-                        width = slicedAvatarDimen,
-                        modifier = Modifier
-                            .height(slicedAvatarDimen)
-                            .width(slicedAvatarDimen),
-                        size = size
-                    )
-                }
-
-            }
+            RenderThreeSlices(avatarSize, slicedAvatarDimen, group, size)
         }
+    }
+}
+
+@Composable
+private fun RenderTwoSlices(
+    avatarSize: Dp, slicedAvatarDimen: Dp, group: Group, size: AvatarSize
+) {
+    Row(
+        modifier = Modifier
+            .requiredSize(avatarSize)
+            .clip(CircleShape)
+    ) {
+        SlicedAvatar(
+            group.members[0],
+            slicedAvatarSize = getSlicedAvatarSize(avatarSize),
+            width = slicedAvatarDimen,
+            modifier = Modifier
+                .height(avatarSize)
+                .width(slicedAvatarDimen),
+            size = size
+        )
+        AddVerticalSpacer()
+        SlicedAvatar(
+            group.members[1],
+            slicedAvatarSize = getSlicedAvatarSize(avatarSize),
+            width = slicedAvatarDimen,
+            modifier = Modifier
+                .height(avatarSize)
+                .width(slicedAvatarDimen),
+            size = size
+        )
+    }
+}
+
+@Composable
+private fun RenderThreeSlices(
+    avatarSize: Dp, slicedAvatarDimen: Dp, group: Group, size: AvatarSize
+) {
+    Row(
+        modifier = Modifier
+            .requiredSize(avatarSize)
+            .clip(CircleShape)
+    ) {
+        SlicedAvatar(
+            group.members[0],
+            slicedAvatarSize = getSlicedAvatarSize(avatarSize),
+            width = slicedAvatarDimen,
+            modifier = Modifier
+                .height(avatarSize)
+                .width(slicedAvatarDimen)
+                .align(Alignment.CenterVertically),
+            size = size
+        )
+        AddVerticalSpacer()
+        Column(
+            modifier = Modifier
+                .height(avatarSize)
+                .width(slicedAvatarDimen),
+        ) {
+            SlicedAvatar(
+                group.members[1],
+                slicedAvatarSize = getSlicedAvatarSize(slicedAvatarDimen),
+                width = slicedAvatarDimen,
+                modifier = Modifier
+                    .height(slicedAvatarDimen)
+                    .width(slicedAvatarDimen),
+                size = size
+            )
+            AddHorizontalSpacer()
+            SlicedAvatar(
+                group.members[2],
+                slicedAvatarSize = getSlicedAvatarSize(slicedAvatarDimen),
+                width = slicedAvatarDimen,
+                modifier = Modifier
+                    .height(slicedAvatarDimen)
+                    .width(slicedAvatarDimen),
+                size = size
+            )
+        }
+
     }
 }
 
