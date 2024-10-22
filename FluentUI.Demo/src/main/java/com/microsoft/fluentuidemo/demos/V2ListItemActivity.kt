@@ -292,34 +292,15 @@ private fun GroupedList() {
     ListItem.SectionDescription(description = "Grouped List", modifier = Modifier.height(25.dp))
     Column(modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp).clip(
         RoundedCornerShape(10.dp))) {
-        ListItem.Item(
-            text = "Text",
-            onClick = {},
-            textAlignment = ListItemTextAlignment.Regular,
-            border = BorderType.Bottom,
-            trailingAccessoryContent = { Icon(icon = FluentIcon(Icons.Outlined.KeyboardArrowRight))},
-        )
-        ListItem.Item(
-            text = "Text",
-            onClick = {},
-            textAlignment = ListItemTextAlignment.Regular,
-            border = BorderType.TopBottom,
-            trailingAccessoryContent = { Icon(icon = FluentIcon(Icons.Outlined.KeyboardArrowRight))},
-        )
-        ListItem.Item(
-            text = "Text",
-            onClick = {},
-            textAlignment = ListItemTextAlignment.Regular,
-            border = BorderType.TopBottom,
-            trailingAccessoryContent = { Icon(icon = FluentIcon(Icons.Outlined.KeyboardArrowRight))},
-        )
-        ListItem.Item(
-            text = "Text",
-            onClick = {},
-            textAlignment = ListItemTextAlignment.Regular,
-            border = BorderType.Top,
-            trailingAccessoryContent = { Icon(icon = FluentIcon(Icons.Outlined.KeyboardArrowRight))},
-        )
+        for(i in 0..3) {
+            ListItem.Item(
+                text = "Text",
+                onClick = {},
+                textAlignment = ListItemTextAlignment.Regular,
+                border = BorderType.Bottom,
+                trailingAccessoryContent = { Icon(icon = FluentIcon(Icons.Outlined.KeyboardArrowRight))},
+            )
+        }
     }
     ListItem.SectionDescription(description = "Grouped list containing multiple similar elements", modifier = Modifier.wrapContentHeight().padding(0.dp))
 }
