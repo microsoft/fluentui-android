@@ -225,7 +225,7 @@ fun fontTypographyForSlicedAvatar(slicedAvatarSize: SlicedAvatarSize): TextStyle
         SlicedAvatarSize.Size56 -> TextStyle(
             fontSize = 14.sp,
             lineHeight = 18.sp,
-            fontWeight = FluentGlobalTokens.FontWeightTokens.Medium.value
+            fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value
         )
         SlicedAvatarSize.Size72 -> TextStyle(
             fontSize = FluentGlobalTokens.FontSizeTokens.Size400.value,

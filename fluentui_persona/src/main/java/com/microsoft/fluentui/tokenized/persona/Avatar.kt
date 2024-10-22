@@ -95,11 +95,11 @@ fun Avatar(
     var isImageOrInitialsAvailable = true
 
     Box(modifier = Modifier.semantics(mergeDescendants = true) {
-            contentDescription =
-                "${person.getName()}. " + "${if (enablePresence) "Status, ${person.status}," else ""} " + "${if (enablePresence && person.isOOO) "Out Of Office," else ""} " + if (enableActivityRings) {
-                    if (person.isActive) "Active" else "Inactive"
-                } else ""
-        }) {
+        contentDescription =
+            "${person.getName()}. " + "${if (enablePresence) "Status, ${person.status}," else ""} " + "${if (enablePresence && person.isOOO) "Out Of Office," else ""} " + if (enableActivityRings) {
+                if (person.isActive) "Active" else "Inactive"
+            } else ""
+    }) {
         Box(
             Modifier
                 .then(modifier)
@@ -215,12 +215,15 @@ fun SlicedAvatar(
     width: Dp = 32.dp,
     avatarToken: AvatarTokens? = null,
     slicedAvatarSize: SlicedAvatarSize = SlicedAvatarSize.Size32,
+    size: AvatarSize = AvatarSize.Size32
 ) {
     val personInitials = person.getInitials()
-    val personInitialsToDisplay = if (personInitials.length >= 2 && width < 19.dp) personInitials[0].toString() else personInitials
+    val personInitialsToDisplay =
+        if (personInitials.length >= 2 && width < 19.dp) personInitials[0].toString() else personInitials
     val token = avatarToken
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarControlType] as AvatarTokens
     val avatarInfo = AvatarInfo(
+        size = size,
         type = AvatarType.Person,
         isImageAvailable = person.isImageAvailable(),
         hasValidInitials = personInitials.isNotEmpty(),
@@ -251,8 +254,8 @@ fun SlicedAvatar(
         personInitialsToDisplay.isNotEmpty() -> {
             Box(
                 modifier = modifier.background(
-                        brush = backgroundBrush
-                    ), contentAlignment = Alignment.Center
+                    brush = backgroundBrush
+                ), contentAlignment = Alignment.Center
             ) {
                 BasicText(personInitialsToDisplay, style = fontTextStyle.merge(
                     TextStyle(color = foregroundColor)
@@ -263,8 +266,8 @@ fun SlicedAvatar(
         else -> {
             Box(
                 modifier = modifier.background(
-                        brush = backgroundBrush
-                    ), contentAlignment = Alignment.Center
+                    brush = backgroundBrush
+                ), contentAlignment = Alignment.Center
             ) {
                 Icon(
                     token.icon(avatarInfo),

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.BasicText
@@ -33,11 +34,7 @@ fun AvatarPie(
     group: Group, size: AvatarSize, noOfVisibleAvatars: Int = 2, avatarTokens: AvatarTokens? = null
 ) {
     val avatarInfo = AvatarInfo(
-        size,
-        AvatarType.Group,
-        isImageAvailable = group.isImageAvailable(),
-        hasValidInitials = group.getInitials().isNotEmpty(),
-        calculatedColorKey = group.groupName
+        size
     )
     val token = avatarTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarControlType] as AvatarTokens
@@ -51,45 +48,16 @@ fun AvatarPie(
     }
     Box(
         modifier = Modifier
-            .height(avatarSize)
-            .width(avatarSize)
+            .requiredSize(avatarSize)
             .background(
                 color = Color.White, shape = CircleShape
-            ),
-        contentAlignment = Alignment.Center
+            ), contentAlignment = Alignment.Center
     ) {
         val slicedAvatarDimen = avatarSize / 2 - SPACER_SIZE / 2
         if (noOfVisibleAvatars == 2) {
             Row(
                 modifier = Modifier
-                    .height(avatarSize)
-                    .width(avatarSize)
-                    .clip(CircleShape),
-            ) {
-                SlicedAvatar(
-                    group.members[0],
-                    slicedAvatarSize = getSlicedAvatarSize(avatarSize),
-                    width = slicedAvatarDimen,
-                    modifier = Modifier
-                        .height(avatarSize)
-                        .width(slicedAvatarDimen)
-                )
-                AddVerticalSpacer()
-                SlicedAvatar(
-                    group.members[1],
-                    slicedAvatarSize = getSlicedAvatarSize(avatarSize),
-                    width = slicedAvatarDimen,
-                    modifier = Modifier
-                        .height(avatarSize)
-                        .width(slicedAvatarDimen)
-                )
-            }
-
-        } else if (noOfVisibleAvatars >= 3) {
-            Row(
-                modifier = Modifier
-                    .height(avatarSize)
-                    .width(avatarSize)
+                    .requiredSize(avatarSize)
                     .clip(CircleShape)
             ) {
                 SlicedAvatar(
@@ -98,7 +66,36 @@ fun AvatarPie(
                     width = slicedAvatarDimen,
                     modifier = Modifier
                         .height(avatarSize)
-                        .width(slicedAvatarDimen).align(Alignment.CenterVertically)
+                        .width(slicedAvatarDimen),
+                    size = size
+                )
+                AddVerticalSpacer()
+                SlicedAvatar(
+                    group.members[1],
+                    slicedAvatarSize = getSlicedAvatarSize(avatarSize),
+                    width = slicedAvatarDimen,
+                    modifier = Modifier
+                        .height(avatarSize)
+                        .width(slicedAvatarDimen),
+                    size = size
+                )
+            }
+
+        } else if (noOfVisibleAvatars >= 3) {
+            Row(
+                modifier = Modifier
+                    .requiredSize(avatarSize)
+                    .clip(CircleShape)
+            ) {
+                SlicedAvatar(
+                    group.members[0],
+                    slicedAvatarSize = getSlicedAvatarSize(avatarSize),
+                    width = slicedAvatarDimen,
+                    modifier = Modifier
+                        .height(avatarSize)
+                        .width(slicedAvatarDimen)
+                        .align(Alignment.CenterVertically),
+                    size = size
                 )
                 AddVerticalSpacer()
                 Column(
@@ -112,7 +109,8 @@ fun AvatarPie(
                         width = slicedAvatarDimen,
                         modifier = Modifier
                             .height(slicedAvatarDimen)
-                            .width(slicedAvatarDimen)
+                            .width(slicedAvatarDimen),
+                        size = size
                     )
                     AddHorizontalSpacer()
                     SlicedAvatar(
@@ -121,7 +119,8 @@ fun AvatarPie(
                         width = slicedAvatarDimen,
                         modifier = Modifier
                             .height(slicedAvatarDimen)
-                            .width(slicedAvatarDimen)
+                            .width(slicedAvatarDimen),
+                        size = size
                     )
                 }
 
