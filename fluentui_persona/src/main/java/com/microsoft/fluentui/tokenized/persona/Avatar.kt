@@ -218,6 +218,7 @@ fun SlicedAvatar(
     size: AvatarSize = AvatarSize.Size32
 ) {
     val personInitials = person.getInitials()
+    // if less than 19dp, show only first initial
     val personInitialsToDisplay =
         if (personInitials.length >= 2 && width < 19.dp) personInitials[0].toString() else personInitials
     val token = avatarToken
