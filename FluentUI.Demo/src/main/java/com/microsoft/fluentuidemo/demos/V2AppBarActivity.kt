@@ -37,6 +37,7 @@ import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
+import com.microsoft.fluentui.theme.token.controlTokens.TitleAlignment
 import com.microsoft.fluentui.tokenized.AppBar
 import com.microsoft.fluentui.tokenized.SearchBar
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
@@ -79,6 +80,7 @@ class V2AppBarActivity : V2DemoActivity() {
             var enableSearchBar: Boolean by rememberSaveable { mutableStateOf(false) }
             var enableButtonBar: Boolean by rememberSaveable { mutableStateOf(false) }
             var enableBottomBorder: Boolean by rememberSaveable { mutableStateOf(true) }
+            var titleAlignment: TitleAlignment by rememberSaveable { mutableStateOf(TitleAlignment.Start) }
             var yAxisDelta: Float by rememberSaveable { mutableStateOf(1.0F) }
 
             Column(modifier = Modifier.pointerInput(Unit) {
@@ -97,6 +99,7 @@ class V2AppBarActivity : V2DemoActivity() {
                     chevronOrientation = ChevronOrientation(90f, 0f),
                 ) {
                     Column {
+                        ListItem.Header(LocalContext.current.resources.getString(R.string.app_bar_size))
                         PillBar(
                             mutableListOf(
                                 PillMetaData(
@@ -118,6 +121,24 @@ class V2AppBarActivity : V2DemoActivity() {
                                     text = LocalContext.current.resources.getString(R.string.fluentui_search),
                                     onClick = { searchMode = !searchMode },
                                     selected = searchMode
+                                )
+                            ), style = style,
+                            showBackground = true
+                        )
+
+                        ListItem.Header(LocalContext.current.resources.getString(R.string.title_alignment))
+
+                        PillBar(
+                            mutableListOf(
+                                PillMetaData(
+                                    text = LocalContext.current.resources.getString(R.string.title_alignment_start),
+                                    onClick = { titleAlignment = TitleAlignment.Start },
+                                    selected = titleAlignment == TitleAlignment.Start
+                                ),
+                                PillMetaData(
+                                    text = LocalContext.current.resources.getString(R.string.title_alignment_center),
+                                    onClick = { titleAlignment = TitleAlignment.Center },
+                                    selected = titleAlignment == TitleAlignment.Center
                                 )
                             ), style = style,
                             showBackground = true
@@ -327,6 +348,7 @@ class V2AppBarActivity : V2DemoActivity() {
                     } else null,
                     appTitleDelta = appTitleDelta,
                     accessoryDelta = accessoryDelta,
+                    titleAlignment = titleAlignment,
                     rightAccessoryView = {
                         Icon(
                             Icons.Filled.Add,
