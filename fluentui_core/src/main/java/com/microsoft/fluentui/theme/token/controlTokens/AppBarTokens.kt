@@ -28,6 +28,11 @@ enum class AppBarSize {
     Small
 }
 
+enum class TitleAlignment {
+    Start,
+    Center
+}
+
 open class AppBarInfo(
     val style: FluentStyle = FluentStyle.Neutral,
     val appBarSize: AppBarSize = AppBarSize.Medium

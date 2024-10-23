@@ -35,6 +35,7 @@ import com.microsoft.fluentui.theme.token.*
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
+import com.microsoft.fluentui.theme.token.controlTokens.TitleAlignment
 
 /**
  * An app bar appears at the top of an app screen, below the status bar,
@@ -72,6 +73,7 @@ const val APP_BAR = "Fluent App bar"
 const val APP_BAR_SUBTITLE = "Fluent App bar Subtitle"
 const val APP_BAR_BOTTOM_BAR = "Fluent App bar Bottom bar"
 const val APP_BAR_SEARCH_BAR = "Fluent App bar Search bar"
+
 @OptIn(ExperimentalTextApi::class)
 @Composable
 fun AppBar(
@@ -95,7 +97,8 @@ fun AppBar(
     bottomBorder: Boolean = true,
     appTitleDelta: Float = 1.0F,
     accessoryDelta: Float = 1.0F,
-    appBarTokens: AppBarTokens? = null
+    appBarTokens: AppBarTokens? = null,
+    titleAlignment: TitleAlignment = TitleAlignment.Start
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
@@ -140,23 +143,23 @@ fun AppBar(
                     .fillMaxWidth()
                     .scale(scaleX = 1.0F, scaleY = appTitleDelta)
                     .alpha(if (appTitleDelta != 1.0F) appTitleDelta / 3 else 1.0F),
-                horizontalArrangement = Arrangement.Start,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 if (appBarSize != AppBarSize.Large && navigationIcon.isIconAvailable()) {
                     Icon(
                         navigationIcon,
                         modifier =
-                        Modifier.then(
-                            if(navigationIcon.onClick != null)
-                                Modifier.clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = rememberRipple(color = token.navigationIconRippleColor()),
-                                enabled = true,
-                                onClick = navigationIcon.onClick ?: {}
+                        Modifier
+                            .then(
+                                if (navigationIcon.onClick != null)
+                                    Modifier.clickable(
+                                        interactionSource = remember { MutableInteractionSource() },
+                                        indication = rememberRipple(color = token.navigationIconRippleColor()),
+                                        enabled = true,
+                                        onClick = navigationIcon.onClick ?: {}
+                                    )
+                                else Modifier
                             )
-                            else Modifier
-                        )
                             .padding(token.navigationIconPadding(appBarInfo))
                             .size(token.leftIconSize(appBarInfo)),
                         tint = token.navigationIconColor(appBarInfo)
@@ -185,7 +188,8 @@ fun AppBar(
                         modifier = Modifier
                             .weight(1F)
                             .padding(token.textPadding(appBarInfo))
-                            .testTag(APP_BAR_SUBTITLE)
+                            .testTag(APP_BAR_SUBTITLE),
+                        horizontalAlignment = if (titleAlignment == TitleAlignment.Center) Alignment.CenterHorizontally else Alignment.Start
                     ) {
                         Row(
                             modifier = Modifier
@@ -262,20 +266,26 @@ fun AppBar(
                         }
                     }
                 } else {
-                    BasicText(
-                        text = title,
+                    Column(
                         modifier = Modifier
                             .padding(token.textPadding(appBarInfo))
                             .weight(1F)
                             .semantics { heading() },
-                        style = titleTextStyle.merge(
-                            TextStyle(
-                                color = token.titleTextColor(appBarInfo)
-                            )
-                        ),
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
+                        horizontalAlignment = if (titleAlignment == TitleAlignment.Center) Alignment.CenterHorizontally else Alignment.Start
+                    ) {
+
+                        BasicText(
+                            text = title,
+                            style = titleTextStyle.merge(
+                                TextStyle(
+                                    color = token.titleTextColor(appBarInfo)
+                                )
+                            ),
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+
+                    }
                 }
 
                 if (rightAccessoryView != null) {
