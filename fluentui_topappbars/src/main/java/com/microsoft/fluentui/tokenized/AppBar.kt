@@ -20,7 +20,6 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -35,7 +34,6 @@ import com.microsoft.fluentui.theme.token.*
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
-import com.microsoft.fluentui.theme.token.controlTokens.TitleAlignment
 
 /**
  * An app bar appears at the top of an app screen, below the status bar,
@@ -74,7 +72,6 @@ const val APP_BAR_SUBTITLE = "Fluent App bar Subtitle"
 const val APP_BAR_BOTTOM_BAR = "Fluent App bar Bottom bar"
 const val APP_BAR_SEARCH_BAR = "Fluent App bar Search bar"
 
-@OptIn(ExperimentalTextApi::class)
 @Composable
 fun AppBar(
     title: String,
@@ -97,8 +94,7 @@ fun AppBar(
     bottomBorder: Boolean = true,
     appTitleDelta: Float = 1.0F,
     accessoryDelta: Float = 1.0F,
-    appBarTokens: AppBarTokens? = null,
-    titleAlignment: TitleAlignment = TitleAlignment.Start
+    appBarTokens: AppBarTokens? = null
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
@@ -189,7 +185,7 @@ fun AppBar(
                             .weight(1F)
                             .padding(token.textPadding(appBarInfo))
                             .testTag(APP_BAR_SUBTITLE),
-                        horizontalAlignment = if (titleAlignment == TitleAlignment.Center) Alignment.CenterHorizontally else Alignment.Start
+                        horizontalAlignment = token.titleAlignment(appBarInfo)
                     ) {
                         Row(
                             modifier = Modifier
@@ -271,7 +267,7 @@ fun AppBar(
                             .padding(token.textPadding(appBarInfo))
                             .weight(1F)
                             .semantics { heading() },
-                        horizontalAlignment = if (titleAlignment == TitleAlignment.Center) Alignment.CenterHorizontally else Alignment.Start
+                        horizontalAlignment = token.titleAlignment(appBarInfo)
                     ) {
 
                         BasicText(
