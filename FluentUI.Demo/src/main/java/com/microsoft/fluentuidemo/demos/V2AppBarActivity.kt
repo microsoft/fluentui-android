@@ -12,10 +12,12 @@ import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
@@ -34,7 +36,9 @@ import com.microsoft.fluentui.theme.token.FluentColor
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.Icon
+import com.microsoft.fluentui.theme.token.controlTokens.AppBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
+import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.theme.token.controlTokens.TitleAlignment
@@ -57,6 +61,15 @@ const val APP_BAR_SUBTITLE_PARAM = "App Bar Subtitle Param"
 const val APP_BAR_STYLE_PARAM = "App Bar AppBar Style Param"
 const val APP_BAR_BUTTONBAR_PARAM = "App Bar ButtonBar Param"
 const val APP_BAR_SEARCHBAR_PARAM = "App Bar SearchBar Param"
+const val APP_BAR_LOGO_PARAM = "App Bar Logo Param"
+const val APP_BAR_NAVIGATION_ICON_PARAM = "App Bar Navigation Icon Param"
+
+class AlignedAppBarTokens(private var titleAlignment: Alignment.Horizontal) : AppBarTokens() {
+    @Composable
+    override fun titleAlignment(info: AppBarInfo): Alignment.Horizontal {
+        return titleAlignment
+    }
+}
 
 class V2AppBarActivity : V2DemoActivity() {
     init {
@@ -82,6 +95,7 @@ class V2AppBarActivity : V2DemoActivity() {
             var enableBottomBorder: Boolean by rememberSaveable { mutableStateOf(true) }
             var titleAlignment: TitleAlignment by rememberSaveable { mutableStateOf(TitleAlignment.Start) }
             var yAxisDelta: Float by rememberSaveable { mutableStateOf(1.0F) }
+            var enableLogo: Boolean by rememberSaveable { mutableStateOf(true) }
 
             Column(modifier = Modifier.pointerInput(Unit) {
                 detectDragGestures { _, distance ->
@@ -239,6 +253,23 @@ class V2AppBarActivity : V2DemoActivity() {
                                 )
                             }
                         )
+
+                        ListItem.Item(
+                            text = LocalContext.current.resources.getString(R.string.left_logo),
+                            subText = if (enableLogo)
+                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                            else
+                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                            trailingAccessoryContent = {
+                                ToggleSwitch(
+                                    onValueChange = {
+                                        enableLogo = !enableLogo
+                                    },
+                                    modifier = Modifier.testTag(APP_BAR_LOGO_PARAM),
+                                    checkedState = enableLogo
+                                )
+                            }
+                        )
                     }
                 }
 
@@ -295,18 +326,23 @@ class V2AppBarActivity : V2DemoActivity() {
                         flipOnRtl = true
                     ),
                     subTitle = subtitle,
-                    logo = {
-                        Avatar(
-                            Person(
-                                "Allan",
-                                "Munger",
-                                status = AvatarStatus.DND,
-                                isActive = true
-                            ),
-                            enablePresence = true,
-                            size = AvatarSize.Size32
-                        )
-                    },
+                    appBarTokens = if (titleAlignment == TitleAlignment.Center) AlignedAppBarTokens(
+                        Alignment.CenterHorizontally
+                    ) else null,
+                    logo = if (enableLogo) {
+                        {
+                            Avatar(
+                                Person(
+                                    "Allan",
+                                    "Munger",
+                                    status = AvatarStatus.DND,
+                                    isActive = true
+                                ),
+                                enablePresence = true,
+                                size = AvatarSize.Size32
+                            )
+                        }
+                    } else null,
                     postTitleIcon = FluentIcon(
                         ListItemIcons.Chevron,
                         contentDescription = LocalContext.current.resources.getString(R.string.fluentui_chevron),
@@ -348,7 +384,6 @@ class V2AppBarActivity : V2DemoActivity() {
                     } else null,
                     appTitleDelta = appTitleDelta,
                     accessoryDelta = accessoryDelta,
-                    titleAlignment = titleAlignment,
                     rightAccessoryView = {
                         Icon(
                             Icons.Filled.Add,

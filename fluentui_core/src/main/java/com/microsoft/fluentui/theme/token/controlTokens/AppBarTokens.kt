@@ -5,6 +5,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
@@ -61,6 +62,11 @@ open class AppBarTokens : IControlToken, Parcelable {
                     ).value(themeMode = FluentTheme.themeMode)
             }
         )
+    }
+
+    @Composable
+    open fun titleAlignment(info: AppBarInfo): Alignment.Horizontal {
+        return Alignment.Start
     }
 
     @Composable
