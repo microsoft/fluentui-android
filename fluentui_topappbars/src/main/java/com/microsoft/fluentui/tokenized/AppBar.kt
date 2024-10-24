@@ -163,23 +163,22 @@ fun AppBar(
                     )
                 }
 
-                if (appBarSize != AppBarSize.Medium) {
-                    Box(
-                        modifier = Modifier
-                            .then(
-                                if (appBarSize == AppBarSize.Large)
-                                    Modifier.padding(start = 16.dp)
-                                else
-                                    Modifier
-                            )
-                    ) {
-                        logo?.invoke()
-                    }
+                Box(
+                    modifier = Modifier
+                        .then(
+                            if (appBarSize == AppBarSize.Large)
+                                Modifier.padding(start = 16.dp)
+                            else
+                                Modifier
+                        )
+                ) {
+                    logo?.invoke()
                 }
 
                 val titleTextStyle = token.titleTypography(appBarInfo)
                 val subtitleTextStyle = token.subtitleTypography(appBarInfo)
-                val titleAlignment: Alignment.Horizontal = if(centerAlignAppBar)  Alignment.CenterHorizontally else Alignment.Start
+                val titleAlignment: Alignment.Horizontal =
+                    if (centerAlignAppBar) Alignment.CenterHorizontally else Alignment.Start
 
                 if (appBarSize != AppBarSize.Large && !subTitle.isNullOrBlank()) {
                     Column(

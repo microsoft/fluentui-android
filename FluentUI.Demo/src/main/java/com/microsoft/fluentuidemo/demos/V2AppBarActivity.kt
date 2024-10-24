@@ -345,7 +345,10 @@ class V2AppBarActivity : V2DemoActivity() {
                                     isActive = true
                                 ),
                                 enablePresence = true,
-                                size = AvatarSize.Size32
+                                size = AvatarSize.Size32,
+                                modifier = if (!showNavigationIcon) {
+                                    Modifier.padding(start = 16.dp)
+                                } else Modifier
                             )
                         }
                     } else null,
