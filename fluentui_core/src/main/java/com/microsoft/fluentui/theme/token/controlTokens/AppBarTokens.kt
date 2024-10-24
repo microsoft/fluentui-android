@@ -65,11 +65,6 @@ open class AppBarTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun titleAlignment(info: AppBarInfo): Alignment.Horizontal {
-        return Alignment.Start
-    }
-
-    @Composable
     open fun navigationIconColor(info: AppBarInfo): Color {
         return when (info.style) {
             FluentStyle.Neutral ->

@@ -94,7 +94,8 @@ fun AppBar(
     bottomBorder: Boolean = true,
     appTitleDelta: Float = 1.0F,
     accessoryDelta: Float = 1.0F,
-    appBarTokens: AppBarTokens? = null
+    titleAlignment: Alignment.Horizontal = Alignment.Start,
+    appBarTokens: AppBarTokens? = null,
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
@@ -185,7 +186,7 @@ fun AppBar(
                             .weight(1F)
                             .padding(token.textPadding(appBarInfo))
                             .testTag(APP_BAR_SUBTITLE),
-                        horizontalAlignment = token.titleAlignment(appBarInfo)
+                        horizontalAlignment = titleAlignment
                     ) {
                         Row(
                             modifier = Modifier
@@ -267,7 +268,7 @@ fun AppBar(
                             .padding(token.textPadding(appBarInfo))
                             .weight(1F)
                             .semantics { heading() },
-                        horizontalAlignment = token.titleAlignment(appBarInfo)
+                        horizontalAlignment = titleAlignment
                     ) {
 
                         BasicText(
