@@ -58,11 +58,8 @@ const val APP_BAR_STYLE_PARAM = "App Bar AppBar Style Param"
 const val APP_BAR_BUTTONBAR_PARAM = "App Bar ButtonBar Param"
 const val APP_BAR_SEARCHBAR_PARAM = "App Bar SearchBar Param"
 const val APP_BAR_LOGO_PARAM = "App Bar Logo Param"
-
-enum class TitleAlignment {
-    Start,
-    Center
-}
+const val APP_BAR_CENTER_ALIGN_PARAM = "App Bar Center Align Param"
+const val APP_BAR_NAVIGATION_ICON_PARAM = "App Bar Navigation Icon Param"
 
 class V2AppBarActivity : V2DemoActivity() {
     init {
@@ -86,7 +83,8 @@ class V2AppBarActivity : V2DemoActivity() {
             var enableSearchBar: Boolean by rememberSaveable { mutableStateOf(false) }
             var enableButtonBar: Boolean by rememberSaveable { mutableStateOf(false) }
             var enableBottomBorder: Boolean by rememberSaveable { mutableStateOf(true) }
-            var titleAlignment: TitleAlignment by rememberSaveable { mutableStateOf(TitleAlignment.Start) }
+            var centerAlignAppBar: Boolean by rememberSaveable { mutableStateOf(false) }
+            var showNavigationIcon: Boolean by rememberSaveable { mutableStateOf(true) }
             var yAxisDelta: Float by rememberSaveable { mutableStateOf(1.0F) }
             var enableLogo: Boolean by rememberSaveable { mutableStateOf(true) }
 
@@ -128,24 +126,6 @@ class V2AppBarActivity : V2DemoActivity() {
                                     text = LocalContext.current.resources.getString(R.string.fluentui_search),
                                     onClick = { searchMode = !searchMode },
                                     selected = searchMode
-                                )
-                            ), style = style,
-                            showBackground = true
-                        )
-
-                        ListItem.Header(LocalContext.current.resources.getString(R.string.title_alignment))
-
-                        PillBar(
-                            mutableListOf(
-                                PillMetaData(
-                                    text = LocalContext.current.resources.getString(R.string.title_alignment_start),
-                                    onClick = { titleAlignment = TitleAlignment.Start },
-                                    selected = titleAlignment == TitleAlignment.Start
-                                ),
-                                PillMetaData(
-                                    text = LocalContext.current.resources.getString(R.string.title_alignment_center),
-                                    onClick = { titleAlignment = TitleAlignment.Center },
-                                    selected = titleAlignment == TitleAlignment.Center
                                 )
                             ), style = style,
                             showBackground = true
@@ -263,6 +243,39 @@ class V2AppBarActivity : V2DemoActivity() {
                                 )
                             }
                         )
+
+                        ListItem.Item(
+                            text = LocalContext.current.resources.getString(R.string.navigation_icon),
+                            subText = if (showNavigationIcon)
+                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                            else
+                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                            trailingAccessoryContent = {
+                                ToggleSwitch(
+                                    onValueChange = {
+                                        showNavigationIcon = !showNavigationIcon
+                                    },
+                                    modifier = Modifier.testTag(APP_BAR_NAVIGATION_ICON_PARAM),
+                                    checkedState = showNavigationIcon
+                                )
+                            }
+                        )
+                        ListItem.Item(
+                            text = LocalContext.current.resources.getString(R.string.center_title_alignment),
+                            subText = if (centerAlignAppBar)
+                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                            else
+                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                            trailingAccessoryContent = {
+                                ToggleSwitch(
+                                    onValueChange = {
+                                        centerAlignAppBar = !centerAlignAppBar
+                                    },
+                                    modifier = Modifier.testTag(APP_BAR_CENTER_ALIGN_PARAM),
+                                    checkedState = centerAlignAppBar
+                                )
+                            }
+                        )
                     }
                 }
 
@@ -306,20 +319,22 @@ class V2AppBarActivity : V2DemoActivity() {
 
                 AppBar(
                     title = "Fluent UI Demo",
-                    navigationIcon = FluentIcon(
-                        SearchBarIcons.Arrowback,
-                        contentDescription = "Navigate Back",
-                        onClick = {
-                            Toast.makeText(
-                                context,
-                                "Navigation Icon pressed",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        },
-                        flipOnRtl = true
-                    ),
+                    navigationIcon = if (showNavigationIcon) {
+                        FluentIcon(
+                            SearchBarIcons.Arrowback,
+                            contentDescription = "Navigate Back",
+                            onClick = {
+                                Toast.makeText(
+                                    context,
+                                    "Navigation Icon pressed",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            },
+                            flipOnRtl = true
+                        )
+                    } else null,
                     subTitle = subtitle,
-                    titleAlignment = if (titleAlignment == TitleAlignment.Center) Alignment.CenterHorizontally else Alignment.Start,
+                    centerAlignAppBar = centerAlignAppBar,
                     logo = if (enableLogo) {
                         {
                             Avatar(
