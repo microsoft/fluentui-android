@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Email
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -36,9 +35,7 @@ import com.microsoft.fluentui.theme.token.FluentColor
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.Icon
-import com.microsoft.fluentui.theme.token.controlTokens.AppBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
-import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.theme.token.controlTokens.TitleAlignment
@@ -62,14 +59,6 @@ const val APP_BAR_STYLE_PARAM = "App Bar AppBar Style Param"
 const val APP_BAR_BUTTONBAR_PARAM = "App Bar ButtonBar Param"
 const val APP_BAR_SEARCHBAR_PARAM = "App Bar SearchBar Param"
 const val APP_BAR_LOGO_PARAM = "App Bar Logo Param"
-const val APP_BAR_NAVIGATION_ICON_PARAM = "App Bar Navigation Icon Param"
-
-class AlignedAppBarTokens(private var titleAlignment: Alignment.Horizontal) : AppBarTokens() {
-    @Composable
-    override fun titleAlignment(info: AppBarInfo): Alignment.Horizontal {
-        return titleAlignment
-    }
-}
 
 class V2AppBarActivity : V2DemoActivity() {
     init {
@@ -326,9 +315,7 @@ class V2AppBarActivity : V2DemoActivity() {
                         flipOnRtl = true
                     ),
                     subTitle = subtitle,
-                    appBarTokens = if (titleAlignment == TitleAlignment.Center) AlignedAppBarTokens(
-                        Alignment.CenterHorizontally
-                    ) else null,
+                    titleAlignment = if (titleAlignment == TitleAlignment.Center) Alignment.CenterHorizontally else Alignment.Start,
                     logo = if (enableLogo) {
                         {
                             Avatar(
