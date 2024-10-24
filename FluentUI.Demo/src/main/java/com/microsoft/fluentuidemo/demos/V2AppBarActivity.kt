@@ -16,6 +16,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
@@ -56,6 +57,9 @@ const val APP_BAR_SUBTITLE_PARAM = "App Bar Subtitle Param"
 const val APP_BAR_STYLE_PARAM = "App Bar AppBar Style Param"
 const val APP_BAR_BUTTONBAR_PARAM = "App Bar ButtonBar Param"
 const val APP_BAR_SEARCHBAR_PARAM = "App Bar SearchBar Param"
+const val APP_BAR_LOGO_PARAM = "App Bar Logo Param"
+const val APP_BAR_CENTER_ALIGN_PARAM = "App Bar Center Align Param"
+const val APP_BAR_NAVIGATION_ICON_PARAM = "App Bar Navigation Icon Param"
 
 class V2AppBarActivity : V2DemoActivity() {
     init {
@@ -79,7 +83,10 @@ class V2AppBarActivity : V2DemoActivity() {
             var enableSearchBar: Boolean by rememberSaveable { mutableStateOf(false) }
             var enableButtonBar: Boolean by rememberSaveable { mutableStateOf(false) }
             var enableBottomBorder: Boolean by rememberSaveable { mutableStateOf(true) }
+            var centerAlignAppBar: Boolean by rememberSaveable { mutableStateOf(false) }
+            var showNavigationIcon: Boolean by rememberSaveable { mutableStateOf(true) }
             var yAxisDelta: Float by rememberSaveable { mutableStateOf(1.0F) }
+            var enableLogo: Boolean by rememberSaveable { mutableStateOf(true) }
 
             Column(modifier = Modifier.pointerInput(Unit) {
                 detectDragGestures { _, distance ->
@@ -97,6 +104,7 @@ class V2AppBarActivity : V2DemoActivity() {
                     chevronOrientation = ChevronOrientation(90f, 0f),
                 ) {
                     Column {
+                        ListItem.Header(LocalContext.current.resources.getString(R.string.app_bar_size))
                         PillBar(
                             mutableListOf(
                                 PillMetaData(
@@ -218,6 +226,56 @@ class V2AppBarActivity : V2DemoActivity() {
                                 )
                             }
                         )
+
+                        ListItem.Item(
+                            text = LocalContext.current.resources.getString(R.string.left_logo),
+                            subText = if (enableLogo)
+                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                            else
+                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                            trailingAccessoryContent = {
+                                ToggleSwitch(
+                                    onValueChange = {
+                                        enableLogo = !enableLogo
+                                    },
+                                    modifier = Modifier.testTag(APP_BAR_LOGO_PARAM),
+                                    checkedState = enableLogo
+                                )
+                            }
+                        )
+
+                        ListItem.Item(
+                            text = LocalContext.current.resources.getString(R.string.navigation_icon),
+                            subText = if (showNavigationIcon)
+                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                            else
+                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                            trailingAccessoryContent = {
+                                ToggleSwitch(
+                                    onValueChange = {
+                                        showNavigationIcon = !showNavigationIcon
+                                    },
+                                    modifier = Modifier.testTag(APP_BAR_NAVIGATION_ICON_PARAM),
+                                    checkedState = showNavigationIcon
+                                )
+                            }
+                        )
+                        ListItem.Item(
+                            text = LocalContext.current.resources.getString(R.string.center_title_alignment),
+                            subText = if (centerAlignAppBar)
+                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                            else
+                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                            trailingAccessoryContent = {
+                                ToggleSwitch(
+                                    onValueChange = {
+                                        centerAlignAppBar = !centerAlignAppBar
+                                    },
+                                    modifier = Modifier.testTag(APP_BAR_CENTER_ALIGN_PARAM),
+                                    checkedState = centerAlignAppBar
+                                )
+                            }
+                        )
                     }
                 }
 
@@ -261,31 +319,39 @@ class V2AppBarActivity : V2DemoActivity() {
 
                 AppBar(
                     title = "Fluent UI Demo",
-                    navigationIcon = FluentIcon(
-                        SearchBarIcons.Arrowback,
-                        contentDescription = "Navigate Back",
-                        onClick = {
-                            Toast.makeText(
-                                context,
-                                "Navigation Icon pressed",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        },
-                        flipOnRtl = true
-                    ),
-                    subTitle = subtitle,
-                    logo = {
-                        Avatar(
-                            Person(
-                                "Allan",
-                                "Munger",
-                                status = AvatarStatus.DND,
-                                isActive = true
-                            ),
-                            enablePresence = true,
-                            size = AvatarSize.Size32
+                    navigationIcon = if (showNavigationIcon) {
+                        FluentIcon(
+                            SearchBarIcons.Arrowback,
+                            contentDescription = "Navigate Back",
+                            onClick = {
+                                Toast.makeText(
+                                    context,
+                                    "Navigation Icon pressed",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            },
+                            flipOnRtl = true
                         )
-                    },
+                    } else null,
+                    subTitle = subtitle,
+                    centerAlignAppBar = centerAlignAppBar,
+                    logo = if (enableLogo) {
+                        {
+                            Avatar(
+                                Person(
+                                    "Allan",
+                                    "Munger",
+                                    status = AvatarStatus.DND,
+                                    isActive = true
+                                ),
+                                enablePresence = true,
+                                size = AvatarSize.Size32,
+                                modifier = if (!showNavigationIcon) {
+                                    Modifier.padding(start = 16.dp)
+                                } else Modifier
+                            )
+                        }
+                    } else null,
                     postTitleIcon = FluentIcon(
                         ListItemIcons.Chevron,
                         contentDescription = LocalContext.current.resources.getString(R.string.fluentui_chevron),
