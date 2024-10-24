@@ -38,7 +38,6 @@ import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
-import com.microsoft.fluentui.theme.token.controlTokens.TitleAlignment
 import com.microsoft.fluentui.tokenized.AppBar
 import com.microsoft.fluentui.tokenized.SearchBar
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
@@ -59,6 +58,11 @@ const val APP_BAR_STYLE_PARAM = "App Bar AppBar Style Param"
 const val APP_BAR_BUTTONBAR_PARAM = "App Bar ButtonBar Param"
 const val APP_BAR_SEARCHBAR_PARAM = "App Bar SearchBar Param"
 const val APP_BAR_LOGO_PARAM = "App Bar Logo Param"
+
+enum class TitleAlignment {
+    Start,
+    Center
+}
 
 class V2AppBarActivity : V2DemoActivity() {
     init {
