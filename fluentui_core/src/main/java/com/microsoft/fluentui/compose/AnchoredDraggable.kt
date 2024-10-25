@@ -16,7 +16,6 @@
 
 package com.microsoft.fluentui.compose
 
-import android.annotation.SuppressLint
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.animate
 import androidx.compose.foundation.MutatePriority
@@ -405,7 +404,7 @@ when launched for the very first time
      */
     fun updateAnchors(
         newAnchors: DraggableAnchors<T>,
-        newTarget: T = if (!offset.isNaN()) {
+        newTarget: T = if (!isAnimationRunning) {
             newAnchors.closestAnchor(offset) ?: targetValue
         } else targetValue
     ) {
