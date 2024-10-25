@@ -152,7 +152,7 @@ class DrawerState(
         }
     }
 
-    var enable: Boolean by mutableStateOf(false)
+    var enable: Boolean by mutableStateOf(initialValue != DrawerValue.Closed)
 
     /**
      * Whether drawer has Open state.
@@ -336,15 +336,16 @@ fun rememberDrawerState(confirmStateChange: (DrawerValue) -> Boolean = { true })
 
 @Composable
 fun rememberBottomDrawerState(
+    initialValue: DrawerValue = DrawerValue.Closed,
     expandable: Boolean = true,
     skipOpenState: Boolean = false,
     confirmStateChange: (DrawerValue) -> Boolean = { true }
 ): DrawerState {
     return rememberSaveable(
-        confirmStateChange, expandable, skipOpenState,
+        initialValue, confirmStateChange, expandable, skipOpenState,
         saver = DrawerState.Saver(expandable, skipOpenState, confirmStateChange)
     ) {
-        DrawerState(DrawerValue.Closed, expandable, skipOpenState, confirmStateChange)
+        DrawerState(initialValue, expandable, skipOpenState, confirmStateChange)
     }
 }
 
