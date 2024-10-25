@@ -89,7 +89,7 @@ private fun CreateActivityUI() {
     var offsetX by rememberSaveable { mutableIntStateOf(0) }
     var offsetY by rememberSaveable { mutableIntStateOf(0) }
     Column {
-        if (relativeToParentAnchor) {
+        if (relativeToParentAnchor && selectedBehaviorType != BehaviorType.BOTTOM_SLIDE_OVER && selectedBehaviorType != BehaviorType.BOTTOM) {
             Row(
                 Modifier
                     .width(500.dp)
@@ -184,6 +184,32 @@ private fun CreateActivityUI() {
                                     selectedBehaviorType = BehaviorType.BOTTOM_SLIDE_OVER
                                 },
                                 selected = selectedBehaviorType == BehaviorType.BOTTOM_SLIDE_OVER
+                            )
+                        }
+                    )
+                }
+                item {
+                    val showRandomAnchor =
+                        stringResource(id = R.string.show_random_anchor)  + if(selectedBehaviorType == BehaviorType.BOTTOM || selectedBehaviorType == BehaviorType.BOTTOM_SLIDE_OVER) " (" + stringResource(R.string.switch_drawer_type) + ")" else ""
+                    ListItem.Header(title = showRandomAnchor,
+                        modifier = Modifier
+                            .toggleable(
+                                value = relativeToParentAnchor,
+                                role = Role.Switch,
+                                onValueChange = {
+                                    relativeToParentAnchor = !relativeToParentAnchor
+                                }
+                            )
+                            .clearAndSetSemantics {
+                                this.contentDescription = showRandomAnchor
+                            },
+                        trailingAccessoryContent = {
+                            ToggleSwitch(
+                                onValueChange = {
+                                    relativeToParentAnchor = !relativeToParentAnchor
+                                },
+                                checkedState = relativeToParentAnchor,
+                                enabledSwitch = selectedBehaviorType != BehaviorType.BOTTOM_SLIDE_OVER && selectedBehaviorType != BehaviorType.BOTTOM
                             )
                         }
                     )

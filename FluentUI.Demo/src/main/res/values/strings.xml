@@ -893,6 +893,10 @@
     <string name="drawer_expandable">Expandable</string>
     <!-- UI Label for direct swipe down dismiss-->
     <string name="skip_open_state">Skip Open State</string>
+    <!-- UI Label for enabling random anchor-->
+    <string name="show_random_anchor">Random Anchor</string>
+    <!-- UI Label for requesting drawer type switch-->
+    <string name="switch_drawer_type">Unsupported Drawer Type</string>
     <!-- UI Label for direct swipe down dismiss-->
     <string name="prevent_scrim_click_dismissal">Prevent Dismissal on Scrim Click</string>
     <!-- UI Label for Show Handle -->
