@@ -20,15 +20,11 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.core.R
 import com.microsoft.fluentui.icons.ListItemIcons
-import com.microsoft.fluentui.icons.SearchBarIcons
-import com.microsoft.fluentui.icons.appbaricons.AppBarIcons
-import com.microsoft.fluentui.icons.appbaricons.appbaricons.Arrowback
 import com.microsoft.fluentui.icons.listitemicons.Chevron
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.*
@@ -54,7 +50,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
  * @param subTitle Subtitle to be displayed. Default: [null]
  * @param logo Composable to be placed at left of Title. Guideline is to not increase a size of 32x32. Default: [null]
  * @param searchMode Boolean to enable/disable searchMode. Default: [false]
- * @param navigationIcon Navigate Back Icon to be placed at extreme left. Default: [SearchBarIcons.Arrowback]
  * @param postTitleIcon Icon to be placed after title making the title clickable. Default: Empty [FluentIcon]
  * @param preSubtitleIcon Icon to be placed before subtitle. Default: Empty [FluentIcon]
  * @param postSubtitleIcon Icon to be placed after subtitle. Default: [ListItemIcons.Chevron]
@@ -64,6 +59,8 @@ import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
  * @param bottomBorder Boolean to place a bottom border on AppBar. Applies only when searchBar and bottomBar are empty. Default: [true]
  * @param appTitleDelta Ratio of opening of appTitle. Used for Shychrome and other animations. Default: [1.0F]
  * @param accessoryDelta Ratio of opening of accessory View. Used for Shychrome and other animations. Default: [1.0F]
+ * @param centerAlignAppBar boolean indicating if the app bar should be center aligned. Default: [false]
+ * @param navigationIcon Navigate Back Icon to be placed at extreme left. Default: [null]
  * @param appBarTokens Optional Tokens for App Bar to customize it. Default: [null]
  */
 
@@ -72,7 +69,7 @@ const val APP_BAR = "Fluent App bar"
 const val APP_BAR_SUBTITLE = "Fluent App bar Subtitle"
 const val APP_BAR_BOTTOM_BAR = "Fluent App bar Bottom bar"
 const val APP_BAR_SEARCH_BAR = "Fluent App bar Search bar"
-@OptIn(ExperimentalTextApi::class)
+
 @Composable
 fun AppBar(
     title: String,
@@ -82,7 +79,6 @@ fun AppBar(
     subTitle: String? = null,
     logo: @Composable (() -> Unit)? = null,
     searchMode: Boolean = false,
-    navigationIcon: FluentIcon = FluentIcon(AppBarIcons.Arrowback, flipOnRtl = true),
     postTitleIcon: FluentIcon = FluentIcon(),
     preSubtitleIcon: FluentIcon = FluentIcon(),
     postSubtitleIcon: FluentIcon = FluentIcon(
@@ -95,7 +91,9 @@ fun AppBar(
     bottomBorder: Boolean = true,
     appTitleDelta: Float = 1.0F,
     accessoryDelta: Float = 1.0F,
-    appBarTokens: AppBarTokens? = null
+    centerAlignAppBar: Boolean = false,
+    navigationIcon: FluentIcon? = null,
+    appBarTokens: AppBarTokens? = null,
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
@@ -140,52 +138,43 @@ fun AppBar(
                     .fillMaxWidth()
                     .scale(scaleX = 1.0F, scaleY = appTitleDelta)
                     .alpha(if (appTitleDelta != 1.0F) appTitleDelta / 3 else 1.0F),
-                horizontalArrangement = Arrangement.Start,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                if (appBarSize != AppBarSize.Large && navigationIcon.isIconAvailable()) {
+                if (navigationIcon !== null && navigationIcon.isIconAvailable()) {
                     Icon(
                         navigationIcon,
                         modifier =
-                        Modifier.then(
-                            if(navigationIcon.onClick != null)
-                                Modifier.clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = rememberRipple(color = token.navigationIconRippleColor()),
-                                enabled = true,
-                                onClick = navigationIcon.onClick ?: {}
+                        Modifier
+                            .then(
+                                if (navigationIcon.onClick != null)
+                                    Modifier.clickable(
+                                        interactionSource = remember { MutableInteractionSource() },
+                                        indication = rememberRipple(color = token.navigationIconRippleColor()),
+                                        enabled = true,
+                                        onClick = navigationIcon.onClick ?: {}
+                                    )
+                                else Modifier
                             )
-                            else Modifier
-                        )
                             .padding(token.navigationIconPadding(appBarInfo))
                             .size(token.leftIconSize(appBarInfo)),
                         tint = token.navigationIconColor(appBarInfo)
                     )
                 }
 
-                if (appBarSize != AppBarSize.Medium) {
-                    Box(
-                        modifier = Modifier
-                            .then(
-                                if (appBarSize == AppBarSize.Large)
-                                    Modifier.padding(start = 16.dp)
-                                else
-                                    Modifier
-                            )
-                    ) {
-                        logo?.invoke()
-                    }
-                }
+                logo?.invoke()
 
                 val titleTextStyle = token.titleTypography(appBarInfo)
                 val subtitleTextStyle = token.subtitleTypography(appBarInfo)
+                val titleAlignment: Alignment.Horizontal =
+                    if (centerAlignAppBar) Alignment.CenterHorizontally else Alignment.Start
 
                 if (appBarSize != AppBarSize.Large && !subTitle.isNullOrBlank()) {
                     Column(
                         modifier = Modifier
                             .weight(1F)
                             .padding(token.textPadding(appBarInfo))
-                            .testTag(APP_BAR_SUBTITLE)
+                            .testTag(APP_BAR_SUBTITLE),
+                        horizontalAlignment = titleAlignment
                     ) {
                         Row(
                             modifier = Modifier
@@ -262,20 +251,26 @@ fun AppBar(
                         }
                     }
                 } else {
-                    BasicText(
-                        text = title,
+                    Column(
                         modifier = Modifier
                             .padding(token.textPadding(appBarInfo))
                             .weight(1F)
                             .semantics { heading() },
-                        style = titleTextStyle.merge(
-                            TextStyle(
-                                color = token.titleTextColor(appBarInfo)
-                            )
-                        ),
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
+                        horizontalAlignment = titleAlignment
+                    ) {
+
+                        BasicText(
+                            text = title,
+                            style = titleTextStyle.merge(
+                                TextStyle(
+                                    color = token.titleTextColor(appBarInfo)
+                                )
+                            ),
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+
+                    }
                 }
 
                 if (rightAccessoryView != null) {

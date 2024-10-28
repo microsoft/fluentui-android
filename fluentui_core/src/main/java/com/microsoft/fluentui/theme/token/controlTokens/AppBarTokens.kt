@@ -169,7 +169,6 @@ open class AppBarTokens : IControlToken, Parcelable {
             AppBarSize.Large -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title1]
             AppBarSize.Medium -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title2]
             AppBarSize.Small -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1Strong]
-            else -> TextStyle(fontSize = 0.sp)
         }
     }
 
@@ -203,7 +202,7 @@ open class AppBarTokens : IControlToken, Parcelable {
     @Composable
     open fun navigationIconPadding(info: AppBarInfo): PaddingValues {
         return when (info.appBarSize) {
-            AppBarSize.Large -> PaddingValues()
+            AppBarSize.Large -> PaddingValues(16.dp)
             AppBarSize.Medium -> PaddingValues(16.dp)
             AppBarSize.Small -> PaddingValues(16.dp)
         }
@@ -213,7 +212,7 @@ open class AppBarTokens : IControlToken, Parcelable {
     open fun textPadding(info: AppBarInfo): PaddingValues {
         return when (info.appBarSize) {
             AppBarSize.Large -> PaddingValues(start = 12.dp)
-            AppBarSize.Medium -> PaddingValues()
+            AppBarSize.Medium -> PaddingValues(start = 8.dp)
             AppBarSize.Small -> PaddingValues(start = 8.dp)
         }
     }
