@@ -25,8 +25,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.core.R
 import com.microsoft.fluentui.icons.ListItemIcons
-import com.microsoft.fluentui.icons.SearchBarIcons
-import com.microsoft.fluentui.icons.appbaricons.appbaricons.Arrowback
 import com.microsoft.fluentui.icons.listitemicons.Chevron
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.*
@@ -142,7 +140,7 @@ fun AppBar(
                     .alpha(if (appTitleDelta != 1.0F) appTitleDelta / 3 else 1.0F),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                if (navigationIcon !== null && appBarSize != AppBarSize.Large && navigationIcon.isIconAvailable()) {
+                if (navigationIcon !== null && navigationIcon.isIconAvailable()) {
                     Icon(
                         navigationIcon,
                         modifier =
@@ -163,17 +161,7 @@ fun AppBar(
                     )
                 }
 
-                Box(
-                    modifier = Modifier
-                        .then(
-                            if (appBarSize == AppBarSize.Large)
-                                Modifier.padding(start = 16.dp)
-                            else
-                                Modifier
-                        )
-                ) {
-                    logo?.invoke()
-                }
+                logo?.invoke()
 
                 val titleTextStyle = token.titleTypography(appBarInfo)
                 val subtitleTextStyle = token.subtitleTypography(appBarInfo)
