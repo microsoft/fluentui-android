@@ -209,7 +209,7 @@ fun Avatar(
 }
 
 @Composable
-fun SlicedAvatar(
+internal fun SlicedAvatar(
     person: Person,
     modifier: Modifier = Modifier,
     width: Dp = 32.dp,
