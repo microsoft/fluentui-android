@@ -24,8 +24,6 @@ import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
-import com.microsoft.fluentui.theme.token.controlTokens.AvatarType
-import com.microsoft.fluentui.theme.token.controlTokens.SlicedAvatarSize
 
 private val SPACER_SIZE = 2.dp
 
@@ -40,12 +38,6 @@ fun AvatarPie(
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarControlType] as AvatarTokens
     val avatarSize = token.avatarSize(avatarInfo)
 
-    if (noOfVisibleAvatars == 1) {
-        BasicText(
-            "Pie should have minimum 2 members visible",
-        )
-        return
-    }
     Box(
         modifier = Modifier
             .requiredSize(avatarSize)

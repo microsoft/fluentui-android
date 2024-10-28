@@ -150,24 +150,6 @@ enum class AvatarSize {
     Size72
 }
 
-enum class SlicedAvatarSize {
-    Size7,
-    Size9,
-    Size11,
-    Size15,
-    Size16,
-    Size19,
-    Size20,
-    Size24,
-    Size27,
-    Size32,
-    Size35,
-    Size40,
-    Size56,
-    Size72
-}
-
-
 enum class AvatarStatus {
     Available,
     Away,
