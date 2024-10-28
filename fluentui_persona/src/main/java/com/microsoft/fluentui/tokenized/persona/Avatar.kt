@@ -214,7 +214,7 @@ fun SlicedAvatar(
     modifier: Modifier = Modifier,
     width: Dp = 32.dp,
     avatarToken: AvatarTokens? = null,
-    slicedAvatarSize: SlicedAvatarSize = SlicedAvatarSize.Size32,
+    slicedAvatarSize: Dp = 32.dp,
     size: AvatarSize = AvatarSize.Size32
 ) {
     val personInitials = person.getInitials()

@@ -73,7 +73,7 @@ private fun RenderTwoSlices(
     ) {
         SlicedAvatar(
             group.members[0],
-            slicedAvatarSize = getSlicedAvatarSize(avatarSize),
+            slicedAvatarSize = avatarSize,
             width = slicedAvatarDimen,
             modifier = Modifier
                 .height(avatarSize)
@@ -83,7 +83,7 @@ private fun RenderTwoSlices(
         AddVerticalSpacer()
         SlicedAvatar(
             group.members[1],
-            slicedAvatarSize = getSlicedAvatarSize(avatarSize),
+            slicedAvatarSize = avatarSize,
             width = slicedAvatarDimen,
             modifier = Modifier
                 .height(avatarSize)
@@ -104,7 +104,7 @@ private fun RenderThreeSlices(
     ) {
         SlicedAvatar(
             group.members[0],
-            slicedAvatarSize = getSlicedAvatarSize(avatarSize),
+            slicedAvatarSize = avatarSize,
             width = slicedAvatarDimen,
             modifier = Modifier
                 .height(avatarSize)
@@ -120,7 +120,7 @@ private fun RenderThreeSlices(
         ) {
             SlicedAvatar(
                 group.members[1],
-                slicedAvatarSize = getSlicedAvatarSize(slicedAvatarDimen),
+                slicedAvatarSize = slicedAvatarDimen,
                 width = slicedAvatarDimen,
                 modifier = Modifier
                     .height(slicedAvatarDimen)
@@ -130,7 +130,7 @@ private fun RenderThreeSlices(
             AddHorizontalSpacer()
             SlicedAvatar(
                 group.members[2],
-                slicedAvatarSize = getSlicedAvatarSize(slicedAvatarDimen),
+                slicedAvatarSize = slicedAvatarDimen,
                 width = slicedAvatarDimen,
                 modifier = Modifier
                     .height(slicedAvatarDimen)
@@ -160,27 +160,4 @@ private fun AddHorizontalSpacer() {
             .fillMaxWidth()
             .height(SPACER_SIZE)
     )
-}
-
-
-private fun getSlicedAvatarSize(size: Dp): SlicedAvatarSize {
-    return when (size) {
-        7.dp -> SlicedAvatarSize.Size7
-        9.dp -> SlicedAvatarSize.Size9
-        11.dp -> SlicedAvatarSize.Size11
-        15.dp -> SlicedAvatarSize.Size15
-        16.dp -> SlicedAvatarSize.Size16
-        19.dp -> SlicedAvatarSize.Size19
-        20.dp -> SlicedAvatarSize.Size20
-        24.dp -> SlicedAvatarSize.Size24
-        27.dp -> SlicedAvatarSize.Size27
-        32.dp -> SlicedAvatarSize.Size32
-        35.dp -> SlicedAvatarSize.Size35
-        40.dp -> SlicedAvatarSize.Size40
-        56.dp -> SlicedAvatarSize.Size56
-        72.dp -> SlicedAvatarSize.Size72
-        else -> {
-            SlicedAvatarSize.Size24
-        }
-    }
 }
