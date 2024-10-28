@@ -42,6 +42,18 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Navigation icon clicked.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Center align app bar</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">App Bar size</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Left Logo</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Navigation Icon</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Flag</string>
     <string name="app_bar_layout_menu_settings">Settings</string>
