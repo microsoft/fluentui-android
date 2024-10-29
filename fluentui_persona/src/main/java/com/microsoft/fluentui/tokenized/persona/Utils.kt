@@ -4,7 +4,11 @@ import android.graphics.Bitmap
 import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import kotlinx.parcelize.Parcelize
@@ -152,4 +156,89 @@ fun getAvatarSize(secondaryText: String?, tertiaryText: String?): AvatarSize {
         return AvatarSize.Size40
     }
     return AvatarSize.Size56
+}
+
+
+@Composable
+fun fontTypographyForSlicedAvatar(slicedAvatarSize: Dp): TextStyle {
+    return when (slicedAvatarSize) {
+        7.dp -> TextStyle(
+            fontSize = 4.sp,
+            lineHeight = 4.69.sp,
+            fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value
+        )
+        9.dp -> TextStyle(
+            fontSize = 5.sp,
+            lineHeight = 9.sp,
+            fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value
+        )
+        11.dp -> TextStyle(
+            fontSize = 6.sp,
+            lineHeight = 7.5.sp,
+            fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value
+        )
+        15.dp -> TextStyle(
+            fontSize = 10.sp,
+            lineHeight = 13.sp,
+            fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value
+        )
+        16.dp -> TextStyle(
+            fontSize = 6.sp,
+            lineHeight = 7.03.sp,
+            fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value
+        )
+        19.dp -> TextStyle(
+            fontSize = 8.sp,
+            lineHeight = 15.sp,
+            fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value
+        )
+        20.dp -> TextStyle(
+            fontSize = 8.sp,
+            lineHeight = 9.sp,
+            fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value
+        )
+        24.dp -> TextStyle(
+            fontSize = 10.sp,
+            lineHeight = 9.sp,
+            fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value
+        )
+        27.dp -> TextStyle(
+            fontSize = 11.sp,
+            lineHeight = 12.89.sp,
+            fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value
+        )
+       32.dp -> TextStyle(
+            fontSize = 13.sp,
+            lineHeight = 13.sp,
+            fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value
+        )
+        35.dp-> TextStyle(
+            fontSize = 13.sp,
+            lineHeight = 28.sp,
+            fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value
+        )
+        40.dp -> TextStyle(
+            fontSize = 10.sp,
+            lineHeight = 15.sp,
+            fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value
+        )
+        56.dp -> TextStyle(
+            fontSize = 14.sp,
+            lineHeight = 18.sp,
+            fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value
+        )
+        72.dp -> TextStyle(
+            fontSize = FluentGlobalTokens.FontSizeTokens.Size400.value,
+            lineHeight = FluentGlobalTokens.LineHeightTokens.Size700.value,
+            fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value
+        )
+
+        else -> {
+            TextStyle(
+                fontSize = 13.sp,
+                lineHeight = 13.sp,
+                fontWeight = FluentGlobalTokens.FontWeightTokens.Regular.value
+            )
+        }
+    }
 }
