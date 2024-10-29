@@ -185,7 +185,7 @@ class ListContentBuilder {
                     content = {
                         var col = 0
                         val widthRatio = if ((row + 1) * itemsInRow <= size || !equidistant)
-                            1.0f / itemsInRow
+                            1.0f / maxItemsInRow
                         else
                             1.0f / min(itemsInRow, (size - (row * itemsInRow)))
                         while (col < itemsInRow && (row * itemsInRow + col) < size) {
