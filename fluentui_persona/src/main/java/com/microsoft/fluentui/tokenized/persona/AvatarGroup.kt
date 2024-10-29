@@ -81,29 +81,51 @@ fun AvatarGroup(
     Layout(modifier = modifier
         .padding(8.dp)
         .then(semanticModifier), content = {
-        for (i in 0 until visibleAvatar) {
-            val person = group.members[i]
+        if (group.members.size > 0) {
+            if (style == AvatarGroupStyle.Pie) {
+                if (visibleAvatar > 1) {
+                    AvatarPie(
+                        group = group,
+                        size = size,
+                        noOfVisibleAvatars = visibleAvatar,
+                        avatarTokens = avatarToken
+                    )
+                } else {
+                    Avatar(
+                        group.members[0],
+                        size = size,
+                        enableActivityRings = true,
+                        enablePresence = enablePresence,
+                        avatarToken = avatarToken
+                    )
+                }
 
-            var paddingModifier: Modifier = Modifier
-            if (style == AvatarGroupStyle.Pile && person.isActive) {
-                val padding = token.pilePadding(avatarGroupInfo)
-                paddingModifier = paddingModifier.padding(start = padding, end = padding)
+            } else {
+                for (i in 0 until visibleAvatar) {
+                    val person = group.members[i]
+
+                    var paddingModifier: Modifier = Modifier
+                    if (style == AvatarGroupStyle.Pile && person.isActive) {
+                        val padding = token.pilePadding(avatarGroupInfo)
+                        paddingModifier = paddingModifier.padding(start = padding, end = padding)
+                    }
+
+                    Avatar(
+                        person,
+                        modifier = paddingModifier,
+                        size = size,
+                        enableActivityRings = true,
+                        enablePresence = enablePresence,
+                        avatarToken = avatarToken
+                    )
+                }
+                if (group.members.size > visibleAvatar || group.members.isEmpty()) {
+                    Avatar(
+                        group.members.size - visibleAvatar, size = size,
+                        enableActivityRings = true, avatarToken = avatarToken
+                    )
+                }
             }
-
-            Avatar(
-                person,
-                modifier = paddingModifier,
-                size = size,
-                enableActivityRings = true,
-                enablePresence = enablePresence,
-                avatarToken = avatarToken
-            )
-        }
-        if (group.members.size > visibleAvatar || group.members.isEmpty()) {
-            Avatar(
-                group.members.size - visibleAvatar, size = size,
-                enableActivityRings = true, avatarToken = avatarToken
-            )
         }
     }) { measurables, constraints ->
         val placeables = measurables.map { measurable ->
@@ -128,3 +150,4 @@ fun AvatarGroup(
         }
     }
 }
+
