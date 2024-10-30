@@ -429,14 +429,14 @@ private fun CreateActivityUI() {
                     style = ButtonStyle.Button,
                     size = ButtonSize.Medium,
                     text = "+ 8 dp",
-                    enabled = !hidden,
+                    enabled = hidden,
                     onClick = { peekHeightState += 8.dp })
 
                 Button(
                     style = ButtonStyle.Button,
                     size = ButtonSize.Medium,
                     text = "- 8 dp",
-                    enabled = !hidden && (peekHeightState > 0.dp),
+                    enabled = hidden && (peekHeightState > 0.dp),
                     onClick = { peekHeightState -= 8.dp })
             }
 
