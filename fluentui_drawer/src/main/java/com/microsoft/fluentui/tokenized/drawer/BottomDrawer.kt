@@ -110,7 +110,8 @@ fun BottomDrawer(
         val scope = rememberCoroutineScope()
         val drawerStateAnchors = drawerState.anchoredDraggableState.anchors
         val drawerStateOffset = drawerState.anchoredDraggableState.offset
-
+        val drawerVelocityThreshold = convertDpToFloat(DrawerVelocityThreshold)
+        drawerState.velocityThreshold = { drawerVelocityThreshold }
         Scrim(
             open = !drawerState.isClosed || (drawerHeight != null && drawerHeight.value == 0f),
             onClose = onDismiss,
@@ -339,9 +340,16 @@ private fun Modifier.bottomDrawerAnchoredDraggable(
                             )) + keyCorrection
                         }
                     } else if (drawerHeight <= maxOpenHeight) {
-                        DraggableAnchors {
-                            DrawerValue.Closed at fullHeight
-                            DrawerValue.Open at (fullHeight - drawerHeight) + keyCorrection
+                        if(drawerState.skipOpenState) {
+                            DraggableAnchors {
+                                DrawerValue.Expanded at (fullHeight - drawerHeight) + keyCorrection
+                                DrawerValue.Closed at fullHeight
+                            }
+                        } else {
+                            DraggableAnchors {
+                                DrawerValue.Closed at fullHeight
+                                DrawerValue.Open at (fullHeight - drawerHeight) + keyCorrection
+                            }
                         }
                     } else {
                         DraggableAnchors {
