@@ -1,10 +1,7 @@
 package com.microsoft.fluentui.tokenized.drawer
 
-import androidx.compose.foundation.Canvas
 import com.microsoft.fluentui.compose.AnchoredDraggableState
 import com.microsoft.fluentui.compose.DraggableAnchors
-import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.layout.fillMaxSize
 import com.microsoft.fluentui.compose.animateTo
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -18,8 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntRect
@@ -41,7 +36,6 @@ import com.microsoft.fluentui.tokenized.drawer.DraggableDefaults.PositionalThres
 import com.microsoft.fluentui.tokenized.drawer.DraggableDefaults.VelocityThreshold
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlin.math.max
 
 /**
  * State of the [Drawer] composable.

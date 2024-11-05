@@ -404,9 +404,7 @@ when launched for the very first time
      */
     fun updateAnchors(
         newAnchors: DraggableAnchors<T>,
-        newTarget: T = if (!isAnimationRunning) {
-            newAnchors.closestAnchor(offset) ?: targetValue
-        } else targetValue
+        newTarget: T = targetValue
     ) {
         if (anchors != newAnchors) {
             anchors = newAnchors
