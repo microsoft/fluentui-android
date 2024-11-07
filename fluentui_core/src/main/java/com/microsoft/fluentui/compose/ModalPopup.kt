@@ -2,6 +2,7 @@ package com.microsoft.fluentui.compose
 
 import android.content.Context
 import android.graphics.PixelFormat
+import android.os.Build
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
@@ -104,6 +105,7 @@ fun ModalPopup(
         }
     }
 }
+
 @Composable
 fun convertWindowInsetsCompatTypeToWindowInsets(windowInsetsCompatType: Int): WindowInsets {
     return when (windowInsetsCompatType) {
@@ -132,6 +134,7 @@ private class ModalWindow(
     val canCalculatePosition by derivedStateOf {
         popupContentSize != null
     }
+
     init {
         id = android.R.id.content
         // Set up view owners
@@ -155,7 +158,10 @@ private class ModalWindow(
             type = WindowManager.LayoutParams.TYPE_APPLICATION_PANEL
             // Fill up the entire app view
             width = WindowManager.LayoutParams.MATCH_PARENT
-            height = WindowManager.LayoutParams.MATCH_PARENT
+            height = if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2)
+                WindowManager.LayoutParams.WRAP_CONTENT
+            else
+                WindowManager.LayoutParams.MATCH_PARENT
 
             // Format of screen pixels
             format = PixelFormat.TRANSLUCENT
