@@ -1,29 +1,12 @@
 package com.microsoft.fluentui.tokenized.drawer
 
 import androidx.compose.animation.core.TweenSpec
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-
-object DraggableDefaults {
-    val AnimationSpec = TweenSpec<Float>(durationMillis = 256)
-
-    /**
-     * The default velocity threshold for the drawer to snap to the nearest anchor.
-     */
-    val VelocityThreshold = 0.5f
-
-    val PositionalThreshold = 0.5f
-
-}
-@Composable
-fun convertDpToFloat(dpValue: Dp): Float {
-    return with(LocalDensity.current) { dpValue.toPx() }
-}
 
 val EndDrawerPadding = 56.dp
 val DrawerVelocityThreshold = 400.dp
+
+val AnimationSpec = TweenSpec<Float>(durationMillis = 256)
 
 const val DrawerOpenFraction = 0.5f
 
