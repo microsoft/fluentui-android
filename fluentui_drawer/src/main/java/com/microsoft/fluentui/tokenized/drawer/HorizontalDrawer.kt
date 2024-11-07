@@ -1,9 +1,7 @@
 package com.microsoft.fluentui.tokenized.drawer
 
 import androidx.compose.foundation.background
-import com.microsoft.fluentui.compose.DraggableAnchors
 import androidx.compose.foundation.gestures.Orientation
-import com.microsoft.fluentui.compose.anchoredDraggable
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.Box
@@ -34,8 +32,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import com.microsoft.fluentui.compose.FixedThreshold
+import com.microsoft.fluentui.compose.swipeable
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
-import com.microsoft.fluentui.tokenized.Scrim
 import com.microsoft.fluentui.tokenized.calculateFraction
 import com.microsoft.fluentui.util.dpToPx
 import com.microsoft.fluentui.util.pxToDp
@@ -62,8 +61,10 @@ import kotlin.math.roundToInt
  *
  * @throws IllegalStateException when parent has [Float.POSITIVE_INFINITY] width
  */
+
+
 @Composable
-fun HorizontalDrawer(
+internal fun HorizontalDrawer(
     modifier: Modifier,
     behaviorType: BehaviorType,
     drawerState: DrawerState,
@@ -90,13 +91,16 @@ fun HorizontalDrawer(
         //Hack to get exact drawerHeight wrt to content.
         val visible = remember { mutableStateOf(true) }
         if (visible.value) {
-            Box(modifier = Modifier.layout { measurable, constraints ->
-                    val placeable = measurable.measure(constraints)
-                    layout(placeable.width, placeable.height) {
-                        drawerWidth = placeable.width.toFloat()
-                        visible.value = false
+            Box(
+                modifier = Modifier
+                    .layout { measurable, constraints ->
+                        val placeable = measurable.measure(constraints)
+                        layout(placeable.width, placeable.height) {
+                            drawerWidth = placeable.width.toFloat()
+                            visible.value = false
+                        }
                     }
-                }) {
+            ) {
                 drawerContent()
             }
         } else {
@@ -107,38 +111,30 @@ fun HorizontalDrawer(
                 modalDrawerConstraints.maxWidth.toFloat() * (if (leftSlide) (-1F) else (1F))
             val maxValue = 0f
 
-            val anchors = DraggableAnchors {
-                DrawerValue.Closed at minValue
-                DrawerValue.Open at maxValue
-            }
-            drawerState.anchoredDraggableState.updateAnchors(anchors)
+            val anchors = mapOf(minValue to DrawerValue.Closed, maxValue to DrawerValue.Open)
             val isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
-            val offset = drawerState.anchoredDraggableState.offset
-            drawerState.positionalThreshold = { fl: Float -> drawerWidth / 2 }
-            val drawerVelocityThreshold = convertDpToFloat(DrawerVelocityThreshold)
-            drawerState.velocityThreshold = { drawerVelocityThreshold }
             Scrim(
                 open = !drawerState.isClosed,
                 onClose = onDismiss,
                 fraction = {
-                    calculateFraction(minValue, maxValue, offset)
+                    calculateFraction(minValue, maxValue, drawerState.offset.value)
                 },
                 color = if (scrimVisible) scrimColor else Color.Transparent,
                 preventDismissalOnScrimClick = preventDismissalOnScrimClick,
-                onScrimClick = onScrimClick,
-                tag = DRAWER_SCRIM_TAG
+                onScrimClick = onScrimClick
             )
 
             Box(
                 modifier = with(LocalDensity.current) {
-                    Modifier.sizeIn(
-                        minWidth = modalDrawerConstraints.minWidth.toDp(),
-                        minHeight = modalDrawerConstraints.minHeight.toDp(),
-                        maxWidth = modalDrawerConstraints.maxWidth.toDp(),
-                        maxHeight = modalDrawerConstraints.maxHeight.toDp()
-                    )
+                    Modifier
+                        .sizeIn(
+                            minWidth = modalDrawerConstraints.minWidth.toDp(),
+                            minHeight = modalDrawerConstraints.minHeight.toDp(),
+                            maxWidth = modalDrawerConstraints.maxWidth.toDp(),
+                            maxHeight = modalDrawerConstraints.maxHeight.toDp()
+                        )
                 }
-                    .offset { IntOffset(offset.roundToInt(), 0) }
+                    .offset { IntOffset(drawerState.offset.value.roundToInt(), 0) }
                     .padding(
                         start = if (leftSlide) 0.dp else paddingPx,
                         end = if (leftSlide) paddingPx else 0.dp
@@ -154,11 +150,15 @@ fun HorizontalDrawer(
                     .shadow(drawerElevation)
                     .clip(drawerShape)
                     .background(drawerBackground)
-                    .anchoredDraggable(
-                        state = drawerState.anchoredDraggableState,
+                    .swipeable(
+                        state = drawerState,
+                        anchors = anchors,
+                        thresholds = { _, _ -> FixedThreshold(pxToDp(value = drawerWidth / 2)) },
                         orientation = Orientation.Horizontal,
                         enabled = false,
-                        reverseDirection = isRtl
+                        reverseDirection = isRtl,
+                        velocityThreshold = DrawerVelocityThreshold,
+                        resistance = null
                     ),
             ) {
                 Column(
@@ -166,11 +166,11 @@ fun HorizontalDrawer(
                         .draggable(
                             orientation = Orientation.Horizontal,
                             state = rememberDraggableState { delta ->
-                                drawerState.anchoredDraggableState.dispatchRawDelta(delta)
+                                drawerState.performDrag(delta)
                             },
                             onDragStopped = { velocity ->
                                 launch {
-                                    drawerState.anchoredDraggableState.settle(
+                                    drawerState.performFling(
                                         velocity
                                     )
                                     if (drawerState.isClosed) {
