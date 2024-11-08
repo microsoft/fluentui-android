@@ -157,6 +157,7 @@ private class ModalWindow(
             type = WindowManager.LayoutParams.TYPE_APPLICATION_PANEL
             // Fill up the entire app view
             width = WindowManager.LayoutParams.MATCH_PARENT
+            // for build versions less than or equal to S_V2, set the height to wrap content
             height = if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2)
                 WindowManager.LayoutParams.WRAP_CONTENT
             else
