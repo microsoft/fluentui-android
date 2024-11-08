@@ -1,29 +1,25 @@
-Release Version 0.3.1:
+Release Version 0.3.2:
 
 What's new
 Fluent v1:
 Fix/enhancement
-	1. Theming fixes for calendar view
-	2. Update with correct event on snackbar action dismiss
-	3. Added custom accessory view property to BottomSheetItem class
-	4. Fixed issue related to multiple substitutions specified in non-positional format of string resource `position_string`
-	5. Accessibility: Fixed talkback incorrectly pronouncing 'Persistent Bottomsheets'
-	6. Fixed issue with DrawerDialogs not anchored to the bottom when display Cutout Support is enabled
-	7. Fixed issue with Icons not properly visible in PersistentBottomSheet by adding color tint in HorizontalListAdapter
+	1. People picker a11y fixes in demo app
 
 Fluent v2:
 Fix/enhancement
 
-    1. Migration from Swipeable to Anchored Draggable & other refactor for Drawer and Bottom Drawer
-    2. Profile pic fixes for Avatar
-    3. Allowing text style configuration for tab bar items
-    4. Added ability to initialize bottom drawers with initial state
-    5. Fixed loss of activity UI state on recomposition for Drawers
-    6. Fixed drawers disappearing on recomposition
-    7. Added new dependency in fluentui_core -> compose foundation version 1.6.0
-    8. Tab bar indicator now supports custom colors and gradients
-    9. Icons in Tab bar can now use gradients instead of single colors
+    	1. Avatar pie component addition to Avatar group
+      	2. Added Support for Center aligned App bar title with leading left Avatar icon button
+      	3. Fixed Top Drawer ANR issue
+      	4. Fixed issue with Bottom drawer not opening consistently
+      	5. Alignment issue in list content builder fixed
+      	6. Fixed issue with Bottom Drawer shifting upwards and going out of screen with IME open
+      	7. Added ability to modify indicator color in tab item.
+      	8. Added ability to use gradients for tab bar icons
+      	9. Scrim functionality fixes & other enhancements for bottom sheet
+      	10. Added ability to perform action after dismiss and prevent dismissal on scrim click for bottom sheet
+      	11. Grouped list item added
+        12. Radio group buttons added
 
 
-Note: Fluent version 0.1.x (from 0.1.48) supports compose version 0.1.43 (BOM 2023.06.01). Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00).
-      Fluent version 0.3.x will support compose foundation version 1.6.0.
+Note: Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00). Fluent version 0.3.x will support compose foundation version 1.6.0.
