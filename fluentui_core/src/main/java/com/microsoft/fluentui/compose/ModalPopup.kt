@@ -2,6 +2,7 @@ package com.microsoft.fluentui.compose
 
 import android.content.Context
 import android.graphics.PixelFormat
+import android.os.Build
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
@@ -15,7 +16,6 @@ import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.mandatorySystemGestures
 import androidx.compose.foundation.layout.navigationBars
-import androidx.compose.foundation.layout.safeContent
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.tappableElement
@@ -104,6 +104,7 @@ fun ModalPopup(
         }
     }
 }
+
 @Composable
 fun convertWindowInsetsCompatTypeToWindowInsets(windowInsetsCompatType: Int): WindowInsets {
     return when (windowInsetsCompatType) {
@@ -132,6 +133,7 @@ private class ModalWindow(
     val canCalculatePosition by derivedStateOf {
         popupContentSize != null
     }
+
     init {
         id = android.R.id.content
         // Set up view owners
@@ -155,7 +157,11 @@ private class ModalWindow(
             type = WindowManager.LayoutParams.TYPE_APPLICATION_PANEL
             // Fill up the entire app view
             width = WindowManager.LayoutParams.MATCH_PARENT
-            height = WindowManager.LayoutParams.MATCH_PARENT
+            // for build versions less than or equal to S_V2, set the height to wrap content
+            height = if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2)
+                WindowManager.LayoutParams.WRAP_CONTENT
+            else
+                WindowManager.LayoutParams.MATCH_PARENT
 
             // Format of screen pixels
             format = PixelFormat.TRANSLUCENT
@@ -173,7 +179,9 @@ private class ModalWindow(
                             WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM
                     ).inv()
 
-            flags = flags or WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+            flags = if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
+                flags
+            } else flags or WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         }
 
     private var content: @Composable () -> Unit by mutableStateOf({})
