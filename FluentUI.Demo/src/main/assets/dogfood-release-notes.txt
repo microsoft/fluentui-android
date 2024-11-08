@@ -15,11 +15,11 @@ Fix/enhancement
       	5. Alignment issue in list content builder fixed
       	6. Fixed issue with Bottom Drawer shifting upwards and going out of screen with IME open
       	7. Added ability to modify indicator color in tab item.
-      	8. Added ability to use gradients in tab bar icons
-      	9. Scrim functionality fixes & demo activity enhancements for bottom sheet
-      	10. Added ability for performing action after dismiss and prevent dismissal on scrim click
-      	11. Grouped list item added in demo app
-        12. Radio group buttons added in demo app
+      	8. Added ability to use gradients for tab bar icons
+      	9. Scrim functionality fixes & other enhancements for bottom sheet
+      	10. Added ability to perform action after dismiss and prevent dismissal on scrim click for bottom sheet
+      	11. Grouped list item added
+        12. Radio group buttons added
 
 
 Note: Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00). Fluent version 0.3.x will support compose foundation version 1.6.0.
