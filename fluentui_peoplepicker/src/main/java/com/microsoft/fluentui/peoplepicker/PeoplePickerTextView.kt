@@ -11,6 +11,7 @@ import android.content.Context
 import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import androidx.core.view.ViewCompat
@@ -34,6 +35,7 @@ import android.view.accessibility.AccessibilityNodeInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import android.widget.MultiAutoCompleteTextView
+import androidx.core.content.ContextCompat
 import com.microsoft.fluentui.persona.IPersona
 import com.microsoft.fluentui.persona.PersonaChipView
 import com.microsoft.fluentui.persona.setPersona
@@ -252,9 +254,14 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
 
         // Soft keyboard does not always show up when the view first loads without this
         if (hasFocus) {
+            // add bottom border
+            this.background = ContextCompat.getDrawable(context, R.drawable.people_picker_textview_focusable_background)
             post {
                 context.inputMethodManager.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
             }
+        } else {
+            // remove bottom border
+            this.background = null
         }
 
         /**
