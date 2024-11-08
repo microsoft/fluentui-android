@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.mandatorySystemGestures
 import androidx.compose.foundation.layout.navigationBars
-import androidx.compose.foundation.layout.safeContent
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.tappableElement
@@ -179,7 +178,9 @@ private class ModalWindow(
                             WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM
                     ).inv()
 
-            flags = flags or WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+            flags = if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
+                flags
+            } else flags or WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         }
 
     private var content: @Composable () -> Unit by mutableStateOf({})
