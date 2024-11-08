@@ -9,7 +9,7 @@ Fluent v2:
 Fix/enhancement
 
     	1. Avatar pie component addition to Avatar group
-      	2. Added Support for Center aligned navigation bar title with leading left Avatar icon button
+      	2. Added Support for Center aligned App bar title with leading left Avatar icon button
       	3. Fixed Top Drawer ANR issue
       	4. Fixed issue with Bottom drawer not opening consistently
       	5. Alignment issue in list content builder fixed
