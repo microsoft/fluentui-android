@@ -4,11 +4,12 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.OutlinedButton
-import androidx.compose.material.TextButton
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -45,7 +46,7 @@ fun ButtonV3(
     val token = buttonTokens
         ?: FluentTheme.controlTokens.tokens[ControlType.ButtonControlType] as ButtonTokens
     val buttonInfo = ButtonInfo(style, size)
-//    val shape = token.shape(buttonInfo)
+    val shape = RoundedCornerShape(token.cornerRadius(buttonInfo))
     val borderStroke = token.borderStroke(buttonInfo).getBorderStrokeByState(
         enabled = enabled,
         selected = false,
@@ -69,10 +70,10 @@ fun ButtonV3(
             modifier = modifier,
             enabled = enabled,
             interactionSource = interactionSource,
-//            shape = shape,
+            shape = shape,
             border = borderStroke.get(0),
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = backgroundColor,
+                containerColor = backgroundColor,
                 contentColor = contentColor
             ),
             contentPadding = contentPadding,
@@ -95,7 +96,7 @@ fun ButtonV3(
             modifier = modifier,
             enabled = enabled,
             interactionSource = interactionSource,
-//            shape = shape,
+            shape = shape,
             border = borderStroke.get(0),
             colors = ButtonDefaults.outlinedButtonColors(
                 contentColor = contentColor
@@ -120,10 +121,10 @@ fun ButtonV3(
             modifier = modifier,
             enabled = enabled,
             interactionSource = interactionSource,
-//            shape = shape,
+            shape = shape,
             border = borderStroke.get(0),
             colors = ButtonDefaults.textButtonColors(
-                backgroundColor = backgroundColor,
+                containerColor = backgroundColor,
                 contentColor = contentColor
             ),
             contentPadding = contentPadding,

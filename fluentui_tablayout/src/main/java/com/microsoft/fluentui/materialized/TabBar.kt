@@ -4,14 +4,15 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.BadgedBox
-import androidx.compose.material.LeadingIconTab
-import androidx.compose.material.Tab
+import androidx.compose.material3.BadgedBox
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.LeadingIconTab
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
 import androidx.compose.runtime.Composable
-import androidx.compose.material.TabRow
-import androidx.compose.material.TabRowDefaults
-import androidx.compose.material.TabRowDefaults.tabIndicatorOffset
-import androidx.compose.material.Text
+import androidx.compose.material3.TabRowDefaults
+import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
+import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -20,7 +21,6 @@ import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -54,7 +54,7 @@ fun TabBarV2(
     TabRow(
         selectedTabIndex = selectedIndex,
         modifier = Modifier.fillMaxWidth(),
-        backgroundColor = token.backgroundColor(tabBarInfo),
+        containerColor = token.backgroundColor(tabBarInfo),
         contentColor = token.contentColor(tabBarInfo),
         indicator = { tabPositions ->
             if(showIndicator) {
@@ -130,6 +130,7 @@ fun TabBarV2(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun IconContent(
     icon: ImageVector,

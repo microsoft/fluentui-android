@@ -122,7 +122,7 @@ fun BottomSheetV2(
             scaffoldState = sheetState,
             sheetPeekHeight = peekHeight,
             sheetSwipeEnabled = enableSwipeDismiss,
-            sheetContentColor = sheetBackgroundColor,
+            sheetContainerColor = sheetBackgroundColor,
             sheetTonalElevation = sheetElevation,
             sheetShape = sheetShape,
             sheetDragHandle = {
