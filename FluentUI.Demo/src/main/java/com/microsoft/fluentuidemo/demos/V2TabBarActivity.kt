@@ -17,6 +17,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.MutableLiveData
+import com.microsoft.fluentui.materialized.TabBarV2
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
@@ -248,8 +249,15 @@ class V2TabBarActivity : V2DemoActivity() {
                 )
             )
 
-            TabBar(
-                modifier = Modifier.testTag(TAB_BAR),
+//            TabBar(
+//                modifier = Modifier.testTag(TAB_BAR),
+//                tabDataList = tabDataList.take(tabItemsCount.value),
+//                selectedIndex = selectedIndex,
+//                tabTextAlignment = tabTextAlignment.value,
+//                showIndicator = showIndicator.value
+//            )
+
+            TabBarV2(
                 tabDataList = tabDataList.take(tabItemsCount.value),
                 selectedIndex = selectedIndex,
                 tabTextAlignment = tabTextAlignment.value,
