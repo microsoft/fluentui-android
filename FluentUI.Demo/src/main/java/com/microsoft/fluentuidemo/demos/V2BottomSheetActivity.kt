@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,10 +14,17 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.BottomSheetScaffoldState
 import androidx.compose.material.Slider
 import androidx.compose.material.SliderDefaults
 import androidx.compose.material.icons.Icons
@@ -32,10 +40,14 @@ import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Share
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.SheetValue
+import androidx.compose.material3.Text
+import androidx.compose.material3.rememberBottomSheetScaffoldState
+import androidx.compose.material3.rememberStandardBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -53,22 +65,29 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.microsoft.fluentui.persona.PersonaListView
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
+import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
+import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
-import com.microsoft.fluentui.tokenized.bottomsheet.BottomSheet
-import com.microsoft.fluentui.tokenized.bottomsheet.BottomSheetState
-import com.microsoft.fluentui.tokenized.bottomsheet.BottomSheetValue
-import com.microsoft.fluentui.tokenized.bottomsheet.rememberBottomSheetState
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemInfo
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemTokens
+import com.microsoft.fluentui.theme.token.controlTokens.TabItemTokens
+import com.microsoft.fluentui.tokenized.bottomsheet.BottomSheetV2
 import com.microsoft.fluentui.tokenized.contentBuilder.ItemData
 import com.microsoft.fluentui.tokenized.contentBuilder.ListContentBuilder
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
+import com.microsoft.fluentui.tokenized.divider.Divider
+import com.microsoft.fluentui.tokenized.listitem.ListItem
+import com.microsoft.fluentui.tokenized.tabItem.TabItem
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.util.createPersonaList
@@ -95,9 +114,10 @@ class V2BottomSheetActivity : V2DemoActivity() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun CreateActivityUI() {
-    var scrimVisible by rememberSaveable { mutableStateOf(true) }
+    var scrimVisible by rememberSaveable { mutableStateOf(false) }
 
     var enableSwipeDismiss by remember { mutableStateOf(true) }
 
@@ -116,47 +136,30 @@ private fun CreateActivityUI() {
 
     var hidden by remember { mutableStateOf(true) }
 
-    val bottomSheetState = rememberBottomSheetState(BottomSheetValue.Hidden)
+    val bottomSheetState =
+        rememberStandardBottomSheetState(SheetValue.Hidden, skipHiddenState = false)
+
+    val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
+        bottomSheetState
+    )
 
     val scope = rememberCoroutineScope()
 
-    hidden = !bottomSheetState.isVisible
+    hidden = !bottomSheetScaffoldState.bottomSheetState.isVisible
 
     val context = LocalContext.current
-    val contentByListContentBuilder = ListContentBuilder()
-        .addHorizontalList(getSingleLineList(context), "Default: Wrapped")
-        .addDivider()
-        .addHorizontalList(getSingleLineList(context), "Fixed width", fixedWidth = true)
-        .addDivider()
-        .addVerticalGrid(
-            getSingleLineList(context),
-            "Vertical Grid",
-            3
-        )
-        .addDivider()
-        .addVerticalGrid(
-            getSingleLineList(context),
-            "Vertical Grid: Equidistant",
-            3,
-            true
-        )
-        .addVerticalList(getDoubleLineList(context), "Double Line List")
-        .addVerticalList(
-            getSingleLineList(context),
-            "Single Line List"
-        )
-        .getContent()
+    val contentByListContentBuilder = content3()
     var sheetContentState by remember { mutableStateOf(contentByListContentBuilder) }
     val content = listOf(0, 1, 2)
     val selectedOption = remember { mutableStateOf(content[0]) }
 
-    BottomSheet(
+    BottomSheetV2(
         sheetContent = sheetContentState,
         expandable = expandableState,
         peekHeight = peekHeightState,
         scrimVisible = scrimVisible,
         showHandle = showHandleState,
-        sheetState = bottomSheetState,
+        sheetState = bottomSheetScaffoldState,
         slideOver = slideOverState,
         enableSwipeDismiss = enableSwipeDismiss,
         preventDismissalOnScrimClick = preventDismissalOnScrimClick,
@@ -179,7 +182,7 @@ private fun CreateActivityUI() {
                     enabled = hidden,
                     onClick = {
                         hidden = false
-                        scope.launch { bottomSheetState.show() }
+                        scope.launch { bottomSheetScaffoldState.bottomSheetState.show() }
                     }
                 )
 
@@ -191,7 +194,7 @@ private fun CreateActivityUI() {
                     onClick = {
                         hidden = false
                         scope.launch {
-                            bottomSheetState.show()
+                            bottomSheetScaffoldState.bottomSheetState.show()
                             for (x in 1..9) {
                                 delay(17)
                                 peekHeightState += x.dp
@@ -212,7 +215,7 @@ private fun CreateActivityUI() {
                     text = "Expand",
                     enabled = expandableState,
                     onClick = {
-                        scope.launch { bottomSheetState.expand() }
+                        scope.launch { bottomSheetScaffoldState.bottomSheetState.expand() }
                     }
                 )
             }
@@ -499,7 +502,7 @@ private fun CreateActivityUI() {
                     selected = (selectedOption.value == content[1]),
                     onClick = {
                         selectedOption.value = content[1]
-                        sheetContentState = content1(bottomSheetState)
+                        sheetContentState = content1(bottomSheetScaffoldState)
                     }
                 )
             }
@@ -518,7 +521,7 @@ private fun CreateActivityUI() {
                     selected = (selectedOption.value == content[2]),
                     onClick = {
                         selectedOption.value = content[2]
-                        sheetContentState = content2(bottomSheetState)
+                        sheetContentState = content2(bottomSheetScaffoldState)
                     }
                 )
             }
@@ -550,10 +553,10 @@ private fun CreateActivityUI() {
                     ): Offset {
                         val delta = available.y
                         hidden = if (delta < 0) {
-                            scope.launch { bottomSheetState.hide() }
+                            scope.launch { bottomSheetScaffoldState.bottomSheetState.hide() }
                             true
                         } else {
-                            scope.launch { bottomSheetState.show() }
+                            scope.launch { bottomSheetScaffoldState.bottomSheetState.show() }
                             false
                         }
                         return Offset.Zero
@@ -583,66 +586,221 @@ private fun CreateActivityUI() {
     }
 }
 
-fun content1(bottomSheetState: BottomSheetState): @Composable () -> Unit = {
-    lateinit var context: Context
-    val scope = rememberCoroutineScope()
-    val state = rememberScrollState()
-    AndroidView(
-        modifier = Modifier
-            .fillMaxWidth()
-            .verticalScroll(state),
-        factory = {
-            context = it
-            val view = LayoutInflater.from(context).inflate(
-                R.layout.demo_drawer_content,
-                null
-            ).rootView
-            val personaList = createPersonaList(context)
-            (view as PersonaListView).personas = personaList
-            view
-        }
-    ) {
-        if (bottomSheetState.currentValue == BottomSheetValue.Shown) {
-            scope.launch {
-                state.animateScrollTo(0)
+@OptIn(ExperimentalMaterial3Api::class)
+fun content1(bottomSheetScaffoldState: BottomSheetScaffoldState): @Composable ColumnScope.() -> Unit =
+    {
+        lateinit var context: Context
+        val scope = rememberCoroutineScope()
+        val state = rememberScrollState()
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            AndroidView(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .verticalScroll(state),
+                factory = {
+                    context = it
+                    val view = LayoutInflater.from(context).inflate(
+                        R.layout.demo_drawer_content,
+                        null
+                    ).rootView
+                    val personaList = createPersonaList(context)
+                    (view as PersonaListView).personas = personaList
+                    view
+                }
+            ) {
+                if (bottomSheetScaffoldState.bottomSheetState.currentValue == SheetValue.Expanded) {
+                    scope.launch {
+                        state.animateScrollTo(0)
+                    }
+                }
             }
         }
     }
-}
 
-fun content2(bottomSheetState: BottomSheetState): @Composable () -> Unit = {
-    val no = remember { mutableStateOf(0) }
-    val lazyListState = rememberLazyListState()
-    LazyColumn(
-        state = lazyListState,
-        horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier
-            .fillMaxWidth()
-    ) {
-        item {
-            Button(
-                style = ButtonStyle.Button,
-                size = ButtonSize.Medium,
-                text = "Click to create random size list",
-                onClick = { no.value = (40 * Math.random()).toInt() })
+fun content3(): @Composable ColumnScope.() -> Unit =
+    {
+        val context = LocalContext.current
+        val lazyListState = rememberLazyListState()
+        val singleLineList = getSingleLineList(context)
+        val doubleLineList = getDoubleLineList(context)
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxWidth(),
+        ) {
+            BasicText(
+                "Default: Wrapped",
+                style = TextStyle(
+                    fontWeight = FontWeight.Bold,
+                    fontSize = FluentGlobalTokens.FontSizeTokens.Size300.value
+                ),
+                modifier = Modifier
+                    .padding(8.dp)
+                    .align(Alignment.Start)
+            )
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                state = lazyListState
+            ) {
+                items(singleLineList) { item ->
+                    TabItem(
+                        icon = item.icon,
+                        title = item.title,
+                        onClick = item.onClick,
+                        enabled = item.enabled,
+                        accessory = item.accessory,
+                    )
+                }
+            }
+
+            Divider(height = 1.dp)
+
+            BasicText(
+                "Vertical Grid",
+                style = TextStyle(
+                    fontWeight = FontWeight.Bold,
+                    fontSize = FluentGlobalTokens.FontSizeTokens.Size300.value
+                ),
+                modifier = Modifier
+                    .padding(8.dp)
+                    .align(Alignment.Start)
+            )
+
+            LazyVerticalGrid(
+                columns = GridCells.Adaptive(80.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+            ) {
+                items(singleLineList) { item ->
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        TabItem(
+                            icon = item.icon,
+                            title = item.title,
+                            onClick = item.onClick,
+                            enabled = item.enabled,
+                            accessory = item.accessory,
+                        )
+                    }
+                }
+            }
+
+            Divider(height = 1.dp)
+            BasicText(
+                "Double line list",
+                style = TextStyle(
+                    fontWeight = FontWeight.Bold,
+                    fontSize = FluentGlobalTokens.FontSizeTokens.Size300.value
+                ),
+                modifier = Modifier
+                    .padding(8.dp)
+                    .align(Alignment.Start)
+            )
+
+            LazyColumn(
+                state = lazyListState,
+                horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier
+                    .fillMaxWidth()
+            ) {
+                items(doubleLineList) { item ->
+                    ListItem.Item(
+                        text = item.title,
+                        subText = item.subTitle,
+                        leadingAccessoryContent = {
+                            if (item.icon != null) {
+                                Icon(
+                                    item.icon, null
+                                )
+                            }
+                        },
+                        trailingAccessoryContent = item.accessory,
+                        enabled = item.enabled,
+                        onClick = item.onClick
+                    )
+                }
+            }
+
+            Divider(height = 1.dp)
+
+            BasicText(
+                "Single line list",
+                style = TextStyle(
+                    fontWeight = FontWeight.Bold,
+                    fontSize = FluentGlobalTokens.FontSizeTokens.Size300.value
+                ),
+                modifier = Modifier
+                    .padding(8.dp)
+                    .align(Alignment.Start)
+            )
+            LazyColumn (
+                state = lazyListState,
+                horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier
+                    .fillMaxWidth()
+
+            ) {
+                items(singleLineList) { item ->
+                    ListItem.Item(
+                        text = item.title,
+                        leadingAccessoryContent = {
+                            if (item.icon != null) {
+                                Icon(
+                                    item.icon, null
+                                )
+                            }
+                        },
+                        trailingAccessoryContent = item.accessory,
+                        enabled = item.enabled,
+                        onClick = item.onClick
+                    )
+                }
+            }
+
         }
+    }
 
-        repeat(no.value) {
+@OptIn(ExperimentalMaterial3Api::class)
+fun content2(bottomSheetScaffoldState: BottomSheetScaffoldState): @Composable ColumnScope.() -> Unit =
+    {
+        val no = remember { mutableStateOf(0) }
+        val lazyListState = rememberLazyListState()
+        LazyColumn(
+            state = lazyListState,
+            horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier
+                .fillMaxWidth()
+        ) {
             item {
-                Spacer(Modifier.height(10.dp))
-                BasicText("list item $it")
+                Button(
+                    style = ButtonStyle.Button,
+                    size = ButtonSize.Medium,
+                    text = "Click to create random size list",
+                    onClick = { no.value = (40 * Math.random()).toInt() })
             }
-        }
-    }
 
-    val scope = rememberCoroutineScope()
-    LaunchedEffect(key1 = bottomSheetState.currentValue) {
-        if (bottomSheetState.currentValue == BottomSheetValue.Shown) {
-            scope.launch {
-                lazyListState.animateScrollToItem(0)
+            repeat(no.value) {
+                item {
+                    Spacer(Modifier.height(10.dp))
+                    BasicText("list item $it")
+                }
+            }
+        }
+
+        val scope = rememberCoroutineScope()
+        LaunchedEffect(key1 = bottomSheetScaffoldState.bottomSheetState.currentValue) {
+            if (bottomSheetScaffoldState.bottomSheetState.currentValue == SheetValue.Expanded) {
+                scope.launch {
+                    lazyListState.animateScrollToItem(0)
+                }
             }
         }
     }
-}
 
 fun getSingleLineList(context: Context): List<ItemData> {
     return arrayListOf(

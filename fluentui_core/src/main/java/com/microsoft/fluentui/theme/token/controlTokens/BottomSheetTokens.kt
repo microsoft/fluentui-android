@@ -27,6 +27,12 @@ open class BottomSheetTokens : IControlToken, Parcelable {
         )
 
     @Composable
+    open fun backgroundColor(bottomSheetInfo: BottomSheetInfo): Color =
+        FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
+            themeMode = FluentTheme.themeMode
+        )
+
+    @Composable
     open fun handleColor(bottomSheetInfo: BottomSheetInfo): Color =
         FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke1].value(
             themeMode = FluentTheme.themeMode
@@ -48,5 +54,5 @@ open class BottomSheetTokens : IControlToken, Parcelable {
     open fun scrimOpacity(bottomSheetInfo: BottomSheetInfo): Float = 0.32F
 
     @Composable
-    open fun maxLandscapeWidth (bottomSheetInfo: BottomSheetInfo): Float = 1F
+    open fun maxLandscapeWidth(bottomSheetInfo: BottomSheetInfo): Float = 1F
 }
