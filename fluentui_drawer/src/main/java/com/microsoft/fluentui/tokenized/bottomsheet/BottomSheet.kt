@@ -277,7 +277,7 @@ fun BottomSheet(
                     }
                 }) {
             content()
-            if(scrimVisible) {
+            if (scrimVisible) {
                 Scrim(
                     color = scrimColor,
                     onClose = {
@@ -447,46 +447,46 @@ fun BottomSheet(
                             },
                             tint = sheetHandleColor,
                             modifier = Modifier.clickable(
-                                    enabled = sheetState.hasExpandedState,
-                                    role = Role.Button,
-                                    onClickLabel = if (sheetState.currentValue == BottomSheetValue.Expanded) {
-                                        LocalContext.current.resources.getString(R.string.collapse)
-                                    } else {
-                                        if (sheetState.hasExpandedState && sheetState.isVisible) LocalContext.current.resources.getString(
-                                            R.string.expand
-                                        ) else null
-                                    }
-                                ) {
-                                    if (sheetState.currentValue == BottomSheetValue.Expanded) {
-                                        if (sheetState.confirmStateChange(BottomSheetValue.Shown)) {
-                                            scope.launch { sheetState.show() }
-                                            accessibilityManager?.let { manager ->
-                                                if (manager.isEnabled) {
-                                                    val event =
-                                                        AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT)
-                                                            .apply {
-                                                                text.add(collapsed)
-                                                            }
-                                                    manager.sendAccessibilityEvent(event)
-                                                }
-                                            }
-                                        }
-                                    } else if (sheetState.hasExpandedState) {
-                                        if (sheetState.confirmStateChange(BottomSheetValue.Expanded)) {
-                                            scope.launch { sheetState.expand() }
-                                            accessibilityManager?.let { manager ->
-                                                if (manager.isEnabled) {
-                                                    val event =
-                                                        AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT)
-                                                            .apply {
-                                                                text.add(expanded)
-                                                            }
-                                                    manager.sendAccessibilityEvent(event)
-                                                }
+                                enabled = sheetState.hasExpandedState,
+                                role = Role.Button,
+                                onClickLabel = if (sheetState.currentValue == BottomSheetValue.Expanded) {
+                                    LocalContext.current.resources.getString(R.string.collapse)
+                                } else {
+                                    if (sheetState.hasExpandedState && sheetState.isVisible) LocalContext.current.resources.getString(
+                                        R.string.expand
+                                    ) else null
+                                }
+                            ) {
+                                if (sheetState.currentValue == BottomSheetValue.Expanded) {
+                                    if (sheetState.confirmStateChange(BottomSheetValue.Shown)) {
+                                        scope.launch { sheetState.show() }
+                                        accessibilityManager?.let { manager ->
+                                            if (manager.isEnabled) {
+                                                val event =
+                                                    AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT)
+                                                        .apply {
+                                                            text.add(collapsed)
+                                                        }
+                                                manager.sendAccessibilityEvent(event)
                                             }
                                         }
                                     }
-                                })
+                                } else if (sheetState.hasExpandedState) {
+                                    if (sheetState.confirmStateChange(BottomSheetValue.Expanded)) {
+                                        scope.launch { sheetState.expand() }
+                                        accessibilityManager?.let { manager ->
+                                            if (manager.isEnabled) {
+                                                val event =
+                                                    AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT)
+                                                        .apply {
+                                                            text.add(expanded)
+                                                        }
+                                                manager.sendAccessibilityEvent(event)
+                                            }
+                                        }
+                                    }
+                                }
+                            })
                     }
                 }
                 Column(modifier = Modifier
