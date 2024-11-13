@@ -277,39 +277,42 @@ fun BottomSheet(
                     }
                 }) {
             content()
-            Scrim(color = if (scrimVisible) scrimColor else Color.Transparent,
-                onClose = {
-                    if (sheetState.confirmStateChange(BottomSheetValue.Hidden)) {
-                        scope.launch { sheetState.hide() }
-                    }
-                },
-                fraction = {
-                    if (sheetState.anchors.isEmpty() || (sheetHeightState.value != null && sheetHeightState.value == 0f)) {
-                        0.toFloat()
-                    } else {
-                        val targetValue: BottomSheetValue = if (slideOver) {
-                            if (sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Expanded } != null) {
-                                BottomSheetValue.Expanded
-                            } else if (sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Shown } != null) {
-                                BottomSheetValue.Shown
-                            } else {
-                                BottomSheetValue.Hidden
-                            }
-                        } else {
-                            BottomSheetValue.Shown
+            if(scrimVisible) {
+                Scrim(
+                    color = scrimColor,
+                    onClose = {
+                        if (sheetState.confirmStateChange(BottomSheetValue.Hidden)) {
+                            scope.launch { sheetState.hide() }
                         }
-                        calculateFraction(
-                            sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Hidden }?.key!!,
-                            sheetState.anchors.entries.firstOrNull { it.value == targetValue }?.key!!,
-                            sheetState.offset.value
-                        )
-                    }
-                },
-                open = sheetState.isVisible,
-                onScrimClick = onDismiss,
-                preventDismissalOnScrimClick = preventDismissalOnScrimClick,
-                tag = BOTTOMSHEET_SCRIM_TAG
-            )
+                    },
+                    fraction = {
+                        if (sheetState.anchors.isEmpty() || (sheetHeightState.value != null && sheetHeightState.value == 0f)) {
+                            0.toFloat()
+                        } else {
+                            val targetValue: BottomSheetValue = if (slideOver) {
+                                if (sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Expanded } != null) {
+                                    BottomSheetValue.Expanded
+                                } else if (sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Shown } != null) {
+                                    BottomSheetValue.Shown
+                                } else {
+                                    BottomSheetValue.Hidden
+                                }
+                            } else {
+                                BottomSheetValue.Shown
+                            }
+                            calculateFraction(
+                                sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Hidden }?.key!!,
+                                sheetState.anchors.entries.firstOrNull { it.value == targetValue }?.key!!,
+                                sheetState.offset.value
+                            )
+                        }
+                    },
+                    open = sheetState.isVisible,
+                    onScrimClick = onDismiss,
+                    preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+                    tag = BOTTOMSHEET_SCRIM_TAG
+                )
+            }
         }
         val configuration = LocalConfiguration.current
 
