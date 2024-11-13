@@ -228,7 +228,7 @@ fun BottomSheet(
     sheetState: BottomSheetState = rememberBottomSheetState(BottomSheetValue.Hidden),
     expandable: Boolean = true,
     peekHeight: Dp = 110.dp,
-    scrimVisible: Boolean = true,
+    scrimVisible: Boolean = false,
     showHandle: Boolean = true,
     slideOver: Boolean = true,
     enableSwipeDismiss: Boolean = false,
