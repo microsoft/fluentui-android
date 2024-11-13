@@ -97,7 +97,7 @@ class V2BottomSheetActivity : V2DemoActivity() {
 
 @Composable
 private fun CreateActivityUI() {
-    var scrimVisible by rememberSaveable { mutableStateOf(true) }
+    var scrimVisible by rememberSaveable { mutableStateOf(false) }
 
     var enableSwipeDismiss by remember { mutableStateOf(true) }
 
@@ -429,14 +429,13 @@ private fun CreateActivityUI() {
                     style = ButtonStyle.Button,
                     size = ButtonSize.Medium,
                     text = "+ 8 dp",
-                    enabled = hidden,
                     onClick = { peekHeightState += 8.dp })
 
                 Button(
                     style = ButtonStyle.Button,
                     size = ButtonSize.Medium,
                     text = "- 8 dp",
-                    enabled = hidden && (peekHeightState > 0.dp),
+                    enabled = peekHeightState > 0.dp,
                     onClick = { peekHeightState -= 8.dp })
             }
 
