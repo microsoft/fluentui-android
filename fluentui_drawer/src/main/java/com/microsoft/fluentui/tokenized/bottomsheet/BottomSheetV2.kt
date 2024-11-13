@@ -79,19 +79,9 @@ fun BottomSheetV2(
                 Modifier
                     .fillMaxSize()
                     .align(Alignment.Center)
-                    .semantics {
-                        if (!sheetState.bottomSheetState.isVisible) {
-                            expand {
-//                                if (sheetState.bottomSheetState.(BottomSheetValue.Shown)) {
-                                scope.launch { sheetState.bottomSheetState.show() }
-//                                }
-                                true
-                            }
-                        }
-                    }) {
+                    ) {
                 content()
                 if (sheetState.bottomSheetState.isVisible) {
-
                     ModalBottomSheet(
                         sheetState = sheetState.bottomSheetState,
                         containerColor = sheetBackgroundColor,

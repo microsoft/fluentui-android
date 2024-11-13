@@ -34,6 +34,13 @@ open class DrawerTokens : IControlToken, Parcelable {
         )
 
     @Composable
+    open fun backgroundColor(drawerInfo: DrawerInfo): Color =
+        FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
+            themeMode = FluentTheme.themeMode
+        )
+
+
+    @Composable
     open fun handleColor(drawerInfo: DrawerInfo): Color =
         FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke1].value(
             themeMode = FluentTheme.themeMode
@@ -47,6 +54,7 @@ open class DrawerTokens : IControlToken, Parcelable {
         return when (drawerInfo.type) {
             BehaviorType.TOP, BehaviorType.BOTTOM, BehaviorType.BOTTOM_SLIDE_OVER -> FluentGlobalTokens.CornerRadiusTokens.CornerRadius120
                 .value
+
             BehaviorType.LEFT_SLIDE_OVER, BehaviorType.RIGHT_SLIDE_OVER -> FluentGlobalTokens.CornerRadiusTokens.CornerRadiusNone
                 .value
         }

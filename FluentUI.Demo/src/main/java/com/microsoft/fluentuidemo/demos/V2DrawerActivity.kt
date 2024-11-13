@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.selection.toggleable
+import androidx.compose.material3.DrawerValue
+import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -37,7 +39,7 @@ import com.microsoft.fluentui.tokenized.controls.Label
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.drawer.Drawer
-import com.microsoft.fluentui.tokenized.drawer.rememberDrawerState
+import com.microsoft.fluentui.tokenized.drawer.DrawerV2
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
@@ -384,12 +386,14 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     preventDismissalOnScrimClick: Boolean
 ) {
     val scope = rememberCoroutineScope()
-    val drawerState = rememberDrawerState()
+    val drawerState = rememberDrawerState(
+        DrawerValue.Closed
+    )
     val open: () -> Unit = {
         scope.launch { drawerState.open() }
     }
     val expand: () -> Unit = {
-        scope.launch { drawerState.expand() }
+        scope.launch { drawerState.open() }
     }
     val close: () -> Unit = {
         scope.launch { drawerState.close() }
@@ -406,7 +410,7 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
         )
     }
 
-    Drawer(
+    DrawerV2(
         drawerState = drawerState,
         offset = offset,
         drawerContent = { drawerContent(close) },

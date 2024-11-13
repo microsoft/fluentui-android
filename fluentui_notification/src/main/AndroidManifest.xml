@@ -4,5 +4,4 @@
   ~ Licensed under the MIT License.
   -->
 
-<manifest
-    package="com.microsoft.fluentui.notification" />
+<manifest />

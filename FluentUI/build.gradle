@@ -13,8 +13,6 @@ android {
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-        versionCode project.ext.FluentUI_version_code
-        versionName project.ext.FluentUI_versionid
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         consumerProguardFiles 'consumer-rules.pro'
 
@@ -36,6 +34,7 @@ android {
     lintOptions {
         abortOnError false
     }
+    namespace 'com.microsoft.fluentui_container'
 }
 
 dependencies {
@@ -69,7 +68,7 @@ dependencies {
 
 task sourceJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
-    classifier "sources"
+    archiveClassifier = "sources"
 }
 
 project.afterEvaluate {

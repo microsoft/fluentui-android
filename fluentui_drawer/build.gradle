@@ -17,8 +17,6 @@ android {
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-        versionCode project.ext.fluentui_drawer_version_code
-        versionName project.ext.fluentui_drawer_versionid
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -32,15 +30,16 @@ android {
         kotlinCompilerExtensionVersion composeCompilerVersion
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
     lintOptions {
         abortOnError false
     }
+    namespace 'com.microsoft.fluentui.drawer'
 }
 
 dependencies {
@@ -59,13 +58,13 @@ dependencies {
     implementation "androidx.compose.ui:ui"
     implementation "androidx.compose.ui:ui-util"
     implementation "androidx.compose.material:material"
-    implementation "androidx.compose.material3:material3"
+    implementation "androidx.compose.material3:material3:1.3.1"
     implementation "androidx.constraintlayout:constraintlayout-compose:$constraintLayoutComposeVersion"
 }
 
 task sourceJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
-    classifier "sources"
+    archiveClassifier = "sources"
 }
 
 project.afterEvaluate {
