@@ -107,7 +107,6 @@ private fun CreateActivityUI() {
             }
         }
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-
             CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
                 selectedBehaviorType,
                 if (listContent)
@@ -120,270 +119,273 @@ private fun CreateActivityUI() {
                 scrimVisible = scrimVisible,
                 IntOffset(offsetX, offsetY),
                 preventDismissalOnScrimClick = preventDismissalOnScrimClick
-            )
-            LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
-                item {
-                    ListItem.Header(title = stringResource(id = R.string.drawer_select_drawer_type))
-                    ListItem.Item(text = stringResource(id = R.string.drawer_top),
-                        subText = stringResource(id = R.string.drawer_top_description),
-                        subTextMaxLines = Int.MAX_VALUE,
-                        onClick = { selectedBehaviorType = BehaviorType.TOP },
-                        trailingAccessoryContent = {
-                            RadioButton(
-                                onClick = {
-                                    selectedBehaviorType = BehaviorType.TOP
-                                },
-                                selected = selectedBehaviorType == BehaviorType.TOP
-                            )
-                        }
-                    )
-                    ListItem.Item(text = stringResource(id = R.string.drawer_bottom),
-                        subText = stringResource(id = R.string.drawer_bottom_description),
-                        subTextMaxLines = Int.MAX_VALUE,
-                        onClick = { selectedBehaviorType = BehaviorType.BOTTOM },
-                        trailingAccessoryContent = {
-                            RadioButton(
-                                onClick = {
-                                    selectedBehaviorType = BehaviorType.BOTTOM
-                                },
-                                selected = selectedBehaviorType == BehaviorType.BOTTOM
-                            )
-                        }
-                    )
-                    ListItem.Item(text = stringResource(id = R.string.drawer_left_slide_over),
-                        subText = stringResource(id = R.string.drawer_left_slide_over_description),
-                        subTextMaxLines = Int.MAX_VALUE,
-                        onClick = { selectedBehaviorType = BehaviorType.LEFT_SLIDE_OVER },
-                        trailingAccessoryContent = {
-                            RadioButton(
-                                onClick = {
-                                    selectedBehaviorType = BehaviorType.LEFT_SLIDE_OVER
-                                },
-                                selected = selectedBehaviorType == BehaviorType.LEFT_SLIDE_OVER
-                            )
-                        }
-                    )
-                    ListItem.Item(text = stringResource(id = R.string.drawer_right_slide_over),
-                        subText = stringResource(id = R.string.drawer_right_slide_over_description),
-                        subTextMaxLines = Int.MAX_VALUE,
-                        onClick = { selectedBehaviorType = BehaviorType.RIGHT_SLIDE_OVER },
-                        trailingAccessoryContent = {
-                            RadioButton(
-                                onClick = {
-                                    selectedBehaviorType = BehaviorType.RIGHT_SLIDE_OVER
-                                },
-                                selected = selectedBehaviorType == BehaviorType.RIGHT_SLIDE_OVER
-                            )
-                        }
-                    )
-                    ListItem.Item(text = stringResource(id = R.string.drawer_bottom_slide_over),
-                        subText = stringResource(id = R.string.drawer_bottom_slide_over_description),
-                        subTextMaxLines = Int.MAX_VALUE,
-                        onClick = { selectedBehaviorType = BehaviorType.BOTTOM_SLIDE_OVER },
-                        trailingAccessoryContent = {
-                            RadioButton(
-                                onClick = {
-                                    selectedBehaviorType = BehaviorType.BOTTOM_SLIDE_OVER
-                                },
-                                selected = selectedBehaviorType == BehaviorType.BOTTOM_SLIDE_OVER
-                            )
-                        }
-                    )
-                }
-                item {
-                    val preventDismissalOnScrimClickText =
-                        stringResource(id = R.string.prevent_scrim_click_dismissal)
-                    ListItem.Header(title = preventDismissalOnScrimClickText,
-                        modifier = Modifier
-                            .toggleable(
-                                value = preventDismissalOnScrimClick,
-                                role = Role.Switch,
-                                onValueChange = {
-                                    preventDismissalOnScrimClick = !preventDismissalOnScrimClick
-                                }
-                            )
-                            .clearAndSetSemantics {
-                                this.contentDescription = preventDismissalOnScrimClickText
-                            },
-                        trailingAccessoryContent = {
-                            ToggleSwitch(
-                                onValueChange = {
-                                    preventDismissalOnScrimClick = !preventDismissalOnScrimClick
-                                },
-                                checkedState = preventDismissalOnScrimClick
-                            )
-                        }
-                    )
-                }
-                item {
-                    val scrimVisibleText = stringResource(id = R.string.drawer_scrim_visible)
-                    ListItem.Header(title = scrimVisibleText, modifier = Modifier
-                        .toggleable(
-                            value = scrimVisible,
-                            role = Role.Switch,
-                            onValueChange = { scrimVisible = !scrimVisible }
+            ) {
+                LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
+                    item {
+                        ListItem.Header(title = stringResource(id = R.string.drawer_select_drawer_type))
+                        ListItem.Item(text = stringResource(id = R.string.drawer_top),
+                            subText = stringResource(id = R.string.drawer_top_description),
+                            subTextMaxLines = Int.MAX_VALUE,
+                            onClick = { selectedBehaviorType = BehaviorType.TOP },
+                            trailingAccessoryContent = {
+                                RadioButton(
+                                    onClick = {
+                                        selectedBehaviorType = BehaviorType.TOP
+                                    },
+                                    selected = selectedBehaviorType == BehaviorType.TOP
+                                )
+                            }
                         )
-                        .clearAndSetSemantics {
-                            this.contentDescription = scrimVisibleText
-                        }, trailingAccessoryContent = {
-                        ToggleSwitch(
-                            onValueChange = { scrimVisible = !scrimVisible },
-                            checkedState = scrimVisible
+                        ListItem.Item(text = stringResource(id = R.string.drawer_bottom),
+                            subText = stringResource(id = R.string.drawer_bottom_description),
+                            subTextMaxLines = Int.MAX_VALUE,
+                            onClick = { selectedBehaviorType = BehaviorType.BOTTOM },
+                            trailingAccessoryContent = {
+                                RadioButton(
+                                    onClick = {
+                                        selectedBehaviorType = BehaviorType.BOTTOM
+                                    },
+                                    selected = selectedBehaviorType == BehaviorType.BOTTOM
+                                )
+                            }
+                        )
+                        ListItem.Item(text = stringResource(id = R.string.drawer_left_slide_over),
+                            subText = stringResource(id = R.string.drawer_left_slide_over_description),
+                            subTextMaxLines = Int.MAX_VALUE,
+                            onClick = { selectedBehaviorType = BehaviorType.LEFT_SLIDE_OVER },
+                            trailingAccessoryContent = {
+                                RadioButton(
+                                    onClick = {
+                                        selectedBehaviorType = BehaviorType.LEFT_SLIDE_OVER
+                                    },
+                                    selected = selectedBehaviorType == BehaviorType.LEFT_SLIDE_OVER
+                                )
+                            }
+                        )
+                        ListItem.Item(text = stringResource(id = R.string.drawer_right_slide_over),
+                            subText = stringResource(id = R.string.drawer_right_slide_over_description),
+                            subTextMaxLines = Int.MAX_VALUE,
+                            onClick = { selectedBehaviorType = BehaviorType.RIGHT_SLIDE_OVER },
+                            trailingAccessoryContent = {
+                                RadioButton(
+                                    onClick = {
+                                        selectedBehaviorType = BehaviorType.RIGHT_SLIDE_OVER
+                                    },
+                                    selected = selectedBehaviorType == BehaviorType.RIGHT_SLIDE_OVER
+                                )
+                            }
+                        )
+                        ListItem.Item(text = stringResource(id = R.string.drawer_bottom_slide_over),
+                            subText = stringResource(id = R.string.drawer_bottom_slide_over_description),
+                            subTextMaxLines = Int.MAX_VALUE,
+                            onClick = { selectedBehaviorType = BehaviorType.BOTTOM_SLIDE_OVER },
+                            trailingAccessoryContent = {
+                                RadioButton(
+                                    onClick = {
+                                        selectedBehaviorType = BehaviorType.BOTTOM_SLIDE_OVER
+                                    },
+                                    selected = selectedBehaviorType == BehaviorType.BOTTOM_SLIDE_OVER
+                                )
+                            }
                         )
                     }
-                    )
-                }
-                item {
-                    ListItem.Header(title = "Offset: X $offsetX.dp",
-                        modifier = Modifier.fillMaxWidth(),
-                        trailingAccessoryContent = {
-                            Row {
-                                Button(
-                                    style = ButtonStyle.Button,
-                                    size = ButtonSize.Medium,
-                                    text = "+ 10 dp",
-                                    enabled = true,
-                                    onClick = { offsetX += 10 })
-                                Spacer(modifier = Modifier.width(10.dp))
-                                Button(
-                                    style = ButtonStyle.Button,
-                                    size = ButtonSize.Medium,
-                                    text = "- 10 dp",
-                                    enabled = true,
-                                    onClick = { offsetX -= 10 })
+                    item {
+                        val preventDismissalOnScrimClickText =
+                            stringResource(id = R.string.prevent_scrim_click_dismissal)
+                        ListItem.Header(title = preventDismissalOnScrimClickText,
+                            modifier = Modifier
+                                .toggleable(
+                                    value = preventDismissalOnScrimClick,
+                                    role = Role.Switch,
+                                    onValueChange = {
+                                        preventDismissalOnScrimClick = !preventDismissalOnScrimClick
+                                    }
+                                )
+                                .clearAndSetSemantics {
+                                    this.contentDescription = preventDismissalOnScrimClickText
+                                },
+                            trailingAccessoryContent = {
+                                ToggleSwitch(
+                                    onValueChange = {
+                                        preventDismissalOnScrimClick = !preventDismissalOnScrimClick
+                                    },
+                                    checkedState = preventDismissalOnScrimClick
+                                )
                             }
+                        )
+                    }
+                    item {
+                        val scrimVisibleText = stringResource(id = R.string.drawer_scrim_visible)
+                        ListItem.Header(title = scrimVisibleText, modifier = Modifier
+                            .toggleable(
+                                value = scrimVisible,
+                                role = Role.Switch,
+                                onValueChange = { scrimVisible = !scrimVisible }
+                            )
+                            .clearAndSetSemantics {
+                                this.contentDescription = scrimVisibleText
+                            }, trailingAccessoryContent = {
+                            ToggleSwitch(
+                                onValueChange = { scrimVisible = !scrimVisible },
+                                checkedState = scrimVisible
+                            )
                         }
-                    )
-                }
-                item {
-                    ListItem.Header(title = "Offset: Y $offsetY.dp",
-                        modifier = Modifier.fillMaxWidth(),
-                        trailingAccessoryContent = {
-                            Row {
-                                Button(
-                                    style = ButtonStyle.Button,
-                                    size = ButtonSize.Medium,
-                                    text = "+ 10 dp",
-                                    enabled = true,
-                                    onClick = { offsetY += 10 })
-                                Spacer(modifier = Modifier.width(10.dp))
-                                Button(
-                                    style = ButtonStyle.Button,
-                                    size = ButtonSize.Medium,
-                                    text = "- 10 dp",
-                                    enabled = true,
-                                    onClick = { offsetY -= 10 })
+                        )
+                    }
+                    item {
+                        ListItem.Header(title = "Offset: X $offsetX.dp",
+                            modifier = Modifier.fillMaxWidth(),
+                            trailingAccessoryContent = {
+                                Row {
+                                    Button(
+                                        style = ButtonStyle.Button,
+                                        size = ButtonSize.Medium,
+                                        text = "+ 10 dp",
+                                        enabled = true,
+                                        onClick = { offsetX += 10 })
+                                    Spacer(modifier = Modifier.width(10.dp))
+                                    Button(
+                                        style = ButtonStyle.Button,
+                                        size = ButtonSize.Medium,
+                                        text = "- 10 dp",
+                                        enabled = true,
+                                        onClick = { offsetX -= 10 })
+                                }
                             }
-                        }
-                    )
-                }
+                        )
+                    }
+                    item {
+                        ListItem.Header(title = "Offset: Y $offsetY.dp",
+                            modifier = Modifier.fillMaxWidth(),
+                            trailingAccessoryContent = {
+                                Row {
+                                    Button(
+                                        style = ButtonStyle.Button,
+                                        size = ButtonSize.Medium,
+                                        text = "+ 10 dp",
+                                        enabled = true,
+                                        onClick = { offsetY += 10 })
+                                    Spacer(modifier = Modifier.width(10.dp))
+                                    Button(
+                                        style = ButtonStyle.Button,
+                                        size = ButtonSize.Medium,
+                                        text = "- 10 dp",
+                                        enabled = true,
+                                        onClick = { offsetY -= 10 })
+                                }
+                            }
+                        )
+                    }
 
-                item {
-                    ListItem.Header(title = stringResource(id = R.string.drawer_select_drawer_content))
-                    ListItem.Item(text = stringResource(id = R.string.drawer_full_screen_size_scrollable_content),
-                        onClick = {
-                            selectedContent = ContentType.FULL_SCREEN_SCROLLABLE_CONTENT
-                            listContent = true
-                            nestedDrawerContent = false
-                            dynamicSizeContent = false
-                        },
-                        trailingAccessoryContent = {
-                            RadioButton(
-                                onClick = {
-                                    selectedContent = ContentType.FULL_SCREEN_SCROLLABLE_CONTENT
-                                    listContent = true
-                                    nestedDrawerContent = false
-                                    dynamicSizeContent = false
-                                },
-                                selected = selectedContent == ContentType.FULL_SCREEN_SCROLLABLE_CONTENT && listContent
-                            )
-                        }
-                    )
-                    ListItem.Item(text = stringResource(id = R.string.drawer_more_than_half_screen_content),
-                        onClick = {
-                            selectedContent = ContentType.EXPANDABLE_SIZE_CONTENT
-                            listContent = true
-                            nestedDrawerContent = false
-                            dynamicSizeContent = false
-                        },
-                        trailingAccessoryContent = {
-                            RadioButton(
-                                onClick = {
-                                    selectedContent = ContentType.EXPANDABLE_SIZE_CONTENT
-                                    listContent = true
-                                    nestedDrawerContent = false
-                                    dynamicSizeContent = false
-                                },
-                                selected = selectedContent == ContentType.EXPANDABLE_SIZE_CONTENT && listContent
-                            )
-                        }
-                    )
-                    ListItem.Item(text = stringResource(id = R.string.drawer_less_than_half_screen_content),
-                        onClick = {
-                            selectedContent = ContentType.WRAPPED_SIZE_CONTENT
-                            listContent = true
-                            dynamicSizeContent = false
-                            nestedDrawerContent = false
-                        },
-                        trailingAccessoryContent = {
-                            RadioButton(
-                                onClick = {
-                                    selectedContent = ContentType.WRAPPED_SIZE_CONTENT
-                                    listContent = true
-                                    dynamicSizeContent = false
-                                    nestedDrawerContent = false
-                                },
-                                selected = selectedContent == ContentType.WRAPPED_SIZE_CONTENT && listContent
-                            )
-                        }
-                    )
-                    ListItem.Item(text = stringResource(id = R.string.drawer_dynamic_size_content),
-                        onClick = {
-                            dynamicSizeContent = true
-                            nestedDrawerContent = false
-                            listContent = false
-                        },
-                        trailingAccessoryContent = {
-                            RadioButton(
-                                onClick = {
-                                    dynamicSizeContent = true
-                                    nestedDrawerContent = false
-                                    listContent = false
-                                },
-                                selected = dynamicSizeContent
-                            )
-                        }
-                    )
-                    ListItem.Item(text = stringResource(id = R.string.drawer_nested_drawer_content),
-                        onClick = {
-                            nestedDrawerContent = true
-                            dynamicSizeContent = false
-                            listContent = false
-                        },
-                        trailingAccessoryContent = {
-                            RadioButton(
-                                onClick = {
-                                    nestedDrawerContent = true
-                                    dynamicSizeContent = false
-                                    listContent = false
-                                },
-                                selected = nestedDrawerContent
-                            )
-                        }
-                    )
+                    item {
+                        ListItem.Header(title = stringResource(id = R.string.drawer_select_drawer_content))
+                        ListItem.Item(text = stringResource(id = R.string.drawer_full_screen_size_scrollable_content),
+                            onClick = {
+                                selectedContent = ContentType.FULL_SCREEN_SCROLLABLE_CONTENT
+                                listContent = true
+                                nestedDrawerContent = false
+                                dynamicSizeContent = false
+                            },
+                            trailingAccessoryContent = {
+                                RadioButton(
+                                    onClick = {
+                                        selectedContent = ContentType.FULL_SCREEN_SCROLLABLE_CONTENT
+                                        listContent = true
+                                        nestedDrawerContent = false
+                                        dynamicSizeContent = false
+                                    },
+                                    selected = selectedContent == ContentType.FULL_SCREEN_SCROLLABLE_CONTENT && listContent
+                                )
+                            }
+                        )
+                        ListItem.Item(text = stringResource(id = R.string.drawer_more_than_half_screen_content),
+                            onClick = {
+                                selectedContent = ContentType.EXPANDABLE_SIZE_CONTENT
+                                listContent = true
+                                nestedDrawerContent = false
+                                dynamicSizeContent = false
+                            },
+                            trailingAccessoryContent = {
+                                RadioButton(
+                                    onClick = {
+                                        selectedContent = ContentType.EXPANDABLE_SIZE_CONTENT
+                                        listContent = true
+                                        nestedDrawerContent = false
+                                        dynamicSizeContent = false
+                                    },
+                                    selected = selectedContent == ContentType.EXPANDABLE_SIZE_CONTENT && listContent
+                                )
+                            }
+                        )
+                        ListItem.Item(text = stringResource(id = R.string.drawer_less_than_half_screen_content),
+                            onClick = {
+                                selectedContent = ContentType.WRAPPED_SIZE_CONTENT
+                                listContent = true
+                                dynamicSizeContent = false
+                                nestedDrawerContent = false
+                            },
+                            trailingAccessoryContent = {
+                                RadioButton(
+                                    onClick = {
+                                        selectedContent = ContentType.WRAPPED_SIZE_CONTENT
+                                        listContent = true
+                                        dynamicSizeContent = false
+                                        nestedDrawerContent = false
+                                    },
+                                    selected = selectedContent == ContentType.WRAPPED_SIZE_CONTENT && listContent
+                                )
+                            }
+                        )
+                        ListItem.Item(text = stringResource(id = R.string.drawer_dynamic_size_content),
+                            onClick = {
+                                dynamicSizeContent = true
+                                nestedDrawerContent = false
+                                listContent = false
+                            },
+                            trailingAccessoryContent = {
+                                RadioButton(
+                                    onClick = {
+                                        dynamicSizeContent = true
+                                        nestedDrawerContent = false
+                                        listContent = false
+                                    },
+                                    selected = dynamicSizeContent
+                                )
+                            }
+                        )
+                        ListItem.Item(text = stringResource(id = R.string.drawer_nested_drawer_content),
+                            onClick = {
+                                nestedDrawerContent = true
+                                dynamicSizeContent = false
+                                listContent = false
+                            },
+                            trailingAccessoryContent = {
+                                RadioButton(
+                                    onClick = {
+                                        nestedDrawerContent = true
+                                        dynamicSizeContent = false
+                                        listContent = false
+                                    },
+                                    selected = nestedDrawerContent
+                                )
+                            }
+                        )
+                    }
                 }
             }
         }
+
     }
 }
 
 @Composable
 private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-    behaviorType: BehaviorType,
+    selectedBehaviorType: BehaviorType,
     drawerContent: @Composable ((() -> Unit) -> Unit),
     scrimVisible: Boolean = true,
     offset: IntOffset = IntOffset.Zero,
-    preventDismissalOnScrimClick: Boolean
+    preventDismissalOnScrimClick: Boolean,
+    content: @Composable () -> Unit
 ) {
     val scope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(
@@ -392,11 +394,11 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     val open: () -> Unit = {
         scope.launch { drawerState.open() }
     }
-    val expand: () -> Unit = {
-        scope.launch { drawerState.open() }
-    }
     val close: () -> Unit = {
         scope.launch { drawerState.close() }
+    }
+    val expand: () -> Unit = {
+        scope.launch { drawerState.open() }
     }
     Row {
         PrimarySurfaceContent(
@@ -411,11 +413,14 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     }
 
     DrawerV2(
-        drawerState = drawerState,
+        drawerState = rememberDrawerState(DrawerValue.Closed),
         offset = offset,
         drawerContent = { drawerContent(close) },
-        behaviorType = behaviorType,
+        behaviorType = selectedBehaviorType,
         scrimVisible = scrimVisible,
         preventDismissalOnScrimClick = preventDismissalOnScrimClick
-    )
+    ) {
+        content()
+    }
+
 }
