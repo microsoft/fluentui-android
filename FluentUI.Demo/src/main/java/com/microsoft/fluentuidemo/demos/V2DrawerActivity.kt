@@ -380,7 +380,7 @@ private fun CreateActivityUI() {
 
 @Composable
 private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-    selectedBehaviorType: BehaviorType,
+    behaviorType: BehaviorType,
     drawerContent: @Composable ((() -> Unit) -> Unit),
     scrimVisible: Boolean = true,
     offset: IntOffset = IntOffset.Zero,
@@ -416,7 +416,7 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
         drawerState = rememberDrawerState(DrawerValue.Closed),
         offset = offset,
         drawerContent = { drawerContent(close) },
-        behaviorType = selectedBehaviorType,
+        behaviorType = behaviorType,
         scrimVisible = scrimVisible,
         preventDismissalOnScrimClick = preventDismissalOnScrimClick
     ) {
