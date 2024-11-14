@@ -228,7 +228,7 @@ fun BottomSheet(
     sheetState: BottomSheetState = rememberBottomSheetState(BottomSheetValue.Hidden),
     expandable: Boolean = true,
     peekHeight: Dp = 110.dp,
-    scrimVisible: Boolean = true,
+    scrimVisible: Boolean = false,
     showHandle: Boolean = true,
     slideOver: Boolean = true,
     enableSwipeDismiss: Boolean = false,
@@ -277,39 +277,42 @@ fun BottomSheet(
                     }
                 }) {
             content()
-            Scrim(color = if (scrimVisible) scrimColor else Color.Transparent,
-                onClose = {
-                    if (sheetState.confirmStateChange(BottomSheetValue.Hidden)) {
-                        scope.launch { sheetState.hide() }
-                    }
-                },
-                fraction = {
-                    if (sheetState.anchors.isEmpty() || (sheetHeightState.value != null && sheetHeightState.value == 0f)) {
-                        0.toFloat()
-                    } else {
-                        val targetValue: BottomSheetValue = if (slideOver) {
-                            if (sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Expanded } != null) {
-                                BottomSheetValue.Expanded
-                            } else if (sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Shown } != null) {
-                                BottomSheetValue.Shown
-                            } else {
-                                BottomSheetValue.Hidden
-                            }
-                        } else {
-                            BottomSheetValue.Shown
+            if (scrimVisible) {
+                Scrim(
+                    color = scrimColor,
+                    onClose = {
+                        if (sheetState.confirmStateChange(BottomSheetValue.Hidden)) {
+                            scope.launch { sheetState.hide() }
                         }
-                        calculateFraction(
-                            sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Hidden }?.key!!,
-                            sheetState.anchors.entries.firstOrNull { it.value == targetValue }?.key!!,
-                            sheetState.offset.value
-                        )
-                    }
-                },
-                open = sheetState.isVisible,
-                onScrimClick = onDismiss,
-                preventDismissalOnScrimClick = preventDismissalOnScrimClick,
-                tag = BOTTOMSHEET_SCRIM_TAG
-            )
+                    },
+                    fraction = {
+                        if (sheetState.anchors.isEmpty() || (sheetHeightState.value != null && sheetHeightState.value == 0f)) {
+                            0.toFloat()
+                        } else {
+                            val targetValue: BottomSheetValue = if (slideOver) {
+                                if (sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Expanded } != null) {
+                                    BottomSheetValue.Expanded
+                                } else if (sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Shown } != null) {
+                                    BottomSheetValue.Shown
+                                } else {
+                                    BottomSheetValue.Hidden
+                                }
+                            } else {
+                                BottomSheetValue.Shown
+                            }
+                            calculateFraction(
+                                sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Hidden }?.key!!,
+                                sheetState.anchors.entries.firstOrNull { it.value == targetValue }?.key!!,
+                                sheetState.offset.value
+                            )
+                        }
+                    },
+                    open = sheetState.isVisible,
+                    onScrimClick = onDismiss,
+                    preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+                    tag = BOTTOMSHEET_SCRIM_TAG
+                )
+            }
         }
         val configuration = LocalConfiguration.current
 
@@ -444,46 +447,46 @@ fun BottomSheet(
                             },
                             tint = sheetHandleColor,
                             modifier = Modifier.clickable(
-                                    enabled = sheetState.hasExpandedState,
-                                    role = Role.Button,
-                                    onClickLabel = if (sheetState.currentValue == BottomSheetValue.Expanded) {
-                                        LocalContext.current.resources.getString(R.string.collapse)
-                                    } else {
-                                        if (sheetState.hasExpandedState && sheetState.isVisible) LocalContext.current.resources.getString(
-                                            R.string.expand
-                                        ) else null
-                                    }
-                                ) {
-                                    if (sheetState.currentValue == BottomSheetValue.Expanded) {
-                                        if (sheetState.confirmStateChange(BottomSheetValue.Shown)) {
-                                            scope.launch { sheetState.show() }
-                                            accessibilityManager?.let { manager ->
-                                                if (manager.isEnabled) {
-                                                    val event =
-                                                        AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT)
-                                                            .apply {
-                                                                text.add(collapsed)
-                                                            }
-                                                    manager.sendAccessibilityEvent(event)
-                                                }
-                                            }
-                                        }
-                                    } else if (sheetState.hasExpandedState) {
-                                        if (sheetState.confirmStateChange(BottomSheetValue.Expanded)) {
-                                            scope.launch { sheetState.expand() }
-                                            accessibilityManager?.let { manager ->
-                                                if (manager.isEnabled) {
-                                                    val event =
-                                                        AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT)
-                                                            .apply {
-                                                                text.add(expanded)
-                                                            }
-                                                    manager.sendAccessibilityEvent(event)
-                                                }
+                                enabled = sheetState.hasExpandedState,
+                                role = Role.Button,
+                                onClickLabel = if (sheetState.currentValue == BottomSheetValue.Expanded) {
+                                    LocalContext.current.resources.getString(R.string.collapse)
+                                } else {
+                                    if (sheetState.hasExpandedState && sheetState.isVisible) LocalContext.current.resources.getString(
+                                        R.string.expand
+                                    ) else null
+                                }
+                            ) {
+                                if (sheetState.currentValue == BottomSheetValue.Expanded) {
+                                    if (sheetState.confirmStateChange(BottomSheetValue.Shown)) {
+                                        scope.launch { sheetState.show() }
+                                        accessibilityManager?.let { manager ->
+                                            if (manager.isEnabled) {
+                                                val event =
+                                                    AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT)
+                                                        .apply {
+                                                            text.add(collapsed)
+                                                        }
+                                                manager.sendAccessibilityEvent(event)
                                             }
                                         }
                                     }
-                                })
+                                } else if (sheetState.hasExpandedState) {
+                                    if (sheetState.confirmStateChange(BottomSheetValue.Expanded)) {
+                                        scope.launch { sheetState.expand() }
+                                        accessibilityManager?.let { manager ->
+                                            if (manager.isEnabled) {
+                                                val event =
+                                                    AccessibilityEvent.obtain(AccessibilityEvent.TYPE_ANNOUNCEMENT)
+                                                        .apply {
+                                                            text.add(expanded)
+                                                        }
+                                                manager.sendAccessibilityEvent(event)
+                                            }
+                                        }
+                                    }
+                                }
+                            })
                     }
                 }
                 Column(modifier = Modifier
