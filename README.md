@@ -161,7 +161,8 @@ from what's shown here):
 implementation "com.microsoft.device:dualscreen-layout:1.0.0-alpha01"
 ```
 
-NOTE: Some modules already have the SDK dependency added for providing customizations for Surface Duo. Please add the maven url to repositories section in your gradle script to use these modules.
+NOTE: Some modules already have the SDK dependency added for providing customizations for Surface Duo.
+Please add the maven url to repositories section in your gradle script to use these modules.
 
 ### 2. Using Maven
 
