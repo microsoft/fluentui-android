@@ -52,6 +52,7 @@ class V2AvatarActivity : V2DemoActivity() {
             ) {
                 var isActive by rememberSaveable { mutableStateOf(true) }
                 var isOOO by rememberSaveable { mutableStateOf(false) }
+                var isActivityDotPresent by rememberSaveable { mutableStateOf(false) }
 
                 BasicText(
                     modifier = Modifier.padding(start = 16.dp),
@@ -127,13 +128,18 @@ class V2AvatarActivity : V2DemoActivity() {
                 ) {
                     Button(
                         onClick = { isActive = !isActive },
-                        text = "Toggle Activity",
-                        contentDescription = "Activity Indicator ${if (isActive) "enabled" else "disabled"}"
+                        text = "Toggle Activity Ring",
+                        contentDescription = "Activity Ring ${if (isActive) "enabled" else "disabled"}"
                     )
                     Button(
                         onClick = { isOOO = !isOOO },
                         text = "Toggle OOO",
                         contentDescription = "OOO status ${if (isOOO) "enabled" else "disabled"}"
+                    )
+                    Button(
+                        onClick = { isActivityDotPresent = !isActivityDotPresent },
+                        text = "Toggle Activity Dot",
+                        contentDescription = "Activity Dot ${if (isActivityDotPresent) "enabled" else "disabled"}"
                     )
                 }
 
@@ -158,29 +164,32 @@ class V2AvatarActivity : V2DemoActivity() {
                         status = AvatarStatus.Available, isOOO = isOOO
                     )
 
-                    Avatar(person, size = AvatarSize.Size16, enableActivityRings = true)
-                    Avatar(person, size = AvatarSize.Size20, enableActivityRings = true)
-                    Avatar(person, size = AvatarSize.Size24, enableActivityRings = true)
+                    Avatar(person, size = AvatarSize.Size16, enableActivityRings = true, enableActivityDot = isActivityDotPresent)
+                    Avatar(person, size = AvatarSize.Size20, enableActivityRings = true, enableActivityDot = isActivityDotPresent)
+                    Avatar(person, size = AvatarSize.Size24, enableActivityRings = true, enableActivityDot = isActivityDotPresent)
 
                     Avatar(
                         personNoImage,
                         size = AvatarSize.Size32,
                         enableActivityRings = true,
-                        avatarToken = AnonymousAvatarTokens()
+                        avatarToken = AnonymousAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
                     Avatar(
                         person,
                         size = AvatarSize.Size40,
                         enableActivityRings = true,
-                        avatarToken = AnonymousAvatarTokens()
+                        avatarToken = AnonymousAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
                     Avatar(
                         personNoImage,
                         size = AvatarSize.Size56,
                         enableActivityRings = true,
-                        avatarToken = AnonymousAvatarTokens()
+                        avatarToken = AnonymousAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
-                    Avatar(personNoImage, size = AvatarSize.Size72, enableActivityRings = true)
+                    Avatar(personNoImage, size = AvatarSize.Size72, enableActivityRings = true, enableActivityDot = isActivityDotPresent)
                 }
 
                 Row(
@@ -197,13 +206,13 @@ class V2AvatarActivity : V2DemoActivity() {
                         status = AvatarStatus.Away, isOOO = isOOO
                     )
 
-                    Avatar(person, size = AvatarSize.Size16, enableActivityRings = true)
-                    Avatar(person, size = AvatarSize.Size20, enableActivityRings = true)
-                    Avatar(person, size = AvatarSize.Size24, enableActivityRings = true)
-                    Avatar(person, size = AvatarSize.Size32, enableActivityRings = true)
-                    Avatar(person, size = AvatarSize.Size40, enableActivityRings = true)
-                    Avatar(person, size = AvatarSize.Size56, enableActivityRings = true)
-                    Avatar(person, size = AvatarSize.Size72, enableActivityRings = true)
+                    Avatar(person, size = AvatarSize.Size16, enableActivityRings = true, enableActivityDot = isActivityDotPresent)
+                    Avatar(person, size = AvatarSize.Size20, enableActivityRings = true, enableActivityDot = isActivityDotPresent)
+                    Avatar(person, size = AvatarSize.Size24, enableActivityRings = true, enableActivityDot = isActivityDotPresent)
+                    Avatar(person, size = AvatarSize.Size32, enableActivityRings = true, enableActivityDot = isActivityDotPresent)
+                    Avatar(person, size = AvatarSize.Size40, enableActivityRings = true, enableActivityDot = isActivityDotPresent)
+                    Avatar(person, size = AvatarSize.Size56, enableActivityRings = true, enableActivityDot = isActivityDotPresent)
+                    Avatar(person, size = AvatarSize.Size72, enableActivityRings = true, enableActivityDot = isActivityDotPresent)
                 }
 
                 Row(
@@ -223,43 +232,50 @@ class V2AvatarActivity : V2DemoActivity() {
                         person,
                         size = AvatarSize.Size16,
                         enableActivityRings = false,
-                        avatarToken = AnonymousAccentAvatarTokens()
+                        avatarToken = AnonymousAccentAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
                     Avatar(
                         person,
                         size = AvatarSize.Size20,
                         enableActivityRings = false,
-                        avatarToken = AnonymousAccentAvatarTokens()
+                        avatarToken = AnonymousAccentAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
                     Avatar(
                         person,
                         size = AvatarSize.Size24,
                         enableActivityRings = false,
-                        avatarToken = AnonymousAccentAvatarTokens()
+                        avatarToken = AnonymousAccentAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
                     Avatar(
                         person,
                         size = AvatarSize.Size32,
                         enableActivityRings = false,
-                        avatarToken = AnonymousAccentAvatarTokens()
+                        avatarToken = AnonymousAccentAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
                     Avatar(
                         person,
                         size = AvatarSize.Size40,
                         enableActivityRings = false,
-                        avatarToken = AnonymousAccentAvatarTokens()
+                        avatarToken = AnonymousAccentAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
                     Avatar(
                         person,
                         size = AvatarSize.Size56,
                         enableActivityRings = false,
-                        avatarToken = AnonymousAccentAvatarTokens()
+                        avatarToken = AnonymousAccentAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
                     Avatar(
                         person,
                         size = AvatarSize.Size72,
                         enableActivityRings = false,
-                        avatarToken = AnonymousAccentAvatarTokens()
+                        avatarToken = AnonymousAccentAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
                 }
 
@@ -282,28 +298,31 @@ class V2AvatarActivity : V2DemoActivity() {
                     )
 
 
-                    Avatar(person, size = AvatarSize.Size16, enableActivityRings = true)
-                    Avatar(person, size = AvatarSize.Size20, enableActivityRings = true)
-                    Avatar(person, size = AvatarSize.Size24, enableActivityRings = true)
-                    Avatar(person, size = AvatarSize.Size32, enableActivityRings = true)
+                    Avatar(person, size = AvatarSize.Size16, enableActivityRings = true, enableActivityDot = isActivityDotPresent)
+                    Avatar(person, size = AvatarSize.Size20, enableActivityRings = true, enableActivityDot = isActivityDotPresent)
+                    Avatar(person, size = AvatarSize.Size24, enableActivityRings = true, enableActivityDot = isActivityDotPresent)
+                    Avatar(person, size = AvatarSize.Size32, enableActivityRings = true, enableActivityDot = isActivityDotPresent)
 
                     Avatar(
                         personNoInitial,
                         size = AvatarSize.Size40,
                         enableActivityRings = true,
-                        avatarToken = StandardInvertedAvatarTokens()
+                        avatarToken = StandardInvertedAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
                     Avatar(
                         personNoInitial,
                         size = AvatarSize.Size56,
                         enableActivityRings = true,
-                        avatarToken = StandardInvertedAvatarTokens()
+                        avatarToken = StandardInvertedAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
                     Avatar(
                         personNoInitial,
                         size = AvatarSize.Size72,
                         enableActivityRings = true,
-                        avatarToken = StandardInvertedAvatarTokens()
+                        avatarToken = StandardInvertedAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
                 }
 
@@ -328,44 +347,51 @@ class V2AvatarActivity : V2DemoActivity() {
                         person,
                         size = AvatarSize.Size16,
                         enableActivityRings = false,
-                        avatarToken = StandardInvertedAvatarTokens()
+                        avatarToken = StandardInvertedAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
                     Avatar(
                         person,
                         size = AvatarSize.Size20,
                         enableActivityRings = true,
-                        avatarToken = StandardInvertedAvatarTokens()
+                        avatarToken = StandardInvertedAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
                     Avatar(
                         person,
                         size = AvatarSize.Size24,
                         enableActivityRings = true,
-                        avatarToken = StandardInvertedAvatarTokens()
+                        avatarToken = StandardInvertedAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
                     Avatar(
                         person,
                         size = AvatarSize.Size32,
                         enableActivityRings = true,
-                        avatarToken = StandardInvertedAvatarTokens()
+                        avatarToken = StandardInvertedAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
 
                     Avatar(
                         personNoName,
                         size = AvatarSize.Size40,
                         enableActivityRings = false,
-                        avatarToken = AnonymousAvatarTokens()
+                        avatarToken = AnonymousAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
                     Avatar(
                         personNoName,
                         size = AvatarSize.Size56,
                         enableActivityRings = true,
-                        avatarToken = AnonymousAvatarTokens()
+                        avatarToken = AnonymousAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
                     Avatar(
                         personNoName,
                         size = AvatarSize.Size72,
                         enableActivityRings = true,
-                        avatarToken = AnonymousAvatarTokens()
+                        avatarToken = AnonymousAvatarTokens(),
+                        enableActivityDot = isActivityDotPresent
                     )
                 }
 

@@ -128,6 +128,7 @@ import com.microsoft.fluentui.icons.avataricons.presence.unknown.medium.Dark
 import com.microsoft.fluentui.icons.avataricons.presence.unknown.medium.Light
 import com.microsoft.fluentui.icons.avataricons.presence.unknown.small.Dark
 import com.microsoft.fluentui.icons.avataricons.presence.unknown.small.Light
+import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.*
@@ -598,6 +599,51 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
                 )
             }
         }
+    }
+
+    @Composable
+    open fun unreadDotBorderStroke(avatarInfo: AvatarInfo): BorderStroke {
+        return BorderStroke(
+            FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20.value,
+            aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
+                themeMode = themeMode
+            )
+        )
+    }
+
+    @Composable
+    open fun unreadDotBackgroundBrush(avatarInfo: AvatarInfo): Brush {
+        return SolidColor(
+            aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                themeMode = themeMode
+            )
+        )
+    }
+
+    @Composable
+    open fun unreadDotSize(avatarInfo: AvatarInfo): Dp {
+        return when (avatarInfo.size) {
+            AvatarSize.Size16 -> 8.dp
+            AvatarSize.Size20 -> 8.dp
+            AvatarSize.Size24 -> 8.dp
+            AvatarSize.Size32 -> 10.dp
+            AvatarSize.Size40 -> 12.dp
+            AvatarSize.Size56 -> 14.dp
+            AvatarSize.Size72 -> 16.dp
+        }
+    }
+
+    @Composable
+    open fun unreadDotOffset(avatarInfo: AvatarInfo): DpOffset {
+       return when(avatarInfo.size) {
+              AvatarSize.Size16 -> DpOffset(4.dp, (0).dp)
+              AvatarSize.Size20 -> DpOffset(4.dp, (-2).dp)
+              AvatarSize.Size24 -> DpOffset(4.dp, (-3).dp)
+              AvatarSize.Size32 -> DpOffset(4.dp, (-3).dp)
+              AvatarSize.Size40 -> DpOffset(4.dp, (-3).dp)
+              AvatarSize.Size56 -> DpOffset(4.dp, (-4).dp)
+              AvatarSize.Size72 -> DpOffset(4.dp, (-5).dp)
+       }
     }
 
     @Composable
