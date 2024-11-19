@@ -5,6 +5,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
@@ -693,6 +694,12 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
             AvatarSize.Size72 -> activityRingToken.inactiveBorderStroke(ActivityRingSize.Size72)
         }
     }
+
+    @Composable
+    open fun cutoutColorFilter(avatarInfo: AvatarInfo): ColorFilter? {
+        return null
+    }
+
 
     @Composable
     open fun cutoutCornerRadius(avatarInfo: AvatarInfo): Dp {
