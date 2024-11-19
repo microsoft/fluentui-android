@@ -1,25 +1,10 @@
-Release Version 0.3.2:
-
+Release Version 0.3.3:
 What's new
-Fluent v1:
-Fix/enhancement
-	1. People picker a11y fixes in demo app
 
 Fluent v2:
 Fix/enhancement
 
-    	1. Avatar pie component addition to Avatar group
-      	2. Added Support for Center aligned App bar title with leading left Avatar icon button
-      	3. Fixed Top Drawer ANR issue
-      	4. Fixed issue with Bottom drawer not opening consistently
-      	5. Alignment issue in list content builder fixed
-      	6. Fixed issue with Bottom Drawer shifting upwards and going out of screen with IME open
-      	7. Added ability to modify indicator color in tab item.
-      	8. Added ability to use gradients for tab bar icons
-      	9. Scrim functionality fixes & other enhancements for bottom sheet
-      	10. Added ability to perform action after dismiss and prevent dismissal on scrim click for bottom sheet
-      	11. Grouped list item added
-        12. Radio group buttons added
-
+	1. Fixed Background Content Not Being Interactable even with scrim not visible in V2 BottomSheet
+	2. Updated Default behaviour of Scrim to be not visible in V2 BottomSheet 
 
 Note: Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00). Fluent version 0.3.x will support compose foundation version 1.6.0.
