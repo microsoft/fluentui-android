@@ -172,7 +172,8 @@ fun Avatar(
                                 )
                                 .padding(4.dp)
                                 .size(cutoutIconSize),
-                            contentDescription = cutoutContentDescription
+                            contentDescription = cutoutContentDescription,
+                            colorFilter = token.cutoutColorFilter(avatarInfo = avatarInfo)
                         )
                     } else if (cutoutIconImageVector != null) {
                         Image(
@@ -185,7 +186,8 @@ fun Avatar(
                                 )
                                 .padding(4.dp)
                                 .size(cutoutIconSize),
-                            contentDescription = cutoutContentDescription
+                            contentDescription = cutoutContentDescription,
+                            colorFilter = token.cutoutColorFilter(avatarInfo = avatarInfo)
                         )
                     }
                 }
