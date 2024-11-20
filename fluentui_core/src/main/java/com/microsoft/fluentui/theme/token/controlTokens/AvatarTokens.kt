@@ -699,8 +699,7 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
     open fun cutoutColorFilter(avatarInfo: AvatarInfo): ColorFilter? {
         return null
     }
-
-
+    
     @Composable
     open fun cutoutCornerRadius(avatarInfo: AvatarInfo): Dp {
         return when (avatarInfo.cutoutStyle) {
