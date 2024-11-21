@@ -94,7 +94,7 @@ extends:
             targetPath: $(build.sourcesdirectory)/build/_manifest
           - output: pipelineArtifact
             displayName: 'Publish artifacts to pipeline'
-            targetPath: "$(build.sourcesdirectory)/build"
+            targetPath: "$(build.sourcesdirectory)/build/artifacts/com/microsoft/fluentui"
             artifactName: "Build"
             publishLocation: "pipeline"
           - output: pipelineArtifact
