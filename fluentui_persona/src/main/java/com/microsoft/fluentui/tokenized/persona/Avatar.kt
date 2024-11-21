@@ -48,6 +48,7 @@ const val AVATAR_ICON = "Fluent Avatar Icon"
  * @param size Set Size of Avatar. Default: [AvatarSize.Size32]
  * @param enableActivityRings Enable/Disable Activity Rings on Avatar
  * @param enablePresence Enable/Disable Presence Indicator on Avatar, if cutout is provided then presence indicator is not displayed
+ * @param enableActivityDot Enable/Disable Activity Dot on Avatar.
  * @param cutoutIconDrawable cutout drawable
  * @param cutoutIconImageVector cutout image vector
  * @param cutoutStyle shape of the cutout. Default: [CutoutStyle.Circle]
@@ -389,6 +390,7 @@ fun Avatar(
  * @param size Set Size of Avatar. Default: [AvatarSize. Medium]
  * @param enableActivityRings Enable/Disable Activity Rings on Avatar
  * @param avatarToken Token to provide appearance values to Avatar
+ * @param enableActivityDot Enable/Disable Activity Dot on Avatar.
  */
 @Composable
 fun Avatar(
