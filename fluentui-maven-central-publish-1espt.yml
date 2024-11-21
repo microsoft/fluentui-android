@@ -46,7 +46,7 @@ extends:
             targetType: "inline"
             script: |
               # Write your commands here
-              tree
+              ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
         - task: Gradle@3
           inputs:
             gradleWrapperFile: "gradlew"
@@ -99,7 +99,7 @@ extends:
             targetType: "inline"
             script: |
               # Write your commands here
-              tree
+              ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
         templateContext:
           outputs:
           - output: pipelineArtifact
