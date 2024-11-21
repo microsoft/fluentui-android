@@ -227,7 +227,7 @@ fun TabItem(
                     totalWidth,
                     totalHeight
                 ) {
-
+                    
                     anchorPlaceable.placeRelative(0, 0)
                     val badgeX = anchorPlaceable.width + badgeHorizontalOffset
                     val badgeY = badgeVerticalOffset.roundToPx()
@@ -268,14 +268,7 @@ fun TabItem(
                     text = title,
                     style = textStyle,
                     maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    onTextLayout = { textLayoutResult ->
-                        if (textLayoutResult.didOverflowHeight) {
-                            textStyle.fontSize
-                            fontSize.value *= 0.9
-                            textStyle = textStyle.copy(fontSize = fontSize.value)
-                        }
-                    }
+                    overflow = TextOverflow.Ellipsis
                 )
             }
             if(showIndicator){
