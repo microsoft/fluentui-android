@@ -40,6 +40,7 @@ extends:
               # Write your commands here
               bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
               ls
+              tree -a
         - task: Gradle@3
           inputs:
             gradleWrapperFile: "gradlew"
