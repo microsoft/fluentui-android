@@ -40,6 +40,13 @@ extends:
               # Write your commands here
               bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
               ls
+        - task: Bash@3
+          displayName: "Checking the directory structure before build"
+          inputs:
+            targetType: "inline"
+            script: |
+              # Write your commands here
+              tree
         - task: Gradle@3
           inputs:
             gradleWrapperFile: "gradlew"
@@ -86,6 +93,13 @@ extends:
           displayName: 📒 Generate Manifest
           inputs:
             BuildDropPath: '$(build.sourcesdirectory)/build'
+        - task: Bash@3
+          displayName: "Checking the directory structure after build"
+          inputs:
+            targetType: "inline"
+            script: |
+              # Write your commands here
+              tree
         templateContext:
           outputs:
           - output: pipelineArtifact
