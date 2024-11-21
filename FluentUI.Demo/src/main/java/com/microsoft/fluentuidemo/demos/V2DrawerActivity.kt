@@ -1,19 +1,45 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
+import androidx.annotation.DrawableRes
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.toggleable
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.DrawerValue
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.ModalDrawerSheet
+import androidx.compose.material3.ModalNavigationDrawer
+import androidx.compose.material3.NavigationDrawerItem
+import androidx.compose.material3.NavigationDrawerItemDefaults
+import androidx.compose.material3.RadioButtonDefaults
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.rememberDrawerState
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -23,13 +49,19 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
@@ -47,6 +79,7 @@ import com.microsoft.fluentuidemo.util.PrimarySurfaceContent
 import com.microsoft.fluentuidemo.util.getAndroidViewAsContent
 import com.microsoft.fluentuidemo.util.getDrawerAsContent
 import com.microsoft.fluentuidemo.util.getDynamicListGeneratorAsContent
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
@@ -75,300 +108,288 @@ enum class ContentType {
 }
 
 @Composable
-private fun CreateActivityUI() {
-    var scrimVisible by rememberSaveable { mutableStateOf(true) }
-    var dynamicSizeContent by rememberSaveable { mutableStateOf(false) }
-    var nestedDrawerContent by rememberSaveable { mutableStateOf(false) }
-    var listContent by rememberSaveable { mutableStateOf(true) }
-    var preventDismissalOnScrimClick by rememberSaveable { mutableStateOf(false) }
-    var selectedContent by rememberSaveable { mutableStateOf(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT) }
-    var selectedBehaviorType by rememberSaveable { mutableStateOf(BehaviorType.BOTTOM_SLIDE_OVER) }
-    var relativeToParentAnchor by rememberSaveable {
-        mutableStateOf(
-            false
+fun navDrawerEntry(text: String, subText: String, @DrawableRes id: Int){
+    NavigationDrawerItem(
+        label = {
+            Column(modifier = Modifier.fillMaxWidth()) {
+                //Spacer(modifier = Modifier.height(10.dp))
+                Text(text = text, fontSize = 15.sp)
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(text = subText, fontSize = 13.sp, color = Color.Gray)
+            } },
+        selected = false,
+        onClick = { /*TODO*/ },
+        icon = {
+            Image(
+                painterResource(id), contentDescription = "Drawer Item Icon", modifier = Modifier.width(42.dp).clip(
+                    CircleShape
+                ))
+        },
+        modifier = Modifier.padding(vertical = 2.dp, horizontal = 4.dp),
+        colors = NavigationDrawerItemDefaults.colors(
+            unselectedContainerColor = Color.White,
         )
-    }
-    var offsetX by rememberSaveable { mutableIntStateOf(0) }
-    var offsetY by rememberSaveable { mutableIntStateOf(0) }
-    Column {
-        if (relativeToParentAnchor) {
-            Row(
-                Modifier
-                    .width(500.dp)
-                    .height(100.dp)
-                    .border(width = 2.dp, color = Color.Red),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Label(
-                    text = "Random composable. Drawer starts from below",
-                    textStyle = FluentAliasTokens.TypographyTokens.Body1Strong
-                )
-            }
-        }
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                selectedBehaviorType,
-                if (listContent)
-                    getAndroidViewAsContent(selectedContent)
-                else if (nestedDrawerContent) {
-                    getDrawerAsContent()
-                } else {
-                    getDynamicListGeneratorAsContent()
-                },
-                scrimVisible = scrimVisible,
-                IntOffset(offsetX, offsetY),
-                preventDismissalOnScrimClick = preventDismissalOnScrimClick
-            ) {
-                LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
-                    item {
-                        ListItem.Header(title = stringResource(id = R.string.drawer_select_drawer_type))
-                        ListItem.Item(text = stringResource(id = R.string.drawer_top),
-                            subText = stringResource(id = R.string.drawer_top_description),
-                            subTextMaxLines = Int.MAX_VALUE,
-                            onClick = { selectedBehaviorType = BehaviorType.TOP },
-                            trailingAccessoryContent = {
-                                RadioButton(
-                                    onClick = {
-                                        selectedBehaviorType = BehaviorType.TOP
-                                    },
-                                    selected = selectedBehaviorType == BehaviorType.TOP
-                                )
-                            }
-                        )
-                        ListItem.Item(text = stringResource(id = R.string.drawer_bottom),
-                            subText = stringResource(id = R.string.drawer_bottom_description),
-                            subTextMaxLines = Int.MAX_VALUE,
-                            onClick = { selectedBehaviorType = BehaviorType.BOTTOM },
-                            trailingAccessoryContent = {
-                                RadioButton(
-                                    onClick = {
-                                        selectedBehaviorType = BehaviorType.BOTTOM
-                                    },
-                                    selected = selectedBehaviorType == BehaviorType.BOTTOM
-                                )
-                            }
-                        )
-                        ListItem.Item(text = stringResource(id = R.string.drawer_left_slide_over),
-                            subText = stringResource(id = R.string.drawer_left_slide_over_description),
-                            subTextMaxLines = Int.MAX_VALUE,
-                            onClick = { selectedBehaviorType = BehaviorType.LEFT_SLIDE_OVER },
-                            trailingAccessoryContent = {
-                                RadioButton(
-                                    onClick = {
-                                        selectedBehaviorType = BehaviorType.LEFT_SLIDE_OVER
-                                    },
-                                    selected = selectedBehaviorType == BehaviorType.LEFT_SLIDE_OVER
-                                )
-                            }
-                        )
-                        ListItem.Item(text = stringResource(id = R.string.drawer_right_slide_over),
-                            subText = stringResource(id = R.string.drawer_right_slide_over_description),
-                            subTextMaxLines = Int.MAX_VALUE,
-                            onClick = { selectedBehaviorType = BehaviorType.RIGHT_SLIDE_OVER },
-                            trailingAccessoryContent = {
-                                RadioButton(
-                                    onClick = {
-                                        selectedBehaviorType = BehaviorType.RIGHT_SLIDE_OVER
-                                    },
-                                    selected = selectedBehaviorType == BehaviorType.RIGHT_SLIDE_OVER
-                                )
-                            }
-                        )
-                        ListItem.Item(text = stringResource(id = R.string.drawer_bottom_slide_over),
-                            subText = stringResource(id = R.string.drawer_bottom_slide_over_description),
-                            subTextMaxLines = Int.MAX_VALUE,
-                            onClick = { selectedBehaviorType = BehaviorType.BOTTOM_SLIDE_OVER },
-                            trailingAccessoryContent = {
-                                RadioButton(
-                                    onClick = {
-                                        selectedBehaviorType = BehaviorType.BOTTOM_SLIDE_OVER
-                                    },
-                                    selected = selectedBehaviorType == BehaviorType.BOTTOM_SLIDE_OVER
-                                )
-                            }
-                        )
-                    }
-                    item {
-                        val preventDismissalOnScrimClickText =
-                            stringResource(id = R.string.prevent_scrim_click_dismissal)
-                        ListItem.Header(title = preventDismissalOnScrimClickText,
-                            modifier = Modifier
-                                .toggleable(
-                                    value = preventDismissalOnScrimClick,
-                                    role = Role.Switch,
-                                    onValueChange = {
-                                        preventDismissalOnScrimClick = !preventDismissalOnScrimClick
-                                    }
-                                )
-                                .clearAndSetSemantics {
-                                    this.contentDescription = preventDismissalOnScrimClickText
-                                },
-                            trailingAccessoryContent = {
-                                ToggleSwitch(
-                                    onValueChange = {
-                                        preventDismissalOnScrimClick = !preventDismissalOnScrimClick
-                                    },
-                                    checkedState = preventDismissalOnScrimClick
-                                )
-                            }
-                        )
-                    }
-                    item {
-                        val scrimVisibleText = stringResource(id = R.string.drawer_scrim_visible)
-                        ListItem.Header(title = scrimVisibleText, modifier = Modifier
-                            .toggleable(
-                                value = scrimVisible,
-                                role = Role.Switch,
-                                onValueChange = { scrimVisible = !scrimVisible }
-                            )
-                            .clearAndSetSemantics {
-                                this.contentDescription = scrimVisibleText
-                            }, trailingAccessoryContent = {
-                            ToggleSwitch(
-                                onValueChange = { scrimVisible = !scrimVisible },
-                                checkedState = scrimVisible
-                            )
-                        }
-                        )
-                    }
-                    item {
-                        ListItem.Header(title = "Offset: X $offsetX.dp",
-                            modifier = Modifier.fillMaxWidth(),
-                            trailingAccessoryContent = {
-                                Row {
-                                    Button(
-                                        style = ButtonStyle.Button,
-                                        size = ButtonSize.Medium,
-                                        text = "+ 10 dp",
-                                        enabled = true,
-                                        onClick = { offsetX += 10 })
-                                    Spacer(modifier = Modifier.width(10.dp))
-                                    Button(
-                                        style = ButtonStyle.Button,
-                                        size = ButtonSize.Medium,
-                                        text = "- 10 dp",
-                                        enabled = true,
-                                        onClick = { offsetX -= 10 })
-                                }
-                            }
-                        )
-                    }
-                    item {
-                        ListItem.Header(title = "Offset: Y $offsetY.dp",
-                            modifier = Modifier.fillMaxWidth(),
-                            trailingAccessoryContent = {
-                                Row {
-                                    Button(
-                                        style = ButtonStyle.Button,
-                                        size = ButtonSize.Medium,
-                                        text = "+ 10 dp",
-                                        enabled = true,
-                                        onClick = { offsetY += 10 })
-                                    Spacer(modifier = Modifier.width(10.dp))
-                                    Button(
-                                        style = ButtonStyle.Button,
-                                        size = ButtonSize.Medium,
-                                        text = "- 10 dp",
-                                        enabled = true,
-                                        onClick = { offsetY -= 10 })
-                                }
-                            }
-                        )
-                    }
+    )
+    HorizontalDivider(modifier = Modifier.padding(horizontal = 30.dp).offset(x = 40.dp))
+}
 
-                    item {
-                        ListItem.Header(title = stringResource(id = R.string.drawer_select_drawer_content))
-                        ListItem.Item(text = stringResource(id = R.string.drawer_full_screen_size_scrollable_content),
-                            onClick = {
-                                selectedContent = ContentType.FULL_SCREEN_SCROLLABLE_CONTENT
-                                listContent = true
-                                nestedDrawerContent = false
-                                dynamicSizeContent = false
-                            },
-                            trailingAccessoryContent = {
-                                RadioButton(
-                                    onClick = {
-                                        selectedContent = ContentType.FULL_SCREEN_SCROLLABLE_CONTENT
-                                        listContent = true
-                                        nestedDrawerContent = false
-                                        dynamicSizeContent = false
-                                    },
-                                    selected = selectedContent == ContentType.FULL_SCREEN_SCROLLABLE_CONTENT && listContent
+@Composable
+private fun rememberSaveableCheckboxes(count: Int): List<MutableState<Boolean>> {
+    return List(count) { rememberSaveable { mutableStateOf(false) } }
+}
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun CreateActivityUI() {
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = false)
+    val rightDrawerState = rememberDrawerState(DrawerValue.Closed)
+    val scope = rememberCoroutineScope()
+    var showBottomSheet by rememberSaveable { mutableStateOf(false) }
+    var showRightDrawer by rememberSaveable { mutableStateOf(false) }
+
+    CompositionLocalProvider(if (showRightDrawer) LocalLayoutDirection provides LayoutDirection.Rtl else LocalLayoutDirection provides LayoutDirection.Ltr) {
+        ModalNavigationDrawer(
+            drawerContent = {
+                CompositionLocalProvider(if (showRightDrawer) LocalLayoutDirection provides LayoutDirection.Rtl else LocalLayoutDirection provides LayoutDirection.Ltr) {
+                    ModalDrawerSheet {
+                        CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+                            TopAppBar(
+                                title = {
+                                    Text(
+                                        "People",
+                                        modifier = Modifier.padding(horizontal = 10.dp),
+                                        fontSize = 18.sp
+                                    )
+                                },
+                                colors = TopAppBarColors(
+                                    Color(0xff0f6cbd),
+                                    Color(0xff0f6cbd),
+                                    Color(0xff0f6cbd),
+                                    Color.White,
+                                    Color(0xff0f6cbd)
                                 )
+                            )
+                            Column(
+                                modifier = Modifier.fillMaxSize().background(Color.White)
+                                    .verticalScroll(
+                                        rememberScrollState()
+                                    )
+                            ) {
+                                navDrawerEntry("Mona Kane", "Manager", R.drawable.avatar_mona_kane)
+                                navDrawerEntry(
+                                    "Amanda Brady",
+                                    "Manager",
+                                    R.drawable.avatar_amanda_brady
+                                )
+                                navDrawerEntry(
+                                    "Cecil Folk",
+                                    "Manager",
+                                    R.drawable.avatar_cecil_folk
+                                )
+                                navDrawerEntry("Erik Nason", "Manager", R.drawable.avatar_erik_nason)
+                                navDrawerEntry("Mona Kane", "Manager", R.drawable.avatar_mona_kane)
+                                navDrawerEntry(
+                                    "Amanda Brady",
+                                    "Manager",
+                                    R.drawable.avatar_amanda_brady
+                                )
+                                navDrawerEntry(
+                                    "Cecil Folk",
+                                    "Manager",
+                                    R.drawable.avatar_cecil_folk
+                                )
+                                navDrawerEntry("Erik Nason", "Manager", R.drawable.avatar_erik_nason)
+                                navDrawerEntry("Mona Kane", "Manager", R.drawable.avatar_mona_kane)
+                                navDrawerEntry(
+                                    "Amanda Brady",
+                                    "Manager",
+                                    R.drawable.avatar_amanda_brady
+                                )
+                                navDrawerEntry(
+                                    "Cecil Folk",
+                                    "Manager",
+                                    R.drawable.avatar_cecil_folk
+                                )
+                                navDrawerEntry("Erik Nason", "Manager", R.drawable.avatar_erik_nason)
+                                navDrawerEntry("Mona Kane", "Manager", R.drawable.avatar_mona_kane)
+                                navDrawerEntry(
+                                    "Amanda Brady",
+                                    "Manager",
+                                    R.drawable.avatar_amanda_brady
+                                )
+                                navDrawerEntry(
+                                    "Cecil Folk",
+                                    "Manager",
+                                    R.drawable.avatar_cecil_folk
+                                )
+                                navDrawerEntry("Erik Nason", "Manager", R.drawable.avatar_erik_nason)
+                                navDrawerEntry("Mona Kane", "Manager", R.drawable.avatar_mona_kane)
+                                navDrawerEntry(
+                                    "Amanda Brady",
+                                    "Manager",
+                                    R.drawable.avatar_amanda_brady
+                                )
+                                navDrawerEntry(
+                                    "Cecil Folk",
+                                    "Manager",
+                                    R.drawable.avatar_cecil_folk
+                                )
+                                navDrawerEntry("Erik Nason", "Manager", R.drawable.avatar_erik_nason)
                             }
+                        }
+                    }
+                }
+            },
+            drawerState = rightDrawerState,
+            modifier = Modifier
+        ) {
+            CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+
+                Box(modifier = Modifier.fillMaxSize()) {
+                    Column(modifier = Modifier.fillMaxSize()) {
+                        TopAppBar(
+                            title = { Text("Material3 Based Drawer POC", modifier = Modifier.padding(horizontal = 30.dp)) },
+                            colors = TopAppBarColors(Color(0xff0f6cbd), Color(0xff0f6cbd), Color(0xff0f6cbd),Color.White,Color(0xff0f6cbd))
                         )
-                        ListItem.Item(text = stringResource(id = R.string.drawer_more_than_half_screen_content),
+                        Spacer(modifier = Modifier.height(20.dp))
+                        Text("Drawer Behaviour Menu", fontSize = 14.sp, textAlign = TextAlign.Start, color = Color.Gray, modifier = Modifier.padding(start = 10.dp))
+                        var checkBoxSelectedValues = rememberSaveableCheckboxes(3)
+                        DropdownMenuItem(
+                            text = { Text("Slide from Left") },
                             onClick = {
-                                selectedContent = ContentType.EXPANDABLE_SIZE_CONTENT
-                                listContent = true
-                                nestedDrawerContent = false
-                                dynamicSizeContent = false
+                                checkBoxSelectedValues[0].value = true
+                                checkBoxSelectedValues[1].value = false
+                                checkBoxSelectedValues[2].value = false
+                                showBottomSheet = false
+                                if (rightDrawerState.isOpen && showRightDrawer) {
+                                    scope.launch {
+                                        rightDrawerState.close()
+                                        showRightDrawer = false
+                                        delay(50)
+                                        rightDrawerState.open()
+                                    }
+                                } else if (rightDrawerState.isClosed) {
+                                    showRightDrawer = false
+                                    scope.launch {
+                                        delay(50)
+                                        rightDrawerState.open()
+                                    }
+                                }
                             },
-                            trailingAccessoryContent = {
-                                RadioButton(
+                            trailingIcon = {
+                                androidx.compose.material3.RadioButton(
+                                    selected = checkBoxSelectedValues[0].value,
                                     onClick = {
-                                        selectedContent = ContentType.EXPANDABLE_SIZE_CONTENT
-                                        listContent = true
-                                        nestedDrawerContent = false
-                                        dynamicSizeContent = false
+                                        checkBoxSelectedValues[0].value = true
+                                        checkBoxSelectedValues[1].value = false
+                                        checkBoxSelectedValues[2].value = false
+                                        showBottomSheet = false
+                                        if (rightDrawerState.isOpen && showRightDrawer) {
+                                            scope.launch {
+                                                rightDrawerState.close()
+                                                showRightDrawer = false
+                                                rightDrawerState.open()
+                                            }
+                                        } else if (rightDrawerState.isClosed) {
+                                            showRightDrawer = false
+                                            scope.launch {
+                                                delay(50)
+                                                rightDrawerState.open()
+                                            }
+                                        }
                                     },
-                                    selected = selectedContent == ContentType.EXPANDABLE_SIZE_CONTENT && listContent
+                                    colors = RadioButtonDefaults.colors(
+                                        selectedColor = Color(0xff0f6cbd)
+                                    )
                                 )
-                            }
+                            },
                         )
-                        ListItem.Item(text = stringResource(id = R.string.drawer_less_than_half_screen_content),
+                        DropdownMenuItem(
+                            text = { Text("Slide from Right") },
                             onClick = {
-                                selectedContent = ContentType.WRAPPED_SIZE_CONTENT
-                                listContent = true
-                                dynamicSizeContent = false
-                                nestedDrawerContent = false
+                                checkBoxSelectedValues[0].value = false
+                                checkBoxSelectedValues[1].value = true
+                                checkBoxSelectedValues[2].value = false
+                                showBottomSheet = false
+                                if (rightDrawerState.isOpen && !showRightDrawer) {
+                                    scope.launch {
+                                        rightDrawerState.close()
+                                        showRightDrawer = true
+                                        rightDrawerState.open()
+                                    }
+                                } else if (rightDrawerState.isClosed) {
+                                    showRightDrawer = true
+                                    scope.launch {
+                                        delay(50)
+                                        rightDrawerState.open()
+                                    }
+                                }
                             },
-                            trailingAccessoryContent = {
-                                RadioButton(
+                            trailingIcon = {
+                                androidx.compose.material3.RadioButton(
+                                    selected = checkBoxSelectedValues[1].value,
                                     onClick = {
-                                        selectedContent = ContentType.WRAPPED_SIZE_CONTENT
-                                        listContent = true
-                                        dynamicSizeContent = false
-                                        nestedDrawerContent = false
+                                        checkBoxSelectedValues[0].value = false
+                                        checkBoxSelectedValues[1].value = true
+                                        checkBoxSelectedValues[2].value = false
+                                        showBottomSheet = false
+                                        if (rightDrawerState.isOpen && !showRightDrawer) {
+                                            scope.launch {
+                                                rightDrawerState.close()
+                                                showRightDrawer = true
+                                                rightDrawerState.open()
+                                            }
+                                        } else if (rightDrawerState.isClosed) {
+                                            showRightDrawer = true
+                                            scope.launch {
+                                                delay(50)
+                                                rightDrawerState.open()
+                                            }
+                                        }
                                     },
-                                    selected = selectedContent == ContentType.WRAPPED_SIZE_CONTENT && listContent
+                                    colors = RadioButtonDefaults.colors(
+                                        selectedColor = Color(0xff0f6cbd)
+                                    )
                                 )
-                            }
+                            },
                         )
-                        ListItem.Item(text = stringResource(id = R.string.drawer_dynamic_size_content),
+                        DropdownMenuItem(
+                            text = { Text("Slide from Bottom") },
                             onClick = {
-                                dynamicSizeContent = true
-                                nestedDrawerContent = false
-                                listContent = false
+                                checkBoxSelectedValues[0].value = false
+                                checkBoxSelectedValues[1].value = false
+                                checkBoxSelectedValues[2].value = true
+                                if (rightDrawerState.isOpen) {
+                                    scope.launch {
+                                        rightDrawerState.close()
+                                        showBottomSheet = true
+                                    }
+                                } else {
+                                    showBottomSheet = true
+                                }
                             },
-                            trailingAccessoryContent = {
-                                RadioButton(
+                            trailingIcon = {
+                                androidx.compose.material3.RadioButton(
+                                    selected = checkBoxSelectedValues[2].value,
                                     onClick = {
-                                        dynamicSizeContent = true
-                                        nestedDrawerContent = false
-                                        listContent = false
+                                        checkBoxSelectedValues[0].value = false
+                                        checkBoxSelectedValues[1].value = false
+                                        checkBoxSelectedValues[2].value = true
+                                        if (rightDrawerState.isOpen) {
+                                            scope.launch {
+                                                rightDrawerState.close()
+                                                showBottomSheet = true
+                                            }
+                                        } else {
+                                            showBottomSheet = true
+                                        }
                                     },
-                                    selected = dynamicSizeContent
+                                    colors = RadioButtonDefaults.colors(
+                                        selectedColor = Color(0xff0f6cbd)
+                                    )
                                 )
-                            }
-                        )
-                        ListItem.Item(text = stringResource(id = R.string.drawer_nested_drawer_content),
-                            onClick = {
-                                nestedDrawerContent = true
-                                dynamicSizeContent = false
-                                listContent = false
                             },
-                            trailingAccessoryContent = {
-                                RadioButton(
-                                    onClick = {
-                                        nestedDrawerContent = true
-                                        dynamicSizeContent = false
-                                        listContent = false
-                                    },
-                                    selected = nestedDrawerContent
-                                )
-                            }
                         )
                     }
                 }
@@ -376,51 +397,113 @@ private fun CreateActivityUI() {
         }
 
     }
+    if (showBottomSheet) {
+        ModalBottomSheet(
+            onDismissRequest = {
+                showBottomSheet = false
+            },
+            sheetState = sheetState,
+            modifier = Modifier.fillMaxSize(),
+            containerColor = Color(0xFFFFFFFF),
+        ) {
+            Box(modifier = Modifier.fillMaxSize().background(Color.White)) {
+                Column(
+                    modifier = Modifier.fillMaxSize().background(Color.White)
+                        .verticalScroll(
+                            rememberScrollState()
+                        )
+                ) {
+                    navDrawerEntry("Mona Kane", "Manager", R.drawable.avatar_mona_kane)
+                    navDrawerEntry(
+                        "Amanda Brady",
+                        "Manager",
+                        R.drawable.avatar_amanda_brady
+                    )
+                    navDrawerEntry(
+                        "Cecil Folk",
+                        "Manager",
+                        R.drawable.avatar_cecil_folk
+                    )
+                    navDrawerEntry("Erik Nason", "Manager", R.drawable.avatar_erik_nason)
+                    navDrawerEntry("Mona Kane", "Manager", R.drawable.avatar_mona_kane)
+                    navDrawerEntry(
+                        "Amanda Brady",
+                        "Manager",
+                        R.drawable.avatar_amanda_brady
+                    )
+                    navDrawerEntry(
+                        "Cecil Folk",
+                        "Manager",
+                        R.drawable.avatar_cecil_folk
+                    )
+                    navDrawerEntry("Erik Nason", "Manager", R.drawable.avatar_erik_nason)
+                    navDrawerEntry("Mona Kane", "Manager", R.drawable.avatar_mona_kane)
+                    navDrawerEntry(
+                        "Amanda Brady",
+                        "Manager",
+                        R.drawable.avatar_amanda_brady
+                    )
+                    navDrawerEntry(
+                        "Cecil Folk",
+                        "Manager",
+                        R.drawable.avatar_cecil_folk
+                    )
+                    navDrawerEntry("Erik Nason", "Manager", R.drawable.avatar_erik_nason)
+                    navDrawerEntry("Mona Kane", "Manager", R.drawable.avatar_mona_kane)
+                    navDrawerEntry(
+                        "Amanda Brady",
+                        "Manager",
+                        R.drawable.avatar_amanda_brady
+                    )
+                    navDrawerEntry(
+                        "Cecil Folk",
+                        "Manager",
+                        R.drawable.avatar_cecil_folk
+                    )
+                    navDrawerEntry("Erik Nason", "Manager", R.drawable.avatar_erik_nason)
+                    navDrawerEntry("Mona Kane", "Manager", R.drawable.avatar_mona_kane)
+                    navDrawerEntry(
+                        "Amanda Brady",
+                        "Manager",
+                        R.drawable.avatar_amanda_brady
+                    )
+                    navDrawerEntry(
+                        "Cecil Folk",
+                        "Manager",
+                        R.drawable.avatar_cecil_folk
+                    )
+                    navDrawerEntry("Erik Nason", "Manager", R.drawable.avatar_erik_nason)
+                }
+            }
+        }
+    }
 }
 
+@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
-private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-    behaviorType: BehaviorType,
-    drawerContent: @Composable ((() -> Unit) -> Unit),
-    scrimVisible: Boolean = true,
-    offset: IntOffset = IntOffset.Zero,
-    preventDismissalOnScrimClick: Boolean,
-    content: @Composable () -> Unit
-) {
-    val scope = rememberCoroutineScope()
-    val drawerState = rememberDrawerState(
-        DrawerValue.Closed
-    )
-    val open: () -> Unit = {
-        scope.launch { drawerState.open() }
+fun showDrawer(){
+    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
+        ModalNavigationDrawer(
+            drawerContent = {
+                CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+                    ModalDrawerSheet {
+                        Text("Drawer title", modifier = Modifier.padding(16.dp))
+                        HorizontalDivider()
+                        NavigationDrawerItem(
+                            label = { Text(text = "Drawer Item") },
+                            selected = false,
+                            onClick = { /*TODO*/ }
+                        )
+                        // ...other drawer items
+                    }
+                }
+            },
+            drawerState = rememberDrawerState(DrawerValue.Open),
+        ) {
+        }
     }
-    val close: () -> Unit = {
-        scope.launch { drawerState.close() }
-    }
-    val expand: () -> Unit = {
-        scope.launch { drawerState.open() }
-    }
-    Row {
-        PrimarySurfaceContent(
-            open,
-            text = stringResource(id = R.string.drawer_open)
-        )
-        Spacer(modifier = Modifier.width(10.dp))
-        PrimarySurfaceContent(
-            expand,
-            text = stringResource(id = R.string.drawer_expand)
-        )
-    }
-
-    DrawerV2(
-        drawerState = rememberDrawerState(DrawerValue.Closed),
-        offset = offset,
-        drawerContent = { drawerContent(close) },
-        behaviorType = behaviorType,
-        scrimVisible = scrimVisible,
-        preventDismissalOnScrimClick = preventDismissalOnScrimClick
-    ) {
-        content()
-    }
-
+    Text("Hello, world!")
+//    ModalBottomSheet(content = {
+//        Text("Modal Bottom Sheet")
+//    }, onDismissRequest = { }, sheetState = rememberModalBottomSheetState(true))
 }
