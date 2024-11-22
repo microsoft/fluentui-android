@@ -22,9 +22,13 @@ import com.microsoft.fluentui.managers.PreferencesManager
 import com.microsoft.fluentui.util.DateStringUtils
 import com.microsoft.fluentui.util.DateTimeUtils
 import com.microsoft.fluentui.view.NumberPicker
-import org.threeten.bp.*
-import org.threeten.bp.temporal.ChronoUnit
 import java.text.DateFormatSymbols
+import java.time.Duration
+import java.time.LocalDate
+import java.time.YearMonth
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.temporal.ChronoUnit
 
 /**
  * [TimePicker] houses [NumberPicker]s that allow users to pick dates, times and periods (12 hour clocks).
