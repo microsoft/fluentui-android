@@ -5,9 +5,14 @@
 
 package com.microsoft.fluentui.util
 
-import org.threeten.bp.*
-import org.threeten.bp.format.DateTimeFormatter
-import org.threeten.bp.format.DateTimeParseException
+import java.time.DayOfWeek
+import java.time.Duration
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
 
 /**
  * [DateTimeUtils] contains helper methods for manipulating and parsing dates

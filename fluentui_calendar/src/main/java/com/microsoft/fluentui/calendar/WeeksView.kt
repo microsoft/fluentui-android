@@ -33,12 +33,12 @@ import com.microsoft.fluentui.util.activity
 import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentui.util.displaySize
 import com.microsoft.fluentui.view.MSRecyclerView
-import org.threeten.bp.Duration
-import org.threeten.bp.LocalDate
-import org.threeten.bp.Month
-import org.threeten.bp.ZonedDateTime
-import org.threeten.bp.chrono.IsoChronology
-import org.threeten.bp.temporal.ChronoUnit
+import java.time.Duration
+import java.time.LocalDate
+import java.time.Month
+import java.time.ZonedDateTime
+import java.time.chrono.IsoChronology
+import java.time.temporal.ChronoUnit
 import java.util.*
 
 /**

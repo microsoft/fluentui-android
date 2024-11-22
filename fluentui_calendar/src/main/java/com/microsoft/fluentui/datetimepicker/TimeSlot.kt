@@ -5,9 +5,9 @@
 
 package com.microsoft.fluentui.datetimepicker
 
-import org.threeten.bp.Duration
-import org.threeten.bp.ZonedDateTime
 import java.io.Serializable
+import java.time.Duration
+import java.time.ZonedDateTime
 
 // TODO PBI #668220 investigate whether it's feasible to replace dateTime + duration with this data class
 data class TimeSlot(val start: ZonedDateTime, val duration: Duration) : Serializable

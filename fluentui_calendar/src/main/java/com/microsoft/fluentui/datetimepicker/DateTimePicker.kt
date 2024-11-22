@@ -9,12 +9,11 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDialogFragment
-import com.jakewharton.threetenabp.AndroidThreeTen
 import com.microsoft.fluentui.datetimepicker.DateTimePickerDialog.*
 import com.microsoft.fluentui.util.DateTimeUtils
 import com.microsoft.fluentui.util.isAccessibilityEnabled
-import org.threeten.bp.Duration
-import org.threeten.bp.ZonedDateTime
+import java.time.Duration
+import java.time.ZonedDateTime
 
 /**
  * [DateTimePicker] houses a [DateTimePickerDialog] and provides state management for the dialog.
@@ -54,10 +53,6 @@ class DateTimePicker : AppCompatDialogFragment(), OnDateTimeSelectedListener, On
                 else
                     DisplayMode.TIME
             }
-    }
-
-    init {
-        AndroidThreeTen.init(context)
     }
 
     private lateinit var displayMode: DisplayMode
