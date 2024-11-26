@@ -10,7 +10,6 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentuidemo.databinding.ActivityDemoDetailBinding
 import java.util.UUID
 
@@ -37,11 +36,7 @@ abstract class DemoActivity : AppCompatActivity() {
 
         // Set demo title
         val demoID = intent.getSerializableExtra(DEMO_ID) as UUID
-        val demo: Demo? = if (DuoSupportUtils.isDualScreenMode(this)) {
-            DUO_DEMOS.find { it.id == demoID }
-        } else {
-            V1DEMO.find { it.id == demoID }
-        }
+        val demo: Demo? = V1DEMO.find { it.id == demoID }
         if (demo != null)
             title = demo.title
 
