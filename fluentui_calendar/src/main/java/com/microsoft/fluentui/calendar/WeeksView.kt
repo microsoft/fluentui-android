@@ -29,9 +29,6 @@ import android.view.View
 
 import com.microsoft.fluentui.util.ColorProperty
 import com.microsoft.fluentui.util.DateTimeUtils
-import com.microsoft.fluentui.util.activity
-import com.microsoft.fluentui.util.DuoSupportUtils
-import com.microsoft.fluentui.util.displaySize
 import com.microsoft.fluentui.view.MSRecyclerView
 import org.threeten.bp.Duration
 import org.threeten.bp.LocalDate
@@ -118,15 +115,6 @@ internal class WeeksView : MSRecyclerView {
         setHasFixedSize(true)
         layoutManager = GridLayoutManager(context, DAYS_IN_WEEK, LinearLayoutManager.VERTICAL, false)
         layoutManager?.scrollToPosition(pickerAdapter.todayPosition)
-        post {
-            context.activity?.let {
-                if (DuoSupportUtils.intersectHinge(it, this)) {
-                    (layoutManager as GridLayoutManager).spanCount = context.displaySize.x
-                    addItemDecoration(HingeItemDecoration(DuoSupportUtils.getHingeWidth(it)))
-                    (layoutManager as GridLayoutManager).spanSizeLookup = DuoSupportUtils.getSpanSizeLookup(it)
-                }
-            }
-        }
 
         itemAnimator = null
 
@@ -197,32 +185,7 @@ internal class WeeksView : MSRecyclerView {
 
             paint.getTextBounds(text, 0, text.length, textBounds)
             paint.color = overlayFontColorProperty.color
-
-            context.activity?.let {
-                if (DuoSupportUtils.isDualScreenMode(it)) {
-                    // For duo mode we show month name both on left and right screen
-                    // This shows on start 1/4th screen position
-                    canvas.drawText(text,
-                            (measuredWidth/4 - textBounds.width()/2).toFloat(),
-                            (((monthDescriptor.bottom + monthDescriptor.top)- textBounds.height()) / 2).toFloat(),
-                            paint
-                    )
-                    // This shows on 3/4th screen position
-                    canvas.drawText(text,
-                            ((3*measuredWidth)/4 - textBounds.width()/2).toFloat(),
-                            (((monthDescriptor.bottom + monthDescriptor.top)- textBounds.height()) / 2).toFloat(),
-                            paint
-                    )
-                }
-                else {
-                    // Show on 1/2 screen position
-                    canvas.drawText(text,
-                            ((measuredWidth - textBounds.width()) / 2).toFloat(),
-                            (((monthDescriptor.bottom + monthDescriptor.top)- textBounds.height()) / 2).toFloat(),
-                            paint
-                    )
-                }
-            } ?:  canvas.drawText(text,
+            canvas.drawText(text,
                     ((measuredWidth - textBounds.width()) / 2).toFloat(),
                     (((monthDescriptor.bottom + monthDescriptor.top)- textBounds.height()) / 2).toFloat(),
                     paint

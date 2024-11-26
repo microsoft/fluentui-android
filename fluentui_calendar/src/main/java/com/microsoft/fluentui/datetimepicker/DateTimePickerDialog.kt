@@ -217,14 +217,7 @@ class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, O
 
     override fun onStart() {
         super.onStart()
-        context.activity?.let {
-            if (DuoSupportUtils.isDualScreenMode(it)) {
-                window?.setLayout(DuoSupportUtils.getSingleScreenWidthPixels(it),WindowManager.LayoutParams.MATCH_PARENT)
-            }
-            else {
-                window?.setLayout(context.desiredDialogSize[0], WindowManager.LayoutParams.MATCH_PARENT)
-            }
-        } ?: window?.setLayout(context.desiredDialogSize[0], WindowManager.LayoutParams.MATCH_PARENT)
+        window?.setLayout(context.desiredDialogSize[0], WindowManager.LayoutParams.MATCH_PARENT)
     }
 
     override fun dismiss() {
