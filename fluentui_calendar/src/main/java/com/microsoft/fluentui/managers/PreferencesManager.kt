@@ -6,7 +6,7 @@
 package com.microsoft.fluentui.managers
 
 import android.content.Context
-import org.threeten.bp.DayOfWeek
+import java.time.DayOfWeek
 
 /**
  * [PreferencesManager] helper methods dealing with device SharedPreferences

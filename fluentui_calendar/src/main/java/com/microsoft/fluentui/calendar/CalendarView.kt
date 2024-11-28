@@ -16,10 +16,13 @@ import android.util.AttributeSet
 import android.util.Property
 import android.view.View
 import android.widget.LinearLayout
-import com.jakewharton.threetenabp.AndroidThreeTen
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil
-import org.threeten.bp.*
+import java.time.Duration
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
+import java.time.ZonedDateTime
 
 // TODO: Convert to TemplateView along with other things that extend LinearLayout
 // TODO: implement ability to add icon to CalendarDayView
@@ -108,10 +111,6 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
         }
     }
 
-    init {
-        AndroidThreeTen.init(context)
-    }
-
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Calendar), attrs, defStyleAttr) {
         dividerHeight = Math.round(resources.getDimension(R.dimen.fluentui_divider_height))
@@ -192,7 +191,7 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
             }
         }
 
-        super.onMeasure(widthMeasureSpec, View.MeasureSpec.makeMeasureSpec(computeHeight(displayMode), View.MeasureSpec.EXACTLY))
+        super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(computeHeight(displayMode), View.MeasureSpec.EXACTLY))
     }
 
     override fun onDateSelected(dateTime: ZonedDateTime) {

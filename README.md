@@ -185,10 +185,7 @@ dependencies {
     ```gradle
     implementation 'com.splitwise:tokenautocomplete:2.0.8'
     ```
-  - If using **CalendarView** or **DateTimePickerDialog**, include this dependency in your gradle file:
-    ```gradle
-    implementation 'com.jakewharton.threetenabp:threetenabp:1.1.0'
-    ```
+    
   - Double check that these library versions correspond to the latest versions we implement in the FluentUI [build.gradle](fluentui_others\build.gradle).
 
 ### Import and use the library

@@ -32,7 +32,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.Layout
@@ -47,7 +46,6 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.Icon
@@ -227,7 +225,7 @@ fun TabItem(
                     totalWidth,
                     totalHeight
                 ) {
-
+                    
                     anchorPlaceable.placeRelative(0, 0)
                     val badgeX = anchorPlaceable.width + badgeHorizontalOffset
                     val badgeY = badgeVerticalOffset.roundToPx()
@@ -268,14 +266,7 @@ fun TabItem(
                     text = title,
                     style = textStyle,
                     maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    onTextLayout = { textLayoutResult ->
-                        if (textLayoutResult.didOverflowHeight) {
-                            textStyle.fontSize
-                            fontSize.value *= 0.9
-                            textStyle = textStyle.copy(fontSize = fontSize.value)
-                        }
-                    }
+                    overflow = TextOverflow.Ellipsis
                 )
             }
             if(showIndicator){
