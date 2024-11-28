@@ -136,6 +136,14 @@ class V2AvatarActivity : V2DemoActivity() {
                         text = "Toggle OOO",
                         contentDescription = "OOO status ${if (isOOO) "enabled" else "disabled"}"
                     )
+                }
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(
+                        10.dp,
+                        Alignment.CenterHorizontally
+                    )
+                ) {
                     Button(
                         onClick = { isActivityDotPresent = !isActivityDotPresent },
                         text = "Toggle Activity Dot",
