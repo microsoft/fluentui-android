@@ -1,38 +1,30 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.content.Context
+import android.graphics.drawable.Icon
 import android.os.Bundle
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.unit.Dp
+import com.microsoft.fluentui.icons.AllIcons
 import com.microsoft.fluentui.icons.SearchBarIcons
+import com.microsoft.fluentui.icons.searchbaricons.Dismisscircle
 import com.microsoft.fluentui.icons.searchbaricons.Office
-import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.ThemeMode
-import com.microsoft.fluentui.theme.token.FluentAliasTokens
-import com.microsoft.fluentui.theme.token.FluentColor
-import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType
-import com.microsoft.fluentui.theme.token.controlTokens.SearchBarInfo
-import com.microsoft.fluentui.theme.token.controlTokens.SearchBarTokens
 import com.microsoft.fluentui.tokenized.SearchBar
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
@@ -40,6 +32,7 @@ import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.Persona
 import com.microsoft.fluentui.tokenized.persona.PersonaList
+import com.microsoft.fluentuidemo.CustomizedSearchBarTokens
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.util.DemoAppStrings
@@ -277,41 +270,8 @@ class V2SearchBarActivity : V2DemoActivity() {
                             }
                         )
                     } else null,
-                    searchBarTokens = if (customizedSearchBar) object : SearchBarTokens() {
-                        @Composable
-                        override fun height(searchBarInfo: SearchBarInfo): Dp {
-                            return FluentGlobalTokens.SizeTokens.Size480.value
-                        }
-
-                        @Composable
-                       override fun elevation(searchBarInfo: SearchBarInfo): Dp = FluentGlobalTokens.ShadowTokens.Shadow08.value
-
-                        @Composable
-                        override fun cornerRadius(searchBarInfo: SearchBarInfo): Dp = FluentGlobalTokens.CornerRadiusTokens.CornerRadius160.value
-
-                        @Composable
-                        override fun borderWidth(searchBarInfo: SearchBarInfo): Dp = FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20.value
-
-                        @Composable
-                        override fun backgroundBrush(searchBarInfo: SearchBarInfo): Brush {
-                            return SolidColor(
-                                when (searchBarInfo.style) {
-                                    FluentStyle.Neutral ->
-                                        FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
-                                            themeMode = FluentTheme.themeMode
-                                        )
-                                    FluentStyle.Brand ->
-                                        FluentColor(
-                                            light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                                                ThemeMode.Light
-                                            ),
-                                            dark = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
-                                                ThemeMode.Dark
-                                            )
-                                        ).value(themeMode = FluentTheme.themeMode)
-                                }
-                            )
-                        }
+                    searchBarTokens = if (searchBarStyle == FluentStyle.Neutral && customizedSearchBar) {
+                        CustomizedSearchBarTokens
                     } else null
                 )
 
