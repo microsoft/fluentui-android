@@ -36,9 +36,9 @@ project.ext.publishingFunc = { artifactIdName ->
                 url rootProject.buildDir.path + '/artifacts'
             }
         }
-        tasks.withType(PublishToMavenRepository) {
+        tasks.withType(PublishToMavenRepository).configureEach {
             onlyIf {
-                (repository == publishing.repositories.local && !(artifactExists("central", artifactIdName, android.defaultConfig.versionName))) || (repository == publishing.repositories.feed && !(artifactExists("feed", artifactIdName, android.defaultConfig.versionName)))
+                (repository == publishing.repositories.local) || (repository == publishing.repositories.feed && !(artifactExists("feed", artifactIdName, android.defaultConfig.versionName)))
             }
         }
         publications {
