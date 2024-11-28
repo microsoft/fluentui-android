@@ -7,6 +7,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -69,7 +73,15 @@ fun Badge(
         }
     } else {
         val textColor = token.textColor(badgeInfo = badgeInfo)
-        val typography = token.typography(badgeInfo = badgeInfo)
+        var typography = token.typography(badgeInfo = badgeInfo)
+        val fontSize = remember { mutableStateOf(typography.fontSize) }
+        var textStyle by remember(textColor) {
+            mutableStateOf(
+                typography.merge(TextStyle(color = textColor, fontSize = fontSize.value,  platformStyle = PlatformTextStyle(
+                    includeFontPadding = false
+                )))
+            )
+        }
         val paddingValues = token.padding(badgeInfo = badgeInfo)
         val shape = RoundedCornerShape(token.cornerRadius(badgeInfo = badgeInfo))
 
@@ -86,14 +98,14 @@ fun Badge(
             BasicText(
                 text,
                 modifier = Modifier.padding(paddingValues),
-                style = typography.merge(
-                    TextStyle(
-                        color = textColor,
-                        platformStyle = PlatformTextStyle(
-                            includeFontPadding = false
-                        )
-                    )
-                )
+                style = textStyle,
+                onTextLayout = { textLayoutResult ->
+                    if (textLayoutResult.didOverflowHeight) {
+                        textStyle.fontSize
+                        fontSize.value *= 0.9
+                        textStyle = textStyle.copy(fontSize = fontSize.value)
+                    }
+                }
             )
         }
     }
