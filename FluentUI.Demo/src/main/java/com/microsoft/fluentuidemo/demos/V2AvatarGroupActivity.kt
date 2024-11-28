@@ -41,7 +41,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
     }
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-3"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-3"
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-3"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +55,7 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                 var isActive by rememberSaveable { mutableStateOf(false) }
                 var enablePresence by rememberSaveable { mutableStateOf(true) }
                 var maxVisibleAvatar by rememberSaveable { mutableStateOf(1) }
+                var enableActivityDot by rememberSaveable { mutableStateOf(false) }
 
                 val group = Group(
                     listOf(
@@ -111,6 +113,19 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                         contentDescription = "Max Visible Avatar $maxVisibleAvatar"
                     )
                     Button(
+                        onClick = { enableActivityDot = !enableActivityDot },
+                        text = "Show Activity Dot",
+                        contentDescription = "Activity Dot ${if (enableActivityDot) "Enabled" else "Disabled"}"
+                    )
+                }
+
+                Row(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(5.dp), horizontalArrangement = Arrangement.SpaceEvenly,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Button(
                         onClick = { isActive = !isActive },
                         text = "Swap Active State",
                         contentDescription = "Active Status ${if (isActive) "Active" else "Inactive"}"
@@ -146,7 +161,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     group,
                                     size = AvatarSize.Size16,
                                     maxVisibleAvatar = maxVisibleAvatar,
-                                    enablePresence = enablePresence
+                                    enablePresence = enablePresence,
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -165,7 +181,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     size = AvatarSize.Size20,
                                     maxVisibleAvatar = maxVisibleAvatar,
                                     enablePresence = enablePresence,
-                                    avatarToken = AnonymousAvatarTokens()
+                                    avatarToken = AnonymousAvatarTokens(),
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -184,7 +201,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     size = AvatarSize.Size24,
                                     maxVisibleAvatar = maxVisibleAvatar,
                                     enablePresence = enablePresence,
-                                    avatarToken = AnonymousAvatarTokens()
+                                    avatarToken = AnonymousAvatarTokens(),
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -202,7 +220,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     group,
                                     size = AvatarSize.Size32,
                                     maxVisibleAvatar = maxVisibleAvatar,
-                                    enablePresence = enablePresence
+                                    enablePresence = enablePresence,
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -221,7 +240,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     size = AvatarSize.Size40,
                                     maxVisibleAvatar = maxVisibleAvatar,
                                     enablePresence = enablePresence,
-                                    avatarToken = AnonymousAccentAvatarTokens()
+                                    avatarToken = AnonymousAccentAvatarTokens(),
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -239,7 +259,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     group,
                                     size = AvatarSize.Size56,
                                     maxVisibleAvatar = maxVisibleAvatar,
-                                    enablePresence = enablePresence
+                                    enablePresence = enablePresence,
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -258,7 +279,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     size = AvatarSize.Size72,
                                     maxVisibleAvatar = maxVisibleAvatar,
                                     enablePresence = enablePresence,
-                                    avatarToken = StandardInvertedAvatarTokens()
+                                    avatarToken = StandardInvertedAvatarTokens(),
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -286,7 +308,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     size = AvatarSize.Size16,
                                     style = AvatarGroupStyle.Pile,
                                     maxVisibleAvatar = maxVisibleAvatar,
-                                    enablePresence = enablePresence
+                                    enablePresence = enablePresence,
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -306,7 +329,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     style = AvatarGroupStyle.Pile,
                                     maxVisibleAvatar = maxVisibleAvatar,
                                     enablePresence = enablePresence,
-                                    avatarToken = AnonymousAvatarTokens()
+                                    avatarToken = AnonymousAvatarTokens(),
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -326,7 +350,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     style = AvatarGroupStyle.Pile,
                                     maxVisibleAvatar = maxVisibleAvatar,
                                     enablePresence = enablePresence,
-                                    avatarToken = AnonymousAvatarTokens()
+                                    avatarToken = AnonymousAvatarTokens(),
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -345,7 +370,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     size = AvatarSize.Size32,
                                     style = AvatarGroupStyle.Pile,
                                     maxVisibleAvatar = maxVisibleAvatar,
-                                    enablePresence = enablePresence
+                                    enablePresence = enablePresence,
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -365,7 +391,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     style = AvatarGroupStyle.Pile,
                                     maxVisibleAvatar = maxVisibleAvatar,
                                     enablePresence = enablePresence,
-                                    avatarToken = AnonymousAccentAvatarTokens()
+                                    avatarToken = AnonymousAccentAvatarTokens(),
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -384,7 +411,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     size = AvatarSize.Size56,
                                     style = AvatarGroupStyle.Pile,
                                     maxVisibleAvatar = maxVisibleAvatar,
-                                    enablePresence = enablePresence
+                                    enablePresence = enablePresence,
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -402,7 +430,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     style = AvatarGroupStyle.Pile,
                                     maxVisibleAvatar = maxVisibleAvatar,
                                     enablePresence = enablePresence,
-                                    avatarToken = StandardInvertedAvatarTokens()
+                                    avatarToken = StandardInvertedAvatarTokens(),
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -429,7 +458,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     group,
                                     size = AvatarSize.Size16,
                                     style = AvatarGroupStyle.Pie,
-                                    maxVisibleAvatar = maxVisibleAvatar
+                                    maxVisibleAvatar = maxVisibleAvatar,
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -448,7 +478,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     size = AvatarSize.Size20,
                                     style = AvatarGroupStyle.Pie,
                                     maxVisibleAvatar = maxVisibleAvatar,
-                                    avatarToken = AnonymousAvatarTokens()
+                                    avatarToken = AnonymousAvatarTokens(),
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -467,7 +498,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     size = AvatarSize.Size24,
                                     style = AvatarGroupStyle.Pie,
                                     maxVisibleAvatar = maxVisibleAvatar,
-                                    avatarToken = AnonymousAvatarTokens()
+                                    avatarToken = AnonymousAvatarTokens(),
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -486,6 +518,7 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     size = AvatarSize.Size32,
                                     style = AvatarGroupStyle.Pie,
                                     maxVisibleAvatar = maxVisibleAvatar,
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -504,7 +537,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     size = AvatarSize.Size40,
                                     style = AvatarGroupStyle.Pie,
                                     maxVisibleAvatar = maxVisibleAvatar,
-                                    avatarToken = AnonymousAccentAvatarTokens()
+                                    avatarToken = AnonymousAccentAvatarTokens(),
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -523,6 +557,7 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     size = AvatarSize.Size56,
                                     style = AvatarGroupStyle.Pie,
                                     maxVisibleAvatar = maxVisibleAvatar,
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
@@ -539,7 +574,8 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                                     size = AvatarSize.Size72,
                                     style = AvatarGroupStyle.Pie,
                                     maxVisibleAvatar = maxVisibleAvatar,
-                                    avatarToken = StandardInvertedAvatarTokens()
+                                    avatarToken = StandardInvertedAvatarTokens(),
+                                    enableActivityDot = enableActivityDot
                                 )
                             }
                         }
