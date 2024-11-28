@@ -13,8 +13,6 @@ import android.view.View
 import com.microsoft.fluentui.menus.R
 import com.microsoft.fluentui.popupmenu.PopupMenu.ItemCheckableBehavior
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
-import com.microsoft.fluentui.util.DuoSupportUtils
-import com.microsoft.fluentui.util.activity
 
 /**
  * [PopupMenu] is a transient UI that displays a list of options. The popup appears from a view that
@@ -76,12 +74,6 @@ class PopupMenu : ListPopupWindow, PopupMenuItem.OnClickListener {
 
         isModal = true
         width = adapter.calculateWidth()
-        context.activity?.let {
-            if (DuoSupportUtils.isWindowDoublePortrait(it) && anchorView.x < DuoSupportUtils.getSingleScreenWidthPixels(it) &&
-                    anchorView.x + width > DuoSupportUtils.getSingleScreenWidthPixels(it)) {
-                width = DuoSupportUtils.getSingleScreenWidthPixels(it) - anchorView.x.toInt()
-            }
-        }
     }
 
     override fun onPopupMenuItemClicked(popupMenuItem: PopupMenuItem) {

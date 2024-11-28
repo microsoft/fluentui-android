@@ -11,7 +11,6 @@ import android.view.LayoutInflater
 import android.view.View.TEXT_ALIGNMENT_TEXT_START
 import com.microsoft.fluentui.calendar.OnDateSelectedListener
 import com.microsoft.fluentui.util.DateStringUtils
-import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.databinding.ActivityCalendarViewBinding
 import java.time.Duration
@@ -39,9 +38,6 @@ class CalendarViewActivity : DemoActivity() {
             true
         )
 
-        if (DuoSupportUtils.isDualScreenMode(this)) {
-            calenderBinding.exampleDateTitle.textAlignment = TEXT_ALIGNMENT_TEXT_START
-        }
         calenderBinding.calendarView.onDateSelectedListener = object : OnDateSelectedListener {
             override fun onDateSelected(date: ZonedDateTime) {
                 setExampleDate(date)
