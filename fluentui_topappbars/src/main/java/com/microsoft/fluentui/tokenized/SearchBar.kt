@@ -88,6 +88,7 @@ fun SearchBar(
     personaChipOnClick: (() -> Unit)? = null,
     microphoneCallback: (() -> Unit)? = null,
     navigationIconCallback: (() -> Unit)? = null,
+    leftAccessoryIcon: ImageVector? = SearchBarIcons.Search,
     rightAccessoryIcon: FluentIcon? = null,
     searchBarTokens: SearchBarTokens? = null
 ) {
@@ -165,7 +166,7 @@ fun SearchBar(
                         onClick = {
                             focusRequester.requestFocus()
                         }
-                        icon = SearchBarIcons.Search
+                        icon = leftAccessoryIcon ?: SearchBarIcons.Search
                         contentDescription =
                             LocalContext.current.resources.getString(R.string.fluentui_search)
                         mirrorImage = false
