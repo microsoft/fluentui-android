@@ -30,6 +30,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
@@ -42,6 +43,8 @@ import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.controlTokens.AppBarElevation
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonElevation
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonTokens
@@ -50,6 +53,10 @@ import com.microsoft.fluentui.theme.token.controlTokens.FABState
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.FloatingActionButton
 import com.microsoft.fluentui.tokenized.controls.RadioButton
+import com.microsoft.fluentui.tokenized.listitem.ListItem
+import com.microsoft.fluentui.tokenized.segmentedcontrols.PillBar
+import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
+import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import kotlinx.coroutines.selects.select
 
@@ -69,7 +76,7 @@ class V2ButtonsActivity : V2DemoActivity() {
         setActivityContent {
             val controlTokens = ControlTokens()
             var fabState by rememberSaveable { mutableStateOf(FABState.Expanded) }
-
+            var buttonElevation: ButtonElevation by rememberSaveable { mutableStateOf(ButtonElevation.None) }
             Column(
                 verticalArrangement = Arrangement.spacedBy(10.dp),
                 modifier = Modifier.padding(16.dp)
@@ -141,7 +148,6 @@ class V2ButtonsActivity : V2DemoActivity() {
                         }
                     }
                 }
-
                 Divider()
 
                 LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -199,6 +205,49 @@ class V2ButtonsActivity : V2DemoActivity() {
                             )
                             CreateButtons(MyButtonTokens())
                         }
+                    }
+                    item {
+                        Divider()
+                        BasicText(
+                            "Button Elevation customization",
+                            style = TextStyle(
+                                color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                    themeMode
+                                )
+                            )
+                        )
+                        PillBar(
+                            mutableListOf(
+                                PillMetaData(
+                                    text = LocalContext.current.resources.getString(R.string.fluentui_large),
+                                    onClick = { buttonElevation = ButtonElevation.High },
+                                    selected = buttonElevation == ButtonElevation.High
+                                ),
+                                PillMetaData(
+                                    text = LocalContext.current.resources.getString(R.string.fluentui_medium),
+                                    onClick = { buttonElevation = ButtonElevation.Medium },
+                                    selected = buttonElevation == ButtonElevation.Medium
+                                ),
+                                PillMetaData(
+                                    text = LocalContext.current.resources.getString(R.string.fluentui_small),
+                                    onClick = { buttonElevation = ButtonElevation.Low },
+                                    selected = buttonElevation == ButtonElevation.Low
+                                ),
+                                PillMetaData(
+                                    text = LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                                    onClick = { buttonElevation = ButtonElevation.None },
+                                    selected = buttonElevation == ButtonElevation.None
+                                ),
+                            ),
+                            showBackground = true
+                        )
+                        Button(
+                            style = ButtonStyle.Button,
+                            size = ButtonSize.Large,
+                            elevation = buttonElevation,
+                            onClick = {},
+                            text = "Button with elevation"
+                        )
                     }
                     item {
                         Divider()

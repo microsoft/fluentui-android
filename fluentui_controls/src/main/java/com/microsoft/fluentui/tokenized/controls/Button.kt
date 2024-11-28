@@ -8,12 +8,14 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
+import androidx.compose.material.Surface
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.text.AnnotatedString
@@ -23,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens.ControlType
 import com.microsoft.fluentui.theme.token.Icon
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonElevation
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonInfo
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
@@ -49,18 +52,19 @@ fun Button(
     modifier: Modifier = Modifier,
     style: ButtonStyle = ButtonStyle.Button,
     size: ButtonSize = ButtonSize.Medium,
+    elevation: ButtonElevation = ButtonElevation.None,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     icon: ImageVector? = null,
     trailingIcon: ImageVector? = null,
     text: String? = null,
     contentDescription: String? = null,
-    buttonTokens: ButtonTokens? = null
+    buttonTokens: ButtonTokens? = null,
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = buttonTokens ?: FluentTheme.controlTokens.tokens[ControlType.ButtonControlType] as ButtonTokens
-    val buttonInfo = ButtonInfo(style, size)
+    val buttonInfo = ButtonInfo(style, size, elevation)
     val clickAndSemanticsModifier = Modifier.clickable(
         interactionSource = interactionSource,
         indication = rememberRipple(),
@@ -78,6 +82,7 @@ fun Button(
     val contentPadding = token.padding(buttonInfo)
     val iconSpacing = token.spacing(buttonInfo)
     val shape = RoundedCornerShape(token.cornerRadius(buttonInfo))
+    val elevation = token.elevation(buttonInfo)
     val borders: List<BorderStroke> =
         token.borderStroke(buttonInfo = buttonInfo).getBorderStrokeByState(
             enabled = enabled,
@@ -92,80 +97,82 @@ fun Button(
         borderModifier = borderModifier.border(borderWidth, border.brush, shape)
     }
 
-    Box(
-        modifier
-            .heightIn(min = token.fixedHeight(buttonInfo))
-            .background(
-                brush = backgroundColor,
-                shape = shape
-            )
-            .clip(shape)
-            .semantics(true) {
-                editableText = AnnotatedString(text ?: "")
-                this.contentDescription = contentDescription ?: ""
-            }
-            .then(clickAndSemanticsModifier)
-            .then(borderModifier),
-        propagateMinConstraints = true
-    ) {
-        Row(
-            Modifier.padding(contentPadding),
-            horizontalArrangement = Arrangement.spacedBy(
-                iconSpacing,
-                Alignment.CenterHorizontally
-            ),
-            verticalAlignment = Alignment.CenterVertically
+    Surface(elevation = elevation, shape = shape, modifier = modifier) {
+        Box(
+            modifier
+                .heightIn(min = token.fixedHeight(buttonInfo))
+                .background(
+                    brush = backgroundColor,
+                    shape = shape
+                )
+                .clip(shape)
+                .semantics(true) {
+                    editableText = AnnotatedString(text ?: "")
+                    this.contentDescription = contentDescription ?: ""
+                }
+                .then(clickAndSemanticsModifier)
+                .then(borderModifier),
+            propagateMinConstraints = true
         ) {
+            Row(
+                Modifier.padding(contentPadding),
+                horizontalArrangement = Arrangement.spacedBy(
+                    iconSpacing,
+                    Alignment.CenterHorizontally
+                ),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
 
-            if (icon != null)
-                Icon(
-                    imageVector = icon,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(
-                            token.iconSize(buttonInfo = buttonInfo)
+                if (icon != null)
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(
+                                token.iconSize(buttonInfo = buttonInfo)
+                            ),
+                        tint = token.iconColor(buttonInfo = buttonInfo)
+                            .getColorByState(
+                                enabled = enabled,
+                                selected = false,
+                                interactionSource = interactionSource
+                            )
+                    )
+
+                if (text != null)
+                    BasicText(
+                        text = text,
+                        modifier = Modifier.weight(1f, fill = false).clearAndSetSemantics { },
+                        style = token.typography(buttonInfo).merge(
+                            TextStyle(
+                                color = token.textColor(buttonInfo = buttonInfo)
+                                    .getColorByState(
+                                        enabled = enabled,
+                                        selected = false,
+                                        interactionSource = interactionSource
+                                    )
+                            )
                         ),
-                    tint = token.iconColor(buttonInfo = buttonInfo)
-                        .getColorByState(
-                            enabled = enabled,
-                            selected = false,
-                            interactionSource = interactionSource
-                        )
-                )
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
 
-            if (text != null)
-                BasicText(
-                    text = text,
-                    modifier = Modifier.weight(1f, fill = false).clearAndSetSemantics { },
-                    style = token.typography(buttonInfo).merge(
-                        TextStyle(
-                            color = token.textColor(buttonInfo = buttonInfo)
-                                .getColorByState(
-                                    enabled = enabled,
-                                    selected = false,
-                                    interactionSource = interactionSource
-                                )
-                        )
-                    ),
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-
-            if(trailingIcon != null){
-                Icon(
-                    imageVector = trailingIcon,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(
-                            token.iconSize(buttonInfo = buttonInfo)
-                        ),
-                    tint = token.iconColor(buttonInfo = buttonInfo)
-                        .getColorByState(
-                            enabled = enabled,
-                            selected = false,
-                            interactionSource = interactionSource
-                        )
-                )
+                if (trailingIcon != null) {
+                    Icon(
+                        imageVector = trailingIcon,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(
+                                token.iconSize(buttonInfo = buttonInfo)
+                            ),
+                        tint = token.iconColor(buttonInfo = buttonInfo)
+                            .getColorByState(
+                                enabled = enabled,
+                                selected = false,
+                                interactionSource = interactionSource
+                            )
+                    )
+                }
             }
         }
     }

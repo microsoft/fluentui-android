@@ -35,6 +35,7 @@ import com.microsoft.fluentui.theme.token.FluentColor
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.Icon
+import com.microsoft.fluentui.theme.token.controlTokens.AppBarElevation
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
@@ -78,6 +79,7 @@ class V2AppBarActivity : V2DemoActivity() {
 
             var style: FluentStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
             var appBarSize: AppBarSize by rememberSaveable { mutableStateOf(AppBarSize.Small) }
+            var appBarElevation: AppBarElevation by rememberSaveable { mutableStateOf(AppBarElevation.None) }
             var searchMode: Boolean by rememberSaveable { mutableStateOf(false) }
             var subtitle: String? by rememberSaveable { mutableStateOf("Subtitle") }
             var enableSearchBar: Boolean by rememberSaveable { mutableStateOf(false) }
@@ -130,7 +132,32 @@ class V2AppBarActivity : V2DemoActivity() {
                             ), style = style,
                             showBackground = true
                         )
-
+                        ListItem.Header(LocalContext.current.resources.getString(R.string.app_bar_elevation))
+                        PillBar(
+                            mutableListOf(
+                                PillMetaData(
+                                    text = LocalContext.current.resources.getString(R.string.fluentui_large),
+                                    onClick = { appBarElevation = AppBarElevation.High },
+                                    selected = appBarElevation == AppBarElevation.High
+                                ),
+                                PillMetaData(
+                                    text = LocalContext.current.resources.getString(R.string.fluentui_medium),
+                                    onClick = { appBarElevation = AppBarElevation.Medium },
+                                    selected = appBarElevation == AppBarElevation.Medium
+                                ),
+                                PillMetaData(
+                                    text = LocalContext.current.resources.getString(R.string.fluentui_small),
+                                    onClick = { appBarElevation = AppBarElevation.Low },
+                                    selected = appBarElevation == AppBarElevation.Low
+                                ),
+                                PillMetaData(
+                                    text = LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                                    onClick = { appBarElevation = AppBarElevation.None },
+                                    selected = appBarElevation == AppBarElevation.None
+                                ),
+                            ), style = style,
+                            showBackground = true
+                        )
                         val subtitleText =
                             LocalContext.current.resources.getString(R.string.app_bar_subtitle)
                         ListItem.Item(
@@ -370,6 +397,7 @@ class V2AppBarActivity : V2DemoActivity() {
                     ),
                     appBarSize = appBarSize,
                     style = style,
+                    elevation = appBarElevation,
                     searchMode = searchMode,
                     bottomBorder = enableBottomBorder,
                     searchBar = if (enableSearchBar) {

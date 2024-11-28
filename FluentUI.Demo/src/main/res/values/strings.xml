@@ -48,6 +48,9 @@
     <!-- Text for app bar size -->
     <string name="app_bar_size">App Bar size</string>
 
+    <!-- Text for app bar elevation -->
+    <string name="app_bar_elevation">App Bar Elevation</string>
+
     <!-- Text for app bar left accessories -->
     <string name="left_logo">Left Logo</string>
 

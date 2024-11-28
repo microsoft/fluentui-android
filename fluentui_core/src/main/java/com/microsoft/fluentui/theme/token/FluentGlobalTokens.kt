@@ -218,6 +218,16 @@ object FluentGlobalTokens {
         ReplaceWith("token.value"))
     fun elevation(token: ShadowTokens): Dp = token.value
 
+    enum class ElevationTokens(val value: Dp) {
+        Elevation00(0.dp),
+        Elevation02(2.dp),
+        Elevation04(4.dp),
+        Elevation08(8.dp),
+        Elevation16(16.dp),
+        Elevation28(28.dp),
+        Elevation40(40.dp),
+    }
+
     enum class CornerRadiusTokens(val value: Dp) {
         CornerRadiusNone(0.dp),
         CornerRadius20(2.dp),
