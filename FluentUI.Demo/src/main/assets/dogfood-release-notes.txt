@@ -1,6 +1,6 @@
 Release version 0.3.4
 What's new
-Fluent v1:
+Fluent v1/v2:
 Fix/enhancement
     1. Remove threetenabp dependency and use java date time APIs
     2. Sunsetting surface duo support
