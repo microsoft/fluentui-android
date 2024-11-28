@@ -11,7 +11,6 @@ import android.content.Context
 import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import androidx.core.view.ViewCompat
@@ -42,9 +41,6 @@ import com.microsoft.fluentui.persona.setPersona
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.getTextSize
 import com.microsoft.fluentui.util.inputMethodManager
-import com.microsoft.fluentui.util.activity
-import com.microsoft.fluentui.util.displaySize
-import com.microsoft.fluentui.util.DuoSupportUtils
 import com.tokenautocomplete.CountSpan
 import com.tokenautocomplete.TokenCompleteTextView
 import kotlin.math.max
@@ -311,11 +307,6 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             return
 
         super.replaceText(text)
-        context.activity?.let {
-            if (DuoSupportUtils.isDualScreenMode(it) && lastSpan != null) {
-                checkForIntersectionWithHinge(lastSpan!!)
-            }
-        }
     }
 
     override fun canDeleteSelection(beforeLength: Int): Boolean {
@@ -482,11 +473,6 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         val personaSpan = buildSpanForObject(persona)
         text.insert(offset, spannableStringBuilder)
         text.setSpan(personaSpan, offset, offset + spannableStringBuilder.length - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        context.activity?.let {
-            if (DuoSupportUtils.isDualScreenMode(it)) {
-                checkForIntersectionWithHinge(personaSpan)
-            }
-        }
     }
 
     private fun checkForIntersectionWithHinge(tokenImageSpan: TokenImageSpan) {
@@ -502,15 +488,6 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         personaBound.right += parentTextViewLocation[0]
         personaBound.top += parentTextViewLocation[1]
         personaBound.bottom += parentTextViewLocation[1]
-        context.activity?.let {
-            if (DuoSupportUtils.intersectHinge(it, personaBound)) {
-                text.removeSpan(tokenImageSpan)
-                val spanWithEmptySpace = getViewForObjectWithSpace(tokenImageSpan.token, (context.displaySize.x + DuoSupportUtils.getHingeWidth((it))) / 2 - personaBound.left + resources.getDimension(R.dimen.fluentui_people_picker_horizontal_margin).toInt())
-                val countSpanWidth = resources.getDimension(R.dimen.fluentui_people_picker_count_span_width).toInt() + DuoSupportUtils.getHingeWidth(it)
-
-                text.setSpan(TokenImageSpan(spanWithEmptySpace, tokenImageSpan.token, maxTextWidth().toInt() - countSpanWidth), spanStart, spanEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            }
-        }
     }
 
     // Persona spans don't always fit their new space so we rebuild the spans in available space.
@@ -524,11 +501,6 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             val spanEnd = text.getSpanEnd(personaSpan)
             text.removeSpan(personaSpan)
             text.setSpan(rebuiltSpan, spanStart, spanEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            context.activity?.let {
-                if (DuoSupportUtils.isDualScreenMode(it)) {
-                    checkForIntersectionWithHinge(rebuiltSpan)
-                }
-            }
         }
     }
 

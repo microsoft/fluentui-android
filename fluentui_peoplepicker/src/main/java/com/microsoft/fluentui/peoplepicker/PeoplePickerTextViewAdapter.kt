@@ -8,8 +8,6 @@ package com.microsoft.fluentui.peoplepicker
 import android.content.Context
 import android.graphics.drawable.InsetDrawable
 import androidx.core.content.ContextCompat
-import android.view.Gravity.CENTER
-import android.view.Gravity.START
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,8 +15,6 @@ import android.widget.*
 import com.microsoft.fluentui.listitem.ListItemView
 import com.microsoft.fluentui.peoplepicker.databinding.PeoplePickerSearchDirectoryBinding
 import com.microsoft.fluentui.persona.*
-import com.microsoft.fluentui.util.DuoSupportUtils
-import com.microsoft.fluentui.util.activity
 import java.util.*
 
 /**
@@ -123,11 +119,6 @@ internal class PeoplePickerTextViewAdapter : ArrayAdapter<IPersona>, Filterable 
         // Need to use the convertView, otherwise accessibility focus breaks. Also more efficient.
         val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.people_picker_search_directory, parent, false)
         searchDirectoryBinding = PeoplePickerSearchDirectoryBinding.bind(view)
-        convertView?.context?.activity?.let {
-            if (DuoSupportUtils.isDualScreenMode(it)) {
-                searchDirectoryBinding?.peoplePickerSearchDirectoryText?.gravity = START or CENTER
-            }
-        }
         return view
     }
 

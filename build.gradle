@@ -49,7 +49,6 @@ allprojects {
         composeCompilerVersion    =    '1.4.7'
         constraintLayoutVersion   =    '2.1.4'
         constraintLayoutComposeVersion   =    '1.0.1'
-        duoVersion                =    '1.0.0-alpha01'
         espressoVersion           =    '3.5.1'
         exifInterfaceVersion      =    '1.3.6'
         extJunitVersion           =    '1.1.5'
@@ -71,9 +70,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven {
-            url "https://pkgs.dev.azure.com/MicrosoftDeviceSDK/DuoSDK-Public/_packaging/Duo-SDK-Feed/maven/v1"
-        }
     }
 }
 

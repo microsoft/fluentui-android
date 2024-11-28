@@ -147,23 +147,6 @@ dependencies {
  
  More information about contents of each module can be found in [Modularization](#modularization) section
 
-
-#### a) Develop for Surface-Duo:
-- Please also add the following lines to your repositories section in your gradle script:
-```gradle
-maven {
-    url "https://pkgs.dev.azure.com/MicrosoftDeviceSDK/DuoSDK-Public/_packaging/Duo-SDK-Feed/maven/v1"
-}
-```
-- Also add the SDK dependency to the module-level build.gradle file(current version may be  different
-from what's shown here):
-```gradle
-implementation "com.microsoft.device:dualscreen-layout:1.0.0-alpha01"
-```
-
-NOTE: Some modules already have the SDK dependency added for providing customizations for Surface Duo.
-Please add the maven url to repositories section in your gradle script to use these modules.
-
 ### 2. Using Maven
 
 - Add the FluentUI library as a dependency:
