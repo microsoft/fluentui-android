@@ -107,6 +107,7 @@ fun SearchBar(
     var selectedPerson: Person? = selectedPerson
     val borderWidth = token.borderWidth(searchBarInfo)
     val elevation = token.elevation(searchBarInfo)
+    val height = token.height(searchBarInfo)
 
     val scope = rememberCoroutineScope()
     val borderModifier = if (borderWidth > 0.dp) {
@@ -129,7 +130,7 @@ fun SearchBar(
     ) {
         Row(
             Modifier
-                .requiredHeightIn(min = token.height(searchBarInfo))
+                .requiredHeightIn(min = height)
                 .then(borderModifier)
                 .then(shadowModifier)
                 .fillMaxWidth()
