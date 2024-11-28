@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
-import com.jakewharton.threetenabp.AndroidThreeTen
 import com.microsoft.fluentui.datetimepicker.DateTimePicker
 import com.microsoft.fluentui.datetimepicker.DateTimePickerDialog
 import com.microsoft.fluentui.datetimepicker.DateTimePickerDialog.DateRangeMode
@@ -20,8 +19,8 @@ import com.microsoft.fluentui.util.isAccessibilityEnabled
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.databinding.ActivityDateTimePickerBinding
-import org.threeten.bp.Duration
-import org.threeten.bp.ZonedDateTime
+import java.time.Duration
+import java.time.ZonedDateTime
 
 class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePickedListener {
     companion object {
@@ -160,11 +159,6 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
         }
 
     private var dialogMode: Mode? = null
-
-    init {
-        // Initialization of ThreeTenABP required for ZoneDateTime
-        AndroidThreeTen.init(this)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
 

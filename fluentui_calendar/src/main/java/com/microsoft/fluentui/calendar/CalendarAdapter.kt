@@ -18,9 +18,15 @@ import android.view.ViewGroup
 import com.microsoft.fluentui.calendar.CalendarDaySelectionDrawable.Mode
 import com.microsoft.fluentui.managers.PreferencesManager
 import com.microsoft.fluentui.util.DateTimeUtils
-import org.threeten.bp.*
-import org.threeten.bp.temporal.ChronoUnit
 import java.lang.StringBuilder
+import java.time.DayOfWeek
+import java.time.Duration
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.temporal.ChronoUnit
 import java.util.concurrent.TimeUnit
 
 /**
