@@ -37,6 +37,7 @@ fun AvatarGroup(
     style: AvatarGroupStyle = AvatarGroupStyle.Stack,
     maxVisibleAvatar: Int = DEFAULT_MAX_AVATAR,
     enablePresence: Boolean = false,
+    enableActivityDot: Boolean = false,
     avatarToken: AvatarTokens? = null,
     avatarGroupToken: AvatarGroupTokens? = null
 ) {
@@ -51,6 +52,8 @@ fun AvatarGroup(
         group.members.size
     else
         maxVisibleAvatar
+
+    val showActivityDot: Boolean = enableActivityDot && style == AvatarGroupStyle.Stack
 
     var enablePresence: Boolean = enablePresence
     if (style == AvatarGroupStyle.Stack)
@@ -116,13 +119,14 @@ fun AvatarGroup(
                         size = size,
                         enableActivityRings = true,
                         enablePresence = enablePresence,
-                        avatarToken = avatarToken
+                        avatarToken = avatarToken,
+                        enableActivityDot = group.members.size == visibleAvatar && i == visibleAvatar - 1 && showActivityDot
                     )
                 }
                 if (group.members.size > visibleAvatar || group.members.isEmpty()) {
                     Avatar(
                         group.members.size - visibleAvatar, size = size,
-                        enableActivityRings = true, avatarToken = avatarToken
+                        enableActivityRings = true, avatarToken = avatarToken, enableActivityDot = showActivityDot
                     )
                 }
             }

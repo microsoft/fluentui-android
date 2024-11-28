@@ -16,7 +16,7 @@ import android.widget.TextView
 import com.microsoft.fluentui.calendar.CalendarView.Companion.WEEK_MID
 import com.microsoft.fluentui.managers.PreferencesManager
 import com.microsoft.fluentui.util.activity
-import org.threeten.bp.DayOfWeek
+import java.time.DayOfWeek
 
 /**
  * [WeekHeadingView] is a LinearLayout holding the [CalendarView] header with views for

@@ -8,12 +8,13 @@ package com.microsoft.fluentuidemo.demos
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.LayoutInflater
+import android.view.View.TEXT_ALIGNMENT_TEXT_START
 import com.microsoft.fluentui.calendar.OnDateSelectedListener
 import com.microsoft.fluentui.util.DateStringUtils
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.databinding.ActivityCalendarViewBinding
-import org.threeten.bp.Duration
-import org.threeten.bp.ZonedDateTime
+import java.time.Duration
+import java.time.ZonedDateTime
 
 class CalendarViewActivity : DemoActivity() {
     companion object {
