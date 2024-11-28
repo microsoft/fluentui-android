@@ -6,15 +6,14 @@
 package com.microsoft.fluentui.util
 
 import android.content.Context
-import android.text.format.DateUtils
 import android.text.format.DateUtils.*
 import com.microsoft.fluentui.calendar.R
-import org.threeten.bp.LocalDate
-import org.threeten.bp.LocalDateTime
-import org.threeten.bp.ZoneId
-import org.threeten.bp.ZonedDateTime
-import org.threeten.bp.temporal.TemporalAccessor
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.temporal.TemporalAccessor
 import java.util.*
 
 /**
@@ -54,7 +53,7 @@ object DateStringUtils {
      */
     @JvmStatic
     fun formatDateWithWeekDay(context: Context, date: Long): String =
-        DateUtils.formatDateTime(context, date,FORMAT_SHOW_DATE or FORMAT_SHOW_WEEKDAY)
+        formatDateTime(context, date,FORMAT_SHOW_DATE or FORMAT_SHOW_WEEKDAY)
 
     /**
      * Formats a date with the abbreviated weekday + month + day
@@ -73,7 +72,7 @@ object DateStringUtils {
      */
     @JvmStatic
     fun formatDateAbbrevAll(context: Context, time: Long): String =
-        DateUtils.formatDateTime(context, time, FORMAT_ABBREV_ALL or FORMAT_SHOW_DATE or FORMAT_SHOW_WEEKDAY)
+        formatDateTime(context, time, FORMAT_ABBREV_ALL or FORMAT_SHOW_DATE or FORMAT_SHOW_WEEKDAY)
 
     /**
      * Formats the month day and year
@@ -83,7 +82,7 @@ object DateStringUtils {
      */
     @JvmStatic
     fun formatMonthDayYear(context: Context, date: TemporalAccessor): String =
-        DateUtils.formatDateTime(context, date.epochMillis, 0)
+        formatDateTime(context, date.epochMillis, 0)
 
     /**
      * Formats a date with the weekday + month + day + Time.  The year is optionally formatted if it
@@ -97,7 +96,7 @@ object DateStringUtils {
      */
     @JvmStatic
     fun formatFullDateTime(context: Context, time: Long): String =
-        DateUtils.formatDateTime(context, time, FORMAT_SHOW_DATE or FORMAT_SHOW_WEEKDAY or FORMAT_SHOW_TIME)
+        formatDateTime(context, time, FORMAT_SHOW_DATE or FORMAT_SHOW_WEEKDAY or FORMAT_SHOW_TIME)
 
     /**
      * @see .formatFullDateTime
@@ -131,7 +130,7 @@ object DateStringUtils {
      */
     @JvmStatic
     fun formatAbbrevTime(context: Context, dateTime: TemporalAccessor): String =
-        DateUtils.formatDateTime(context, dateTime.epochMillis, FORMAT_SHOW_TIME or FORMAT_ABBREV_TIME)
+        formatDateTime(context, dateTime.epochMillis, FORMAT_SHOW_TIME or FORMAT_ABBREV_TIME)
 
     /**
      * Formats a date with abbreviated Weekday + Date + Year
@@ -143,7 +142,7 @@ object DateStringUtils {
      */
     @JvmStatic
     fun formatWeekdayDateYearAbbrev(context: Context, date: TemporalAccessor): String =
-        DateUtils.formatDateTime(
+        formatDateTime(
             context,
             date.epochMillis,
             FORMAT_ABBREV_WEEKDAY or FORMAT_ABBREV_MONTH or FORMAT_SHOW_WEEKDAY or FORMAT_SHOW_DATE or FORMAT_SHOW_YEAR
@@ -159,8 +158,8 @@ object DateStringUtils {
         if (calendar.get(Calendar.YEAR) != currentYear)
             flags = flags or FORMAT_SHOW_YEAR
 
-        val date = DateUtils.formatDateTime(context, timestamp, flags)
-        val time = DateUtils.formatDateTime(context, timestamp, FORMAT_SHOW_TIME)
+        val date = formatDateTime(context, timestamp, flags)
+        val time = formatDateTime(context, timestamp, FORMAT_SHOW_TIME)
 
         return context.getString(stringResource, date, time)
     }

@@ -30,10 +30,10 @@ import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.DateStringUtils
 import com.microsoft.fluentui.util.DateTimeUtils
 import com.microsoft.fluentui.util.isAccessibilityEnabled
-import org.threeten.bp.LocalDate
-import org.threeten.bp.ZonedDateTime
-import org.threeten.bp.format.DateTimeFormatter
-import org.threeten.bp.temporal.ChronoUnit
+import java.time.LocalDate
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 import java.util.*
 
 /**
