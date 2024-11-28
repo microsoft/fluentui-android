@@ -105,9 +105,22 @@ fun SearchBar(
 
     var personaChipSelected by rememberSaveable { mutableStateOf(false) }
     var selectedPerson: Person? = selectedPerson
+    val borderWidth = token.borderWidth(searchBarInfo)
+    val elevation = token.elevation(searchBarInfo)
 
     val scope = rememberCoroutineScope()
-
+    val borderModifier = if (borderWidth > 0.dp) {
+        Modifier.border(
+            width = borderWidth,
+            color = token.borderColor(searchBarInfo),
+            shape = RoundedCornerShape(token.cornerRadius(searchBarInfo))
+        )
+    } else Modifier
+    val shadowModifier = if (elevation > 0.dp) Modifier.shadow(
+        elevation = token.elevation(searchBarInfo),
+        shape = RoundedCornerShape(token.cornerRadius(searchBarInfo)),
+        spotColor = token.shadowColor(searchBarInfo)
+    ) else Modifier
 
     Row(
         modifier = modifier
@@ -117,16 +130,8 @@ fun SearchBar(
         Row(
             Modifier
                 .requiredHeightIn(min = token.height(searchBarInfo))
-                .border(
-                    width = token.borderWidth(searchBarInfo),
-                    color = token.borderColor(searchBarInfo),
-                    shape = RoundedCornerShape(token.cornerRadius(searchBarInfo))
-                )
-                .shadow(
-                    elevation = token.elevation(searchBarInfo),
-                    shape = RoundedCornerShape(token.cornerRadius(searchBarInfo)),
-                    spotColor = token.shadowColor(searchBarInfo)
-                )
+                .then(borderModifier)
+                .then(shadowModifier)
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(token.cornerRadius(searchBarInfo)))
                 .background(
@@ -162,6 +167,7 @@ fun SearchBar(
                         if (LocalLayoutDirection.current == LayoutDirection.Rtl)
                             mirrorImage = true
                     }
+
                     false -> {
                         onClick = {
                             focusRequester.requestFocus()
@@ -316,6 +322,7 @@ fun SearchBar(
                                 onClick = microphoneCallback
                             )
                         }
+
                     false ->
                         Box(
                             modifier = Modifier
