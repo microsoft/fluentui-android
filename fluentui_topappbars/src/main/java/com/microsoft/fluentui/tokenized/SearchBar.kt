@@ -1,8 +1,8 @@
 package com.microsoft.fluentui.tokenized
 
 import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
@@ -15,10 +15,10 @@ import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
@@ -73,8 +73,6 @@ import com.microsoft.fluentui.topappbars.R
  * @param rightAccessoryIcon [FluentIcon] Object which is displayed on the right side of microphone. Default: [null]
  * @param searchBarTokens Tokens which help in customizing appearance of search bar. Default: [null]
  */
-//         AnimatedContent                        Backspace Key
-@OptIn(ExperimentalComposeUiApi::class, ExperimentalAnimationApi::class)
 @Composable
 fun SearchBar(
     onValueChange: (String, Person?) -> Unit,
@@ -109,6 +107,7 @@ fun SearchBar(
 
     val scope = rememberCoroutineScope()
 
+
     Row(
         modifier = modifier
             .background(token.backgroundBrush(searchBarInfo))
@@ -117,11 +116,21 @@ fun SearchBar(
         Row(
             Modifier
                 .requiredHeightIn(min = token.height(searchBarInfo))
+                .border(
+                    width = token.borderWidth(searchBarInfo),
+                    color = token.borderColor(searchBarInfo),
+                    shape = RoundedCornerShape(token.cornerRadius(searchBarInfo))
+                )
+                .shadow(
+                    elevation = token.elevation(searchBarInfo),
+                    shape = RoundedCornerShape(token.cornerRadius(searchBarInfo)),
+                    spotColor = token.shadowColor(searchBarInfo)
+                )
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(8.dp))
+                .clip(RoundedCornerShape(token.cornerRadius(searchBarInfo)))
                 .background(
                     token.inputBackgroundBrush(searchBarInfo),
-                    RoundedCornerShape(8.dp)
+                    RoundedCornerShape(token.cornerRadius(searchBarInfo))
                 ),
             verticalAlignment = Alignment.CenterVertically
         ) {

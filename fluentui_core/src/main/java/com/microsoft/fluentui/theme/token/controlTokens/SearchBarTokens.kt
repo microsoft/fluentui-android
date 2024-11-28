@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.DefaultShadowColor
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
@@ -168,4 +169,19 @@ open class SearchBarTokens : IControlToken, Parcelable {
     open fun height(searchBarInfo: SearchBarInfo): Dp {
         return 40.dp
     }
+
+    @Composable
+    open fun cornerRadius(searchBarInfo: SearchBarInfo): Dp = FluentGlobalTokens.CornerRadiusTokens.CornerRadius80.value
+
+    @Composable
+    open fun elevation(searchBarInfo: SearchBarInfo): Dp = 0.dp
+
+    @Composable
+    open fun borderWidth(searchBarInfo: SearchBarInfo): Dp = 0.dp
+
+    @Composable
+    open fun borderColor(searchBarInfo: SearchBarInfo): Color = FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke2].value()
+
+    @Composable
+    open fun shadowColor(searchBarInfo: SearchBarInfo): Color = DefaultShadowColor
 }

@@ -6,23 +6,33 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.Dp
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Office
+import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.ThemeMode
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentColor
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType
+import com.microsoft.fluentui.theme.token.controlTokens.SearchBarInfo
+import com.microsoft.fluentui.theme.token.controlTokens.SearchBarTokens
 import com.microsoft.fluentui.tokenized.SearchBar
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
@@ -45,7 +55,6 @@ class V2SearchBarActivity : V2DemoActivity() {
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-29"
     override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-27"
 
-    @OptIn(ExperimentalComposeUiApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -56,8 +65,8 @@ class V2SearchBarActivity : V2DemoActivity() {
             var searchBarStyle: FluentStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
             var displayRightAccessory: Boolean by rememberSaveable { mutableStateOf(true) }
             var induceDelay: Boolean by rememberSaveable { mutableStateOf(false) }
-
             var selectedPeople: Person? by rememberSaveable { mutableStateOf(null) }
+            var customizedSearchBar: Boolean by rememberSaveable { mutableStateOf(false) }
 
             val listofPeople = listOf(
                 Person(
@@ -185,6 +194,22 @@ class V2SearchBarActivity : V2DemoActivity() {
                             }
                         )
                     }
+
+                    ListItem.Item(
+                        text = "Customized Search Bar",
+                        subText = if (customizedSearchBar)
+                            LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                        else
+                            LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                        trailingAccessoryContent = {
+                            ToggleSwitch(
+                                onValueChange = {
+                                    customizedSearchBar = it
+                                },
+                                checkedState = customizedSearchBar
+                            )
+                        }
+                    )
                 }
 
                 val microphonePressedString = getDemoAppString(DemoAppStrings.MicrophonePressed)
@@ -251,6 +276,42 @@ class V2SearchBarActivity : V2DemoActivity() {
                                     .show()
                             }
                         )
+                    } else null,
+                    searchBarTokens = if (customizedSearchBar) object : SearchBarTokens() {
+                        @Composable
+                        override fun height(searchBarInfo: SearchBarInfo): Dp {
+                            return FluentGlobalTokens.SizeTokens.Size480.value
+                        }
+
+                        @Composable
+                       override fun elevation(searchBarInfo: SearchBarInfo): Dp = FluentGlobalTokens.ShadowTokens.Shadow08.value
+
+                        @Composable
+                        override fun cornerRadius(searchBarInfo: SearchBarInfo): Dp = FluentGlobalTokens.CornerRadiusTokens.CornerRadius160.value
+
+                        @Composable
+                        override fun borderWidth(searchBarInfo: SearchBarInfo): Dp = FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20.value
+
+                        @Composable
+                        override fun backgroundBrush(searchBarInfo: SearchBarInfo): Brush {
+                            return SolidColor(
+                                when (searchBarInfo.style) {
+                                    FluentStyle.Neutral ->
+                                        FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
+                                            themeMode = FluentTheme.themeMode
+                                        )
+                                    FluentStyle.Brand ->
+                                        FluentColor(
+                                            light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                                                ThemeMode.Light
+                                            ),
+                                            dark = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
+                                                ThemeMode.Dark
+                                            )
+                                        ).value(themeMode = FluentTheme.themeMode)
+                                }
+                            )
+                        }
                     } else null
                 )
 
