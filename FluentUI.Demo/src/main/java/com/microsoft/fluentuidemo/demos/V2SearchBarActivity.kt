@@ -1,10 +1,10 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.content.Context
-import android.graphics.drawable.Icon
 import android.os.Bundle
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.getValue
@@ -13,13 +13,13 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import com.microsoft.fluentui.icons.AllIcons
+import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.icons.SearchBarIcons
-import com.microsoft.fluentui.icons.searchbaricons.Dismisscircle
 import com.microsoft.fluentui.icons.searchbaricons.Office
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
@@ -186,23 +186,23 @@ class V2SearchBarActivity : V2DemoActivity() {
                                 )
                             }
                         )
-                    }
 
-                    ListItem.Item(
-                        text = "Customized Search Bar",
-                        subText = if (customizedSearchBar)
-                            LocalContext.current.resources.getString(R.string.fluentui_enabled)
-                        else
-                            LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                        trailingAccessoryContent = {
-                            ToggleSwitch(
-                                onValueChange = {
-                                    customizedSearchBar = it
-                                },
-                                checkedState = customizedSearchBar
-                            )
-                        }
-                    )
+                        ListItem.Item(
+                            text = "Customized Search Bar",
+                            subText = if (customizedSearchBar)
+                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                            else
+                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                            trailingAccessoryContent = {
+                                ToggleSwitch(
+                                    onValueChange = {
+                                        customizedSearchBar = it
+                                    },
+                                    checkedState = customizedSearchBar
+                                )
+                            }
+                        )
+                    }
                 }
 
                 val microphonePressedString = getDemoAppString(DemoAppStrings.MicrophonePressed)
@@ -213,6 +213,7 @@ class V2SearchBarActivity : V2DemoActivity() {
                 val scope = rememberCoroutineScope()
                 var loading by rememberSaveable { mutableStateOf(false) }
                 val keyboardController = LocalSoftwareKeyboardController.current
+                val showCustomizedAppBar = searchBarStyle == FluentStyle.Neutral && customizedSearchBar
 
                 SearchBar(
                     onValueChange = { query, selectedPerson ->
@@ -270,9 +271,10 @@ class V2SearchBarActivity : V2DemoActivity() {
                             }
                         )
                     } else null,
-                    searchBarTokens = if (searchBarStyle == FluentStyle.Neutral && customizedSearchBar) {
+                    searchBarTokens = if (showCustomizedAppBar) {
                         CustomizedSearchBarTokens
-                    } else null
+                    } else null,
+                    modifier = if (showCustomizedAppBar) Modifier.requiredHeight(60.dp) else Modifier
                 )
 
                 val filteredPersona = mutableListOf<Persona>()
