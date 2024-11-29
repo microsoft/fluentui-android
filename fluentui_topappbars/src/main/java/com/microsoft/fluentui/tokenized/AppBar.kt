@@ -23,13 +23,13 @@ import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.core.R
 import com.microsoft.fluentui.icons.ListItemIcons
 import com.microsoft.fluentui.icons.listitemicons.Chevron
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.*
-import com.microsoft.fluentui.theme.token.controlTokens.AppBarElevation
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
@@ -78,7 +78,7 @@ fun AppBar(
     modifier: Modifier = Modifier,
     appBarSize: AppBarSize = AppBarSize.Medium,
     style: FluentStyle = FluentStyle.Neutral,
-    elevation: AppBarElevation = AppBarElevation.None,
+    elevation: Dp = FluentGlobalTokens.ShadowTokens.Shadow00.value,
     subTitle: String? = null,
     logo: @Composable (() -> Unit)? = null,
     searchMode: Boolean = false,

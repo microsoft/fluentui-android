@@ -7,12 +7,17 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -35,12 +40,14 @@ import com.microsoft.fluentui.theme.token.FluentColor
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.Icon
-import com.microsoft.fluentui.theme.token.controlTokens.AppBarElevation
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.tokenized.AppBar
 import com.microsoft.fluentui.tokenized.SearchBar
+import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
@@ -51,6 +58,7 @@ import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import kotlin.math.max
+import kotlin.math.min
 
 // Tags used for testing
 const val APP_BAR_MODIFIABLE_PARAMETER_SECTION = "App Bar Modifiable Parameters"
@@ -79,7 +87,7 @@ class V2AppBarActivity : V2DemoActivity() {
 
             var style: FluentStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
             var appBarSize: AppBarSize by rememberSaveable { mutableStateOf(AppBarSize.Small) }
-            var appBarElevation: AppBarElevation by rememberSaveable { mutableStateOf(AppBarElevation.None) }
+            var appBarElevation: Int by rememberSaveable { mutableIntStateOf(0) }
             var searchMode: Boolean by rememberSaveable { mutableStateOf(false) }
             var subtitle: String? by rememberSaveable { mutableStateOf("Subtitle") }
             var enableSearchBar: Boolean by rememberSaveable { mutableStateOf(false) }
@@ -132,31 +140,31 @@ class V2AppBarActivity : V2DemoActivity() {
                             ), style = style,
                             showBackground = true
                         )
-                        ListItem.Header(LocalContext.current.resources.getString(R.string.app_bar_elevation))
-                        PillBar(
-                            mutableListOf(
-                                PillMetaData(
-                                    text = LocalContext.current.resources.getString(R.string.fluentui_large),
-                                    onClick = { appBarElevation = AppBarElevation.High },
-                                    selected = appBarElevation == AppBarElevation.High
-                                ),
-                                PillMetaData(
-                                    text = LocalContext.current.resources.getString(R.string.fluentui_medium),
-                                    onClick = { appBarElevation = AppBarElevation.Medium },
-                                    selected = appBarElevation == AppBarElevation.Medium
-                                ),
-                                PillMetaData(
-                                    text = LocalContext.current.resources.getString(R.string.fluentui_small),
-                                    onClick = { appBarElevation = AppBarElevation.Low },
-                                    selected = appBarElevation == AppBarElevation.Low
-                                ),
-                                PillMetaData(
-                                    text = LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                    onClick = { appBarElevation = AppBarElevation.None },
-                                    selected = appBarElevation == AppBarElevation.None
-                                ),
-                            ), style = style,
-                            showBackground = true
+                        ListItem.Header(title = LocalContext.current.resources.getString(R.string.app_bar_elevation),
+                            modifier = Modifier.fillMaxWidth(),
+                            trailingAccessoryContent = {
+                                Row {
+                                    Button(
+                                        style = ButtonStyle.Button,
+                                        size = ButtonSize.Medium,
+                                        text = "+ 2 dp",
+                                        enabled = true,
+                                        onClick = {
+                                            appBarElevation += 2
+                                            appBarElevation = min(appBarElevation, 28)
+                                        })
+                                    Spacer(modifier = Modifier.width(10.dp))
+                                    Button(
+                                        style = ButtonStyle.Button,
+                                        size = ButtonSize.Medium,
+                                        text = "- 2 dp",
+                                        enabled = true,
+                                        onClick = {
+                                            appBarElevation -= 2
+                                            appBarElevation = max(appBarElevation, 0)
+                                        })
+                                }
+                            }
                         )
                         val subtitleText =
                             LocalContext.current.resources.getString(R.string.app_bar_subtitle)
@@ -397,7 +405,7 @@ class V2AppBarActivity : V2DemoActivity() {
                     ),
                     appBarSize = appBarSize,
                     style = style,
-                    elevation = appBarElevation,
+                    elevation = appBarElevation.dp,
                     searchMode = searchMode,
                     bottomBorder = enableBottomBorder,
                     searchBar = if (enableSearchBar) {

@@ -30,17 +30,10 @@ enum class ButtonSize {
     Large
 }
 
-enum class ButtonElevation {
-    None,
-    Low,
-    Medium,
-    High
-}
-
 open class ButtonInfo(
     val style: ButtonStyle = ButtonStyle.Button,
     val size: ButtonSize = ButtonSize.Medium,
-    val elevation: ButtonElevation = ButtonElevation.Medium
+    val elevation: Dp = FluentGlobalTokens.ShadowTokens.Shadow00.value
 ) : ControlInfo
 
 @Parcelize
@@ -283,12 +276,7 @@ open class ButtonTokens : IControlToken, Parcelable {
 
     @Composable
     open fun elevation(buttonInfo: ButtonInfo): Dp {
-        return when (buttonInfo.elevation) {
-            ButtonElevation.None -> FluentGlobalTokens.ElevationTokens.Elevation00.value
-            ButtonElevation.Low-> FluentGlobalTokens.ElevationTokens.Elevation04.value
-            ButtonElevation.Medium -> FluentGlobalTokens.ElevationTokens.Elevation08.value
-            ButtonElevation.High -> FluentGlobalTokens.ElevationTokens.Elevation16.value
-        }
+        return buttonInfo.elevation
     }
 
     @Composable
