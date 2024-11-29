@@ -78,7 +78,6 @@ fun AppBar(
     modifier: Modifier = Modifier,
     appBarSize: AppBarSize = AppBarSize.Medium,
     style: FluentStyle = FluentStyle.Neutral,
-    elevation: Dp = FluentGlobalTokens.ShadowTokens.Shadow00.value,
     subTitle: String? = null,
     logo: @Composable (() -> Unit)? = null,
     searchMode: Boolean = false,
@@ -105,7 +104,7 @@ fun AppBar(
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AppBarControlType] as AppBarTokens
 
 
-    val appBarInfo = AppBarInfo(style, appBarSize, elevation)
+    val appBarInfo = AppBarInfo(style, appBarSize)
     Surface(elevation = token.elevation(appBarInfo), modifier = modifier) {
         Box(
             modifier = modifier

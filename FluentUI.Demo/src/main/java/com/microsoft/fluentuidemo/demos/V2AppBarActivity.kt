@@ -87,7 +87,6 @@ class V2AppBarActivity : V2DemoActivity() {
 
             var style: FluentStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
             var appBarSize: AppBarSize by rememberSaveable { mutableStateOf(AppBarSize.Small) }
-            var appBarElevation: Int by rememberSaveable { mutableIntStateOf(0) }
             var searchMode: Boolean by rememberSaveable { mutableStateOf(false) }
             var subtitle: String? by rememberSaveable { mutableStateOf("Subtitle") }
             var enableSearchBar: Boolean by rememberSaveable { mutableStateOf(false) }
@@ -139,32 +138,6 @@ class V2AppBarActivity : V2DemoActivity() {
                                 )
                             ), style = style,
                             showBackground = true
-                        )
-                        ListItem.Header(title = LocalContext.current.resources.getString(R.string.app_bar_elevation),
-                            modifier = Modifier.fillMaxWidth(),
-                            trailingAccessoryContent = {
-                                Row {
-                                    Button(
-                                        style = ButtonStyle.Button,
-                                        size = ButtonSize.Medium,
-                                        text = "+ 2 dp",
-                                        enabled = true,
-                                        onClick = {
-                                            appBarElevation += 2
-                                            appBarElevation = min(appBarElevation, 28)
-                                        })
-                                    Spacer(modifier = Modifier.width(10.dp))
-                                    Button(
-                                        style = ButtonStyle.Button,
-                                        size = ButtonSize.Medium,
-                                        text = "- 2 dp",
-                                        enabled = true,
-                                        onClick = {
-                                            appBarElevation -= 2
-                                            appBarElevation = max(appBarElevation, 0)
-                                        })
-                                }
-                            }
                         )
                         val subtitleText =
                             LocalContext.current.resources.getString(R.string.app_bar_subtitle)
@@ -405,7 +378,6 @@ class V2AppBarActivity : V2DemoActivity() {
                     ),
                     appBarSize = appBarSize,
                     style = style,
-                    elevation = appBarElevation.dp,
                     searchMode = searchMode,
                     bottomBorder = enableBottomBorder,
                     searchBar = if (enableSearchBar) {

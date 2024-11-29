@@ -30,8 +30,7 @@ enum class AppBarSize {
 
 open class AppBarInfo(
     val style: FluentStyle = FluentStyle.Neutral,
-    val appBarSize: AppBarSize = AppBarSize.Medium,
-    val appBarElevation: Dp = FluentGlobalTokens.ShadowTokens.Shadow00.value,
+    val appBarSize: AppBarSize = AppBarSize.Medium
 ) : ControlInfo
 
 @Parcelize
@@ -243,7 +242,7 @@ open class AppBarTokens : IControlToken, Parcelable {
 
     @Composable
     open fun elevation(info: AppBarInfo): Dp {
-        return info.appBarElevation
+        return FluentGlobalTokens.ShadowTokens.Shadow00.value
     }
 
     @Composable
