@@ -32,8 +32,7 @@ enum class ButtonSize {
 
 open class ButtonInfo(
     val style: ButtonStyle = ButtonStyle.Button,
-    val size: ButtonSize = ButtonSize.Medium,
-    val elevation: Dp = FluentGlobalTokens.ShadowTokens.Shadow00.value
+    val size: ButtonSize = ButtonSize.Medium
 ) : ControlInfo
 
 @Parcelize
@@ -276,7 +275,7 @@ open class ButtonTokens : IControlToken, Parcelable {
 
     @Composable
     open fun elevation(buttonInfo: ButtonInfo): Dp {
-        return buttonInfo.elevation
+        return FluentGlobalTokens.ShadowTokens.Shadow00.value
     }
 
     @Composable

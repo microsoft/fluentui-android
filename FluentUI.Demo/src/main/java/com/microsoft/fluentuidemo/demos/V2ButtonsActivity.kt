@@ -74,7 +74,6 @@ class V2ButtonsActivity : V2DemoActivity() {
         setActivityContent {
             val controlTokens = ControlTokens()
             var fabState by rememberSaveable { mutableStateOf(FABState.Expanded) }
-            var buttonElevation: Int by rememberSaveable { mutableStateOf(0) }
             Column(
                 verticalArrangement = Arrangement.spacedBy(10.dp),
                 modifier = Modifier.padding(16.dp)
@@ -202,55 +201,6 @@ class V2ButtonsActivity : V2DemoActivity() {
                                 )
                             )
                             CreateButtons(MyButtonTokens())
-                        }
-                    }
-                    item {
-                        Divider()
-                            BasicText(
-                                "Button Elevation customization",
-                                style = TextStyle(
-                                    color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                                        themeMode
-                                    )
-                                )
-                            )
-                            ListItem.Header(title = LocalContext.current.resources.getString(R.string.app_bar_elevation),
-                                modifier = Modifier.fillMaxWidth().padding(10.dp),
-                                trailingAccessoryContent = {
-                                    Row {
-                                        Button(
-                                            style = ButtonStyle.Button,
-                                            size = ButtonSize.Medium,
-                                            text = "+ 2 dp",
-                                            enabled = true,
-                                            onClick = {
-                                                buttonElevation += 2
-                                                buttonElevation = min(buttonElevation, 20)
-                                            })
-                                        Spacer(modifier = Modifier.width(10.dp))
-                                        Button(
-                                            style = ButtonStyle.Button,
-                                            size = ButtonSize.Medium,
-                                            text = "- 2 dp",
-                                            enabled = true,
-                                            onClick = {
-                                                buttonElevation -= 2
-                                                buttonElevation = max(buttonElevation, 0)
-                                            })
-                                    }
-                                }
-                            )
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(10.dp),
-                            modifier = Modifier.fillMaxWidth(1.0F),
-                            horizontalAlignment = Alignment.CenterHorizontally) {
-                            Button(
-                                style = ButtonStyle.Button,
-                                size = ButtonSize.Large,
-                                elevation = buttonElevation.dp,
-                                onClick = {},
-                                text = "Button with elevation"
-                            )
                         }
                     }
                     item {

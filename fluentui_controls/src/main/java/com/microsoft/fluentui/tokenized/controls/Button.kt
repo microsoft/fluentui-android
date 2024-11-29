@@ -52,7 +52,6 @@ fun Button(
     modifier: Modifier = Modifier,
     style: ButtonStyle = ButtonStyle.Button,
     size: ButtonSize = ButtonSize.Medium,
-    elevation: Dp = FluentGlobalTokens.ShadowTokens.Shadow00.value,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     icon: ImageVector? = null,
@@ -64,7 +63,7 @@ fun Button(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = buttonTokens ?: FluentTheme.controlTokens.tokens[ControlType.ButtonControlType] as ButtonTokens
-    val buttonInfo = ButtonInfo(style, size, elevation)
+    val buttonInfo = ButtonInfo(style, size)
     val clickAndSemanticsModifier = Modifier.clickable(
         interactionSource = interactionSource,
         indication = rememberRipple(),
