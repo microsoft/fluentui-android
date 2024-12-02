@@ -224,6 +224,7 @@ object FluentGlobalTokens {
         CornerRadius40(4.dp),
         CornerRadius80(8.dp),
         CornerRadius120(12.dp),
+        CornerRadius160(16.dp),
         CornerRadiusCircle(9999.dp)
     }
 

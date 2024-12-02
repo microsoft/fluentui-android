@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.DefaultShadowColor
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
@@ -29,6 +30,7 @@ open class SearchBarTokens : IControlToken, Parcelable {
                     FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
                         themeMode = FluentTheme.themeMode
                     )
+
                 FluentStyle.Brand ->
                     FluentColor(
                         light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground2].value(
@@ -50,6 +52,7 @@ open class SearchBarTokens : IControlToken, Parcelable {
                     FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
                         themeMode = FluentTheme.themeMode
                     )
+
                 FluentStyle.Brand ->
                     FluentColor(
                         light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
@@ -89,6 +92,7 @@ open class SearchBarTokens : IControlToken, Parcelable {
                 FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                     themeMode = FluentTheme.themeMode
                 )
+
             FluentStyle.Brand ->
                 FluentColor(
                     light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
@@ -107,6 +111,7 @@ open class SearchBarTokens : IControlToken, Parcelable {
             when (searchBarInfo.style) {
                 FluentStyle.Neutral ->
                     FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value()
+
                 FluentStyle.Brand ->
                     FluentColor(
                         light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
@@ -127,6 +132,7 @@ open class SearchBarTokens : IControlToken, Parcelable {
                 FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                     themeMode = FluentTheme.themeMode
                 )
+
             FluentStyle.Brand ->
                 FluentColor(
                     light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
@@ -168,4 +174,21 @@ open class SearchBarTokens : IControlToken, Parcelable {
     open fun height(searchBarInfo: SearchBarInfo): Dp {
         return 40.dp
     }
+
+    @Composable
+    open fun cornerRadius(searchBarInfo: SearchBarInfo): Dp =
+        FluentGlobalTokens.CornerRadiusTokens.CornerRadius80.value
+
+    @Composable
+    open fun elevation(searchBarInfo: SearchBarInfo): Dp = 0.dp
+
+    @Composable
+    open fun borderWidth(searchBarInfo: SearchBarInfo): Dp = 0.dp
+
+    @Composable
+    open fun borderColor(searchBarInfo: SearchBarInfo): Color =
+        FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke2].value()
+
+    @Composable
+    open fun shadowColor(searchBarInfo: SearchBarInfo): Color = DefaultShadowColor
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.getValue
@@ -12,11 +13,12 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Office
 import com.microsoft.fluentui.theme.token.FluentIcon
@@ -30,6 +32,7 @@ import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.Persona
 import com.microsoft.fluentui.tokenized.persona.PersonaList
+import com.microsoft.fluentuidemo.CustomizedSearchBarTokens
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.util.DemoAppStrings
@@ -45,7 +48,6 @@ class V2SearchBarActivity : V2DemoActivity() {
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-29"
     override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-27"
 
-    @OptIn(ExperimentalComposeUiApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -56,8 +58,8 @@ class V2SearchBarActivity : V2DemoActivity() {
             var searchBarStyle: FluentStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
             var displayRightAccessory: Boolean by rememberSaveable { mutableStateOf(true) }
             var induceDelay: Boolean by rememberSaveable { mutableStateOf(false) }
-
             var selectedPeople: Person? by rememberSaveable { mutableStateOf(null) }
+            var customizedSearchBar: Boolean by rememberSaveable { mutableStateOf(false) }
 
             val listofPeople = listOf(
                 Person(
@@ -184,6 +186,22 @@ class V2SearchBarActivity : V2DemoActivity() {
                                 )
                             }
                         )
+
+                        ListItem.Item(
+                            text = "Customized Search Bar",
+                            subText = if (customizedSearchBar)
+                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                            else
+                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                            trailingAccessoryContent = {
+                                ToggleSwitch(
+                                    onValueChange = {
+                                        customizedSearchBar = it
+                                    },
+                                    checkedState = customizedSearchBar
+                                )
+                            }
+                        )
                     }
                 }
 
@@ -195,6 +213,7 @@ class V2SearchBarActivity : V2DemoActivity() {
                 val scope = rememberCoroutineScope()
                 var loading by rememberSaveable { mutableStateOf(false) }
                 val keyboardController = LocalSoftwareKeyboardController.current
+                val showCustomizedAppBar = searchBarStyle == FluentStyle.Neutral && customizedSearchBar
 
                 SearchBar(
                     onValueChange = { query, selectedPerson ->
@@ -251,7 +270,11 @@ class V2SearchBarActivity : V2DemoActivity() {
                                     .show()
                             }
                         )
-                    } else null
+                    } else null,
+                    searchBarTokens = if (showCustomizedAppBar) {
+                        CustomizedSearchBarTokens
+                    } else null,
+                    modifier = if (showCustomizedAppBar) Modifier.requiredHeight(60.dp) else Modifier
                 )
 
                 val filteredPersona = mutableListOf<Persona>()
