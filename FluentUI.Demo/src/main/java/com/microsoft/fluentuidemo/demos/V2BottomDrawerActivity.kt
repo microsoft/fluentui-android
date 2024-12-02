@@ -2,6 +2,7 @@ package com.microsoft.fluentuidemo.demos
 
 import android.content.res.Configuration
 import android.os.Bundle
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -424,6 +425,10 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     }
     val close: () -> Unit = {
         scope.launch { drawerState.close() }
+    }
+    BackHandler {
+        println("### BackHandler")
+        close()
     }
     Row {
         PrimarySurfaceContent(

@@ -483,6 +483,7 @@ fun BottomDrawer(
     preventDismissalOnScrimClick: Boolean = false,
     onScrimClick: () -> Unit = {},
 ) {
+
     if (drawerState.enable) {
         val themeID =
             FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
@@ -497,10 +498,10 @@ fun BottomDrawer(
         val behaviorType =
             if (slideOver) BehaviorType.BOTTOM_SLIDE_OVER else BehaviorType.BOTTOM
         val drawerInfo = DrawerInfo(type = behaviorType)
-        ModalPopup(
-            onDismissRequest = close,
-            windowInsetsType = windowInsetsType
-        )
+        ModalPopup()
+//       Popup(
+//           onDismissRequest = close
+//       )
         {
             val drawerShape: Shape =
                 RoundedCornerShape(

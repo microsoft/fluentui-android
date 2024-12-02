@@ -1,6 +1,9 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
+import androidx.activity.OnBackPressedDispatcher
+import androidx.activity.addCallback
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
