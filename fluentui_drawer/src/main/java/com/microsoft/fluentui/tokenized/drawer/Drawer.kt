@@ -1,5 +1,6 @@
 package com.microsoft.fluentui.tokenized.drawer
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.fillMaxSize
@@ -498,6 +499,9 @@ fun BottomDrawer(
         val behaviorType =
             if (slideOver) BehaviorType.BOTTOM_SLIDE_OVER else BehaviorType.BOTTOM
         val drawerInfo = DrawerInfo(type = behaviorType)
+        BackHandler { //TODO: Add pull down animation with predictive back
+            close()
+        }
         ModalPopup(
             windowInsetsType = windowInsetsType,
             onDismissRequest = close,

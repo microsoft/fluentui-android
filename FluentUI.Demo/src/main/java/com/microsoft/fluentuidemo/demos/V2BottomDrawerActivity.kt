@@ -2,7 +2,8 @@ package com.microsoft.fluentuidemo.demos
 
 import android.content.res.Configuration
 import android.os.Bundle
-import androidx.activity.compose.BackHandler
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,7 +16,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -50,11 +50,17 @@ class V2BottomDrawerActivity : V2DemoActivity() {
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-9"
     override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-9"
+    private val onBackCallback = object: OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            finish()
+        }
 
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setActivityContent {
             CreateActivityUI()
+            LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher?.addCallback(this, onBackCallback)
         }
     }
 }
@@ -425,10 +431,6 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     }
     val close: () -> Unit = {
         scope.launch { drawerState.close() }
-    }
-    BackHandler {
-        println("### BackHandler")
-        close()
     }
     Row {
         PrimarySurfaceContent(
