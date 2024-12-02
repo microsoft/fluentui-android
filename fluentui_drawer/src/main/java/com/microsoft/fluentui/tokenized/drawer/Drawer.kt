@@ -498,10 +498,10 @@ fun BottomDrawer(
         val behaviorType =
             if (slideOver) BehaviorType.BOTTOM_SLIDE_OVER else BehaviorType.BOTTOM
         val drawerInfo = DrawerInfo(type = behaviorType)
-        ModalPopup()
-//       Popup(
-//           onDismissRequest = close
-//       )
+        ModalPopup(
+            windowInsetsType = windowInsetsType,
+            onDismissRequest = close,
+        )
         {
             val drawerShape: Shape =
                 RoundedCornerShape(
