@@ -83,7 +83,8 @@ fun ModalPopup(
             onDismissRequest = onDismissRequest,
             properties = properties,
             composeView = view,
-            density = density
+            density = density,
+            saveId = id
         ).apply {
             setCustomContent(parentComposition) {
                 Box(
@@ -153,6 +154,7 @@ private class ModalWindow(
     private var properties: PopupProperties,
     private val composeView: View,
     density: Density,
+    saveId: UUID,
     private val popupLayoutHelper: PopupLayoutHelper = if (Build.VERSION.SDK_INT >= 29) {
         PopupLayoutHelperImpl29()
     } else {
@@ -179,7 +181,8 @@ private class ModalWindow(
         // Set up view owners
         this.setViewTreeLifecycleOwner(composeView.findViewTreeLifecycleOwner())
         this.setViewTreeViewModelStoreOwner(composeView.findViewTreeViewModelStoreOwner())
-        this.setViewTreeSavedStateRegistryOwner(composeView.findViewTreeSavedStateRegistryOwner())
+        setViewTreeSavedStateRegistryOwner(composeView.findViewTreeSavedStateRegistryOwner())
+        setTag(androidx.compose.ui.R.id.compose_view_saveable_id_tag, "Popup:$saveId")
         // Enable children to draw their shadow by not clipping them
         clipChildren = false
         with(density) { elevation = 8.dp.toPx() }
