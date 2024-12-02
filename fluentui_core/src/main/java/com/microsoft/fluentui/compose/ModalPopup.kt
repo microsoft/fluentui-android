@@ -5,9 +5,7 @@ import android.graphics.Outline
 import android.graphics.PixelFormat
 import android.graphics.Rect
 import android.os.Build
-import android.os.Looper
 import android.view.Gravity
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewOutlineProvider
@@ -37,16 +35,12 @@ import androidx.compose.runtime.rememberCompositionContext
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.snapshots.SnapshotStateObserver
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.UiComposable
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.onSizeChanged
-import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.platform.AbstractComposeView
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -55,12 +49,9 @@ import androidx.compose.ui.platform.ViewRootForInspector
 import androidx.compose.ui.semantics.popup
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Density
-import androidx.compose.ui.unit.IntOffset
-import androidx.compose.ui.unit.IntRect
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.util.fastMap
 import androidx.compose.ui.window.PopupProperties
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.findViewTreeLifecycleOwner
@@ -70,53 +61,16 @@ import androidx.lifecycle.setViewTreeViewModelStoreOwner
 import androidx.savedstate.findViewTreeSavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
 import java.util.UUID
-import kotlin.math.roundToInt
 
 /**
  * Popup specific for modal bottom drawer.
  */
-
-internal class AlignmentOffsetPositionProvider(
-    val alignment: Alignment,
-    val offset: IntOffset
-)  {
-     fun calculatePosition(
-        anchorBounds: IntRect,
-        layoutDirection: LayoutDirection,
-        popupContentSize: IntSize
-    ): IntOffset {
-        return anchorBounds.topLeft +
-                alignment.align(
-                    IntSize.Zero,
-                    anchorBounds.size,
-                    layoutDirection
-                ) -
-                alignment.align(
-                    IntSize.Zero,
-                    popupContentSize,
-                    layoutDirection
-                ) +
-                IntOffset(
-                    offset.x * (if (layoutDirection == LayoutDirection.Ltr) 1 else -1),
-                    offset.y
-                )
-    }
-}
-
 @Composable
 fun ModalPopup(
     onDismissRequest:(() -> Unit)? = null,
     windowInsetsType: Int = WindowInsetsCompat.Type.systemBars(),
     content: @Composable () -> Unit,
 ) {
-    val alignment = Alignment.TopStart
-    val offset = IntOffset(0, 0)
-    val popupPositionProvider = remember(alignment, offset) {
-        AlignmentOffsetPositionProvider(
-            alignment,
-            offset
-        )
-    }
     val properties = PopupProperties()
     val view = LocalView.current
     val density = LocalDensity.current
@@ -129,9 +83,7 @@ fun ModalPopup(
             onDismissRequest = onDismissRequest,
             properties = properties,
             composeView = view,
-            density = density,
-            initialPositionProvider = popupPositionProvider,
-            saveId = id,
+            density = density
         ).apply {
             setCustomContent(parentComposition) {
                 Box(
@@ -201,8 +153,6 @@ private class ModalWindow(
     private var properties: PopupProperties,
     private val composeView: View,
     density: Density,
-    saveId: UUID,
-    initialPositionProvider: AlignmentOffsetPositionProvider,
     private val popupLayoutHelper: PopupLayoutHelper = if (Build.VERSION.SDK_INT >= 29) {
         PopupLayoutHelperImpl29()
     } else {
@@ -215,42 +165,24 @@ private class ModalWindow(
         composeView.context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
 
     private val params: WindowManager.LayoutParams = createLayoutParams()
-
-    var positionProvider = initialPositionProvider
-
     var parentLayoutDirection: LayoutDirection = LayoutDirection.Ltr
     var popupContentSize: IntSize? by mutableStateOf(null)
     private var parentLayoutCoordinates: LayoutCoordinates? by mutableStateOf(null)
-    private var parentBounds: IntRect? = null
-
     val canCalculatePosition by derivedStateOf {
         parentLayoutCoordinates != null && popupContentSize != null
     }
 
-    private val maxSupportedElevation = 8.dp
-
-    private val previousWindowVisibleFrame = Rect()
-
     override val subCompositionView: AbstractComposeView get() = this
-
-    private val snapshotStateObserver = SnapshotStateObserver(onChangedExecutor = { command ->
-        if (handler?.looper === Looper.myLooper()) {
-            command()
-        } else {
-            handler?.post(command)
-        }
-    })
 
     init {
         id = android.R.id.content
         // Set up view owners
-        setViewTreeLifecycleOwner(composeView.findViewTreeLifecycleOwner())
-        setViewTreeViewModelStoreOwner(composeView.findViewTreeViewModelStoreOwner())
-        setViewTreeSavedStateRegistryOwner(composeView.findViewTreeSavedStateRegistryOwner())
-        setTag(androidx.compose.ui.R.id.compose_view_saveable_id_tag, "Popup:$saveId")
+        this.setViewTreeLifecycleOwner(composeView.findViewTreeLifecycleOwner())
+        this.setViewTreeViewModelStoreOwner(composeView.findViewTreeViewModelStoreOwner())
+        this.setViewTreeSavedStateRegistryOwner(composeView.findViewTreeSavedStateRegistryOwner())
         // Enable children to draw their shadow by not clipping them
         clipChildren = false
-        with(density) { elevation = maxSupportedElevation.toPx() }
+        with(density) { elevation = 8.dp.toPx() }
         outlineProvider = object : ViewOutlineProvider() {
             override fun getOutline(view: View, result: Outline) {
                 result.setRect(0, 0, view.width, view.height)
@@ -282,7 +214,7 @@ private class ModalWindow(
         content()
     }
 
-    private fun setIsFocusable(isFocusable: Boolean) = applyNewFlags(
+    private fun focusable(isFocusable: Boolean) = applyNewFlags(
         if (!isFocusable) {
             params.flags or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
         } else {
@@ -290,13 +222,10 @@ private class ModalWindow(
         }
     )
 
-    private fun setClippingEnabled(clippingEnabled: Boolean) = applyNewFlags(
-        if (clippingEnabled) {
-            params.flags and (WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS.inv())
-        } else {
-            params.flags or WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-        }
-    )
+    private fun applyNewFlags(flags: Int) {
+        params.flags = flags
+        popupLayoutHelper.updateViewLayout(windowManager, this, params)
+    }
 
     fun updateParameters(
         onDismissRequest: (() -> Unit)?,
@@ -310,61 +239,13 @@ private class ModalWindow(
             popupLayoutHelper.updateViewLayout(windowManager, this, params)
         }
         this.properties = properties
-        setIsFocusable(properties.focusable)
-        setClippingEnabled(properties.clippingEnabled)
+        focusable(properties.focusable)
         superSetLayoutDirection(layoutDirection)
-    }
-
-    private fun applyNewFlags(flags: Int) {
-        params.flags = flags
-        popupLayoutHelper.updateViewLayout(windowManager, this, params)
     }
 
     fun updateParentLayoutCoordinates(parentLayoutCoordinates: LayoutCoordinates) {
         this.parentLayoutCoordinates = parentLayoutCoordinates
-        updateParentBounds()
     }
-
-    fun updateParentBounds() {
-        val coordinates = parentLayoutCoordinates ?: return
-        val layoutSize = coordinates.size
-
-        val position = coordinates.positionInWindow()
-        val layoutPosition = IntOffset(position.x.roundToInt(), position.y.roundToInt())
-
-        val newParentBounds = IntRect(layoutPosition, layoutSize)
-        if (newParentBounds != parentBounds) {
-            this.parentBounds = newParentBounds
-            updatePosition()
-        }
-    }
-
-    fun updatePosition() {
-        val parentBounds = parentBounds ?: return
-        val popupContentSize = popupContentSize ?: return
-
-        val windowSize = previousWindowVisibleFrame.let {
-            popupLayoutHelper.getWindowVisibleDisplayFrame(composeView, it)
-            val bounds = it.toIntBounds()
-            IntSize(width = bounds.width, height = bounds.height)
-        }
-
-        val popupPosition = positionProvider.calculatePosition(
-            parentBounds,
-            parentLayoutDirection,
-            popupContentSize
-        )
-
-        params.x = popupPosition.x
-        params.y = popupPosition.y
-
-        if (properties.excludeFromSystemGesture) {
-            popupLayoutHelper.setGestureExclusionRects(this, windowSize.width, windowSize.height)
-        }
-
-        popupLayoutHelper.updateViewLayout(windowManager, this, params)
-    }
-
 
     fun dismiss() {
         this.setViewTreeLifecycleOwner(null)
@@ -463,10 +344,3 @@ private class PopupLayoutHelperImpl29 : PopupLayoutHelperImpl() {
         )
     }
 }
-
-private fun Rect.toIntBounds() = IntRect(
-    left = left,
-    top = top,
-    right = right,
-    bottom = bottom
-)
