@@ -6,7 +6,6 @@
 
     <application
         android:allowBackup="true"
-        android:enableOnBackInvokedCallback="false"
         android:icon="@mipmap/fluent_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/fluent_logo"
@@ -33,7 +32,8 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BannerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicChipActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicControlsActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomDrawerActivity"/>
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomDrawerActivity"
+            android:enableOnBackInvokedCallback="false"/>
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomSheetActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity android:name="com.microsoft.fluentuidemo.demos.V2CardActivity" />
