@@ -50,7 +50,7 @@ class V2BottomDrawerActivity : V2DemoActivity() {
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-9"
     override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-9"
-    private val onBackCallback = object: OnBackPressedCallback(true) {
+    private val onBackCallback = object: OnBackPressedCallback(true) { //callback to end the activity
         override fun handleOnBackPressed() {
             finish()
         }
@@ -60,7 +60,7 @@ class V2BottomDrawerActivity : V2DemoActivity() {
         super.onCreate(savedInstanceState)
         setActivityContent {
             CreateActivityUI()
-            LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher?.addCallback(this, onBackCallback)
+            LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher?.addCallback(this, onBackCallback) //registering the callback to end the activity when back button is pressed
         }
     }
 }
