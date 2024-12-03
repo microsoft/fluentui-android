@@ -90,11 +90,11 @@ fun ModalPopup(
                 Box(
                     Modifier
                         .semantics { this.popup() }
-
+                        // Get the size of the content
                         .onSizeChanged {
                             popupContentSize = it
                         }
-
+                        // Hide the popup while we can't position it correctly
                         .alpha(if (canCalculatePosition) 1f else 0f)
                         .windowInsetsPadding(
                             convertWindowInsetsCompatTypeToWindowInsets(windowInsetsType)
@@ -124,8 +124,10 @@ fun ModalPopup(
         content = {},
         modifier = Modifier
             .onGloballyPositioned { childCoordinates ->
-                val parentCoordinates = childCoordinates.parentLayoutCoordinates!!
-                modalWindow.updateParentLayoutCoordinates(parentCoordinates)
+                val parentCoordinates = childCoordinates.parentLayoutCoordinates
+                if (parentCoordinates != null) {
+                    modalWindow.updateParentLayoutCoordinates(parentCoordinates)
+                }
             }
     ) { _, _ ->
         modalWindow.parentLayoutDirection = layoutDirection

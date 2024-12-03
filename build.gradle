@@ -43,7 +43,7 @@ allprojects {
         appCenterSdkVersion       =    '5.0.2'
         appCompatVersion          =    '1.6.1'
         buildToolVersion          =    '31.0.0'
-        composeActivityVersion    =    '1.7.2'
+        composeActivityVersion    =    '1.9.3'
         composeBomVersion         =    '2023.09.00'
         composeTestVersion        =    '1.4.3'
         composeCompilerVersion    =    '1.4.7'
