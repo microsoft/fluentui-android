@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.view.ViewOutlineProvider
 import android.view.WindowManager
 import androidx.annotation.RequiresApi
-import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.captionBar
@@ -157,7 +156,7 @@ private class ModalWindow(
     private val composeView: View,
     density: Density,
     saveId: UUID,
-    private val popupLayoutHelper: PopupLayoutHelper = if (Build.VERSION.SDK_INT >= 29) {
+    private val popupLayoutHelper: PopupLayoutHelperImpl = if (Build.VERSION.SDK_INT >= 29) {
         PopupLayoutHelperImpl29()
     } else {
         PopupLayoutHelperImpl()
@@ -307,27 +306,13 @@ private class ModalWindow(
     }
 }
 
-@VisibleForTesting
-internal interface PopupLayoutHelper {
-    fun getWindowVisibleDisplayFrame(composeView: View, outRect: Rect)
-    fun setGestureExclusionRects(composeView: View, width: Int, height: Int)
-    fun updateViewLayout(
-        windowManager: WindowManager,
-        popupView: View,
-        params: ViewGroup.LayoutParams
-    )
-}
+private open class PopupLayoutHelperImpl {
 
-private open class PopupLayoutHelperImpl : PopupLayoutHelper {
-    override fun getWindowVisibleDisplayFrame(composeView: View, outRect: Rect) {
-        composeView.getWindowVisibleDisplayFrame(outRect)
-    }
-
-    override fun setGestureExclusionRects(composeView: View, width: Int, height: Int) {
+    open fun setGestureExclusionRects(composeView: View, width: Int, height: Int) {
         // do nothing
     }
 
-    override fun updateViewLayout(
+    fun updateViewLayout(
         windowManager: WindowManager,
         popupView: View,
         params: ViewGroup.LayoutParams
@@ -336,9 +321,9 @@ private open class PopupLayoutHelperImpl : PopupLayoutHelper {
     }
 }
 
-@RequiresApi(29)
+@RequiresApi(29) // android.view.View#setSystemGestureExclusionRects call requires API 29 and above
 private class PopupLayoutHelperImpl29 : PopupLayoutHelperImpl() {
-    override fun setGestureExclusionRects(composeView: View, width: Int, height: Int) {
+    override fun setGestureExclusionRects(composeView: View, width: Int, height: Int) { // Exclude the entire screen from system gestures
         composeView.systemGestureExclusionRects = mutableListOf(
             Rect(
                 0,
