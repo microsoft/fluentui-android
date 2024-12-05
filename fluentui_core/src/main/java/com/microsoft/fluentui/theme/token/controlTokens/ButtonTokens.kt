@@ -274,6 +274,11 @@ open class ButtonTokens : IControlToken, Parcelable {
     }
 
     @Composable
+    open fun elevation(buttonInfo: ButtonInfo): Dp {
+        return FluentGlobalTokens.ShadowTokens.Shadow00.value
+    }
+
+    @Composable
     open fun iconSize(buttonInfo: ButtonInfo): Dp {
         return when (buttonInfo.style) {
             ButtonStyle.Button, ButtonStyle.TextButton, ButtonStyle.OutlinedButton ->

@@ -241,6 +241,11 @@ open class AppBarTokens : IControlToken, Parcelable {
     }
 
     @Composable
+    open fun elevation(info: AppBarInfo): Dp {
+        return FluentGlobalTokens.ShadowTokens.Shadow00.value
+    }
+
+    @Composable
     open fun height(info: AppBarInfo): Dp {
         return 40.dp
     }

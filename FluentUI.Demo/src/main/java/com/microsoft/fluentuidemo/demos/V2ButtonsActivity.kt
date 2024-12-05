@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Divider
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.outlined.Favorite
@@ -30,6 +29,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
@@ -50,8 +50,13 @@ import com.microsoft.fluentui.theme.token.controlTokens.FABState
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.FloatingActionButton
 import com.microsoft.fluentui.tokenized.controls.RadioButton
+import com.microsoft.fluentui.tokenized.listitem.ListItem
+import com.microsoft.fluentui.tokenized.segmentedcontrols.PillBar
+import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
+import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
-import kotlinx.coroutines.selects.select
+import kotlin.math.max
+import kotlin.math.min
 
 class V2ButtonsActivity : V2DemoActivity() {
     init {
@@ -69,7 +74,6 @@ class V2ButtonsActivity : V2DemoActivity() {
         setActivityContent {
             val controlTokens = ControlTokens()
             var fabState by rememberSaveable { mutableStateOf(FABState.Expanded) }
-
             Column(
                 verticalArrangement = Arrangement.spacedBy(10.dp),
                 modifier = Modifier.padding(16.dp)
@@ -141,7 +145,6 @@ class V2ButtonsActivity : V2DemoActivity() {
                         }
                     }
                 }
-
                 Divider()
 
                 LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -201,6 +204,7 @@ class V2ButtonsActivity : V2DemoActivity() {
                         }
                     }
                     item {
+                        Spacer(modifier = Modifier.height(10.dp))
                         Divider()
                         var checkBoxSelectedValues = List(4) { rememberSaveable { mutableStateOf(false) } }
                         FluentTheme {

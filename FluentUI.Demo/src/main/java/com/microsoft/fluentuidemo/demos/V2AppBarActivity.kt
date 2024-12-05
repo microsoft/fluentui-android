@@ -7,12 +7,17 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -38,8 +43,11 @@ import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.tokenized.AppBar
 import com.microsoft.fluentui.tokenized.SearchBar
+import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
@@ -50,6 +58,7 @@ import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import kotlin.math.max
+import kotlin.math.min
 
 // Tags used for testing
 const val APP_BAR_MODIFIABLE_PARAMETER_SECTION = "App Bar Modifiable Parameters"
@@ -130,7 +139,6 @@ class V2AppBarActivity : V2DemoActivity() {
                             ), style = style,
                             showBackground = true
                         )
-
                         val subtitleText =
                             LocalContext.current.resources.getString(R.string.app_bar_subtitle)
                         ListItem.Item(
