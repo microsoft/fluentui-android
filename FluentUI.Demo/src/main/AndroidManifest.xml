@@ -33,7 +33,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicChipActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicControlsActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomDrawerActivity"
-            android:enableOnBackInvokedCallback="false"/>
+            android:enableOnBackInvokedCallback="true"/>
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomSheetActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity android:name="com.microsoft.fluentuidemo.demos.V2CardActivity" />
