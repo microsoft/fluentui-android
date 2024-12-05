@@ -76,6 +76,7 @@ open class ControlTokens : IControlTokens {
         TextFieldControlType,
         ToggleSwitchControlType,
         TooltipControlType,
+        ViewPagerControlType
     }
 
     override val tokens: TokenSet<IType, IControlToken> by lazy {
@@ -124,6 +125,7 @@ open class ControlTokens : IControlTokens {
                 ControlType.TextFieldControlType -> TextFieldTokens()
                 ControlType.ToggleSwitchControlType -> ToggleSwitchTokens()
                 ControlType.TooltipControlType -> TooltipTokens()
+                ControlType.ViewPagerControlType -> ViewPagerTokens()
                 else -> {
                     UndefinedControlToken
                 }
