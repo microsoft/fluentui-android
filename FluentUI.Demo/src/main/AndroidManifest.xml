@@ -23,6 +23,7 @@
 
         <!-- Demo activities -->
 
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2ActionBarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2AppBarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarCarouselActivity" />
@@ -79,6 +80,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.DateTimePickerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.DrawerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ListItemViewActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.actionbar.V2ActionBarDemoActivity" />
         <activity
             android:name="com.microsoft.fluentuidemo.demos.PeoplePickerViewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

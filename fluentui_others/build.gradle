@@ -27,6 +27,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion composeCompilerVersion
+    }
     testOptions {
         unitTests {
             includeAndroidResources = true
@@ -47,12 +53,14 @@ gradle.taskGraph.whenReady { taskGraph ->
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':fluentui_core')
+    implementation project(':fluentui_controls')
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
     implementation "androidx.exifinterface:exifinterface:$exifInterfaceVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.compose.foundation:foundation"
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
