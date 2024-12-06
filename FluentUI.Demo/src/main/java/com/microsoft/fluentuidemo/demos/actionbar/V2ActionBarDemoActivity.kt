@@ -5,40 +5,22 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.graphics.Color
 import com.microsoft.fluentui.compose.Scaffold
-import com.microsoft.fluentui.icons.SearchBarIcons
-import com.microsoft.fluentui.icons.searchbaricons.Arrowback
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
-import com.microsoft.fluentui.theme.token.FluentGlobalTokens
-import com.microsoft.fluentui.theme.token.FluentIcon
-import com.microsoft.fluentui.theme.token.FluentStyle
-import com.microsoft.fluentui.theme.token.Icon
-import com.microsoft.fluentui.tokenized.AppBar
 import com.microsoft.fluentui.tokenized.actionbar.ActionBar
-import com.microsoft.fluentui.tokenized.drawer.BottomDrawer
-import com.microsoft.fluentui.tokenized.drawer.rememberDrawerState
-import com.microsoft.fluentuidemo.AppBarMenu
-import com.microsoft.fluentuidemo.AppThemeViewModel
-import com.microsoft.fluentuidemo.Navigation
-import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentui.tokenized.navigation.ViewPager
 import com.microsoft.fluentuidemo.SetStatusBarColor
 import com.microsoft.fluentuidemo.V2DemoActivity
-import kotlinx.coroutines.launch
 
 class V2ActionBarDemoActivity : V2DemoActivity() {
     init {
@@ -49,22 +31,34 @@ class V2ActionBarDemoActivity : V2DemoActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val context = this
-
+        val selectedActionBarType = intent.getIntExtra("ACTION_BAR_TYPE", 0)
+        val selectedActionBarPosition = intent.getIntExtra("ACTION_BAR_POSITION", 0)
         setContent {
             FluentTheme {
                 SetStatusBarColor()
-                val pagerState = rememberPagerState(pageCount = { 6 })
-                val scope = rememberCoroutineScope()
+                val noOfPages = 5
+                val pagerState = rememberPagerState(pageCount = { noOfPages })
 
+                val actionBar = @androidx.compose.runtime.Composable {
+                    ActionBar(
+                        pagerState = pagerState,
+                        startCallback = {
+                            this.finish()
+                        },
+                        type = selectedActionBarType
+                    )
+                }
                 Scaffold(
                     contentWindowInsets = WindowInsets.statusBars,
-                    topBar = {
-                        ActionBar(
-                            pagerState = pagerState,
-                            leftActionText = "Left",
-                            rightActionText = "Right",
-                            pageContent = {}
-                        )
+                    topBar = if (selectedActionBarPosition == 0)
+                        actionBar
+                    else {
+                        {}
+                    },
+                    bottomBar = if (selectedActionBarPosition == 1) {
+                        actionBar
+                    } else {
+                        {}
                     }
                 ) {
                     Box(
@@ -73,7 +67,24 @@ class V2ActionBarDemoActivity : V2DemoActivity() {
                             .background(FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value())
                             .padding(it)
                     ) {
-               
+                        ViewPager(
+                            pagerState = pagerState,
+                            modifier = Modifier.fillMaxSize(),
+                            pageContent = {
+                                Box(
+                                    Modifier
+                                        .fillMaxSize()
+                                        .background(
+                                            color = if (pagerState.currentPage % 2 == 0) Color.Cyan else Color.LightGray
+                                        )
+                                ) {
+                                    BasicText(
+                                        text = "Page ${pagerState.currentPage}",
+                                        modifier = Modifier.align(Alignment.Center)
+                                    )
+                                }
+                            }
+                        )
                     }
                 }
             }
