@@ -1,6 +1,5 @@
 package com.microsoft.fluentuidemo.demos
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicText
@@ -20,12 +19,12 @@ import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentuidemo.Demo
-import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.DemoActivity.Companion.DEMO_ID
 import com.microsoft.fluentuidemo.Navigation
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.demos.actionbar.V2ActionBarDemoActivity
+
 
 class V2ActionBarActivity : V2DemoActivity() {
     init {
@@ -98,82 +97,77 @@ class V2ActionBarActivity : V2DemoActivity() {
                     }
 
                 }
+                ListItem.Header(title = resources.getString(R.string.actionbar_type_heading))
                 Column(
                     modifier = Modifier.padding(16.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
-                    ListItem.Header(title = resources.getString(R.string.actionbar_type_heading))
-                    Column(
-                        modifier = Modifier.padding(16.dp),
-                        verticalArrangement = Arrangement.spacedBy(10.dp),
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.fillMaxWidth()
                     ) {
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(16.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            BasicText(
-                                text = resources.getString(R.string.actionbar_basic_radio_label),
-                                modifier = Modifier.weight(1F),
-                                style = TextStyle(
-                                    color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
-                                        themeMode = ThemeMode.Auto
-                                    )
+                        BasicText(
+                            text = resources.getString(R.string.actionbar_basic_radio_label),
+                            modifier = Modifier.weight(1F),
+                            style = TextStyle(
+                                color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+                                    themeMode = ThemeMode.Auto
                                 )
                             )
-                            RadioButton(
-                                modifier = Modifier.testTag(TAB_BAR_VERTICAL_RADIO),
-                                selected = (selectedActionBarType == actionBarType[0]),
-                                onClick = {
-                                    selectedActionBarType = actionBarType[0]
-                                }
-                            )
-                        }
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(16.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            BasicText(
-                                text = resources.getString(R.string.actionbar_icon_radio_label),
-                                modifier = Modifier.weight(1F),
-                                style = TextStyle(
-                                    color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
-                                        themeMode = ThemeMode.Auto
-                                    )
+                        )
+                        RadioButton(
+                            modifier = Modifier.testTag(TAB_BAR_VERTICAL_RADIO),
+                            selected = (selectedActionBarType == actionBarType[0]),
+                            onClick = {
+                                selectedActionBarType = actionBarType[0]
+                            }
+                        )
+                    }
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        BasicText(
+                            text = resources.getString(R.string.actionbar_icon_radio_label),
+                            modifier = Modifier.weight(1F),
+                            style = TextStyle(
+                                color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+                                    themeMode = ThemeMode.Auto
                                 )
                             )
-                            RadioButton(
-                                modifier = Modifier.testTag(TAB_BAR_HORIZONTAL_RADIO),
-                                selected = (selectedActionBarType == actionBarType[1]),
-                                onClick = {
-                                    selectedActionBarType = actionBarType[1]
-                                }
-                            )
-                        }
+                        )
+                        RadioButton(
+                            modifier = Modifier.testTag(TAB_BAR_HORIZONTAL_RADIO),
+                            selected = (selectedActionBarType == actionBarType[1]),
+                            onClick = {
+                                selectedActionBarType = actionBarType[1]
+                            }
+                        )
+                    }
 
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(16.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            BasicText(
-                                text = resources.getString(R.string.actionbar_carousel_radio_label),
-                                modifier = Modifier.weight(1F),
-                                style = TextStyle(
-                                    color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
-                                        themeMode = ThemeMode.Auto
-                                    )
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        BasicText(
+                            text = resources.getString(R.string.actionbar_carousel_radio_label),
+                            modifier = Modifier.weight(1F),
+                            style = TextStyle(
+                                color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+                                    themeMode = ThemeMode.Auto
                                 )
                             )
-                            RadioButton(
-                                modifier = Modifier.testTag(TAB_BAR_HORIZONTAL_RADIO),
-                                selected = (selectedActionBarType == actionBarType[2]),
-                                onClick = {
-                                    selectedActionBarType = actionBarType[2]
-                                }
-                            )
-                        }
+                        )
+                        RadioButton(
+                            modifier = Modifier.testTag(TAB_BAR_HORIZONTAL_RADIO),
+                            selected = (selectedActionBarType == actionBarType[2]),
+                            onClick = {
+                                selectedActionBarType = actionBarType[2]
+                            }
+                        )
                     }
                 }
 
@@ -186,13 +180,10 @@ class V2ActionBarActivity : V2DemoActivity() {
                             packageContext,
                             demo.demoClass.java,
                             Pair(DEMO_ID, demo.id),
-                            Pair(DEMO_TITLE, demo.title)
+                            Pair(DEMO_TITLE, demo.title),
+                            Pair("ACTION_BAR_TYPE", selectedActionBarType),
+                            Pair("ACTION_BAR_POSITION", selectedActionBarPos)
                         )
-//                        val actionBarIntent = Intent(context, demo.demoClass.java)
-//                        actionBarIntent.putExtra(DEMO_ID, demo.id)
-//                        actionBarIntent.putExtra("POSITION", selectedActionBarPos)
-//                        actionBarIntent.putExtra("TYPE", selectedActionBarType)
-//                        startActivity(actionBarIntent)
                     },
                     modifier = Modifier.padding(16.dp)
                 )
