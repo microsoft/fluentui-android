@@ -26,13 +26,14 @@ interface IControlTokens {
     }
 }
 
-object UndefinedControlToken: IControlToken
+object UndefinedControlToken : IControlToken
 
 /**
  * Extend the ControlToken to add token for custom control or providing new token to existing Fluent Control. *
  */
 open class ControlTokens : IControlTokens {
     enum class ControlType : IType {
+        ActionBarControlType,
         AnnouncementCardControlType,
         AppBarControlType,
         AvatarControlType,
@@ -82,6 +83,7 @@ open class ControlTokens : IControlTokens {
     override val tokens: TokenSet<IType, IControlToken> by lazy {
         TokenSet { type ->
             when (type) {
+                ControlType.ActionBarControlType -> ActionBarTokens()
                 ControlType.AnnouncementCardControlType -> AnnouncementCardTokens()
                 ControlType.AppBarControlType -> AppBarTokens()
                 ControlType.AvatarControlType -> AvatarTokens()
