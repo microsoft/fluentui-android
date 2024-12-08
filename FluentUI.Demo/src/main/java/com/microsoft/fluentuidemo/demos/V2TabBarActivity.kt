@@ -207,7 +207,7 @@ class V2TabBarActivity : V2DemoActivity() {
                         showHomeBadge = false
                     },
                     badge = { if (selectedIndex == 0 && showHomeBadge) Badge() },
-                    talkbackDescription = resources.getString(R.string.tabBar_home)
+                    talkbackDescription = resources.getString(R.string.tabBar_home) + ": " + if(selectedIndex == 0) {resources.getString(R.string.Active)} else {resources.getString(R.string.Inactive)}
                 ),
                 TabData(
                     title = resources.getString(R.string.tabBar_mail),
@@ -218,7 +218,7 @@ class V2TabBarActivity : V2DemoActivity() {
                         selectedIndex = 1
                     },
                     badge = { Badge(text = "123+", badgeType = BadgeType.Character) },
-                    talkbackDescription = resources.getString(R.string.tabBar_mail)
+                    talkbackDescription = resources.getString(R.string.tabBar_mail) + ": " + if(selectedIndex == 1) {resources.getString(R.string.Active)} else {resources.getString(R.string.Inactive)}
                 ),
                 TabData(
                     title = resources.getString(R.string.tabBar_settings),
@@ -228,7 +228,7 @@ class V2TabBarActivity : V2DemoActivity() {
                         invokeToast(resources.getString(R.string.tabBar_settings), context)
                         selectedIndex = 2
                     },
-                    talkbackDescription = resources.getString(R.string.tabBar_settings)
+                    talkbackDescription = resources.getString(R.string.tabBar_settings) + ": " + if(selectedIndex == 2) {resources.getString(R.string.Active)} else {resources.getString(R.string.Inactive)}
                 ),
                 TabData(
                     title = resources.getString(R.string.tabBar_notification),
@@ -239,7 +239,7 @@ class V2TabBarActivity : V2DemoActivity() {
                         selectedIndex = 3
                     },
                     badge = { Badge(text = "10", badgeType = BadgeType.Character) },
-                    talkbackDescription = resources.getString(R.string.tabBar_notification)
+                    talkbackDescription = resources.getString(R.string.tabBar_notification) + ": " + if(selectedIndex == 3) {resources.getString(R.string.Active)} else {resources.getString(R.string.Inactive)}
                 ),
                 TabData(
                     title = resources.getString(R.string.tabBar_more),
@@ -250,7 +250,7 @@ class V2TabBarActivity : V2DemoActivity() {
                         selectedIndex = 4
                     },
                     badge = { Badge() },
-                    talkbackDescription = resources.getString(R.string.tabBar_more)
+                    talkbackDescription = resources.getString(R.string.tabBar_more) + ": " + if(selectedIndex == 4) {resources.getString(R.string.Active)} else {resources.getString(R.string.Inactive)}
                 )
             )
 
