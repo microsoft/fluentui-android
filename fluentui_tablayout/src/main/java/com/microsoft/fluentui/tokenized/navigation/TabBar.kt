@@ -22,7 +22,7 @@ import com.microsoft.fluentui.tokenized.tabItem.TabItem
 
 data class TabData(
     var title: String,
-    var talkbackDescription: String = title,  //Custom announcement for Talkback
+    var talkbackDescription: String? = null,  //Custom announcement for Talkback
     var icon: ImageVector,
     var selectedIcon: ImageVector = icon,
     var selected: Boolean = false,
@@ -69,11 +69,15 @@ fun TabBar(
         ) {
             tabDataList.forEachIndexed { index, tabData ->
                 tabData.selected = index == selectedIndex
+                var talkbackDescriptionValue = if(tabData.talkbackDescription != null) { tabData.talkbackDescription }
+                                               else{ tabData.title + if(tabData.selected) ": Active" else "" }
                 TabItem(
                     title = tabData.title,
                     modifier = Modifier
                         .semantics {
-                            contentDescription = (if(tabData.selected) "Selected " else "") +  tabData.talkbackDescription
+                            if (talkbackDescriptionValue != null) {
+                                contentDescription = talkbackDescriptionValue
+                            }
                         }
                         .fillMaxWidth()
                         .weight(1F),
