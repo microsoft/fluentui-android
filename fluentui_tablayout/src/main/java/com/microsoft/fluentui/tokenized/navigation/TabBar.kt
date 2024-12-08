@@ -70,7 +70,7 @@ fun TabBar(
             tabDataList.forEachIndexed { index, tabData ->
                 tabData.selected = index == selectedIndex
                 var talkbackDescriptionValue = if(tabData.talkbackDescription != null) { tabData.talkbackDescription }
-                                               else{ tabData.title + if(tabData.selected) ": Active" else "" }
+                                               else{ tabData.title + if(tabData.selected) ": Active" else ": Inactive" }
                 TabItem(
                     title = tabData.title,
                     modifier = Modifier
