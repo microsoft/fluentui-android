@@ -6,6 +6,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.invisibleToUser
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
@@ -19,6 +22,7 @@ import com.microsoft.fluentui.tokenized.tabItem.TabItem
 
 data class TabData(
     var title: String,
+    var talkbackDescription: String = title,  //Custom announcement for Talkback
     var icon: ImageVector,
     var selectedIcon: ImageVector = icon,
     var selected: Boolean = false,
@@ -68,6 +72,9 @@ fun TabBar(
                 TabItem(
                     title = tabData.title,
                     modifier = Modifier
+                        .semantics {
+                            contentDescription = (if(tabData.selected) "Selected " else "") +  tabData.talkbackDescription
+                        }
                         .fillMaxWidth()
                         .weight(1F),
                     icon = if (tabData.selected) tabData.selectedIcon else tabData.icon,
