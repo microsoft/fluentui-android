@@ -5,11 +5,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.invisibleToUser
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
@@ -22,7 +19,7 @@ import com.microsoft.fluentui.tokenized.tabItem.TabItem
 
 data class TabData(
     var title: String,
-    var talkbackDescription: String? = null,  //Custom announcement for Talkback
+    var accessibilityDescription: String? = null,  //Custom announcement for Talkback
     var icon: ImageVector,
     var selectedIcon: ImageVector = icon,
     var selected: Boolean = false,
@@ -69,14 +66,14 @@ fun TabBar(
         ) {
             tabDataList.forEachIndexed { index, tabData ->
                 tabData.selected = index == selectedIndex
-                var talkbackDescriptionValue = if(tabData.talkbackDescription != null) { tabData.talkbackDescription }
+                var accessibilityDescriptionValue = if(tabData.accessibilityDescription != null) { tabData.accessibilityDescription }
                                                else{ tabData.title + if(tabData.selected) ": Active" else ": Inactive" }
                 TabItem(
                     title = tabData.title,
                     modifier = Modifier
                         .semantics {
-                            if (talkbackDescriptionValue != null) {
-                                contentDescription = talkbackDescriptionValue
+                            if (accessibilityDescriptionValue != null) {
+                                contentDescription = accessibilityDescriptionValue
                             }
                         }
                         .fillMaxWidth()
