@@ -309,7 +309,8 @@ private class ModalWindow(
 private open class PopupLayoutHelperImpl {
 
     open fun setGestureExclusionRects(composeView: View, width: Int, height: Int) {
-        // do nothing
+        //For Android versions below API 29, it’s not necessary to explicitly exclude the entire screen from system gestures.
+        // The skeleton method is defined to keep consistency in the two objects.
     }
 
     fun updateViewLayout(
@@ -323,7 +324,7 @@ private open class PopupLayoutHelperImpl {
 
 @RequiresApi(29) // android.view.View#setSystemGestureExclusionRects call requires API 29 and above
 private class PopupLayoutHelperImpl29 : PopupLayoutHelperImpl() {
-    override fun setGestureExclusionRects(composeView: View, width: Int, height: Int) { // Exclude the entire screen from system gestures
+    override fun setGestureExclusionRects(composeView: View, width: Int, height: Int) { // We need to explicitly specify to exclude the entire screen from system gestures
         composeView.systemGestureExclusionRects = mutableListOf(
             Rect(
                 0,
