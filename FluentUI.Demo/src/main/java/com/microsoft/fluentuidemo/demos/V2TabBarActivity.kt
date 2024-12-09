@@ -8,6 +8,7 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -63,7 +64,7 @@ class V2TabBarActivity : V2DemoActivity() {
 
         setActivityContent {
             val content = listOf(0, 1, 2)
-            var selectedOption by rememberSaveable { mutableStateOf(content[0]) }
+            var selectedOption by rememberSaveable { mutableIntStateOf(content[0]) }
             val tabItemsCount = _tabItemsCount.observeAsState(initial = 5)
             var showIndicator by rememberSaveable {
                 mutableStateOf(false)
@@ -205,7 +206,8 @@ class V2TabBarActivity : V2DemoActivity() {
                         selectedIndex = 0
                         showHomeBadge = false
                     },
-                    badge = { if (selectedIndex == 0 && showHomeBadge) Badge() }
+                    badge = { if (selectedIndex == 0 && showHomeBadge) Badge() },
+                    accessibilityDescription = resources.getString(R.string.tabBar_home) + ": " + if(selectedIndex == 0) {resources.getString(R.string.Active)} else {resources.getString(R.string.Inactive)}
                 ),
                 TabData(
                     title = resources.getString(R.string.tabBar_mail),
@@ -215,7 +217,8 @@ class V2TabBarActivity : V2DemoActivity() {
                         invokeToast(resources.getString(R.string.tabBar_mail), context)
                         selectedIndex = 1
                     },
-                    badge = { Badge(text = "123+", badgeType = BadgeType.Character) }
+                    badge = { Badge(text = "123+", badgeType = BadgeType.Character) },
+                    accessibilityDescription = resources.getString(R.string.tabBar_mail) + ": " + if(selectedIndex == 1) {resources.getString(R.string.Active)} else {resources.getString(R.string.Inactive)}
                 ),
                 TabData(
                     title = resources.getString(R.string.tabBar_settings),
@@ -224,7 +227,8 @@ class V2TabBarActivity : V2DemoActivity() {
                     onClick = {
                         invokeToast(resources.getString(R.string.tabBar_settings), context)
                         selectedIndex = 2
-                    }
+                    },
+                    accessibilityDescription = resources.getString(R.string.tabBar_settings) + ": " + if(selectedIndex == 2) {resources.getString(R.string.Active)} else {resources.getString(R.string.Inactive)}
                 ),
                 TabData(
                     title = resources.getString(R.string.tabBar_notification),
@@ -234,7 +238,8 @@ class V2TabBarActivity : V2DemoActivity() {
                         invokeToast(resources.getString(R.string.tabBar_notification), context)
                         selectedIndex = 3
                     },
-                    badge = { Badge(text = "10", badgeType = BadgeType.Character) }
+                    badge = { Badge(text = "10", badgeType = BadgeType.Character) },
+                    accessibilityDescription = resources.getString(R.string.tabBar_notification) + ": " + if(selectedIndex == 3) {resources.getString(R.string.Active)} else {resources.getString(R.string.Inactive)}
                 ),
                 TabData(
                     title = resources.getString(R.string.tabBar_more),
@@ -245,6 +250,7 @@ class V2TabBarActivity : V2DemoActivity() {
                         selectedIndex = 4
                     },
                     badge = { Badge() },
+                    accessibilityDescription = resources.getString(R.string.tabBar_more) + ": " + if(selectedIndex == 4) {resources.getString(R.string.Active)} else {resources.getString(R.string.Inactive)}
                 )
             )
 
