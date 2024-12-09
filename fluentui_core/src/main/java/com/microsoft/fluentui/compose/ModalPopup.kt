@@ -1,13 +1,16 @@
 package com.microsoft.fluentui.compose
 
 import android.content.Context
+import android.graphics.Outline
 import android.graphics.PixelFormat
+import android.graphics.Rect
 import android.os.Build
 import android.view.Gravity
-import android.view.KeyEvent
 import android.view.View
-import android.view.ViewTreeObserver
+import android.view.ViewGroup
+import android.view.ViewOutlineProvider
 import android.view.WindowManager
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.captionBar
@@ -33,15 +36,22 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.layout.LayoutCoordinates
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.AbstractComposeView
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.ViewRootForInspector
 import androidx.compose.ui.semantics.popup
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.PopupProperties
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.lifecycle.findViewTreeViewModelStoreOwner
@@ -56,52 +66,71 @@ import java.util.UUID
  */
 @Composable
 fun ModalPopup(
-    onDismissRequest: () -> Unit,
+    onDismissRequest:(() -> Unit)? = null,
     windowInsetsType: Int = WindowInsetsCompat.Type.systemBars(),
     content: @Composable () -> Unit,
 ) {
+    val properties = PopupProperties()
     val view = LocalView.current
-    val id = rememberSaveable { UUID.randomUUID() }
+    val density = LocalDensity.current
+    val layoutDirection = LocalLayoutDirection.current
     val parentComposition = rememberCompositionContext()
     val currentContent by rememberUpdatedState(content)
-    val layoutDirection = LocalLayoutDirection.current
+    val id = rememberSaveable { UUID.randomUUID() }
     val modalWindow = remember {
         ModalWindow(
             onDismissRequest = onDismissRequest,
+            properties = properties,
             composeView = view,
+            density = density,
             saveId = id
         ).apply {
-            setCustomContent(
-                parent = parentComposition,
-                content = {
-                    Box(
-                        Modifier
-                            .semantics { this.popup() }
-                            // Get the size of the content
-                            .onSizeChanged {
-                                popupContentSize = it
-                            }
-                            // Hide the popup while we can't position it correctly
-                            .alpha(if (canCalculatePosition) 1f else 0f)
-                            .windowInsetsPadding(
-                                convertWindowInsetsCompatTypeToWindowInsets(windowInsetsType)
-                            )
-                            .imePadding()
-                    ) {
-                        currentContent()
-                    }
+            setCustomContent(parentComposition) {
+                Box(
+                    Modifier
+                        .semantics { this.popup() }
+                        // Get the size of the content
+                        .onSizeChanged {
+                            popupContentSize = it
+                        }
+                        // Hide the popup while we can't position it correctly
+                        .alpha(if (canCalculatePosition) 1f else 0f)
+                        .windowInsetsPadding(
+                            convertWindowInsetsCompatTypeToWindowInsets(windowInsetsType)
+                        )
+                        .imePadding()
+                ) {
+                    currentContent()
                 }
-            )
+            }
         }
     }
 
     DisposableEffect(modalWindow) {
         modalWindow.show()
-        modalWindow.superSetLayoutDirection(layoutDirection)
+        modalWindow.updateParameters(
+            onDismissRequest = onDismissRequest,
+            properties = properties,
+            layoutDirection = layoutDirection
+        )
         onDispose {
             modalWindow.disposeComposition()
             modalWindow.dismiss()
         }
+    }
+
+    Layout(
+        content = {},
+        modifier = Modifier
+            .onGloballyPositioned { childCoordinates ->
+                val parentCoordinates = childCoordinates.parentLayoutCoordinates
+                if (parentCoordinates != null) {
+                    modalWindow.updateParentLayoutCoordinates(parentCoordinates)
+                }
+            }
+    ) { _, _ ->
+        modalWindow.parentLayoutDirection = layoutDirection
+        layout(0, 0) {}
     }
 }
 
@@ -122,17 +151,31 @@ fun convertWindowInsetsCompatTypeToWindowInsets(windowInsetsCompatType: Int): Wi
 
 /** Custom compose view for [BottomDrawer] */
 private class ModalWindow(
-    private var onDismissRequest: () -> Unit,
+    private var onDismissRequest: (() -> Unit)? = null,
+    private var properties: PopupProperties,
     private val composeView: View,
+    density: Density,
     saveId: UUID,
+    private val popupLayoutHelper: PopupLayoutHelperImpl = if (Build.VERSION.SDK_INT >= 29) {
+        PopupLayoutHelperImpl29()
+    } else {
+        PopupLayoutHelperImpl()
+    }
 ) :
     AbstractComposeView(composeView.context),
-    ViewTreeObserver.OnGlobalLayoutListener,
     ViewRootForInspector {
+    private val windowManager =
+        composeView.context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+
+    private val params: WindowManager.LayoutParams = createLayoutParams()
+    var parentLayoutDirection: LayoutDirection = LayoutDirection.Ltr
     var popupContentSize: IntSize? by mutableStateOf(null)
+    private var parentLayoutCoordinates: LayoutCoordinates? by mutableStateOf(null)
     val canCalculatePosition by derivedStateOf {
-        popupContentSize != null
+        parentLayoutCoordinates != null && popupContentSize != null
     }
+
+    override val subCompositionView: AbstractComposeView get() = this
 
     init {
         id = android.R.id.content
@@ -143,14 +186,91 @@ private class ModalWindow(
         setTag(androidx.compose.ui.R.id.compose_view_saveable_id_tag, "Popup:$saveId")
         // Enable children to draw their shadow by not clipping them
         clipChildren = false
+        with(density) { elevation = 8.dp.toPx() }
+        outlineProvider = object : ViewOutlineProvider() {
+            override fun getOutline(view: View, result: Outline) {
+                result.setRect(0, 0, view.width, view.height)
+                result.alpha = 0f
+            }
+        }
     }
 
-    private val windowManager =
-        composeView.context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+    private var content: @Composable () -> Unit by mutableStateOf({})
 
+    override var shouldCreateCompositionOnAttachedToWindow: Boolean = false
+        private set
 
-    private val params: WindowManager.LayoutParams =
-        WindowManager.LayoutParams().apply {
+    fun show() {
+        windowManager.addView(this, params)
+    }
+
+    fun setCustomContent(
+        parent: CompositionContext? = null,
+        content: @Composable () -> Unit
+    ) {
+        setParentCompositionContext(parent)
+        this.content = content
+        shouldCreateCompositionOnAttachedToWindow = true
+    }
+
+    @Composable
+    override fun Content() {
+        content()
+    }
+
+    private fun focusable(isFocusable: Boolean) = applyNewFlags(
+        if (!isFocusable) {
+            params.flags or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+        } else {
+            params.flags and (WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE.inv())
+        }
+    )
+
+    private fun applyNewFlags(flags: Int) {
+        params.flags = flags
+        popupLayoutHelper.updateViewLayout(windowManager, this, params)
+    }
+
+    fun updateParameters(
+        onDismissRequest: (() -> Unit)?,
+        properties: PopupProperties,
+        layoutDirection: LayoutDirection
+    ) {
+        this.onDismissRequest = onDismissRequest
+        if (properties.usePlatformDefaultWidth && !this.properties.usePlatformDefaultWidth) {
+            params.width = WindowManager.LayoutParams.WRAP_CONTENT
+            params.height = WindowManager.LayoutParams.WRAP_CONTENT
+            popupLayoutHelper.updateViewLayout(windowManager, this, params)
+        }
+        this.properties = properties
+        focusable(properties.focusable)
+        superSetLayoutDirection(layoutDirection)
+    }
+
+    fun updateParentLayoutCoordinates(parentLayoutCoordinates: LayoutCoordinates) {
+        this.parentLayoutCoordinates = parentLayoutCoordinates
+    }
+
+    fun dismiss() {
+        this.setViewTreeLifecycleOwner(null)
+        setViewTreeSavedStateRegistryOwner(null)
+        windowManager.removeViewImmediate(this)
+    }
+
+    override fun setLayoutDirection(layoutDirection: Int) {
+        // Do nothing.
+    }
+
+    fun superSetLayoutDirection(layoutDirection: LayoutDirection) {
+        val direction = when (layoutDirection) {
+            LayoutDirection.Ltr -> android.util.LayoutDirection.LTR
+            LayoutDirection.Rtl -> android.util.LayoutDirection.RTL
+        }
+        super.setLayoutDirection(direction)
+    }
+
+    private fun createLayoutParams(): WindowManager.LayoutParams{
+        return WindowManager.LayoutParams().apply {
             // Position bottom sheet from the bottom of the screen
             gravity = Gravity.BOTTOM or Gravity.START
             // Application panel window
@@ -183,75 +303,35 @@ private class ModalWindow(
                 flags
             } else flags or WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         }
+    }
+}
 
-    private var content: @Composable () -> Unit by mutableStateOf({})
+private open class PopupLayoutHelperImpl {
 
-    override var shouldCreateCompositionOnAttachedToWindow: Boolean = false
-        private set
-
-    @Composable
-    override fun Content() {
-        content()
+    open fun setGestureExclusionRects(composeView: View, width: Int, height: Int) {
+        //For Android versions below API 29, it’s not necessary to explicitly exclude the entire screen from system gestures.
+        // The skeleton method is defined to keep consistency in the two objects.
     }
 
-    fun setCustomContent(
-        parent: CompositionContext? = null,
-        content: @Composable () -> Unit
+    fun updateViewLayout(
+        windowManager: WindowManager,
+        popupView: View,
+        params: ViewGroup.LayoutParams
     ) {
-        parent?.let { setParentCompositionContext(it) }
-        this.content = content
-        shouldCreateCompositionOnAttachedToWindow = true
+        windowManager.updateViewLayout(popupView, params)
     }
+}
 
-    fun show() {
-        windowManager.addView(this, params)
-    }
-
-    fun dismiss() {
-        this.setViewTreeLifecycleOwner(null)
-        setViewTreeSavedStateRegistryOwner(null)
-        composeView.viewTreeObserver.removeOnGlobalLayoutListener(this)
-        windowManager.removeViewImmediate(this)
-    }
-
-    /**
-     * Taken from PopupWindow. Calls [onDismissRequest] when back button is pressed.
-     */
-    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
-        if (event.keyCode == KeyEvent.KEYCODE_BACK) {
-            if (keyDispatcherState == null) {
-                return super.dispatchKeyEvent(event)
-            }
-            if (event.action == KeyEvent.ACTION_DOWN && event.repeatCount == 0) {
-                val state = keyDispatcherState
-                state?.startTracking(event, this)
-                return true
-            } else if (event.action == KeyEvent.ACTION_UP) {
-                val state = keyDispatcherState
-                if (state != null && state.isTracking(event) && !event.isCanceled) {
-                    onDismissRequest()
-                    return true
-                }
-            }
-        }
-        return super.dispatchKeyEvent(event)
-    }
-
-    override fun onGlobalLayout() {
-        // No-op
-    }
-
-    override fun setLayoutDirection(layoutDirection: Int) {
-        // Do nothing. ViewRootImpl will call this method attempting to set the layout direction
-        // from the context's locale, but we have one already from the parent composition.
-    }
-
-    // Sets the "real" layout direction for our content that we obtain from the parent composition.
-    fun superSetLayoutDirection(layoutDirection: LayoutDirection) {
-        val direction = when (layoutDirection) {
-            LayoutDirection.Ltr -> android.util.LayoutDirection.LTR
-            LayoutDirection.Rtl -> android.util.LayoutDirection.RTL
-        }
-        super.setLayoutDirection(direction)
+@RequiresApi(29) // android.view.View#setSystemGestureExclusionRects call requires API 29 and above
+private class PopupLayoutHelperImpl29 : PopupLayoutHelperImpl() {
+    override fun setGestureExclusionRects(composeView: View, width: Int, height: Int) { // We need to explicitly specify to exclude the entire screen from system gestures
+        composeView.systemGestureExclusionRects = mutableListOf(
+            Rect(
+                0,
+                0,
+                width,
+                height
+            )
+        )
     }
 }
