@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import com.microsoft.fluentui.theme.FluentTheme
@@ -15,16 +16,16 @@ import com.microsoft.fluentui.theme.token.controlTokens.TabBarTokens
 import com.microsoft.fluentui.theme.token.controlTokens.TabItemTokens
 import com.microsoft.fluentui.theme.token.controlTokens.TabTextAlignment
 import com.microsoft.fluentui.tokenized.tabItem.TabItem
-
+import com.microsoft.fluentui.tablayout.R
 
 data class TabData(
     var title: String,
-    var accessibilityDescription: String? = null,  //Custom announcement for Talkback
     var icon: ImageVector,
     var selectedIcon: ImageVector = icon,
     var selected: Boolean = false,
     var onClick: () -> Unit,
-    var badge: @Composable (() -> Unit)? = null
+    var badge: @Composable (() -> Unit)? = null,
+    var accessibilityDescription: String? = null,  //Custom announcement for Talkback
 )
 
 /**
@@ -53,6 +54,7 @@ fun TabBar(
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = tabBarTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabBarControlType] as TabBarTokens
+    val resources = LocalContext.current.resources
 
     Column(modifier.fillMaxWidth()) {
         Box(
@@ -67,7 +69,7 @@ fun TabBar(
             tabDataList.forEachIndexed { index, tabData ->
                 tabData.selected = index == selectedIndex
                 var accessibilityDescriptionValue = if(tabData.accessibilityDescription != null) { tabData.accessibilityDescription }
-                                               else{ tabData.title + if(tabData.selected) ": Active" else ": Inactive" }
+                                               else{ tabData.title + if(tabData.selected) resources.getString(R.string.tab_active).prependIndent(": ") else resources.getString(R.string.tab_inactive).prependIndent(": ") }
                 TabItem(
                     title = tabData.title,
                     modifier = Modifier
