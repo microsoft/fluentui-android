@@ -27,6 +27,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithCache
@@ -37,6 +38,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.invisibleToUser
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -53,6 +56,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.TabItemInfo
 import com.microsoft.fluentui.theme.token.controlTokens.TabItemTokens
 import com.microsoft.fluentui.theme.token.controlTokens.TabTextAlignment
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun TabItem(
     title: String,
@@ -117,7 +121,11 @@ fun TabItem(
     val iconContent: @Composable () -> Unit = {
         Icon(
             imageVector = icon,
-            modifier = Modifier.size(if (textAlignment == TabTextAlignment.NO_TEXT) 28.dp else 24.dp)
+            modifier = Modifier
+                        .semantics {
+                            invisibleToUser()
+                        }
+                        .size(if (textAlignment == TabTextAlignment.NO_TEXT) 28.dp else 24.dp)
                         .graphicsLayer(alpha = 0.99f)
                         .drawWithCache {
                             onDrawWithContent {
@@ -156,6 +164,9 @@ fun TabItem(
             BasicText(
                 text = title,
                 modifier = Modifier
+                    .semantics {
+                        invisibleToUser()
+                    }
                     .constrainAs(textConstrain) {
                         start.linkTo(iconConstrain.end)
                         end.linkTo(badgeConstrain.start)
@@ -266,7 +277,10 @@ fun TabItem(
                     text = title,
                     style = textStyle,
                     maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.semantics {
+                        invisibleToUser()
+                    }
                 )
             }
             if(showIndicator){
