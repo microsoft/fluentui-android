@@ -26,7 +26,7 @@ interface IControlTokens {
     }
 }
 
-object UndefinedControlToken : IControlToken
+object UndefinedControlToken: IControlToken
 
 /**
  * Extend the ControlToken to add token for custom control or providing new token to existing Fluent Control. *
