@@ -15,11 +15,15 @@ import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import com.microsoft.fluentui.compose.AcrylicPane
@@ -27,13 +31,14 @@ import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Office
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
-import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.tokenized.SearchBar
-import com.microsoft.fluentui.tokenized.controls.RadioButton
-import com.microsoft.fluentui.tokenized.persona.Avatar
+import com.microsoft.fluentui.tokenized.drawer.DrawerValue
+import com.microsoft.fluentui.tokenized.drawer.rememberBottomDrawerState
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentuidemo.CustomizedSearchBarTokens
 import com.microsoft.fluentuidemo.util.DemoAppStrings
+import com.microsoft.fluentuidemo.util.PrimarySurfaceContent
+import com.microsoft.fluentuidemo.util.getAndroidViewAsContent
 import com.microsoft.fluentuidemo.util.getDemoAppString
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -62,7 +67,6 @@ class V2AcrylicPaneActivity : V2DemoActivity() {
     }
 }
 
-
 @Composable
 fun scrollableBackgroundTest(){
     val person: Person = Person(
@@ -71,25 +75,70 @@ fun scrollableBackgroundTest(){
         image = R.drawable.avatar_kat_larsson
     )
     Column(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        repeat(20) {
-            ListItem.Item(
-                text = "Item $it",
-                subText = "This is a list item",
-                leadingAccessoryContent = { Avatar(
-                    person,
-                    cutoutContentDescription = "heart",
-                    size = AvatarSize.Size40,
-                    enableActivityRings = true,
-                    cutoutIconDrawable = R.drawable.cutout_heart16x16
-                ) },
-                trailingAccessoryContent = {
-                    RadioButton(enabled = true, onClick = {}, selected = false)
-                }
-            )
-        }
+       CreateBottomDrawer()
+                repeat(20) {
+                        ListItem.Item(
+                            text = "Item $it",
+                            subText = "This is a list item",
+    //                        leadingAccessoryContent = {
+    //                            Avatar(
+    //                                person,
+    //                                cutoutContentDescription = "heart",
+    //                                size = AvatarSize.Size40,
+    //                                enableActivityRings = true,
+    //                                cutoutIconDrawable = R.drawable.cutout_heart16x16
+    //                            )
+    //                        },
+    //                        trailingAccessoryContent = {
+    //                            RadioButton(enabled = true, onClick = {}, selected = false)
+    //                        }
+                        )
+            }
     }
+}
+
+@Composable
+fun CreateBottomDrawer(){
+    val scope = rememberCoroutineScope()
+
+    val drawerState = rememberBottomDrawerState(initialValue = DrawerValue.Closed, expandable = true, skipOpenState = false)
+
+    val open: () -> Unit = {
+        scope.launch { drawerState.open() }
+    }
+    val expand: () -> Unit = {
+        scope.launch { drawerState.expand() }
+    }
+    val close: () -> Unit = {
+        scope.launch { drawerState.close() }
+    }
+    Row {
+        PrimarySurfaceContent(
+            open,
+            text = stringResource(id = R.string.drawer_open)
+        )
+        Spacer(modifier = Modifier.width(10.dp))
+        PrimarySurfaceContent(
+            expand,
+            text = stringResource(id = R.string.drawer_expand)
+        )
+    }
+    var selectedContent by rememberSaveable { mutableStateOf(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT) }
+    val drawerContent = getAndroidViewAsContent(selectedContent)
+    var maxLandscapeWidthFraction by rememberSaveable { mutableFloatStateOf(1F) }
+    var preventDismissalOnScrimClick by rememberSaveable { mutableStateOf(false) }
+    com.microsoft.fluentui.tokenized.drawer.BottomDrawer(
+        drawerState = drawerState,
+        drawerContent = { drawerContent(close) },
+        scrimVisible = true,
+        slideOver = true,
+        showHandle = true,
+        enableSwipeDismiss = true,
+        maxLandscapeWidthFraction = maxLandscapeWidthFraction,
+        preventDismissalOnScrimClick = preventDismissalOnScrimClick
+    )
 }
 
 @Composable
