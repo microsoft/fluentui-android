@@ -10,5 +10,5 @@
     <string name="tab_active">Active</string>
 
     <!-- String specifying the Inactive status of a tab -->
-    <string name="tab_inactive">Active</string>
+    <string name="tab_inactive">Inactive</string>
 </resources>
