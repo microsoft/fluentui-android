@@ -2,14 +2,19 @@ package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.pager.PageSize
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.icons.AvatarIcons
@@ -25,20 +30,25 @@ import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.segmentedcontrols.*
 import com.microsoft.fluentuidemo.V2DemoActivity
+import kotlinx.coroutines.launch
+import com.microsoft.fluentui.tokenized.navigation.ViewPager
 
 // Tags used for testing
 const val SEGMENTED_CONTROL_PILL_BUTTON = "Segmented Control Pill Button"
 const val SEGMENTED_CONTROL_PILL_BAR = "Segmented Control Pill Bar"
 const val SEGMENTED_CONTROL_TABS = "Segmented Control Tabs"
 const val SEGMENTED_CONTROL_SWITCH = "Segmented Control Switch"
+const val SEGMENTED_CONTROL_VIEW_PAGER = "Segmented Control View Pager"
 const val SEGMENTED_CONTROL_PILL_BUTTON_TOGGLE = "Segmented Control Pill Button Toggle"
 const val SEGMENTED_CONTROL_PILL_BAR_TOGGLE = "Segmented Control Pill Bar Toggle"
 const val SEGMENTED_CONTROL_TABS_TOGGLE = "Segmented Control Tabs Toggle"
 const val SEGMENTED_CONTROL_SWITCH_TOGGLE = "Segmented Control Switch Toggle"
+const val SEGMENTED_CONTROL_VIEW_PAGER_TOGGLE = "Segmented Control View Pager Toggle"
 const val SEGMENTED_CONTROL_PILL_BUTTON_COMPONENT = "Segmented Control Pill Button Component"
 const val SEGMENTED_CONTROL_PILL_BAR_COMPONENT = "Segmented Control Pill Bar Component"
 const val SEGMENTED_CONTROL_TABS_COMPONENT = "Segmented Control Tabs Component"
 const val SEGMENTED_CONTROL_SWITCH_COMPONENT = "Segmented Control Switch Component"
+const val SEGMENTED_CONTROL_VIEW_PAGER_COMPONENT = "Segmented Control View pager Component"
 
 class V2SegmentedControlActivity : V2DemoActivity() {
 
@@ -50,6 +60,7 @@ class V2SegmentedControlActivity : V2DemoActivity() {
     override val controlTokensUrl =
         "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-28"
 
+    @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val context = this
@@ -229,8 +240,10 @@ class V2SegmentedControlActivity : V2DemoActivity() {
                 item {
                     var enableTabs by rememberSaveable { mutableStateOf(true) }
                     var selectedTab by rememberSaveable { mutableStateOf(0) }
+                    val pagerState = rememberPagerState(pageCount = { 6 })
+                    val coroutineScope = rememberCoroutineScope()
 
-                    var tabsList: MutableList<PillMetaData> = mutableListOf()
+                    val tabsList: MutableList<PillMetaData> = mutableListOf()
 
                     for (idx in 0..5) {
                         val label = "Neutral ${idx + 1}"
@@ -245,6 +258,10 @@ class V2SegmentedControlActivity : V2DemoActivity() {
                                         Toast.LENGTH_SHORT
                                     ).show()
                                     selectedTab = idx
+                                    coroutineScope.launch {
+                                        // Call scroll to on pagerState
+                                        pagerState.animateScrollToPage(idx)
+                                    }
                                 },
                                 enabled = enableTabs,
                                 notificationDot = selectedTab != idx
@@ -294,6 +311,66 @@ class V2SegmentedControlActivity : V2DemoActivity() {
                                     scrollable = false
                                 )
                             }
+                        }
+                    )
+
+                    template(
+                        "View Pager",
+                        testTag = SEGMENTED_CONTROL_VIEW_PAGER,
+                        enableSwitch = {
+                            ToggleSwitch(
+                                Modifier
+                                    .padding(vertical = 3.dp)
+                                    .testTag(SEGMENTED_CONTROL_VIEW_PAGER_TOGGLE),
+                                onValueChange = { enableTabs = it },
+                                checkedState = enableTabs
+                            )
+                        },
+                        neutralContent = {
+                            Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
+                                PillTabs(
+                                    modifier = Modifier.testTag(SEGMENTED_CONTROL_VIEW_PAGER_COMPONENT),
+                                    metadataList = tabsList.subList(0, 4),
+                                    selectedIndex = selectedTab,
+                                    scrollable = true
+                                )
+                                PillTabs(
+                                    tabsList.subList(0, 4),
+                                    style = FluentStyle.Brand,
+                                    selectedIndex = selectedTab,
+                                    scrollable = false
+                                )
+                            }
+                        },
+                        brandContent = {
+                            Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
+                                PillTabs(
+                                    tabsList,
+                                    selectedIndex = selectedTab,
+                                    scrollable = true
+                                )
+                                PillTabs(
+                                    tabsList,
+                                    style = FluentStyle.Brand,
+                                    selectedIndex = selectedTab,
+                                    scrollable = false
+                                )
+                                ViewPager(pagerState, pageContent = {
+                                    Box(
+                                        Modifier
+                                            .fillMaxSize()
+                                            .background(
+                                                color = if (selectedTab % 2 == 0) Color.Cyan else Color.LightGray
+                                            )
+                                    ) {
+                                        BasicText(
+                                            text = "Page $selectedTab",
+                                            modifier = Modifier.align(Alignment.Center)
+                                        )
+                                    }
+                                }, modifier = Modifier.height(200.dp), userScrollEnabled = true)
+                            }
+
                         }
                     )
                 }
@@ -369,6 +446,7 @@ class V2SegmentedControlActivity : V2DemoActivity() {
                         }
                     )
                 }
+
             }
         }
     }
