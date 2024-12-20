@@ -5,4 +5,10 @@
 
     <!-- Describes the Numbering of Pill Butons Inside PillBar -->
     <string name="position_string">Item %1$d in list of %2$d</string>
+
+    <!-- String specifying the Active status of a tab -->
+    <string name="tab_active">Active</string>
+
+    <!-- String specifying the Inactive status of a tab -->
+    <string name="tab_inactive">Inactive</string>
 </resources>
