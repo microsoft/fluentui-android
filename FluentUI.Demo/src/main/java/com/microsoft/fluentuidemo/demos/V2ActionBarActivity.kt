@@ -70,7 +70,6 @@ class V2ActionBarActivity : V2DemoActivity() {
                         onClick = { selectedActionBarPos = actionBarPos[1] }
                     )
                 }
-
                 ListItem.Header(title = resources.getString(R.string.actionbar_type_heading))
                 Column(
                     modifier = Modifier.padding(16.dp),
