@@ -163,7 +163,7 @@ val V1DEMO = arrayListOf(
 )
 
 val V2DEMO = arrayListOf(
-    Demo(V2ACTION_BAR, V2ActionBarActivity::class),
+    Demo(V2ACTION_BAR, V2ActionBarActivity::class, Badge.Modified),
     Demo(V2APP_BAR_LAYOUT, V2AppBarActivity::class),
     Demo(V2AVATAR, V2AvatarActivity::class, Badge.Modified),
     Demo(V2AVATAR_CAROUSEL, V2AvatarCarouselActivity::class),
@@ -190,8 +190,8 @@ val V2DEMO = arrayListOf(
     Demo(V2PERSONA_LIST, V2PersonaListActivity::class),
     Demo(V2PROGRESS, V2ProgressActivity::class),
     Demo(V2SCAFFOLD, V2ScaffoldActivity::class),
-    Demo(V2SEARCHBAR, V2SearchBarActivity::class),
-    Demo(V2SEGMENTED_CONTROL, V2SegmentedControlActivity::class),
+    Demo(V2SEARCHBAR, V2SearchBarActivity::class, Badge.Modified),
+    Demo(V2SEGMENTED_CONTROL, V2SegmentedControlActivity::class, Badge.Modified),
     Demo(V2SHIMMER, V2ShimmerActivity::class),
     Demo(V2SIDE_RAIL, V2SideRailActivity::class),
     Demo(V2SNACKBAR, V2SnackbarActivity::class),
