@@ -1,17 +1,13 @@
-Release version 0.3.4
+Release version 0.3.5
 What's new
-Fluent v1/v2:
-Fix/enhancement
-    1. Remove threetenabp dependency and use java date time APIs
-    2. Sunsetting surface duo support
-
 Fluent v2:
 Fix/enhancement:
-    1. Add support for customizing cutout icon color in Avatar
-    2. Activity dot support for Avatar and Avatar group
-    3. Tab item text responsiveness fix
-    4. Badge responsiveness fix
+    1. Increased customization support in search bar
+    2. Fixes for adding predictive back gestures in modal popup
+    3. View pager support
+    4. Action bar support
+    5. Tab bar talkback fixes
 
 Note: Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00).
 Fluent version 0.3.x will support compose foundation version 1.6.0.
-minSDKVersion has been updated to 26 in this release.
+minSDKVersion has been updated to 23 in this release.
