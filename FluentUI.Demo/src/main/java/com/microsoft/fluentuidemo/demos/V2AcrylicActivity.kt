@@ -88,17 +88,8 @@ fun scrollableBackgroundTest(){
     ) {
        CreateBottomDrawer()
         ListItem.Item(
-            text = "Size",
-            subText = "This is a list item",
-            leadingAccessoryContent = {
-                Avatar(
-                    person,
-                    cutoutContentDescription = "heart",
-                    size = AvatarSize.Size40,
-                    enableActivityRings = true,
-                    cutoutIconDrawable = R.drawable.cutout_heart16x16
-                )
-            },
+            text = "Acrylic Pane Size",
+            subText = "Controls the size of the Acrylic Pane",
             trailingAccessoryContent = {
                 RadioButton(enabled = true, onClick = {}, selected = false)
             },
