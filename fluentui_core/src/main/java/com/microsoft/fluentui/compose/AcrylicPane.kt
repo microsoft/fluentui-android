@@ -10,12 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TileMode
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.zIndex
 
 
@@ -26,26 +28,13 @@ private fun AcrylicPane(
     backgroundContent: @Composable () -> Unit,
     triggerRecomposition: Boolean = false
 ) {
-    val startColor: Color = Color(red = 0xF7, green = 0xF8 , blue = 0xFB, alpha = 0xFF)
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize().border(width = 0.dp, color = Color.Transparent)
     ) {
         backgroundContent()
 
         Box(
-            modifier = Modifier
-                .background(
-                    brush = Brush.verticalGradient(
-                        colors = listOf(
-                            startColor,
-                            Color.White.copy(alpha = 0.5f),
-                            Color.White.copy(alpha = 0.25f)
-                        )
-                    )
-                )
-                .fillMaxWidth()
-                .height(100.dp)
-                .align(Alignment.Center)
+            modifier = modifier
         ) {
             component()
         }
@@ -53,24 +42,30 @@ private fun AcrylicPane(
 }
 
 @Composable
-public fun AcrylicPane(modifier: Modifier = Modifier, component: @Composable () -> Unit, backgroundContent: @Composable () -> Unit) {
+public fun AcrylicPane(modifier: Modifier = Modifier, paneHeight: Dp = 300.dp, component: @Composable () -> Unit, backgroundContent: @Composable () -> Unit) {
+    val startColor: Color = Color(red = 0xF7, green = 0xF8 , blue = 0xFB, alpha = 0xFF)
     AcrylicPane(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(300.dp),
+        modifier = modifier
+        .fillMaxWidth()
+        .height(paneHeight)
+        .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        startColor,
+                        startColor,
+                        startColor,
+                        Color.White.copy(alpha = 0.5f),
+                        Color.White.copy(alpha = 0.2f),
+                        Color.White.copy(alpha = 0.0f),
+                    )
+                )
+        )
+        .border(width = 0.dp, color = Color(0x00FFFFFF)),
         component = {
-            Column(
-                modifier = Modifier.padding(10.dp)
-            ) {
-                //Spacer(modifier = Modifier.height(50.dp))
-                component()
-            }
+            component()
         },
         backgroundContent = {
-            Column {
-                //Spacer(modifier = Modifier.height(200.dp))
-                backgroundContent()
-            }
+            backgroundContent()
         },
         triggerRecomposition = false
     )

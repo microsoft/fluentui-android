@@ -16,11 +16,12 @@ import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Slider
+import androidx.compose.material.SliderDefaults
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -29,11 +30,15 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import com.microsoft.fluentui.compose.AcrylicPane
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Office
+import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
@@ -69,51 +74,69 @@ class V2AcrylicPaneActivity : V2DemoActivity() {
 
     @Composable
     private fun CreateAcrylicPaneActivityUI(context: Context) {
-        AcrylicPane(component = { frozenBackground(context) }) {
-            scrollableBackgroundTest()
-        }
+        scrollableBackgroundTest(context = context)
     }
 }
 
 
 @Composable
-fun scrollableBackgroundTest(){
+fun scrollableBackgroundTest(
+    context: Context
+){
     val person: Person = Person(
         "Kat", "Larsson",
         isActive = true,
         image = R.drawable.avatar_kat_larsson
     )
-    Column(
-        modifier = Modifier.verticalScroll(rememberScrollState()).fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally,
+    var acrylicPaneSizeFraction by rememberSaveable { mutableFloatStateOf(0.5F) }
+    AcrylicPane(
+        paneHeight = (acrylicPaneSizeFraction * 500).toInt().dp,
+        component = { frozenBackground(context = context) },
     ) {
-       CreateBottomDrawer()
-        ListItem.Item(
-            text = "Acrylic Pane Size",
-            subText = "Controls the size of the Acrylic Pane",
-            trailingAccessoryContent = {
-                RadioButton(enabled = true, onClick = {}, selected = false)
-            },
-            onClick = {}
-        )
-//                repeat(20) {
-//                        ListItem.Item(
-//                            text = "Item $it",
-//                            subText = "This is a list item",
-//                            leadingAccessoryContent = {
-//                                Avatar(
-//                                    person,
-//                                    cutoutContentDescription = "heart",
-//                                    size = AvatarSize.Size40,
-//                                    enableActivityRings = true,
-//                                    cutoutIconDrawable = R.drawable.cutout_heart16x16
-//                                )
-//                            },
-//                            trailingAccessoryContent = {
-//                                RadioButton(enabled = true, onClick = {}, selected = false)
-//                            },
-//                            onClick = {}
-//                        )
-//            }
+        Column(
+            modifier = Modifier.verticalScroll(rememberScrollState()).fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Spacer(Modifier.height(200.dp))
+            CreateBottomDrawer()
+            ListItem.Header(title = "Acrylic Pane Size",
+                titleMaxLines = 2,
+                modifier = Modifier
+                    .clearAndSetSemantics {
+                        this.contentDescription = "Acrylic Pane Size"
+                    },
+            )
+            Slider(
+                value = acrylicPaneSizeFraction,
+                onValueChange = { acrylicPaneSizeFraction = it },
+                valueRange = 0F..1F,
+                colors = SliderDefaults.colors(
+                    thumbColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                        FluentTheme.themeMode
+                    ),
+                    activeTrackColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color80],
+                    inactiveTrackColor = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
+                        FluentTheme.themeMode
+                    ),
+                    disabledThumbColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                        FluentTheme.themeMode
+                    ),
+                    disabledActiveTrackColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                        FluentTheme.themeMode
+                    ),
+                    disabledInactiveTrackColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                        FluentTheme.themeMode
+                    )
+                ),
+                steps = 10
+            )
+            repeat(20){
+                ListItem.Item(
+                    text = "Item $it",
+                    onClick = {}
+                )
+            }
+        }
     }
 }
 
