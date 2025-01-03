@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TileMode
@@ -26,28 +27,26 @@ private fun AcrylicPane(
     triggerRecomposition: Boolean = false
 ) {
     val startColor: Color = Color(red = 0xF7, green = 0xF8 , blue = 0xFB, alpha = 0xFF)
-    Box(modifier = Modifier.fillMaxSize()) {
-        LazyColumn(modifier = Modifier.zIndex(0f)) {
-            item {
-                backgroundContent()
-            }
-        }
+    Box(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        backgroundContent()
+
         Box(
-            modifier = modifier
-                .zIndex(1f)
+            modifier = Modifier
                 .background(
                     brush = Brush.verticalGradient(
                         colors = listOf(
                             startColor,
-                            startColor,
-                            startColor,
                             Color.White.copy(alpha = 0.5f),
-                            Color.White.copy(alpha = 0f)
-                        ),
-                        tileMode = TileMode.Decal
+                            Color.White.copy(alpha = 0.25f)
+                        )
                     )
                 )
-        ){
+                .fillMaxWidth()
+                .height(100.dp)
+                .align(Alignment.Center)
+        ) {
             component()
         }
     }
@@ -63,13 +62,13 @@ public fun AcrylicPane(modifier: Modifier = Modifier, component: @Composable () 
             Column(
                 modifier = Modifier.padding(10.dp)
             ) {
-                Spacer(modifier = Modifier.height(50.dp))
+                //Spacer(modifier = Modifier.height(50.dp))
                 component()
             }
         },
         backgroundContent = {
             Column {
-                Spacer(modifier = Modifier.height(200.dp))
+                //Spacer(modifier = Modifier.height(200.dp))
                 backgroundContent()
             }
         },

@@ -3,6 +3,7 @@ package com.microsoft.fluentuidemo.demos
 import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
@@ -16,12 +17,16 @@ import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -31,9 +36,12 @@ import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Office
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.tokenized.SearchBar
+import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.drawer.DrawerValue
 import com.microsoft.fluentui.tokenized.drawer.rememberBottomDrawerState
+import com.microsoft.fluentui.tokenized.persona.Avatar
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentuidemo.CustomizedSearchBarTokens
 import com.microsoft.fluentuidemo.util.DemoAppStrings
@@ -67,6 +75,7 @@ class V2AcrylicPaneActivity : V2DemoActivity() {
     }
 }
 
+
 @Composable
 fun scrollableBackgroundTest(){
     val person: Person = Person(
@@ -75,27 +84,45 @@ fun scrollableBackgroundTest(){
         image = R.drawable.avatar_kat_larsson
     )
     Column(
-        modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier.verticalScroll(rememberScrollState()).fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally,
     ) {
        CreateBottomDrawer()
-                repeat(20) {
-                        ListItem.Item(
-                            text = "Item $it",
-                            subText = "This is a list item",
-    //                        leadingAccessoryContent = {
-    //                            Avatar(
-    //                                person,
-    //                                cutoutContentDescription = "heart",
-    //                                size = AvatarSize.Size40,
-    //                                enableActivityRings = true,
-    //                                cutoutIconDrawable = R.drawable.cutout_heart16x16
-    //                            )
-    //                        },
-    //                        trailingAccessoryContent = {
-    //                            RadioButton(enabled = true, onClick = {}, selected = false)
-    //                        }
-                        )
-            }
+        ListItem.Item(
+            text = "Size",
+            subText = "This is a list item",
+            leadingAccessoryContent = {
+                Avatar(
+                    person,
+                    cutoutContentDescription = "heart",
+                    size = AvatarSize.Size40,
+                    enableActivityRings = true,
+                    cutoutIconDrawable = R.drawable.cutout_heart16x16
+                )
+            },
+            trailingAccessoryContent = {
+                RadioButton(enabled = true, onClick = {}, selected = false)
+            },
+            onClick = {}
+        )
+//                repeat(20) {
+//                        ListItem.Item(
+//                            text = "Item $it",
+//                            subText = "This is a list item",
+//                            leadingAccessoryContent = {
+//                                Avatar(
+//                                    person,
+//                                    cutoutContentDescription = "heart",
+//                                    size = AvatarSize.Size40,
+//                                    enableActivityRings = true,
+//                                    cutoutIconDrawable = R.drawable.cutout_heart16x16
+//                                )
+//                            },
+//                            trailingAccessoryContent = {
+//                                RadioButton(enabled = true, onClick = {}, selected = false)
+//                            },
+//                            onClick = {}
+//                        )
+//            }
     }
 }
 
