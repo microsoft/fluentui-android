@@ -1,5 +1,6 @@
 package com.microsoft.fluentui.compose
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -13,10 +14,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TileMode
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.zIndex
 
@@ -29,7 +34,7 @@ private fun AcrylicPane(
     triggerRecomposition: Boolean = false
 ) {
     Box(
-        modifier = Modifier.fillMaxSize().border(width = 0.dp, color = Color.Transparent)
+        modifier = Modifier.fillMaxSize().border(BorderStroke(width = 0.dp, color = Color.Transparent))
     ) {
         backgroundContent()
 
@@ -42,8 +47,8 @@ private fun AcrylicPane(
 }
 
 @Composable
-public fun AcrylicPane(modifier: Modifier = Modifier, paneHeight: Dp = 300.dp, component: @Composable () -> Unit, backgroundContent: @Composable () -> Unit) {
-    val startColor: Color = Color(red = 0xF7, green = 0xF8 , blue = 0xFB, alpha = 0xFF)
+public fun AcrylicPane(modifier: Modifier = Modifier, paneHeight: Dp = 300.dp, startColor: Int = Color(red = 0xF7, green = 0xF8 , blue = 0xFB, alpha = 0xFF).toArgb(), component: @Composable () -> Unit, backgroundContent: @Composable () -> Unit) {
+    val startColor = Color(startColor)
     AcrylicPane(
         modifier = modifier
         .fillMaxWidth()
@@ -54,13 +59,14 @@ public fun AcrylicPane(modifier: Modifier = Modifier, paneHeight: Dp = 300.dp, c
                         startColor,
                         startColor,
                         startColor,
-                        Color.White.copy(alpha = 0.5f),
-                        Color.White.copy(alpha = 0.2f),
-                        Color.White.copy(alpha = 0.0f),
-                    )
+                        startColor.copy(alpha = 0.5f),
+                        startColor.copy(alpha = 0.2f),
+                        startColor.copy(alpha = 0.0f),
+                    ),
+                    tileMode = TileMode.Decal
                 )
         )
-        .border(width = 0.dp, color = Color(0x00FFFFFF)),
+        .border(BorderStroke(width = 0.dp, color = Color.Transparent)),
         component = {
             component()
         },

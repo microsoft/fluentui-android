@@ -17,27 +17,32 @@ import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Slider
 import androidx.compose.material.SliderDefaults
+import androidx.compose.material.Text
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import com.microsoft.fluentui.compose.AcrylicPane
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Office
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
@@ -83,21 +88,20 @@ class V2AcrylicPaneActivity : V2DemoActivity() {
 fun scrollableBackgroundTest(
     context: Context
 ){
-    val person: Person = Person(
-        "Kat", "Larsson",
-        isActive = true,
-        image = R.drawable.avatar_kat_larsson
-    )
     var acrylicPaneSizeFraction by rememberSaveable { mutableFloatStateOf(0.5F) }
+    val startColor = Color(red = 0xF7, green = 0xF8 , blue = 0xFB, alpha = 0xFF).toArgb()
+    var gradientColor: Int by rememberSaveable { mutableStateOf(startColor) }
+    //var gradientColor: Color = startColor
     AcrylicPane(
         paneHeight = (acrylicPaneSizeFraction * 500).toInt().dp,
         component = { frozenBackground(context = context) },
+        startColor = gradientColor,
     ) {
         Column(
             modifier = Modifier.verticalScroll(rememberScrollState()).fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Spacer(Modifier.height(200.dp))
+            Spacer(Modifier.height(400.dp))
             CreateBottomDrawer()
             ListItem.Header(title = "Acrylic Pane Size",
                 titleMaxLines = 2,
@@ -128,13 +132,36 @@ fun scrollableBackgroundTest(
                         FluentTheme.themeMode
                     )
                 ),
-                steps = 10
+                steps = 9
             )
+            ListItem.Header(title = "Acrylic Pane Theme",
+                titleMaxLines = 2,
+                modifier = Modifier
+                    .clearAndSetSemantics {
+                        this.contentDescription = "Acrylic Pane Theme"
+                    },
+            )
+            var checkBoxSelectedValues = List(4) { rememberSaveable { mutableStateOf(false) } }
+            var gradientColors = listOf(
+                Color(red = 0xF7, green = 0xF8 , blue = 0xFB, alpha = 0xFF),
+                Color(0xFF00FF00), // Green
+                Color(0xFF0000FF), // Blue
+                Color(0xFFFFFF00)  // Yellow
+            )
+            for(i in 0..3) {
+                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Start, modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 3.dp)) {
+                    Text(text = "Theme $i")
+                    RadioButton(
+                        onClick = {
+                            selectRadioGroupButton(i, checkBoxSelectedValues)
+                            gradientColor = gradientColors[i].toArgb()
+                        },
+                        selected = checkBoxSelectedValues[i].value
+                    )
+                }
+            }
             repeat(20){
-                ListItem.Item(
-                    text = "Item $it",
-                    onClick = {}
-                )
+                ListItem.Item(text = "Item $it")
             }
         }
     }
@@ -197,57 +224,59 @@ fun frozenBackground(context: Context){
     var displayRightAccessory: Boolean by rememberSaveable { mutableStateOf(true) }
     var selectedPeople: Person? by rememberSaveable { mutableStateOf(null) }
     val showCustomizedAppBar = true
-
-    SearchBar(
-        onValueChange = { query, selectedPerson ->
-            scope.launch {
-                loading = true
-                delay(2000)
-                loading = false
-            }
-        },
-        style = searchBarStyle,
-        loading = loading,
-        selectedPerson = selectedPeople,
-        microphoneCallback = if (enableMicrophoneCallback) {
-            {
-                Toast.makeText(context, microphonePressedString, Toast.LENGTH_SHORT)
-                    .show()
-            }
-        } else null,
-        keyboardOptions = KeyboardOptions(
-            autoCorrect = autoCorrectEnabled,
-            keyboardType = KeyboardType.Email,
-            imeAction = ImeAction.Search
-        ),
-        keyboardActions = KeyboardActions(
-            onSearch = {
-                Toast.makeText(
-                    context,
-                    keyboardSearchPressedString,
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
-                keyboardController?.hide()
-            }
-        ),
-        rightAccessoryIcon = if (displayRightAccessory) {
-            FluentIcon(
-                SearchBarIcons.Office,
-                contentDescription = "Office",
-                onClick = {
+    Column {
+        Spacer(modifier = Modifier.height(100.dp))
+        SearchBar(
+            onValueChange = { query, selectedPerson ->
+                scope.launch {
+                    loading = true
+                    delay(2000)
+                    loading = false
+                }
+            },
+            style = searchBarStyle,
+            loading = loading,
+            selectedPerson = selectedPeople,
+            microphoneCallback = if (enableMicrophoneCallback) {
+                {
+                    Toast.makeText(context, microphonePressedString, Toast.LENGTH_SHORT)
+                        .show()
+                }
+            } else null,
+            keyboardOptions = KeyboardOptions(
+                autoCorrect = autoCorrectEnabled,
+                keyboardType = KeyboardType.Email,
+                imeAction = ImeAction.Search
+            ),
+            keyboardActions = KeyboardActions(
+                onSearch = {
                     Toast.makeText(
                         context,
-                        rightViewPressedString,
+                        keyboardSearchPressedString,
                         Toast.LENGTH_SHORT
                     )
                         .show()
+                    keyboardController?.hide()
                 }
-            )
-        } else null,
-        searchBarTokens = if (showCustomizedAppBar) {
-            CustomizedSearchBarTokens
-        } else null,
-        modifier = if (showCustomizedAppBar) Modifier.requiredHeight(60.dp) else Modifier
-    )
+            ),
+            rightAccessoryIcon = if (displayRightAccessory) {
+                FluentIcon(
+                    SearchBarIcons.Office,
+                    contentDescription = "Office",
+                    onClick = {
+                        Toast.makeText(
+                            context,
+                            rightViewPressedString,
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
+                    }
+                )
+            } else null,
+            searchBarTokens = if (showCustomizedAppBar) {
+                CustomizedSearchBarTokens
+            } else null,
+            modifier = if (showCustomizedAppBar) Modifier.requiredHeight(60.dp) else Modifier
+        )
+    }
 }
