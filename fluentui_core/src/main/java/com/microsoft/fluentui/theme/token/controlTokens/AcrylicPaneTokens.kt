@@ -28,10 +28,9 @@ open class AcrylicPaneTokens : IControlToken, Parcelable {
                     startColor,
                     startColor,
                     startColor.copy(alpha = 0.5f),
-                    startColor.copy(alpha = 0.2f),
                     startColor.copy(alpha = 0.0f),
                 ),
-                tileMode = TileMode.Decal
+               tileMode = TileMode.Decal
             )
         }
         else{
@@ -40,9 +39,8 @@ open class AcrylicPaneTokens : IControlToken, Parcelable {
                 colors = listOf(
                     startColor,
                     startColor,
-                    startColor.copy(alpha = 0.9f),
-                    startColor.copy(alpha = 0.6f),
-                    startColor.copy(alpha = 0.3f),
+                    startColor.copy(alpha = 0.8f),
+                    startColor.copy(alpha = 0.5f),
                     startColor.copy(alpha = 0.0f),
                 ),
                 tileMode = TileMode.Decal

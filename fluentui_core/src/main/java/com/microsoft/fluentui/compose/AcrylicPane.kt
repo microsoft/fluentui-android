@@ -40,7 +40,7 @@ private fun AcrylicPane(
     triggerRecomposition: Boolean = false
 ) {
     Box(
-        modifier = Modifier.fillMaxSize().border(BorderStroke(width = 0.dp, color = Color.Transparent))
+        modifier = Modifier.fillMaxSize()
     ) {
         backgroundContent()
 
@@ -52,9 +52,15 @@ private fun AcrylicPane(
     }
 }
 
+fun roundToNearestTen(value: Int): Int {
+    return ((value + 5) / 10) * 10
+}
+
 @Composable
 public fun AcrylicPane(modifier: Modifier = Modifier, paneHeight: Dp = 300.dp, acrylicPaneStyle:FluentStyle = FluentStyle.Neutral, component: @Composable () -> Unit, backgroundContent: @Composable () -> Unit, acrylicPaneTokens: AcrylicPaneTokens? = null) {
     val paneInfo: AcrylicPaneInfo = AcrylicPaneInfo(style = acrylicPaneStyle)
+    val newPaneHeight = roundToNearestTen(paneHeight.value.toInt()).dp
+    println("###NewPaneHeight: $newPaneHeight")
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = acrylicPaneTokens
@@ -62,11 +68,10 @@ public fun AcrylicPane(modifier: Modifier = Modifier, paneHeight: Dp = 300.dp, a
     AcrylicPane(
         modifier = modifier
         .fillMaxWidth()
-        .height(paneHeight)
+        .height(newPaneHeight)
         .background(
             token.acrylicPaneGradient(acrylicPaneInfo = paneInfo)
-        )
-        .border(BorderStroke(width = 0.dp, color = Color.Transparent)),
+        ),
         component = {
             component()
         },
