@@ -23,6 +23,7 @@
 
         <!-- Demo activities -->
         <activity android:name="com.microsoft.fluentuidemo.demos.V2AcrylicPaneActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2ActionBarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2AppBarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarCarouselActivity" />
@@ -32,7 +33,8 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BannerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicChipActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicControlsActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomDrawerActivity"/>
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomDrawerActivity"
+            android:enableOnBackInvokedCallback="true"/>
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomSheetActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity android:name="com.microsoft.fluentuidemo.demos.V2CardActivity" />
@@ -79,6 +81,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.DateTimePickerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.DrawerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ListItemViewActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.actionbar.V2ActionBarDemoActivity" />
         <activity
             android:name="com.microsoft.fluentuidemo.demos.PeoplePickerViewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

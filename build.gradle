@@ -32,7 +32,7 @@ apply plugin: "com.microsoft.hydralab.client-util"
 allprojects {
     project.ext {
         constants = [
-                minSdkVersion: 26,
+                minSdkVersion: 23,
                 targetSdkVersion: 34,
                 compileSdkVersion: 34
         ]

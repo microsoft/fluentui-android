@@ -34,6 +34,7 @@ object UndefinedControlToken: IControlToken
 open class ControlTokens : IControlTokens {
     enum class ControlType : IType {
         AcrylicPaneControlType,
+        ActionBarControlType,
         AnnouncementCardControlType,
         AppBarControlType,
         AvatarControlType,
@@ -84,6 +85,7 @@ open class ControlTokens : IControlTokens {
         TokenSet { type ->
             when (type) {
                 ControlType.AcrylicPaneControlType -> AcrylicPaneTokens()
+                ControlType.ActionBarControlType -> ActionBarTokens()
                 ControlType.AnnouncementCardControlType -> AnnouncementCardTokens()
                 ControlType.AppBarControlType -> AppBarTokens()
                 ControlType.AvatarControlType -> AvatarTokens()

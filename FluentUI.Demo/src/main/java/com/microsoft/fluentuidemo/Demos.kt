@@ -31,6 +31,7 @@ import com.microsoft.fluentuidemo.demos.TemplateViewActivity
 import com.microsoft.fluentuidemo.demos.TooltipActivity
 import com.microsoft.fluentuidemo.demos.TypographyActivity
 import com.microsoft.fluentuidemo.demos.V2AcrylicPaneActivity
+import com.microsoft.fluentuidemo.demos.V2ActionBarActivity
 import com.microsoft.fluentuidemo.demos.V2AppBarActivity
 import com.microsoft.fluentuidemo.demos.V2AvatarActivity
 import com.microsoft.fluentuidemo.demos.V2AvatarCarouselActivity
@@ -76,6 +77,7 @@ enum class Badge {
 }
 
 const val V2ACRYLICPANE = "V2 Acrylic Pane"
+const val V2ACTION_BAR = "V2 ActionBar"
 const val V2AVATAR = "V2 Avatar"
 const val V2AVATAR_CAROUSEL = "V2 Avatar Carousel"
 const val V2AVATAR_GROUP = "V2 Avatar Group"
@@ -164,6 +166,7 @@ val V1DEMO = arrayListOf(
 
 val V2DEMO = arrayListOf(
     Demo(V2ACRYLICPANE, V2AcrylicPaneActivity::class),
+    Demo(V2ACTION_BAR, V2ActionBarActivity::class, Badge.Modified),
     Demo(V2APP_BAR_LAYOUT, V2AppBarActivity::class),
     Demo(V2AVATAR, V2AvatarActivity::class, Badge.Modified),
     Demo(V2AVATAR_CAROUSEL, V2AvatarCarouselActivity::class),
@@ -180,7 +183,7 @@ val V2DEMO = arrayListOf(
     Demo(V2CITATION, V2CitationActivity::class),
     Demo(V2CONTEXTUAL_COMMAND_BAR, V2ContextualCommandBarActivity::class),
     Demo(V2DIALOG, V2DialogActivity::class),
-    Demo(V2DRAWER, V2DrawerActivity::class),
+    Demo(V2DRAWER, V2DrawerActivity::class, Badge.Modified),
     Demo(V2LABEL, V2LabelActivity::class),
     Demo(V2LIST_ITEM, V2ListItemActivity::class),
     Demo(V2MENU, V2MenuActivity::class),
@@ -190,8 +193,8 @@ val V2DEMO = arrayListOf(
     Demo(V2PERSONA_LIST, V2PersonaListActivity::class),
     Demo(V2PROGRESS, V2ProgressActivity::class),
     Demo(V2SCAFFOLD, V2ScaffoldActivity::class),
-    Demo(V2SEARCHBAR, V2SearchBarActivity::class),
-    Demo(V2SEGMENTED_CONTROL, V2SegmentedControlActivity::class),
+    Demo(V2SEARCHBAR, V2SearchBarActivity::class, Badge.Modified),
+    Demo(V2SEGMENTED_CONTROL, V2SegmentedControlActivity::class, Badge.Modified),
     Demo(V2SHIMMER, V2ShimmerActivity::class),
     Demo(V2SIDE_RAIL, V2SideRailActivity::class),
     Demo(V2SNACKBAR, V2SnackbarActivity::class),
