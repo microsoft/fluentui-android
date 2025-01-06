@@ -24,6 +24,12 @@ import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.zIndex
+import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.token.ControlTokens
+import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.controlTokens.AcrylicPaneInfo
+import com.microsoft.fluentui.theme.token.controlTokens.AcrylicPaneTokens
+import com.microsoft.fluentui.theme.token.controlTokens.TabBarTokens
 
 
 @Composable
@@ -47,24 +53,18 @@ private fun AcrylicPane(
 }
 
 @Composable
-public fun AcrylicPane(modifier: Modifier = Modifier, paneHeight: Dp = 300.dp, startColor: Int = Color(red = 0xF7, green = 0xF8 , blue = 0xFB, alpha = 0xFF).toArgb(), component: @Composable () -> Unit, backgroundContent: @Composable () -> Unit) {
-    val startColor = Color(startColor)
+public fun AcrylicPane(modifier: Modifier = Modifier, paneHeight: Dp = 300.dp, acrylicPaneStyle:FluentStyle = FluentStyle.Neutral, component: @Composable () -> Unit, backgroundContent: @Composable () -> Unit, acrylicPaneTokens: AcrylicPaneTokens? = null) {
+    val paneInfo: AcrylicPaneInfo = AcrylicPaneInfo(style = acrylicPaneStyle)
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
+    val token = acrylicPaneTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AcrylicPaneControlType] as AcrylicPaneTokens
     AcrylicPane(
         modifier = modifier
         .fillMaxWidth()
         .height(paneHeight)
         .background(
-                brush = Brush.verticalGradient(
-                    colors = listOf(
-                        startColor,
-                        startColor,
-                        startColor,
-                        startColor.copy(alpha = 0.5f),
-                        startColor.copy(alpha = 0.2f),
-                        startColor.copy(alpha = 0.0f),
-                    ),
-                    tileMode = TileMode.Decal
-                )
+            token.acrylicPaneGradient(acrylicPaneInfo = paneInfo)
         )
         .border(BorderStroke(width = 0.dp, color = Color.Transparent)),
         component = {

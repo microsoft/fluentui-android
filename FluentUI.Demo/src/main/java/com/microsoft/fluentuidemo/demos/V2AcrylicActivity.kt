@@ -38,6 +38,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.sp
 import com.microsoft.fluentui.compose.AcrylicPane
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Office
@@ -76,99 +77,122 @@ class V2AcrylicPaneActivity : V2DemoActivity() {
             CreateAcrylicPaneActivityUI(this)
         }
     }
-
-    @Composable
-    private fun CreateAcrylicPaneActivityUI(context: Context) {
-        scrollableBackgroundTest(context = context)
-    }
 }
 
 
 @Composable
-fun scrollableBackgroundTest(
+fun CreateAcrylicPaneActivityUI(
     context: Context
 ){
     var acrylicPaneSizeFraction by rememberSaveable { mutableFloatStateOf(0.5F) }
-    val startColor = Color(red = 0xF7, green = 0xF8 , blue = 0xFB, alpha = 0xFF).toArgb()
-    var gradientColor: Int by rememberSaveable { mutableStateOf(startColor) }
-    //var gradientColor: Color = startColor
+    var acrylicPaneStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
+
     AcrylicPane(
         paneHeight = (acrylicPaneSizeFraction * 500).toInt().dp,
-        component = { frozenBackground(context = context) },
-        startColor = gradientColor,
-    ) {
-        Column(
-            modifier = Modifier.verticalScroll(rememberScrollState()).fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Spacer(Modifier.height(400.dp))
-            CreateBottomDrawer()
-            ListItem.Header(title = "Acrylic Pane Size",
-                titleMaxLines = 2,
-                modifier = Modifier
-                    .clearAndSetSemantics {
-                        this.contentDescription = "Acrylic Pane Size"
-                    },
-            )
-            Slider(
-                value = acrylicPaneSizeFraction,
-                onValueChange = { acrylicPaneSizeFraction = it },
-                valueRange = 0F..1F,
-                colors = SliderDefaults.colors(
-                    thumbColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                        FluentTheme.themeMode
-                    ),
-                    activeTrackColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color80],
-                    inactiveTrackColor = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
-                        FluentTheme.themeMode
-                    ),
-                    disabledThumbColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
-                        FluentTheme.themeMode
-                    ),
-                    disabledActiveTrackColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
-                        FluentTheme.themeMode
-                    ),
-                    disabledInactiveTrackColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
-                        FluentTheme.themeMode
-                    )
-                ),
-                steps = 9
-            )
-            ListItem.Header(title = "Acrylic Pane Theme",
-                titleMaxLines = 2,
-                modifier = Modifier
-                    .clearAndSetSemantics {
-                        this.contentDescription = "Acrylic Pane Theme"
-                    },
-            )
-            var checkBoxSelectedValues = List(4) { rememberSaveable { mutableStateOf(false) } }
-            var gradientColors = listOf(
-                Color(red = 0xF7, green = 0xF8 , blue = 0xFB, alpha = 0xFF),
-                Color(0xFF00FF00), // Green
-                Color(0xFF0000FF), // Blue
-                Color(0xFFFFFF00)  // Yellow
-            )
-            for(i in 0..3) {
-                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Start, modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 3.dp)) {
-                    Text(text = "Theme $i")
-                    RadioButton(
-                        onClick = {
-                            selectRadioGroupButton(i, checkBoxSelectedValues)
-                            gradientColor = gradientColors[i].toArgb()
+        acrylicPaneStyle = acrylicPaneStyle,
+        component = { acrylicPaneContent(context = context) },
+        backgroundContent = {
+            Column(
+                modifier = Modifier.verticalScroll(rememberScrollState()).fillMaxWidth().padding(10.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                Spacer(Modifier.height(300.dp))
+                ListItem.Header(
+                    title = "Acrylic Pane Size",
+                    titleMaxLines = 2,
+                    modifier = Modifier
+                        .clearAndSetSemantics {
+                            this.contentDescription = "Acrylic Pane Size"
                         },
-                        selected = checkBoxSelectedValues[i].value
-                    )
+                )
+                Slider(
+                    value = acrylicPaneSizeFraction,
+                    onValueChange = { acrylicPaneSizeFraction = it },
+                    valueRange = 0F..1F,
+                    colors = SliderDefaults.colors(
+                        thumbColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            FluentTheme.themeMode
+                        ),
+                        activeTrackColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color80],
+                        inactiveTrackColor = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
+                            FluentTheme.themeMode
+                        ),
+                        disabledThumbColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                            FluentTheme.themeMode
+                        ),
+                        disabledActiveTrackColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                            FluentTheme.themeMode
+                        ),
+                        disabledInactiveTrackColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                            FluentTheme.themeMode
+                        )
+                    ),
+                    steps = 9
+                )
+                ListItem.Header(
+                    title = "Acrylic Pane Theme",
+                    titleMaxLines = 2,
+                    modifier = Modifier
+                        .clearAndSetSemantics {
+                            this.contentDescription = "Acrylic Pane Theme"
+                        },
+                )
+                var checkBoxSelectedValues = List(2) { rememberSaveable { mutableStateOf(false) } }
+                var acrylicPaneStyles = listOf(
+                    FluentStyle.Neutral,
+                    FluentStyle.Brand
+                )
+                for (i in 0..1) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Start,
+                        modifier = Modifier.fillMaxWidth()
+                            .padding(horizontal = 10.dp, vertical = 3.dp)
+                    ) {
+                        Text(text = "Theme $i")
+                        Spacer(modifier = Modifier.width(320.dp))
+                        RadioButton(
+                            onClick = {
+                                selectRadioGroupButton(i, checkBoxSelectedValues)
+                                acrylicPaneStyle = acrylicPaneStyles[i]
+                            },
+                            selected = checkBoxSelectedValues[i].value
+                        )
+                    }
+                }
+                ListItem.Header(
+                    title = "Test Bottom Drawer",
+                    titleMaxLines = 2,
+                    modifier = Modifier
+                        .clearAndSetSemantics {
+                            this.contentDescription = "Test Bottom Drawer"
+                        },
+                )
+                showBottomDrawer()
+                ListItem.Header(
+                    title = "Scroll Test",
+                    titleMaxLines = 2,
+                    modifier = Modifier
+                        .clearAndSetSemantics {
+                            this.contentDescription = "Test Bottom Drawer"
+                        },
+                )
+                repeat(40) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Start,
+                        modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 5.dp)
+                    ) {
+                        Text(text = "Text $it", fontSize = 14.sp)
+                    }
                 }
             }
-            repeat(20){
-                ListItem.Item(text = "Item $it")
-            }
         }
-    }
+    )
 }
 
 @Composable
-fun CreateBottomDrawer(){
+fun showBottomDrawer(){
     val scope = rememberCoroutineScope()
 
     val drawerState = rememberBottomDrawerState(initialValue = DrawerValue.Closed, expandable = true, skipOpenState = false)
@@ -210,7 +234,7 @@ fun CreateBottomDrawer(){
 }
 
 @Composable
-fun frozenBackground(context: Context){
+fun acrylicPaneContent(context: Context){
     val scope = rememberCoroutineScope()
 
     val microphonePressedString = getDemoAppString(DemoAppStrings.MicrophonePressed)
@@ -220,63 +244,65 @@ fun frozenBackground(context: Context){
     val keyboardController = LocalSoftwareKeyboardController.current
     var autoCorrectEnabled: Boolean by rememberSaveable { mutableStateOf(false) }
     var enableMicrophoneCallback: Boolean by rememberSaveable { mutableStateOf(true) }
-    var searchBarStyle: FluentStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
+    var searchBarStyle: FluentStyle by rememberSaveable { mutableStateOf(FluentStyle.Brand) }
     var displayRightAccessory: Boolean by rememberSaveable { mutableStateOf(true) }
     var selectedPeople: Person? by rememberSaveable { mutableStateOf(null) }
-    val showCustomizedAppBar = true
+    val showCustomizedAppBar = false
     Column {
-        Spacer(modifier = Modifier.height(100.dp))
-        SearchBar(
-            onValueChange = { query, selectedPerson ->
-                scope.launch {
-                    loading = true
-                    delay(2000)
-                    loading = false
-                }
-            },
-            style = searchBarStyle,
-            loading = loading,
-            selectedPerson = selectedPeople,
-            microphoneCallback = if (enableMicrophoneCallback) {
-                {
-                    Toast.makeText(context, microphonePressedString, Toast.LENGTH_SHORT)
-                        .show()
-                }
-            } else null,
-            keyboardOptions = KeyboardOptions(
-                autoCorrect = autoCorrectEnabled,
-                keyboardType = KeyboardType.Email,
-                imeAction = ImeAction.Search
-            ),
-            keyboardActions = KeyboardActions(
-                onSearch = {
-                    Toast.makeText(
-                        context,
-                        keyboardSearchPressedString,
-                        Toast.LENGTH_SHORT
-                    )
-                        .show()
-                    keyboardController?.hide()
-                }
-            ),
-            rightAccessoryIcon = if (displayRightAccessory) {
-                FluentIcon(
-                    SearchBarIcons.Office,
-                    contentDescription = "Office",
-                    onClick = {
+        Spacer(modifier = Modifier.height(80.dp))
+        Row(Modifier.height(5.dp).padding(20.dp)) {
+            SearchBar(
+                onValueChange = { query, selectedPerson ->
+                    scope.launch {
+                        loading = true
+                        delay(2000)
+                        loading = false
+                    }
+                },
+                style = searchBarStyle,
+                loading = loading,
+                selectedPerson = selectedPeople,
+                microphoneCallback = if (enableMicrophoneCallback) {
+                    {
+                        Toast.makeText(context, microphonePressedString, Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                } else null,
+                keyboardOptions = KeyboardOptions(
+                    autoCorrect = autoCorrectEnabled,
+                    keyboardType = KeyboardType.Email,
+                    imeAction = ImeAction.Search
+                ),
+                keyboardActions = KeyboardActions(
+                    onSearch = {
                         Toast.makeText(
                             context,
-                            rightViewPressedString,
+                            keyboardSearchPressedString,
                             Toast.LENGTH_SHORT
                         )
                             .show()
+                        keyboardController?.hide()
                     }
-                )
-            } else null,
-            searchBarTokens = if (showCustomizedAppBar) {
-                CustomizedSearchBarTokens
-            } else null,
-            modifier = if (showCustomizedAppBar) Modifier.requiredHeight(60.dp) else Modifier
-        )
+                ),
+                rightAccessoryIcon = if (displayRightAccessory) {
+                    FluentIcon(
+                        SearchBarIcons.Office,
+                        contentDescription = "Office",
+                        onClick = {
+                            Toast.makeText(
+                                context,
+                                rightViewPressedString,
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                        }
+                    )
+                } else null,
+                searchBarTokens = if (showCustomizedAppBar) {
+                    CustomizedSearchBarTokens
+                } else null,
+                modifier = if (showCustomizedAppBar) Modifier.requiredHeight(60.dp) else Modifier
+            )
+        }
     }
 }
