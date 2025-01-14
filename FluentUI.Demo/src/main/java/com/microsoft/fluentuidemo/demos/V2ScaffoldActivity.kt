@@ -3,7 +3,6 @@ package com.microsoft.fluentuidemo.demos
 import android.content.Context
 import android.os.Bundle
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -18,13 +17,9 @@ import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.zIndex
 import com.microsoft.fluentui.compose.Scaffold
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentIcon
@@ -107,31 +102,15 @@ class V2ScaffoldActivity : V2DemoActivity() {
             )
             var fabState by rememberSaveable { mutableStateOf(FABState.Expanded) }
             val snackbarState by remember { mutableStateOf(SnackbarState()) }
-            val startColor: Color = Color(red = 0xF7, green = 0xF8 , blue = 0xFB, alpha = 0xFF)
+
             FluentTheme {
                 Scaffold(
                     topBar = {
-                        Box(
-                            modifier = Modifier
-                                .background(
-                                    brush = Brush.verticalGradient(
-                                        colors = listOf(
-                                            startColor,
-                                            startColor,
-                                            startColor,
-                                            Color.White.copy(alpha = 0.5f),
-                                            Color.White.copy(alpha = 0f)
-                                        ),
-                                        tileMode = TileMode.Decal
-                                    )
-                                )
-                        ) {
-                            AppBar(
-                                title = resources.getString(R.string.scaffold),
-                                appBarSize = AppBarSize.Large,
-                                modifier = Modifier.testTag(SCAFFOLD_TOP_BAR)
-                            )
-                        }
+                        AppBar(
+                            title = resources.getString(R.string.scaffold),
+                            appBarSize = AppBarSize.Large,
+                            modifier = Modifier.testTag(SCAFFOLD_TOP_BAR)
+                        )
                     },
                     bottomBar = {
                         TabBar(
@@ -280,4 +259,3 @@ class V2ScaffoldActivity : V2DemoActivity() {
         }
     }
 }
-

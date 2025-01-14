@@ -52,15 +52,24 @@ private fun AcrylicPane(
     }
 }
 
-fun roundToNearestTen(value: Int): Int {
+fun roundToNearestTen(value: Int): Int { // Added for anti-aliasing
     return ((value + 5) / 10) * 10
 }
+/**
+ * A composable function that creates an AcrylicPane with specified properties and content.
+ *
+ * @param modifier The modifier to be applied to the AcrylicPane.
+ * @param paneHeight The height of the pane, default is 300.dp.
+ * @param acrylicPaneStyle The style of the pane, default is FluentStyle.Neutral.
+ * @param component The main composable content to be displayed within the pane.
+ * @param backgroundContent The composable content to be displayed as the background of the pane.
+ * @param acrylicPaneTokens Optional tokens to customize the appearance of the AcrylicPane.
+ */
 
 @Composable
 public fun AcrylicPane(modifier: Modifier = Modifier, paneHeight: Dp = 300.dp, acrylicPaneStyle:FluentStyle = FluentStyle.Neutral, component: @Composable () -> Unit, backgroundContent: @Composable () -> Unit, acrylicPaneTokens: AcrylicPaneTokens? = null) {
     val paneInfo: AcrylicPaneInfo = AcrylicPaneInfo(style = acrylicPaneStyle)
     val newPaneHeight = roundToNearestTen(paneHeight.value.toInt()).dp
-    println("###NewPaneHeight: $newPaneHeight")
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = acrylicPaneTokens

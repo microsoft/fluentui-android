@@ -62,7 +62,6 @@ import com.microsoft.fluentuidemo.util.getDemoAppString
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-
 class V2AcrylicPaneActivity : V2DemoActivity() {
     init {
         setupActivity(this)
@@ -78,7 +77,6 @@ class V2AcrylicPaneActivity : V2DemoActivity() {
         }
     }
 }
-
 
 @Composable
 fun CreateAcrylicPaneActivityUI(
