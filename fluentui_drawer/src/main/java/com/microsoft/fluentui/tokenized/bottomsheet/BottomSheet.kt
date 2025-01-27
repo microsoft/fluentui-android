@@ -495,7 +495,20 @@ fun BottomSheet(
                         if (focusState.hasFocus && sheetState.currentValue != BottomSheetValue.Expanded) {        // this expands the sheet when the content is focused
                             scope.launch { sheetState.expand() }
                         }
-                    } else Modifier.fillMaxSize()), content = { sheetContent() })
+                    } else Modifier.fillMaxSize()), content = {
+                        sheetContent()
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(
+                                    fullHeight.dp
+                                )
+                                .background(sheetBackgroundColor)
+                                .onGloballyPositioned {
+                                    sheetHeightState.value = sheetHeightState.value?.minus(it.size.height.toFloat())
+                                }
+                        )
+                    })
             }
         }
     }
