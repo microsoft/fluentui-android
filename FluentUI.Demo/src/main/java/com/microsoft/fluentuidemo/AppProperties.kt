@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -63,7 +64,7 @@ object AppThemeViewModel : ViewModel() {
     private var themeStyle: MutableLiveData<FluentStyle> = MutableLiveData(FluentStyle.Brand)
     var selectedThemeIndex_: MutableLiveData<Int> = MutableLiveData(0)
     var selectedThemeMode_: MutableLiveData<ThemeMode> = MutableLiveData(ThemeMode.Auto)
-
+    var checkBoxSelectedValues:  List< MutableState<Boolean>> =   listOf(mutableStateOf(true), mutableStateOf(false))
     fun updateThemeStyle(overrideThemeStyle: FluentStyle) {
         themeStyle.value = overrideThemeStyle
     }
@@ -187,7 +188,7 @@ fun AppBarMenu() {
                 listItemTokens = CustomizedTokens.listItemTokens
             )
             SetAppTheme()
-            SetAppTypography()
+            SetAppTypography( AppThemeViewModel.checkBoxSelectedValues)
         }
     }
 }
@@ -300,23 +301,21 @@ object Material3Typography {
 }
 
 @Composable
-fun SetAppTypography(){
-    var checkBoxSelectedValues = List(2) { rememberSaveable { mutableStateOf(false) } }
-    checkBoxSelectedValues[0].value = true
+fun SetAppTypography(checkBoxSelectedValues: List<MutableState<Boolean>>){
     val materialTypographyTokens = object : AliasTokens() {
         override val typography: TokenSet<FluentAliasTokens.TypographyTokens, TextStyle> by lazy {
             TokenSet { token ->
                 when (token) {
                     FluentAliasTokens.TypographyTokens.Display ->
-                        Material3Typography.BodySmall
+                        Material3Typography.DisplayLarge
                     FluentAliasTokens.TypographyTokens.LargeTitle ->
-                        Material3Typography.BodySmall
+                        Material3Typography.DisplayMedium
                     FluentAliasTokens.TypographyTokens.Title1 ->
-                        Material3Typography.BodySmall
+                        Material3Typography.TitleLarge
                     FluentAliasTokens.TypographyTokens.Title2 ->
-                        Material3Typography.BodySmall
+                        Material3Typography.TitleLarge
                     FluentAliasTokens.TypographyTokens.Title3 ->
-                        Material3Typography.BodySmall
+                        Material3Typography.TitleLarge
                     FluentAliasTokens.TypographyTokens.Body1Strong ->
                         Material3Typography.BodySmall
                     FluentAliasTokens.TypographyTokens.Body1 ->
