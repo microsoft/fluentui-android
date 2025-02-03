@@ -8,6 +8,7 @@ import android.os.Parcelable
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
@@ -161,8 +162,6 @@ interface IAliasTokens {
     val presenceColor: TokenSet<FluentAliasTokens.PresenceColorTokens, FluentColor>
     val typography: TokenSet<FluentAliasTokens.TypographyTokens, TextStyle>
 }
-
-
 /**
  * Extend the AliasToken to add custom token or providing new values.*
  */

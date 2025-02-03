@@ -25,6 +25,9 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.DialogProperties
 import androidx.core.app.NavUtils.navigateUpTo
 import androidx.core.view.WindowCompat
@@ -44,6 +47,7 @@ import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.StateBrush
+import com.microsoft.fluentui.theme.token.TokenSet
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType
 import com.microsoft.fluentui.theme.token.controlTokens.RadioButtonInfo
 import com.microsoft.fluentui.theme.token.controlTokens.RadioButtonTokens
@@ -183,10 +187,202 @@ fun AppBarMenu() {
                 listItemTokens = CustomizedTokens.listItemTokens
             )
             SetAppTheme()
+            SetAppTypography()
         }
     }
 }
 
+object Material3Typography {
+    val DisplayLarge = TextStyle(
+        fontSize = 57.sp,
+        lineHeight = 64.sp,
+        fontWeight = FontWeight(400), // Normal
+        letterSpacing = (-0.25).sp
+    )
+
+    val DisplayMedium = TextStyle(
+        fontSize = 45.sp,
+        lineHeight = 52.sp,
+        fontWeight = FontWeight(400), // Normal
+        letterSpacing = 0.sp
+    )
+
+    val DisplaySmall = TextStyle(
+        fontSize = 36.sp,
+        lineHeight = 44.sp,
+        fontWeight = FontWeight(400), // Normal
+        letterSpacing = 0.sp
+    )
+
+    val HeadlineLarge = TextStyle(
+        fontSize = 32.sp,
+        lineHeight = 40.sp,
+        fontWeight = FontWeight(400), // Normal
+        letterSpacing = 0.sp
+    )
+
+    val HeadlineMedium = TextStyle(
+        fontSize = 28.sp,
+        lineHeight = 36.sp,
+        fontWeight = FontWeight(400), // Normal
+        letterSpacing = 0.sp
+    )
+
+    val HeadlineSmall = TextStyle(
+        fontSize = 24.sp,
+        lineHeight = 32.sp,
+        fontWeight = FontWeight(400), // Normal
+        letterSpacing = 0.sp
+    )
+
+    val TitleLarge = TextStyle(
+        fontSize = 22.sp,
+        lineHeight = 28.sp,
+        fontWeight = FontWeight(400), // Normal
+        letterSpacing = 0.sp
+    )
+
+    val TitleMedium = TextStyle(
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
+        fontWeight = FontWeight(500), // Medium
+        letterSpacing = 0.15.sp
+    )
+
+    val TitleSmall = TextStyle(
+        fontSize = 14.sp,
+        lineHeight = 20.sp,
+        fontWeight = FontWeight(500), // Medium
+        letterSpacing = 0.1.sp
+    )
+
+    val BodyLarge = TextStyle(
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
+        fontWeight = FontWeight(400), // Normal
+        letterSpacing = 0.5.sp
+    )
+
+    val BodyMedium = TextStyle(
+        fontSize = 14.sp,
+        lineHeight = 20.sp,
+        fontWeight = FontWeight(400), // Normal
+        letterSpacing = 0.25.sp
+    )
+
+    val BodySmall = TextStyle(
+        fontSize = 12.sp,
+        lineHeight = 16.sp,
+        fontWeight = FontWeight(400), // Normal
+        letterSpacing = 0.4.sp
+    )
+
+    val LabelLarge = TextStyle(
+        fontSize = 14.sp,
+        lineHeight = 20.sp,
+        fontWeight = FontWeight(500), // Medium
+        letterSpacing = 0.1.sp
+    )
+
+    val LabelMedium = TextStyle(
+        fontSize = 12.sp,
+        lineHeight = 16.sp,
+        fontWeight = FontWeight(500), // Medium
+        letterSpacing = 0.5.sp
+    )
+
+    val LabelSmall = TextStyle(
+        fontSize = 11.sp,
+        lineHeight = 16.sp,
+        fontWeight = FontWeight(500), // Medium
+        letterSpacing = 0.5.sp
+    )
+}
+
+@Composable
+fun SetAppTypography(){
+    var checkBoxSelectedValues = List(2) { rememberSaveable { mutableStateOf(false) } }
+    checkBoxSelectedValues[0].value = true
+    val materialTypographyTokens = object : AliasTokens() {
+        override val typography: TokenSet<FluentAliasTokens.TypographyTokens, TextStyle> by lazy {
+            TokenSet { token ->
+                when (token) {
+                    FluentAliasTokens.TypographyTokens.Display ->
+                        Material3Typography.BodySmall
+                    FluentAliasTokens.TypographyTokens.LargeTitle ->
+                        Material3Typography.BodySmall
+                    FluentAliasTokens.TypographyTokens.Title1 ->
+                        Material3Typography.BodySmall
+                    FluentAliasTokens.TypographyTokens.Title2 ->
+                        Material3Typography.BodySmall
+                    FluentAliasTokens.TypographyTokens.Title3 ->
+                        Material3Typography.BodySmall
+                    FluentAliasTokens.TypographyTokens.Body1Strong ->
+                        Material3Typography.BodySmall
+                    FluentAliasTokens.TypographyTokens.Body1 ->
+                        Material3Typography.BodySmall
+                    FluentAliasTokens.TypographyTokens.Body2Strong ->
+                        Material3Typography.BodySmall
+                    FluentAliasTokens.TypographyTokens.Body2 ->
+                        Material3Typography.BodySmall
+                    FluentAliasTokens.TypographyTokens.Caption1Strong ->
+                        Material3Typography.BodySmall
+                    FluentAliasTokens.TypographyTokens.Caption1 ->
+                        Material3Typography.BodySmall
+                    FluentAliasTokens.TypographyTokens.Caption2 ->
+                        Material3Typography.TitleSmall
+                }
+            }
+        }
+    }
+    val fluentTypographyTokens = AliasTokens()
+    Column {
+        ListItem.SectionHeader(
+            title = "Choose Typography Tokens",
+            enableChevron = false,
+            style = SectionHeaderStyle.Subtle,
+            listItemTokens = CustomizedTokens.listItemTokens
+        )
+        ListItem.Item(
+            text = "Fluent Typography",
+            onClick = {
+                FluentTheme.updateAliasTokens(overrideAliasTokens = fluentTypographyTokens)
+                checkBoxSelectedValues[0].value = true
+                checkBoxSelectedValues[1].value = false
+            },
+            leadingAccessoryContent = {
+                RadioButton(
+                    selected = checkBoxSelectedValues[0].value,
+                    onClick = {
+                        FluentTheme.updateAliasTokens(overrideAliasTokens = fluentTypographyTokens)
+                        checkBoxSelectedValues[0].value = true
+                        checkBoxSelectedValues[1].value = false
+                    },
+                )
+            },
+            listItemTokens = CustomizedTokens.listItemTokens
+        )
+        ListItem.Item(
+            text = "Material Typography",
+            onClick = {
+                FluentTheme.updateAliasTokens(overrideAliasTokens = materialTypographyTokens)
+                checkBoxSelectedValues[1].value = true
+                checkBoxSelectedValues[0].value = false
+            },
+            leadingAccessoryContent = {
+                RadioButton(
+                    selected = checkBoxSelectedValues[1].value,
+                    onClick = {
+                        FluentTheme.updateAliasTokens(overrideAliasTokens = materialTypographyTokens)
+                        checkBoxSelectedValues[1].value = true
+                        checkBoxSelectedValues[0].value = false
+                    },
+                )
+            },
+            listItemTokens = CustomizedTokens.listItemTokens
+        )
+    }
+}
 @Composable
 fun SetAppThemeMode(onThemeModeClick: () -> Unit) {
     Column {
