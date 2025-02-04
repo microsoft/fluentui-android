@@ -37,7 +37,7 @@ enum class TypographyParameters {
     WEIGHT,
     SIZE,
     TRACKING,
-    HEIG
+    HEIGHT
 }
 
 class V2TypographyActivity : V2DemoActivity() {
