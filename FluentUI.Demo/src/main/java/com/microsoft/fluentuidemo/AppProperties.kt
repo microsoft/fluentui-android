@@ -58,8 +58,61 @@ import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.menu.Dialog
 import com.microsoft.fluentui.tokenized.menu.Menu
+import com.microsoft.fluentuidemo.AppThemeViewModel.currentTokens
+import com.microsoft.fluentuidemo.AppThemeViewModel.fluentTypographyTokens
+import com.microsoft.fluentuidemo.AppThemeViewModel.heightList
+import com.microsoft.fluentuidemo.AppThemeViewModel.materialTypographyTokens
+import com.microsoft.fluentuidemo.AppThemeViewModel.selectedheightlist
+import com.microsoft.fluentuidemo.AppThemeViewModel.selectedsizelist
+import com.microsoft.fluentuidemo.AppThemeViewModel.selectedtrackinglist
+import com.microsoft.fluentuidemo.AppThemeViewModel.selectedweightList
+import com.microsoft.fluentuidemo.AppThemeViewModel.sizeList
+import com.microsoft.fluentuidemo.AppThemeViewModel.trackingList
+import com.microsoft.fluentuidemo.AppThemeViewModel.weightList
 
-object AppThemeViewModel : ViewModel() {
+public object AppThemeViewModel : ViewModel() {
+    val weightList = listOf(0, 1)
+    var selectedweightList: MutableState<Int> =  mutableStateOf(weightList[0])
+    val sizeList = listOf(0, 1)
+    var selectedsizelist : MutableState<Int> =  mutableStateOf(sizeList[0])
+    val trackingList = listOf(0, 1)
+    var selectedtrackinglist : MutableState<Int> =  mutableStateOf(trackingList[0])
+    val heightList = listOf(0, 1)
+    var selectedheightlist : MutableState<Int> =  mutableStateOf(heightList[0])
+    val materialTypographyTokens = object : AliasTokens() {
+        override val typography: TokenSet<FluentAliasTokens.TypographyTokens, TextStyle> by lazy {
+            TokenSet { token ->
+                when (token) {
+                    FluentAliasTokens.TypographyTokens.Display ->
+                        Material3Typography.DisplayLarge
+                    FluentAliasTokens.TypographyTokens.LargeTitle ->
+                        Material3Typography.DisplaySmall
+                    FluentAliasTokens.TypographyTokens.Title1 ->
+                        Material3Typography.HeadlineSmall
+                    FluentAliasTokens.TypographyTokens.Title2 ->
+                        Material3Typography.TitleLarge
+                    FluentAliasTokens.TypographyTokens.Title3 ->
+                        Material3Typography.TitleMedium
+                    FluentAliasTokens.TypographyTokens.Body1Strong ->
+                        Material3Typography.BodyLarge
+                    FluentAliasTokens.TypographyTokens.Body1 ->
+                        Material3Typography.BodyLarge
+                    FluentAliasTokens.TypographyTokens.Body2Strong ->
+                        Material3Typography.LabelLargeProminent
+                    FluentAliasTokens.TypographyTokens.Body2 ->
+                        Material3Typography.LabelLarge
+                    FluentAliasTokens.TypographyTokens.Caption1Strong ->
+                        Material3Typography.LabelMediumProminent
+                    FluentAliasTokens.TypographyTokens.Caption1 ->
+                        Material3Typography.LabelMedium
+                    FluentAliasTokens.TypographyTokens.Caption2 ->
+                        Material3Typography.LabelSmall
+                }
+            }
+        }
+    }
+    val fluentTypographyTokens = AliasTokens()
+    var currentTokens = AliasTokens()
     lateinit var appThemeStyle: State<FluentStyle>
     private var themeStyle: MutableLiveData<FluentStyle> = MutableLiveData(FluentStyle.Brand)
     var selectedThemeIndex_: MutableLiveData<Int> = MutableLiveData(0)
@@ -285,10 +338,24 @@ object Material3Typography {
         letterSpacing = 0.1.sp
     )
 
+    val LabelLargeProminent = TextStyle(
+        fontSize = 14.sp,
+        lineHeight = 20.sp,
+        fontWeight = FontWeight(700), // Medium
+        letterSpacing = 0.1.sp
+    )
+
     val LabelMedium = TextStyle(
         fontSize = 12.sp,
         lineHeight = 16.sp,
         fontWeight = FontWeight(500), // Medium
+        letterSpacing = 0.5.sp
+    )
+
+    val LabelMediumProminent = TextStyle(
+        fontSize = 12.sp,
+        lineHeight = 16.sp,
+        fontWeight = FontWeight(700), // Medium
         letterSpacing = 0.5.sp
     )
 
@@ -302,39 +369,6 @@ object Material3Typography {
 
 @Composable
 fun SetAppTypography(checkBoxSelectedValues: List<MutableState<Boolean>>){
-    val materialTypographyTokens = object : AliasTokens() {
-        override val typography: TokenSet<FluentAliasTokens.TypographyTokens, TextStyle> by lazy {
-            TokenSet { token ->
-                when (token) {
-                    FluentAliasTokens.TypographyTokens.Display ->
-                        Material3Typography.DisplayLarge
-                    FluentAliasTokens.TypographyTokens.LargeTitle ->
-                        Material3Typography.DisplayMedium
-                    FluentAliasTokens.TypographyTokens.Title1 ->
-                        Material3Typography.TitleLarge
-                    FluentAliasTokens.TypographyTokens.Title2 ->
-                        Material3Typography.TitleLarge
-                    FluentAliasTokens.TypographyTokens.Title3 ->
-                        Material3Typography.TitleLarge
-                    FluentAliasTokens.TypographyTokens.Body1Strong ->
-                        Material3Typography.BodySmall
-                    FluentAliasTokens.TypographyTokens.Body1 ->
-                        Material3Typography.BodySmall
-                    FluentAliasTokens.TypographyTokens.Body2Strong ->
-                        Material3Typography.BodySmall
-                    FluentAliasTokens.TypographyTokens.Body2 ->
-                        Material3Typography.BodySmall
-                    FluentAliasTokens.TypographyTokens.Caption1Strong ->
-                        Material3Typography.BodySmall
-                    FluentAliasTokens.TypographyTokens.Caption1 ->
-                        Material3Typography.BodySmall
-                    FluentAliasTokens.TypographyTokens.Caption2 ->
-                        Material3Typography.TitleSmall
-                }
-            }
-        }
-    }
-    val fluentTypographyTokens = AliasTokens()
     Column {
         ListItem.SectionHeader(
             title = "Choose Typography Tokens",
@@ -348,6 +382,11 @@ fun SetAppTypography(checkBoxSelectedValues: List<MutableState<Boolean>>){
                 FluentTheme.updateAliasTokens(overrideAliasTokens = fluentTypographyTokens)
                 checkBoxSelectedValues[0].value = true
                 checkBoxSelectedValues[1].value = false
+                selectedweightList.value = weightList[0]
+                selectedsizelist.value = sizeList[0]
+                selectedheightlist.value = heightList[0]
+                selectedtrackinglist.value = trackingList[0]
+                currentTokens = fluentTypographyTokens
             },
             leadingAccessoryContent = {
                 RadioButton(
@@ -356,6 +395,11 @@ fun SetAppTypography(checkBoxSelectedValues: List<MutableState<Boolean>>){
                         FluentTheme.updateAliasTokens(overrideAliasTokens = fluentTypographyTokens)
                         checkBoxSelectedValues[0].value = true
                         checkBoxSelectedValues[1].value = false
+                        selectedweightList.value = weightList[0]
+                        selectedsizelist.value = sizeList[0]
+                        selectedheightlist.value = heightList[0]
+                        selectedtrackinglist.value = trackingList[0]
+                        currentTokens = fluentTypographyTokens
                     },
                 )
             },
@@ -367,6 +411,11 @@ fun SetAppTypography(checkBoxSelectedValues: List<MutableState<Boolean>>){
                 FluentTheme.updateAliasTokens(overrideAliasTokens = materialTypographyTokens)
                 checkBoxSelectedValues[1].value = true
                 checkBoxSelectedValues[0].value = false
+                selectedweightList.value = weightList[1]
+                selectedsizelist.value = sizeList[1]
+                selectedheightlist.value = heightList[1]
+                selectedtrackinglist.value = trackingList[1]
+                currentTokens = materialTypographyTokens
             },
             leadingAccessoryContent = {
                 RadioButton(
@@ -375,6 +424,11 @@ fun SetAppTypography(checkBoxSelectedValues: List<MutableState<Boolean>>){
                         FluentTheme.updateAliasTokens(overrideAliasTokens = materialTypographyTokens)
                         checkBoxSelectedValues[1].value = true
                         checkBoxSelectedValues[0].value = false
+                        selectedweightList.value = weightList[1]
+                        selectedsizelist.value = sizeList[1]
+                        selectedheightlist.value = heightList[1]
+                        selectedtrackinglist.value = trackingList[1]
+                        currentTokens = materialTypographyTokens
                     },
                 )
             },

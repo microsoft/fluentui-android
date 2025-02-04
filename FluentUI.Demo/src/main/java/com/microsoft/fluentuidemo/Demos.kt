@@ -66,6 +66,7 @@ import com.microsoft.fluentuidemo.demos.V2SnackbarActivity
 import com.microsoft.fluentuidemo.demos.V2TabBarActivity
 import com.microsoft.fluentuidemo.demos.V2TextFieldActivity
 import com.microsoft.fluentuidemo.demos.V2ToolTipActivity
+import com.microsoft.fluentuidemo.demos.V2TypographyActivity
 import java.util.UUID
 import kotlin.reflect.KClass
 
@@ -75,7 +76,7 @@ enum class Badge {
     Modified,
     APIBreak
 }
-
+const val V2TYPOGRAPHY = "V2 Typography"
 const val V2ACRYLICPANE = "V2 Acrylic Pane"
 const val V2ACTION_BAR = "V2 ActionBar"
 const val V2AVATAR = "V2 Avatar"
@@ -165,6 +166,7 @@ val V1DEMO = arrayListOf(
 )
 
 val V2DEMO = arrayListOf(
+    Demo(V2TYPOGRAPHY, V2TypographyActivity::class),
     Demo(V2ACRYLICPANE, V2AcrylicPaneActivity::class, Badge.Modified),
     Demo(V2ACTION_BAR, V2ActionBarActivity::class, Badge.Modified),
     Demo(V2APP_BAR_LAYOUT, V2AppBarActivity::class),
