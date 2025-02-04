@@ -68,6 +68,8 @@ class V2TypographyActivity : V2DemoActivity() {
                         onClick = {
                             selectedweightList.value = weightList[0]
                             useFluentTypography(TypographyParameters.WEIGHT)
+                            AppThemeViewModel.checkBoxSelectedValues[0].value = false
+                            AppThemeViewModel.checkBoxSelectedValues[1].value = false
                         }
                     )
                     OptionRow(
@@ -76,6 +78,8 @@ class V2TypographyActivity : V2DemoActivity() {
                         onClick = {
                             selectedweightList.value = weightList[1]
                             useMaterialTypography(TypographyParameters.WEIGHT)
+                            AppThemeViewModel.checkBoxSelectedValues[0].value = false
+                            AppThemeViewModel.checkBoxSelectedValues[1].value = false
                         }
                     )
                 }
@@ -89,6 +93,8 @@ class V2TypographyActivity : V2DemoActivity() {
                         selected = selectedsizelist.value == sizeList[0],
                         onClick = { selectedsizelist.value = sizeList[0]
                             useFluentTypography(TypographyParameters.SIZE)
+                            AppThemeViewModel.checkBoxSelectedValues[0].value = false
+                            AppThemeViewModel.checkBoxSelectedValues[1].value = false
                         }
                     )
                     OptionRow(
@@ -96,6 +102,8 @@ class V2TypographyActivity : V2DemoActivity() {
                         selected = selectedsizelist.value == sizeList[1],
                         onClick = { selectedsizelist.value = sizeList[1]
                             useMaterialTypography(TypographyParameters.SIZE)
+                            AppThemeViewModel.checkBoxSelectedValues[0].value = false
+                            AppThemeViewModel.checkBoxSelectedValues[1].value = false
                         }
                     )
                 }
@@ -109,6 +117,8 @@ class V2TypographyActivity : V2DemoActivity() {
                         selected = selectedtrackinglist.value == trackingList[0],
                         onClick = { selectedtrackinglist.value = trackingList[0]
                             useFluentTypography(TypographyParameters.TRACKING)
+                            AppThemeViewModel.checkBoxSelectedValues[0].value = false
+                            AppThemeViewModel.checkBoxSelectedValues[1].value = false
                         }
                     )
                     OptionRow(
@@ -116,6 +126,8 @@ class V2TypographyActivity : V2DemoActivity() {
                         selected = selectedtrackinglist.value == trackingList[1],
                         onClick = { selectedtrackinglist.value = trackingList[1]
                             useMaterialTypography(TypographyParameters.TRACKING)
+                            AppThemeViewModel.checkBoxSelectedValues[0].value = false
+                            AppThemeViewModel.checkBoxSelectedValues[1].value = false
                         }
                     )
                 }
@@ -129,6 +141,8 @@ class V2TypographyActivity : V2DemoActivity() {
                         selected = selectedheightlist.value == heightList[0],
                         onClick = { selectedheightlist.value = heightList[0]
                             useFluentTypography(TypographyParameters.HEIGHT)
+                            AppThemeViewModel.checkBoxSelectedValues[0].value = false
+                            AppThemeViewModel.checkBoxSelectedValues[1].value = false
                         }
                     )
                     OptionRow(
@@ -136,6 +150,8 @@ class V2TypographyActivity : V2DemoActivity() {
                         selected = selectedheightlist.value == heightList[1],
                         onClick = { selectedheightlist.value = heightList[1]
                             useMaterialTypography(TypographyParameters.HEIGHT)
+                            AppThemeViewModel.checkBoxSelectedValues[0].value = false
+                            AppThemeViewModel.checkBoxSelectedValues[1].value = false
                         }
                     )
                 }
