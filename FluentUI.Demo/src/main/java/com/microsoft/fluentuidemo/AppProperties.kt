@@ -250,119 +250,126 @@ object Material3Typography {
     val DisplayLarge = TextStyle(
         fontSize = 57.sp,
         lineHeight = 64.sp,
-        fontWeight = FontWeight(400), // Normal
+        fontWeight = FontWeight(400),
         letterSpacing = (-0.25).sp
     )
 
     val DisplayMedium = TextStyle(
         fontSize = 45.sp,
         lineHeight = 52.sp,
-        fontWeight = FontWeight(400), // Normal
+        fontWeight = FontWeight(400),
         letterSpacing = 0.sp
     )
 
     val DisplaySmall = TextStyle(
         fontSize = 36.sp,
         lineHeight = 44.sp,
-        fontWeight = FontWeight(400), // Normal
+        fontWeight = FontWeight(400),
         letterSpacing = 0.sp
     )
 
     val HeadlineLarge = TextStyle(
         fontSize = 32.sp,
         lineHeight = 40.sp,
-        fontWeight = FontWeight(400), // Normal
+        fontWeight = FontWeight(400),
         letterSpacing = 0.sp
     )
 
     val HeadlineMedium = TextStyle(
         fontSize = 28.sp,
         lineHeight = 36.sp,
-        fontWeight = FontWeight(400), // Normal
+        fontWeight = FontWeight(400),
         letterSpacing = 0.sp
     )
 
     val HeadlineSmall = TextStyle(
         fontSize = 24.sp,
         lineHeight = 32.sp,
-        fontWeight = FontWeight(400), // Normal
+        fontWeight = FontWeight(400),
         letterSpacing = 0.sp
     )
 
     val TitleLarge = TextStyle(
         fontSize = 22.sp,
         lineHeight = 28.sp,
-        fontWeight = FontWeight(400), // Normal
+        fontWeight = FontWeight(400),
         letterSpacing = 0.sp
     )
 
     val TitleMedium = TextStyle(
         fontSize = 16.sp,
         lineHeight = 24.sp,
-        fontWeight = FontWeight(500), // Medium
+        fontWeight = FontWeight(500),
         letterSpacing = 0.15.sp
     )
 
     val TitleSmall = TextStyle(
         fontSize = 14.sp,
         lineHeight = 20.sp,
-        fontWeight = FontWeight(500), // Medium
+        fontWeight = FontWeight(500),
         letterSpacing = 0.1.sp
     )
 
     val BodyLarge = TextStyle(
         fontSize = 16.sp,
         lineHeight = 24.sp,
-        fontWeight = FontWeight(400), // Normal
+        fontWeight = FontWeight(400),
+        letterSpacing = 0.5.sp
+    )
+
+    val BodyLargeProminent = TextStyle(
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
+        fontWeight = FontWeight(600), // NOT SURE ABOUT THIS, NO SPEC
         letterSpacing = 0.5.sp
     )
 
     val BodyMedium = TextStyle(
         fontSize = 14.sp,
         lineHeight = 20.sp,
-        fontWeight = FontWeight(400), // Normal
+        fontWeight = FontWeight(400),
         letterSpacing = 0.25.sp
     )
 
     val BodySmall = TextStyle(
         fontSize = 12.sp,
         lineHeight = 16.sp,
-        fontWeight = FontWeight(400), // Normal
+        fontWeight = FontWeight(400),
         letterSpacing = 0.4.sp
     )
 
     val LabelLarge = TextStyle(
         fontSize = 14.sp,
         lineHeight = 20.sp,
-        fontWeight = FontWeight(500), // Medium
+        fontWeight = FontWeight(500),
         letterSpacing = 0.1.sp
     )
 
     val LabelLargeProminent = TextStyle(
         fontSize = 14.sp,
         lineHeight = 20.sp,
-        fontWeight = FontWeight(700), // Medium
+        fontWeight = FontWeight(700),
         letterSpacing = 0.1.sp
     )
 
     val LabelMedium = TextStyle(
         fontSize = 12.sp,
         lineHeight = 16.sp,
-        fontWeight = FontWeight(500), // Medium
+        fontWeight = FontWeight(500),
         letterSpacing = 0.5.sp
     )
 
     val LabelMediumProminent = TextStyle(
         fontSize = 12.sp,
         lineHeight = 16.sp,
-        fontWeight = FontWeight(700), // Medium
+        fontWeight = FontWeight(700),
         letterSpacing = 0.5.sp
     )
 
     val LabelSmall = TextStyle(
         fontSize = 11.sp,
         lineHeight = 16.sp,
-        fontWeight = FontWeight(500), // Medium
+        fontWeight = FontWeight(500),
         letterSpacing = 0.5.sp
     )
 }
@@ -386,7 +393,7 @@ fun SetAppTypography(checkBoxSelectedValues: List<MutableState<Boolean>>){
                 selectedsizelist.value = sizeList[0]
                 selectedheightlist.value = heightList[0]
                 selectedtrackinglist.value = trackingList[0]
-                currentTokens = fluentTypographyTokens
+                currentTokens = AliasTokens()
             },
             leadingAccessoryContent = {
                 RadioButton(
@@ -399,7 +406,7 @@ fun SetAppTypography(checkBoxSelectedValues: List<MutableState<Boolean>>){
                         selectedsizelist.value = sizeList[0]
                         selectedheightlist.value = heightList[0]
                         selectedtrackinglist.value = trackingList[0]
-                        currentTokens = fluentTypographyTokens
+                        currentTokens = AliasTokens()
                     },
                 )
             },
@@ -415,7 +422,38 @@ fun SetAppTypography(checkBoxSelectedValues: List<MutableState<Boolean>>){
                 selectedsizelist.value = sizeList[1]
                 selectedheightlist.value = heightList[1]
                 selectedtrackinglist.value = trackingList[1]
-                currentTokens = materialTypographyTokens
+                currentTokens = object: AliasTokens() {
+                    override val typography: TokenSet<FluentAliasTokens.TypographyTokens, TextStyle> by lazy {
+                        TokenSet { token ->
+                            when (token) {
+                                FluentAliasTokens.TypographyTokens.Display ->
+                                    Material3Typography.DisplayLarge
+                                FluentAliasTokens.TypographyTokens.LargeTitle ->
+                                    Material3Typography.DisplaySmall
+                                FluentAliasTokens.TypographyTokens.Title1 ->
+                                    Material3Typography.HeadlineSmall
+                                FluentAliasTokens.TypographyTokens.Title2 ->
+                                    Material3Typography.TitleLarge
+                                FluentAliasTokens.TypographyTokens.Title3 ->
+                                    Material3Typography.TitleMedium
+                                FluentAliasTokens.TypographyTokens.Body1Strong ->
+                                    Material3Typography.BodyLarge
+                                FluentAliasTokens.TypographyTokens.Body1 ->
+                                    Material3Typography.BodyLarge
+                                FluentAliasTokens.TypographyTokens.Body2Strong ->
+                                    Material3Typography.LabelLargeProminent
+                                FluentAliasTokens.TypographyTokens.Body2 ->
+                                    Material3Typography.LabelLarge
+                                FluentAliasTokens.TypographyTokens.Caption1Strong ->
+                                    Material3Typography.LabelMediumProminent
+                                FluentAliasTokens.TypographyTokens.Caption1 ->
+                                    Material3Typography.LabelMedium
+                                FluentAliasTokens.TypographyTokens.Caption2 ->
+                                    Material3Typography.LabelSmall
+                            }
+                        }
+                    }
+                }
             },
             leadingAccessoryContent = {
                 RadioButton(
@@ -428,7 +466,38 @@ fun SetAppTypography(checkBoxSelectedValues: List<MutableState<Boolean>>){
                         selectedsizelist.value = sizeList[1]
                         selectedheightlist.value = heightList[1]
                         selectedtrackinglist.value = trackingList[1]
-                        currentTokens = materialTypographyTokens
+                        currentTokens = object: AliasTokens() {
+                            override val typography: TokenSet<FluentAliasTokens.TypographyTokens, TextStyle> by lazy {
+                                TokenSet { token ->
+                                    when (token) {
+                                        FluentAliasTokens.TypographyTokens.Display ->
+                                            Material3Typography.DisplayLarge
+                                        FluentAliasTokens.TypographyTokens.LargeTitle ->
+                                            Material3Typography.DisplaySmall
+                                        FluentAliasTokens.TypographyTokens.Title1 ->
+                                            Material3Typography.HeadlineSmall
+                                        FluentAliasTokens.TypographyTokens.Title2 ->
+                                            Material3Typography.TitleLarge
+                                        FluentAliasTokens.TypographyTokens.Title3 ->
+                                            Material3Typography.TitleMedium
+                                        FluentAliasTokens.TypographyTokens.Body1Strong ->
+                                            Material3Typography.BodyLarge
+                                        FluentAliasTokens.TypographyTokens.Body1 ->
+                                            Material3Typography.BodyLarge
+                                        FluentAliasTokens.TypographyTokens.Body2Strong ->
+                                            Material3Typography.LabelLargeProminent
+                                        FluentAliasTokens.TypographyTokens.Body2 ->
+                                            Material3Typography.LabelLarge
+                                        FluentAliasTokens.TypographyTokens.Caption1Strong ->
+                                            Material3Typography.LabelMediumProminent
+                                        FluentAliasTokens.TypographyTokens.Caption1 ->
+                                            Material3Typography.LabelMedium
+                                        FluentAliasTokens.TypographyTokens.Caption2 ->
+                                            Material3Typography.LabelSmall
+                                    }
+                                }
+                            }
+                        }
                     },
                 )
             },
