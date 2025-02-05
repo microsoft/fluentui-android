@@ -41,6 +41,7 @@ import com.microsoft.fluentui.persona.setPersona
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.getTextSize
 import com.microsoft.fluentui.util.inputMethodManager
+import com.microsoft.fluentui.util.tokenautocomplete.CountSpan
 import com.microsoft.fluentui.util.tokenautocomplete.TokenCompleteTextView
 import kotlin.math.max
 
