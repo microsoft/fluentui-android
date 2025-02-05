@@ -63,7 +63,6 @@ allprojects {
         robolectric               =    '4.13'
         uiautomatorVersion        =    '2.2.0'
         supportVersion            =    '28.0.0'
-        tokenautocompleteVersion  =    '2.0.8'
         universalPkgDir           =    "universal"
         composeFoundationVersion  =    '1.6.0'
     }

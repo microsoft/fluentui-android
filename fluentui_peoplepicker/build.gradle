@@ -73,7 +73,6 @@ dependencies {
     implementation "androidx.exifinterface:exifinterface:$exifInterfaceVersion"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "com.splitwise:tokenautocomplete:$tokenautocompleteVersion"
 
     implementation("androidx.compose.foundation:foundation")
     implementation("androidx.compose.runtime:runtime")

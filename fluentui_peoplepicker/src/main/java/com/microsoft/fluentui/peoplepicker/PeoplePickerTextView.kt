@@ -41,8 +41,7 @@ import com.microsoft.fluentui.persona.setPersona
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.getTextSize
 import com.microsoft.fluentui.util.inputMethodManager
-import com.tokenautocomplete.CountSpan
-import com.tokenautocomplete.TokenCompleteTextView
+import com.microsoft.fluentui.util.tokenautocomplete.TokenCompleteTextView
 import kotlin.math.max
 
 enum class PeoplePickerPersonaChipClickStyle(internal val tokenClickStyle: TokenCompleteTextView.TokenClickStyle) {

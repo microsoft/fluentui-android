@@ -181,11 +181,7 @@ dependencies {
 - Follow [these instructions](https://developer.android.com/studio/projects/android-library) to build and output an AAR files from the FluentUI modules, import the module(s) to your project, and add it as a dependency. If you're having trouble generating an AAR file for the module, make sure you select it and run e.g "Make Module 'fluentui_drawer'" from the Build menu.
 
 - Some components have dependencies you will need to manually add to your app if you are using this library as an AAR artifact because these dependencies do not get included in the output.
-  - If using **PeoplePickerView**, include this dependency in your gradle file:
-    ```gradle
-    implementation 'com.splitwise:tokenautocomplete:2.0.8'
-    ```
-    
+  - None at the moment
   - Double check that these library versions correspond to the latest versions we implement in the FluentUI [build.gradle](fluentui_others\build.gradle).
 
 ### Import and use the library
