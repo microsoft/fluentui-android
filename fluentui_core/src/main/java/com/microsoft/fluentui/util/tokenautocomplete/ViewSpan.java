@@ -5,6 +5,7 @@ import android.graphics.Paint;
 import android.text.style.ReplacementSpan;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.annotation.NonNull;
 
 /**
  * Span that holds a view it draws when rendering
@@ -42,7 +43,7 @@ public class ViewSpan extends ReplacementSpan {
         canvas.restore();
     }
 
-    public int getSize(Paint paint, CharSequence charSequence, int i, int i2, Paint.FontMetricsInt fm) {
+    public int getSize(@NonNull Paint paint, CharSequence charSequence, int i, int i2, Paint.FontMetricsInt fm) {
         prepView();
 
         if (fm != null) {
