@@ -10,6 +10,7 @@ import android.content.res.Configuration
 import android.view.*
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityManager
+import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.foundation.*
 import androidx.compose.foundation.gestures.Orientation
@@ -319,6 +320,7 @@ fun BottomSheet(
         Box(
             Modifier
                 .align(Alignment.TopCenter)
+                .animateContentSize()
                 .fillMaxWidth(
                     if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) maxLandscapeWidth
                     else 1F
