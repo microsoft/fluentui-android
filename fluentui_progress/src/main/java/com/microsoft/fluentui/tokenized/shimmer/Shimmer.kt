@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.ShimmerInfo
+import com.microsoft.fluentui.theme.token.controlTokens.ShimmerOrientation
 import com.microsoft.fluentui.theme.token.controlTokens.ShimmerTokens
 import com.microsoft.fluentui.util.dpToPx
 import kotlin.math.absoluteValue
@@ -106,8 +107,9 @@ internal fun InternalShimmer(
         dpToPx(cornerRadius)
     val shimmerDelay = tokens.delay(shimmerInfo)
     val infiniteTransition = rememberInfiniteTransition()
-    val isLtr = LocalLayoutDirection.current == LayoutDirection.Ltr
-    val initialValue = if (isLtr) 0f else screenWidth
+    val orientation: ShimmerOrientation = tokens.orientation(shimmerInfo)
+    val isLtr = if(orientation in listOf(ShimmerOrientation.LEFT_TO_RIGHT, ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT)) (LocalLayoutDirection.current == LayoutDirection.Ltr) else (LocalLayoutDirection.current == LayoutDirection.Rtl)
+    val initialValue = if (isLtr) 0f else diagonal
     val targetValue = if (isLtr) diagonal else 0f
     val shimmerEffect by infiniteTransition.animateFloat(
         initialValue,
@@ -119,12 +121,26 @@ internal fun InternalShimmer(
             )
         )
     )
+    val startOffset: Offset = when (orientation) {
+        ShimmerOrientation.LEFT_TO_RIGHT -> Offset.Zero
+        ShimmerOrientation.RIGHT_TO_LEFT -> Offset.Zero
+        ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT -> Offset.Zero
+        ShimmerOrientation.BOTTOMRIGHT_TO_TOPLEFT -> Offset.Zero
+        else -> Offset.Zero
+    }
+    val endOffset: Offset = when (orientation) {
+        ShimmerOrientation.LEFT_TO_RIGHT -> Offset(shimmerEffect.absoluteValue, 0F)
+        ShimmerOrientation.RIGHT_TO_LEFT -> Offset(shimmerEffect.absoluteValue, 0F)
+        ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT -> Offset(shimmerEffect.absoluteValue, shimmerEffect.absoluteValue)
+        ShimmerOrientation.BOTTOMRIGHT_TO_TOPLEFT -> Offset(shimmerEffect.absoluteValue, shimmerEffect.absoluteValue)
+        else -> Offset(shimmerEffect.absoluteValue, shimmerEffect.absoluteValue)
+    }
     val gradientColor = Brush.linearGradient(
         0f to shimmerBackgroundColor,
         0.5f to shimmerKnockoutEffectColor,
         1.0f to shimmerBackgroundColor,
-        start = Offset.Zero,
-        end = Offset(shimmerEffect.absoluteValue, shimmerEffect.absoluteValue)
+        start = startOffset,
+        end = endOffset
     )
     if (content != null) {
         Box(
