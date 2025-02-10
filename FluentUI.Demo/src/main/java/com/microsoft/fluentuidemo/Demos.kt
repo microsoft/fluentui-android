@@ -165,7 +165,7 @@ val V1DEMO = arrayListOf(
 )
 
 val V2DEMO = arrayListOf(
-    Demo(V2ACRYLICPANE, V2AcrylicPaneActivity::class, Badge.Modified),
+    Demo(V2ACRYLICPANE, V2AcrylicPaneActivity::class, Badge.New),
     Demo(V2ACTION_BAR, V2ActionBarActivity::class, Badge.Modified),
     Demo(V2APP_BAR_LAYOUT, V2AppBarActivity::class),
     Demo(V2AVATAR, V2AvatarActivity::class, Badge.Modified),
@@ -176,7 +176,7 @@ val V2DEMO = arrayListOf(
     Demo(V2BASIC_CHIP, V2BasicChipActivity::class),
     Demo(V2BASIC_CONTROLS, V2BasicControlsActivity::class),
     Demo(V2BOTTOM_DRAWER, V2BottomDrawerActivity::class),
-    Demo(V2BOTTOM_SHEET, V2BottomSheetActivity::class),
+    Demo(V2BOTTOM_SHEET, V2BottomSheetActivity::class, Badge.Modified),
     Demo(V2BUTTON, V2ButtonsActivity::class),
     Demo(V2CARD, V2CardActivity::class),
     Demo(V2CARD_NUDGE, V2CardNudgeActivity::class),
@@ -195,7 +195,7 @@ val V2DEMO = arrayListOf(
     Demo(V2SCAFFOLD, V2ScaffoldActivity::class),
     Demo(V2SEARCHBAR, V2SearchBarActivity::class, Badge.Modified),
     Demo(V2SEGMENTED_CONTROL, V2SegmentedControlActivity::class, Badge.Modified),
-    Demo(V2SHIMMER, V2ShimmerActivity::class),
+    Demo(V2SHIMMER, V2ShimmerActivity::class, Badge.Modified),
     Demo(V2SIDE_RAIL, V2SideRailActivity::class),
     Demo(V2SNACKBAR, V2SnackbarActivity::class),
     Demo(V2TAB_BAR, V2TabBarActivity::class, Badge.Modified),
