@@ -9,18 +9,16 @@ import android.content.Context
 import androidx.core.content.ContextCompat
 import android.util.AttributeSet
 import android.view.View.OnClickListener
-import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
 import android.widget.Filter
 import android.widget.TextView
-import com.microsoft.fluentui.peoplepicker.*
 import com.microsoft.fluentui.persona.IPersona
 import com.microsoft.fluentui.persona.Persona
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.isAccessibilityEnabled
 import com.microsoft.fluentui.view.TemplateView
-import com.microsoft.fluentui.util.tokenautocomplete.TokenCompleteTextView
+import com.microsoft.fluentui.tokenautocomplete.TokenCompleteTextView
 import kotlin.math.max
 
 /**

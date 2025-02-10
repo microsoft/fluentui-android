@@ -1,4 +1,4 @@
-package com.microsoft.fluentui.util.tokenautocomplete;
+package com.microsoft.fluentui.tokenautocomplete;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;
