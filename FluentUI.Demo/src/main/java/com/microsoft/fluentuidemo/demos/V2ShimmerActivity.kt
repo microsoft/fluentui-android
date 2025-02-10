@@ -5,18 +5,29 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
@@ -26,8 +37,11 @@ import com.microsoft.fluentui.theme.token.controlTokens.ColorStyle
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipSize
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle
 import com.microsoft.fluentui.theme.token.controlTokens.ShimmerInfo
+import com.microsoft.fluentui.theme.token.controlTokens.ShimmerOrientation
 import com.microsoft.fluentui.theme.token.controlTokens.ShimmerTokens
+import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.Label
+import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.notification.Badge
 import com.microsoft.fluentui.tokenized.persona.Avatar
 import com.microsoft.fluentui.tokenized.persona.Person
@@ -54,6 +68,19 @@ class V2ShimmerActivity : V2DemoActivity() {
 
     @Composable
     private fun CreateShimmerActivityUI() {
+        var shimmerOrientation by rememberSaveable { mutableStateOf(0) }
+        val shimmerTokens = object : ShimmerTokens() {
+            @Composable
+            override fun orientation(shimmerInfo: ShimmerInfo): ShimmerOrientation {
+                return when (shimmerOrientation) {
+                    0 -> ShimmerOrientation.LEFT_TO_RIGHT
+                    1 -> ShimmerOrientation.RIGHT_TO_LEFT
+                    2 -> ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT
+                    3 -> ShimmerOrientation.BOTTOMRIGHT_TO_TOPLEFT
+                    else -> ShimmerOrientation.LEFT_TO_RIGHT
+                }
+            }
+        }
         Column(
             Modifier
                 .padding(all = 12.dp)
@@ -70,16 +97,16 @@ class V2ShimmerActivity : V2DemoActivity() {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Shimmer(modifier = Modifier.size(120.dp, 80.dp))
+                Shimmer(modifier = Modifier.size(120.dp, 80.dp), shimmerTokens = shimmerTokens)
                 Column(
                     Modifier
                         .height(80.dp)
                         .padding(top = 10.dp, bottom = 10.dp),
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Shimmer(modifier = Modifier.size(140.dp, 12.dp))
-                    Shimmer(modifier = Modifier.size(180.dp, 12.dp))
-                    Shimmer(modifier = Modifier.size(200.dp, 12.dp))
+                    Shimmer(modifier = Modifier.size(140.dp, 12.dp), shimmerTokens = shimmerTokens)
+                    Shimmer(modifier = Modifier.size(180.dp, 12.dp), shimmerTokens = shimmerTokens)
+                    Shimmer(modifier = Modifier.size(200.dp, 12.dp), shimmerTokens = shimmerTokens)
                 }
             }
             Label(
@@ -94,15 +121,15 @@ class V2ShimmerActivity : V2DemoActivity() {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Shimmer(modifier = Modifier.size(60.dp, 60.dp).clip(RoundedCornerShape(50.dp)))
+                Shimmer(modifier = Modifier.size(60.dp, 60.dp).clip(RoundedCornerShape(50.dp)), shimmerTokens = shimmerTokens)
                 Column(
                     Modifier
                         .height(80.dp)
                         .padding(top = 10.dp, bottom = 10.dp),
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Shimmer(modifier = Modifier.size(180.dp, 12.dp))
-                    Shimmer(modifier = Modifier.size(180.dp, 12.dp))
+                    Shimmer(modifier = Modifier.size(180.dp, 12.dp), shimmerTokens = shimmerTokens)
+                    Shimmer(modifier = Modifier.size(180.dp, 12.dp), shimmerTokens = shimmerTokens)
                 }
             }
             Row(
@@ -112,15 +139,15 @@ class V2ShimmerActivity : V2DemoActivity() {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Shimmer(modifier = Modifier.size(60.dp, 60.dp).clip(RoundedCornerShape(50.dp)))
+                Shimmer(modifier = Modifier.size(60.dp, 60.dp).clip(RoundedCornerShape(50.dp)), shimmerTokens = shimmerTokens)
                 Column(
                     Modifier
                         .height(80.dp)
                         .padding(top = 10.dp, bottom = 10.dp),
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Shimmer(modifier = Modifier.size(140.dp, 12.dp))
-                    Shimmer(modifier = Modifier.size(180.dp, 12.dp))
+                    Shimmer(modifier = Modifier.size(140.dp, 12.dp), shimmerTokens = shimmerTokens)
+                    Shimmer(modifier = Modifier.size(180.dp, 12.dp), shimmerTokens = shimmerTokens)
                 }
             }
             Row(
@@ -130,21 +157,32 @@ class V2ShimmerActivity : V2DemoActivity() {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Shimmer(modifier = Modifier.size(60.dp, 60.dp).clip(RoundedCornerShape(50.dp)))
+                Shimmer(modifier = Modifier.size(60.dp, 60.dp).clip(RoundedCornerShape(50.dp)), shimmerTokens = shimmerTokens)
                 Column(
                     Modifier
                         .height(80.dp)
                         .padding(top = 10.dp, bottom = 10.dp),
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Shimmer(modifier = Modifier.size(140.dp, 12.dp))
-                    Shimmer(modifier = Modifier.size(180.dp, 12.dp))
+                    Shimmer(modifier = Modifier.size(140.dp, 12.dp), shimmerTokens = shimmerTokens)
+                    Shimmer(modifier = Modifier.size(180.dp, 12.dp), shimmerTokens = shimmerTokens)
                 }
             }
             class ShimmerGoldEffectToken : ShimmerTokens() {
                 @Composable
                 override fun knockoutEffectColor(shimmerInfo: ShimmerInfo): Color {
                     return Color(0XFFE1BA27)
+                }
+
+                @Composable
+                override fun orientation(shimmerInfo: ShimmerInfo): ShimmerOrientation {
+                    return when (shimmerOrientation) {
+                        0 -> ShimmerOrientation.LEFT_TO_RIGHT
+                        1 -> ShimmerOrientation.RIGHT_TO_LEFT
+                        2 -> ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT
+                        3 -> ShimmerOrientation.BOTTOMRIGHT_TO_TOPLEFT
+                        else -> ShimmerOrientation.LEFT_TO_RIGHT
+                    }
                 }
             }
 
@@ -176,7 +214,7 @@ class V2ShimmerActivity : V2DemoActivity() {
                 Label(text = "Badge", textStyle = FluentAliasTokens.TypographyTokens.Body1)
                 Shimmer(content = {
                     Badge(text = "Badge", badgeTokens = BadgeColorToken())
-                }, shimmerTokens = ShimmerGoldEffectToken(), cornerRadius = 100.dp)
+                }, shimmerTokens = ShimmerGoldEffectToken() , cornerRadius = 100.dp)
             }
             Row(
                 modifier = Modifier
@@ -192,7 +230,7 @@ class V2ShimmerActivity : V2DemoActivity() {
                         size = PersonaChipSize.Small,
                         style = PersonaChipStyle.Brand
                     )
-                })
+                }, shimmerTokens = shimmerTokens )
             }
             Row(
                 modifier = Modifier
@@ -209,10 +247,67 @@ class V2ShimmerActivity : V2DemoActivity() {
                             status = AvatarStatus.Available,
                         ), size = AvatarSize.Size72, enableActivityRings = false
                     )
-                })
+                }, shimmerTokens = shimmerTokens)
             }
-
+            Label(
+                text = "Change Orientation",
+                textStyle = FluentAliasTokens.TypographyTokens.Title2,
+                colorStyle = ColorStyle.Brand
+            )
+            Spacer( modifier = Modifier.height(10.dp))
+            SelectionRow(
+                text = "Left to Right",
+                testTag = "Left to Right",
+                selected = shimmerOrientation == 0,
+                onClick = { shimmerOrientation = 0 }
+            )
+            SelectionRow(
+                text = "Right to Left",
+                testTag = "Right to Left",
+                selected = shimmerOrientation == 1,
+                onClick = { shimmerOrientation = 1 }
+            )
+            SelectionRow(
+                text = "Top Left to Bottom Right",
+                testTag = "Top Left to Bottom Right",
+                selected = shimmerOrientation == 2,
+                onClick = { shimmerOrientation = 2 }
+            )
+            SelectionRow(
+                text = "Bottom Right to Top Left",
+                testTag = "Bottom Right to Top Left",
+                selected = shimmerOrientation == 3,
+                onClick = { shimmerOrientation = 3 }
+            )
         }
 
+    }
+    @Composable
+    private fun SelectionRow(
+        text: String,
+        testTag: String,
+        selected: Boolean,
+        onClick: () -> Unit
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            BasicText(
+                text = text,
+                modifier = Modifier.weight(1F),
+                style = TextStyle(
+                    color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+                        themeMode = ThemeMode.Auto
+                    )
+                )
+            )
+            RadioButton(
+                modifier = Modifier.testTag(testTag),
+                selected = selected,
+                onClick = onClick
+            )
+        }
     }
 }
