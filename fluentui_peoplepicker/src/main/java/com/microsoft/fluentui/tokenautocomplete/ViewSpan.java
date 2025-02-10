@@ -1,4 +1,4 @@
-package com.microsoft.fluentui.util.tokenautocomplete;
+package com.microsoft.fluentui.tokenautocomplete;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;

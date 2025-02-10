@@ -1,4 +1,4 @@
-package com.microsoft.fluentui.util.tokenautocomplete;
+package com.microsoft.fluentui.tokenautocomplete;
 
 import android.text.SpannableString;
 import android.text.Spanned;

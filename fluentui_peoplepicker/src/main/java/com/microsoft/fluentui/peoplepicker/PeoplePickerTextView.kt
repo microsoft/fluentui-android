@@ -41,8 +41,8 @@ import com.microsoft.fluentui.persona.setPersona
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.getTextSize
 import com.microsoft.fluentui.util.inputMethodManager
-import com.microsoft.fluentui.util.tokenautocomplete.CountSpan
-import com.microsoft.fluentui.util.tokenautocomplete.TokenCompleteTextView
+import com.microsoft.fluentui.tokenautocomplete.CountSpan
+import com.microsoft.fluentui.tokenautocomplete.TokenCompleteTextView
 import kotlin.math.max
 
 enum class PeoplePickerPersonaChipClickStyle(internal val tokenClickStyle: TokenCompleteTextView.TokenClickStyle) {
@@ -71,7 +71,8 @@ enum class PeoplePickerPersonaChipClickStyle(internal val tokenClickStyle: Token
  * - Using backspace to delete a selected token does not work if other text is entered in the input;
  * [TokenCompleteTextView] overrides [onCreateInputConnection] which blocks our ability to control this functionality.
  */
-internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
+internal class PeoplePickerTextView :
+    TokenCompleteTextView<IPersona> {
     companion object {
         // Max number of personas the screen reader will announce on focus.
         private const val MAX_PERSONAS_TO_READ = 3
