@@ -62,6 +62,7 @@ Fluent UI for Android includes an expanding library of controls written in Kotli
 - [Tooltip](fluentui_others/src/main/java/com/microsoft/fluentui)
 
 ## Compose based Controls (v2)
+- [AcrylicPane](fluentui_core/src/main/java/com/microsoft/fluentui/compose/AcrylicPane.kt)
 - [AnnouncementCard](fluentui_controls/src/main/java/com/microsoft/fluentui/tokenized/controls/AnnouncementCard.kt)
 - [AppBar](fluentui_topappbars/src/main/java/com/microsoft/fluentui/tokenized/AppBar.kt)
 - [Avatar](fluentui_persona/src/main/java/com/microsoft/fluentui/tokenized/persona/Avatar.kt)
