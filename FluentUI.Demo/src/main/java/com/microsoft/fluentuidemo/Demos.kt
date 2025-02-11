@@ -198,7 +198,7 @@ val V2DEMO = arrayListOf(
     Demo(V2SHIMMER, V2ShimmerActivity::class, Badge.Modified),
     Demo(V2SIDE_RAIL, V2SideRailActivity::class),
     Demo(V2SNACKBAR, V2SnackbarActivity::class),
-    Demo(V2TAB_BAR, V2TabBarActivity::class, Badge.Modified),
+    Demo(V2TAB_BAR, V2TabBarActivity::class),
     Demo(V2TEXT_FIELD, V2TextFieldActivity::class),
     Demo(V2TOOL_TIP, V2ToolTipActivity::class),
     )
