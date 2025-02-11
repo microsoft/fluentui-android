@@ -2,12 +2,10 @@ Release version 0.3.5
 What's new
 Fluent v2:
 Fix/enhancement:
-    1. Increased customization support in search bar
-    2. Fixes for adding predictive back gestures in modal popup
-    3. View pager support
-    4. Action bar support
-    5. Tab bar talkback fixes
+    1. Added Acrylic Pane Component and Controls
+    2. Added support for orientation change in Shimmer
+    3. Bottomsheet Animation and Fluidity Fixes
+    4. PeoplePicker support
 
 Note: Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00).
 Fluent version 0.3.x will support compose foundation version 1.6.0.
-minSDKVersion has been updated to 23 in this release.
