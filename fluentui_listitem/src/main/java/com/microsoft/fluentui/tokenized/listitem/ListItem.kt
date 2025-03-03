@@ -3,8 +3,10 @@ package com.microsoft.fluentui.tokenized.listitem
 import androidx.compose.animation.*
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
@@ -71,6 +73,25 @@ object ListItem {
             onClickLabel = null,
             enabled = enabled,
             onClick = onClick
+        )
+    }
+
+    @OptIn(ExperimentalFoundationApi::class)
+    private fun Modifier.longPressSemanticsModifier(
+        interactionSource: MutableInteractionSource,
+        onClick: () -> Unit,
+        onLongClick: () -> Unit,
+        enabled: Boolean,
+        rippleColor: Color
+    ): Modifier = composed {
+        Modifier.combinedClickable(
+            interactionSource = interactionSource,
+            indication = rememberRipple(color = rippleColor),
+            onClickLabel = null,
+            onLongClickLabel = null,
+            enabled = enabled,
+            onClick = onClick,
+            onLongClick = onLongClick
         )
     }
 
@@ -295,9 +316,12 @@ object ListItem {
                 .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                 .then(
                     if (onClick != null) {
-                        Modifier.clickAndSemanticsModifier(
+                        Modifier.longPressSemanticsModifier(
                             interactionSource,
                             onClick = onClick,
+                            onLongClick = {
+                                println("### Long Clicked")
+                            },
                             enabled,
                             rippleColor
                         )
@@ -701,10 +725,13 @@ object ListItem {
                 .background(backgroundColor)
                 .then(
                     if (enableContentOpenCloseTransition && content != null) {
-                        Modifier.clickAndSemanticsModifier(
+                        Modifier.longPressSemanticsModifier(
                             interactionSource,
                             onClick = {
                                 expandedState = !expandedState
+                            },
+                            onLongClick = {
+                                println("### Long Clicked")
                             },
                             enabled,
                             rippleColor
@@ -895,8 +922,11 @@ object ListItem {
                 .heightIn(min = cellHeight)
                 .background(backgroundColor)
                 .borderModifier(border, borderColor, borderSize, borderInsetToPx)
-                .clickAndSemanticsModifier(
-                    interactionSource, onClick = onClick ?: {}, enabled, rippleColor
+                .longPressSemanticsModifier(
+                    interactionSource, onClick = onClick ?: {},
+                    onLongClick = {
+                        println("### Long Clicked")
+                    }, enabled, rippleColor
                 ), verticalAlignment = descriptionAlignment
         ) {
             if (leadingAccessoryContent != null && descriptionPlacement == Top) {
