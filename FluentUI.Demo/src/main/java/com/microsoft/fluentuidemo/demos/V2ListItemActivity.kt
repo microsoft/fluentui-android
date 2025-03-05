@@ -1,8 +1,10 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,6 +18,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.outlined.KeyboardArrowRight
 import androidx.compose.material.icons.outlined.MoreVert
 import androidx.compose.runtime.Composable
@@ -96,7 +99,49 @@ const val secondaryText = "Subtitle, secondary text"
 const val tertiaryText = "Footer, tertiary text"
 const val unclickableText = " (Unclickable) "
 
+class Item{
+    var icon: Drawable? = null
+    var title: String = ""
+    var subtitle: String = ""
 
+    constructor(icon: Drawable?, title: String, subtitle: String) {
+        this.icon = icon
+        this.title = title
+        this.subtitle = subtitle
+    }
+
+}
+class Group{
+    var name: String = ""
+    var items: List<Item> = listOf()
+
+    constructor(name: String, items: List<Item>) {
+        this.name = name
+        this.items = items
+    }
+}
+@Composable
+private fun getUIFromGroup(group: com.microsoft.fluentuidemo.demos.Group) {
+    Column {
+        ListItem.Header(group.name)
+        group.items.forEach {
+            ListItem.Item(
+                text = it.title,
+                subText = it.subtitle,
+                onClick = {},
+                leadingAccessoryContent = {Icon(painter = painterResource(id = drawable.ic_icon__16x16_checkmark), contentDescription = "File Icon")},
+                trailingAccessoryContent = {Icon(FluentIcon(Icons.Default.MoreVert), modifier = Modifier.clickable(
+                    onClick = {
+                        println("### Context Clicked")
+                    }
+                ))},
+                border = BorderType.Bottom,
+                borderInset = XXLarge
+            )
+        }
+    }
+
+}
 @Composable
 private fun CreateListActivityUI(context: Context) {
     Box(
@@ -104,6 +149,10 @@ private fun CreateListActivityUI(context: Context) {
             .fillMaxSize()
     ) {
         Column(Modifier.verticalScroll(rememberScrollState())) {
+            var newGroup: com.microsoft.fluentuidemo.demos.Group = com.microsoft.fluentuidemo.demos.Group("Group Name", listOf(
+                Item(null, "File 1", "File 1 Path > One Drive"),Item(null, "File 2", "File 2 Path > One Drive"),Item(null, "File 3", "File 3 Path > One Drive")
+            ))
+            getUIFromGroup(newGroup)
             ListItem.Header(title = "One-Line list")
             OneLineListAccessoryContentContent(context)
             ListItem.Header(title = "Two-Line list")
