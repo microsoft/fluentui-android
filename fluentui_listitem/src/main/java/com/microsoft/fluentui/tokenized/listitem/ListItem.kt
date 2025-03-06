@@ -227,10 +227,12 @@ object ListItem {
         textAlignment: ListItemTextAlignment = ListItemTextAlignment.Regular,
         unreadDot: Boolean = false,
         enabled: Boolean = true,
+        selected: Boolean = false,
         textMaxLines: Int = 1,
         subTextMaxLines: Int = 1,
         secondarySubTextMaxLines: Int = 1,
         onClick: (() -> Unit)? = null,
+        onLongClick: (() -> Unit)? = null,
         primaryTextLeadingContent: (@Composable () -> Unit)? = null,
         primaryTextTrailingContent: (@Composable () -> Unit)? = null,
         secondarySubTextLeadingContent: (@Composable () -> Unit)? = null,
@@ -266,7 +268,7 @@ object ListItem {
         )
         val backgroundColor =
             token.backgroundBrush(listItemInfo).getBrushByState(
-                enabled = true, selected = false, interactionSource = interactionSource
+                enabled = true, selected = selected, interactionSource = interactionSource
             )
         val primaryTextTypography = token.primaryTextTypography(listItemInfo)
         val subTextTypography = token.subTextTypography(listItemInfo)
@@ -316,15 +318,23 @@ object ListItem {
                 .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                 .then(
                     if (onClick != null) {
-                        Modifier.longPressSemanticsModifier(
-                            interactionSource,
-                            onClick = onClick,
-                            onLongClick = {
-                                println("### Long Clicked")
-                            },
-                            enabled,
-                            rippleColor
-                        )
+                        if (onLongClick != null) {
+                            Modifier.longPressSemanticsModifier(
+                                interactionSource,
+                                onClick = onClick,
+                                onLongClick = onLongClick,
+                                enabled,
+                                rippleColor
+                            )
+                        }
+                        else{
+                            Modifier.clickAndSemanticsModifier(
+                                interactionSource,
+                                onClick = onClick,
+                                enabled,
+                                rippleColor
+                            )
+                        }
                     } else Modifier
                 ),
             verticalAlignment = Alignment.CenterVertically
@@ -489,10 +499,12 @@ object ListItem {
         textAlignment: ListItemTextAlignment = ListItemTextAlignment.Regular,
         unreadDot: Boolean = false,
         enabled: Boolean = true,
+        selected: Boolean = false,
         textMaxLines: Int = 1,
         subTextMaxLines: Int = 1,
         secondarySubTextMaxLines: Int = 1,
         onClick: (() -> Unit)? = null,
+        onLongClick: (() -> Unit)? = null,
         primaryTextLeadingContent: (@Composable () -> Unit)? = null,
         primaryTextTrailingContent: (@Composable () -> Unit)? = null,
         secondarySubTextLeadingContent: (@Composable () -> Unit)? = null,
@@ -516,10 +528,12 @@ object ListItem {
             textAlignment = textAlignment,
             unreadDot = unreadDot,
             enabled = enabled,
+            selected = selected,
             textMaxLines = textMaxLines,
             subTextMaxLines = subTextMaxLines,
             secondarySubTextMaxLines = secondarySubTextMaxLines,
             onClick = onClick,
+            onLongClick = onLongClick,
             primaryTextLeadingContent = primaryTextLeadingContent,
             primaryTextTrailingContent = primaryTextTrailingContent,
             secondarySubTextLeadingContent = secondarySubTextLeadingContent,
@@ -577,10 +591,12 @@ object ListItem {
         textAlignment: ListItemTextAlignment = ListItemTextAlignment.Regular,
         unreadDot: Boolean = false,
         enabled: Boolean = true,
+        selected: Boolean = false,
         textMaxLines: Int = 1,
         subTextMaxLines: Int = 1,
         secondarySubTextMaxLines: Int = 1,
         onClick: (() -> Unit)? = null,
+        onLongClick: (() -> Unit)? = null,
         primaryTextLeadingContent: (@Composable () -> Unit)? = null,
         primaryTextTrailingContent: (@Composable () -> Unit)? = null,
         secondarySubTextLeadingContent: (@Composable () -> Unit)? = null,
@@ -605,10 +621,12 @@ object ListItem {
             textAlignment = textAlignment,
             unreadDot = unreadDot,
             enabled = enabled,
+            selected = selected,
             textMaxLines = textMaxLines,
             subTextMaxLines = subTextMaxLines,
             secondarySubTextMaxLines = secondarySubTextMaxLines,
             onClick = onClick,
+            onLongClick = onLongClick,
             primaryTextLeadingContent = primaryTextLeadingContent,
             primaryTextTrailingContent = primaryTextTrailingContent,
             secondarySubTextLeadingContent = secondarySubTextLeadingContent,
@@ -731,7 +749,7 @@ object ListItem {
                                 expandedState = !expandedState
                             },
                             onLongClick = {
-                                println("### Long Clicked")
+                                expandedState = !expandedState
                             },
                             enabled,
                             rippleColor
@@ -871,6 +889,7 @@ object ListItem {
         border: BorderType = NoBorder,
         borderInset: BorderInset = None,
         onClick: (() -> Unit)? = null,
+        onLongClick: (() -> Unit)? = null,
         onActionClick: (() -> Unit)? = null,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
         leadingAccessoryContent: (@Composable () -> Unit)? = null,
@@ -924,9 +943,8 @@ object ListItem {
                 .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                 .longPressSemanticsModifier(
                     interactionSource, onClick = onClick ?: {},
-                    onLongClick = {
-                        println("### Long Clicked")
-                    }, enabled, rippleColor
+                    onLongClick = onLongClick ?: {},
+                    enabled, rippleColor
                 ), verticalAlignment = descriptionAlignment
         ) {
             if (leadingAccessoryContent != null && descriptionPlacement == Top) {

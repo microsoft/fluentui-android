@@ -31,18 +31,23 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background1
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background1Pressed
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.Icon
+import com.microsoft.fluentui.theme.token.StateBrush
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize.Size24
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize.Size40
@@ -53,7 +58,9 @@ import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.XXLarge
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemInfo
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemTextAlignment
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemTokens
 import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Subtle
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Bottom
 import com.microsoft.fluentui.tokenized.controls.BasicCard
@@ -160,12 +167,41 @@ private fun CreateListActivityUI(context: Context) {
             ListItem.Header(title = "Three-Line list")
             ThreeLineListAccessoryContentContent(context)
             ListItem.Header(title = "Text Only")
+            var selected by remember { mutableStateOf(false) }
+            var customTokens: ListItemTokens = object : ListItemTokens(){
+                @Composable
+                override fun backgroundBrush(listItemInfo: ListItemInfo): StateBrush {
+                    return StateBrush(
+                        rest = SolidColor(
+                            FluentTheme.aliasTokens.neutralBackgroundColor[Background1].value(
+                                themeMode = FluentTheme.themeMode
+                            )
+                        ),
+                        pressed = SolidColor(
+                            FluentTheme.aliasTokens.neutralBackgroundColor[Background1Pressed].value(
+                                themeMode = FluentTheme.themeMode
+                            )
+                        ),
+                        selected = SolidColor(
+                            FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1Selected].value(
+                                themeMode = FluentTheme.themeMode
+                            )
+                        ),
+                    )
+                }
+
+            }
             ListItem.Item(
                 text = primaryText,
                 onClick = {},
+                onLongClick = {
+                    selected = !selected
+                },
                 border = BorderType.Bottom,
                 borderInset = XXLarge,
-                primaryTextTrailingContent = { Icon20() }
+                primaryTextTrailingContent = { Icon20() },
+                selected = selected,
+                listItemTokens = customTokens
             )
             ListItem.Item(
                 text = primaryText,
