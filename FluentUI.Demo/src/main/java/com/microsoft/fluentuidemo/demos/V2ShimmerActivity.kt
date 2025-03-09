@@ -29,10 +29,12 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.theme.token.controlTokens.BadgeInfo
 import com.microsoft.fluentui.theme.token.controlTokens.BadgeTokens
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.theme.token.controlTokens.ColorStyle
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipSize
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle
@@ -69,6 +71,7 @@ class V2ShimmerActivity : V2DemoActivity() {
     @Composable
     private fun CreateShimmerActivityUI() {
         var shimmerOrientation by rememberSaveable { mutableStateOf(0) }
+        var isShimmering by rememberSaveable { mutableStateOf(true) }
         val shimmerTokens = object : ShimmerTokens() {
             @Composable
             override fun orientation(shimmerInfo: ShimmerInfo): ShimmerOrientation {
@@ -79,6 +82,11 @@ class V2ShimmerActivity : V2DemoActivity() {
                     3 -> ShimmerOrientation.BOTTOMRIGHT_TO_TOPLEFT
                     else -> ShimmerOrientation.LEFT_TO_RIGHT
                 }
+            }
+
+            @Composable
+            override fun isShimmering(shimmerInfo: ShimmerInfo): Boolean {
+                return isShimmering
             }
         }
         Column(
@@ -184,6 +192,11 @@ class V2ShimmerActivity : V2DemoActivity() {
                         else -> ShimmerOrientation.LEFT_TO_RIGHT
                     }
                 }
+
+                @Composable
+                override fun isShimmering(shimmerInfo: ShimmerInfo): Boolean {
+                    return isShimmering
+                }
             }
 
             class BadgeColorToken : BadgeTokens() {
@@ -230,7 +243,7 @@ class V2ShimmerActivity : V2DemoActivity() {
                         size = PersonaChipSize.Small,
                         style = PersonaChipStyle.Brand
                     )
-                }, shimmerTokens = shimmerTokens )
+                }, shimmerTokens = shimmerTokens)
             }
             Row(
                 modifier = Modifier
@@ -278,6 +291,15 @@ class V2ShimmerActivity : V2DemoActivity() {
                 testTag = "Bottom Right to Top Left",
                 selected = shimmerOrientation == 3,
                 onClick = { shimmerOrientation = 3 }
+            )
+            Spacer(modifier = Modifier.height(10.dp))
+            Button(
+                text = "Stop Shimmer",
+                onClick = {
+                    isShimmering = !isShimmering
+                },
+                style = ButtonStyle.Button,
+                modifier = Modifier.testTag("ResetButton")
             )
         }
 
