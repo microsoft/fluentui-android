@@ -25,6 +25,16 @@ open class DrawerInfo(val type: BehaviorType = BehaviorType.LEFT_SLIDE_OVER) : C
 @Parcelize
 open class DrawerTokens : IControlToken, Parcelable {
 
+    open fun talkbackAnnouncement(drawerInfo: DrawerInfo): Pair<String, String> {
+        return when (drawerInfo.type) {
+            BehaviorType.TOP -> Pair("Drawer Opened", "Drawer Closed")
+            BehaviorType.BOTTOM -> Pair("Drawer Opened", "Drawer Closed")
+            BehaviorType.LEFT_SLIDE_OVER -> Pair("Drawer Opened", "Drawer Closed")
+            BehaviorType.RIGHT_SLIDE_OVER -> Pair("Drawer Opened", "Drawer Closed")
+            BehaviorType.BOTTOM_SLIDE_OVER -> Pair("Drawer Opened", "Drawer Closed")
+        }
+    }
+
     @Composable
     open fun backgroundBrush(drawerInfo: DrawerInfo): Brush =
         SolidColor(

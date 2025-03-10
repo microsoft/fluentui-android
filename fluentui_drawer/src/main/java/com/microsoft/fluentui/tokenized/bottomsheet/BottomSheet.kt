@@ -34,6 +34,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.*
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.*
@@ -49,6 +50,8 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BottomSheetInfo
 import com.microsoft.fluentui.theme.token.controlTokens.BottomSheetTokens
+import com.microsoft.fluentui.theme.token.controlTokens.DrawerInfo
+import com.microsoft.fluentui.theme.token.controlTokens.DrawerTokens
 import com.microsoft.fluentui.tokenized.calculateFraction
 import com.microsoft.fluentui.util.dpToPx
 import com.microsoft.fluentui.util.pxToDp
@@ -246,6 +249,20 @@ fun BottomSheet(
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.BottomSheetControlType] as BottomSheetTokens
 
     val bottomSheetInfo = BottomSheetInfo()
+    val view = LocalView.current
+    var previousState by remember { mutableStateOf(sheetState.currentValue) }
+    val talkbackAnnouncement = tokens.talkbackAnnouncement(bottomSheetInfo = bottomSheetInfo)
+
+    LaunchedEffect(sheetState.currentValue) {
+        if (sheetState.currentValue != previousState) { // Only announce on actual state change
+            if (sheetState.currentValue == BottomSheetValue.Expanded || sheetState.currentValue == BottomSheetValue.Shown) {
+                view.announceForAccessibility(talkbackAnnouncement.first)
+            } else {
+                view.announceForAccessibility(talkbackAnnouncement.second)
+            }
+            previousState = sheetState.currentValue // Update previous state
+        }
+    }
     val sheetShape: Shape = RoundedCornerShape(
         topStart = tokens.cornerRadius(bottomSheetInfo),
         topEnd = tokens.cornerRadius(bottomSheetInfo)

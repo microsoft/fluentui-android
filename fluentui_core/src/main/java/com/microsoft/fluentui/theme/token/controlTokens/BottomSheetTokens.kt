@@ -18,6 +18,10 @@ open class BottomSheetInfo : ControlInfo
 @Parcelize
 open class BottomSheetTokens : IControlToken, Parcelable {
 
+    open fun talkbackAnnouncement(bottomSheetInfo: BottomSheetInfo): Pair<String, String> {
+        return Pair("Bottom Sheet Opened", "Bottom Sheet Closed")
+    }
+
     @Composable
     open fun backgroundBrush(bottomSheetInfo: BottomSheetInfo): Brush =
         SolidColor(
