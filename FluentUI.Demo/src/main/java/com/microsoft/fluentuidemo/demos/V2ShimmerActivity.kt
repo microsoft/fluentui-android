@@ -2,6 +2,7 @@ package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
+import androidx.compose.material.ListItem
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,6 +26,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -44,6 +47,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.ShimmerTokens
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.Label
 import com.microsoft.fluentui.tokenized.controls.RadioButton
+import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.notification.Badge
 import com.microsoft.fluentui.tokenized.persona.Avatar
 import com.microsoft.fluentui.tokenized.persona.Person
@@ -293,14 +297,32 @@ class V2ShimmerActivity : V2DemoActivity() {
                 onClick = { shimmerOrientation = 3 }
             )
             Spacer(modifier = Modifier.height(10.dp))
-            Button(
-                text = "Stop Shimmer",
-                onClick = {
-                    isShimmering = !isShimmering
-                },
-                style = ButtonStyle.Button,
-                modifier = Modifier.testTag("ResetButton")
+            Label(
+                text = "Toggle Animation",
+                textStyle = FluentAliasTokens.TypographyTokens.Title2,
+                colorStyle = ColorStyle.Brand
             )
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth().clickable {
+                    isShimmering = !isShimmering
+                }
+            ) {
+                BasicText(
+                    text = "Toggle Shimmer Animation",
+                    modifier = Modifier.weight(1F),
+                    style = TextStyle(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+                            themeMode = ThemeMode.Auto
+                        )
+                    )
+                )
+                ToggleSwitch(
+                    onValueChange = { isShimmering = !isShimmering },
+                    checkedState = isShimmering
+                )
+            }
         }
 
     }
