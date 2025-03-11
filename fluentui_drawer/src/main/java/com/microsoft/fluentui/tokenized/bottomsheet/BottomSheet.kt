@@ -50,8 +50,6 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BottomSheetInfo
 import com.microsoft.fluentui.theme.token.controlTokens.BottomSheetTokens
-import com.microsoft.fluentui.theme.token.controlTokens.DrawerInfo
-import com.microsoft.fluentui.theme.token.controlTokens.DrawerTokens
 import com.microsoft.fluentui.tokenized.calculateFraction
 import com.microsoft.fluentui.util.dpToPx
 import com.microsoft.fluentui.util.pxToDp
@@ -254,14 +252,42 @@ fun BottomSheet(
     val talkbackAnnouncement = tokens.talkbackAnnouncement(bottomSheetInfo = bottomSheetInfo)
 
     LaunchedEffect(sheetState.currentValue) {
-        if (sheetState.currentValue != previousState) { // Only announce on actual state change
-            if (sheetState.currentValue == BottomSheetValue.Expanded || sheetState.currentValue == BottomSheetValue.Shown) {
-                view.announceForAccessibility(talkbackAnnouncement.first)
-            } else {
-                view.announceForAccessibility(talkbackAnnouncement.second)
+        when (sheetState.currentValue) {
+            BottomSheetValue.Expanded -> {
+                when (previousState) {
+                    BottomSheetValue.Shown -> {
+                        view.announceForAccessibility(talkbackAnnouncement.shownToExpanded)
+                    }
+                    BottomSheetValue.Hidden -> {
+                        view.announceForAccessibility(talkbackAnnouncement.collapsedToExpanded)
+                    }
+                    BottomSheetValue.Expanded -> {}
+                }
             }
-            previousState = sheetState.currentValue // Update previous state
+            BottomSheetValue.Shown -> {
+                when (previousState) {
+                    BottomSheetValue.Expanded -> {
+                        view.announceForAccessibility(talkbackAnnouncement.expandedToShown)
+                    }
+                    BottomSheetValue.Hidden -> {
+                        view.announceForAccessibility(talkbackAnnouncement.collapsedToShown)
+                    }
+                    BottomSheetValue.Shown -> {}
+                }
+            }
+            BottomSheetValue.Hidden -> {
+                when (previousState) {
+                    BottomSheetValue.Expanded -> {
+                        view.announceForAccessibility(talkbackAnnouncement.expandedToCollapsed)
+                    }
+                    BottomSheetValue.Shown -> {
+                        view.announceForAccessibility(talkbackAnnouncement.shownToCollapsed)
+                    }
+                    BottomSheetValue.Hidden -> {}
+                }
+            }
         }
+        previousState = sheetState.currentValue // Update previous state
     }
     val sheetShape: Shape = RoundedCornerShape(
         topStart = tokens.cornerRadius(bottomSheetInfo),
