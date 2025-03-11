@@ -43,4 +43,9 @@ open class ShimmerTokens : IControlToken, Parcelable {
     open fun orientation(shimmerInfo: ShimmerInfo): ShimmerOrientation {
         return ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT
     }
+
+    @Composable
+    open fun isShimmering(shimmerInfo: ShimmerInfo): Boolean {
+        return true
+    }
 }

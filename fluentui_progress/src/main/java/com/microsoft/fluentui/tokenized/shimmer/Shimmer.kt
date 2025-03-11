@@ -1,6 +1,7 @@
 package com.microsoft.fluentui.tokenized.shimmer
 
 import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
@@ -15,6 +16,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
@@ -108,19 +111,31 @@ internal fun InternalShimmer(
     val shimmerDelay = tokens.delay(shimmerInfo)
     val infiniteTransition = rememberInfiniteTransition()
     val orientation: ShimmerOrientation = tokens.orientation(shimmerInfo)
-    val isLtr = if(orientation in listOf(ShimmerOrientation.LEFT_TO_RIGHT, ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT)) (LocalLayoutDirection.current == LayoutDirection.Ltr) else (LocalLayoutDirection.current == LayoutDirection.Rtl)
+    val isLtr = if (orientation in listOf(
+            ShimmerOrientation.LEFT_TO_RIGHT,
+            ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT
+        )
+    ) (LocalLayoutDirection.current == LayoutDirection.Ltr) else (LocalLayoutDirection.current == LayoutDirection.Rtl)
     val initialValue = if (isLtr) 0f else diagonal
     val targetValue = if (isLtr) diagonal else 0f
-    val shimmerEffect by infiniteTransition.animateFloat(
-        initialValue,
-        targetValue,
-        infiniteRepeatable(
-            animation = tween(
-                durationMillis = shimmerDelay,
-                easing = LinearEasing
+    val isShimmering = tokens.isShimmering(shimmerInfo)
+    val shimmerEffect by if (isShimmering) {
+            infiniteTransition.animateFloat(
+                initialValue,
+                targetValue,
+                infiniteRepeatable(
+                    animation = tween(
+                        durationMillis = shimmerDelay,
+                        easing = LinearEasing
+                    ),
+                    repeatMode = RepeatMode.Restart
+                )
             )
-        )
-    )
+    }
+     else{
+        remember { mutableFloatStateOf(0f) }
+    }
+
     val startOffset: Offset = when (orientation) {
         ShimmerOrientation.LEFT_TO_RIGHT -> Offset.Zero
         ShimmerOrientation.RIGHT_TO_LEFT -> Offset.Zero
@@ -128,12 +143,16 @@ internal fun InternalShimmer(
         ShimmerOrientation.BOTTOMRIGHT_TO_TOPLEFT -> Offset.Zero
         else -> Offset.Zero
     }
-    val endOffset: Offset = when (orientation) {
-        ShimmerOrientation.LEFT_TO_RIGHT -> Offset(shimmerEffect.absoluteValue, 0F)
-        ShimmerOrientation.RIGHT_TO_LEFT -> Offset(shimmerEffect.absoluteValue, 0F)
-        ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT -> Offset(shimmerEffect.absoluteValue, shimmerEffect.absoluteValue)
-        ShimmerOrientation.BOTTOMRIGHT_TO_TOPLEFT -> Offset(shimmerEffect.absoluteValue, shimmerEffect.absoluteValue)
-        else -> Offset(shimmerEffect.absoluteValue, shimmerEffect.absoluteValue)
+    val endOffset: Offset = if(isShimmering){
+        when (orientation) {
+            ShimmerOrientation.LEFT_TO_RIGHT -> Offset(shimmerEffect.absoluteValue, 0F)
+            ShimmerOrientation.RIGHT_TO_LEFT -> Offset(shimmerEffect.absoluteValue, 0F)
+            ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT -> Offset(shimmerEffect.absoluteValue, shimmerEffect.absoluteValue)
+            ShimmerOrientation.BOTTOMRIGHT_TO_TOPLEFT -> Offset(shimmerEffect.absoluteValue, shimmerEffect.absoluteValue)
+            else -> Offset(shimmerEffect.absoluteValue, shimmerEffect.absoluteValue)
+        }
+    } else{
+        Offset.Zero
     }
     val gradientColor = Brush.linearGradient(
         0f to shimmerBackgroundColor,
@@ -149,18 +168,22 @@ internal fun InternalShimmer(
                 .height(IntrinsicSize.Max)
         ) {
             content()
+            if(isShimmering) {
+                Spacer(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(cornerRadius))
+                        .background(gradientColor)
+                )
+            }
+        }
+    } else {
+        if(true) {
             Spacer(
-                modifier = Modifier
-                    .fillMaxSize()
+                modifier = modifier
                     .clip(RoundedCornerShape(cornerRadius))
                     .background(gradientColor)
             )
         }
-    } else {
-        Spacer(
-            modifier = modifier
-                .clip(RoundedCornerShape(cornerRadius))
-                .background(gradientColor)
-        )
     }
 }
