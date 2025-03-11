@@ -70,7 +70,9 @@ fun ModalPopup(
     windowInsetsType: Int = WindowInsetsCompat.Type.systemBars(),
     content: @Composable () -> Unit,
 ) {
-    val properties = PopupProperties()
+    val properties = PopupProperties(
+        focusable = true,
+    )
     val view = LocalView.current
     val density = LocalDensity.current
     val layoutDirection = LocalLayoutDirection.current
