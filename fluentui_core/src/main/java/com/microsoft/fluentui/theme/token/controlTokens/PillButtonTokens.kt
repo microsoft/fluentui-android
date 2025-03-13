@@ -3,6 +3,7 @@ package com.microsoft.fluentui.theme.token.controlTokens
 import android.os.Parcelable
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
@@ -153,6 +154,15 @@ open class PillButtonTokens : IControlToken, Parcelable {
         }
     }
 
+    @Composable
+    open fun borderColor(pillButtonInfo: PillButtonInfo): Color{
+        return Color.Transparent
+    }
+
+    @Composable
+    open fun borderWidth(pillButtonInfo: PillButtonInfo): Dp {
+        return 0.dp
+    }
     @Composable
     open fun iconColor(pillButtonInfo: PillButtonInfo): StateColor {
         when (pillButtonInfo.style) {

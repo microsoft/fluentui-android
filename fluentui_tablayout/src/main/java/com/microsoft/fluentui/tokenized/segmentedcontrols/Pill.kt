@@ -126,6 +126,11 @@ fun PillButton(
             selected = pillMetaData.selected,
             interactionSource = interactionSource
         )
+
+    val borderColor = token.borderColor(pillButtonInfo = pillButtonInfo)
+
+    val borderWidth = token.borderWidth(pillButtonInfo = pillButtonInfo)
+
     val iconColor =
         token.iconColor(pillButtonInfo = pillButtonInfo).getColorByState(
             enabled = pillMetaData.enabled,
@@ -174,6 +179,7 @@ fun PillButton(
             .defaultMinSize(minHeight = token.minHeight(pillButtonInfo))
             .clip(shape)
             .background(backgroundColor, shape)
+            .border(width = borderWidth, color = borderColor, shape = shape)
             .then(clickAndSemanticsModifier)
             .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
             .padding(vertical = token.verticalPadding(pillButtonInfo))
