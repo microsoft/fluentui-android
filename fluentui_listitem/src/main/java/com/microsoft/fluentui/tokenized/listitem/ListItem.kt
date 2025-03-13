@@ -3,8 +3,10 @@ package com.microsoft.fluentui.tokenized.listitem
 import androidx.compose.animation.*
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
@@ -59,18 +61,22 @@ object ListItem {
         }
     }
 
-    private fun Modifier.clickAndSemanticsModifier(
+    @OptIn(ExperimentalFoundationApi::class)
+    private fun Modifier.longPressSemanticsModifier(
         interactionSource: MutableInteractionSource,
         onClick: () -> Unit,
+        onLongClick: () -> Unit,
         enabled: Boolean,
         rippleColor: Color
     ): Modifier = composed {
-        Modifier.clickable(
+        Modifier.combinedClickable(
             interactionSource = interactionSource,
             indication = rememberRipple(color = rippleColor),
             onClickLabel = null,
+            onLongClickLabel = null,
             enabled = enabled,
-            onClick = onClick
+            onClick = onClick,
+            onLongClick = onLongClick
         )
     }
 
@@ -210,6 +216,7 @@ object ListItem {
         subTextMaxLines: Int = 1,
         secondarySubTextMaxLines: Int = 1,
         onClick: (() -> Unit)? = null,
+        onLongClick: (() -> Unit)? = null,
         primaryTextLeadingContent: (@Composable () -> Unit)? = null,
         primaryTextTrailingContent: (@Composable () -> Unit)? = null,
         secondarySubTextLeadingContent: (@Composable () -> Unit)? = null,
@@ -295,9 +302,10 @@ object ListItem {
                 .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                 .then(
                     if (onClick != null) {
-                        Modifier.clickAndSemanticsModifier(
+                        Modifier.longPressSemanticsModifier(
                             interactionSource,
                             onClick = onClick,
+                            onLongClick = onLongClick ?: {},
                             enabled,
                             rippleColor
                         )
@@ -441,6 +449,7 @@ object ListItem {
      * @param subTextMaxLines Optional max visible lines for secondary text.
      * @param secondarySubTextMaxLines Optional max visible lines for tertiary text.
      * @param onClick Optional onClick action for list item.
+     * @param onLongClick Optional onLongClick action for list item.
      * @param primaryTextLeadingContent Optional primary text leading Content.
      * @param primaryTextTrailingContent Optional primary text trailing Content.
      * @param secondarySubTextLeadingContent Optional secondary text leading Content.
@@ -469,6 +478,7 @@ object ListItem {
         subTextMaxLines: Int = 1,
         secondarySubTextMaxLines: Int = 1,
         onClick: (() -> Unit)? = null,
+        onLongClick: (() -> Unit)? = null,
         primaryTextLeadingContent: (@Composable () -> Unit)? = null,
         primaryTextTrailingContent: (@Composable () -> Unit)? = null,
         secondarySubTextLeadingContent: (@Composable () -> Unit)? = null,
@@ -496,6 +506,7 @@ object ListItem {
             subTextMaxLines = subTextMaxLines,
             secondarySubTextMaxLines = secondarySubTextMaxLines,
             onClick = onClick,
+            onLongClick = onLongClick,
             primaryTextLeadingContent = primaryTextLeadingContent,
             primaryTextTrailingContent = primaryTextTrailingContent,
             secondarySubTextLeadingContent = secondarySubTextLeadingContent,
@@ -528,6 +539,7 @@ object ListItem {
      * @param subTextMaxLines Optional max visible lines for secondary text.
      * @param secondarySubTextMaxLines Optional max visible lines for tertiary text.
      * @param onClick Optional onClick action for list item.
+     * @param onLongClick Optional onLongClick action for list item.
      * @param primaryTextLeadingContent Optional primary text leading Content.
      * @param primaryTextTrailingContent Optional primary text trailing Content.
      * @param secondarySubTextLeadingContent Optional secondary text leading Content.
@@ -557,6 +569,7 @@ object ListItem {
         subTextMaxLines: Int = 1,
         secondarySubTextMaxLines: Int = 1,
         onClick: (() -> Unit)? = null,
+        onLongClick: (() -> Unit)? = null,
         primaryTextLeadingContent: (@Composable () -> Unit)? = null,
         primaryTextTrailingContent: (@Composable () -> Unit)? = null,
         secondarySubTextLeadingContent: (@Composable () -> Unit)? = null,
@@ -585,6 +598,7 @@ object ListItem {
             subTextMaxLines = subTextMaxLines,
             secondarySubTextMaxLines = secondarySubTextMaxLines,
             onClick = onClick,
+            onLongClick = onLongClick,
             primaryTextLeadingContent = primaryTextLeadingContent,
             primaryTextTrailingContent = primaryTextTrailingContent,
             secondarySubTextLeadingContent = secondarySubTextLeadingContent,
@@ -701,9 +715,12 @@ object ListItem {
                 .background(backgroundColor)
                 .then(
                     if (enableContentOpenCloseTransition && content != null) {
-                        Modifier.clickAndSemanticsModifier(
+                        Modifier.longPressSemanticsModifier(
                             interactionSource,
                             onClick = {
+                                expandedState = !expandedState
+                            },
+                            onLongClick = {
                                 expandedState = !expandedState
                             },
                             enabled,
@@ -827,6 +844,7 @@ object ListItem {
      * @param actionText Option boolean to append "Action" text button to the description text.
      * @param descriptionPlacement [TextPlacement] Enum value for placing the description text in the list item.
      * @param onClick Optional onClick action for list item.
+     * @param onLongClick Optional onLongClick action for list item.
      * @param onActionClick Optional onClick action for actionText.
      * @param border [BorderType] Optional border for the list item.
      * @param borderInset [BorderInset] Optional borderInset for list item.
@@ -844,6 +862,7 @@ object ListItem {
         border: BorderType = NoBorder,
         borderInset: BorderInset = None,
         onClick: (() -> Unit)? = null,
+        onLongClick: (() -> Unit)? = null,
         onActionClick: (() -> Unit)? = null,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
         leadingAccessoryContent: (@Composable () -> Unit)? = null,
@@ -895,8 +914,8 @@ object ListItem {
                 .heightIn(min = cellHeight)
                 .background(backgroundColor)
                 .borderModifier(border, borderColor, borderSize, borderInsetToPx)
-                .clickAndSemanticsModifier(
-                    interactionSource, onClick = onClick ?: {}, enabled, rippleColor
+                .longPressSemanticsModifier(
+                    interactionSource, onClick = onClick ?: {}, onLongClick = onLongClick ?: {} ,enabled, rippleColor
                 ), verticalAlignment = descriptionAlignment
         ) {
             if (leadingAccessoryContent != null && descriptionPlacement == Top) {
