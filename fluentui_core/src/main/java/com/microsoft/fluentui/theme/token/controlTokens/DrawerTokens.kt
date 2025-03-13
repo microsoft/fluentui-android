@@ -22,16 +22,21 @@ enum class BehaviorType {
 
 open class DrawerInfo(val type: BehaviorType = BehaviorType.LEFT_SLIDE_OVER) : ControlInfo
 
+data class DrawerAccessibilityAnnouncement(
+    var opened: String = "Drawer Opened",
+    var closed: String = "Drawer Closed",
+)
+
 @Parcelize
 open class DrawerTokens : IControlToken, Parcelable {
 
-    open fun talkbackAnnouncement(drawerInfo: DrawerInfo): Pair<String, String> {
+    open fun talkbackAnnouncement(drawerInfo: DrawerInfo): DrawerAccessibilityAnnouncement {
         return when (drawerInfo.type) {
-            BehaviorType.TOP -> Pair("Drawer Opened", "Drawer Closed")
-            BehaviorType.BOTTOM -> Pair("Drawer Opened", "Drawer Closed")
-            BehaviorType.LEFT_SLIDE_OVER -> Pair("Drawer Opened", "Drawer Closed")
-            BehaviorType.RIGHT_SLIDE_OVER -> Pair("Drawer Opened", "Drawer Closed")
-            BehaviorType.BOTTOM_SLIDE_OVER -> Pair("Drawer Opened", "Drawer Closed")
+            BehaviorType.TOP -> DrawerAccessibilityAnnouncement()
+            BehaviorType.BOTTOM -> DrawerAccessibilityAnnouncement()
+            BehaviorType.LEFT_SLIDE_OVER -> DrawerAccessibilityAnnouncement()
+            BehaviorType.RIGHT_SLIDE_OVER -> DrawerAccessibilityAnnouncement()
+            BehaviorType.BOTTOM_SLIDE_OVER -> DrawerAccessibilityAnnouncement()
         }
     }
 

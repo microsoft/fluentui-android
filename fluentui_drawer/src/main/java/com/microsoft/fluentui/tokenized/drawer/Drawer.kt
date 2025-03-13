@@ -325,6 +325,24 @@ internal fun Scrim(
     }
 }
 
+@Composable
+internal fun AnnounceDrawerActions(drawerState: DrawerState, drawerInfo: DrawerInfo, tokens: DrawerTokens){ // Announces actions for drawer through Talkback
+    val view = LocalView.current
+    var previousState by remember { mutableStateOf(drawerState.enable) }
+    val talkbackAnnouncement = tokens.talkbackAnnouncement(drawerInfo = drawerInfo)
+
+    LaunchedEffect(drawerState.enable) {
+        if (drawerState.enable != previousState) {
+            if (drawerState.enable) {
+                view.announceForAccessibility(talkbackAnnouncement.opened)
+            } else {
+                view.announceForAccessibility(talkbackAnnouncement.closed)
+            }
+            previousState = drawerState.enable
+        }
+    }
+
+}
 /**
  *
  * Drawer block interaction with the rest of an app’s content with a scrim.
@@ -355,23 +373,10 @@ fun Drawer(
     preventDismissalOnScrimClick: Boolean = false,
     onScrimClick: () -> Unit = {}
 ) {
-    val view = LocalView.current
-    var previousState by remember { mutableStateOf(drawerState.enable) }
     val tokens = drawerTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DrawerControlType] as DrawerTokens
     val drawerInfo = DrawerInfo(type = behaviorType)
-    val talkbackAnnouncement = tokens.talkbackAnnouncement(drawerInfo = drawerInfo)
-
-    LaunchedEffect(drawerState.enable) {
-        if (drawerState.enable != previousState) { // Only announce on actual state change
-            if (drawerState.enable) {
-                view.announceForAccessibility(talkbackAnnouncement.first)
-            } else {
-                view.announceForAccessibility(talkbackAnnouncement.second)
-            }
-            previousState = drawerState.enable // Update previous state
-        }
-    }
+    AnnounceDrawerActions(drawerState, drawerInfo, tokens)
 
     if (drawerState.enable) {
         val themeID =
@@ -500,26 +505,12 @@ fun BottomDrawer(
     preventDismissalOnScrimClick: Boolean = false,
     onScrimClick: () -> Unit = {},
 ) {
-    val view = LocalView.current
-    var previousState by remember { mutableStateOf(drawerState.enable) }
-    val tokens = drawerTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DrawerControlType] as DrawerTokens
     val behaviorType =
         if (slideOver) BehaviorType.BOTTOM_SLIDE_OVER else BehaviorType.BOTTOM
     val drawerInfo = DrawerInfo(type = behaviorType)
-    val talkbackAnnouncement = tokens.talkbackAnnouncement(drawerInfo = drawerInfo)
-
-    LaunchedEffect(drawerState.enable) {
-        if (drawerState.enable != previousState) { // Only announce on actual state change
-            if (drawerState.enable) {
-                view.announceForAccessibility(talkbackAnnouncement.first)
-            } else {
-                view.announceForAccessibility(talkbackAnnouncement.second)
-            }
-            previousState = drawerState.enable // Update previous state
-        }
-    }
-
+    val tokens = drawerTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DrawerControlType] as DrawerTokens
+    AnnounceDrawerActions(drawerState, drawerInfo, tokens)
     if (drawerState.enable) {
         val themeID =
             FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
