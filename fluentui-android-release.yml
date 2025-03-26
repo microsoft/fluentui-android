@@ -3,7 +3,7 @@ name: $(Date:yyyyMMdd).$(Rev:r)
 resources:
   pipelines:
   - pipeline: 'fluentui-android-maven-publish'
-    project: 'fluentui-native'
+    project: 'ISS'
     source: 'fluentui-maven-central-publish [1es-pt]'
   repositories:
   - repository: OfficePipelineTemplates
