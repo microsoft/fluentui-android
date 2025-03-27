@@ -40,17 +40,19 @@ extends:
             artifactName: 'Build'
             targetPath: '$(Pipeline.Workspace)/fluentui-android-maven-publish/Build'
         steps:
-        - task: SFP.release-tasks.custom-build-release-task.EsrpRelease@7
+        - task: SFP.release-tasks.custom-build-release-task.EsrpRelease@9
           displayName: 'ESRP Release'
           inputs:
-            connectedservicename: '$(connectedServiceName)'
-            keyvaultname: $(keyVaultName)
-            authcertname: $(authCertName)
-            signcertname: '$(signCertName) '
-            clientid: '$(clientId)'
+            connectedservicename: 'ESRP-JSHost3'
+            usemanagedidentity: false
+            keyvaultname: 'OGX-JSHost-KV'
+            authcertname: 'OGX-JSHost-Auth4'
+            signcertname: 'OGX-JSHost-Sign3'
+            clientid: '0a35e01f-eadf-420a-a2bf-def002ba898d'
+            domaintenantid: 'cdc5aeea-15c5-4db6-b079-fcadd2505dc2'
             folderlocation: '$(Pipeline.Workspace)/fluentui-android-maven-publish/Build'
-            owners: '$(owners)'
-            approvers: '$(approvers)'
+            owners: 'ronakdhoot@microsoft.com'
+            approvers: 'dhruvmishra@microsoft.com'
             mainpublisher: fluentuiandroidrelease
     - stage: Stage_2
       displayName: AppCenter Release
