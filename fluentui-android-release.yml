@@ -53,7 +53,6 @@ extends:
             folderlocation: '$(Pipeline.Workspace)/fluentui-android-maven-publish/Build'
             owners: 'ronakdhoot@microsoft.com'
             approvers: 'dhruvmishra@microsoft.com'
-            mainpublisher: fluentuiandroidrelease
     - stage: Stage_2
       displayName: AppCenter Release
       jobs:
