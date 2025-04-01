@@ -49,12 +49,18 @@ private const val DEFAULT_CORNER_RADIUS = 4
 @Composable
 fun Shimmer(
     modifier: Modifier = Modifier,
-    shimmerTokens: ShimmerTokens? = null
+    shimmerTokens: ShimmerTokens? = null,
+    shimmerDelay: Int = 1000,
+    isShimmering: Boolean = true,
+    shimmerOrientation: ShimmerOrientation = ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT,
 ) {
     InternalShimmer(
         cornerRadius = DEFAULT_CORNER_RADIUS.dp,
         modifier = modifier,
-        shimmerTokens = shimmerTokens
+        shimmerTokens = shimmerTokens,
+        shimmerDelay = shimmerDelay,
+        isShimmering = isShimmering,
+        shimmerOrientation = shimmerOrientation
     )
 }
 
@@ -72,12 +78,18 @@ fun Shimmer(
     cornerRadius: Dp,
     modifier: Modifier = Modifier,
     shimmerTokens: ShimmerTokens? = null,
+    shimmerDelay: Int = 1000,
+    isShimmering: Boolean = true,
+    shimmerOrientation: ShimmerOrientation = ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT,
     content: @Composable () -> Unit,
 ) {
     InternalShimmer(
         cornerRadius = cornerRadius,
         modifier = modifier,
-        shimmerTokens = shimmerTokens
+        shimmerTokens = shimmerTokens,
+        shimmerDelay = shimmerDelay,
+        isShimmering = isShimmering,
+        shimmerOrientation = shimmerOrientation,
     ) {
         content()
     }
@@ -88,6 +100,9 @@ internal fun InternalShimmer(
     cornerRadius: Dp,
     modifier: Modifier = Modifier,
     shimmerTokens: ShimmerTokens? = null,
+    shimmerDelay: Int = 1000,
+    isShimmering: Boolean = true,
+    shimmerOrientation: ShimmerOrientation = ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT,
     content: (@Composable () -> Unit)? = null,
 ) {
     val themeID =
@@ -108,9 +123,8 @@ internal fun InternalShimmer(
     val shimmerKnockoutEffectColor = tokens.knockoutEffectColor(shimmerInfo)
     val cornerRadius =
         dpToPx(cornerRadius)
-    val shimmerDelay = tokens.delay(shimmerInfo)
     val infiniteTransition = rememberInfiniteTransition()
-    val orientation: ShimmerOrientation = tokens.orientation(shimmerInfo)
+    val orientation: ShimmerOrientation = shimmerOrientation
     val isLtr = if (orientation in listOf(
             ShimmerOrientation.LEFT_TO_RIGHT,
             ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT
@@ -118,7 +132,6 @@ internal fun InternalShimmer(
     ) (LocalLayoutDirection.current == LayoutDirection.Ltr) else (LocalLayoutDirection.current == LayoutDirection.Rtl)
     val initialValue = if (isLtr) 0f else diagonal
     val targetValue = if (isLtr) diagonal else 0f
-    val isShimmering = tokens.isShimmering(shimmerInfo)
     val shimmerEffect by if (isShimmering) {
             infiniteTransition.animateFloat(
                 initialValue,

@@ -71,28 +71,21 @@ class V2ShimmerActivity : V2DemoActivity() {
             CreateShimmerActivityUI()
         }
     }
+    private fun getShimmerOrientation(shimmerOrientation: Int): ShimmerOrientation {
+        return when (shimmerOrientation) {
+            0 -> ShimmerOrientation.LEFT_TO_RIGHT
+            1 -> ShimmerOrientation.RIGHT_TO_LEFT
+            2 -> ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT
+            3 -> ShimmerOrientation.BOTTOMRIGHT_TO_TOPLEFT
+            else -> ShimmerOrientation.LEFT_TO_RIGHT
+        }
+    }
 
     @Composable
     private fun CreateShimmerActivityUI() {
         var shimmerOrientation by rememberSaveable { mutableStateOf(0) }
         var isShimmering by rememberSaveable { mutableStateOf(true) }
-        val shimmerTokens = object : ShimmerTokens() {
-            @Composable
-            override fun orientation(shimmerInfo: ShimmerInfo): ShimmerOrientation {
-                return when (shimmerOrientation) {
-                    0 -> ShimmerOrientation.LEFT_TO_RIGHT
-                    1 -> ShimmerOrientation.RIGHT_TO_LEFT
-                    2 -> ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT
-                    3 -> ShimmerOrientation.BOTTOMRIGHT_TO_TOPLEFT
-                    else -> ShimmerOrientation.LEFT_TO_RIGHT
-                }
-            }
-
-            @Composable
-            override fun isShimmering(shimmerInfo: ShimmerInfo): Boolean {
-                return isShimmering
-            }
-        }
+        val shimmerTokens = ShimmerTokens()
         Column(
             Modifier
                 .padding(all = 12.dp)
@@ -109,16 +102,16 @@ class V2ShimmerActivity : V2DemoActivity() {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Shimmer(modifier = Modifier.size(120.dp, 80.dp), shimmerTokens = shimmerTokens)
+                Shimmer(modifier = Modifier.size(120.dp, 80.dp), shimmerTokens = shimmerTokens, isShimmering = isShimmering, shimmerOrientation = getShimmerOrientation(shimmerOrientation))
                 Column(
                     Modifier
                         .height(80.dp)
                         .padding(top = 10.dp, bottom = 10.dp),
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Shimmer(modifier = Modifier.size(140.dp, 12.dp), shimmerTokens = shimmerTokens)
-                    Shimmer(modifier = Modifier.size(180.dp, 12.dp), shimmerTokens = shimmerTokens)
-                    Shimmer(modifier = Modifier.size(200.dp, 12.dp), shimmerTokens = shimmerTokens)
+                    Shimmer(modifier = Modifier.size(140.dp, 12.dp), shimmerTokens = shimmerTokens, isShimmering = isShimmering, shimmerOrientation = getShimmerOrientation(shimmerOrientation))
+                    Shimmer(modifier = Modifier.size(180.dp, 12.dp), shimmerTokens = shimmerTokens, isShimmering = isShimmering, shimmerOrientation = getShimmerOrientation(shimmerOrientation))
+                    Shimmer(modifier = Modifier.size(200.dp, 12.dp), shimmerTokens = shimmerTokens, isShimmering = isShimmering, shimmerOrientation = getShimmerOrientation(shimmerOrientation))
                 }
             }
             Label(
@@ -133,15 +126,15 @@ class V2ShimmerActivity : V2DemoActivity() {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Shimmer(modifier = Modifier.size(60.dp, 60.dp).clip(RoundedCornerShape(50.dp)), shimmerTokens = shimmerTokens)
+                Shimmer(modifier = Modifier.size(60.dp, 60.dp).clip(RoundedCornerShape(50.dp)), shimmerTokens = shimmerTokens, isShimmering = isShimmering, shimmerOrientation = getShimmerOrientation(shimmerOrientation))
                 Column(
                     Modifier
                         .height(80.dp)
                         .padding(top = 10.dp, bottom = 10.dp),
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Shimmer(modifier = Modifier.size(180.dp, 12.dp), shimmerTokens = shimmerTokens)
-                    Shimmer(modifier = Modifier.size(180.dp, 12.dp), shimmerTokens = shimmerTokens)
+                    Shimmer(modifier = Modifier.size(180.dp, 12.dp), shimmerTokens = shimmerTokens, isShimmering = isShimmering, shimmerOrientation = getShimmerOrientation(shimmerOrientation))
+                    Shimmer(modifier = Modifier.size(180.dp, 12.dp), shimmerTokens = shimmerTokens, isShimmering = isShimmering, shimmerOrientation = getShimmerOrientation(shimmerOrientation))
                 }
             }
             Row(
@@ -151,15 +144,15 @@ class V2ShimmerActivity : V2DemoActivity() {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Shimmer(modifier = Modifier.size(60.dp, 60.dp).clip(RoundedCornerShape(50.dp)), shimmerTokens = shimmerTokens)
+                Shimmer(modifier = Modifier.size(60.dp, 60.dp).clip(RoundedCornerShape(50.dp)), shimmerTokens = shimmerTokens, isShimmering = isShimmering, shimmerOrientation = getShimmerOrientation(shimmerOrientation))
                 Column(
                     Modifier
                         .height(80.dp)
                         .padding(top = 10.dp, bottom = 10.dp),
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Shimmer(modifier = Modifier.size(140.dp, 12.dp), shimmerTokens = shimmerTokens)
-                    Shimmer(modifier = Modifier.size(180.dp, 12.dp), shimmerTokens = shimmerTokens)
+                    Shimmer(modifier = Modifier.size(140.dp, 12.dp), shimmerTokens = shimmerTokens, isShimmering = isShimmering, shimmerOrientation = getShimmerOrientation(shimmerOrientation))
+                    Shimmer(modifier = Modifier.size(180.dp, 12.dp), shimmerTokens = shimmerTokens, isShimmering = isShimmering, shimmerOrientation = getShimmerOrientation(shimmerOrientation))
                 }
             }
             Row(
@@ -169,37 +162,21 @@ class V2ShimmerActivity : V2DemoActivity() {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Shimmer(modifier = Modifier.size(60.dp, 60.dp).clip(RoundedCornerShape(50.dp)), shimmerTokens = shimmerTokens)
+                Shimmer(modifier = Modifier.size(60.dp, 60.dp).clip(RoundedCornerShape(50.dp)), shimmerTokens = shimmerTokens, isShimmering = isShimmering, shimmerOrientation = getShimmerOrientation(shimmerOrientation))
                 Column(
                     Modifier
                         .height(80.dp)
                         .padding(top = 10.dp, bottom = 10.dp),
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Shimmer(modifier = Modifier.size(140.dp, 12.dp), shimmerTokens = shimmerTokens)
-                    Shimmer(modifier = Modifier.size(180.dp, 12.dp), shimmerTokens = shimmerTokens)
+                    Shimmer(modifier = Modifier.size(140.dp, 12.dp), shimmerTokens = shimmerTokens, isShimmering = isShimmering, shimmerOrientation = getShimmerOrientation(shimmerOrientation))
+                    Shimmer(modifier = Modifier.size(180.dp, 12.dp), shimmerTokens = shimmerTokens, isShimmering = isShimmering, shimmerOrientation = getShimmerOrientation(shimmerOrientation))
                 }
             }
             class ShimmerGoldEffectToken : ShimmerTokens() {
                 @Composable
                 override fun knockoutEffectColor(shimmerInfo: ShimmerInfo): Color {
                     return Color(0XFFE1BA27)
-                }
-
-                @Composable
-                override fun orientation(shimmerInfo: ShimmerInfo): ShimmerOrientation {
-                    return when (shimmerOrientation) {
-                        0 -> ShimmerOrientation.LEFT_TO_RIGHT
-                        1 -> ShimmerOrientation.RIGHT_TO_LEFT
-                        2 -> ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT
-                        3 -> ShimmerOrientation.BOTTOMRIGHT_TO_TOPLEFT
-                        else -> ShimmerOrientation.LEFT_TO_RIGHT
-                    }
-                }
-
-                @Composable
-                override fun isShimmering(shimmerInfo: ShimmerInfo): Boolean {
-                    return isShimmering
                 }
             }
 
@@ -231,7 +208,7 @@ class V2ShimmerActivity : V2DemoActivity() {
                 Label(text = "Badge", textStyle = FluentAliasTokens.TypographyTokens.Body1)
                 Shimmer(content = {
                     Badge(text = "Badge", badgeTokens = BadgeColorToken())
-                }, shimmerTokens = ShimmerGoldEffectToken() , cornerRadius = 100.dp)
+                }, shimmerTokens = ShimmerGoldEffectToken() , cornerRadius = 100.dp, isShimmering = isShimmering, shimmerOrientation = getShimmerOrientation(shimmerOrientation))
             }
             Row(
                 modifier = Modifier
@@ -247,7 +224,7 @@ class V2ShimmerActivity : V2DemoActivity() {
                         size = PersonaChipSize.Small,
                         style = PersonaChipStyle.Brand
                     )
-                }, shimmerTokens = shimmerTokens)
+                }, shimmerTokens = shimmerTokens, isShimmering = isShimmering, shimmerOrientation = getShimmerOrientation(shimmerOrientation))
             }
             Row(
                 modifier = Modifier
@@ -264,7 +241,7 @@ class V2ShimmerActivity : V2DemoActivity() {
                             status = AvatarStatus.Available,
                         ), size = AvatarSize.Size72, enableActivityRings = false
                     )
-                }, shimmerTokens = shimmerTokens)
+                }, shimmerTokens = shimmerTokens, isShimmering = isShimmering, shimmerOrientation = getShimmerOrientation(shimmerOrientation))
             }
             Label(
                 text = "Change Orientation",

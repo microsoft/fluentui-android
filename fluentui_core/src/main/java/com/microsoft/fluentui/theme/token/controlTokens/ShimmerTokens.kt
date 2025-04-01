@@ -33,19 +33,4 @@ open class ShimmerTokens : IControlToken, Parcelable {
             themeMode = FluentTheme.themeMode
         )
     }
-
-    @Composable
-    open fun delay(shimmerInfo: ShimmerInfo): Int {
-        return 1000
-    }
-
-    @Composable
-    open fun orientation(shimmerInfo: ShimmerInfo): ShimmerOrientation {
-        return ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT
-    }
-
-    @Composable
-    open fun isShimmering(shimmerInfo: ShimmerInfo): Boolean {
-        return true
-    }
 }
