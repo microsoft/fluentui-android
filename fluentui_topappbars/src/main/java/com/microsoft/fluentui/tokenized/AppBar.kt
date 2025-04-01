@@ -94,6 +94,7 @@ fun AppBar(
     centerAlignAppBar: Boolean = false,
     navigationIcon: FluentIcon? = null,
     appBarTokens: AppBarTokens? = null,
+    postTitleIcon2: FluentIcon = FluentIcon(),
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
@@ -168,7 +169,7 @@ fun AppBar(
                 val titleAlignment: Alignment.Horizontal =
                     if (centerAlignAppBar) Alignment.CenterHorizontally else Alignment.Start
 
-                if (appBarSize != AppBarSize.Large && !subTitle.isNullOrBlank()) {
+                if (appBarSize != AppBarSize.Large) {
                     Column(
                         modifier = Modifier
                             .weight(1F)
@@ -176,6 +177,7 @@ fun AppBar(
                             .testTag(APP_BAR_SUBTITLE),
                         horizontalAlignment = titleAlignment
                     ) {
+                        // title
                         Row(
                             modifier = Modifier
                                 .then(
@@ -203,51 +205,63 @@ fun AppBar(
                                         .size(token.titleIconSize(appBarInfo)),
                                     tint = token.titleIconColor(appBarInfo),
                                 )
+
+                            if (postTitleIcon2.isIconAvailable() && appBarSize == AppBarSize.Small)
+                                Icon(
+                                    postTitleIcon2.value(),
+                                    postTitleIcon2.contentDescription,
+                                    modifier = Modifier
+                                        .size(token.titleIconSize(appBarInfo)),
+                                    tint = token.titleIconColor(appBarInfo),
+                                )
                         }
-                        Row(
-                            modifier = Modifier
-                                .then(
-                                    if (postSubtitleIcon.onClick != null)
-                                        Modifier.clickable(onClick = postSubtitleIcon.onClick!!)
-                                    else
-                                        Modifier
-                                ), verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            if (preSubtitleIcon.isIconAvailable())
-                                Icon(
-                                    preSubtitleIcon,
-                                    modifier = Modifier
-                                        .size(
-                                            token.subtitleIconSize(
-                                                appBarInfo
-                                            )
-                                        ),
-                                    tint = token.subtitleIconColor(appBarInfo)
-                                )
-                            BasicText(
-                                subTitle,
-                                style = subtitleTextStyle.merge(
-                                    TextStyle(
-                                        color = token.subtitleTextColor(
-                                            appBarInfo
-                                        )
+                        // subtitle
+                        if (!subTitle.isNullOrBlank()) {
+                            Row(
+                                modifier = Modifier
+                                    .then(
+                                        if (postSubtitleIcon.onClick != null)
+                                            Modifier.clickable(onClick = postSubtitleIcon.onClick!!)
+                                        else
+                                            Modifier
+                                    ), verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                if (preSubtitleIcon.isIconAvailable())
+                                    Icon(
+                                        preSubtitleIcon,
+                                        modifier = Modifier
+                                            .size(
+                                                token.subtitleIconSize(
+                                                    appBarInfo
+                                                )
+                                            ),
+                                        tint = token.subtitleIconColor(appBarInfo)
                                     )
-                                ),
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis
-                            )
-                            if (postSubtitleIcon.isIconAvailable())
-                                Icon(
-                                    postSubtitleIcon.value(),
-                                    contentDescription = postSubtitleIcon.contentDescription,
-                                    modifier = Modifier
-                                        .size(
-                                            token.subtitleIconSize(
+                                BasicText(
+                                    subTitle,
+                                    style = subtitleTextStyle.merge(
+                                        TextStyle(
+                                            color = token.subtitleTextColor(
                                                 appBarInfo
                                             )
-                                        ),
-                                    tint = token.subtitleIconColor(appBarInfo)
+                                        )
+                                    ),
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
                                 )
+                                if (postSubtitleIcon.isIconAvailable())
+                                    Icon(
+                                        postSubtitleIcon.value(),
+                                        contentDescription = postSubtitleIcon.contentDescription,
+                                        modifier = Modifier
+                                            .size(
+                                                token.subtitleIconSize(
+                                                    appBarInfo
+                                                )
+                                            ),
+                                        tint = token.subtitleIconColor(appBarInfo)
+                                    )
+                            }
                         }
                     }
                 } else {
