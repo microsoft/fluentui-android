@@ -124,8 +124,7 @@ internal fun InternalShimmer(
     val cornerRadius =
         dpToPx(cornerRadius)
     val infiniteTransition = rememberInfiniteTransition()
-    val orientation: ShimmerOrientation = shimmerOrientation
-    val isLtr = if (orientation in listOf(
+    val isLtr = if (shimmerOrientation in listOf(
             ShimmerOrientation.LEFT_TO_RIGHT,
             ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT
         )
@@ -145,26 +144,26 @@ internal fun InternalShimmer(
                 )
             )
     }
-     else{
+     else {
         remember { mutableFloatStateOf(0f) }
     }
 
-    val startOffset: Offset = when (orientation) {
+    val startOffset: Offset = when (shimmerOrientation) {
         ShimmerOrientation.LEFT_TO_RIGHT -> Offset.Zero
         ShimmerOrientation.RIGHT_TO_LEFT -> Offset.Zero
         ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT -> Offset.Zero
         ShimmerOrientation.BOTTOMRIGHT_TO_TOPLEFT -> Offset.Zero
         else -> Offset.Zero
     }
-    val endOffset: Offset = if(isShimmering){
-        when (orientation) {
+    val endOffset: Offset = if (isShimmering) {
+        when (shimmerOrientation) {
             ShimmerOrientation.LEFT_TO_RIGHT -> Offset(shimmerEffect.absoluteValue, 0F)
             ShimmerOrientation.RIGHT_TO_LEFT -> Offset(shimmerEffect.absoluteValue, 0F)
             ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT -> Offset(shimmerEffect.absoluteValue, shimmerEffect.absoluteValue)
             ShimmerOrientation.BOTTOMRIGHT_TO_TOPLEFT -> Offset(shimmerEffect.absoluteValue, shimmerEffect.absoluteValue)
             else -> Offset(shimmerEffect.absoluteValue, shimmerEffect.absoluteValue)
         }
-    } else{
+    } else {
         Offset.Zero
     }
     val gradientColor = Brush.linearGradient(
@@ -191,7 +190,7 @@ internal fun InternalShimmer(
             }
         }
     } else {
-        if(true) {
+        if (true) {
             Spacer(
                 modifier = modifier
                     .clip(RoundedCornerShape(cornerRadius))
