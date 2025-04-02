@@ -95,7 +95,7 @@ fun AppBar(
     centerAlignAppBar: Boolean = false,
     navigationIcon: FluentIcon? = null,
     appBarTokens: AppBarTokens? = null,
-    postTitleIcon2: FluentIcon = FluentIcon(),
+    secondaryPostTitleIcon: FluentIcon = FluentIcon(),
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
@@ -182,10 +182,10 @@ fun AppBar(
                         Row(
                             modifier = Modifier
                                 .then(
-                                    if (postTitleIcon.onClick != null && appBarSize == AppBarSize.Small)
-                                        Modifier.clickable(onClick = postTitleIcon.onClick!!)
-                                    else
-                                        Modifier
+                                    postTitleIcon.onClick?.takeIf { appBarSize == AppBarSize.Small }
+                                        ?.let {
+                                            Modifier.clickable(onClick = it)
+                                        } ?: Modifier
                                 ), verticalAlignment = Alignment.CenterVertically
                         ) {
                             BasicText(
@@ -207,10 +207,10 @@ fun AppBar(
                                     tint = token.titleIconColor(appBarInfo),
                                 )
 
-                            if (postTitleIcon2.isIconAvailable() && appBarSize == AppBarSize.Small)
+                            if (secondaryPostTitleIcon.isIconAvailable() && appBarSize == AppBarSize.Small)
                                 Icon(
-                                    postTitleIcon2.value(),
-                                    postTitleIcon2.contentDescription,
+                                    secondaryPostTitleIcon.value(),
+                                    secondaryPostTitleIcon.contentDescription,
                                     modifier = Modifier
                                         .size(token.titleIconSize(appBarInfo)),
                                     tint = token.titleIconColor(appBarInfo),
@@ -221,10 +221,10 @@ fun AppBar(
                             Row(
                                 modifier = Modifier
                                     .then(
-                                        if (postSubtitleIcon.onClick != null)
-                                            Modifier.clickable(onClick = postSubtitleIcon.onClick!!)
-                                        else
-                                            Modifier
+                                        postSubtitleIcon.onClick?.takeIf { appBarSize == AppBarSize.Small }
+                                            ?.let {
+                                                Modifier.clickable(onClick = it)
+                                            } ?: Modifier
                                     ), verticalAlignment = Alignment.CenterVertically
                             ) {
                                 if (preSubtitleIcon.isIconAvailable())
