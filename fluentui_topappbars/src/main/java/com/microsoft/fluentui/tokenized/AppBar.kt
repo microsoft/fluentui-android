@@ -62,6 +62,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
  * @param centerAlignAppBar boolean indicating if the app bar should be center aligned. Default: [false]
  * @param navigationIcon Navigate Back Icon to be placed at extreme left. Default: [null]
  * @param appBarTokens Optional Tokens for App Bar to customize it. Default: [null]
+ * @param postTitleIcon2 Icon to be placed after title making the title clickable. Default: Empty [FluentIcon]
  */
 
 // TAGS FOR TESTING
