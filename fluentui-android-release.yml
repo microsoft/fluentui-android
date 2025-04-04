@@ -3,15 +3,15 @@ name: $(Date:yyyyMMdd).$(Rev:r)
 resources:
   pipelines:
   - pipeline: 'fluentui-android-maven-publish'
-    project: 'fluentui-native'
+    project: 'ISS'
     source: 'fluentui-maven-central-publish [1es-pt]'
   repositories:
-  - repository: 1ESPipelineTemplates
+  - repository: OfficePipelineTemplates
     type: git
-    name: 1ESPipelineTemplates/1ESPipelineTemplates
+    name: 1ESPipelineTemplates/OfficePipelineTemplates
     ref: refs/tags/release
 extends:
-  template: v1/1ES.Official.PipelineTemplate.yml@1ESPipelineTemplates
+  template: v1/Office.Official.PipelineTemplate.yml@OfficePipelineTemplates
   parameters:
     pool:
       name: Azure-Pipelines-1ESPT-ExDShared
@@ -40,18 +40,19 @@ extends:
             artifactName: 'Build'
             targetPath: '$(Pipeline.Workspace)/fluentui-android-maven-publish/Build'
         steps:
-        - task: SFP.release-tasks.custom-build-release-task.EsrpRelease@7
+        - task: SFP.release-tasks.custom-build-release-task.EsrpRelease@9
           displayName: 'ESRP Release'
           inputs:
-            connectedservicename: '$(connectedServiceName)'
-            keyvaultname: $(keyVaultName)
-            authcertname: $(authCertName)
-            signcertname: '$(signCertName) '
-            clientid: '$(clientId)'
+            connectedservicename: 'ESRP-JSHost3'
+            usemanagedidentity: false
+            keyvaultname: 'OGX-JSHost-KV'
+            authcertname: 'OGX-JSHost-Auth4'
+            signcertname: 'OGX-JSHost-Sign3'
+            clientid: '0a35e01f-eadf-420a-a2bf-def002ba898d'
+            domaintenantid: 'cdc5aeea-15c5-4db6-b079-fcadd2505dc2'
             folderlocation: '$(Pipeline.Workspace)/fluentui-android-maven-publish/Build'
-            owners: '$(owners)'
-            approvers: '$(approvers)'
-            mainpublisher: fluentuiandroidrelease
+            owners: 'ronakdhoot@microsoft.com'
+            approvers: 'dhruvmishra@microsoft.com'
     - stage: Stage_2
       displayName: AppCenter Release
       jobs:
