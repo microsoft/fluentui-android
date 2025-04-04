@@ -15,8 +15,28 @@ import kotlinx.parcelize.Parcelize
 
 open class BottomSheetInfo : ControlInfo
 
+data class SheetAccessibilityAnnouncement(
+    var expandedToShown: String = "",
+    var expandedToCollapsed: String = "Bottom Sheet Collapsed",
+    var shownToExpanded: String = "Bottom Sheet Expanded",
+    var shownToCollapsed: String = "Bottom Sheet Collapsed",
+    var collapsedToExpanded: String = "Bottom Sheet Expanded",
+    var collapsedToShown: String = "Bottom Sheet Opened",
+)
+
 @Parcelize
 open class BottomSheetTokens : IControlToken, Parcelable {
+
+    open fun talkbackAnnouncement(bottomSheetInfo: BottomSheetInfo): SheetAccessibilityAnnouncement {
+        return SheetAccessibilityAnnouncement(
+            expandedToShown = "",
+            expandedToCollapsed = "Bottom Sheet Collapsed",
+            shownToExpanded = "Bottom Sheet Expanded",
+            shownToCollapsed = "Bottom Sheet Collapsed",
+            collapsedToExpanded = "Bottom Sheet Expanded",
+            collapsedToShown = "Bottom Sheet Opened"
+        )
+    }
 
     @Composable
     open fun backgroundBrush(bottomSheetInfo: BottomSheetInfo): Brush =
