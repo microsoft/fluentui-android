@@ -40,56 +40,33 @@ import kotlin.math.sqrt
 private const val DEFAULT_CORNER_RADIUS = 4
 
 /**
- * Create an empty Shimmer effect
- *
- * @param modifier Modifier for shimmer
- * @param shimmerTokens Token values for shimmer
- *
- */
-@Composable
-fun Shimmer(
-    modifier: Modifier = Modifier,
-    shimmerTokens: ShimmerTokens? = null,
-    shimmerDelay: Int = 1000,
-    isShimmering: Boolean = true,
-    shimmerOrientation: ShimmerOrientation = ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT,
-) {
-    InternalShimmer(
-        cornerRadius = DEFAULT_CORNER_RADIUS.dp,
-        modifier = modifier,
-        shimmerTokens = shimmerTokens,
-        shimmerDelay = shimmerDelay,
-        isShimmering = isShimmering,
-        shimmerOrientation = shimmerOrientation
-    )
-}
-
-/**
- * Create Shimmer effect on some content
+ * Create Shimmer effect on some content, creates an empty shimmer if content not provided.
  *
  * @param cornerRadius Corner radius of the shimmer
  * @param modifier Modifier for shimmer
  * @param shimmerTokens Token values for shimmer
- * @param content Content to be shimmered
+ * @param content Content to be shimmered, creates ab
  *
  */
 @Composable
 fun Shimmer(
-    cornerRadius: Dp,
+    cornerRadius: Dp = DEFAULT_CORNER_RADIUS.dp,
     modifier: Modifier = Modifier,
     shimmerTokens: ShimmerTokens? = null,
-    shimmerDelay: Int = 1000,
-    isShimmering: Boolean = true,
-    shimmerOrientation: ShimmerOrientation = ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT,
-    content: @Composable () -> Unit,
+    content: (@Composable () -> Unit)? = null,
 ) {
+    if(content == null) {
+        InternalShimmer(
+            cornerRadius = cornerRadius,
+            modifier = modifier,
+            shimmerTokens = shimmerTokens
+        )
+        return
+    }
     InternalShimmer(
         cornerRadius = cornerRadius,
         modifier = modifier,
-        shimmerTokens = shimmerTokens,
-        shimmerDelay = shimmerDelay,
-        isShimmering = isShimmering,
-        shimmerOrientation = shimmerOrientation,
+        shimmerTokens = shimmerTokens
     ) {
         content()
     }
