@@ -53,20 +53,29 @@ fun Shimmer(
     cornerRadius: Dp = DEFAULT_CORNER_RADIUS.dp,
     modifier: Modifier = Modifier,
     shimmerTokens: ShimmerTokens? = null,
+    shimmerDelay: Int = 1000,
+    isShimmering: Boolean = true,
+    shimmerOrientation: ShimmerOrientation = ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT,
     content: (@Composable () -> Unit)? = null,
 ) {
     if(content == null) {
         InternalShimmer(
             cornerRadius = cornerRadius,
             modifier = modifier,
-            shimmerTokens = shimmerTokens
+            shimmerTokens = shimmerTokens,
+            shimmerDelay = shimmerDelay,
+            isShimmering = isShimmering,
+            shimmerOrientation = shimmerOrientation
         )
         return
     }
     InternalShimmer(
         cornerRadius = cornerRadius,
         modifier = modifier,
-        shimmerTokens = shimmerTokens
+        shimmerTokens = shimmerTokens,
+        shimmerDelay = shimmerDelay,
+        isShimmering = isShimmering,
+        shimmerOrientation = shimmerOrientation,
     ) {
         content()
     }
