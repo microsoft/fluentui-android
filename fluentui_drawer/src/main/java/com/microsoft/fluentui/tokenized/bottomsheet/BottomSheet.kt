@@ -34,6 +34,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.*
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.*
@@ -192,6 +193,52 @@ const val BOTTOMSHEET_SCRIM_TAG = "Fluent Bottom Sheet Scrim"
 
 private const val BottomSheetOpenFraction = 0.5f
 
+@Composable
+internal fun AccesibilityBottomsheetAnnouncement(sheetState: BottomSheetState, tokens: BottomSheetTokens, bottomSheetInfo: BottomSheetInfo){
+    val view = LocalView.current
+    var previousState by remember { mutableStateOf(sheetState.currentValue) }
+    val talkbackAnnouncement = tokens.talkbackAnnouncement(bottomSheetInfo = bottomSheetInfo)
+
+    LaunchedEffect(sheetState.currentValue) {
+        when (sheetState.currentValue) {
+            BottomSheetValue.Expanded -> {
+                when (previousState) {
+                    BottomSheetValue.Shown -> {
+                        view.announceForAccessibility(talkbackAnnouncement.shownToExpanded)
+                    }
+                    BottomSheetValue.Hidden -> {
+                        view.announceForAccessibility(talkbackAnnouncement.collapsedToExpanded)
+                    }
+                    BottomSheetValue.Expanded -> {}
+                }
+            }
+            BottomSheetValue.Shown -> {
+                when (previousState) {
+                    BottomSheetValue.Expanded -> {
+                        view.announceForAccessibility(talkbackAnnouncement.expandedToShown)
+                    }
+                    BottomSheetValue.Hidden -> {
+                        view.announceForAccessibility(talkbackAnnouncement.collapsedToShown)
+                    }
+                    BottomSheetValue.Shown -> {}
+                }
+            }
+            BottomSheetValue.Hidden -> {
+                when (previousState) {
+                    BottomSheetValue.Expanded -> {
+                        view.announceForAccessibility(talkbackAnnouncement.expandedToCollapsed)
+                    }
+                    BottomSheetValue.Shown -> {
+                        view.announceForAccessibility(talkbackAnnouncement.shownToCollapsed)
+                    }
+                    BottomSheetValue.Hidden -> {}
+                }
+            }
+        }
+        previousState = sheetState.currentValue // Update previous state
+    }
+}
+
 /**
  *
  * Bottom sheets present a set of choices while blocking interaction with the rest of the
@@ -244,8 +291,8 @@ fun BottomSheet(
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val tokens = bottomSheetTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.BottomSheetControlType] as BottomSheetTokens
-
     val bottomSheetInfo = BottomSheetInfo()
+    AccesibilityBottomsheetAnnouncement(sheetState, tokens, bottomSheetInfo)
     val sheetShape: Shape = RoundedCornerShape(
         topStart = tokens.cornerRadius(bottomSheetInfo),
         topEnd = tokens.cornerRadius(bottomSheetInfo)
