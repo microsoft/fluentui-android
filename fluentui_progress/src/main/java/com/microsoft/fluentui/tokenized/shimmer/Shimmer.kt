@@ -40,12 +40,12 @@ import kotlin.math.sqrt
 private const val DEFAULT_CORNER_RADIUS = 4
 
 /**
- * Create Shimmer effect on some content, creates an empty shimmer if content not provided.
+ * Create Shimmer effect on some content, creates an empty shimmer if content not provided or left null
  *
  * @param cornerRadius Corner radius of the shimmer
  * @param modifier Modifier for shimmer
  * @param shimmerTokens Token values for shimmer
- * @param content Content to be shimmered, creates ab
+ * @param content Content to be shimmered, creates an empty shimmer if content not provided or left null
  *
  */
 @Composable
