@@ -115,6 +115,7 @@ internal fun InternalShimmer(
             ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT
         )
     ) (LocalLayoutDirection.current == LayoutDirection.Ltr) else (LocalLayoutDirection.current == LayoutDirection.Rtl)
+
     val initialValue = if (isLtr) 0f else diagonal
     val targetValue = if (isLtr) diagonal else 0f
     val shimmerEffect by if (isShimmering) {
