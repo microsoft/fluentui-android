@@ -176,12 +176,10 @@ internal fun InternalShimmer(
             }
         }
     } else {
-        if (true) {
-            Spacer(
-                modifier = modifier
-                    .clip(RoundedCornerShape(cornerRadius))
-                    .background(gradientColor)
-            )
-        }
+        Spacer(
+            modifier = modifier
+                .clip(RoundedCornerShape(cornerRadius))
+                .background(gradientColor)
+        )
     }
 }
