@@ -298,7 +298,8 @@ object ListItem {
             modifier
                 .background(backgroundColor)
                 .fillMaxWidth()
-                .height(IntrinsicSize.Max)
+                // Remove height(IntrinsicSize.Max) which causes expensive remeasurement
+                // Let content define the size naturally
                 .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                 .then(
                     if (onClick != null) {
@@ -323,13 +324,14 @@ object ListItem {
                             top = if (leadingAccessoryContentAlignment == Alignment.Top) padding.calculateTopPadding() else 0.dp,
                             bottom = if (leadingAccessoryContentAlignment == Alignment.Bottom) padding.calculateBottomPadding() else 0.dp
                         )
-                        .fillMaxHeight(), contentAlignment = leadingAccessoryAlignment
+                        .align(Alignment.CenterVertically), 
+                    contentAlignment = leadingAccessoryAlignment
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         if (unreadDot) {
                             Canvas(
                                 modifier = Modifier
-                                    .sizeIn(minWidth = 8.dp, minHeight = 8.dp)
+                                    .size(8.dp) // Use fixed size instead of sizeIn for better performance
                             ) {
                                 drawCircle(
                                     color = unreadDotColor, style = Fill, radius = dpToPx(4.dp)
@@ -346,11 +348,16 @@ object ListItem {
             Box(
                 Modifier
                     .padding(horizontal = padding.calculateStartPadding(LocalLayoutDirection.current))
-                    .weight(1f)
+                    .weight(1f, fill = true) // Using weight with fill=true for better performance
                     .then(clearSemantics(textAccessibilityProperties)),
                 contentAlignment = contentAlignment
             ) {
-                Column(Modifier.padding(top = padding.calculateTopPadding(), bottom = padding.calculateBottomPadding())) {
+                Column(
+                    Modifier.padding(
+                        top = padding.calculateTopPadding(), 
+                        bottom = padding.calculateBottomPadding()
+                    )
+                ) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(textAccessoryContentTextSpacing)
@@ -402,9 +409,14 @@ object ListItem {
                                         overflow = TextOverflow.Ellipsis
                                     )
                                 } else if (secondarySubTextAnnotated != null) {
+                                    // Only merge styles once to avoid unnecessary allocations
+                                    val mergedStyle = remember(secondarySubTextTypography, secondarySubTextColor) {
+                                        secondarySubTextTypography.merge(TextStyle(color = secondarySubTextColor))
+                                    }
                                     BasicText(
                                         modifier = Modifier.weight(1f, false),
                                         text = secondarySubTextAnnotated,
+                                        style = mergedStyle,
                                         inlineContent = secondarySubTextInlineContent,
                                         maxLines = secondarySubTextMaxLines,
                                         overflow = TextOverflow.Ellipsis
@@ -426,8 +438,12 @@ object ListItem {
                             bottom = if (trailingAccessoryContentAlignment == Alignment.Bottom) padding.calculateBottomPadding() else 0.dp,
                             end = padding.calculateEndPadding(LocalLayoutDirection.current)
                         )
-                        .fillMaxHeight(),
-                    contentAlignment = trailingAccessoryAlignment
+                        .align(Alignment.CenterVertically),
+                    contentAlignment = when (trailingAccessoryContentAlignment) {
+                        Alignment.Top -> Alignment.TopEnd
+                        Alignment.Bottom -> Alignment.BottomEnd
+                        else -> Alignment.CenterEnd
+                    }
                 ) {
                     trailingAccessoryContent()
                 }

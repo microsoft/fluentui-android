@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
@@ -84,7 +85,21 @@ class V2ListItemActivity : V2DemoActivity() {
         super.onCreate(savedInstanceState)
 
         setActivityContent {
-            CreateListActivityUI(this)
+//            LazyColumn {
+//                for(i in 0..50) {
+//                    item {
+//                        ListItem.Item(
+//                            text = "ListItem",
+//                            onClick = {},
+//                            leadingAccessoryContent = { LeftContentAvatar(size = Size24) },
+//                            trailingAccessoryContent = { RightContentAvatarStack(Size24) },
+//                            border = BorderType.Bottom,
+//                            borderInset = XXLarge
+//                        )
+//                    }
+//                }
+//            }
+           CreateListActivityUI(this)
         }
     }
 }
