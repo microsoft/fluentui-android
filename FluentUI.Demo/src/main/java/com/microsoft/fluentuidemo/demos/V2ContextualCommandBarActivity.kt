@@ -258,17 +258,14 @@ class V2ContextualCommandBarActivity : V2DemoActivity() {
                         CenterHorizontally
                     ), verticalAlignment = CenterVertically
                 ) {
-                    FluentTheme {
-                        BasicText(
-                            text = "Action Button",
-                            style = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1].merge(
-                                TextStyle(color = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
-                                    themeMode = FluentTheme.themeMode
-                                ))
-                            ),
-
-                        )
-                    }
+                    BasicText(
+                        text = "Action Button",
+                        style = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1].merge(
+                            TextStyle(color = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
+                                themeMode = FluentTheme.themeMode
+                            ))
+                        ),
+                    )
                     ToggleSwitch(
                         onValueChange =
                         {
