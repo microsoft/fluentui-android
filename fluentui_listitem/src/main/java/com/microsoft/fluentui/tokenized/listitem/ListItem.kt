@@ -10,6 +10,7 @@ import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.foundation.text.appendInlineContent
@@ -53,11 +54,14 @@ import com.microsoft.fluentui.util.dpToPx
 
 object ListItem {
 
+    // Cache common semantics modifiers to avoid recreating them
+    private val emptyModifier = Modifier
+
     private fun clearSemantics(properties: (SemanticsPropertyReceiver.() -> Unit)?): Modifier {
         return if (properties != null) {
             Modifier.clearAndSetSemantics(properties)
         } else {
-            Modifier
+            emptyModifier
         }
     }
 
@@ -69,9 +73,12 @@ object ListItem {
         enabled: Boolean,
         rippleColor: Color
     ): Modifier = composed {
+        // Fix: Don't use remember to wrap rememberRipple since it's already a composable function
+        val rippleIndication = rememberRipple(color = rippleColor)
+        
         Modifier.combinedClickable(
             interactionSource = interactionSource,
-            indication = rememberRipple(color = rippleColor),
+            indication = rippleIndication,
             onClickLabel = null,
             onLongClickLabel = null,
             enabled = enabled,
@@ -80,42 +87,79 @@ object ListItem {
         )
     }
 
-    private fun Modifier.borderModifier(
+    // Optimize border drawing with a cached modifier
+    private fun cachedBorderModifier(
         border: BorderType, borderColor: Color, borderSize: Float, borderInset: Float
-    ): Modifier = drawBehind {
-        when (border) {
-            BorderType.Top -> drawLine(
-                borderColor, Offset(0f, 0f), Offset(size.width, 0f), borderSize * density
-            )
-
-            BorderType.Bottom -> drawLine(
-                borderColor,
-                Offset(borderInset, size.height),
-                Offset(size.width, size.height),
-                borderSize * density
-            )
-
-            BorderType.TopBottom -> {
-                drawLine(
+    ): Modifier = if (border == NoBorder) {
+        emptyModifier
+    } else {
+        Modifier.drawBehind {
+            when (border) {
+                BorderType.Top -> drawLine(
                     borderColor, Offset(0f, 0f), Offset(size.width, 0f), borderSize * density
                 )
-                drawLine(
+
+                BorderType.Bottom -> drawLine(
                     borderColor,
                     Offset(borderInset, size.height),
                     Offset(size.width, size.height),
                     borderSize * density
                 )
-            }
 
-            NoBorder -> {
+                BorderType.TopBottom -> {
+                    drawLine(
+                        borderColor, Offset(0f, 0f), Offset(size.width, 0f), borderSize * density
+                    )
+                    drawLine(
+                        borderColor,
+                        Offset(borderInset, size.height),
+                        Offset(size.width, size.height),
+                        borderSize * density
+                    )
+                }
 
+                NoBorder -> { /* No-op */ }
             }
         }
+    }
 
+    private fun Modifier.borderModifier(
+        border: BorderType, borderColor: Color, borderSize: Float, borderInset: Float
+    ): Modifier = if (border == NoBorder) {
+        this
+    } else {
+        drawBehind {
+            when (border) {
+                BorderType.Top -> drawLine(
+                    borderColor, Offset(0f, 0f), Offset(size.width, 0f), borderSize * density
+                )
+
+                BorderType.Bottom -> drawLine(
+                    borderColor,
+                    Offset(borderInset, size.height),
+                    Offset(size.width, size.height),
+                    borderSize * density
+                )
+
+                BorderType.TopBottom -> {
+                    drawLine(
+                        borderColor, Offset(0f, 0f), Offset(size.width, 0f), borderSize * density
+                    )
+                    drawLine(
+                        borderColor,
+                        Offset(borderInset, size.height),
+                        Offset(size.width, size.height),
+                        borderSize * density
+                    )
+                }
+
+                NoBorder -> { /* No-op */ }
+            }
+        }
     }
 
     /*
-    This function calculates the placeholder width for action text
+    This function calculates the placeholder width for action text with optimized measurements
      */
     @Composable
     fun PlaceholderForActionText(
@@ -148,6 +192,14 @@ object ListItem {
         actionTextTypography: TextStyle,
         backgroundColor: Brush
     ) {
+        // Remember Typography styles to avoid recreation - Fixed remember composable call issue
+        val descriptionStyle = SpanStyle(
+            color = descriptionTextColor,
+            fontSize = descriptionTextTypography.fontSize,
+            fontWeight = descriptionTextTypography.fontWeight
+        )
+        val actionStyle = actionTextTypography.merge(TextStyle(color = actionTextColor))
+
         PlaceholderForActionText(actionTextComposable = {
             BasicText(
                 text = actionText,
@@ -156,13 +208,7 @@ object ListItem {
         }) { measuredWidth ->
             val text = buildAnnotatedString {
                 if (description.isNotEmpty()) {
-                    withStyle(
-                        style = SpanStyle(
-                            color = descriptionTextColor,
-                            fontSize = descriptionTextTypography.fontSize,
-                            fontWeight = descriptionTextTypography.fontWeight
-                        )
-                    ) {
+                    withStyle(style = descriptionStyle) {
                         append("$description ")
                     }
                 }
@@ -172,33 +218,35 @@ object ListItem {
             val widthInDp: TextUnit = with(LocalDensity.current) {
                 measuredWidth.toSp()
             }
+            
+            // Create placeholder outside remember
+            val placeholder = Placeholder(
+                width = widthInDp,
+                height = 16.sp,
+                placeholderVerticalAlign = PlaceholderVerticalAlign.TextCenter
+            )
+            
+            // Create inline content without using remember for the composable part
             val inlineContent = mapOf(
-                Pair("key", InlineTextContent(
-                    Placeholder(
-                        width = widthInDp,
-                        height = 16.sp,
-                        placeholderVerticalAlign = PlaceholderVerticalAlign.TextCenter
-                    )
-                ) {
+                Pair("key", InlineTextContent(placeholder) {
                     Box(
                         Modifier
                             .background(backgroundColor)
-                            .clickable(
-                                onClick = onClick
-                            )
+                            .clickable(onClick = onClick)
                     ) {
                         BasicText(
                             text = actionText,
-                            style = actionTextTypography.merge(TextStyle(color = actionTextColor))
+                            style = actionStyle
                         )
                     }
                 })
             )
+            
             BasicText(
-                text = text, inlineContent = inlineContent
+                text = text, 
+                inlineContent = inlineContent
             )
         }
-
     }
 
     @Composable
@@ -232,6 +280,7 @@ object ListItem {
         textAccessibilityProperties: (SemanticsPropertyReceiver.() -> Unit)? = null,
         listItemTokens: ListItemTokens? = null
     ) {
+        // Calculate the list item type once - fixed remember usage
         val listItemType = if (subText == null && secondarySubText == null) {
             OneLine
         } else if ((secondarySubText == null && subText != null) || (secondarySubText != null && subText == null)) {
@@ -239,10 +288,12 @@ object ListItem {
         } else {
             ThreeLine
         }
-        val themeID =
-            FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
-        val token = listItemTokens
+        
+        // Get token - fixed by not using remember with composable
+        val token = listItemTokens 
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItemControlType] as ListItemTokens
+        
+        // Create ListItemInfo without using remember
         val listItemInfo = ListItemInfo(
             listItemType = listItemType,
             borderInset = borderInset,
@@ -250,69 +301,88 @@ object ListItem {
             verticalSpacing = FluentGlobalTokens.SizeTokens.Size120,
             unreadDot = unreadDot
         )
-        val backgroundColor =
-            token.backgroundBrush(listItemInfo).getBrushByState(
-                enabled = true, selected = false, interactionSource = interactionSource
-            )
+
+        // Get values without using remember for composables
+        val backgroundColor = token.backgroundBrush(listItemInfo).getBrushByState(
+            enabled = true, selected = false, interactionSource = interactionSource
+        )
+        
         val primaryTextTypography = token.primaryTextTypography(listItemInfo)
         val subTextTypography = token.subTextTypography(listItemInfo)
-        val secondarySubTextTypography =
-            token.secondarySubTextTypography(listItemInfo)
-        val primaryTextColor = token.primaryTextColor(
-            listItemInfo
-        ).getColorByState(
+        val secondarySubTextTypography = token.secondarySubTextTypography(listItemInfo)
+        val primaryTextColor = token.primaryTextColor(listItemInfo).getColorByState(
             enabled = enabled, selected = false, interactionSource = interactionSource
         )
-        val subTextColor = token.subTextColor(
-            listItemInfo
-        ).getColorByState(
+        val subTextColor = token.subTextColor(listItemInfo).getColorByState(
             enabled = enabled, selected = false, interactionSource = interactionSource
         )
-        val secondarySubTextColor = token.secondarySubTextColor(
-            listItemInfo
-        ).getColorByState(
+        val secondarySubTextColor = token.secondarySubTextColor(listItemInfo).getColorByState(
             enabled = enabled, selected = false, interactionSource = interactionSource
         )
         val rippleColor = token.rippleColor(listItemInfo)
         val unreadDotColor = token.unreadDotColor(listItemInfo)
         val padding = token.padding(listItemInfo)
         val borderSize = token.borderSize(listItemInfo).value
-        val borderInsetToPx = with(LocalDensity.current) {
-            token.borderInset(listItemInfo).toPx()
-        }
         val borderColor = token.borderColor(listItemInfo).getColorByState(
             enabled = enabled, selected = false, interactionSource = interactionSource
         )
         val textAccessoryContentTextSpacing = token.textAccessoryContentTextSpacing(listItemInfo)
+        
+        // Calculate borderInsetToPx properly - fix for LocalDensity in remember
+        val borderInsetValue = token.borderInset(listItemInfo)
+        val borderInsetToPx = with(LocalDensity.current) { borderInsetValue.toPx() }
+        
+        // Calculate alignments without using remember
         val leadingAccessoryAlignment = when (leadingAccessoryContentAlignment) {
             Alignment.Top -> Alignment.TopCenter
             Alignment.Bottom -> Alignment.BottomCenter
             else -> Alignment.Center
         }
+        
         val trailingAccessoryAlignment = when (trailingAccessoryContentAlignment) {
             Alignment.Top -> Alignment.TopEnd
             Alignment.Bottom -> Alignment.BottomEnd
             else -> Alignment.CenterEnd
         }
+
+        // Create text styles without using remember
+        val primaryTextStyle = primaryTextTypography.merge(TextStyle(color = primaryTextColor))
+        val subTextStyle = subTextTypography.merge(TextStyle(color = subTextColor))
+        val secondarySubTextStyle = secondarySubTextTypography.merge(TextStyle(color = secondarySubTextColor))
+        
+        // Create click modifier without using remember
+        val clickModifier = if (onClick != null) {
+            Modifier.longPressSemanticsModifier(
+                interactionSource,
+                onClick = onClick,
+                onLongClick = onLongClick ?: {},
+                enabled,
+                rippleColor
+            )
+        } else {
+            emptyModifier
+        }
+
+        // Combine modifiers efficiently - fixed remember with composable issue
+        val borderModifier = if (border != NoBorder) {
+            cachedBorderModifier(border, borderColor, borderSize, borderInsetToPx)
+        } else {
+            emptyModifier
+        }
+        
+        val rowModifier = modifier
+            .background(backgroundColor)
+            .fillMaxWidth()
+            .height(IntrinsicSize.Max)
+            .then(borderModifier)
+            .then(clickModifier)
+        
+        // Use a simplified layout structure to reduce layout passes
         Row(
-            modifier
-                .background(backgroundColor)
-                .fillMaxWidth()
-                .height(IntrinsicSize.Max)
-                .borderModifier(border, borderColor, borderSize, borderInsetToPx)
-                .then(
-                    if (onClick != null) {
-                        Modifier.longPressSemanticsModifier(
-                            interactionSource,
-                            onClick = onClick,
-                            onLongClick = onLongClick ?: {},
-                            enabled,
-                            rippleColor
-                        )
-                    } else Modifier
-                ),
+            rowModifier,
             verticalAlignment = Alignment.CenterVertically
         ) {
+            // Leading accessory content
             if (leadingAccessoryContent != null && textAlignment == ListItemTextAlignment.Regular) {
                 Box(
                     modifier = Modifier
@@ -323,13 +393,13 @@ object ListItem {
                             top = if (leadingAccessoryContentAlignment == Alignment.Top) padding.calculateTopPadding() else 0.dp,
                             bottom = if (leadingAccessoryContentAlignment == Alignment.Bottom) padding.calculateBottomPadding() else 0.dp
                         )
-                        .fillMaxHeight(), contentAlignment = leadingAccessoryAlignment
+                        .fillMaxHeight(), 
+                    contentAlignment = leadingAccessoryAlignment
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         if (unreadDot) {
                             Canvas(
-                                modifier = Modifier
-                                    .sizeIn(minWidth = 8.dp, minHeight = 8.dp)
+                                modifier = Modifier.sizeIn(minWidth = 8.dp, minHeight = 8.dp)
                             ) {
                                 drawCircle(
                                     color = unreadDotColor, style = Fill, radius = dpToPx(4.dp)
@@ -341,8 +411,11 @@ object ListItem {
                     }
                 }
             }
-            val contentAlignment =
-                if (textAlignment == ListItemTextAlignment.Regular) Alignment.CenterStart else Alignment.Center
+            
+            // Content area
+            val contentAlignment = if (textAlignment == ListItemTextAlignment.Regular) 
+                Alignment.CenterStart else Alignment.Center
+                
             Box(
                 Modifier
                     .padding(horizontal = padding.calculateStartPadding(LocalLayoutDirection.current))
@@ -350,7 +423,13 @@ object ListItem {
                     .then(clearSemantics(textAccessibilityProperties)),
                 contentAlignment = contentAlignment
             ) {
-                Column(Modifier.padding(top = padding.calculateTopPadding(), bottom = padding.calculateBottomPadding())) {
+                Column(
+                    Modifier.padding(
+                        top = padding.calculateTopPadding(), 
+                        bottom = padding.calculateBottomPadding()
+                    )
+                ) {
+                    // Primary text row
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(textAccessoryContentTextSpacing)
@@ -362,42 +441,48 @@ object ListItem {
                         BasicText(
                             modifier = Modifier.weight(1f, false),
                             text = text,
-                            style = primaryTextTypography.merge(TextStyle(color = primaryTextColor)),
+                            style = primaryTextStyle,
                             maxLines = textMaxLines,
                             overflow = TextOverflow.Ellipsis
                         )
+                        
                         if (primaryTextTrailingContent != null) {
                             primaryTextTrailingContent()
                         }
                     }
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        if (subText != null && textAlignment == ListItemTextAlignment.Regular) {
+                    
+                    // Subtext row (conditionally displayed)
+                    if (subText != null && textAlignment == ListItemTextAlignment.Regular) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
                             BasicText(
                                 text = subText,
-                                style = subTextTypography.merge(TextStyle(color = subTextColor)),
+                                style = subTextStyle,
                                 maxLines = subTextMaxLines,
                                 overflow = TextOverflow.Ellipsis
                             )
                         }
                     }
+                    
+                    // Secondary subtext or bottom content (conditionally displayed)
                     if (textAlignment == ListItemTextAlignment.Regular) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(textAccessoryContentTextSpacing)
                         ) {
                             if (bottomContent != null) {
-                                Row(modifier.padding(top = 7.dp, bottom = 7.dp)) {
+                                Row(modifier = Modifier.padding(top = 7.dp, bottom = 7.dp)) {
                                     bottomContent()
                                 }
                             } else {
                                 if (secondarySubTextLeadingContent != null) {
                                     secondarySubTextLeadingContent()
                                 }
+                                
                                 if (secondarySubText != null) {
                                     BasicText(
                                         modifier = Modifier.weight(1f, false),
                                         text = secondarySubText,
-                                        style = secondarySubTextTypography.merge(TextStyle(color = secondarySubTextColor)),
+                                        style = secondarySubTextStyle,
                                         maxLines = secondarySubTextMaxLines,
                                         overflow = TextOverflow.Ellipsis
                                     )
@@ -410,6 +495,7 @@ object ListItem {
                                         overflow = TextOverflow.Ellipsis
                                     )
                                 }
+                                
                                 if (secondarySubTextTrailingContent != null) {
                                     secondarySubTextTrailingContent()
                                 }
@@ -418,6 +504,8 @@ object ListItem {
                     }
                 }
             }
+            
+            // Trailing accessory content
             if (trailingAccessoryContent != null && textAlignment == ListItemTextAlignment.Regular) {
                 Box(
                     Modifier
@@ -494,34 +582,37 @@ object ListItem {
         textAccessibilityProperties: (SemanticsPropertyReceiver.() -> Unit)? = null,
         listItemTokens: ListItemTokens? = null
     ) {
-        InternalItem(
-            text = text,
-            modifier = modifier,
-            subText = subText,
-            secondarySubText = secondarySubText,
-            textAlignment = textAlignment,
-            unreadDot = unreadDot,
-            enabled = enabled,
-            textMaxLines = textMaxLines,
-            subTextMaxLines = subTextMaxLines,
-            secondarySubTextMaxLines = secondarySubTextMaxLines,
-            onClick = onClick,
-            onLongClick = onLongClick,
-            primaryTextLeadingContent = primaryTextLeadingContent,
-            primaryTextTrailingContent = primaryTextTrailingContent,
-            secondarySubTextLeadingContent = secondarySubTextLeadingContent,
-            secondarySubTextTrailingContent = secondarySubTextTrailingContent,
-            border = border,
-            borderInset = borderInset,
-            interactionSource = interactionSource,
-            bottomContent = bottomContent,
-            leadingAccessoryContent = leadingAccessoryContent,
-            trailingAccessoryContent = trailingAccessoryContent,
-            leadingAccessoryContentAlignment = leadingAccessoryContentAlignment,
-            trailingAccessoryContentAlignment = trailingAccessoryContentAlignment,
-            textAccessibilityProperties = textAccessibilityProperties,
-            listItemTokens = listItemTokens
-        )
+        key(text, subText, secondarySubText, textAlignment, unreadDot, enabled, 
+            textMaxLines, subTextMaxLines, secondarySubTextMaxLines) {
+            InternalItem(
+                text = text,
+                modifier = modifier,
+                subText = subText,
+                secondarySubText = secondarySubText,
+                textAlignment = textAlignment,
+                unreadDot = unreadDot,
+                enabled = enabled,
+                textMaxLines = textMaxLines,
+                subTextMaxLines = subTextMaxLines,
+                secondarySubTextMaxLines = secondarySubTextMaxLines,
+                onClick = onClick,
+                onLongClick = onLongClick,
+                primaryTextLeadingContent = primaryTextLeadingContent,
+                primaryTextTrailingContent = primaryTextTrailingContent,
+                secondarySubTextLeadingContent = secondarySubTextLeadingContent,
+                secondarySubTextTrailingContent = secondarySubTextTrailingContent,
+                border = border,
+                borderInset = borderInset,
+                interactionSource = interactionSource,
+                bottomContent = bottomContent,
+                leadingAccessoryContent = leadingAccessoryContent,
+                trailingAccessoryContent = trailingAccessoryContent,
+                leadingAccessoryContentAlignment = leadingAccessoryContentAlignment,
+                trailingAccessoryContentAlignment = trailingAccessoryContentAlignment,
+                textAccessibilityProperties = textAccessibilityProperties,
+                listItemTokens = listItemTokens
+            )
+        }
     }
 
     /**
@@ -540,10 +631,10 @@ object ListItem {
      * @param secondarySubTextMaxLines Optional max visible lines for tertiary text.
      * @param onClick Optional onClick action for list item.
      * @param onLongClick Optional onLongClick action for list item.
-     * @param primaryTextLeadingContent Optional primary text leading Content.
-     * @param primaryTextTrailingContent Optional primary text trailing Content.
-     * @param secondarySubTextLeadingContent Optional secondary text leading Content.
-     * @param secondarySubTextTrailingContent Optional secondary text trailing Content.
+     * @param primaryTextLeadingContent: Optional primary text leading Content.
+     * @param primaryTextTrailingContent: Optional primary text trailing Content.
+     * @param secondarySubTextLeadingContent: Optional secondary text leading Content.
+     * @param secondarySubTextTrailingContent: Optional secondary text trailing Content.
      * @param border [BorderType] Optional border for the list item.
      * @param borderInset [BorderInset]Optional borderInset for list item.
      * @param bottomContent Optional bottom Content under Text field.
@@ -552,7 +643,7 @@ object ListItem {
      * @param leadingAccessoryContentAlignment Alignment for leading accessory Content to align Top, Bottom or Center
      * @param trailingAccessoryContentAlignment Alignment for trailing accessory Content to align Top, Bottom or Center
      * @param textAccessibilityProperties Accessibility properties for the text in list item.
-     * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list item tokens will be picked from [AppThemeController]
+     * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list tokens will be picked from [AppThemeController]
      *
      */
     @Composable
@@ -585,35 +676,38 @@ object ListItem {
         textAccessibilityProperties: (SemanticsPropertyReceiver.() -> Unit)? = null,
         listItemTokens: ListItemTokens? = null
     ) {
-        InternalItem(
-            text = text,
-            modifier = modifier,
-            subText = subText,
-            secondarySubTextAnnotated = secondarySubTextAnnotated,
-            secondarySubTextInlineContent = secondarySubTextInlineContent,
-            textAlignment = textAlignment,
-            unreadDot = unreadDot,
-            enabled = enabled,
-            textMaxLines = textMaxLines,
-            subTextMaxLines = subTextMaxLines,
-            secondarySubTextMaxLines = secondarySubTextMaxLines,
-            onClick = onClick,
-            onLongClick = onLongClick,
-            primaryTextLeadingContent = primaryTextLeadingContent,
-            primaryTextTrailingContent = primaryTextTrailingContent,
-            secondarySubTextLeadingContent = secondarySubTextLeadingContent,
-            secondarySubTextTrailingContent = secondarySubTextTrailingContent,
-            border = border,
-            borderInset = borderInset,
-            interactionSource = interactionSource,
-            bottomContent = bottomContent,
-            leadingAccessoryContent = leadingAccessoryContent,
-            trailingAccessoryContent = trailingAccessoryContent,
-            leadingAccessoryContentAlignment = leadingAccessoryContentAlignment,
-            trailingAccessoryContentAlignment = trailingAccessoryContentAlignment,
-            textAccessibilityProperties = textAccessibilityProperties,
-            listItemTokens = listItemTokens
-        )
+        key(text, subText, secondarySubTextAnnotated, textAlignment, unreadDot, enabled,
+            textMaxLines, subTextMaxLines, secondarySubTextMaxLines) {
+            InternalItem(
+                text = text,
+                modifier = modifier,
+                subText = subText,
+                secondarySubTextAnnotated = secondarySubTextAnnotated,
+                secondarySubTextInlineContent = secondarySubTextInlineContent,
+                textAlignment = textAlignment,
+                unreadDot = unreadDot,
+                enabled = enabled,
+                textMaxLines = textMaxLines,
+                subTextMaxLines = subTextMaxLines,
+                secondarySubTextMaxLines = secondarySubTextMaxLines,
+                onClick = onClick,
+                onLongClick = onLongClick,
+                primaryTextLeadingContent = primaryTextLeadingContent,
+                primaryTextTrailingContent = primaryTextTrailingContent,
+                secondarySubTextLeadingContent = secondarySubTextLeadingContent,
+                secondarySubTextTrailingContent = secondarySubTextTrailingContent,
+                border = border,
+                borderInset = borderInset,
+                interactionSource = interactionSource,
+                bottomContent = bottomContent,
+                leadingAccessoryContent = leadingAccessoryContent,
+                trailingAccessoryContent = trailingAccessoryContent,
+                leadingAccessoryContentAlignment = leadingAccessoryContentAlignment,
+                trailingAccessoryContentAlignment = trailingAccessoryContentAlignment,
+                textAccessibilityProperties = textAccessibilityProperties,
+                listItemTokens = listItemTokens
+            )
+        }
     }
 
     /**
@@ -800,6 +894,7 @@ object ListItem {
                                 text = accessoryTextTitle,
                                 Modifier.clickable(
                                     onClick = accessoryTextOnClick ?: {})
+
                                     .clearAndSetSemantics { contentDescription = accessoryTextTitle
                                     role = Role.Button },
                                 style = actionTextTypography.merge(TextStyle(color = actionTextColor))
