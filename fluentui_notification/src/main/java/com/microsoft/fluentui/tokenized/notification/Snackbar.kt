@@ -1,5 +1,9 @@
 package com.microsoft.fluentui.tokenized.notification
 
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.AnimationVector1D
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -29,6 +33,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.tokenized.controls.Button
 import kotlinx.coroutines.CancellableContinuation
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -41,6 +46,21 @@ const val SNACK_BAR_SUBTITLE = "Fluent Snack bar Subtitle"
 const val SNACK_BAR_ACTION_BUTTON = "Fluent Snack bar Action Button"
 const val SNACK_BAR_DISMISS_BUTTON = "Fluent Snack bar Dismiss Button"
 
+/**
+ * SnackbarMetadata is a data class that holds the metadata for a Snackbar.
+ * It contains information such as the message, style, icon, action text, and duration.
+ *
+ * @param message The message to be displayed in the Snackbar.
+ * @param style The style of the Snackbar.
+ * @param enableDismiss Whether the Snackbar can be dismissed by the user.
+ * @param icon The icon to be displayed in the Snackbar.
+ * @param subTitle The subtitle to be displayed in the Snackbar.
+ * @param actionText The text for the action button in the Snackbar.
+ * @param duration The duration for which the Snackbar will be displayed.
+ * @param continuation A cancellable continuation for handling user interactions with the Snackbar.
+ * @param animationBehavior The animation behavior for the Snackbar.
+ */
+
 class SnackbarMetadata(
     val message: String,
     val style: SnackbarStyle,
@@ -49,27 +69,31 @@ class SnackbarMetadata(
     val subTitle: String?,
     val actionText: String?,
     val duration: NotificationDuration,
-    private val continuation: CancellableContinuation<NotificationResult>
+    private val continuation: CancellableContinuation<NotificationResult>,
+    val animationBehavior: AnimationBehavior
 ) : NotificationMetadata {
 
-    override fun clicked() {
+    override suspend fun clicked() {
         try {
+            animationBehavior?.onClickAnimation()
             if (continuation.isActive) continuation.resume(NotificationResult.CLICKED)
-        } catch (e: Exception){
+        } catch (e: Exception) {
             // This can happen if there is a race condition b/w two events. In that case, we ignore the second event.
         }
     }
 
-    override fun dismiss() {
+    override suspend fun dismiss() {
         try {
+            animationBehavior?.onDismissAnimation()
             if (continuation.isActive) continuation.resume(NotificationResult.DISMISSED)
-        } catch (e: Exception){
+        } catch (e: Exception) {
             // This can happen if there is a race condition b/w two events. In that case, we ignore the second event.
         }
     }
 
-    override fun timedOut() {
+    override suspend fun timedOut() {
         try {
+            animationBehavior?.onTimeoutAnimation()
             if (continuation.isActive) continuation.resume(NotificationResult.TIMEOUT)
         } catch (e: Exception) {
             // This can happen if there is a race condition b/w two events. In that case, we ignore the second event.
@@ -89,7 +113,8 @@ class SnackbarState {
         icon: FluentIcon? = null,
         subTitle: String? = null,
         actionText: String? = null,
-        duration: NotificationDuration = NotificationDuration.SHORT
+        duration: NotificationDuration = NotificationDuration.SHORT,
+        animationBehavior: AnimationBehavior = AnimationBehavior()
     ): NotificationResult {
         mutex.withLock {
             try {
@@ -102,7 +127,8 @@ class SnackbarState {
                         subTitle,
                         actionText,
                         duration,
-                        it
+                        it,
+                        animationBehavior
                     )
                 }
             } finally {
@@ -130,6 +156,7 @@ fun Snackbar(
     snackbarTokens: SnackBarTokens? = null
 ) {
     val metadata: SnackbarMetadata = snackbarState.currentSnackbar ?: return
+    val scope = rememberCoroutineScope()
 
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
@@ -137,17 +164,30 @@ fun Snackbar(
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.SnackbarControlType] as SnackBarTokens
 
     val snackBarInfo = SnackBarInfo(metadata.style, !metadata.subTitle.isNullOrBlank())
-    var textPaddingValues = if(metadata.actionText == null && !metadata.enableDismiss ) PaddingValues(start = 16.dp, top = 12.dp, bottom = 12.dp, end = 16.dp) else PaddingValues(start = 16.dp, top = 12.dp, bottom = 12.dp)
+    var textPaddingValues =
+        if (metadata.actionText == null && !metadata.enableDismiss) PaddingValues(
+            start = 16.dp,
+            top = 12.dp,
+            bottom = 12.dp,
+            end = 16.dp
+        ) else PaddingValues(start = 16.dp, top = 12.dp, bottom = 12.dp)
 
     NotificationContainer(
         notificationMetadata = metadata,
         hasIcon = metadata.icon != null,
         hasAction = metadata.actionText != null,
-        duration = metadata.duration
-    ) { alpha, scale ->
+        duration = metadata.duration,
+        animationBehavior = metadata.animationBehavior,
+    ) { animationVariables ->
         Row(
             modifier
-                .graphicsLayer(scaleX = scale.value, scaleY = scale.value, alpha = alpha.value)
+                .graphicsLayer(
+                    scaleX = animationVariables.scale.value,
+                    scaleY = animationVariables.scale.value,
+                    alpha = animationVariables.alpha.value,
+                    translationX = animationVariables.offsetX.value,
+                    translationY = animationVariables.offsetY.value
+                )
                 .padding(horizontal = 16.dp)
                 .defaultMinSize(minHeight = 52.dp)
                 .fillMaxWidth()
@@ -205,7 +245,11 @@ fun Snackbar(
 
             if (metadata.actionText != null) {
                 Button(
-                    onClick = { metadata.clicked() },
+                    onClick = {
+                        scope.launch {
+                            metadata.clicked()
+                        }
+                    },
                     modifier = Modifier
                         .testTag(SNACK_BAR_ACTION_BUTTON)
                         .then(
@@ -239,7 +283,11 @@ fun Snackbar(
                             enabled = true,
                             role = Role.Image,
                             onClickLabel = "Dismiss",
-                            onClick = { metadata.dismiss() }
+                            onClick = {
+                                scope.launch {
+                                    metadata.dismiss()
+                                }
+                            }
                         )
                         .testTag(SNACK_BAR_DISMISS_BUTTON)
                 ) {
