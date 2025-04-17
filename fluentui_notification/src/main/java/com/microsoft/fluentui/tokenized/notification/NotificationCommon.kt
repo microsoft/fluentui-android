@@ -3,17 +3,77 @@ package com.microsoft.fluentui.tokenized.notification
 import androidx.compose.animation.core.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.AccessibilityManager
 import androidx.compose.ui.platform.LocalAccessibilityManager
 import kotlinx.coroutines.delay
 
 interface NotificationMetadata {
-    fun clicked()
+    suspend fun clicked()
 
-    fun dismiss()
+    suspend fun dismiss()
 
-    fun timedOut()
+    suspend fun timedOut()
+}
+
+open class AnimationVariables {
+    open var alpha = Animatable(0F)
+    open var scale = Animatable(0.8F)
+    open var offsetX = Animatable(0f)
+    open var offsetY = Animatable(0f)
+}
+
+open class AnimationBehavior {
+    open var animationVariables: AnimationVariables = AnimationVariables()
+
+    open suspend fun onShowAnimation() {
+        animationVariables.alpha.animateTo(
+            1F,
+            animationSpec = tween(
+                easing = LinearEasing,
+                durationMillis = 150,
+            )
+        )
+        animationVariables.scale.animateTo(
+            1F,
+            animationSpec = tween(
+                easing = FastOutSlowInEasing,
+                durationMillis = 150,
+            )
+        )
+    }
+
+    open suspend fun onClickAnimation() {
+        // fade out
+        animationVariables.alpha.animateTo(
+            0F,
+            animationSpec = tween(
+                easing = LinearEasing,
+                durationMillis = 150,
+            )
+        )
+    }
+
+    open suspend fun onDismissAnimation() {
+        // fade out
+        animationVariables.alpha.animateTo(
+            0F,
+            animationSpec = tween(
+                easing = LinearEasing,
+                durationMillis = 150,
+            )
+        )
+    }
+
+    open suspend fun onTimeoutAnimation() {
+        // fade out
+        animationVariables.alpha.animateTo(
+            0F,
+            animationSpec = tween(
+                easing = LinearEasing,
+                durationMillis = 150,
+            )
+        )
+    }
 }
 
 enum class NotificationResult {
@@ -26,6 +86,7 @@ enum class NotificationDuration {
     SHORT,
     LONG,
     INDEFINITE;
+
 
     fun convertToMillis(
         hasIcon: Boolean,
@@ -56,12 +117,8 @@ internal fun NotificationContainer(
     hasIcon: Boolean,
     hasAction: Boolean,
     duration: NotificationDuration,
-    content: @Composable (
-        (
-        Animatable<Float, AnimationVector1D>,
-        Animatable<Float, AnimationVector1D>
-    ) -> Unit
-    )
+    animationBehavior: AnimationBehavior,
+    content: @Composable ((animationVariables: AnimationVariables) -> Unit)
 ) {
     val accessibilityManager = LocalAccessibilityManager.current
     LaunchedEffect(notificationMetadata) {
@@ -75,28 +132,9 @@ internal fun NotificationContainer(
         notificationMetadata.timedOut()
     }
 
-    val alpha = remember { Animatable(0F) }
-    val scale = remember { Animatable(0.8F) }
-
     LaunchedEffect(notificationMetadata) {
-        alpha.animateTo(
-            1F,
-            animationSpec = tween(
-                easing = LinearEasing,
-                durationMillis = 150,
-            )
-        )
-    }
-    LaunchedEffect(notificationMetadata) {
-        scale.animateTo(
-            1F,
-            animationSpec = tween(
-                easing = FastOutSlowInEasing,
-                durationMillis = 150,
-            )
-        )
+        animationBehavior.onShowAnimation()
     }
 
-    content(alpha, scale)
-
+    content(animationBehavior.animationVariables)
 }

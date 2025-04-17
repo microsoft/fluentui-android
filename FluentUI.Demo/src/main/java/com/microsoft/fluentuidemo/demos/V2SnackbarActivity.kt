@@ -2,6 +2,11 @@ package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -25,6 +30,8 @@ import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
+import com.microsoft.fluentui.tokenized.notification.AnimationBehavior
+import com.microsoft.fluentui.tokenized.notification.AnimationVariables
 import com.microsoft.fluentui.tokenized.notification.NotificationDuration
 import com.microsoft.fluentui.tokenized.notification.NotificationResult
 import com.microsoft.fluentui.tokenized.notification.Snackbar
@@ -272,7 +279,8 @@ class V2SnackbarActivity : V2DemoActivity() {
                                     actionText = if (actionLabel) actionButtonString else null,
                                     subTitle = subtitle,
                                     duration = duration,
-                                    enableDismiss = dismissEnabled
+                                    enableDismiss = dismissEnabled,
+                                    animationBehavior = customizedAnimationBehavior
                                 )
 
                                 when (result) {
@@ -304,7 +312,9 @@ class V2SnackbarActivity : V2DemoActivity() {
 
                     Button(
                         onClick = {
-                            snackbarState.currentSnackbar?.dismiss()
+                            scope.launch {
+                                snackbarState.currentSnackbar?.dismiss()
+                            }
                         },
                         text = LocalContext.current.resources.getString(R.string.fluentui_dismiss_snackbar),
                         size = ButtonSize.Small,
@@ -317,5 +327,42 @@ class V2SnackbarActivity : V2DemoActivity() {
                 }
             }
         }
+    }
+}
+
+val customizedAnimationBehavior: AnimationBehavior = object : AnimationBehavior() {
+    override var animationVariables: AnimationVariables = object : AnimationVariables() {
+        override var scale = Animatable(1F)
+    }
+
+    override suspend fun onShowAnimation() {
+        // pop from bottom
+        animationVariables.offsetX.snapTo(0F)
+        animationVariables.offsetY.snapTo(50F)
+        animationVariables.offsetY.animateTo(
+            0F,
+            animationSpec = tween(
+                easing = LinearOutSlowInEasing,
+                durationMillis = 500,
+            )
+        )
+        animationVariables.alpha.animateTo(
+            1F,
+            animationSpec = tween(
+                easing = LinearEasing,
+                durationMillis = 150,
+            )
+        )
+    }
+
+    override suspend fun onDismissAnimation() {
+        // slide out from left
+        animationVariables.offsetX.animateTo(
+            targetValue = -2000f,
+            animationSpec = tween(
+                durationMillis = 500,
+                easing = FastOutSlowInEasing
+            )
+        )
     }
 }
