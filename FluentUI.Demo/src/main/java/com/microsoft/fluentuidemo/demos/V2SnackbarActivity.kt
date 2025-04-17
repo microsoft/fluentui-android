@@ -330,6 +330,7 @@ class V2SnackbarActivity : V2DemoActivity() {
     }
 }
 
+// Customized animation behavior for Snackbar
 val customizedAnimationBehavior: AnimationBehavior = object : AnimationBehavior() {
     override var animationVariables: AnimationVariables = object : AnimationVariables() {
         override var scale = Animatable(1F)
