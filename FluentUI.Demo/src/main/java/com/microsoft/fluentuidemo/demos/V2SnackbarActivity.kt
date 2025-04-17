@@ -333,10 +333,12 @@ class V2SnackbarActivity : V2DemoActivity() {
 val customizedAnimationBehavior: AnimationBehavior = object : AnimationBehavior() {
     override var animationVariables: AnimationVariables = object : AnimationVariables() {
         override var scale = Animatable(1F)
+        override var offsetY = Animatable(50F)
     }
 
     override suspend fun onShowAnimation() {
         // pop from bottom
+        animationVariables.alpha.snapTo(1F)
         animationVariables.offsetX.snapTo(0F)
         animationVariables.offsetY.snapTo(50F)
         animationVariables.offsetY.animateTo(
@@ -344,13 +346,6 @@ val customizedAnimationBehavior: AnimationBehavior = object : AnimationBehavior(
             animationSpec = tween(
                 easing = LinearOutSlowInEasing,
                 durationMillis = 500,
-            )
-        )
-        animationVariables.alpha.animateTo(
-            1F,
-            animationSpec = tween(
-                easing = LinearEasing,
-                durationMillis = 150,
             )
         )
     }
