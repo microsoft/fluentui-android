@@ -323,6 +323,13 @@ class V2AppBarActivity : V2DemoActivity() {
                         FluentIcon(
                             SearchBarIcons.Arrowback,
                             contentDescription = "Navigate Back",
+                            onLongClick = {
+                                Toast.makeText(
+                                    context,
+                                    "Navigation Icon long pressed",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            },
                             onClick = {
                                 Toast.makeText(
                                     context,
