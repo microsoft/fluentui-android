@@ -32,6 +32,8 @@ import com.microsoft.fluentui.theme.token.StateColor
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.tokenized.controls.Button
 import kotlinx.coroutines.CancellableContinuation
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -73,28 +75,58 @@ class SnackbarMetadata(
     val animationBehavior: AnimationBehavior
 ) : NotificationMetadata {
 
-    override suspend fun clicked() {
+    override fun clicked() {
         try {
-            animationBehavior?.onClickAnimation()
             if (continuation.isActive) continuation.resume(NotificationResult.CLICKED)
         } catch (e: Exception) {
             // This can happen if there is a race condition b/w two events. In that case, we ignore the second event.
         }
     }
 
-    override suspend fun dismiss() {
+    override fun clicked(scope: CoroutineScope) {
         try {
-            animationBehavior?.onDismissAnimation()
+            scope.launch {
+                animationBehavior.onClickAnimation()
+                if (continuation.isActive) continuation.resume(NotificationResult.CLICKED)
+            }
+        } catch (e: Exception) {
+            // This can happen if there is a race condition b/w two events. In that case, we ignore the second event.
+        }
+    }
+
+    override fun dismiss() {
+        try {
             if (continuation.isActive) continuation.resume(NotificationResult.DISMISSED)
         } catch (e: Exception) {
             // This can happen if there is a race condition b/w two events. In that case, we ignore the second event.
         }
     }
 
-    override suspend fun timedOut() {
+    override fun dismiss(scope: CoroutineScope) {
         try {
-            animationBehavior?.onTimeoutAnimation()
+            scope.launch {
+                animationBehavior.onDismissAnimation()
+                if (continuation.isActive) continuation.resume(NotificationResult.DISMISSED)
+            }
+        } catch (e: Exception) {
+            // This can happen if there is a race condition b/w two events. In that case, we ignore the second event.
+        }
+    }
+
+    override fun timedOut() {
+        try {
             if (continuation.isActive) continuation.resume(NotificationResult.TIMEOUT)
+        } catch (e: Exception) {
+            // This can happen if there is a race condition b/w two events. In that case, we ignore the second event.
+        }
+    }
+
+    override fun timedOut(scope: CoroutineScope) {
+        try {
+            scope.launch {
+                animationBehavior.onTimeoutAnimation()
+                if (continuation.isActive) continuation.resume(NotificationResult.TIMEOUT)
+            }
         } catch (e: Exception) {
             // This can happen if there is a race condition b/w two events. In that case, we ignore the second event.
         }
@@ -177,6 +209,7 @@ fun Snackbar(
         hasIcon = metadata.icon != null,
         hasAction = metadata.actionText != null,
         duration = metadata.duration,
+        scope = scope,
         animationBehavior = metadata.animationBehavior,
     ) { animationVariables ->
         Row(
@@ -246,9 +279,7 @@ fun Snackbar(
             if (metadata.actionText != null) {
                 Button(
                     onClick = {
-                        scope.launch {
-                            metadata.clicked()
-                        }
+                        metadata.clicked(scope)
                     },
                     modifier = Modifier
                         .testTag(SNACK_BAR_ACTION_BUTTON)
@@ -284,9 +315,7 @@ fun Snackbar(
                             role = Role.Image,
                             onClickLabel = "Dismiss",
                             onClick = {
-                                scope.launch {
-                                    metadata.dismiss()
-                                }
+                                metadata.dismiss(scope)
                             }
                         )
                         .testTag(SNACK_BAR_DISMISS_BUTTON)

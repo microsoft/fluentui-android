@@ -5,14 +5,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.AccessibilityManager
 import androidx.compose.ui.platform.LocalAccessibilityManager
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 
 interface NotificationMetadata {
-    suspend fun clicked()
+    @Deprecated("Will be removed in future releases. Use NotificationMetadata.clicked(scope: CoroutineScope) instead.")
+    fun clicked()
 
-    suspend fun dismiss()
+    @Deprecated("Will be removed in future releases. Use NotificationMetadata.dismiss(scope: CoroutineScope) instead.")
+    fun dismiss()
 
-    suspend fun timedOut()
+    @Deprecated("Will be removed in future releases. Use NotificationMetadata.timedOut(scope: CoroutineScope) instead.")
+    fun timedOut()
+
+    fun clicked(scope: CoroutineScope)
+
+    fun dismiss(scope: CoroutineScope)
+
+    fun timedOut(scope: CoroutineScope)
 }
 
 open class AnimationVariables {
@@ -118,6 +128,7 @@ internal fun NotificationContainer(
     hasAction: Boolean,
     duration: NotificationDuration,
     animationBehavior: AnimationBehavior,
+    scope: CoroutineScope,
     content: @Composable ((animationVariables: AnimationVariables) -> Unit)
 ) {
     val accessibilityManager = LocalAccessibilityManager.current
@@ -129,7 +140,7 @@ internal fun NotificationContainer(
                 accessibilityManager = accessibilityManager
             )
         )
-        notificationMetadata.timedOut()
+        notificationMetadata.timedOut(scope)
     }
 
     LaunchedEffect(notificationMetadata) {
