@@ -194,7 +194,8 @@ fun Icon(
             Modifier.then (
                 if(onLongClick != null) Modifier.clickAndLongClick(
                     onClick = onClick,
-                    onLongClick = onLongClick
+                    onLongClick = onLongClick,
+                    rippleColor = Color.Unspecified
                 )
                 else Modifier.clickable(
                     interactionSource = remember { MutableInteractionSource() },
