@@ -143,13 +143,12 @@ fun Icon(
 fun Modifier.clickAndLongClick(
     onClick: () -> Unit,
     onLongClick: () -> Unit,
-    rippleColour: Color = Color.Unspecified,
+    rippleColor: Color = Color.Unspecified,
 ): Modifier {
     val interactionSource = remember { MutableInteractionSource() }
-    val ripple = rememberRipple(color = rippleColour)
 
     return this
-        .indication(interactionSource, ripple)
+        .indication(interactionSource, rememberRipple(color = rippleColor))
         .pointerInput(Unit) {
             detectTapGestures(
                 onPress = { offset ->
