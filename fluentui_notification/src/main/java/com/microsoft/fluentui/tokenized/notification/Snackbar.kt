@@ -6,6 +6,7 @@ import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -18,6 +19,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.Role
@@ -31,6 +35,7 @@ import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.StateColor
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.tokenized.controls.Button
+import com.microsoft.fluentui.util.dpToPx
 import kotlinx.coroutines.CancellableContinuation
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -172,6 +177,10 @@ fun Snackbar(
             end = 16.dp
         ) else PaddingValues(start = 16.dp, top = 12.dp, bottom = 12.dp)
 
+    val offsetX = remember { Animatable(0f) }
+    val configuration = LocalConfiguration.current
+    val dismissThreshold =
+        dpToPx(configuration.screenWidthDp.dp) * 0.33f  // One-third of screen width
     NotificationContainer(
         notificationMetadata = metadata,
         hasIcon = metadata.icon != null,
@@ -188,6 +197,26 @@ fun Snackbar(
                     translationX = animationVariables.offsetX.value,
                     translationY = animationVariables.offsetY.value
                 )
+                .pointerInput(Unit) {
+                    detectHorizontalDragGestures(
+                        onDragEnd = {
+                            if (offsetX.value < -dismissThreshold) {
+                                scope.launch {
+                                    metadata.dismiss()
+                                }
+                            } else {
+                                scope.launch {
+                                    offsetX.animateTo(0f, animationSpec = tween(300))
+                                }
+                            }
+                        },
+                        onHorizontalDrag = { _, dragAmount ->
+                            scope.launch {
+                                offsetX.snapTo(offsetX.value + dragAmount)
+                            }
+                        }
+                    )
+                }
                 .padding(horizontal = 16.dp)
                 .defaultMinSize(minHeight = 52.dp)
                 .fillMaxWidth()
