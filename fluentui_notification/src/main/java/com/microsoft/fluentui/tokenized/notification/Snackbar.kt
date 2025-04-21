@@ -75,16 +75,12 @@ class SnackbarMetadata(
     val animationBehavior: AnimationBehavior
 ) : NotificationMetadata {
 
-    override fun clicked() {
+    override fun clicked(scope: CoroutineScope?) {
         try {
-            if (continuation.isActive) continuation.resume(NotificationResult.CLICKED)
-        } catch (e: Exception) {
-            // This can happen if there is a race condition b/w two events. In that case, we ignore the second event.
-        }
-    }
-
-    override fun clicked(scope: CoroutineScope) {
-        try {
+            if(scope == null) {
+                if (continuation.isActive) continuation.resume(NotificationResult.CLICKED)
+                return
+            }
             scope.launch {
                 animationBehavior.onClickAnimation()
                 if (continuation.isActive) continuation.resume(NotificationResult.CLICKED)
@@ -94,16 +90,12 @@ class SnackbarMetadata(
         }
     }
 
-    override fun dismiss() {
+    override fun dismiss(scope: CoroutineScope?) {
         try {
-            if (continuation.isActive) continuation.resume(NotificationResult.DISMISSED)
-        } catch (e: Exception) {
-            // This can happen if there is a race condition b/w two events. In that case, we ignore the second event.
-        }
-    }
-
-    override fun dismiss(scope: CoroutineScope) {
-        try {
+            if(scope == null) {
+                if (continuation.isActive) continuation.resume(NotificationResult.DISMISSED)
+                return
+            }
             scope.launch {
                 animationBehavior.onDismissAnimation()
                 if (continuation.isActive) continuation.resume(NotificationResult.DISMISSED)
@@ -113,16 +105,12 @@ class SnackbarMetadata(
         }
     }
 
-    override fun timedOut() {
+    override fun timedOut(scope: CoroutineScope?) {
         try {
-            if (continuation.isActive) continuation.resume(NotificationResult.TIMEOUT)
-        } catch (e: Exception) {
-            // This can happen if there is a race condition b/w two events. In that case, we ignore the second event.
-        }
-    }
-
-    override fun timedOut(scope: CoroutineScope) {
-        try {
+            if(scope == null) {
+                if (continuation.isActive) continuation.resume(NotificationResult.TIMEOUT)
+                return
+            }
             scope.launch {
                 animationBehavior.onTimeoutAnimation()
                 if (continuation.isActive) continuation.resume(NotificationResult.TIMEOUT)
