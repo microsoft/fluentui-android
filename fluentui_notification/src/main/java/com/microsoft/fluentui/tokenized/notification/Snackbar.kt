@@ -1,9 +1,5 @@
 package com.microsoft.fluentui.tokenized.notification
 
-import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.AnimationVector1D
-import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -33,7 +29,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.tokenized.controls.Button
 import kotlinx.coroutines.CancellableContinuation
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine

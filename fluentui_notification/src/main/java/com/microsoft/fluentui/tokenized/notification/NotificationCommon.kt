@@ -9,11 +9,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 
 interface NotificationMetadata {
-    fun clicked(scope: CoroutineScope?)
+    fun clicked(scope: CoroutineScope? = null)
 
-    fun dismiss(scope: CoroutineScope?)
+    fun dismiss(scope: CoroutineScope? = null )
 
-    fun timedOut(scope: CoroutineScope?)
+    fun timedOut(scope: CoroutineScope? = null)
 }
 
 open class AnimationVariables {
