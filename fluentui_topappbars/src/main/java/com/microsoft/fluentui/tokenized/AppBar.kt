@@ -152,7 +152,7 @@ fun AppBar(
                                     if(navigationIcon.onLongClick != null) Modifier.clickAndLongClick(
                                         onClick = navigationIcon.onClick!!,
                                         onLongClick = navigationIcon.onLongClick!!,
-                                        rippleColour = token.navigationIconRippleColor()
+                                        rippleColor = token.navigationIconRippleColor()
                                     )
                                     else Modifier.clickable(
                                         interactionSource = remember { MutableInteractionSource() },
