@@ -335,7 +335,7 @@ val customizedAnimationBehavior: AnimationBehavior = object : AnimationBehavior(
     }
 
     override suspend fun onShowAnimation() {
-        // pop from bottom
+        // pop out from bottom
         animationVariables.alpha.snapTo(1F)
         animationVariables.offsetX.snapTo(0F)
         animationVariables.offsetY.snapTo(50F)
