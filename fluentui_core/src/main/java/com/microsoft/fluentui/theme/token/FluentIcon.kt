@@ -125,7 +125,7 @@ fun Icon(
 }
 
 /**
- * Icon component that draws a [painter] using [tint] .
+ * Icon component that draws a [painter] using [tint].
  *
  * @param painter [Painter] to draw inside this Icon
  * @param contentDescription text used by accessibility services to describe what this icon
