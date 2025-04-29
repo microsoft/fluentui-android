@@ -30,6 +30,7 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.sp
@@ -38,6 +39,7 @@ import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Office
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralForegroundColorTokens.Foreground2
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.tokenized.SearchBar
@@ -172,7 +174,10 @@ fun CreateAcrylicPaneActivityUI(
                         horizontalArrangement = Arrangement.Start,
                         modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 5.dp)
                     ) {
-                        Text(text = "Text $it", fontSize = 14.sp)
+                        Text(text = "Text $it", fontSize = 14.sp,
+                            style = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1]
+                                .merge(TextStyle(color = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(themeMode = FluentTheme.themeMode)))
+                        )
                     }
                 }
             }

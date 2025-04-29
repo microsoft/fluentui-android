@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -312,9 +311,7 @@ class V2SnackbarActivity : V2DemoActivity() {
 
                     Button(
                         onClick = {
-                            scope.launch {
-                                snackbarState.currentSnackbar?.dismiss()
-                            }
+                            snackbarState.currentSnackbar?.dismiss(scope)
                         },
                         text = LocalContext.current.resources.getString(R.string.fluentui_dismiss_snackbar),
                         size = ButtonSize.Small,

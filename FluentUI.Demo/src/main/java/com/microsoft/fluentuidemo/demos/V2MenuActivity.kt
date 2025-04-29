@@ -3,6 +3,7 @@ package com.microsoft.fluentuidemo.demos
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,6 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
@@ -67,26 +69,30 @@ fun CreateMenuActivityUI(context: Context) {
                 trailingAccessoryContent = {
                     BasicTextField(value = xOffsetState.value,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        onValueChange = { xOffsetState.value = it.trim() })
+                        onValueChange = { xOffsetState.value = it.trim() },
+                        modifier = Modifier.background(Color.White))
                 }
             )
             ListItem.Header(title = context.getString(R.string.menu_yOffset),
                 trailingAccessoryContent = {
                     BasicTextField(value = yOffsetState.value,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        onValueChange = { yOffsetState.value = it.trim() })
+                        onValueChange = { yOffsetState.value = it.trim() },
+                        modifier = Modifier.background(Color.White))
                 })
             ListItem.Header(title = context.getString(R.string.menu_content_text),
                 trailingAccessoryContent = {
                     BasicTextField(
                         value = contentTextState.value,
-                        onValueChange = { contentTextState.value = it })
+                        onValueChange = { contentTextState.value = it },
+                        modifier = Modifier.background(Color.White))
                 })
             ListItem.Header(title = context.getString(R.string.menu_repeat_content_text),
                 trailingAccessoryContent = {
                     BasicTextField(value = repeatContentTextCountState.value,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        onValueChange = { repeatContentTextCountState.value = it.trim() })
+                        onValueChange = { repeatContentTextCountState.value = it.trim() },
+                        modifier = Modifier.background(Color.White))
                 })
             ListItem.SectionDescription(description = context.getString(R.string.menu_description))
         }
