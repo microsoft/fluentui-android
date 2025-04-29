@@ -2,10 +2,17 @@ Release version 0.3.7
 What's new
 Fluent v2:
 Fix/enhancement:
-    1. Move Acrylic Pane to fluentui_others
-    2. Added long press functionality for ListItem
-    3. Added PillButton border tokens
-    4. Added customizations for AppBar
+    1. Added ability to customize animations for V2 Snackbar
+    2. Added SwipeToDismiss support for V2 Snackbar
+    3. Added long press functionality for ListItem
+    4. Added long press functionality to FluentIcon
+    5. Added ability to disable V2 Shimmer animations
+    6. Added PillButton border tokens
+    7. Added ability to add additional postTitle icon and show it even if subtitle is not visible in V2 Appbar
+    8. Added custom talkback announcements for V2Drawer actions
+    9. Demo App Accessibility UI Fixes for Dark Mode
+    10.Moved Acrylic Pane to fluentui_others
+
  Others:
     1. Updated maven central publish pipeline
     2. Updated fluentui android release pipeline
