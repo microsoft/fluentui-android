@@ -1,7 +1,9 @@
 package com.microsoft.fluentui.tokenized.notification
 
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -14,6 +16,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.Role
@@ -27,6 +31,7 @@ import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.StateColor
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.tokenized.controls.Button
+import com.microsoft.fluentui.util.dpToPx
 import kotlinx.coroutines.CancellableContinuation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
@@ -154,6 +159,40 @@ class SnackbarState {
     }
 }
 
+@Composable
+fun Modifier.swipeToDismiss(
+    animationVariables: AnimationVariables,
+    scope: CoroutineScope,
+    metadata: SnackbarMetadata
+): Modifier {
+    val configuration = LocalConfiguration.current
+    val dismissThreshold =
+        dpToPx(configuration.screenWidthDp.dp) * 0.33f  // One-third of screen width
+    return this.pointerInput(Unit) {
+        detectHorizontalDragGestures(
+            onDragEnd = {
+                if (animationVariables.offsetX.value < -dismissThreshold) {
+                    scope.launch {
+                        metadata.dismiss()
+                    }
+                } else {
+                    scope.launch {
+                        animationVariables.offsetX.animateTo(
+                            0f,
+                            animationSpec = tween(300)
+                        )
+                    }
+                }
+            },
+            onHorizontalDrag = { _, dragAmount ->
+                scope.launch {
+                    animationVariables.offsetX.snapTo(animationVariables.offsetX.value + dragAmount)
+                }
+            }
+        )
+    }
+}
+
 /**
  * Snackbar are transient Notification control used to deliver information which can be timedout or
  * can be cleared by user pressing the CTA or dismiss icon. Snackbar is rendered using [SnackbarMetadata]
@@ -163,14 +202,16 @@ class SnackbarState {
  * @param snackbarState Queue to store all the Notification requests.
  * @param modifier Optional modifier to be applied to Snackbar.
  * @param snackbarTokens Optional Tokens to redesign Snackbar.
+ * @param enableSwipeToDismiss Optional flag to enable swipe to dismiss functionality.
  */
 @Composable
 fun Snackbar(
     snackbarState: SnackbarState,
     modifier: Modifier = Modifier,
-    snackbarTokens: SnackBarTokens? = null
+    snackbarTokens: SnackBarTokens? = null,
+    enableSwipeToDismiss: Boolean = false
 ) {
-    val metadata: SnackbarMetadata = snackbarState.currentSnackbar ?: return
+    val metadata = snackbarState.currentSnackbar ?: return
     val scope = rememberCoroutineScope()
 
     val themeID =
@@ -195,8 +236,17 @@ fun Snackbar(
         scope = scope,
         animationBehavior = metadata.animationBehavior,
     ) { animationVariables ->
-        Row(
+        val swipeToDismissModifier = if (enableSwipeToDismiss) {
+            modifier.swipeToDismiss(
+                animationVariables,
+                scope,
+                metadata
+            )
+        } else {
             modifier
+        }
+        Row(
+            swipeToDismissModifier
                 .graphicsLayer(
                     scaleX = animationVariables.scale.value,
                     scaleY = animationVariables.scale.value,
