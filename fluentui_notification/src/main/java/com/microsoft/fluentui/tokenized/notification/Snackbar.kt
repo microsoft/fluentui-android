@@ -177,7 +177,6 @@ fun Snackbar(
             end = 16.dp
         ) else PaddingValues(start = 16.dp, top = 12.dp, bottom = 12.dp)
 
-    val offsetX = remember { Animatable(0f) }
     val configuration = LocalConfiguration.current
     val dismissThreshold =
         dpToPx(configuration.screenWidthDp.dp) * 0.33f  // One-third of screen width
@@ -200,19 +199,22 @@ fun Snackbar(
                 .pointerInput(Unit) {
                     detectHorizontalDragGestures(
                         onDragEnd = {
-                            if (offsetX.value < -dismissThreshold) {
+                            if (animationVariables.offsetX.value < -dismissThreshold) {
                                 scope.launch {
                                     metadata.dismiss()
                                 }
                             } else {
                                 scope.launch {
-                                    offsetX.animateTo(0f, animationSpec = tween(300))
+                                    animationVariables.offsetX.animateTo(
+                                        0f,
+                                        animationSpec = tween(300)
+                                    )
                                 }
                             }
                         },
                         onHorizontalDrag = { _, dragAmount ->
                             scope.launch {
-                                offsetX.snapTo(offsetX.value + dragAmount)
+                                animationVariables.offsetX.snapTo(animationVariables.offsetX.value + dragAmount)
                             }
                         }
                     )
