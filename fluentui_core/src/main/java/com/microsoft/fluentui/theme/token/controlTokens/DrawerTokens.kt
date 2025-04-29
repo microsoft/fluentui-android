@@ -29,17 +29,6 @@ data class DrawerAccessibilityAnnouncement(
 
 @Parcelize
 open class DrawerTokens : IControlToken, Parcelable {
-
-    open fun talkbackAnnouncement(drawerInfo: DrawerInfo): DrawerAccessibilityAnnouncement {
-        return when (drawerInfo.type) {
-            BehaviorType.TOP -> DrawerAccessibilityAnnouncement()
-            BehaviorType.BOTTOM -> DrawerAccessibilityAnnouncement()
-            BehaviorType.LEFT_SLIDE_OVER -> DrawerAccessibilityAnnouncement()
-            BehaviorType.RIGHT_SLIDE_OVER -> DrawerAccessibilityAnnouncement()
-            BehaviorType.BOTTOM_SLIDE_OVER -> DrawerAccessibilityAnnouncement()
-        }
-    }
-
     @Composable
     open fun backgroundBrush(drawerInfo: DrawerInfo): Brush =
         SolidColor(

@@ -26,18 +26,6 @@ data class SheetAccessibilityAnnouncement(
 
 @Parcelize
 open class BottomSheetTokens : IControlToken, Parcelable {
-
-    open fun talkbackAnnouncement(bottomSheetInfo: BottomSheetInfo): SheetAccessibilityAnnouncement {
-        return SheetAccessibilityAnnouncement(
-            expandedToShown = "",
-            expandedToCollapsed = "Bottom Sheet Collapsed",
-            shownToExpanded = "Bottom Sheet Expanded",
-            shownToCollapsed = "Bottom Sheet Collapsed",
-            collapsedToExpanded = "Bottom Sheet Expanded",
-            collapsedToShown = "Bottom Sheet Opened"
-        )
-    }
-
     @Composable
     open fun backgroundBrush(bottomSheetInfo: BottomSheetInfo): Brush =
         SolidColor(

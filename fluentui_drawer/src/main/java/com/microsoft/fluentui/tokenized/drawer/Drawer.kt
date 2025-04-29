@@ -36,6 +36,7 @@ import com.microsoft.fluentui.compose.SwipeableState
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
+import com.microsoft.fluentui.theme.token.controlTokens.DrawerAccessibilityAnnouncement
 import com.microsoft.fluentui.theme.token.controlTokens.DrawerInfo
 import com.microsoft.fluentui.theme.token.controlTokens.DrawerTokens
 import kotlinx.coroutines.CancellationException
@@ -326,10 +327,9 @@ internal fun Scrim(
 }
 
 @Composable
-internal fun AnnounceDrawerActions(drawerState: DrawerState, drawerInfo: DrawerInfo, tokens: DrawerTokens){ // Announces actions for drawer through Talkback
+internal fun AnnounceDrawerActions(drawerState: DrawerState, talkbackAnnouncement: DrawerAccessibilityAnnouncement){ // Announces actions for drawer through Talkback
     val view = LocalView.current
     var previousState by remember { mutableStateOf(drawerState.enable) }
-    val talkbackAnnouncement = tokens.talkbackAnnouncement(drawerInfo = drawerInfo)
 
     LaunchedEffect(drawerState.enable) {
         if (drawerState.enable != previousState) {
@@ -368,6 +368,7 @@ fun Drawer(
     drawerState: DrawerState = rememberDrawerState(),
     scrimVisible: Boolean = true,
     offset: IntOffset? = null,
+    talkbackAnnouncement: DrawerAccessibilityAnnouncement = DrawerAccessibilityAnnouncement(),
     drawerTokens: DrawerTokens? = null,
     drawerContent: @Composable () -> Unit,
     preventDismissalOnScrimClick: Boolean = false,
@@ -376,7 +377,7 @@ fun Drawer(
     val tokens = drawerTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DrawerControlType] as DrawerTokens
     val drawerInfo = DrawerInfo(type = behaviorType)
-    AnnounceDrawerActions(drawerState, drawerInfo, tokens)
+    AnnounceDrawerActions(drawerState, talkbackAnnouncement = talkbackAnnouncement)
 
     if (drawerState.enable) {
         val themeID =
@@ -499,6 +500,7 @@ fun BottomDrawer(
     showHandle: Boolean = true,
     enableSwipeDismiss: Boolean = true,
     windowInsetsType: Int = WindowInsetsCompat.Type.systemBars(),
+    talkbackAnnouncement: DrawerAccessibilityAnnouncement = DrawerAccessibilityAnnouncement(),
     drawerTokens: DrawerTokens? = null,
     drawerContent: @Composable () -> Unit,
     maxLandscapeWidthFraction: Float = 1F,
@@ -510,7 +512,7 @@ fun BottomDrawer(
     val drawerInfo = DrawerInfo(type = behaviorType)
     val tokens = drawerTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DrawerControlType] as DrawerTokens
-    AnnounceDrawerActions(drawerState, drawerInfo, tokens)
+    AnnounceDrawerActions(drawerState, talkbackAnnouncement = talkbackAnnouncement)
     if (drawerState.enable) {
         val themeID =
             FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
