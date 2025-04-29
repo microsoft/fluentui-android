@@ -2,10 +2,14 @@ package com.microsoft.fluentui.theme.token
 
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.indication
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.NonRestartableComposable
 import androidx.compose.runtime.remember
@@ -15,11 +19,11 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.toolingGraphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.semantics.Role
@@ -37,6 +41,7 @@ data class FluentIcon(
     val tint: Color? = null,
     val flipOnRtl: Boolean = false,
     val enabled: Boolean = true,
+    val onLongClick: (() -> Unit)? = null, //TODO: Add tokens for ripple
     val onClick: (() -> Unit)? = null
 ) {
     @Composable
@@ -75,6 +80,7 @@ fun Icon(
         flipOnRtl = icon.flipOnRtl,
         tint = icon.tint ?: tint,
         enabled = icon.enabled,
+        onLongClick = icon.onLongClick,
         onClick = icon.onClick
     )
 }
@@ -103,6 +109,7 @@ fun Icon(
     flipOnRtl: Boolean = false,
     tint: Color = Color.Unspecified,
     enabled: Boolean = true,
+    onLongClick: (() -> Unit)? = null,
     onClick: (() -> Unit)? = null
 ) {
     Icon(
@@ -112,6 +119,7 @@ fun Icon(
         flipOnRtl = flipOnRtl,
         tint = tint,
         enabled = enabled,
+        onLongClick = onLongClick,
         onClick = onClick
     )
 }
@@ -132,6 +140,35 @@ fun Icon(
  * @param onClick onClick Lambda to be invoked when icon is clicked.
  */
 @Composable
+fun Modifier.clickAndLongClick(
+    onClick: () -> Unit,
+    onLongClick: () -> Unit,
+    rippleColor: Color = Color.Unspecified,
+): Modifier {
+    val interactionSource = remember { MutableInteractionSource() }
+
+    return this
+        .indication(interactionSource, rememberRipple(color = rippleColor))
+        .pointerInput(Unit) {
+            detectTapGestures(
+                onPress = { offset ->
+                    val press = PressInteraction.Press(offset)
+                    interactionSource.emit(press)
+                    val released = tryAwaitRelease() // for hold clicks
+                    val endInteraction = if (released) {
+                        PressInteraction.Release(press)
+                    } else {
+                        PressInteraction.Cancel(press)
+                    }
+                    interactionSource.emit(endInteraction)
+                },
+                onTap = { onClick() },
+                onLongPress = { onLongClick() }
+            )
+        }
+}
+
+@Composable
 fun Icon(
     painter: Painter,
     contentDescription: String?,
@@ -139,6 +176,7 @@ fun Icon(
     flipOnRtl: Boolean = false,
     tint: Color = Color.Unspecified,
     enabled: Boolean = true,
+    onLongClick: (() -> Unit)? = null,
     onClick: (() -> Unit)? = null
 ) {
     val colorFilter = if (tint == Color.Unspecified) null else ColorFilter.tint(tint)
@@ -152,11 +190,19 @@ fun Icon(
     }
 
     val clickableModifier = Modifier.then(
-        if (onClick != null) Modifier.clickable(
-            interactionSource = remember { MutableInteractionSource() },
-            indication = LocalIndication.current,
-            enabled = enabled,
-            onClick = onClick
+        if (onClick != null)
+            Modifier.then (
+                if(onLongClick != null) Modifier.clickAndLongClick(
+                    onClick = onClick,
+                    onLongClick = onLongClick,
+                    rippleColor = Color.Unspecified
+                )
+                else Modifier.clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = LocalIndication.current,
+                    enabled = enabled,
+                    onClick = onClick
+                )
         ) else Modifier
     )
 

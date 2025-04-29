@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.KeyEvent.KEYCODE_DPAD_DOWN
 import android.view.KeyEvent.KEYCODE_DPAD_RIGHT
 import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -47,9 +48,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralForegroundColorTokens.Foreground2
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.tokenized.contextualcommandbar.ActionButtonPosition
@@ -255,7 +258,14 @@ class V2ContextualCommandBarActivity : V2DemoActivity() {
                         CenterHorizontally
                     ), verticalAlignment = CenterVertically
                 ) {
-                    BasicText(text = "Action Button")
+                    BasicText(
+                        text = "Action Button",
+                        style = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1].merge(
+                            TextStyle(color = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
+                                themeMode = FluentTheme.themeMode
+                            ))
+                        ),
+                    )
                     ToggleSwitch(
                         onValueChange =
                         {
@@ -321,6 +331,7 @@ class V2ContextualCommandBarActivity : V2DemoActivity() {
                                 }
                             }
                             .padding(start = 8.dp)
+                            .background(Color.White),
                     )
                 }
 

@@ -311,9 +311,7 @@ class V2SnackbarActivity : V2DemoActivity() {
 
                     Button(
                         onClick = {
-                            scope.launch {
-                                snackbarState.currentSnackbar?.dismiss()
-                            }
+                            snackbarState.currentSnackbar?.dismiss(scope)
                         },
                         text = LocalContext.current.resources.getString(R.string.fluentui_dismiss_snackbar),
                         size = ButtonSize.Small,

@@ -75,28 +75,46 @@ class SnackbarMetadata(
     val animationBehavior: AnimationBehavior
 ) : NotificationMetadata {
 
-    override suspend fun clicked() {
+    override fun clicked(scope: CoroutineScope?) {
         try {
-            animationBehavior?.onClickAnimation()
-            if (continuation.isActive) continuation.resume(NotificationResult.CLICKED)
+            if(scope == null) {
+                if (continuation.isActive) continuation.resume(NotificationResult.CLICKED)
+                return
+            }
+            scope.launch {
+                animationBehavior.onClickAnimation()
+                if (continuation.isActive) continuation.resume(NotificationResult.CLICKED)
+            }
         } catch (e: Exception) {
             // This can happen if there is a race condition b/w two events. In that case, we ignore the second event.
         }
     }
 
-    override suspend fun dismiss() {
+    override fun dismiss(scope: CoroutineScope?) {
         try {
-            animationBehavior?.onDismissAnimation()
-            if (continuation.isActive) continuation.resume(NotificationResult.DISMISSED)
+            if(scope == null) {
+                if (continuation.isActive) continuation.resume(NotificationResult.DISMISSED)
+                return
+            }
+            scope.launch {
+                animationBehavior.onDismissAnimation()
+                if (continuation.isActive) continuation.resume(NotificationResult.DISMISSED)
+            }
         } catch (e: Exception) {
             // This can happen if there is a race condition b/w two events. In that case, we ignore the second event.
         }
     }
 
-    override suspend fun timedOut() {
+    override fun timedOut(scope: CoroutineScope?) {
         try {
-            animationBehavior?.onTimeoutAnimation()
-            if (continuation.isActive) continuation.resume(NotificationResult.TIMEOUT)
+            if(scope == null) {
+                if (continuation.isActive) continuation.resume(NotificationResult.TIMEOUT)
+                return
+            }
+            scope.launch {
+                animationBehavior.onTimeoutAnimation()
+                if (continuation.isActive) continuation.resume(NotificationResult.TIMEOUT)
+            }
         } catch (e: Exception) {
             // This can happen if there is a race condition b/w two events. In that case, we ignore the second event.
         }
@@ -215,6 +233,7 @@ fun Snackbar(
         hasIcon = metadata.icon != null,
         hasAction = metadata.actionText != null,
         duration = metadata.duration,
+        scope = scope,
         animationBehavior = metadata.animationBehavior,
     ) { animationVariables ->
         val swipeToDismissModifier = if (enableSwipeToDismiss) {
@@ -293,9 +312,7 @@ fun Snackbar(
             if (metadata.actionText != null) {
                 Button(
                     onClick = {
-                        scope.launch {
-                            metadata.clicked()
-                        }
+                        metadata.clicked(scope)
                     },
                     modifier = Modifier
                         .testTag(SNACK_BAR_ACTION_BUTTON)
@@ -331,9 +348,7 @@ fun Snackbar(
                             role = Role.Image,
                             onClickLabel = "Dismiss",
                             onClick = {
-                                scope.launch {
-                                    metadata.dismiss()
-                                }
+                                metadata.dismiss(scope)
                             }
                         )
                         .testTag(SNACK_BAR_DISMISS_BUTTON)
