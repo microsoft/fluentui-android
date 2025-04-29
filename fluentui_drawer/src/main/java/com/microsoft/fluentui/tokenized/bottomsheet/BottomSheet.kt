@@ -34,6 +34,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.*
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.*
@@ -49,6 +50,7 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BottomSheetInfo
 import com.microsoft.fluentui.theme.token.controlTokens.BottomSheetTokens
+import com.microsoft.fluentui.theme.token.controlTokens.SheetAccessibilityAnnouncement
 import com.microsoft.fluentui.tokenized.calculateFraction
 import com.microsoft.fluentui.util.dpToPx
 import com.microsoft.fluentui.util.pxToDp
@@ -192,6 +194,51 @@ const val BOTTOMSHEET_SCRIM_TAG = "Fluent Bottom Sheet Scrim"
 
 private const val BottomSheetOpenFraction = 0.5f
 
+@Composable
+internal fun AccesibilityBottomsheetAnnouncement(sheetState: BottomSheetState, talkbackAnnouncement: SheetAccessibilityAnnouncement){
+    val view = LocalView.current
+    var previousState by remember { mutableStateOf(sheetState.currentValue) }
+
+    LaunchedEffect(sheetState.currentValue) {
+        when (sheetState.currentValue) {
+            BottomSheetValue.Expanded -> {
+                when (previousState) {
+                    BottomSheetValue.Shown -> {
+                        view.announceForAccessibility(talkbackAnnouncement.shownToExpanded)
+                    }
+                    BottomSheetValue.Hidden -> {
+                        view.announceForAccessibility(talkbackAnnouncement.collapsedToExpanded)
+                    }
+                    BottomSheetValue.Expanded -> {}
+                }
+            }
+            BottomSheetValue.Shown -> {
+                when (previousState) {
+                    BottomSheetValue.Expanded -> {
+                        view.announceForAccessibility(talkbackAnnouncement.expandedToShown)
+                    }
+                    BottomSheetValue.Hidden -> {
+                        view.announceForAccessibility(talkbackAnnouncement.collapsedToShown)
+                    }
+                    BottomSheetValue.Shown -> {}
+                }
+            }
+            BottomSheetValue.Hidden -> {
+                when (previousState) {
+                    BottomSheetValue.Expanded -> {
+                        view.announceForAccessibility(talkbackAnnouncement.expandedToCollapsed)
+                    }
+                    BottomSheetValue.Shown -> {
+                        view.announceForAccessibility(talkbackAnnouncement.shownToCollapsed)
+                    }
+                    BottomSheetValue.Hidden -> {}
+                }
+            }
+        }
+        previousState = sheetState.currentValue // Update previous state
+    }
+}
+
 /**
  *
  * Bottom sheets present a set of choices while blocking interaction with the rest of the
@@ -236,6 +283,7 @@ fun BottomSheet(
     preventDismissalOnScrimClick: Boolean = false,  // if true, the sheet will not be dismissed when the scrim is clicked
     stickyThresholdUpward: Float = 56f,
     stickyThresholdDownward: Float = 56f,
+    talkbackAnnouncement: SheetAccessibilityAnnouncement = SheetAccessibilityAnnouncement(),
     bottomSheetTokens: BottomSheetTokens? = null,
     onDismiss: () -> Unit = {}, // callback to be invoked after the sheet is closed
     content: @Composable () -> Unit
@@ -244,8 +292,8 @@ fun BottomSheet(
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val tokens = bottomSheetTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.BottomSheetControlType] as BottomSheetTokens
-
     val bottomSheetInfo = BottomSheetInfo()
+    AccesibilityBottomsheetAnnouncement(sheetState, talkbackAnnouncement)
     val sheetShape: Shape = RoundedCornerShape(
         topStart = tokens.cornerRadius(bottomSheetInfo),
         topEnd = tokens.cornerRadius(bottomSheetInfo)

@@ -6,6 +6,7 @@ import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -18,6 +19,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
@@ -34,6 +36,7 @@ import com.microsoft.fluentui.compose.SwipeableState
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
+import com.microsoft.fluentui.theme.token.controlTokens.DrawerAccessibilityAnnouncement
 import com.microsoft.fluentui.theme.token.controlTokens.DrawerInfo
 import com.microsoft.fluentui.theme.token.controlTokens.DrawerTokens
 import kotlinx.coroutines.CancellationException
@@ -323,6 +326,23 @@ internal fun Scrim(
     }
 }
 
+@Composable
+internal fun AnnounceDrawerActions(drawerState: DrawerState, talkbackAnnouncement: DrawerAccessibilityAnnouncement){ // Announces actions for drawer through Talkback
+    val view = LocalView.current
+    var previousState by remember { mutableStateOf(drawerState.enable) }
+
+    LaunchedEffect(drawerState.enable) {
+        if (drawerState.enable != previousState) {
+            if (drawerState.enable) {
+                view.announceForAccessibility(talkbackAnnouncement.opened)
+            } else {
+                view.announceForAccessibility(talkbackAnnouncement.closed)
+            }
+            previousState = drawerState.enable
+        }
+    }
+
+}
 /**
  *
  * Drawer block interaction with the rest of an app’s content with a scrim.
@@ -348,17 +368,20 @@ fun Drawer(
     drawerState: DrawerState = rememberDrawerState(),
     scrimVisible: Boolean = true,
     offset: IntOffset? = null,
+    talkbackAnnouncement: DrawerAccessibilityAnnouncement = DrawerAccessibilityAnnouncement(),
     drawerTokens: DrawerTokens? = null,
     drawerContent: @Composable () -> Unit,
     preventDismissalOnScrimClick: Boolean = false,
     onScrimClick: () -> Unit = {}
 ) {
+    val tokens = drawerTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DrawerControlType] as DrawerTokens
+    val drawerInfo = DrawerInfo(type = behaviorType)
+    AnnounceDrawerActions(drawerState, talkbackAnnouncement = talkbackAnnouncement)
+
     if (drawerState.enable) {
         val themeID =
             FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
-        val tokens = drawerTokens
-            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DrawerControlType] as DrawerTokens
-
         val popupPositionProvider = DrawerPositionProvider(offset)
         val scope = rememberCoroutineScope()
         val close: () -> Unit = {
@@ -366,7 +389,6 @@ fun Drawer(
                 scope.launch { drawerState.close() }
             }
         }
-        val drawerInfo = DrawerInfo(type = behaviorType)
         Popup(
             onDismissRequest = close,
             popupPositionProvider = popupPositionProvider,
@@ -478,27 +500,28 @@ fun BottomDrawer(
     showHandle: Boolean = true,
     enableSwipeDismiss: Boolean = true,
     windowInsetsType: Int = WindowInsetsCompat.Type.systemBars(),
+    talkbackAnnouncement: DrawerAccessibilityAnnouncement = DrawerAccessibilityAnnouncement(),
     drawerTokens: DrawerTokens? = null,
     drawerContent: @Composable () -> Unit,
     maxLandscapeWidthFraction: Float = 1F,
     preventDismissalOnScrimClick: Boolean = false,
     onScrimClick: () -> Unit = {},
 ) {
-
+    val behaviorType =
+        if (slideOver) BehaviorType.BOTTOM_SLIDE_OVER else BehaviorType.BOTTOM
+    val drawerInfo = DrawerInfo(type = behaviorType)
+    val tokens = drawerTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DrawerControlType] as DrawerTokens
+    AnnounceDrawerActions(drawerState, talkbackAnnouncement = talkbackAnnouncement)
     if (drawerState.enable) {
         val themeID =
             FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
-        val tokens = drawerTokens
-            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DrawerControlType] as DrawerTokens
         val scope = rememberCoroutineScope()
         val close: () -> Unit = {
             if (drawerState.confirmStateChange(DrawerValue.Closed)) {
                 scope.launch { drawerState.close() }
             }
         }
-        val behaviorType =
-            if (slideOver) BehaviorType.BOTTOM_SLIDE_OVER else BehaviorType.BOTTOM
-        val drawerInfo = DrawerInfo(type = behaviorType)
         BackHandler { //TODO: Add pull down animation with predictive back
             close()
         }

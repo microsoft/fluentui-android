@@ -22,9 +22,13 @@ enum class BehaviorType {
 
 open class DrawerInfo(val type: BehaviorType = BehaviorType.LEFT_SLIDE_OVER) : ControlInfo
 
+data class DrawerAccessibilityAnnouncement(
+    var opened: String = "Drawer Opened",
+    var closed: String = "Drawer Closed",
+)
+
 @Parcelize
 open class DrawerTokens : IControlToken, Parcelable {
-
     @Composable
     open fun backgroundBrush(drawerInfo: DrawerInfo): Brush =
         SolidColor(
