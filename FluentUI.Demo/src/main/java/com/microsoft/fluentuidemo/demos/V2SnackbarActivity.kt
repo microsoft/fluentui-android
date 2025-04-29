@@ -323,7 +323,7 @@ class V2SnackbarActivity : V2DemoActivity() {
                     )
                 }
                 Box(Modifier.fillMaxHeight(), contentAlignment = Alignment.Center) {
-                    Snackbar(snackbarState, Modifier.padding(bottom = 12.dp))
+                    Snackbar(snackbarState, Modifier.padding(bottom = 12.dp), null, true)
                 }
             }
         }
