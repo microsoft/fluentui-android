@@ -119,6 +119,9 @@ Fluent UI for Android includes an expanding library of controls written in Kotli
 
 API 23+
 
+
+**Note:** The API requirement has been updated from API 21+ to API 23+. Please ensure your project meets this requirement if you are upgrading from an older version.
+
 ### 1. Using Gradle
 
 - Our library is now published using MavenCentral, so make sure the `mavenCentral()` repository has been added to your project level build.gradle file if you want to consume versions `>= 0.0.17`.
