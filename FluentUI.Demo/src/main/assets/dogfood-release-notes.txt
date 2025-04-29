@@ -9,9 +9,9 @@ Fix/enhancement:
     5. Added ability to disable V2 Shimmer animations
     6. Added PillButton border tokens
     7. Added ability to add additional postTitle icon and show it even if subtitle is not visible in V2 Appbar
-    8. Added custom talkback announcements for V2Drawer actions
+    8. Added custom talkback announcements for V2 Drawer actions
     9. Demo App Accessibility UI Fixes for Dark Mode
-    10.Moved Acrylic Pane to fluentui_others
+    10.Moved V2 Acrylic Pane to fluentui_others
 
  Others:
     1. Updated maven central publish pipeline
