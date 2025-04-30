@@ -17,5 +17,5 @@ Fix/enhancement:
     1. Updated maven central publish pipeline
     2. Updated fluentui android release pipeline
 
-Note: Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00).
-Fluent version 0.3.x will support compose foundation version 1.6.0.
+Note: Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00) .
+Fluent version 0.3.x will support compose foundation version 1.6.0 .
