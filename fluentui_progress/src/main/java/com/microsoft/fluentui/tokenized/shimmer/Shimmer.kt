@@ -106,8 +106,9 @@ internal fun InternalShimmer(
     } else {
         shimmerDelay
     }
-    val orientation: ShimmerOrientation = if(tokens.orientation(shimmerInfo) != ShimmerOrientation._NONE){
-        tokens.orientation(shimmerInfo)
+    val tokenOrientation = tokens.orientation(shimmerInfo)
+    val orientation: ShimmerOrientation = if(tokenOrientation != ShimmerOrientation._NONE){
+        tokenOrientation
     } else {
         shimmerOrientation
     }
