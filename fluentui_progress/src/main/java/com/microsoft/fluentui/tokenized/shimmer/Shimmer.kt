@@ -101,8 +101,9 @@ internal fun InternalShimmer(
     val diagonal =
         sqrt((screenHeight * screenHeight + screenWidth * screenWidth).toDouble()).toFloat()
     val shimmerInfo = ShimmerInfo()
-    val shimmerDelayValue = if(tokens.delay(shimmerInfo) != -1){
-        tokens.delay(shimmerInfo)
+    val cachedDelay = tokens.delay(shimmerInfo)
+    val shimmerDelayValue = if (cachedDelay != -1) {
+        cachedDelay
     } else {
         shimmerDelay
     }
