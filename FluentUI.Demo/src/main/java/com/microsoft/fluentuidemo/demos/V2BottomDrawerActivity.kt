@@ -4,43 +4,84 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.ime
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.selection.toggleable
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Slider
 import androidx.compose.material.SliderDefaults
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Check
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
+import com.microsoft.fluentui.theme.token.FluentIcon
+import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.Icon
+import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
+import com.microsoft.fluentui.theme.token.controlTokens.BorderType
+import com.microsoft.fluentui.theme.token.controlTokens.SearchBarInfo
+import com.microsoft.fluentui.theme.token.controlTokens.SearchBarTokens
+import com.microsoft.fluentui.tokenized.SearchBar
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.drawer.BottomDrawer
 import com.microsoft.fluentui.tokenized.drawer.DrawerValue
 import com.microsoft.fluentui.tokenized.drawer.rememberBottomDrawerState
 import com.microsoft.fluentui.tokenized.listitem.ListItem
+import com.microsoft.fluentui.tokenized.persona.Person
+import com.microsoft.fluentui.tokenized.persona.Persona
+import com.microsoft.fluentui.tokenized.persona.PersonaList
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.util.PrimarySurfaceContent
-import com.microsoft.fluentuidemo.util.getAndroidViewAsContent
 import com.microsoft.fluentuidemo.util.getDrawerAsContent
 import com.microsoft.fluentuidemo.util.getDynamicListGeneratorAsContent
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class V2BottomDrawerActivity : V2DemoActivity() {
@@ -61,6 +102,277 @@ class V2BottomDrawerActivity : V2DemoActivity() {
         setActivityContent {
             CreateActivityUI()
             LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher?.addCallback(this, onBackCallback) //registering the callback to end the activity when back button is pressed
+        }
+    }
+}
+
+@Composable
+private fun searchItemActivity(): @Composable ((close: () -> Unit, expand: () -> Unit, open: () -> Unit) -> Unit) {
+    return { close, expand, open ->
+        val imeInsets = WindowInsets.ime
+        val density = LocalDensity.current
+        val isKeyboardVisible by remember {
+            derivedStateOf {
+                imeInsets.getBottom(density) > 0
+            }
+        }
+        LaunchedEffect(isKeyboardVisible) {
+            if (isKeyboardVisible) {
+                expand()
+            } else {
+                open()
+            }
+        }
+        var autoCorrectEnabled: Boolean by rememberSaveable { mutableStateOf(false) }
+        var searchBarStyle: FluentStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
+        var induceDelay: Boolean by rememberSaveable { mutableStateOf(false) }
+        var selectedPeople: Person? by rememberSaveable { mutableStateOf(null) }
+        val listofPeople = listOf(
+            Person(
+                "Allan", "Munger",
+                image = R.drawable.avatar_allan_munger,
+                isActive = true
+            ),
+            Person(
+                "Amanda", "Brady",
+                isActive = false, status = AvatarStatus.Offline
+            ),
+            Person(
+                "Abhay", "Singh",
+                isActive = true, status = AvatarStatus.DND, isOOO = true
+            ),
+            Person(
+                "Carlos", "Slathery",
+                isActive = false, status = AvatarStatus.Busy, isOOO = true
+            ),
+            Person(
+                "Celeste", "Burton",
+                image = R.drawable.avatar_celeste_burton,
+                isActive = true, status = AvatarStatus.Away
+            ),
+            Person(
+                "Ankit", "Gupta",
+                isActive = true, status = AvatarStatus.Unknown
+            ),
+            Person(
+                "Miguel", "Garcia",
+                image = R.drawable.avatar_miguel_garcia,
+                isActive = true, status = AvatarStatus.Blocked
+            ),
+            Person(
+                "Miguel", "Garcia",
+                image = R.drawable.avatar_miguel_garcia,
+                isActive = true, status = AvatarStatus.Blocked
+            ),
+            Person(
+                "Miguel", "Garcia",
+                image = R.drawable.avatar_miguel_garcia,
+                isActive = true, status = AvatarStatus.Blocked
+            ),
+            Person(
+                "Miguel", "Garcia",
+                image = R.drawable.avatar_miguel_garcia,
+                isActive = true, status = AvatarStatus.Blocked
+            ),
+            Person(
+                "Miguel", "Garcia",
+                image = R.drawable.avatar_miguel_garcia,
+                isActive = true, status = AvatarStatus.Blocked
+            ),
+            Person(
+                "Miguel", "Garcia",
+                image = R.drawable.avatar_miguel_garcia,
+                isActive = true, status = AvatarStatus.Blocked
+            ),
+            Person(
+                "Miguel", "Garcia",
+                image = R.drawable.avatar_miguel_garcia,
+                isActive = true, status = AvatarStatus.Blocked
+            ),
+            Person(
+                "Miguel", "Garcia",
+                image = R.drawable.avatar_miguel_garcia,
+                isActive = true, status = AvatarStatus.Blocked
+            ),
+            Person(
+                "Miguel", "Garcia",
+                image = R.drawable.avatar_miguel_garcia,
+                isActive = true, status = AvatarStatus.Blocked
+            ),
+            Person(
+                "Miguel", "Garcia",
+                image = R.drawable.avatar_miguel_garcia,
+                isActive = true, status = AvatarStatus.Blocked
+            ),
+            Person(
+                "Miguel", "Garcia",
+                image = R.drawable.avatar_miguel_garcia,
+                isActive = true, status = AvatarStatus.Blocked
+            ),
+
+            )
+        var filteredPeople by rememberSaveable { mutableStateOf(listofPeople.toMutableList()) }
+
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
+            val scope = rememberCoroutineScope()
+            var loading by rememberSaveable { mutableStateOf(false) }
+            val keyboardController = LocalSoftwareKeyboardController.current
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 10.dp),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                val interactionSourceStart = remember { MutableInteractionSource() }
+                val animatedFontSizeStart by animateDpAsState(
+                    targetValue = if (interactionSourceStart.collectIsPressedAsState().value) 18.5.dp else 17.dp,
+                    label = "FontSizeAnimation"
+                )
+                Box(
+                    modifier = Modifier.fillMaxWidth().weight(1f)
+                ) {
+                    BasicText(
+                        text = "Clear",
+                        modifier = Modifier.fillMaxWidth().clickable(
+                            enabled = true,
+                            indication = null,
+                            interactionSource = interactionSourceStart
+                        ) {
+                            close()
+                        },
+                        style = TextStyle(
+                            color = Color(0xFF616161),
+                            fontSize = animatedFontSizeStart.value.sp,
+                            lineHeight = 22.sp,
+                            letterSpacing = -0.43.sp,
+                            textAlign = TextAlign.Start,
+                            fontWeight = FontWeight(400)
+                        )
+                    )
+                }
+                val interactionSourceCenter = remember { MutableInteractionSource() }
+                val animatedFontSizeCenter by animateDpAsState(
+                    targetValue = if (interactionSourceCenter.collectIsPressedAsState().value) 18.5.dp else 17.dp,
+                    label = "FontSizeAnimation"
+                )
+                Box(
+                    modifier = Modifier.fillMaxWidth().weight(1f)
+                ) {
+                    BasicText(
+                        text = "Person",
+                        modifier = Modifier.fillMaxWidth().clickable(
+                            enabled = true,
+                            indication = null,
+                            interactionSource = interactionSourceCenter
+                        ) {
+                            close()
+                        },
+                        style = TextStyle(
+                            color = Color(0xFF242424),
+                            fontSize = animatedFontSizeCenter.value.sp,
+                            lineHeight = 22.sp,
+                            letterSpacing = -0.43.sp,
+                            textAlign = TextAlign.Center,
+                            fontWeight = FontWeight(600)
+                        )
+                    )
+                }
+                val interactionSourceEnd = remember { MutableInteractionSource() }
+                val animatedFontSizeEnd by animateDpAsState(
+                    targetValue = if (interactionSourceEnd.collectIsPressedAsState().value) 18.5.dp else 17.dp,
+                    label = "FontSizeAnimation"
+                )
+                Box(
+                    modifier = Modifier.fillMaxWidth().weight(1f)
+                ) {
+                    BasicText(
+                        text = "Apply",
+                        modifier = Modifier.fillMaxWidth().clickable(
+                            enabled = true,
+                            indication = null,
+                            interactionSource = interactionSourceEnd
+                        ) {
+                            close()
+                        },
+                        style = TextStyle(
+                            color = Color(0xFF464FEB),
+                            fontSize = animatedFontSizeEnd.value.sp,
+                            lineHeight = 22.sp,
+                            letterSpacing = -0.43.sp,
+                            textAlign = TextAlign.End,
+                            fontWeight = FontWeight(400)
+                        )
+                    )
+                }
+            }
+            SearchBar(
+                onValueChange = { query, selectedPerson ->
+                    scope.launch {
+                        loading = true
+
+                        if (induceDelay)
+                            delay(2000)
+
+                        filteredPeople = listofPeople.filter {
+                            it.firstName.lowercase().contains(query.lowercase()) ||
+                                    it.lastName.lowercase().contains(query.lowercase())
+                        } as MutableList<Person>
+                        selectedPeople = selectedPerson
+
+                        loading = false
+                    }
+                },
+                style = searchBarStyle,
+                loading = loading,
+                selectedPerson = selectedPeople,
+                keyboardOptions = KeyboardOptions(
+                    autoCorrect = autoCorrectEnabled,
+                    keyboardType = KeyboardType.Email,
+                    imeAction = ImeAction.Search
+                ),
+                keyboardActions = KeyboardActions(
+                    onSearch = {
+                        keyboardController?.hide()
+                    }
+                ),
+                searchBarTokens = object : SearchBarTokens() {
+                    @Composable
+                    override fun cornerRadius(searchBarInfo: SearchBarInfo): Dp {
+                        return FluentGlobalTokens.CornerRadiusTokens.CornerRadius120.value
+                    }
+                },
+                modifier = Modifier.padding(horizontal = 10.dp, vertical = 20.dp),
+                searchHint = "Filter by person"
+            )
+
+            val filteredPersona = mutableListOf<Persona>()
+            val selectedPeopleList = mutableListOf<Boolean>()
+            filteredPeople.forEach {
+                var isSelected by remember { mutableStateOf(false) }
+                filteredPersona.add(
+                    Persona(
+                        it,
+                        "${it.firstName} ${it.lastName}",
+                        subTitle = it.email,
+                        onClick = { selectedPeople = it },
+                        onLongClick = {
+                            isSelected = !isSelected
+                        },
+                        trailingIcon = {
+                            if(isSelected) {
+                                Icon(FluentIcon(Icons.Outlined.Check))
+                            }
+                        }
+                    )
+                )
+                selectedPeopleList.add(isSelected)
+            }
+            PersonaList(
+                personas = filteredPersona,
+                border = BorderType.NoBorder
+            )
         }
     }
 }
@@ -90,14 +402,7 @@ private fun CreateActivityUI() {
             preventDismissalOnScrimClick = preventDismissalOnScrimClick,
             enableSwipeDismiss = enableSwipeDismiss,
             maxLandscapeWidthFraction = maxLandscapeWidthFraction,
-            drawerContent =
-            if (listContent)
-                getAndroidViewAsContent(selectedContent)
-            else if (nestedDrawerContent) {
-                getDrawerAsContent()
-            } else {
-                getDynamicListGeneratorAsContent()
-            }
+            drawerContent = searchItemActivity()
         )
         //Other content on Primary surface
         LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -417,7 +722,7 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     preventDismissalOnScrimClick: Boolean,
     enableSwipeDismiss: Boolean,
     maxLandscapeWidthFraction: Float,
-    drawerContent: @Composable ((() -> Unit) -> Unit),
+    drawerContent: @Composable ((() -> Unit, ()->Unit, ()->Unit) -> Unit),
 ) {
     val scope = rememberCoroutineScope()
 
@@ -446,7 +751,7 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
 
     BottomDrawer(
         drawerState = drawerState,
-        drawerContent = { drawerContent(close) },
+        drawerContent = { drawerContent(close, expand, open) },
         scrimVisible = scrimVisible,
         slideOver = slideOver,
         showHandle = showHandle,

@@ -138,6 +138,7 @@ class Persona(
     val footer: String? = null,
     val enabled: Boolean = true,
     val trailingIcon: (@Composable () -> Unit)? = null,
+    val onLongClick: (() -> Unit)? = null,
     val onClick: (() -> Unit)? = null
 )
 
