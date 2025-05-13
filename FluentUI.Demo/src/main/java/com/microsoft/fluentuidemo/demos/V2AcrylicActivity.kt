@@ -54,6 +54,45 @@ import com.microsoft.fluentuidemo.util.getAndroidViewAsContent
 import com.microsoft.fluentuidemo.util.getDemoAppString
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import android.content.res.Configuration
+import android.os.Build
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.toggleable
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.ui.draw.blur
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+
+import androidx.compose.ui.text.font.FontWeight
+
 
 class V2AcrylicPaneActivity : V2DemoActivity() {
     init {
@@ -66,237 +105,279 @@ class V2AcrylicPaneActivity : V2DemoActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setActivityContent {
-            CreateAcrylicPaneActivityUI(this)
+            FrostedGlassEffectDemoNoMaterialTheme()
         }
     }
 }
 
-@Composable
-fun CreateAcrylicPaneActivityUI(
-    context: Context
-){
-    var acrylicPaneSizeFraction by rememberSaveable { mutableFloatStateOf(0.5F) }
-    var acrylicPaneStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
+val sampleImages = listOf(
+    R.drawable.avatar_miguel_garcia, // Replace with your actual images
+    android.R.drawable.star_big_on,
+    android.R.drawable.btn_star_big_off
+)
+// Define some basic colors to avoid MaterialTheme
+object AppColors {
+    val controlPanelBackground = Color(0xFF2C2C2E) // Dark gray
+    val controlPanelText = Color.White
+    val buttonBackground = Color(0xFF3A3A3C)
+    val buttonContent = Color.White
+    val accentColor = Color(0xFF0A84FF) // A blue accent
+    val disabledText = Color.Gray
+}
 
-    AcrylicPane(
-        paneHeight = (acrylicPaneSizeFraction * 500).toInt().dp,
-        acrylicPaneStyle = acrylicPaneStyle,
-        component = { acrylicPaneContent(context = context) },
-        backgroundContent = {
-            Column(
-                modifier = Modifier.verticalScroll(rememberScrollState()).fillMaxWidth().padding(10.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
+@Composable
+fun FrostedGlassEffectDemoNoMaterialTheme() {
+    val context = LocalContext.current
+    var currentImageIndex by remember { mutableStateOf(0) }
+
+    // Controls for the frosted glass effect
+    var glassOpacity by remember { mutableStateOf(0.25f) }
+    var blurRadiusX by remember { mutableStateOf(20f) }
+    var blurRadiusY by remember { mutableStateOf(20f) }
+    var tintRed by remember { mutableStateOf(1f) }
+    var tintGreen by remember { mutableStateOf(1f) }
+    var tintBlue by remember { mutableStateOf(1f) }
+
+    val glassTintColor = Color(tintRed, tintGreen, tintBlue)
+
+    LaunchedEffect(Unit) {
+        while (true) {
+            delay(3000)
+            currentImageIndex = (currentImageIndex + 1) % sampleImages.size
+        }
+    }
+
+    Column(modifier = Modifier.fillMaxSize().background(Color.Black)) { // Main background
+        Box(modifier = Modifier.weight(1f)) {
+            val backgroundModifier = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                Modifier
+                    .fillMaxSize()
+                    .blur(radiusX = blurRadiusX.dp, radiusY = blurRadiusY.dp)
+            } else {
+                Modifier.fillMaxSize()
+            }
+
+            Image(
+                painter = painterResource(id = sampleImages[currentImageIndex]),
+                contentDescription = "Dynamic Background",
+                modifier = backgroundModifier,
+                contentScale = ContentScale.Crop
+            )
+
+            Box(
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .width(300.dp)
+                    .height(200.dp)
+                    .clip(RoundedCornerShape(20.dp))
+                    .background(glassTintColor.copy(alpha = glassOpacity))
+                    .border(
+                        1.dp,
+                        Color.White.copy(alpha = (glassOpacity + 0.2f).coerceAtMost(1f)),
+                        RoundedCornerShape(20.dp)
+                    )
+                    .padding(16.dp),
+                contentAlignment = Alignment.Center
             ) {
-                Spacer(Modifier.height(300.dp))
-                ListItem.Header(
-                    title = "Acrylic Pane Size",
-                    titleMaxLines = 2,
-                    modifier = Modifier
-                        .clearAndSetSemantics {
-                            this.contentDescription = "Acrylic Pane Size"
-                        },
-                )
-                Slider(
-                    value = acrylicPaneSizeFraction,
-                    onValueChange = { acrylicPaneSizeFraction = it },
-                    valueRange = 0F..1F,
-                    colors = SliderDefaults.colors(
-                        thumbColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            FluentTheme.themeMode
-                        ),
-                        activeTrackColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color80],
-                        inactiveTrackColor = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
-                            FluentTheme.themeMode
-                        ),
-                        disabledThumbColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
-                            FluentTheme.themeMode
-                        ),
-                        disabledActiveTrackColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
-                            FluentTheme.themeMode
-                        ),
-                        disabledInactiveTrackColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
-                            FluentTheme.themeMode
-                        )
-                    ),
-                    steps = 9
-                )
-                ListItem.Header(
-                    title = "Acrylic Pane Theme",
-                    titleMaxLines = 2,
-                    modifier = Modifier
-                        .clearAndSetSemantics {
-                            this.contentDescription = "Acrylic Pane Theme"
-                        },
-                )
-                var checkBoxSelectedValues = List(2) { rememberSaveable { mutableStateOf(false) } }
-                var acrylicPaneStyles = listOf(
-                    FluentStyle.Neutral,
-                    FluentStyle.Brand
-                )
-                for (i in 0..1) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Start,
-                        modifier = Modifier.fillMaxWidth()
-                            .padding(horizontal = 10.dp, vertical = 3.dp)
-                    ) {
-                        Text(text = "Theme $i")
-                        Spacer(modifier = Modifier.width(320.dp))
-                        RadioButton(
-                            onClick = {
-                                selectRadioGroupButton(i, checkBoxSelectedValues)
-                                acrylicPaneStyle = acrylicPaneStyles[i]
-                            },
-                            selected = checkBoxSelectedValues[i].value
-                        )
-                    }
-                }
-                ListItem.Header(
-                    title = "Test Bottom Drawer",
-                    titleMaxLines = 2,
-                    modifier = Modifier
-                        .clearAndSetSemantics {
-                            this.contentDescription = "Test Bottom Drawer"
-                        },
-                )
-                showBottomDrawer()
-                ListItem.Header(
-                    title = "Scroll Test",
-                    titleMaxLines = 2,
-                    modifier = Modifier
-                        .clearAndSetSemantics {
-                            this.contentDescription = "Test Bottom Drawer"
-                        },
-                )
-                repeat(40) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Start,
-                        modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 5.dp)
-                    ) {
-                        Text(text = "Text $it", fontSize = 14.sp,
-                            style = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1]
-                                .merge(TextStyle(color = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(themeMode = FluentTheme.themeMode)))
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Text(
+                        "Frosted Glass",
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = getContrastingTextColor(glassTintColor.copy(alpha = glassOpacity))
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        "No Material Theme",
+                        fontSize = 16.sp,
+                        color = getContrastingTextColor(glassTintColor.copy(alpha = glassOpacity)).copy(alpha = 0.9f)
+                    )
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(
+                            "(Blur effect requires Android 12+)",
+                            fontSize = 12.sp,
+                            color = Color.Yellow.copy(alpha = 0.8f)
                         )
                     }
                 }
             }
         }
-    )
-}
 
-@Composable
-fun showBottomDrawer(){
-    val scope = rememberCoroutineScope()
+        // Controls Area
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(AppColors.controlPanelBackground)
+                .padding(16.dp)
+                .verticalScroll(rememberScrollState())
+        ) {
+            Text(
+                "Controls",
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = AppColors.controlPanelText,
+                modifier = Modifier.padding(bottom = 12.dp)
+            )
 
-    val drawerState = rememberBottomDrawerState(initialValue = DrawerValue.Closed, expandable = true, skipOpenState = false)
+            ValueAdjuster(
+                label = "Glass Opacity",
+                valueString = String.format("%.2f", glassOpacity),
+                onIncrement = { glassOpacity = (glassOpacity + 0.05f).coerceIn(0f, 1f) },
+                onDecrement = { glassOpacity = (glassOpacity - 0.05f).coerceIn(0f, 1f) }
+            )
 
-    val open: () -> Unit = {
-        scope.launch { drawerState.open() }
-    }
-    val expand: () -> Unit = {
-        scope.launch { drawerState.expand() }
-    }
-    val close: () -> Unit = {
-        scope.launch { drawerState.close() }
-    }
-    Row {
-        PrimarySurfaceContent(
-            open,
-            text = stringResource(id = R.string.drawer_open)
-        )
-        Spacer(modifier = Modifier.width(10.dp))
-        PrimarySurfaceContent(
-            expand,
-            text = stringResource(id = R.string.drawer_expand)
-        )
-    }
-    var selectedContent by rememberSaveable { mutableStateOf(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT) }
-    val drawerContent = getAndroidViewAsContent(selectedContent)
-    var maxLandscapeWidthFraction by rememberSaveable { mutableFloatStateOf(1F) }
-    var preventDismissalOnScrimClick by rememberSaveable { mutableStateOf(false) }
-    com.microsoft.fluentui.tokenized.drawer.BottomDrawer(
-        drawerState = drawerState,
-        drawerContent = { drawerContent(close) },
-        scrimVisible = true,
-        slideOver = true,
-        showHandle = true,
-        enableSwipeDismiss = true,
-        maxLandscapeWidthFraction = maxLandscapeWidthFraction,
-        preventDismissalOnScrimClick = preventDismissalOnScrimClick
-    )
-}
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                Text(
+                    "Blur Radius (Android 12+)",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = AppColors.controlPanelText,
+                    modifier = Modifier.padding(top = 12.dp, bottom = 6.dp)
+                )
+                ValueAdjuster(
+                    label = "Blur Radius X",
+                    valueString = "${blurRadiusX.toInt()} dp",
+                    onIncrement = { blurRadiusX = (blurRadiusX + 1f).coerceIn(0f, 50f) },
+                    onDecrement = { blurRadiusX = (blurRadiusX - 1f).coerceIn(0f, 50f) }
+                )
+                ValueAdjuster(
+                    label = "Blur Radius Y",
+                    valueString = "${blurRadiusY.toInt()} dp",
+                    onIncrement = { blurRadiusY = (blurRadiusY + 1f).coerceIn(0f, 50f) },
+                    onDecrement = { blurRadiusY = (blurRadiusY - 1f).coerceIn(0f, 50f) }
+                )
+            } else {
+                Text(
+                    "Blur controls disabled (Requires Android 12+)",
+                    fontSize = 12.sp,
+                    color = AppColors.disabledText,
+                    modifier = Modifier.padding(vertical = 8.dp)
+                )
+            }
 
-@Composable
-fun acrylicPaneContent(context: Context){
-    val scope = rememberCoroutineScope()
-
-    val microphonePressedString = getDemoAppString(DemoAppStrings.MicrophonePressed)
-    val rightViewPressedString = getDemoAppString(DemoAppStrings.RightViewPressed)
-    val keyboardSearchPressedString = getDemoAppString(DemoAppStrings.KeyboardSearchPressed)
-    var loading by rememberSaveable { mutableStateOf(false) }
-    val keyboardController = LocalSoftwareKeyboardController.current
-    var autoCorrectEnabled: Boolean by rememberSaveable { mutableStateOf(false) }
-    var enableMicrophoneCallback: Boolean by rememberSaveable { mutableStateOf(true) }
-    var searchBarStyle: FluentStyle by rememberSaveable { mutableStateOf(FluentStyle.Brand) }
-    var displayRightAccessory: Boolean by rememberSaveable { mutableStateOf(true) }
-    var selectedPeople: Person? by rememberSaveable { mutableStateOf(null) }
-    val showCustomizedAppBar = false
-    Column {
-        Spacer(modifier = Modifier.height(80.dp))
-        Row(Modifier.height(5.dp).padding(20.dp)) {
-            SearchBar(
-                onValueChange = { query, selectedPerson ->
-                    scope.launch {
-                        loading = true
-                        delay(2000)
-                        loading = false
-                    }
-                },
-                style = searchBarStyle,
-                loading = loading,
-                selectedPerson = selectedPeople,
-                microphoneCallback = if (enableMicrophoneCallback) {
-                    {
-                        Toast.makeText(context, microphonePressedString, Toast.LENGTH_SHORT)
-                            .show()
-                    }
-                } else null,
-                keyboardOptions = KeyboardOptions(
-                    autoCorrect = autoCorrectEnabled,
-                    keyboardType = KeyboardType.Email,
-                    imeAction = ImeAction.Search
-                ),
-                keyboardActions = KeyboardActions(
-                    onSearch = {
-                        Toast.makeText(
-                            context,
-                            keyboardSearchPressedString,
-                            Toast.LENGTH_SHORT
-                        )
-                            .show()
-                        keyboardController?.hide()
-                    }
-                ),
-                rightAccessoryIcon = if (displayRightAccessory) {
-                    FluentIcon(
-                        SearchBarIcons.Office,
-                        contentDescription = "Office",
-                        onClick = {
-                            Toast.makeText(
-                                context,
-                                rightViewPressedString,
-                                Toast.LENGTH_SHORT
-                            )
-                                .show()
-                        }
-                    )
-                } else null,
-                searchBarTokens = if (showCustomizedAppBar) {
-                    CustomizedSearchBarTokens
-                } else null,
-                modifier = if (showCustomizedAppBar) Modifier.requiredHeight(60.dp) else Modifier
+            Text(
+                "Glass Tint Color",
+                fontSize = 16.sp,
+                fontWeight = FontWeight.SemiBold,
+                color = AppColors.controlPanelText,
+                modifier = Modifier.padding(top = 12.dp, bottom = 6.dp)
+            )
+            Box(
+                Modifier
+                    .size(50.dp)
+                    .background(glassTintColor, RoundedCornerShape(4.dp))
+                    .border(1.dp, AppColors.controlPanelText.copy(alpha = 0.5f), RoundedCornerShape(4.dp))
+                    .align(Alignment.CenterHorizontally)
+                    .padding(bottom = 8.dp)
+            )
+            ValueAdjusterColor(
+                label = "Red",
+                value = tintRed,
+                onValueChange = { tintRed = it },
+                color = Color.Red
+            )
+            ValueAdjusterColor(
+                label = "Green",
+                value = tintGreen,
+                onValueChange = { tintGreen = it },
+                color = Color.Green
+            )
+            ValueAdjusterColor(
+                label = "Blue",
+                value = tintBlue,
+                onValueChange = { tintBlue = it },
+                color = Color.Blue
             )
         }
     }
+}
+
+@Composable
+fun ValueAdjuster(
+    label: String,
+    valueString: String,
+    onIncrement: () -> Unit,
+    onDecrement: () -> Unit
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(text = "$label: $valueString", fontSize = 14.sp, color = AppColors.controlPanelText)
+        Row {
+            AdjusterButton(text = "-", onClick = onDecrement, modifier = Modifier.size(40.dp))
+            Spacer(Modifier.width(8.dp))
+            AdjusterButton(text = "+", onClick = onIncrement, modifier = Modifier.size(40.dp))
+        }
+    }
+}
+
+@Composable
+fun ValueAdjusterColor(
+    label: String,
+    value: Float,
+    onValueChange: (Float) -> Unit,
+    color: Color
+) {
+    Column(modifier = Modifier.padding(vertical = 2.dp)) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = "$label: ${String.format("%.2f", value)}",
+                fontSize = 14.sp,
+                color = AppColors.controlPanelText
+            )
+            Row {
+                AdjusterButton(
+                    text = "-",
+                    onClick = { onValueChange((value - 0.1f).coerceIn(0f, 1f)) },
+                    modifier = Modifier.size(40.dp)
+                )
+                Spacer(Modifier.width(8.dp))
+                AdjusterButton(
+                    text = "+",
+                    onClick = { onValueChange((value + 0.1f).coerceIn(0f, 1f)) },
+                    modifier = Modifier.size(40.dp)
+                )
+            }
+        }
+        // Basic visual representation of a slider
+        Box(modifier = Modifier.fillMaxWidth().height(20.dp).padding(vertical = 6.dp)) {
+            Box(modifier = Modifier.fillMaxHeight().fillMaxWidth().background(color.copy(alpha=0.3f), RoundedCornerShape(4.dp)))
+            Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(value).background(color, RoundedCornerShape(4.dp)))
+        }
+    }
+}
+
+
+@Composable
+fun AdjusterButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
+    Button( // Using material3.Button
+        onClick = onClick,
+        modifier = modifier,
+        shape = RoundedCornerShape(8.dp),
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = AppColors.buttonBackground,
+            contentColor = AppColors.buttonContent
+        ),
+        contentPadding = PaddingValues(0.dp) // Allow text to fill small button
+    ) {
+        Text(text, fontSize = 16.sp)
+    }
+}
+
+// Helper function to determine contrasting text color (remains the same)
+fun getContrastingTextColor(backgroundColor: Color): Color {
+    val r = backgroundColor.red
+    val g = backgroundColor.green
+    val b = backgroundColor.blue
+    val alpha = backgroundColor.alpha
+    if (alpha < 0.3f) return Color.White
+    val luminance = (0.299 * r + 0.587 * g + 0.114 * b) * alpha + (1 - alpha) * 0.5
+    return if (luminance > 0.5) Color.Black else Color.White
 }
