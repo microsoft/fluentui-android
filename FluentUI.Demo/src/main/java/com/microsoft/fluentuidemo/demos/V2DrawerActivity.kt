@@ -1,26 +1,39 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.toggleable
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
@@ -44,10 +57,141 @@ import com.microsoft.fluentuidemo.util.PrimarySurfaceContent
 import com.microsoft.fluentuidemo.util.getAndroidViewAsContent
 import com.microsoft.fluentuidemo.util.getDrawerAsContent
 import com.microsoft.fluentuidemo.util.getDynamicListGeneratorAsContent
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
 class V2DrawerActivity : V2DemoActivity() {
+    @Composable
+    fun MyScreenWithDrawer() {
+        val drawerState = rememberDrawerState()
+        val scope = rememberCoroutineScope()
+        val isLeftDrawer = true // Or false for a right drawer
+
+        val density = LocalDensity.current
+        val edgeSwipeWidth = 20.dp // Define the width of the edge touch area
+        val edgeSwipePx = with(density) { edgeSwipeWidth.toPx() }
+
+        // To track if an edge swipe is in progress
+        var isEdgeSwiping by remember { mutableStateOf(false) }
+        // To get screen dimensions for right drawer edge detection
+        var screenWidthPx by remember { mutableStateOf(0f) }
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .onSizeChanged { screenWidthPx = it.width.toFloat() }
+                .pointerInput(drawerState, isLeftDrawer, screenWidthPx) { // Keys for recomposition if they change
+                    detectHorizontalDragGestures(
+                        onDragStart = { touch ->
+                            if (drawerState.isClosed) { // Only start if drawer is closed
+                                val initialX = touch.x
+                                val canStartEdgeSwipe = if (isLeftDrawer) {
+                                    initialX < edgeSwipePx
+                                } else {
+                                    initialX > screenWidthPx - edgeSwipePx
+                                }
+
+                                if (canStartEdgeSwipe) {
+                                    isEdgeSwiping = true
+                                    // Enable the drawer: this triggers composition, measurement, and anchor setup.
+                                    // It's important that HorizontalDrawer gets a chance to set its anchors.
+                                    scope.launch {
+                                        drawerState.enable = true
+                                        // Wait for anchors to be filled.
+                                        // SwipeableState (which DrawerState extends) sets anchorsFilled = true
+                                        // after processNewAnchors. This usually happens in a LaunchedEffect.
+                                        // A short delay or polling drawerState.anchorsFilled can work here.
+                                        // For a more robust solution, you might use snapshotFlow { drawerState.anchorsFilled }.
+                                        var attempts = 0
+                                        while (!drawerState.anchorsFilled && attempts < 15) { // Timeout after ~240ms
+                                            delay(16) // Wait for approx one frame
+                                            attempts++
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        onHorizontalDrag = { change, dragAmount ->
+                            if (isEdgeSwiping && drawerState.anchorsFilled) {
+                                scope.launch {
+                                    drawerState.performDrag(dragAmount)
+                                }
+                                change.consume()
+                            } else if (isEdgeSwiping && !drawerState.anchorsFilled) {
+                                // If anchors are still not filled, consume the event to prevent other gestures,
+                                // but don't drag the drawer yet.
+                                change.consume()
+                            }
+                        },
+                        onDragEnd = {
+                            if (isEdgeSwiping) {
+                                scope.launch {
+                                    // Perform fling with 0f velocity if you haven't tracked it.
+                                    // SwipeableState will then settle based on the current position and thresholds.
+                                    drawerState.performFling(0f)
+                                    // If performFling results in the drawer being closed,
+                                    // DrawerState's close() method will set enable = false.
+                                }
+                                isEdgeSwiping = false
+                            }
+                        },
+                        onDragCancel = {
+                            if (isEdgeSwiping) {
+                                scope.launch {
+                                    drawerState.performFling(0f) // Settle even on cancel
+                                }
+                                isEdgeSwiping = false
+                            }
+                        }
+                    )
+                }
+        ) {
+            MainContentBehindDrawer() // Your main screen content
+        }
+        val close: () -> Unit = {
+            scope.launch {
+                drawerState.close()
+            }
+        }
+        // FluentUI Drawer
+        if (drawerState.enable) {
+            com.microsoft.fluentui.tokenized.drawer.Drawer(
+                drawerState = drawerState,
+                behaviorType = if (isLeftDrawer) BehaviorType.LEFT_SLIDE_OVER else BehaviorType.RIGHT_SLIDE_OVER,
+                drawerContent = {
+                    //getAndroidViewAsContent(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT)(close)
+                    Column(
+                        modifier = Modifier
+                            .fillMaxHeight() // Ensure drawer has a defined size
+                            .then(if (isLeftDrawer) Modifier.width(280.dp) else Modifier.width(280.dp)) // Example width
+                            .background(Color.Blue) // Use your theme colors
+                            .padding(16.dp)
+                    ) {
+                        Text("Drawer Content Area")
+                        getDrawerAsContent()(close)
+                    }
+                }
+                // Prevent dismissal on scrim click if you want the edge swipe to be the primary way to close when partially open
+                // preventDismissalOnScrimClick = isEdgeSwiping
+            )
+        }
+    }
+
+    @Composable
+    fun MainContentBehindDrawer(modifier: Modifier = Modifier) {
+        Column(
+            modifier = modifier.fillMaxSize().padding(16.dp).verticalScroll(rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text("Main Screen Content")
+            Text("Swipe from the edge to open the drawer.")
+            for(i in 1..100) {
+                Text("Item $i")
+            }
+        }
+    }
     init {
         setupActivity(this)
     }
@@ -60,7 +204,7 @@ class V2DrawerActivity : V2DemoActivity() {
         super.onCreate(savedInstanceState)
 
         setActivityContent {
-            CreateActivityUI()
+            MyScreenWithDrawer()
         }
     }
 }
