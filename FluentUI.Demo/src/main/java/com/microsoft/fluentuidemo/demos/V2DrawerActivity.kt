@@ -66,72 +66,84 @@ class V2DrawerActivity : V2DemoActivity() {
     fun MyScreenWithDrawer() {
         val drawerState = rememberDrawerState()
         val scope = rememberCoroutineScope()
-        val isLeftDrawer = true // Or false for a right drawer
+
+        // Configure for left or right drawer
+        val isLeftDrawer = true // Set to false for a right-opening drawer
 
         val density = LocalDensity.current
-        val edgeSwipeWidth = 20.dp // Define the width of the edge touch area
+        // Increased edge width for better reliability
+        val edgeSwipeWidth = 30.dp // You can tune this value
         val edgeSwipePx = with(density) { edgeSwipeWidth.toPx() }
 
-        // To track if an edge swipe is in progress
         var isEdgeSwiping by remember { mutableStateOf(false) }
-        // To get screen dimensions for right drawer edge detection
         var screenWidthPx by remember { mutableStateOf(0f) }
-
+        val close: () -> Unit = {
+            scope.launch { drawerState.close() }
+        }
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .onSizeChanged { screenWidthPx = it.width.toFloat() }
-                .pointerInput(drawerState, isLeftDrawer, screenWidthPx) { // Keys for recomposition if they change
+                .onSizeChanged {
+                    screenWidthPx = it.width.toFloat()
+                }
+                .pointerInput(drawerState, isLeftDrawer, screenWidthPx, edgeSwipePx) { // Add keys that affect logic
                     detectHorizontalDragGestures(
-                        onDragStart = { touch ->
-                            if (drawerState.isClosed) { // Only start if drawer is closed
-                                val initialX = touch.x
+                        onDragStart = { position ->
+                            // Only initiate edge swipe if the drawer is fully closed.
+                            if (drawerState.isClosed) {
+                                val initialX = position.x
                                 val canStartEdgeSwipe = if (isLeftDrawer) {
                                     initialX < edgeSwipePx
                                 } else {
-                                    initialX > screenWidthPx - edgeSwipePx
+                                    // Ensure screenWidthPx is available for right edge detection
+                                    screenWidthPx > 0 && initialX > screenWidthPx - edgeSwipePx
                                 }
 
                                 if (canStartEdgeSwipe) {
                                     isEdgeSwiping = true
-                                    // Enable the drawer: this triggers composition, measurement, and anchor setup.
-                                    // It's important that HorizontalDrawer gets a chance to set its anchors.
-                                    scope.launch {
+                                    // Enable the drawer immediately to trigger its composition and anchor setup.
+                                    // This is a state change and should be quick.
+                                    if (!drawerState.enable) {
                                         drawerState.enable = true
-                                        // Wait for anchors to be filled.
-                                        // SwipeableState (which DrawerState extends) sets anchorsFilled = true
-                                        // after processNewAnchors. This usually happens in a LaunchedEffect.
-                                        // A short delay or polling drawerState.anchorsFilled can work here.
-                                        // For a more robust solution, you might use snapshotFlow { drawerState.anchorsFilled }.
-                                        var attempts = 0
-                                        while (!drawerState.anchorsFilled && attempts < 15) { // Timeout after ~240ms
-                                            delay(16) // Wait for approx one frame
-                                            attempts++
-                                        }
                                     }
+                                    // No explicit waiting for anchors here in onDragStart.
+                                    // performDrag will be called in onHorizontalDrag.
+                                    // SwipeableState's offset should update even with preliminary bounds.
                                 }
                             }
                         },
                         onHorizontalDrag = { change, dragAmount ->
-                            if (isEdgeSwiping && drawerState.anchorsFilled) {
+                            if (isEdgeSwiping) {
+                                // As soon as edge swiping is active, start dragging the drawer.
+                                // The drawer's internal offset will be updated by performDrag.
                                 scope.launch {
                                     drawerState.performDrag(dragAmount)
                                 }
-                                change.consume()
-                            } else if (isEdgeSwiping && !drawerState.anchorsFilled) {
-                                // If anchors are still not filled, consume the event to prevent other gestures,
-                                // but don't drag the drawer yet.
                                 change.consume()
                             }
                         },
                         onDragEnd = {
                             if (isEdgeSwiping) {
                                 scope.launch {
-                                    // Perform fling with 0f velocity if you haven't tracked it.
-                                    // SwipeableState will then settle based on the current position and thresholds.
+                                    // It's beneficial for performFling if anchors are fully resolved.
+                                    // Wait a brief period if anchors are not yet filled.
+                                    // This is a fallback; ideally, they are filled during the drag.
+                                    var attempts = 0
+                                    while (!drawerState.anchorsFilled && attempts < 15) { // Max ~240ms wait
+                                        delay(16) // Wait for approx one frame
+                                        attempts++
+                                    }
+
+                                    // Use actual velocity if you implement velocity tracking.
+                                    // For now, 0f means it will settle based on position vs. thresholds.
                                     drawerState.performFling(0f)
-                                    // If performFling results in the drawer being closed,
-                                    // DrawerState's close() method will set enable = false.
+
+                                    // FIX FOR SCRIM ISSUE:
+                                    // If, after the fling, the drawer is closed but still "enabled"
+                                    // (meaning the Popup is up), explicitly call close() to disable it.
+                                    if (drawerState.isClosed && drawerState.enable) {
+                                        drawerState.close() // This will set enable = false
+                                    }
                                 }
                                 isEdgeSwiping = false
                             }
@@ -139,7 +151,17 @@ class V2DrawerActivity : V2DemoActivity() {
                         onDragCancel = {
                             if (isEdgeSwiping) {
                                 scope.launch {
+                                    var attempts = 0
+                                    while (!drawerState.anchorsFilled && attempts < 15) {
+                                        delay(16)
+                                        attempts++
+                                    }
                                     drawerState.performFling(0f) // Settle even on cancel
+
+                                    // FIX FOR SCRIM ISSUE (also on cancel):
+                                    if (drawerState.isClosed && drawerState.enable) {
+                                        drawerState.close()
+                                    }
                                 }
                                 isEdgeSwiping = false
                             }
@@ -147,47 +169,61 @@ class V2DrawerActivity : V2DemoActivity() {
                     )
                 }
         ) {
-            MainContentBehindDrawer() // Your main screen content
-        }
-        val close: () -> Unit = {
-            scope.launch {
-                drawerState.close()
-            }
-        }
-        // FluentUI Drawer
-        if (drawerState.enable) {
-            com.microsoft.fluentui.tokenized.drawer.Drawer(
-                drawerState = drawerState,
-                behaviorType = if (isLeftDrawer) BehaviorType.LEFT_SLIDE_OVER else BehaviorType.RIGHT_SLIDE_OVER,
-                drawerContent = {
-                    //getAndroidViewAsContent(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT)(close)
-                    Column(
-                        modifier = Modifier
-                            .fillMaxHeight() // Ensure drawer has a defined size
-                            .then(if (isLeftDrawer) Modifier.width(280.dp) else Modifier.width(280.dp)) // Example width
-                            .background(Color.Blue) // Use your theme colors
-                            .padding(16.dp)
-                    ) {
-                        Text("Drawer Content Area")
-                        getDrawerAsContent()(close)
-                    }
-                }
-                // Prevent dismissal on scrim click if you want the edge swipe to be the primary way to close when partially open
-                // preventDismissalOnScrimClick = isEdgeSwiping
+            // Your main screen content
+            MainContentBehindDrawer(
+                modifier = Modifier.align(Alignment.Center),
+                text = "Swipe from ${if (isLeftDrawer) "left" else "right"} edge. Screen Width: ${screenWidthPx}px. Edge Px: ${edgeSwipePx}"
             )
+
+            // FluentUI Drawer
+            // The Drawer composable itself handles its visibility based on drawerState.enable
+            if (drawerState.enable) {
+                com.microsoft.fluentui.tokenized.drawer.Drawer(
+                    drawerState = drawerState,
+                    behaviorType = if (isLeftDrawer) BehaviorType.LEFT_SLIDE_OVER else BehaviorType.RIGHT_SLIDE_OVER,
+                    drawerContent = {
+                        // CRITICAL for HorizontalDrawer's anchor calculation:
+//                        // Provide a measurable width.
+//                        Column(
+//                            modifier = Modifier
+//                                .fillMaxHeight()
+//                                .width(280.dp) // Example fixed width, adjust as needed or use IntrinsicSize
+//                                .background(Color.Blue) // Use your theme's colors
+//                                .padding(16.dp)
+//                        ) {
+                            getAndroidViewAsContent(contentType = ContentType.FULL_SCREEN_SCROLLABLE_CONTENT)(close)
+//                            Text("Drawer Content Area")
+//                            Spacer(modifier = Modifier.height(20.dp))
+//                            Text("State: ${drawerState.currentValue}")
+//                            Text("Offset: ${drawerState.offset.value}")
+//                            Text("Anchors Filled: ${drawerState.anchorsFilled}")
+//                            Text("Is Closed: ${drawerState.isClosed}")
+//                            Text("Is Enabled: ${drawerState.enable}")
+                      //  }
+                    },
+                    // Optional: if you want to prevent scrim click dismissal during edge swipe
+                    // preventDismissalOnScrimClick = isEdgeSwiping,
+                    onScrimClick = {
+                        // Standard behavior: close drawer if scrim is clicked and not prevented
+                        if (!isEdgeSwiping) { // Example condition
+                            scope.launch { drawerState.close() }
+                        }
+                    }
+                )
+            }
         }
     }
 
     @Composable
-    fun MainContentBehindDrawer(modifier: Modifier = Modifier) {
+    fun MainContentBehindDrawer(modifier: Modifier = Modifier, text: String = "Main Screen Content") {
         Column(
-            modifier = modifier.fillMaxSize().padding(16.dp).verticalScroll(rememberScrollState()),
+            modifier = modifier.padding(16.dp).verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text("Main Screen Content")
+            Text(text)
             Text("Swipe from the edge to open the drawer.")
-            for(i in 1..100) {
+            for( i in 1..100) {
                 Text("Item $i")
             }
         }
