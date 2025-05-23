@@ -1,5 +1,9 @@
-package com.microsoft.fluentui.tokenized.drawer
-
+import com.microsoft.fluentui.tokenized.drawer.DRAWER_CONTENT_TAG
+import com.microsoft.fluentui.tokenized.drawer.DrawerState
+import com.microsoft.fluentui.tokenized.drawer.DrawerValue
+import com.microsoft.fluentui.tokenized.drawer.DrawerVelocityThreshold
+import com.microsoft.fluentui.tokenized.drawer.EndDrawerPadding
+import com.microsoft.fluentui.tokenized.drawer.Scrim
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.draggable
@@ -15,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -61,7 +66,8 @@ import kotlin.math.roundToInt
  *
  * @throws IllegalStateException when parent has [Float.POSITIVE_INFINITY] width
  */
-
+// package com.microsoft.fluentui.tokenized.drawer
+// ... imports ...
 
 @Composable
 internal fun HorizontalDrawer(
@@ -80,23 +86,22 @@ internal fun HorizontalDrawer(
 ) {
     BoxWithConstraints(modifier.fillMaxSize()) {
         val modalDrawerConstraints = constraints
-
-        // TODO : think about Infinite max bounds case
+        val scope = rememberCoroutineScope()
         if (!modalDrawerConstraints.hasBoundedWidth) {
             throw IllegalStateException("Drawer shouldn't have infinite width")
         }
 
         val fullWidth = modalDrawerConstraints.maxWidth.toFloat()
-        var drawerWidth by remember(fullWidth) { mutableStateOf(fullWidth) }
-        //Hack to get exact drawerHeight wrt to content.
+        var drawerWidth by remember(fullWidth) { mutableStateOf(fullWidth) } // Initially fullWidth
         val visible = remember { mutableStateOf(true) }
+
         if (visible.value) {
             Box(
                 modifier = Modifier
                     .layout { measurable, constraints ->
                         val placeable = measurable.measure(constraints)
                         layout(placeable.width, placeable.height) {
-                            drawerWidth = placeable.width.toFloat()
+                            drawerWidth = placeable.width.toFloat() // Correctly measured drawer content width
                             visible.value = false
                         }
                     }
@@ -104,20 +109,44 @@ internal fun HorizontalDrawer(
                 drawerContent()
             }
         } else {
-            val paddingPx = pxToDp(max(dpToPx(EndDrawerPadding), (fullWidth - drawerWidth)))
             val leftSlide = behaviorType == BehaviorType.LEFT_SLIDE_OVER
+            val density = LocalDensity.current
+            val endDrawerPaddingPx = with(density) { EndDrawerPadding.toPx() } // Assuming EndDrawerPadding is a Dp value like 16.dp or 0.dp
+            // This padding is used to ensure the content box has the correct size when drawer is open
+            val paddingPxValue = max(endDrawerPaddingPx, (fullWidth - drawerWidth))
 
-            val minValue =
-                modalDrawerConstraints.maxWidth.toFloat() * (if (leftSlide) (-1F) else (1F))
-            val maxValue = 0f
 
-            val anchors = mapOf(minValue to DrawerValue.Closed, maxValue to DrawerValue.Open)
+            // --- MODIFIED ANCHOR LOGIC ---
+            val (closedAnchorOffset, openAnchorOffset) = if (leftSlide) {
+                // For a left drawer, its left edge is at offset.
+                // Closed: left edge at -drawerWidth (just off-screen to the left).
+                // Open: left edge at 0f (aligned with the screen's left edge).
+                -drawerWidth to 0f
+            } else {
+                // For a right drawer, its left edge is at offset.
+                // Closed: left edge at fullWidth (drawer is [fullWidth, fullWidth + drawerWidth], so off-screen to the right).
+                // Open: left edge at fullWidth - drawerWidth (drawer is [fullWidth - drawerWidth, fullWidth]).
+                fullWidth to (fullWidth - drawerWidth)
+            }
+
+            val anchors = mapOf(
+                closedAnchorOffset to DrawerValue.Closed,
+                openAnchorOffset to DrawerValue.Open
+            )
+            // --- END OF MODIFIED ANCHOR LOGIC ---
+
             val isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
             Scrim(
                 open = !drawerState.isClosed,
                 onClose = onDismiss,
                 fraction = {
-                    calculateFraction(minValue, maxValue, drawerState.offset.value)
+                    // calculateFraction needs to be aware of the new anchor range
+                    // Old: calculateFraction(minValue, maxValue, drawerState.offset.value)
+                    // where minValue was -fullWidth or fullWidth, maxValue was 0 or fullWidth - drawerWidth
+                    // New:
+                    val minAnchor = anchors.keys.minOrNull() ?: 0f
+                    val maxAnchor = anchors.keys.maxOrNull() ?: 0f
+                    calculateFraction(minAnchor, maxAnchor, drawerState.offset.value)
                 },
                 color = if (scrimVisible) scrimColor else Color.Transparent,
                 preventDismissalOnScrimClick = preventDismissalOnScrimClick,
@@ -136,8 +165,8 @@ internal fun HorizontalDrawer(
                 }
                     .offset { IntOffset(drawerState.offset.value.roundToInt(), 0) }
                     .padding(
-                        start = if (leftSlide) 0.dp else paddingPx,
-                        end = if (leftSlide) paddingPx else 0.dp
+                        start = if (leftSlide) 0.dp else pxToDp(paddingPxValue),
+                        end = if (leftSlide) pxToDp(paddingPxValue) else 0.dp
                     )
                     .semantics {
                         if (!drawerState.isClosed) {
@@ -152,24 +181,24 @@ internal fun HorizontalDrawer(
                     .background(drawerBackground)
                     .swipeable(
                         state = drawerState,
-                        anchors = anchors,
+                        anchors = anchors, // Use the new anchors
                         thresholds = { _, _ -> FixedThreshold(pxToDp(value = drawerWidth / 2)) },
                         orientation = Orientation.Horizontal,
-                        enabled = false,
+                        enabled = false, // This is for the drawer's own surface swipe, not edge
                         reverseDirection = isRtl,
                         velocityThreshold = DrawerVelocityThreshold,
-                        resistance = null
+                        resistance = null // Or SwipeableDefaults.resistanceConfig(anchors.keys) for overdrag
                     ),
             ) {
                 Column(
                     Modifier
-                        .draggable(
+                        .draggable( // This draggable is for the content itself (e.g. a handle)
                             orientation = Orientation.Horizontal,
                             state = rememberDraggableState { delta ->
                                 drawerState.performDrag(delta)
                             },
                             onDragStopped = { velocity ->
-                                launch {
+                                scope.launch { // Use the existing scope from rememberCoroutineScope if needed, or remember a new one
                                     drawerState.performFling(
                                         velocity
                                     )
@@ -179,7 +208,9 @@ internal fun HorizontalDrawer(
                                 }
                             },
                         )
-                        .testTag(DRAWER_CONTENT_TAG), content = { drawerContent() })
+                        .testTag(DRAWER_CONTENT_TAG),
+                    content = { drawerContent() }
+                )
             }
         }
     }

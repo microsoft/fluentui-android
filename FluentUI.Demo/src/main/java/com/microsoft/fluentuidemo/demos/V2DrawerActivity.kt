@@ -49,6 +49,7 @@ import com.microsoft.fluentui.tokenized.controls.Label
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.drawer.Drawer
+import com.microsoft.fluentui.tokenized.drawer.DrawerState
 import com.microsoft.fluentui.tokenized.drawer.rememberDrawerState
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentuidemo.R
@@ -57,6 +58,7 @@ import com.microsoft.fluentuidemo.util.PrimarySurfaceContent
 import com.microsoft.fluentuidemo.util.getAndroidViewAsContent
 import com.microsoft.fluentuidemo.util.getDrawerAsContent
 import com.microsoft.fluentuidemo.util.getDynamicListGeneratorAsContent
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -169,48 +171,49 @@ class V2DrawerActivity : V2DemoActivity() {
                     )
                 }
         ) {
-            // Your main screen content
-            MainContentBehindDrawer(
-                modifier = Modifier.align(Alignment.Center),
-                text = "Swipe from ${if (isLeftDrawer) "left" else "right"} edge. Screen Width: ${screenWidthPx}px. Edge Px: ${edgeSwipePx}"
-            )
-
-            // FluentUI Drawer
-            // The Drawer composable itself handles its visibility based on drawerState.enable
-            if (drawerState.enable) {
-                com.microsoft.fluentui.tokenized.drawer.Drawer(
-                    drawerState = drawerState,
-                    behaviorType = if (isLeftDrawer) BehaviorType.LEFT_SLIDE_OVER else BehaviorType.RIGHT_SLIDE_OVER,
-                    drawerContent = {
-                        // CRITICAL for HorizontalDrawer's anchor calculation:
-//                        // Provide a measurable width.
-//                        Column(
-//                            modifier = Modifier
-//                                .fillMaxHeight()
-//                                .width(280.dp) // Example fixed width, adjust as needed or use IntrinsicSize
-//                                .background(Color.Blue) // Use your theme's colors
-//                                .padding(16.dp)
-//                        ) {
-                            getAndroidViewAsContent(contentType = ContentType.FULL_SCREEN_SCROLLABLE_CONTENT)(close)
-//                            Text("Drawer Content Area")
-//                            Spacer(modifier = Modifier.height(20.dp))
-//                            Text("State: ${drawerState.currentValue}")
-//                            Text("Offset: ${drawerState.offset.value}")
-//                            Text("Anchors Filled: ${drawerState.anchorsFilled}")
-//                            Text("Is Closed: ${drawerState.isClosed}")
-//                            Text("Is Enabled: ${drawerState.enable}")
-                      //  }
-                    },
-                    // Optional: if you want to prevent scrim click dismissal during edge swipe
-                    // preventDismissalOnScrimClick = isEdgeSwiping,
-                    onScrimClick = {
-                        // Standard behavior: close drawer if scrim is clicked and not prevented
-                        if (!isEdgeSwiping) { // Example condition
-                            scope.launch { drawerState.close() }
-                        }
-                    }
-                )
-            }
+            CreateActivityUI(drawerState, scope)
+//            // Your main screen content
+//            MainContentBehindDrawer(
+//                modifier = Modifier.align(Alignment.Center),
+//                text = "Swipe from ${if (isLeftDrawer) "left" else "right"} edge. Screen Width: ${screenWidthPx}px. Edge Px: ${edgeSwipePx}"
+//            )
+//
+//            // FluentUI Drawer
+//            // The Drawer composable itself handles its visibility based on drawerState.enable
+//            if (drawerState.enable) {
+//                com.microsoft.fluentui.tokenized.drawer.Drawer(
+//                    drawerState = drawerState,
+//                    behaviorType = if (isLeftDrawer) BehaviorType.LEFT_SLIDE_OVER else BehaviorType.RIGHT_SLIDE_OVER,
+//                    drawerContent = {
+//                        // CRITICAL for HorizontalDrawer's anchor calculation:
+////                        // Provide a measurable width.
+////                        Column(
+////                            modifier = Modifier
+////                                .fillMaxHeight()
+////                                .width(280.dp) // Example fixed width, adjust as needed or use IntrinsicSize
+////                                .background(Color.Blue) // Use your theme's colors
+////                                .padding(16.dp)
+////                        ) {
+//                            getAndroidViewAsContent(contentType = ContentType.FULL_SCREEN_SCROLLABLE_CONTENT)(close)
+////                            Text("Drawer Content Area")
+////                            Spacer(modifier = Modifier.height(20.dp))
+////                            Text("State: ${drawerState.currentValue}")
+////                            Text("Offset: ${drawerState.offset.value}")
+////                            Text("Anchors Filled: ${drawerState.anchorsFilled}")
+////                            Text("Is Closed: ${drawerState.isClosed}")
+////                            Text("Is Enabled: ${drawerState.enable}")
+//                      //  }
+//                    },
+//                    // Optional: if you want to prevent scrim click dismissal during edge swipe
+//                    // preventDismissalOnScrimClick = isEdgeSwiping,
+//                    onScrimClick = {
+//                        // Standard behavior: close drawer if scrim is clicked and not prevented
+//                        if (!isEdgeSwiping) { // Example condition
+//                            scope.launch { drawerState.close() }
+//                        }
+//                    }
+//                )
+//            }
         }
     }
 
@@ -252,7 +255,7 @@ enum class ContentType {
 }
 
 @Composable
-private fun CreateActivityUI() {
+private fun CreateActivityUI(drawerState: DrawerState, scope: CoroutineScope) {
     var scrimVisible by rememberSaveable { mutableStateOf(true) }
     var dynamicSizeContent by rememberSaveable { mutableStateOf(false) }
     var nestedDrawerContent by rememberSaveable { mutableStateOf(false) }
@@ -296,7 +299,9 @@ private fun CreateActivityUI() {
                 },
                 scrimVisible = scrimVisible,
                 IntOffset(offsetX, offsetY),
-                preventDismissalOnScrimClick = preventDismissalOnScrimClick
+                preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+                drawerState = drawerState,
+                scope = scope
             )
             LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
                 item {
@@ -560,10 +565,10 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     drawerContent: @Composable ((() -> Unit) -> Unit),
     scrimVisible: Boolean = true,
     offset: IntOffset = IntOffset.Zero,
-    preventDismissalOnScrimClick: Boolean
+    preventDismissalOnScrimClick: Boolean,
+    drawerState: DrawerState,
+    scope: CoroutineScope,
 ) {
-    val scope = rememberCoroutineScope()
-    val drawerState = rememberDrawerState()
     val open: () -> Unit = {
         scope.launch { drawerState.open() }
     }
