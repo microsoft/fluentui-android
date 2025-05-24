@@ -221,7 +221,7 @@ class AnchoredDraggableState<T>(
     internal val positionalThreshold: (totalDistance: Float) -> Float,
     internal val velocityThreshold: () -> Float,
     val animationSpec: AnimationSpec<Float>,
-    internal val confirmValueChange: (newValue: T) -> Boolean = { true }
+    val confirmValueChange: (newValue: T) -> Boolean = { true }
 ) {
 
     /**
