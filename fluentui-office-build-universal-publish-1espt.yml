@@ -62,6 +62,6 @@ extends:
             vstsFeedPublish: 'Office'
             vstsFeedPackagePublish: 'fluentuiandroid'
             versionOption: 'custom'
-            versionPublish: '0.3.99'
+            versionPublish: '0.3.100'
             packagePublishDescription: 'Fluent Universal Package'
             publishedPackageVar: 'fluent package'
