@@ -3,9 +3,7 @@ package com.microsoft.fluentuidemo.demos
 import android.os.Bundle
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,27 +11,20 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.selection.toggleable
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
@@ -46,7 +37,6 @@ import com.microsoft.fluentui.tokenized.controls.Label
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.drawer.Drawer
-import com.microsoft.fluentui.tokenized.drawer.FluentModalDrawerState
 import com.microsoft.fluentui.tokenized.drawer.FluentModalDrawerValue
 import com.microsoft.fluentui.tokenized.drawer.FluentModalNavigationDrawer
 import com.microsoft.fluentui.tokenized.drawer.rememberDrawerState
@@ -56,8 +46,6 @@ import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.util.PrimarySurfaceContent
 import com.microsoft.fluentuidemo.util.getAndroidViewAsContent
-import com.microsoft.fluentuidemo.util.getDrawerAsContent
-import com.microsoft.fluentuidemo.util.getDynamicListGeneratorAsContent
 import kotlinx.coroutines.launch
 enum class ContentType {
     FULL_SCREEN_SCROLLABLE_CONTENT,
@@ -88,22 +76,16 @@ class V2DrawerActivity : V2DemoActivity() {
             }
             FluentModalNavigationDrawer(
                 drawerContent = {
-                    getDrawerAsContent()(close)
+                    getAndroidViewAsContent(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT)(close)
                 },
                 modifier = Modifier,
                 drawerState = drawerState,
                 gesturesEnabled = true,
-                drawerShape = RoundedCornerShape(0.dp),
-                drawerElevation = 0.dp,
-                drawerBackgroundBrush = SolidColor(Color.Blue),
-                scrimColor = Color.Red,
                 drawerTokens = DrawerTokens(),
                 preventDismissalOnScrimClick = false,
                 onScrimClick = {},
                 content = {
-                    Box(){
-                        Text("Hello world")
-                    }
+                    CreateActivityUI()
                 }
             )
         }
@@ -142,20 +124,6 @@ class V2DrawerActivity : V2DemoActivity() {
                 }
             }
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-
-                CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                    selectedBehaviorType,
-                    if (listContent)
-                        getAndroidViewAsContent(selectedContent)
-                    else if (nestedDrawerContent) {
-                        getDrawerAsContent()
-                    } else {
-                        getDynamicListGeneratorAsContent()
-                    },
-                    scrimVisible = scrimVisible,
-                    IntOffset(offsetX, offsetY),
-                    preventDismissalOnScrimClick = preventDismissalOnScrimClick
-                )
                 LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
                     item {
                         ListItem.Header(title = stringResource(id = R.string.drawer_select_drawer_type))

@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
-// import androidx.compose.foundation.layout.padding // Not used directly by drawer, user can add to their content
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -27,7 +26,6 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.Saver
@@ -55,7 +53,6 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.compose.AnchoredDraggableState
 import com.microsoft.fluentui.compose.DraggableAnchors
-import com.microsoft.fluentui.compose.DraggableAnchorsConfig // Required for DraggableAnchors { ... }
 import com.microsoft.fluentui.compose.anchoredDraggable
 import com.microsoft.fluentui.compose.animateTo
 import com.microsoft.fluentui.theme.FluentTheme
@@ -66,7 +63,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.DrawerTokens
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
-// Constants
 private const val DrawerPositionalThresholdFactor = 0.5f
 private val DrawerVelocityThresholdModal = 125.dp
 private val DrawerAnimationSpec: AnimationSpec<Float> = SpringSpec(
@@ -77,8 +73,6 @@ private val EdgeDragWidth = 20.dp
 private val MinDrawerWidth = 256.dp
 private val MaxDrawerWidth = 360.dp
 
-// Tags for testing
-//const val DRAWER_SCRIM_TAG = "FluentDrawerScrim"
 const val DRAWER_SHEET_TAG = "FluentDrawerSheet"
 
 enum class FluentModalDrawerValue {
@@ -162,7 +156,7 @@ fun rememberFluentModalDrawerState(
         { with(density) { DrawerVelocityThresholdModal.toPx() } }
     }
     return rememberSaveable(
-        confirmValueChange, // Add other relevant keys if they can change and require re-creation
+        confirmValueChange,
         saver = FluentModalDrawerState.Saver(
             confirmValueChange = confirmValueChange,
             positionalThresholdFactor = DrawerPositionalThresholdFactor,
@@ -184,11 +178,7 @@ fun FluentModalNavigationDrawer(
     modifier: Modifier = Modifier,
     drawerState: FluentModalDrawerState = rememberFluentModalDrawerState(),
     gesturesEnabled: Boolean = true,
-    drawerShape: Shape? = null,
-    drawerElevation: Dp? = null,
-    drawerBackgroundBrush: Brush? = null,
-    scrimColor: Color? = null,
-    drawerTokens: DrawerTokens? = null,
+    drawerTokens: DrawerTokens = DrawerTokens(),
     preventDismissalOnScrimClick: Boolean = false,
     onScrimClick: () -> Unit = {},
     content: @Composable () -> Unit
@@ -202,20 +192,19 @@ fun FluentModalNavigationDrawer(
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DrawerControlType] as DrawerTokens
     val drawerInfo = remember { DrawerInfo(type = BehaviorType.LEFT_SLIDE_OVER) } // Assuming similar styling
 
-    val resolvedShape = drawerShape ?: RoundedCornerShape(tokens.borderRadius(drawerInfo))
-    val resolvedElevation = drawerElevation ?: tokens.elevation(drawerInfo)
-    val resolvedBackground = drawerBackgroundBrush ?: tokens.backgroundBrush(drawerInfo)
-    val resolvedScrimColor = scrimColor ?: tokens.scrimColor(drawerInfo).copy(alpha = tokens.scrimOpacity(drawerInfo))
+    val resolvedShape = RoundedCornerShape(tokens.borderRadius(drawerInfo))
+    val resolvedElevation = tokens.elevation(drawerInfo)
+    val resolvedBackground = tokens.backgroundBrush(drawerInfo)
+    val resolvedScrimColor = tokens.scrimColor(drawerInfo).copy(alpha = tokens.scrimOpacity(drawerInfo))
 
     var drawerWidthPx by remember { mutableFloatStateOf(0f) }
 
     LaunchedEffect(drawerState, drawerWidthPx) {
-        if (drawerWidthPx > 0f) { // Only update anchors if width is known
+        if (drawerWidthPx > 0f) { // Reminder!! : Avoid updating anchors if width is not set
             val newAnchors = DraggableAnchors {
                 FluentModalDrawerValue.Closed at -drawerWidthPx
                 FluentModalDrawerValue.Open at 0f
             }
-            // Provide current value as new target to avoid snapping if already in a settled state that's valid
             drawerState.anchoredDraggableState.updateAnchors(newAnchors, drawerState.anchoredDraggableState.targetValue)
         }
     }
