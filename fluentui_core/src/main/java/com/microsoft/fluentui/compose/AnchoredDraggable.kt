@@ -454,35 +454,69 @@ when launched for the very first time
         val currentAnchors = anchors
         val currentAnchorPosition = currentAnchors.positionOf(currentValue)
         val velocityThresholdPx = velocityThreshold()
-        return if (currentAnchorPosition == offset || currentAnchorPosition.isNaN()) {
-            currentValue
-        } else if (currentAnchorPosition < offset) {
-            // Swiping from lower to upper (positive).
-            if (velocity >= velocityThresholdPx) {
-                currentAnchors.closestAnchor(offset, true)!!
+
+        // If current position is invalid, or we are already at an anchor, stay.
+        if (currentAnchorPosition.isNaN() || currentAnchorPosition == offset) {
+            return currentValue
+        }
+
+        // Determine the swipe direction and the potential target anchor in that direction.
+        val isSwipingUpwards: Boolean // True if swiping towards more positive/larger offset values
+        val potentialTargetAnchor: T?
+
+        if (offset > currentAnchorPosition) { // Swiping from a numerically smaller anchor to a larger one (e.g., -360 to 0)
+            isSwipingUpwards = true
+            potentialTargetAnchor = currentAnchors.closestAnchor(offset, true)
+        } else { // Swiping from a numerically larger anchor to a smaller one (e.g., 0 to -360)
+            isSwipingUpwards = false
+            potentialTargetAnchor = currentAnchors.closestAnchor(offset, false)
+        }
+
+        // If no anchor exists in the swipe direction, stay at the current value.
+        potentialTargetAnchor ?: return currentValue
+        val potentialTargetAnchorPosition = currentAnchors.positionOf(potentialTargetAnchor)
+        if (potentialTargetAnchorPosition.isNaN()) return currentValue
+
+
+        // 1. Check velocity threshold: If velocity is high enough, snap to the next anchor.
+        if (isSwipingUpwards) {
+            if (velocity >= velocityThresholdPx) return potentialTargetAnchor
+        } else { // Swiping downwards
+            if (velocity <= -velocityThresholdPx) return potentialTargetAnchor
+        }
+
+        // 2. Velocity is low, use positional threshold.
+        // The distance between the current anchor and the potential next anchor in the swipe direction.
+        val distanceToNextAnchor = abs(potentialTargetAnchorPosition - currentAnchorPosition)
+        if (distanceToNextAnchor == 0f) {
+            // This can happen if currentValue and potentialTargetAnchor are the same,
+            // or map to the same position.
+            return currentValue
+        }
+
+        // positionalThreshold(distance) should return the distance one needs to cross
+        // from the current anchor to pass the threshold (e.g., 0.5 * distanceToNextAnchor).
+        // This value is expected to be positive.
+        val thresholdDelta = positionalThreshold(distanceToNextAnchor)
+
+        // Calculate the actual threshold position in the coordinate system.
+        if (isSwipingUpwards) {
+            // Swiping towards a more positive anchor (e.g., Closed at -360 to Open at 0).
+            // The threshold is currentAnchorPosition + thresholdDelta (e.g., -360 + 180 = -180).
+            // If we've dragged past this threshold (offset > -180), snap to Open.
+            return if (offset > currentAnchorPosition + thresholdDelta) {
+                potentialTargetAnchor
             } else {
-                val upper = currentAnchors.closestAnchor(offset, true)!!
-                val distance = abs(currentAnchors.positionOf(upper) - currentAnchorPosition)
-                val relativeThreshold = abs(positionalThreshold(distance))
-                val absoluteThreshold = abs(currentAnchorPosition + relativeThreshold)
-                if (offset < absoluteThreshold) currentValue else upper
+                currentValue
             }
         } else {
-            // Swiping from upper to lower (negative).
-            if (velocity <= -velocityThresholdPx) {
-                currentAnchors.closestAnchor(offset, false)!!
+            // Swiping towards a more negative anchor (e.g., Open at 0 to Closed at -360).
+            // The threshold is currentAnchorPosition - thresholdDelta (e.g., 0 - 180 = -180).
+            // If we've dragged past this threshold (offset < -180), snap to Closed.
+            return if (offset < currentAnchorPosition - thresholdDelta) {
+                potentialTargetAnchor
             } else {
-                val lower = currentAnchors.closestAnchor(offset, false)!!
-                val distance = abs(currentAnchorPosition - currentAnchors.positionOf(lower))
-                val relativeThreshold = abs(positionalThreshold(distance))
-                val absoluteThreshold = abs(currentAnchorPosition - relativeThreshold)
-                if (offset < 0) {
-                    // For negative offsets, larger absolute thresholds are closer to lower anchors
-                    // than smaller ones.
-                    if (abs(offset) < absoluteThreshold) currentValue else lower
-                } else {
-                    if (offset > absoluteThreshold) currentValue else lower
-                }
+                currentValue
             }
         }
     }
