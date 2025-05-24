@@ -34,9 +34,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.positionChange
 import androidx.compose.ui.input.pointer.util.VelocityTracker
@@ -47,7 +45,6 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.dismiss
 import androidx.compose.ui.semantics.paneTitle
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
@@ -55,8 +52,6 @@ import com.microsoft.fluentui.compose.AnchoredDraggableState
 import com.microsoft.fluentui.compose.DraggableAnchors
 import com.microsoft.fluentui.compose.anchoredDraggable
 import com.microsoft.fluentui.compose.animateTo
-import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
 import com.microsoft.fluentui.theme.token.controlTokens.DrawerInfo
 import com.microsoft.fluentui.theme.token.controlTokens.DrawerTokens
@@ -189,8 +184,7 @@ fun FluentModalNavigationDrawer(
     val density = LocalDensity.current
 
     val tokens = drawerTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DrawerControlType] as DrawerTokens
-    val drawerInfo = remember { DrawerInfo(type = BehaviorType.LEFT_SLIDE_OVER) } // Assuming similar styling
+    val drawerInfo = remember { DrawerInfo(type = BehaviorType.LEFT_SLIDE_OVER) }
 
     val resolvedShape = RoundedCornerShape(tokens.borderRadius(drawerInfo))
     val resolvedElevation = tokens.elevation(drawerInfo)
@@ -221,7 +215,7 @@ fun FluentModalNavigationDrawer(
     }
 
     val edgeSwipeModifier = if (gesturesEnabled && drawerState.anchoredDraggableState.confirmValueChange(FluentModalDrawerValue.Open)) {
-        Modifier.pointerInput(drawerState.anchoredDraggableState, isRtl, drawerWidthPx) { // Add drawerWidthPx as key
+        Modifier.pointerInput(drawerState.anchoredDraggableState, isRtl, drawerWidthPx) {
             if (drawerWidthPx == 0f) return@pointerInput // Do not detect if width is not measured
             val edgeWidthPx = with(density) { EdgeDragWidth.toPx() }
             val velocityTracker = VelocityTracker()
@@ -240,7 +234,6 @@ fun FluentModalNavigationDrawer(
 
                 if (isDragFromEdge) {
                     horizontalDrag(down.id) { change ->
-                        // Check currentValue inside drag to ensure we only dispatch if it's still closed
                         if (drawerState.anchoredDraggableState.currentValue == FluentModalDrawerValue.Closed) {
                             val delta = change.positionChange().x
                             val adjustedDelta = if (isRtl) -delta else delta
@@ -250,19 +243,17 @@ fun FluentModalNavigationDrawer(
                             velocityTracker.addPosition(change.uptimeMillis, change.position)
                             change.consume()
                         } else {
-                            // If drawer opened by other means during this gesture, stop special handling
-                            change.consume() // Consume to prevent interference
+                            change.consume()
                         }
                     }
                     val velocity = velocityTracker.calculateVelocity().x
                     val adjustedVelocity = if (isRtl) -velocity else velocity
                     scope.launch {
-                        // Only settle if we were actually dragging from edge
-                        // and the drawer is still in a draggable state (not fully open/closed by other means)
+                        // Only settle if we were actually dragging from edge and the drawer is still in a draggable state (not fully open/closed by other means)
                         if (drawerState.anchoredDraggableState.currentValue == FluentModalDrawerValue.Closed && drawerState.anchoredDraggableState.offset != 0f) {
                             drawerState.settle(adjustedVelocity)
                         } else if (drawerState.anchoredDraggableState.offset != -drawerWidthPx && drawerState.anchoredDraggableState.offset != 0f) {
-                            // If it's between states (e.g. partially opened by edge swipe)
+                            // if it's partially opened by edge swipe)
                             drawerState.settle(adjustedVelocity)
                         }
                     }

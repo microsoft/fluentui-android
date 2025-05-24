@@ -74,6 +74,9 @@ class V2DrawerActivity : V2DemoActivity() {
             val close: () -> Unit = {
                 scope.launch { drawerState.close() }
             }
+            val open: () -> Unit = {
+                scope.launch { drawerState.open() }
+            }
             FluentModalNavigationDrawer(
                 drawerContent = {
                     getAndroidViewAsContent(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT)(close)
@@ -85,14 +88,14 @@ class V2DrawerActivity : V2DemoActivity() {
                 preventDismissalOnScrimClick = false,
                 onScrimClick = {},
                 content = {
-                    CreateActivityUI()
+                    CreateActivityUI(open)
                 }
             )
         }
     }
 
     @Composable
-    private fun CreateActivityUI() {
+    private fun CreateActivityUI(open: () -> Unit) {
         var scrimVisible by rememberSaveable { mutableStateOf(true) }
         var dynamicSizeContent by rememberSaveable { mutableStateOf(false) }
         var nestedDrawerContent by rememberSaveable { mutableStateOf(false) }
@@ -135,6 +138,7 @@ class V2DrawerActivity : V2DemoActivity() {
                                 RadioButton(
                                     onClick = {
                                         selectedBehaviorType = BehaviorType.TOP
+                                        open()
                                     },
                                     selected = selectedBehaviorType == BehaviorType.TOP
                                 )
