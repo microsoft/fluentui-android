@@ -85,7 +85,17 @@ class V2ShimmerActivity : V2DemoActivity() {
     private fun CreateShimmerActivityUI() {
         var shimmerOrientation by rememberSaveable { mutableStateOf(0) }
         var isShimmering by rememberSaveable { mutableStateOf(true) }
-        val shimmerTokens = ShimmerTokens()
+        val shimmerTokens = object: ShimmerTokens(){
+            @Composable
+            override fun delay(shimmerInfo: ShimmerInfo): Int {
+                return 1000
+            }
+
+            @Composable
+            override fun orientation(shimmerInfo: ShimmerInfo): ShimmerOrientation {
+                return getShimmerOrientation(shimmerOrientation)
+            }
+        }
         Column(
             Modifier
                 .padding(all = 12.dp)

@@ -101,6 +101,18 @@ internal fun InternalShimmer(
     val diagonal =
         sqrt((screenHeight * screenHeight + screenWidth * screenWidth).toDouble()).toFloat()
     val shimmerInfo = ShimmerInfo()
+    val cachedDelay = tokens.delay(shimmerInfo)
+    val shimmerDelayValue = if (cachedDelay != -1) {
+        cachedDelay
+    } else {
+        shimmerDelay
+    }
+    val tokenOrientation = tokens.orientation(shimmerInfo)
+    val orientation: ShimmerOrientation = if(tokenOrientation != ShimmerOrientation._NONE){
+        tokenOrientation
+    } else {
+        shimmerOrientation
+    }
     val shimmerBackgroundColor = if (content != null) {
         Color.Transparent
     } else {
@@ -110,7 +122,7 @@ internal fun InternalShimmer(
     val cornerRadius =
         dpToPx(cornerRadius)
     val infiniteTransition = rememberInfiniteTransition()
-    val isLtr = if (shimmerOrientation in listOf(
+    val isLtr = if (orientation in listOf(
             ShimmerOrientation.LEFT_TO_RIGHT,
             ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT
         )
@@ -124,7 +136,7 @@ internal fun InternalShimmer(
                 targetValue,
                 infiniteRepeatable(
                     animation = tween(
-                        durationMillis = shimmerDelay,
+                        durationMillis = shimmerDelayValue,
                         easing = LinearEasing
                     ),
                     repeatMode = RepeatMode.Restart
@@ -135,7 +147,7 @@ internal fun InternalShimmer(
         remember { mutableFloatStateOf(0f) }
     }
 
-    val startOffset: Offset = when (shimmerOrientation) {
+    val startOffset: Offset = when (orientation) {
         ShimmerOrientation.LEFT_TO_RIGHT -> Offset.Zero
         ShimmerOrientation.RIGHT_TO_LEFT -> Offset.Zero
         ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT -> Offset.Zero
@@ -143,7 +155,7 @@ internal fun InternalShimmer(
         else -> Offset.Zero
     }
     val endOffset: Offset = if (isShimmering) {
-        when (shimmerOrientation) {
+        when (orientation) {
             ShimmerOrientation.LEFT_TO_RIGHT -> Offset(shimmerEffect.absoluteValue, 0F)
             ShimmerOrientation.RIGHT_TO_LEFT -> Offset(shimmerEffect.absoluteValue, 0F)
             ShimmerOrientation.TOPLEFT_TO_BOTTOMRIGHT -> Offset(shimmerEffect.absoluteValue, shimmerEffect.absoluteValue)
