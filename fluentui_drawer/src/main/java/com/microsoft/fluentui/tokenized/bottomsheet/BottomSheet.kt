@@ -547,7 +547,7 @@ fun BottomSheet(
                         }
                     } else Modifier.fillMaxSize()), content = {
                         sheetContent()
-                        Box(
+                        Spacer(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(
