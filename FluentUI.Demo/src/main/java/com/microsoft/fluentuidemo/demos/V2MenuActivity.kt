@@ -29,6 +29,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.PopupProperties
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
@@ -133,7 +134,13 @@ fun Menu(context: Context, xOffset: Dp, yOffset: Dp, contentText: String, count:
         Menu(
             opened = expanded,
             offset = DpOffset(xOffset, yOffset),
-            onDismissRequest = { expanded = false }
+            onDismissRequest = { expanded = false
+                               println("### Menu dismissed") },
+            properties = PopupProperties(
+                dismissOnBackPress = true,
+                dismissOnClickOutside = true,
+                focusable = true
+            )
         ) {
             Column(Modifier.verticalScroll(rememberScrollState())) {
                 repeat(count) {

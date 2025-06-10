@@ -63,7 +63,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.ListItemInfo
  *
  */
 @Composable
-fun PersonaList(
+fun  PersonaList(
     personas: List<Persona>,
     modifier: Modifier = Modifier,
     border: BorderType = NoBorder,

@@ -1,12 +1,60 @@
 package com.microsoft.fluentui.tokenized.drawer
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.rememberDraggableState
+import androidx.compose.foundation.gestures.scrollBy
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.ime
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredHeightIn
+import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.progressSemantics
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.AccountBox
+import androidx.compose.material.icons.outlined.ArrowBack
+import androidx.compose.material.icons.outlined.Check
+import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.outlined.Star
+import androidx.compose.material.icons.outlined.Warning
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -14,18 +62,55 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntRect
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupPositionProvider
 import androidx.compose.ui.window.PopupProperties
@@ -33,12 +118,34 @@ import androidx.core.view.WindowInsetsCompat
 import com.microsoft.fluentui.compose.ModalPopup
 import com.microsoft.fluentui.compose.PreUpPostDownNestedScrollConnection
 import com.microsoft.fluentui.compose.SwipeableState
+import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background1
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background1Pressed
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background1Selected
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
+import com.microsoft.fluentui.theme.token.FluentIcon
+import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.Icon
+import com.microsoft.fluentui.theme.token.StateBrush
+import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
+import com.microsoft.fluentui.theme.token.controlTokens.BorderType
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
+import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorInfo
+import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorSize
+import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorTokens
 import com.microsoft.fluentui.theme.token.controlTokens.DrawerAccessibilityAnnouncement
 import com.microsoft.fluentui.theme.token.controlTokens.DrawerInfo
 import com.microsoft.fluentui.theme.token.controlTokens.DrawerTokens
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemInfo
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemTokens
+import com.microsoft.fluentui.theme.token.controlTokens.SearchBarInfo
+import com.microsoft.fluentui.theme.token.controlTokens.SearchBarTokens
+import com.microsoft.fluentui.tokenized.listitem.ListItem
+import com.microsoft.fluentui.util.dpToPx
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -560,6 +667,827 @@ fun BottomDrawer(
                 preventDismissalOnScrimClick = preventDismissalOnScrimClick,
                 maxLandscapeWidthFraction = maxLandscapeWidthFraction,
                 onScrimClick = onScrimClick
+            )
+        }
+    }
+}
+
+/**
+ * Create an Indeterminate Circular Progress indicator
+ *
+ * @param size Optional size of the circular progress indicator
+ * @param modifier Modifier for circular progress indicator
+ * @param style Style of progress indicator. Default: [FluentStyle.Neutral]
+ * @param circularProgressIndicatorTokens Token values for circular progress indicator
+ *
+ */
+@Composable
+fun CircularProgressIndicator(
+    size: CircularProgressIndicatorSize = CircularProgressIndicatorSize.XXSmall,
+    modifier: Modifier = Modifier,
+    style: FluentStyle = FluentStyle.Neutral,
+    circularProgressIndicatorTokens: CircularProgressIndicatorTokens? = null
+) {
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
+    val tokens = circularProgressIndicatorTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.CircularProgressIndicatorControlType] as CircularProgressIndicatorTokens
+    val circularProgressIndicatorInfo = CircularProgressIndicatorInfo(
+        circularProgressIndicatorSize = size,
+        style = style
+    )
+    val circularProgressIndicatorColor =
+        tokens.brush(
+            circularProgressIndicatorInfo
+        )
+    val circularProgressIndicatorSize =
+        tokens.size(
+            circularProgressIndicatorInfo
+        )
+    val circularProgressIndicatorStrokeWidth =
+        tokens.strokeWidth(
+            circularProgressIndicatorInfo
+        )
+    val infiniteTransition = rememberInfiniteTransition()
+    val startAngle by infiniteTransition.animateFloat(
+        0f,
+        360f,
+        infiniteRepeatable(
+            animation = tween(
+                durationMillis = 1000,
+                easing = LinearEasing
+            )
+        )
+    )
+    val indicatorSizeInPx = dpToPx(circularProgressIndicatorSize)
+    Canvas(
+        modifier = modifier
+            .requiredSize(circularProgressIndicatorSize)
+            .progressSemantics()
+    ) {
+        drawArc(
+            circularProgressIndicatorColor,
+            startAngle,
+            270f,
+            false,
+            size = Size(
+                indicatorSizeInPx, indicatorSizeInPx
+            ),
+            style = Stroke(dpToPx(circularProgressIndicatorStrokeWidth), cap = StrokeCap.Round)
+        )
+    }
+}
+
+@Composable
+fun SearchBar(
+    onValueChange: (String, SearchItem?) -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    style: FluentStyle = FluentStyle.Neutral,
+    keyboardOptions: KeyboardOptions = KeyboardOptions(),
+    keyboardActions: KeyboardActions = KeyboardActions(),
+    searchHint: String = "Search",//LocalContext.current.resources.getString(R.string.fluentui_search),
+    focusByDefault: Boolean = false,
+    loading: Boolean = false,
+    selectedPerson: SearchItem? = null,
+    personaChipOnClick: (() -> Unit)? = null,
+    microphoneCallback: (() -> Unit)? = null,
+    navigationIconCallback: (() -> Unit)? = null,
+    leftAccessoryIcon: ImageVector? = Icons.Outlined.Search,
+    rightAccessoryIcon: FluentIcon? = null,
+    searchBarTokens: SearchBarTokens? = null
+) {
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
+    val token = searchBarTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.SearchBarControlType] as SearchBarTokens
+    val searchBarInfo = SearchBarInfo(style)
+    val focusManager = LocalFocusManager.current
+    val focusRequester = remember { FocusRequester() }
+
+    var queryText by rememberSaveable { mutableStateOf("") }
+    var searchHasFocus by rememberSaveable { mutableStateOf(false) }
+
+    var personaChipSelected by rememberSaveable { mutableStateOf(false) }
+    var selectedPerson: SearchItem? = selectedPerson
+    val borderWidth = token.borderWidth(searchBarInfo)
+    val elevation = token.elevation(searchBarInfo)
+    val height = token.height(searchBarInfo)
+
+    val scope = rememberCoroutineScope()
+    val borderModifier = if (borderWidth > 0.dp) {
+        Modifier.border(
+            width = borderWidth,
+            color = token.borderColor(searchBarInfo),
+            shape = RoundedCornerShape(token.cornerRadius(searchBarInfo))
+        )
+    } else Modifier
+    val shadowModifier = if (elevation > 0.dp) Modifier.shadow(
+        elevation = token.elevation(searchBarInfo),
+        shape = RoundedCornerShape(token.cornerRadius(searchBarInfo)),
+        spotColor = token.shadowColor(searchBarInfo)
+    ) else Modifier
+
+    Row(
+        modifier = modifier
+            .background(token.backgroundBrush(searchBarInfo))
+            .padding(token.searchBarPadding(searchBarInfo))
+    ) {
+        Row(
+            Modifier
+                .requiredHeightIn(min = height)
+                .then(borderModifier)
+                .then(shadowModifier)
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(token.cornerRadius(searchBarInfo)))
+                .background(
+                    token.inputBackgroundBrush(searchBarInfo),
+                    RoundedCornerShape(token.cornerRadius(searchBarInfo))
+                ),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            //Left Section
+            AnimatedContent(searchHasFocus) {
+                var onClick: (() -> Unit)? = null
+                var icon: ImageVector? = null
+                var contentDescription: String? = null
+
+                var mirrorImage = false
+
+                when (it) {
+                    true -> {
+                        onClick = {
+                            queryText = ""
+                            selectedPerson = null
+
+                            onValueChange(queryText, selectedPerson)
+
+                            focusManager.clearFocus()
+                            searchHasFocus = false
+
+                            navigationIconCallback?.invoke()
+                        }
+                        icon = Icons.Outlined.ArrowBack
+                        contentDescription = "Fluent Back"//LocalContext.current.resources.getString(R.string.fluentui_back)
+                        if (LocalLayoutDirection.current == LayoutDirection.Rtl)
+                            mirrorImage = true
+                    }
+
+                    false -> {
+                        onClick = {
+                            focusRequester.requestFocus()
+                        }
+                        icon = leftAccessoryIcon ?: Icons.Outlined.Search
+                        contentDescription = "Fluent Search"//LocalContext.current.resources.getString(R.string.fluentui_search)
+                        mirrorImage = false
+                    }
+                }
+
+                Icon(
+                    icon,
+                    contentDescription = contentDescription,
+                    modifier = Modifier
+                        .padding(
+                            (44.dp - token.leftIconSize(searchBarInfo)) / 2,
+                            (40.dp - token.leftIconSize(searchBarInfo)) / 2
+                        )
+                        .size(token.leftIconSize(searchBarInfo)),
+                    tint = token.leftIconColor(searchBarInfo),
+                    flipOnRtl = mirrorImage,
+                    enabled = enabled,
+                    onClick = onClick
+                )
+            }
+
+            //Center Section
+            Row(
+                modifier = Modifier
+                    .height(24.dp)
+                    .weight(1F)
+                    .onKeyEvent {
+                        if (it.key == Key.Backspace) {
+
+                            if (personaChipSelected) {
+                                selectedPerson = null
+                                personaChipSelected = false
+
+                                onValueChange(queryText, selectedPerson)
+                            } else {
+                                personaChipSelected = true
+                            }
+
+                        }
+                        false
+                    },
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                LaunchedEffect(selectedPerson) {
+                    queryText = ""
+                    if (personaChipSelected)
+                        personaChipSelected = false
+
+                    onValueChange(queryText, selectedPerson)
+                }
+
+                if (selectedPerson != null) {
+//                    SearchBarPersonaChip(
+//                        person = selectedPerson!!,
+//                        modifier = Modifier.padding(end = 8.dp),
+//                        style = style,
+//                        enabled = enabled,
+//                        selected = personaChipSelected,
+//                        onClick = {
+//                            personaChipSelected = !personaChipSelected
+//                            personaChipOnClick?.invoke()
+//                        },
+//                        onCloseClick = {
+//                            selectedPerson = null
+//
+//                            onValueChange(queryText, selectedPerson)
+//                        }
+//                    )
+                }
+
+                BasicTextField(
+                    value = queryText,
+                    onValueChange = {
+                        queryText = it
+                        personaChipSelected = false
+
+                        onValueChange(queryText, selectedPerson)
+                    },
+                    singleLine = true,
+                    keyboardOptions = keyboardOptions,
+                    keyboardActions = keyboardActions,
+                    modifier = Modifier
+                        .weight(1F)
+                        .focusRequester(focusRequester)
+                        .onFocusChanged { focusState ->
+                            when {
+                                focusState.isFocused ->
+                                    searchHasFocus = true
+                            }
+                        }
+                        .padding(horizontal = 8.dp)
+                        .semantics { contentDescription = searchHint },
+                    textStyle = token.typography(searchBarInfo).merge(
+                        TextStyle(
+                            color = token.textColor(searchBarInfo),
+                            textDirection = TextDirection.ContentOrLtr
+                        )
+                    ),
+                    decorationBox = @Composable { innerTextField ->
+                        Box(
+                            Modifier.fillMaxWidth(),
+                            contentAlignment = if (LocalLayoutDirection.current == LayoutDirection.Rtl)
+                                Alignment.CenterEnd
+                            else
+                                Alignment.CenterStart
+                        ) {
+                            if (queryText.isEmpty()) {
+                                BasicText(
+                                    searchHint,
+                                    style = token.typography(searchBarInfo)
+                                        .merge(TextStyle(color = token.textColor(searchBarInfo)))
+                                )
+                            }
+                        }
+                        innerTextField()
+                    },
+                    cursorBrush = token.cursorColor(searchBarInfo)
+                )
+            }
+            LaunchedEffect(Unit) {
+                if (focusByDefault)
+                    focusRequester.requestFocus()
+            }
+
+            //Right Section
+            AnimatedContent((queryText.isBlank() && selectedPerson == null)) {
+                when (it) {
+                    true ->
+                        if (microphoneCallback != null) {
+                            Icon(
+                                Icons.Outlined.Star,
+                                contentDescription = "Microphone",//LocalContext.current.resources.getString( R.string.fluentui_microphone),
+                                modifier = Modifier
+                                    .padding(
+                                        (44.dp - token.rightIconSize(searchBarInfo)) / 2,
+                                        (40.dp - token.rightIconSize(searchBarInfo)) / 2
+                                    )
+                                    .size(
+                                        token.rightIconSize(
+                                            searchBarInfo
+                                        )
+                                    ),
+                                tint = token.rightIconColor(searchBarInfo),
+                                onClick = microphoneCallback
+                            )
+                        }
+
+                    false ->
+                        Box(
+                            modifier = Modifier
+                                .clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = rememberRipple(),
+                                    enabled = enabled,
+                                    onClick = {
+                                        queryText = ""
+                                        selectedPerson = null
+
+                                        onValueChange(queryText, selectedPerson)
+                                    },
+                                    role = Role.Button
+                                )
+                                .size(44.dp, 40.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            if (loading) {
+                                CircularProgressIndicator(
+                                    size = token.circularProgressIndicatorSize(
+                                        searchBarInfo
+                                    )
+                                )
+                            }
+                            Icon(
+                                Icons.Outlined.Warning,
+                                contentDescription = "Clear Text",//LocalContext.current.resources.getString(R.string.fluentui_clear_text),
+                                modifier = Modifier
+                                    .size(token.rightIconSize(searchBarInfo)),
+                                tint = token.rightIconColor(searchBarInfo)
+                            )
+                        }
+                }
+            }
+
+            if (rightAccessoryIcon?.isIconAvailable() == true && rightAccessoryIcon.onClick != null) {
+                Row(
+                    modifier = Modifier
+                        .size(44.dp, 40.dp)
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = rememberRipple(),
+                            enabled = enabled,
+                            onClick = rightAccessoryIcon.onClick!!,
+                            role = Role.Button
+                        ),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        rightAccessoryIcon.value(),
+                        contentDescription = rightAccessoryIcon.contentDescription,
+                        modifier = Modifier
+                            .size(token.rightIconSize(searchBarInfo)),
+                        tint = token.rightIconColor(searchBarInfo)
+                    )
+                    Icon(
+                        Icons.Outlined.AccountBox,
+                        contentDescription = "Flunet Chevron",//LocalContext.current.resources.getString(R.string.fluentui_chevron),
+                        Modifier.rotate(90F),
+                        tint = token.rightIconColor(searchBarInfo)
+                    )
+                }
+            }
+        }
+    }
+}
+
+class SearchItem(
+    val title: String,
+    val subTitle: String? = null,
+    val footer: String? = null,
+    val leftAccessory: @Composable (() -> Unit)? = null,
+    val rightAccessory: @Composable (() -> Unit)? = null,
+    val status: AvatarStatus? = null,
+    val onClick: () -> Unit = {},
+    val onLongClick: () -> Unit = {},
+    val enabled: Boolean = true,
+){}
+
+@Composable
+fun BottomDrawerMain(){
+    val scope = rememberCoroutineScope()
+
+    val drawerState = rememberBottomDrawerState(initialValue = DrawerValue.Closed, expandable = true, skipOpenState = false)
+
+    val open: () -> Unit = {
+        scope.launch { drawerState.open() }
+    }
+    val expand: () -> Unit = {
+        scope.launch { drawerState.expand() }
+    }
+    val close: () -> Unit = {
+        scope.launch { drawerState.close() }
+    }
+    Row {
+        BasicText(
+            text = "Open",
+            modifier = Modifier.clickable {
+                open()
+            },
+            style = TextStyle(
+                color = Color(0xFF464FEB),
+                fontSize = 16.sp,
+                lineHeight = 22.sp,
+                letterSpacing = -0.43.sp,
+                textAlign = TextAlign.Start,
+                fontWeight = FontWeight(400)
+            )
+        )
+        Spacer(modifier = Modifier.width(10.dp))
+        BasicText(
+            text = "Expand",
+            modifier = Modifier.clickable {
+                expand()
+            },
+            style = TextStyle(
+                color = Color(0xFF464FEB),
+                fontSize = 16.sp,
+                lineHeight = 22.sp,
+                letterSpacing = -0.43.sp,
+                textAlign = TextAlign.Start,
+                fontWeight = FontWeight(400)
+            )
+        )
+        BasicTextField(
+            value = drawerState.currentValue.name,
+            onValueChange = { },
+            modifier = Modifier.padding(10.dp),
+            textStyle = TextStyle(
+                color = Color(0xFF464FEB),
+                fontSize = 16.sp,
+                lineHeight = 22.sp,
+                letterSpacing = -0.43.sp,
+                textAlign = TextAlign.Start,
+                fontWeight = FontWeight(400)
+            )
+        )
+    }
+
+    BottomDrawer(
+        drawerState = drawerState,
+        drawerContent = { BottomDrawerSearchableList(
+            open = open,
+            expand = expand,
+            close = close,
+        ) },
+        scrimVisible = true,
+        slideOver = false,
+        showHandle = true,
+        enableSwipeDismiss = true,
+        maxLandscapeWidthFraction = 1.0f,
+        preventDismissalOnScrimClick = false
+    )
+}
+
+class SearchableDrawerTokens{
+    @Composable
+    fun topRowTextColours(): List<Brush> {
+        return listOf(
+            Brush.linearGradient(
+                colors = listOf(Color(0xFFFAFAFA), Color(0xFFF5F5F5)),
+            )
+        )
+    }
+
+    @Composable
+    fun drawerTokens(){
+
+    }
+}
+@Composable
+fun TopOptionsRow(
+    tokens: SearchableDrawerTokens = SearchableDrawerTokens(),
+    onLeftTextClick: () -> Unit = {},
+    onCenterTextClick: () -> Unit = {},
+    onRightTextClick: () -> Unit = {},
+){
+    val textColours = tokens.topRowTextColours()
+    Row(
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 10.dp),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        val interactionSourceStart = remember { MutableInteractionSource() }
+        val animatedFontSizeStart by animateDpAsState(
+            targetValue = if (interactionSourceStart.collectIsPressedAsState().value) 18.5.dp else 17.dp,
+            label = "FontSizeAnimation"
+        )
+        Box(
+            modifier = Modifier.fillMaxWidth().weight(1f)
+        ) {
+            BasicText(
+                text = "Clear",
+                modifier = Modifier.fillMaxWidth().clickable(
+                    enabled = true,
+                    indication = null,
+                    interactionSource = interactionSourceStart
+                ) {
+                    onLeftTextClick()
+                },
+                style = TextStyle(
+                    color = Color(0xFF616161),
+                    fontSize = animatedFontSizeStart.value.sp,
+                    lineHeight = 22.sp,
+                    letterSpacing = -0.43.sp,
+                    textAlign = TextAlign.Start,
+                    fontWeight = FontWeight(400)
+                )
+            )
+        }
+        val interactionSourceCenter = remember { MutableInteractionSource() }
+        val animatedFontSizeCenter by animateDpAsState(
+            targetValue = if (interactionSourceCenter.collectIsPressedAsState().value) 18.5.dp else 17.dp,
+            label = "FontSizeAnimation"
+        )
+        Box(
+            modifier = Modifier.fillMaxWidth().weight(1f)
+        ) {
+            BasicText(
+                text = "Person",
+                modifier = Modifier.fillMaxWidth().clickable(
+                    enabled = true,
+                    indication = null,
+                    interactionSource = interactionSourceCenter
+                ) {
+                    //close()
+                },
+                style = TextStyle(
+                    color = Color(0xFF242424),
+                    fontSize = animatedFontSizeCenter.value.sp,
+                    lineHeight = 22.sp,
+                    letterSpacing = -0.43.sp,
+                    textAlign = TextAlign.Center,
+                    fontWeight = FontWeight(600)
+                )
+            )
+        }
+        val interactionSourceEnd = remember { MutableInteractionSource() }
+        val animatedFontSizeEnd by animateDpAsState(
+            targetValue = if (interactionSourceEnd.collectIsPressedAsState().value) 18.5.dp else 17.dp,
+            label = "FontSizeAnimation"
+        )
+        Box(
+            modifier = Modifier.fillMaxWidth().weight(1f)
+        ) {
+            BasicText(
+                text = "Apply",
+                modifier = Modifier.fillMaxWidth().clickable(
+                    enabled = true,
+                    indication = null,
+                    interactionSource = interactionSourceEnd
+                ) {
+                    // close()
+                },
+                style = TextStyle(
+                    color = Color(0xFF464FEB),
+                    fontSize = animatedFontSizeEnd.value.sp,
+                    lineHeight = 22.sp,
+                    letterSpacing = -0.43.sp,
+                    textAlign = TextAlign.End,
+                    fontWeight = FontWeight(400)
+                )
+            )
+        }
+    }
+}
+
+@Composable
+fun KeyboardDetection(
+    onKeyboardVisible: () -> Unit = {},
+    onKeyboardHidden: () -> Unit = {}
+) {
+    val imeInsets = WindowInsets.ime
+    val density = LocalDensity.current
+    val isKeyboardVisible by remember {
+        derivedStateOf {
+            imeInsets.getBottom(density) > 0
+        }
+    }
+
+    LaunchedEffect(isKeyboardVisible) {
+        if (isKeyboardVisible) {
+            onKeyboardVisible()
+        } else {
+            onKeyboardHidden()
+        }
+    }
+}
+
+@Composable
+fun BottomDrawerSearchableList(
+    onTitleClick: () -> Unit = {},
+    onLeftAccesoryClick: () -> Unit = {},
+    onRightAccesoryClick: () -> Unit = {},
+    open: () -> Unit = {},
+    expand: () -> Unit = {},
+    close: () -> Unit = {},
+) {
+        KeyboardDetection(
+            onKeyboardVisible = expand,
+            onKeyboardHidden = open
+        )
+        var autoCorrectEnabled: Boolean by rememberSaveable { mutableStateOf(false) }
+        var searchBarStyle: FluentStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
+        var induceDelay: Boolean by rememberSaveable { mutableStateOf(false) }
+        var selectedItems: SearchItem? by rememberSaveable { mutableStateOf(null) }
+        val itemsList = listOf(
+            SearchItem(
+                "Allan Munger",
+                leftAccessory = {},
+                rightAccessory = {}
+            ),
+            SearchItem(
+                "Paul Allen",
+                leftAccessory = {},
+                rightAccessory = {}
+            ),
+            SearchItem(
+                "Search Item",
+                leftAccessory = {
+                    Image(
+                        imageVector = Icons.Outlined.AccountBox,
+                        contentDescription = "Avatar",
+                        modifier = Modifier.size(40.dp),
+                        colorFilter = ColorFilter.tint(Color(0xFF464FEB))
+                    )
+                },
+                rightAccessory = {},
+                subTitle = "Sub Title",
+                footer = "Footer",
+            ),
+            SearchItem(
+                "Allan Munger",
+                leftAccessory = {},
+                rightAccessory = {}
+            ),
+            SearchItem(
+                "Allan Munger",
+                leftAccessory = {},
+                rightAccessory = {}
+            ),
+            SearchItem(
+                "Allan Munger",
+                leftAccessory = {},
+                rightAccessory = {}
+            ),
+            SearchItem(
+                "Allan Munger",
+                leftAccessory = {},
+                rightAccessory = {}
+            )
+        )
+        var filteredItems by rememberSaveable { mutableStateOf(itemsList.toMutableList()) }
+
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            TopOptionsRow()
+
+            val scope = rememberCoroutineScope()
+            var loading by rememberSaveable { mutableStateOf(false) }
+            val keyboardController = LocalSoftwareKeyboardController.current
+            SearchBar(
+                onValueChange = { query, selectedPerson ->
+                    scope.launch {
+                        loading = true
+
+                        if (induceDelay)
+                            delay(2000)
+
+                        filteredItems = itemsList.filter {
+                            it.title.lowercase().contains(query.lowercase())
+                        } as MutableList<SearchItem>
+                        selectedItems = selectedPerson
+                        loading = false
+                    }
+                },
+                style = searchBarStyle,
+                loading = loading,
+                selectedPerson = selectedItems,
+                keyboardOptions = KeyboardOptions(
+                    autoCorrect = autoCorrectEnabled,
+                    keyboardType = KeyboardType.Email,
+                    imeAction = ImeAction.Search
+                ),
+                keyboardActions = KeyboardActions(
+                    onSearch = {
+                        keyboardController?.hide()
+                    }
+                ),
+                searchBarTokens = object : SearchBarTokens() {
+                    @Composable
+                    override fun cornerRadius(searchBarInfo: SearchBarInfo): Dp {
+                        return FluentGlobalTokens.CornerRadiusTokens.CornerRadius120.value
+                    }
+                },
+                modifier = Modifier.padding(horizontal = 10.dp, vertical = 20.dp),
+                searchHint = "Filter by person"
+            )
+
+            val filteredPersona = mutableListOf<SearchItem>()
+            val selectedPeopleList = mutableListOf<Boolean>()
+            filteredItems.forEach {
+                var isSelected by remember { mutableStateOf(false) }
+                filteredPersona.add(
+                    SearchItem(
+                        it.title,
+                        leftAccessory = it.leftAccessory,
+                        rightAccessory = it.rightAccessory,
+                        status = it.status
+                    )
+                )
+                selectedPeopleList.add(isSelected)
+            }
+            AllItemsList(
+                searchItems = filteredPersona,
+                border = BorderType.NoBorder
+            )
+        }
+}
+
+@Composable
+fun AllItemsList(
+    modifier: Modifier = Modifier,
+    searchItems: List<SearchItem>,
+    border: BorderType = BorderType.NoBorder,
+){
+    val scope = rememberCoroutineScope()
+    val lazyListState = rememberLazyListState()
+    val positionString: String = "Position String"//LocalContext.current.resources.getString(R.string.position_string)
+    val statusString: String = "Status String"//LocalContext.current.resources.getString(R.string.status_string)
+    LazyColumn(
+        state = lazyListState, modifier = modifier.draggable(
+            orientation = Orientation.Vertical,
+            state = rememberDraggableState { delta ->
+                scope.launch {
+                    lazyListState.scrollBy(-delta)
+                }
+            },
+        )
+    ) {
+        itemsIndexed(searchItems) { index, item ->
+            var isSelected by remember { mutableStateOf(false) }
+            val customTokens: ListItemTokens = object: ListItemTokens(){
+                @Composable
+                override fun backgroundBrush(listItemInfo: ListItemInfo): StateBrush {
+                    return StateBrush(
+                        rest =
+                        if(!isSelected) {
+                            SolidColor(
+                                FluentTheme.aliasTokens.neutralBackgroundColor[Background1].value(
+                                    themeMode = FluentTheme.themeMode
+                                )
+                            )
+                        }
+                        else{
+                            SolidColor(
+                                FluentTheme.aliasTokens.neutralBackgroundColor[Background1Selected].value(
+                                    themeMode = FluentTheme.themeMode
+                                )
+                            )
+                        },
+                        pressed = SolidColor(
+                            FluentTheme.aliasTokens.neutralBackgroundColor[Background1Pressed].value(
+                                themeMode = FluentTheme.themeMode
+                            )
+                        )
+                    )
+                }
+
+                @Composable
+                override fun primaryTextTypography(listItemInfo: ListItemInfo): TextStyle {
+                    return TextStyle(
+                        color = Color(0xFF242424),
+                        fontSize = 17.sp,
+                        lineHeight = 22.sp,
+                        letterSpacing = -0.43.sp,
+                        textAlign = TextAlign.Start,
+                        fontWeight = FontWeight(400)
+                    )
+                }
+            }
+            ListItem.Item(
+                text = item.title,
+                modifier = Modifier
+                    .clearAndSetSemantics {
+                        contentDescription = "${item.title}" //, ${item.subTitle}" + if(enableAvatarPresence) statusString.format( item.person.status )else ""
+                        stateDescription = ""//if (personas.size > 1) positionString.format(index+1, personas.size ) else ""
+                        role = Role.Button
+                    },
+                subText = item.subTitle,
+                secondarySubText = item.footer,
+                onClick = item.onClick,
+                onLongClick = item.onLongClick,
+                border = border,
+                //borderInset = borderInset,
+                listItemTokens = customTokens,
+                enabled = item.enabled,
+                leadingAccessoryContent = item.leftAccessory,
+                trailingAccessoryContent = item.rightAccessory,
+                //textAccessibilityProperties = textAccessibilityProperties,
             )
         }
     }

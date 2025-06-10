@@ -70,6 +70,8 @@ import com.microsoft.fluentui.tokenized.SearchBar
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.drawer.BottomDrawer
+import com.microsoft.fluentui.tokenized.drawer.BottomDrawerMain
+import com.microsoft.fluentui.tokenized.drawer.BottomDrawerSearchableList
 import com.microsoft.fluentui.tokenized.drawer.DrawerValue
 import com.microsoft.fluentui.tokenized.drawer.rememberBottomDrawerState
 import com.microsoft.fluentui.tokenized.listitem.ListItem
@@ -100,8 +102,9 @@ class V2BottomDrawerActivity : V2DemoActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setActivityContent {
-            CreateActivityUI()
-            LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher?.addCallback(this, onBackCallback) //registering the callback to end the activity when back button is pressed
+            BottomDrawerMain()
+            //CreateActivityUI()
+            //LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher?.addCallback(this, onBackCallback) //registering the callback to end the activity when back button is pressed
         }
     }
 }
@@ -137,78 +140,78 @@ private fun searchItemActivity(): @Composable ((close: () -> Unit, expand: () ->
                 "Amanda", "Brady",
                 isActive = false, status = AvatarStatus.Offline
             ),
-            Person(
-                "Abhay", "Singh",
-                isActive = true, status = AvatarStatus.DND, isOOO = true
-            ),
-            Person(
-                "Carlos", "Slathery",
-                isActive = false, status = AvatarStatus.Busy, isOOO = true
-            ),
-            Person(
-                "Celeste", "Burton",
-                image = R.drawable.avatar_celeste_burton,
-                isActive = true, status = AvatarStatus.Away
-            ),
-            Person(
-                "Ankit", "Gupta",
-                isActive = true, status = AvatarStatus.Unknown
-            ),
-            Person(
-                "Miguel", "Garcia",
-                image = R.drawable.avatar_miguel_garcia,
-                isActive = true, status = AvatarStatus.Blocked
-            ),
-            Person(
-                "Miguel", "Garcia",
-                image = R.drawable.avatar_miguel_garcia,
-                isActive = true, status = AvatarStatus.Blocked
-            ),
-            Person(
-                "Miguel", "Garcia",
-                image = R.drawable.avatar_miguel_garcia,
-                isActive = true, status = AvatarStatus.Blocked
-            ),
-            Person(
-                "Miguel", "Garcia",
-                image = R.drawable.avatar_miguel_garcia,
-                isActive = true, status = AvatarStatus.Blocked
-            ),
-            Person(
-                "Miguel", "Garcia",
-                image = R.drawable.avatar_miguel_garcia,
-                isActive = true, status = AvatarStatus.Blocked
-            ),
-            Person(
-                "Miguel", "Garcia",
-                image = R.drawable.avatar_miguel_garcia,
-                isActive = true, status = AvatarStatus.Blocked
-            ),
-            Person(
-                "Miguel", "Garcia",
-                image = R.drawable.avatar_miguel_garcia,
-                isActive = true, status = AvatarStatus.Blocked
-            ),
-            Person(
-                "Miguel", "Garcia",
-                image = R.drawable.avatar_miguel_garcia,
-                isActive = true, status = AvatarStatus.Blocked
-            ),
-            Person(
-                "Miguel", "Garcia",
-                image = R.drawable.avatar_miguel_garcia,
-                isActive = true, status = AvatarStatus.Blocked
-            ),
-            Person(
-                "Miguel", "Garcia",
-                image = R.drawable.avatar_miguel_garcia,
-                isActive = true, status = AvatarStatus.Blocked
-            ),
-            Person(
-                "Miguel", "Garcia",
-                image = R.drawable.avatar_miguel_garcia,
-                isActive = true, status = AvatarStatus.Blocked
-            ),
+//            Person(
+//                "Abhay", "Singh",
+//                isActive = true, status = AvatarStatus.DND, isOOO = true
+//            ),
+//            Person(
+//                "Carlos", "Slathery",
+//                isActive = false, status = AvatarStatus.Busy, isOOO = true
+//            ),
+//            Person(
+//                "Celeste", "Burton",
+//                image = R.drawable.avatar_celeste_burton,
+//                isActive = true, status = AvatarStatus.Away
+//            ),
+//            Person(
+//                "Ankit", "Gupta",
+//                isActive = true, status = AvatarStatus.Unknown
+//            ),
+//            Person(
+//                "Miguel", "Garcia",
+//                image = R.drawable.avatar_miguel_garcia,
+//                isActive = true, status = AvatarStatus.Blocked
+//            ),
+//            Person(
+//                "Miguel", "Garcia",
+//                image = R.drawable.avatar_miguel_garcia,
+//                isActive = true, status = AvatarStatus.Blocked
+//            ),
+//            Person(
+//                "Miguel", "Garcia",
+//                image = R.drawable.avatar_miguel_garcia,
+//                isActive = true, status = AvatarStatus.Blocked
+//            ),
+//            Person(
+//                "Miguel", "Garcia",
+//                image = R.drawable.avatar_miguel_garcia,
+//                isActive = true, status = AvatarStatus.Blocked
+//            ),
+//            Person(
+//                "Miguel", "Garcia",
+//                image = R.drawable.avatar_miguel_garcia,
+//                isActive = true, status = AvatarStatus.Blocked
+//            ),
+//            Person(
+//                "Miguel", "Garcia",
+//                image = R.drawable.avatar_miguel_garcia,
+//                isActive = true, status = AvatarStatus.Blocked
+//            ),
+//            Person(
+//                "Miguel", "Garcia",
+//                image = R.drawable.avatar_miguel_garcia,
+//                isActive = true, status = AvatarStatus.Blocked
+//            ),
+//            Person(
+//                "Miguel", "Garcia",
+//                image = R.drawable.avatar_miguel_garcia,
+//                isActive = true, status = AvatarStatus.Blocked
+//            ),
+//            Person(
+//                "Miguel", "Garcia",
+//                image = R.drawable.avatar_miguel_garcia,
+//                isActive = true, status = AvatarStatus.Blocked
+//            ),
+//            Person(
+//                "Miguel", "Garcia",
+//                image = R.drawable.avatar_miguel_garcia,
+//                isActive = true, status = AvatarStatus.Blocked
+//            ),
+//            Person(
+//                "Miguel", "Garcia",
+//                image = R.drawable.avatar_miguel_garcia,
+//                isActive = true, status = AvatarStatus.Blocked
+//            ),
 
             )
         var filteredPeople by rememberSaveable { mutableStateOf(listofPeople.toMutableList()) }
@@ -732,7 +735,10 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
         scope.launch { drawerState.open() }
     }
     val expand: () -> Unit = {
-        scope.launch { drawerState.expand() }
+        scope.launch {
+         //   delay(50)
+            drawerState.expand()
+        }
     }
     val close: () -> Unit = {
         scope.launch { drawerState.close() }
