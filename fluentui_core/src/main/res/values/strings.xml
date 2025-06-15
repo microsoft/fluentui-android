@@ -108,4 +108,9 @@
     <string name="fluentui_keyboard_password">Password</string>
     <string name="fluentui_keyboard_number_password">NumberPassword</string>
     <string name="fluentui_keyboard_decimal">Decimal</string>
+
+    <!-- Describes the Numbering of Persona List items -->
+    <string name="position_string">Item %d in list of %d</string>
+    <!-- Status of a person -->
+    <string name="status_string">Status: %s</string>
 </resources>

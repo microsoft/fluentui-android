@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
@@ -17,15 +18,18 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Slider
 import androidx.compose.material.SliderDefaults
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.AccountBox
 import androidx.compose.material.icons.outlined.Check
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -41,6 +45,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -70,9 +75,9 @@ import com.microsoft.fluentui.tokenized.SearchBar
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.drawer.BottomDrawer
-import com.microsoft.fluentui.tokenized.drawer.BottomDrawerMain
 import com.microsoft.fluentui.tokenized.drawer.BottomDrawerSearchableList
 import com.microsoft.fluentui.tokenized.drawer.DrawerValue
+import com.microsoft.fluentui.tokenized.drawer.SearchItem
 import com.microsoft.fluentui.tokenized.drawer.rememberBottomDrawerState
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.persona.Person
@@ -108,7 +113,131 @@ class V2BottomDrawerActivity : V2DemoActivity() {
         }
     }
 }
-
+@Composable
+fun BottomDrawerMain(){
+    val scope = rememberCoroutineScope()
+    val drawerState = rememberBottomDrawerState(initialValue = DrawerValue.Closed, expandable = true, skipOpenState = false)
+    val open: () -> Unit = {
+        scope.launch { drawerState.open() }
+    }
+    val expand: () -> Unit = {
+        scope.launch { drawerState.expand() }
+    }
+    val close: () -> Unit = {
+        scope.launch { drawerState.close() }
+    }
+    Row {
+        BasicText(
+            text = "Open",
+            modifier = Modifier.clickable {
+                open()
+            },
+            style = TextStyle(
+                color = Color(0xFF464FEB),
+                fontSize = 16.sp,
+                lineHeight = 22.sp,
+                letterSpacing = -0.43.sp,
+                textAlign = TextAlign.Start,
+                fontWeight = FontWeight(400)
+            )
+        )
+        Spacer(modifier = Modifier.width(10.dp))
+        BasicText(
+            text = "Expand",
+            modifier = Modifier.clickable {
+                expand()
+            },
+            style = TextStyle(
+                color = Color(0xFF464FEB),
+                fontSize = 16.sp,
+                lineHeight = 22.sp,
+                letterSpacing = -0.43.sp,
+                textAlign = TextAlign.Start,
+                fontWeight = FontWeight(400)
+            )
+        )
+        BasicTextField(
+            value = drawerState.currentValue.name,
+            onValueChange = { },
+            modifier = Modifier.padding(10.dp),
+            textStyle = TextStyle(
+                color = Color(0xFF464FEB),
+                fontSize = 16.sp,
+                lineHeight = 22.sp,
+                letterSpacing = -0.43.sp,
+                textAlign = TextAlign.Start,
+                fontWeight = FontWeight(400)
+            )
+        )
+    }
+    val itemsList = listOf(
+        SearchItem(
+            "Allan Munger",
+            leftAccessory = {},
+            rightAccessory = {}
+        ),
+        SearchItem(
+            "Paul Allen",
+            leftAccessory = {},
+            rightAccessory = {}
+        ),
+        SearchItem(
+            "Search Item",
+            leftAccessory = {
+                Image(
+                    imageVector = Icons.Outlined.AccountBox,
+                    contentDescription = "Avatar",
+                    modifier = Modifier.size(40.dp),
+                    colorFilter = ColorFilter.tint(Color(0xFF464FEB))
+                )
+            },
+            rightAccessory = {},
+            subTitle = "Sub Title",
+            footer = "Footer",
+        ),
+        SearchItem(
+            "Allan Munger",
+            leftAccessory = {},
+            rightAccessory = {}
+        ),
+        SearchItem(
+            "Allan Munger",
+            leftAccessory = {},
+            rightAccessory = {}
+        ),
+        SearchItem(
+            "Allan Munger",
+            leftAccessory = {},
+            rightAccessory = {}
+        ),
+        SearchItem(
+            "Allan Munger",
+            leftAccessory = {},
+            rightAccessory = {}
+        )
+    )
+    BottomDrawer(
+        drawerState = drawerState,
+        drawerContent = { BottomDrawerSearchableList(
+            open = open,
+            expand = expand,
+            close = close,
+            itemsList = itemsList,
+            searchBarTokens = object : SearchBarTokens() {
+                @Composable
+                override fun cornerRadius(searchBarInfo: SearchBarInfo): Dp {
+                    return FluentGlobalTokens.CornerRadiusTokens.CornerRadius120.value
+                }
+            }
+        ) },
+        scrimVisible = true,
+        slideOver = false,
+        showHandle = true,
+        enableSwipeDismiss = true,
+        maxLandscapeWidthFraction = 1.0f,
+        preventDismissalOnScrimClick = false,
+    )
+}
 @Composable
 private fun searchItemActivity(): @Composable ((close: () -> Unit, expand: () -> Unit, open: () -> Unit) -> Unit) {
     return { close, expand, open ->
