@@ -227,7 +227,8 @@ fun Snackbar(
             bottom = 12.dp,
             end = 16.dp
         ) else PaddingValues(start = 16.dp, top = 12.dp, bottom = 12.dp)
-
+    var shadowValue = token.snackbarShadow(snackBarInfo)
+    var elevationValue = token.snackbarElevation(snackBarInfo)
     NotificationContainer(
         notificationMetadata = metadata,
         hasIcon = metadata.icon != null,

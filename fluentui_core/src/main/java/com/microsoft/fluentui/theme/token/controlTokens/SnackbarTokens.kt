@@ -92,6 +92,28 @@ open class SnackBarTokens : IControlToken, Parcelable {
     }
 
     @Composable
+    open fun snackbarShadow(snackBarInfo: SnackBarInfo): Dp {
+        return when (snackBarInfo.style) {
+            SnackbarStyle.Neutral -> 0.dp
+            SnackbarStyle.Contrast -> 0.dp
+            SnackbarStyle.Accent -> 0.dp
+            SnackbarStyle.Warning -> 0.dp
+            SnackbarStyle.Danger -> 0.dp
+        }
+    }
+
+    @Composable
+    open fun snackbarElevation(snackBarInfo: SnackBarInfo): Dp {
+        return when (snackBarInfo.style) {
+            SnackbarStyle.Neutral -> 0.dp
+            SnackbarStyle.Contrast -> 0.dp
+            SnackbarStyle.Accent -> 0.dp
+            SnackbarStyle.Warning -> 0.dp
+            SnackbarStyle.Danger -> 0.dp
+        }
+    }
+
+    @Composable
     open fun leftIconSize(snackBarInfo: SnackBarInfo): Dp = 24.dp
 
     @Composable
