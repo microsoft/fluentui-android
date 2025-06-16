@@ -3,9 +3,8 @@ What's new
 Fluent v2:
 Fix/enhancement:
     1. Restored Shimmer Tokens for 'delay' and 'orientation' in the Shimmer component
-
- Others:
-    1. Updated OC Universal Publish Pipeline
+    2. Fixed V2 Bottomsheet not appearing when content loading was delayed
+    3. Fixed large title truncates post title icons in V2 AppBar
 
 Note: Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00) .
 Fluent version 0.3.x will support compose foundation version 1.6.0 .
