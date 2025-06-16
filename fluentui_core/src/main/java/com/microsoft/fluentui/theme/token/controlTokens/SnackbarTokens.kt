@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.token.ControlInfo
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
@@ -92,24 +93,13 @@ open class SnackBarTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun snackbarShadow(snackBarInfo: SnackBarInfo): Dp {
+    open fun shadowElevationValue(snackBarInfo: SnackBarInfo): Dp {
         return when (snackBarInfo.style) {
-            SnackbarStyle.Neutral -> 0.dp
-            SnackbarStyle.Contrast -> 0.dp
-            SnackbarStyle.Accent -> 0.dp
-            SnackbarStyle.Warning -> 0.dp
-            SnackbarStyle.Danger -> 0.dp
-        }
-    }
-
-    @Composable
-    open fun snackbarElevation(snackBarInfo: SnackBarInfo): Dp {
-        return when (snackBarInfo.style) {
-            SnackbarStyle.Neutral -> 0.dp
-            SnackbarStyle.Contrast -> 0.dp
-            SnackbarStyle.Accent -> 0.dp
-            SnackbarStyle.Warning -> 0.dp
-            SnackbarStyle.Danger -> 0.dp
+            SnackbarStyle.Neutral -> FluentGlobalTokens.ShadowTokens.Shadow00.value
+            SnackbarStyle.Contrast -> FluentGlobalTokens.ShadowTokens.Shadow02.value
+            SnackbarStyle.Accent -> FluentGlobalTokens.ShadowTokens.Shadow04.value
+            SnackbarStyle.Warning -> FluentGlobalTokens.ShadowTokens.Shadow08.value
+            SnackbarStyle.Danger -> FluentGlobalTokens.ShadowTokens.Shadow16.value
         }
     }
 
