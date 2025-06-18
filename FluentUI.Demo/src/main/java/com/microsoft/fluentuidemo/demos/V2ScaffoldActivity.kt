@@ -179,10 +179,11 @@ class V2ScaffoldActivity : V2DemoActivity() {
                     style = ButtonStyle.OutlinedButton,
                     size = ButtonSize.Medium,
                     text = context.resources.getString(R.string.scaffold_refresh_list),
-                    onClick = { size.value = (40 * Math.random()).toInt() })
+                    onClick = { size.value = (40 * Math.random()).toInt() },
+                    modifier = Modifier.weight(1f))
 
                 Button(
-                    modifier = Modifier.testTag(SCAFFOLD_DRAWER_BUTTON),
+                    modifier = Modifier.testTag(SCAFFOLD_DRAWER_BUTTON).weight(1f),
                     style = ButtonStyle.OutlinedButton,
                     size = ButtonSize.Medium,
                     text = context.resources.getString(R.string.scaffold_open_drawer),
@@ -201,7 +202,7 @@ class V2ScaffoldActivity : V2DemoActivity() {
                         LocalContext.current.resources.getString(R.string.fluentui_timeout)
                     var displayString: String = ""
                     Button(
-                        modifier = Modifier.testTag(SCAFFOLD_SNACKBAR_BUTTON),
+                        modifier = Modifier.testTag(SCAFFOLD_SNACKBAR_BUTTON).weight(1f),
                         style = ButtonStyle.OutlinedButton,
                         size = ButtonSize.Medium,
                         text = context.resources.getString(R.string.fluentui_show_snackbar),
