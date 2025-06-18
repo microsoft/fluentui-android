@@ -15,6 +15,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
@@ -227,7 +228,7 @@ fun Snackbar(
             bottom = 12.dp,
             end = 16.dp
         ) else PaddingValues(start = 16.dp, top = 12.dp, bottom = 12.dp)
-
+    val shadowElevationValue = token.shadowElevationValue(snackBarInfo)
     NotificationContainer(
         notificationMetadata = metadata,
         hasIcon = metadata.icon != null,
@@ -257,6 +258,10 @@ fun Snackbar(
                 .padding(horizontal = 16.dp)
                 .defaultMinSize(minHeight = 52.dp)
                 .fillMaxWidth()
+                .shadow(
+                    elevation = shadowElevationValue,
+                    shape = RoundedCornerShape(8.dp)
+                )
                 .clip(RoundedCornerShape(8.dp))
                 .background(token.backgroundBrush(snackBarInfo))
                 .semantics {
