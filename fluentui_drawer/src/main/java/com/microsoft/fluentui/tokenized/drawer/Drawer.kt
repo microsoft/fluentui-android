@@ -1,5 +1,6 @@
 package com.microsoft.fluentui.tokenized.drawer
 
+import HorizontalDrawer
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
