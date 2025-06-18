@@ -160,6 +160,7 @@ class V2ScaffoldActivity : V2DemoActivity() {
         }
     }
 
+    @OptIn(ExperimentalLayoutApi::class)
     @Composable
     private fun GetContent(context: Context, snackbarState: SnackbarState? = null) {
         val size = remember { mutableStateOf(5) }
@@ -171,7 +172,7 @@ class V2ScaffoldActivity : V2DemoActivity() {
                 drawerState = drawerState,
                 drawerContent = { CreateList(size = 20, context = context) }
             )
-            Row(
+            FlowRow(
                 modifier = Modifier.padding(8.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
@@ -179,11 +180,10 @@ class V2ScaffoldActivity : V2DemoActivity() {
                     style = ButtonStyle.OutlinedButton,
                     size = ButtonSize.Medium,
                     text = context.resources.getString(R.string.scaffold_refresh_list),
-                    onClick = { size.value = (40 * Math.random()).toInt() },
-                    modifier = Modifier.weight(1f))
+                    onClick = { size.value = (40 * Math.random()).toInt() })
 
                 Button(
-                    modifier = Modifier.testTag(SCAFFOLD_DRAWER_BUTTON).weight(1f),
+                    modifier = Modifier.testTag(SCAFFOLD_DRAWER_BUTTON),
                     style = ButtonStyle.OutlinedButton,
                     size = ButtonSize.Medium,
                     text = context.resources.getString(R.string.scaffold_open_drawer),
@@ -202,7 +202,7 @@ class V2ScaffoldActivity : V2DemoActivity() {
                         LocalContext.current.resources.getString(R.string.fluentui_timeout)
                     var displayString: String = ""
                     Button(
-                        modifier = Modifier.testTag(SCAFFOLD_SNACKBAR_BUTTON).weight(1f),
+                        modifier = Modifier.testTag(SCAFFOLD_SNACKBAR_BUTTON),
                         style = ButtonStyle.OutlinedButton,
                         size = ButtonSize.Medium,
                         text = context.resources.getString(R.string.fluentui_show_snackbar),
