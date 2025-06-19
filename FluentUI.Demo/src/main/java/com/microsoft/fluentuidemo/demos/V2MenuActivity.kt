@@ -37,6 +37,7 @@ import com.microsoft.fluentui.tokenized.menu.Menu
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 
+val DefaultMenuInputWidthFraction = 0.35f
 
 class V2MenuActivity : V2DemoActivity() {
     init {
