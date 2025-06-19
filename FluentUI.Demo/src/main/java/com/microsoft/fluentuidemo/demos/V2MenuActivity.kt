@@ -37,6 +37,7 @@ import com.microsoft.fluentui.tokenized.menu.Menu
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 
+val DefaultMenuInputWidthFraction = 0.35f
 
 class V2MenuActivity : V2DemoActivity() {
     init {
@@ -63,36 +64,41 @@ fun CreateMenuActivityUI(context: Context) {
     val repeatContentTextCountState = rememberSaveable { mutableStateOf("4") }
     val contentTextState =
         rememberSaveable { mutableStateOf(context.getString(R.string.menu_content_text_input)) }
+    val textFieldWidthFraction = DefaultMenuInputWidthFraction
     Column {
         Column {
             ListItem.Header(title = context.getString(R.string.menu_xOffset),
+                titleMaxLines = 2,
                 trailingAccessoryContent = {
                     BasicTextField(value = xOffsetState.value,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         onValueChange = { xOffsetState.value = it.trim() },
-                        modifier = Modifier.background(Color.White))
+                        modifier = Modifier.background(Color.White).fillMaxWidth(fraction = textFieldWidthFraction))
                 }
             )
             ListItem.Header(title = context.getString(R.string.menu_yOffset),
+                titleMaxLines = 2,
                 trailingAccessoryContent = {
                     BasicTextField(value = yOffsetState.value,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         onValueChange = { yOffsetState.value = it.trim() },
-                        modifier = Modifier.background(Color.White))
+                        modifier = Modifier.background(Color.White).fillMaxWidth(fraction = textFieldWidthFraction))
                 })
             ListItem.Header(title = context.getString(R.string.menu_content_text),
+                titleMaxLines = 2,
                 trailingAccessoryContent = {
                     BasicTextField(
                         value = contentTextState.value,
                         onValueChange = { contentTextState.value = it },
-                        modifier = Modifier.background(Color.White))
+                        modifier = Modifier.background(Color.White).fillMaxWidth(fraction = textFieldWidthFraction))
                 })
             ListItem.Header(title = context.getString(R.string.menu_repeat_content_text),
+                titleMaxLines = 2,
                 trailingAccessoryContent = {
                     BasicTextField(value = repeatContentTextCountState.value,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         onValueChange = { repeatContentTextCountState.value = it.trim() },
-                        modifier = Modifier.background(Color.White))
+                        modifier = Modifier.background(Color.White).fillMaxWidth(fraction = textFieldWidthFraction))
                 })
             ListItem.SectionDescription(description = context.getString(R.string.menu_description))
         }
