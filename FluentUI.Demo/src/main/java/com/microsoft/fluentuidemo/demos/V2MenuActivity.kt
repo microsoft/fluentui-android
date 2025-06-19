@@ -63,7 +63,7 @@ fun CreateMenuActivityUI(context: Context) {
     val repeatContentTextCountState = rememberSaveable { mutableStateOf("4") }
     val contentTextState =
         rememberSaveable { mutableStateOf(context.getString(R.string.menu_content_text_input)) }
-    val textFieldWidthFraction = 0.35f
+    val textFieldWidthFraction = DefaultMenuInputWidthFraction
     Column {
         Column {
             ListItem.Header(title = context.getString(R.string.menu_xOffset),
