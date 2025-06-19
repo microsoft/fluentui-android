@@ -198,9 +198,9 @@ class ListContentBuilder {
                                 onClick = itemDataList[row * itemsInRow + col].onClick,
                                 accessory = itemDataList[row * itemsInRow + col].accessory,
                                 icon = itemDataList[row * itemsInRow + col].icon,
-                                modifier = Modifier.semantics {
+                                modifier = Modifier.fillMaxWidth(widthRatio).semantics {
                                     contentDescription = titleString
-                                }.fillMaxWidth(widthRatio),
+                                },
                                 tabItemTokens = tabItemTokens
                             )
                             col++
