@@ -94,13 +94,7 @@ open class SnackBarTokens : IControlToken, Parcelable {
 
     @Composable
     open fun shadowElevationValue(snackBarInfo: SnackBarInfo): Dp {
-        return when (snackBarInfo.style) {
-            SnackbarStyle.Neutral -> FluentGlobalTokens.ShadowTokens.Shadow02.value
-            SnackbarStyle.Contrast -> FluentGlobalTokens.ShadowTokens.Shadow16.value
-            SnackbarStyle.Accent -> FluentGlobalTokens.ShadowTokens.Shadow04.value
-            SnackbarStyle.Warning -> FluentGlobalTokens.ShadowTokens.Shadow08.value
-            SnackbarStyle.Danger -> FluentGlobalTokens.ShadowTokens.Shadow00.value
-        }
+        return 0.dp
     }
 
     @Composable
