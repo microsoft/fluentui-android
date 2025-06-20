@@ -54,6 +54,9 @@
     <!-- Text for app bar navigation icon -->
     <string name="navigation_icon">Navigation Icon</string>
 
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Enable Tooltips</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Flag</string>
     <string name="app_bar_layout_menu_settings">Settings</string>

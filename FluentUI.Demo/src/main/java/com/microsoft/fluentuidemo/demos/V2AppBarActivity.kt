@@ -59,6 +59,7 @@ const val APP_BAR_BUTTONBAR_PARAM = "App Bar ButtonBar Param"
 const val APP_BAR_SEARCHBAR_PARAM = "App Bar SearchBar Param"
 const val APP_BAR_LOGO_PARAM = "App Bar Logo Param"
 const val APP_BAR_CENTER_ALIGN_PARAM = "App Bar Center Align Param"
+const val APP_BAR_ENABLE_TOOLTIPS_PARAM = "App Bar Enable Tooltips Param"
 const val APP_BAR_NAVIGATION_ICON_PARAM = "App Bar Navigation Icon Param"
 
 class V2AppBarActivity : V2DemoActivity() {
@@ -84,6 +85,7 @@ class V2AppBarActivity : V2DemoActivity() {
             var enableButtonBar: Boolean by rememberSaveable { mutableStateOf(false) }
             var enableBottomBorder: Boolean by rememberSaveable { mutableStateOf(true) }
             var centerAlignAppBar: Boolean by rememberSaveable { mutableStateOf(false) }
+            var enableTooltips: Boolean by rememberSaveable { mutableStateOf(false) }
             var showNavigationIcon: Boolean by rememberSaveable { mutableStateOf(true) }
             var yAxisDelta: Float by rememberSaveable { mutableStateOf(1.0F) }
             var enableLogo: Boolean by rememberSaveable { mutableStateOf(true) }
@@ -276,6 +278,22 @@ class V2AppBarActivity : V2DemoActivity() {
                                 )
                             }
                         )
+                        ListItem.Item(
+                            text = LocalContext.current.resources.getString(R.string.enable_tooltips),
+                            subText = if (enableTooltips)
+                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                            else
+                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                            trailingAccessoryContent = {
+                                ToggleSwitch(
+                                    onValueChange = {
+                                        enableTooltips = !enableTooltips
+                                    },
+                                    modifier = Modifier.testTag(APP_BAR_ENABLE_TOOLTIPS_PARAM),
+                                    checkedState = enableTooltips
+                                )
+                            }
+                        )
                     }
                 }
 
@@ -319,6 +337,7 @@ class V2AppBarActivity : V2DemoActivity() {
 
                 AppBar(
                     title = "Fluent UI Demo",
+                    enableTitleTooltip = enableTooltips,
                     navigationIcon = if (showNavigationIcon) {
                         FluentIcon(
                             SearchBarIcons.Arrowback,
@@ -341,6 +360,7 @@ class V2AppBarActivity : V2DemoActivity() {
                         )
                     } else null,
                     subTitle = subtitle,
+                    enableSubtitleTooltip = enableTooltips,
                     centerAlignAppBar = centerAlignAppBar,
                     logo = if (enableLogo) {
                         {
