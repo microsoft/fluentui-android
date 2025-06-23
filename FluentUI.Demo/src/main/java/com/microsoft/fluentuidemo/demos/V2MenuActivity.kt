@@ -64,7 +64,6 @@ fun CreateMenuActivityUI(context: Context) {
     val repeatContentTextCountState = rememberSaveable { mutableStateOf("4") }
     val contentTextState =
         rememberSaveable { mutableStateOf(context.getString(R.string.menu_content_text_input)) }
-    val textFieldWidthFraction = DefaultMenuInputWidthFraction
     Column {
         Column {
             ListItem.Header(title = context.getString(R.string.menu_xOffset),
@@ -73,7 +72,7 @@ fun CreateMenuActivityUI(context: Context) {
                     BasicTextField(value = xOffsetState.value,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         onValueChange = { xOffsetState.value = it.trim() },
-                        modifier = Modifier.background(Color.White).fillMaxWidth(fraction = textFieldWidthFraction))
+                        modifier = Modifier.background(Color.White).fillMaxWidth(fraction = DefaultMenuInputWidthFraction))
                 }
             )
             ListItem.Header(title = context.getString(R.string.menu_yOffset),
@@ -82,7 +81,7 @@ fun CreateMenuActivityUI(context: Context) {
                     BasicTextField(value = yOffsetState.value,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         onValueChange = { yOffsetState.value = it.trim() },
-                        modifier = Modifier.background(Color.White).fillMaxWidth(fraction = textFieldWidthFraction))
+                        modifier = Modifier.background(Color.White).fillMaxWidth(fraction = DefaultMenuInputWidthFraction))
                 })
             ListItem.Header(title = context.getString(R.string.menu_content_text),
                 titleMaxLines = 2,
@@ -90,7 +89,7 @@ fun CreateMenuActivityUI(context: Context) {
                     BasicTextField(
                         value = contentTextState.value,
                         onValueChange = { contentTextState.value = it },
-                        modifier = Modifier.background(Color.White).fillMaxWidth(fraction = textFieldWidthFraction))
+                        modifier = Modifier.background(Color.White).fillMaxWidth(fraction = DefaultMenuInputWidthFraction))
                 })
             ListItem.Header(title = context.getString(R.string.menu_repeat_content_text),
                 titleMaxLines = 2,
@@ -98,7 +97,7 @@ fun CreateMenuActivityUI(context: Context) {
                     BasicTextField(value = repeatContentTextCountState.value,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         onValueChange = { repeatContentTextCountState.value = it.trim() },
-                        modifier = Modifier.background(Color.White).fillMaxWidth(fraction = textFieldWidthFraction))
+                        modifier = Modifier.background(Color.White).fillMaxWidth(fraction = DefaultMenuInputWidthFraction))
                 })
             ListItem.SectionDescription(description = context.getString(R.string.menu_description))
         }
