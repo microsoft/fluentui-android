@@ -7,6 +7,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -352,5 +353,10 @@ open class ListItemTokens : IControlToken, Parcelable {
     @Composable
     open fun textAccessoryContentTextSpacing(listItemInfo: ListItemInfo): Dp {
         return FluentGlobalTokens.SizeTokens.Size40.value
+    }
+
+    @Composable
+    open fun textOverflow(listItemInfo: ListItemInfo): TextOverflow {
+        return TextOverflow.Clip
     }
 }
