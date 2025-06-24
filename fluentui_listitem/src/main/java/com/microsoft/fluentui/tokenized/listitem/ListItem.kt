@@ -294,6 +294,7 @@ object ListItem {
             Alignment.Bottom -> Alignment.BottomEnd
             else -> Alignment.CenterEnd
         }
+        val textOverflow = token.textOverflow(listItemInfo)
         Row(
             modifier
                 .background(backgroundColor)
@@ -364,7 +365,7 @@ object ListItem {
                             text = text,
                             style = primaryTextTypography.merge(TextStyle(color = primaryTextColor)),
                             maxLines = textMaxLines,
-                            overflow = TextOverflow.Ellipsis
+                            overflow = textOverflow
                         )
                         if (primaryTextTrailingContent != null) {
                             primaryTextTrailingContent()
@@ -376,7 +377,7 @@ object ListItem {
                                 text = subText,
                                 style = subTextTypography.merge(TextStyle(color = subTextColor)),
                                 maxLines = subTextMaxLines,
-                                overflow = TextOverflow.Ellipsis
+                                overflow = textOverflow
                             )
                         }
                     }
@@ -399,7 +400,7 @@ object ListItem {
                                         text = secondarySubText,
                                         style = secondarySubTextTypography.merge(TextStyle(color = secondarySubTextColor)),
                                         maxLines = secondarySubTextMaxLines,
-                                        overflow = TextOverflow.Ellipsis
+                                        overflow = textOverflow
                                     )
                                 } else if (secondarySubTextAnnotated != null) {
                                     BasicText(
@@ -407,7 +408,7 @@ object ListItem {
                                         text = secondarySubTextAnnotated,
                                         inlineContent = secondarySubTextInlineContent,
                                         maxLines = secondarySubTextMaxLines,
-                                        overflow = TextOverflow.Ellipsis
+                                        overflow = textOverflow
                                     )
                                 }
                                 if (secondarySubTextTrailingContent != null) {
@@ -708,6 +709,7 @@ object ListItem {
         )
         val expandedString = LocalContext.current.resources.getString(R.string.fluentui_expanded)
         val collapsedString = LocalContext.current.resources.getString(R.string.fluentui_collapsed)
+        val textOverflow = token.textOverflow(listItemInfo)
         Box(
             modifier = modifier
                 .fillMaxWidth()
@@ -785,7 +787,7 @@ object ListItem {
                                     text = title,
                                     style = primaryTextTypography.merge(TextStyle(color = primaryTextColor)),
                                     maxLines = titleMaxLines,
-                                    overflow = TextOverflow.Ellipsis
+                                    overflow = textOverflow
                                 )
                                 if(titleTrailingContent != null){
                                     titleTrailingContent()
@@ -1037,7 +1039,7 @@ object ListItem {
         val borderColor = token.borderColor(listItemInfo).getColorByState(
             enabled = enabled, selected = false, interactionSource = interactionSource
         )
-
+        val textOverflow = token.textOverflow(listItemInfo) ?: TextOverflow.Ellipsis
         Box(
             modifier = modifier
                 .fillMaxWidth()
@@ -1064,7 +1066,7 @@ object ListItem {
                         .weight(1f),
                     style = primaryTextTypography.merge(TextStyle(color = primaryTextColor)),
                     maxLines = titleMaxLines,
-                    overflow = TextOverflow.Ellipsis
+                    overflow = textOverflow
                 )
 
                 if (accessoryTextTitle != null) {
@@ -1079,7 +1081,8 @@ object ListItem {
                                 onClick = accessoryTextOnClick ?: {})
                             .clearAndSetSemantics { contentDescription = accessoryTextTitle
                                 role = Role.Button },
-                        style = actionTextTypography.merge(TextStyle(color = actionTextColor))
+                        style = actionTextTypography.merge(TextStyle(color = actionTextColor)),
+                        overflow = textOverflow,
                     )
                 }
                 if (trailingAccessoryContent != null) {
