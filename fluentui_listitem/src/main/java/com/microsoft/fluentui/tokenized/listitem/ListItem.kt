@@ -1039,7 +1039,7 @@ object ListItem {
         val borderColor = token.borderColor(listItemInfo).getColorByState(
             enabled = enabled, selected = false, interactionSource = interactionSource
         )
-        val textOverflow = token.textOverflow(listItemInfo) ?: TextOverflow.Ellipsis
+        val textOverflow = token.textOverflow(listItemInfo)
         Box(
             modifier = modifier
                 .fillMaxWidth()

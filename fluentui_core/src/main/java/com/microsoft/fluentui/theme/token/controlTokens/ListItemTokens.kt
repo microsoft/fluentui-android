@@ -357,6 +357,6 @@ open class ListItemTokens : IControlToken, Parcelable {
 
     @Composable
     open fun textOverflow(listItemInfo: ListItemInfo): TextOverflow {
-        return TextOverflow.Clip
+        return TextOverflow.Ellipsis
     }
 }
