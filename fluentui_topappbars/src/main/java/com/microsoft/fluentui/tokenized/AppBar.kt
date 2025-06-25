@@ -366,11 +366,19 @@ fun AppBar(
                                         backgroundColor = token.tooltipBackgroundBrush(appBarInfo),
                                         textStyle = token.tooltipTextStyle(appBarInfo),
                                         cornerRadius = token.tooltipCornerRadius(appBarInfo),
+                                        clickRippleColor = token.tooltipRippleColor(appBarInfo),
                                         onClick = {
                                             if (appBarSize == AppBarSize.Small) {
                                                 postTitleIcon.onClick?.invoke()
                                             }
-                                        }
+                                        },
+                                        onLongClick = {
+                                            if (appBarSize == AppBarSize.Small) {
+                                                postTitleIcon.onLongClick?.invoke()
+                                            }
+                                        },
+                                        offset = token.tooltipOffset(appBarInfo),
+                                        timeout = token.tooltipTimeout(appBarInfo)
                                     )
                                 } else {
                                     postTitleIcon.onClick?.takeIf { appBarSize == AppBarSize.Small }
@@ -419,11 +427,19 @@ fun AppBar(
                                             backgroundColor = token.tooltipBackgroundBrush(appBarInfo),
                                             textStyle = token.tooltipTextStyle(appBarInfo),
                                             cornerRadius = token.tooltipCornerRadius(appBarInfo),
+                                            clickRippleColor = token.tooltipRippleColor(appBarInfo),
                                             onClick = {
                                                 if (appBarSize == AppBarSize.Small) {
                                                     preSubtitleIcon.onClick?.invoke()
                                                 }
-                                            }
+                                            },
+                                            onLongClick = {
+                                                if (appBarSize == AppBarSize.Small) {
+                                                    postSubtitleIcon.onLongClick?.invoke()
+                                                }
+                                            },
+                                            offset = token.tooltipOffset(appBarInfo),
+                                            timeout = token.tooltipTimeout(appBarInfo)
                                         )
                                     } else {
                                         postSubtitleIcon.onClick?.takeIf { appBarSize == AppBarSize.Small }
@@ -481,7 +497,12 @@ fun AppBar(
                                         backgroundColor = token.tooltipBackgroundBrush(appBarInfo),
                                         cornerRadius = token.tooltipCornerRadius(appBarInfo),
                                         textStyle = token.tooltipTextStyle(appBarInfo),
-                                        showRippleOnClick = false
+                                        clickRippleColor = token.tooltipRippleColor(appBarInfo),
+                                        showRippleOnClick = false,
+                                        onClick = {},
+                                        onLongClick = {},
+                                        offset = token.tooltipOffset(appBarInfo),
+                                        timeout = token.tooltipTimeout(appBarInfo)
                                     )
                                 } else {
                                     Modifier
