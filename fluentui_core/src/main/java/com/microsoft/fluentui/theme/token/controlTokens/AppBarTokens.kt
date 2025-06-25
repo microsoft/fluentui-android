@@ -148,9 +148,11 @@ open class AppBarTokens : IControlToken, Parcelable {
     @Composable
     open fun tooltipTextStyle(info: AppBarInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2].merge(
-            TextStyle(color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic].value(
-                themeMode = FluentTheme.themeMode
-            ))
+            TextStyle(
+                color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic].value(
+                    themeMode = FluentTheme.themeMode
+                )
+            )
         )
     }
 

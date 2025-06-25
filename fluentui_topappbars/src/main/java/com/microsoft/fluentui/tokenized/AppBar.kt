@@ -52,22 +52,7 @@ import androidx.compose.ui.window.PopupPositionProvider
 import androidx.compose.ui.window.PopupProperties
 import kotlinx.coroutines.delay
 
-/**
- * A custom Modifier that adds a tooltip along with OnClick and OnLongClick functionality to any Composable.
- *
- * @param tooltipText The text to display in the tooltip.
- * @param backgroundColor The background color of the tooltip.
- * @param cornerRadius The corner radius of the tooltip.
- * @param textStyle The style of the text in the tooltip.
- * @param padding The padding around the text in the tooltip.
- * @param offset The offset of the tooltip from the anchor.
- * @param timeout The duration in milliseconds for which the tooltip is displayed.
- * @param showRippleOnClick Whether to show a ripple effect on clicking the Composable. Default is true.
- * @param clickRippleColor The color of the ripple effect when the Composable is clicked.
- * @param onClick A lambda to be invoked when the composable is clicked.
- * @param onLongClick A lambda to be invoked when the composable is long-clicked.
- */
-fun Modifier.clickableWithTooltip(
+private fun Modifier.clickableWithTooltip(
     tooltipText: String,
     backgroundColor: Brush = SolidColor(Color.Unspecified),
     cornerRadius: Dp = 8.dp,
@@ -189,11 +174,7 @@ private class TooltipPositionProvider(
     ): IntOffset {
         val offsetX = with(density) { offset.x.roundToPx() }
         val offsetY = with(density) { offset.y.roundToPx() }
-        val y = if ((anchorBounds.top - popupContentSize.height) > 0) { // If popup will not fit above
-            anchorBounds.top - popupContentSize.height + offsetY
-        } else {
-            anchorBounds.bottom + offsetY
-        }
+        val y = if ((anchorBounds.top - popupContentSize.height) > 0) anchorBounds.top - popupContentSize.height + offsetY else anchorBounds.bottom + offsetY
         val x = (anchorBounds.left + (anchorBounds.width - popupContentSize.width) / 2) + offsetX
         return IntOffset(x, y)
     }
@@ -363,7 +344,9 @@ fun AppBar(
                                 .then(if (enableTitleTooltip) {
                                     Modifier.clickableWithTooltip(
                                         tooltipText = title,
-                                        backgroundColor = token.tooltipBackgroundBrush(appBarInfo),
+                                        backgroundColor = token.tooltipBackgroundBrush(
+                                            appBarInfo
+                                        ),
                                         textStyle = token.tooltipTextStyle(appBarInfo),
                                         cornerRadius = token.tooltipCornerRadius(appBarInfo),
                                         clickRippleColor = token.tooltipRippleColor(appBarInfo),
@@ -424,10 +407,14 @@ fun AppBar(
                                     .then(if (enableSubtitleTooltip) {
                                         Modifier.clickableWithTooltip(
                                             tooltipText = subTitle,
-                                            backgroundColor = token.tooltipBackgroundBrush(appBarInfo),
+                                            backgroundColor = token.tooltipBackgroundBrush(
+                                                appBarInfo
+                                            ),
                                             textStyle = token.tooltipTextStyle(appBarInfo),
                                             cornerRadius = token.tooltipCornerRadius(appBarInfo),
-                                            clickRippleColor = token.tooltipRippleColor(appBarInfo),
+                                            clickRippleColor = token.tooltipRippleColor(
+                                                appBarInfo
+                                            ),
                                             onClick = {
                                                 if (appBarSize == AppBarSize.Small) {
                                                     preSubtitleIcon.onClick?.invoke()
