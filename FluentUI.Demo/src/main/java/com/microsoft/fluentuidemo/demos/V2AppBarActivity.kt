@@ -339,7 +339,7 @@ class V2AppBarActivity : V2DemoActivity() {
                             ThemeMode.Dark
                         )
                     ).value(FluentTheme.themeMode)
-                val appBarTokens = object: AppBarTokens(){
+                val appBarTokens = object : AppBarTokens() {
                     @Composable
                     override fun tooltipVisibilityControls(info: AppBarInfo): TooltipControls {
                         return TooltipControls(
