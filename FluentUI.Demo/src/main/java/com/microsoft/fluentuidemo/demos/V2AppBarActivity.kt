@@ -12,8 +12,10 @@ import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -35,9 +37,12 @@ import com.microsoft.fluentui.theme.token.FluentColor
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.Icon
+import com.microsoft.fluentui.theme.token.controlTokens.AppBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
+import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
+import com.microsoft.fluentui.theme.token.controlTokens.TooltipControls
 import com.microsoft.fluentui.tokenized.AppBar
 import com.microsoft.fluentui.tokenized.SearchBar
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
@@ -334,10 +339,18 @@ class V2AppBarActivity : V2DemoActivity() {
                             ThemeMode.Dark
                         )
                     ).value(FluentTheme.themeMode)
-
+                val appBarTokens = object: AppBarTokens(){
+                    @Composable
+                    override fun tooltipVisibilityControls(info: AppBarInfo): TooltipControls {
+                        return TooltipControls(
+                            enableTitleTooltip = enableTooltips,
+                            enableSubtitleTooltip = enableTooltips,
+                            enableNavigationIconTooltip = enableTooltips,
+                        )
+                    }
+                }
                 AppBar(
                     title = "Fluent UI Demo",
-                    enableTitleTooltip = enableTooltips,
                     navigationIcon = if (showNavigationIcon) {
                         FluentIcon(
                             SearchBarIcons.Arrowback,
@@ -360,7 +373,6 @@ class V2AppBarActivity : V2DemoActivity() {
                         )
                     } else null,
                     subTitle = subtitle,
-                    enableSubtitleTooltip = enableTooltips,
                     centerAlignAppBar = centerAlignAppBar,
                     logo = if (enableLogo) {
                         {
@@ -420,6 +432,7 @@ class V2AppBarActivity : V2DemoActivity() {
                     } else null,
                     appTitleDelta = appTitleDelta,
                     accessoryDelta = accessoryDelta,
+                    appBarTokens = appBarTokens,
                     rightAccessoryView = {
                         Icon(
                             Icons.Filled.Add,

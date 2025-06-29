@@ -30,6 +30,12 @@ enum class AppBarSize {
     Small
 }
 
+open class TooltipControls(
+    var enableTitleTooltip: Boolean = false,
+    var enableSubtitleTooltip: Boolean = false,
+    var enableNavigationIconTooltip: Boolean = false
+) {}
+
 open class AppBarInfo(
     val style: FluentStyle = FluentStyle.Neutral,
     val appBarSize: AppBarSize = AppBarSize.Medium
@@ -143,6 +149,15 @@ open class AppBarTokens : IControlToken, Parcelable {
                     )
                 ).value(themeMode = FluentTheme.themeMode)
         }
+    }
+
+    @Composable
+    open fun tooltipVisibilityControls(info: AppBarInfo): TooltipControls {
+        return TooltipControls(
+            enableTitleTooltip = false,
+            enableSubtitleTooltip = false,
+            enableNavigationIconTooltip = false
+        )
     }
 
     @Composable
