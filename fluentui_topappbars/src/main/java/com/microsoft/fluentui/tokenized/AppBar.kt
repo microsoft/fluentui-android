@@ -1,8 +1,9 @@
 package com.microsoft.fluentui.tokenized
 
 import androidx.compose.animation.animateContentSize
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicText
@@ -31,9 +32,6 @@ import com.microsoft.fluentui.theme.token.*
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
-import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.indication
-import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -42,7 +40,6 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.text.font.FontWeight
@@ -52,6 +49,7 @@ import androidx.compose.ui.window.PopupPositionProvider
 import androidx.compose.ui.window.PopupProperties
 import kotlinx.coroutines.delay
 
+@OptIn(ExperimentalFoundationApi::class)
 private fun Modifier.clickableWithTooltip(
     tooltipText: String,
     tooltipEnabled: Boolean = false,
@@ -74,33 +72,17 @@ private fun Modifier.clickableWithTooltip(
     val currentOnLongClick by rememberUpdatedState(onLongClick)
     val currentTooltipEnabled by rememberUpdatedState(tooltipEnabled)
 
-    val indicationModifier = Modifier.indication(
+    val clickableModifier = Modifier.combinedClickable(
         interactionSource = interactionSource,
-        indication = rememberRipple(color = clickRippleColor)
+        indication = if (showRippleOnClick) rememberRipple(color = clickRippleColor) else null,
+        onClick = { currentOnClick?.invoke() },
+        onLongClick = {
+            currentOnLongClick?.invoke()
+            if (currentTooltipEnabled) {
+                isTooltipVisible = true
+            }
+        }
     )
-
-    val gestureModifier = Modifier.pointerInput(Unit) {
-        detectTapGestures(
-            onPress = { offset ->
-                val press = PressInteraction.Press(offset)
-                interactionSource.emit(press)
-                val released = tryAwaitRelease() // for hold clicks
-                val endInteraction = if (released) {
-                    PressInteraction.Release(press)
-                } else {
-                    PressInteraction.Cancel(press)
-                }
-                interactionSource.emit(endInteraction)
-            },
-            onLongPress = {
-                currentOnLongClick?.invoke()
-                if (currentTooltipEnabled) {
-                    isTooltipVisible = true
-                }
-            },
-            onTap = { currentOnClick?.invoke() }
-        )
-    }
 
     val positionModifier = Modifier.onGloballyPositioned { layoutCoordinates ->
         anchorBounds = IntRect(
@@ -129,9 +111,8 @@ private fun Modifier.clickableWithTooltip(
     }
 
     this
-        .then(if (showRippleOnClick) indicationModifier else Modifier)
         .then(if (tooltipEnabled) positionModifier else Modifier)
-        .then(gestureModifier)
+        .then(clickableModifier)
 }
 
 @Composable
@@ -341,28 +322,29 @@ fun AppBar(
                     ) {
                         // title
                         Row(
-                            modifier = Modifier.clickableWithTooltip(
-                                tooltipText = title,
-                                tooltipEnabled = tooltipControls.enableTitleTooltip,
-                                backgroundColor = token.tooltipBackgroundBrush(
-                                    appBarInfo
+                            modifier = Modifier
+                                .clickableWithTooltip(
+                                    tooltipText = title,
+                                    tooltipEnabled = tooltipControls.enableTitleTooltip,
+                                    backgroundColor = token.tooltipBackgroundBrush(
+                                        appBarInfo
+                                    ),
+                                    textStyle = token.tooltipTextStyle(appBarInfo),
+                                    cornerRadius = token.tooltipCornerRadius(appBarInfo),
+                                    clickRippleColor = token.tooltipRippleColor(appBarInfo),
+                                    onClick = {
+                                        if (appBarSize == AppBarSize.Small) {
+                                            postTitleIcon.onClick?.invoke()
+                                        }
+                                    },
+                                    onLongClick = {
+                                        if (appBarSize == AppBarSize.Small) {
+                                            postTitleIcon.onLongClick?.invoke()
+                                        }
+                                    },
+                                    offset = token.tooltipOffset(appBarInfo),
+                                    timeout = token.tooltipTimeout(appBarInfo)
                                 ),
-                                textStyle = token.tooltipTextStyle(appBarInfo),
-                                cornerRadius = token.tooltipCornerRadius(appBarInfo),
-                                clickRippleColor = token.tooltipRippleColor(appBarInfo),
-                                onClick = {
-                                    if (appBarSize == AppBarSize.Small) {
-                                        postTitleIcon.onClick?.invoke()
-                                    }
-                                },
-                                onLongClick = {
-                                    if (appBarSize == AppBarSize.Small) {
-                                        postTitleIcon.onLongClick?.invoke()
-                                    }
-                                },
-                                offset = token.tooltipOffset(appBarInfo),
-                                timeout = token.tooltipTimeout(appBarInfo)
-                            ),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             BasicText(
@@ -397,30 +379,31 @@ fun AppBar(
                         // subtitle
                         if (!subTitle.isNullOrBlank()) {
                             Row(
-                                modifier = Modifier.clickableWithTooltip(
-                                    tooltipText = subTitle,
-                                    tooltipEnabled = tooltipControls.enableSubtitleTooltip,
-                                    backgroundColor = token.tooltipBackgroundBrush(
-                                        appBarInfo
+                                modifier = Modifier
+                                    .clickableWithTooltip(
+                                        tooltipText = subTitle,
+                                        tooltipEnabled = tooltipControls.enableSubtitleTooltip,
+                                        backgroundColor = token.tooltipBackgroundBrush(
+                                            appBarInfo
+                                        ),
+                                        textStyle = token.tooltipTextStyle(appBarInfo),
+                                        cornerRadius = token.tooltipCornerRadius(appBarInfo),
+                                        clickRippleColor = token.tooltipRippleColor(
+                                            appBarInfo
+                                        ),
+                                        onClick = {
+                                            if (appBarSize == AppBarSize.Small) {
+                                                preSubtitleIcon.onClick?.invoke()
+                                            }
+                                        },
+                                        onLongClick = {
+                                            if (appBarSize == AppBarSize.Small) {
+                                                postSubtitleIcon.onLongClick?.invoke()
+                                            }
+                                        },
+                                        offset = token.tooltipOffset(appBarInfo),
+                                        timeout = token.tooltipTimeout(appBarInfo)
                                     ),
-                                    textStyle = token.tooltipTextStyle(appBarInfo),
-                                    cornerRadius = token.tooltipCornerRadius(appBarInfo),
-                                    clickRippleColor = token.tooltipRippleColor(
-                                        appBarInfo
-                                    ),
-                                    onClick = {
-                                        if (appBarSize == AppBarSize.Small) {
-                                            preSubtitleIcon.onClick?.invoke()
-                                        }
-                                    },
-                                    onLongClick = {
-                                        if (appBarSize == AppBarSize.Small) {
-                                            postSubtitleIcon.onLongClick?.invoke()
-                                        }
-                                    },
-                                    offset = token.tooltipOffset(appBarInfo),
-                                    timeout = token.tooltipTimeout(appBarInfo)
-                                ),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 if (preSubtitleIcon.isIconAvailable())
