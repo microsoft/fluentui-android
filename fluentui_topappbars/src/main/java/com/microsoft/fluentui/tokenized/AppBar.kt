@@ -2,13 +2,9 @@ package com.microsoft.fluentui.tokenized
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicText
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -31,167 +27,9 @@ import com.microsoft.fluentui.theme.token.*
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
-import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.indication
-import androidx.compose.foundation.interaction.PressInteraction
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.composed
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.layout.positionInWindow
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.*
-import androidx.compose.ui.window.Popup
-import androidx.compose.ui.window.PopupPositionProvider
-import androidx.compose.ui.window.PopupProperties
-import kotlinx.coroutines.delay
-
-private fun Modifier.clickableWithTooltip(
-    tooltipText: String,
-    tooltipEnabled: Boolean = false,
-    backgroundColor: Brush = SolidColor(Color.Unspecified),
-    cornerRadius: Dp = 8.dp,
-    textStyle: TextStyle = TextStyle(color = Color.Black, fontWeight = FontWeight.Normal),
-    padding: Dp = 12.dp,
-    offset: DpOffset = DpOffset(0.dp, 0.dp),
-    timeout: Long = 2000L,
-    showRippleOnClick: Boolean = true,
-    clickRippleColor: Color = Color.Unspecified,
-    onClick: (() -> Unit)? = null,
-    onLongClick: (() -> Unit)? = null
-): Modifier = composed {
-    var isTooltipVisible by remember { mutableStateOf(false) }
-    var anchorBounds by remember { mutableStateOf(IntRect.Zero) }
-    val interactionSource = remember { MutableInteractionSource() }
-
-    val currentOnClick by rememberUpdatedState(onClick)
-    val currentOnLongClick by rememberUpdatedState(onLongClick)
-    val currentTooltipEnabled by rememberUpdatedState(tooltipEnabled)
-
-    val indicationModifier = Modifier.indication(
-        interactionSource = interactionSource,
-        indication = rememberRipple(color = clickRippleColor)
-    )
-
-    val gestureModifier = Modifier.pointerInput(Unit) {
-        detectTapGestures(
-            onPress = { offset ->
-                val press = PressInteraction.Press(offset)
-                interactionSource.emit(press)
-                val released = tryAwaitRelease() // for hold clicks
-                val endInteraction = if (released) {
-                    PressInteraction.Release(press)
-                } else {
-                    PressInteraction.Cancel(press)
-                }
-                interactionSource.emit(endInteraction)
-            },
-            onLongPress = {
-                currentOnLongClick?.invoke()
-                if (currentTooltipEnabled) {
-                    isTooltipVisible = true
-                }
-            },
-            onTap = { currentOnClick?.invoke() }
-        )
-    }
-
-    val positionModifier = Modifier.onGloballyPositioned { layoutCoordinates ->
-        anchorBounds = IntRect(
-            left = layoutCoordinates.positionInWindow().x.toInt(),
-            top = layoutCoordinates.positionInWindow().y.toInt(),
-            right = (layoutCoordinates.positionInWindow().x + layoutCoordinates.size.width).toInt(),
-            bottom = (layoutCoordinates.positionInWindow().y + layoutCoordinates.size.height).toInt()
-        )
-    }
-
-    if (isTooltipVisible) {
-        Tooltip(
-            tooltipText = tooltipText,
-            backgroundColor = backgroundColor,
-            cornerRadius = cornerRadius,
-            textStyle = textStyle,
-            padding = padding,
-            offset = offset,
-            onDismissRequest = { isTooltipVisible = false }
-        )
-
-        LaunchedEffect(isTooltipVisible, timeout) {
-            delay(timeout)
-            isTooltipVisible = false
-        }
-    }
-
-    this
-        .then(if (showRippleOnClick) indicationModifier else Modifier)
-        .then(if (tooltipEnabled) positionModifier else Modifier)
-        .then(gestureModifier)
-}
-
-@Composable
-private fun Tooltip(
-    tooltipText: String,
-    backgroundColor: Brush,
-    cornerRadius: Dp,
-    textStyle: TextStyle,
-    padding: Dp,
-    offset: DpOffset,
-    onDismissRequest: () -> Unit
-) {
-    val density = LocalDensity.current
-    val positionProvider = remember(offset) {
-        TooltipPositionProvider(
-            offset = offset,
-            density = density
-        )
-    }
-    Popup(
-        popupPositionProvider = positionProvider,
-        onDismissRequest = onDismissRequest,
-        properties = PopupProperties(
-            dismissOnBackPress = true,
-            dismissOnClickOutside = true,
-            focusable = false,
-        )
-    ) {
-        Column(
-            modifier = Modifier.shadow(4.dp, clip = false)
-        ) {
-            Box(
-                modifier = Modifier
-                    .background(backgroundColor, RoundedCornerShape(cornerRadius))
-                    .padding(padding)
-            ) {
-                Text(text = tooltipText, style = textStyle)
-            }
-        }
-    }
-}
-
-private class TooltipPositionProvider(
-    private val offset: DpOffset,
-    private val density: Density
-) : PopupPositionProvider {
-    override fun calculatePosition(
-        anchorBounds: IntRect,
-        windowSize: IntSize,
-        layoutDirection: LayoutDirection,
-        popupContentSize: IntSize
-    ): IntOffset {
-        val offsetX = with(density) { offset.x.roundToPx() }
-        val offsetY = with(density) { offset.y.roundToPx() }
-        val y =
-            if ((anchorBounds.top - popupContentSize.height) > 0) anchorBounds.top - popupContentSize.height + offsetY else anchorBounds.bottom + offsetY
-        val x = (anchorBounds.left + (anchorBounds.width - popupContentSize.width) / 2) + offsetX
-        return IntOffset(x, y)
-    }
-}
+import com.microsoft.fluentui.util.clickableWithTooltip
 
 /**
  * An app bar appears at the top of an app screen, below the status bar,
