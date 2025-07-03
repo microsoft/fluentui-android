@@ -1,31 +1,53 @@
 package com.microsoft.fluentuidemo.demos
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.widget.Toast
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.detectDragGestures
+import androidx.compose.foundation.gestures.scrollable
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.boundsInRoot
+import androidx.compose.ui.layout.boundsInWindow
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.core.view.drawToBitmap
 import com.microsoft.fluentui.icons.ListItemIcons
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.listitemicons.Chevron
@@ -45,6 +67,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.theme.token.controlTokens.TooltipControls
 import com.microsoft.fluentui.tokenized.AppBar
 import com.microsoft.fluentui.tokenized.SearchBar
+import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
@@ -82,395 +105,485 @@ class V2AppBarActivity : V2DemoActivity() {
 
         setActivityContent {
 
-            var style: FluentStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
-            var appBarSize: AppBarSize by rememberSaveable { mutableStateOf(AppBarSize.Small) }
-            var searchMode: Boolean by rememberSaveable { mutableStateOf(false) }
-            var subtitle: String? by rememberSaveable { mutableStateOf("Subtitle") }
-            var enableSearchBar: Boolean by rememberSaveable { mutableStateOf(false) }
-            var enableButtonBar: Boolean by rememberSaveable { mutableStateOf(false) }
-            var enableBottomBorder: Boolean by rememberSaveable { mutableStateOf(true) }
-            var centerAlignAppBar: Boolean by rememberSaveable { mutableStateOf(false) }
-            var enableTooltips: Boolean by rememberSaveable { mutableStateOf(false) }
-            var showNavigationIcon: Boolean by rememberSaveable { mutableStateOf(true) }
-            var yAxisDelta: Float by rememberSaveable { mutableStateOf(1.0F) }
-            var enableLogo: Boolean by rememberSaveable { mutableStateOf(true) }
+            var capturedBitmap by remember { mutableStateOf<Bitmap?>(null) }
+            val view = LocalView.current
 
-            Column(modifier = Modifier.pointerInput(Unit) {
-                detectDragGestures { _, distance ->
-                    if (searchMode)
-                        yAxisDelta = 0F
-                    else
-                        yAxisDelta = max(0F, distance.y + 10F) / 20F
-                }
-            }) {
-                ListItem.SectionHeader(
-                    title = LocalContext.current.resources.getString(R.string.app_modifiable_parameters),
-                    modifier = Modifier.testTag(APP_BAR_MODIFIABLE_PARAMETER_SECTION),
-                    enableChevron = true,
-                    enableContentOpenCloseTransition = true,
-                    chevronOrientation = ChevronOrientation(90f, 0f),
-                ) {
-                    Column {
-                        ListItem.Header(LocalContext.current.resources.getString(R.string.app_bar_size))
-                        PillBar(
-                            mutableListOf(
-                                PillMetaData(
-                                    text = LocalContext.current.resources.getString(R.string.fluentui_large),
-                                    onClick = { appBarSize = AppBarSize.Large },
-                                    selected = appBarSize == AppBarSize.Large
-                                ),
-                                PillMetaData(
-                                    text = LocalContext.current.resources.getString(R.string.fluentui_medium),
-                                    onClick = { appBarSize = AppBarSize.Medium },
-                                    selected = appBarSize == AppBarSize.Medium
-                                ),
-                                PillMetaData(
-                                    text = LocalContext.current.resources.getString(R.string.fluentui_small),
-                                    onClick = { appBarSize = AppBarSize.Small },
-                                    selected = appBarSize == AppBarSize.Small
-                                ),
-                                PillMetaData(
-                                    text = LocalContext.current.resources.getString(R.string.fluentui_search),
-                                    onClick = { searchMode = !searchMode },
-                                    selected = searchMode
-                                )
-                            ), style = style,
-                            showBackground = true
-                        )
-
-                        val subtitleText =
-                            LocalContext.current.resources.getString(R.string.app_bar_subtitle)
-                        ListItem.Item(
-                            text = subtitleText,
-                            subText = if (subtitle.isNullOrBlank())
-                                LocalContext.current.resources.getString(R.string.fluentui_disabled)
-                            else
-                                LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                            trailingAccessoryContent = {
-                                ToggleSwitch(
-                                    onValueChange = {
-                                        subtitle =
-                                            if (subtitle.isNullOrBlank())
-                                                subtitleText
-                                            else
-                                                null
-                                    },
-                                    modifier = Modifier.testTag(APP_BAR_SUBTITLE_PARAM),
-                                    checkedState = !subtitle.isNullOrBlank()
-                                )
-                            }
-                        )
-
-                        ListItem.Item(
-                            text = LocalContext.current.resources.getString(R.string.app_bar_style),
-                            subText = if (style == FluentStyle.Neutral)
-                                LocalContext.current.resources.getString(R.string.fluentui_neutral)
-                            else
-                                LocalContext.current.resources.getString(R.string.fluentui_brand),
-                            trailingAccessoryContent = {
-                                ToggleSwitch(
-                                    onValueChange = {
-                                        style =
-                                            if (style == FluentStyle.Neutral)
-                                                FluentStyle.Brand
-                                            else
-                                                FluentStyle.Neutral
-                                    },
-                                    modifier = Modifier.testTag(APP_BAR_STYLE_PARAM),
-                                    checkedState = style == FluentStyle.Brand
-                                )
-                            }
-                        )
-
-                        ListItem.Item(
-                            text = LocalContext.current.resources.getString(R.string.buttonbar),
-                            subText = if (enableButtonBar)
-                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
-                            else
-                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                            trailingAccessoryContent = {
-                                ToggleSwitch(
-                                    onValueChange = {
-                                        enableButtonBar = !enableButtonBar
-                                    },
-                                    modifier = Modifier.testTag(APP_BAR_BUTTONBAR_PARAM),
-                                    checkedState = enableButtonBar
-                                )
-                            }
-                        )
-
-                        ListItem.Item(
-                            text = LocalContext.current.resources.getString(R.string.searchbar),
-                            subText = if (enableSearchBar)
-                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
-                            else
-                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                            trailingAccessoryContent = {
-                                enableSearchBar = enableSearchBar || searchMode
-                                ToggleSwitch(
-                                    onValueChange = {
-                                        enableSearchBar = !enableSearchBar
-                                    },
-                                    modifier = Modifier.testTag(APP_BAR_SEARCHBAR_PARAM),
-                                    checkedState = enableSearchBar,
-                                    enabledSwitch = !searchMode
-                                )
-                            }
-                        )
-
-                        ListItem.Item(
-                            text = LocalContext.current.resources.getString(R.string.app_bar_bottom_border),
-                            subText = if (enableBottomBorder)
-                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
-                            else
-                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                            trailingAccessoryContent = {
-                                ToggleSwitch(
-                                    onValueChange = {
-                                        enableBottomBorder = !enableBottomBorder
-                                    },
-                                    checkedState = enableBottomBorder,
-                                )
-                            }
-                        )
-
-                        ListItem.Item(
-                            text = LocalContext.current.resources.getString(R.string.left_logo),
-                            subText = if (enableLogo)
-                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
-                            else
-                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                            trailingAccessoryContent = {
-                                ToggleSwitch(
-                                    onValueChange = {
-                                        enableLogo = !enableLogo
-                                    },
-                                    modifier = Modifier.testTag(APP_BAR_LOGO_PARAM),
-                                    checkedState = enableLogo
-                                )
-                            }
-                        )
-
-                        ListItem.Item(
-                            text = LocalContext.current.resources.getString(R.string.navigation_icon),
-                            subText = if (showNavigationIcon)
-                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
-                            else
-                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                            trailingAccessoryContent = {
-                                ToggleSwitch(
-                                    onValueChange = {
-                                        showNavigationIcon = !showNavigationIcon
-                                    },
-                                    modifier = Modifier.testTag(APP_BAR_NAVIGATION_ICON_PARAM),
-                                    checkedState = showNavigationIcon
-                                )
-                            }
-                        )
-                        ListItem.Item(
-                            text = LocalContext.current.resources.getString(R.string.center_title_alignment),
-                            subText = if (centerAlignAppBar)
-                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
-                            else
-                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                            trailingAccessoryContent = {
-                                ToggleSwitch(
-                                    onValueChange = {
-                                        centerAlignAppBar = !centerAlignAppBar
-                                    },
-                                    modifier = Modifier.testTag(APP_BAR_CENTER_ALIGN_PARAM),
-                                    checkedState = centerAlignAppBar
-                                )
-                            }
-                        )
-                        ListItem.Item(
-                            text = LocalContext.current.resources.getString(R.string.enable_tooltips),
-                            subText = if (enableTooltips)
-                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
-                            else
-                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                            trailingAccessoryContent = {
-                                ToggleSwitch(
-                                    onValueChange = {
-                                        enableTooltips = !enableTooltips
-                                    },
-                                    modifier = Modifier.testTag(APP_BAR_ENABLE_TOOLTIPS_PARAM),
-                                    checkedState = enableTooltips
-                                )
-                            }
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                // Background that we want to capture a part of.
+                Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                    for(i in 0..15){
+                        Image(
+                            painter = painterResource(id = R.drawable.avatar_miguel_garcia), // Add a background_image to your drawables
+                            contentDescription = "Background",
+                            modifier = Modifier.fillMaxSize()
                         )
                     }
                 }
 
-                val buttonBarList = mutableListOf<PillMetaData>()
-                for (idx in 1..6) {
-                    buttonBarList.add(
-                        PillMetaData(
-                            "Button $idx",
-                            {
-                                Toast.makeText(
-                                    context,
-                                    "Button $idx pressed",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    var composableBounds by remember { mutableStateOf<Rect?>(null) }
+
+                    // The composable whose background we want to capture.
+                    Box(
+                        modifier = Modifier
+                            .onGloballyPositioned { layoutCoordinates ->
+                                // *** THIS IS THE FIX ***
+                                // Use boundsInRoot() to get coordinates relative to the Compose root,
+                                // which matches the coordinate system of the view bitmap.
+                                composableBounds = layoutCoordinates.boundsInRoot()
                             }
+                    ){
+                        Text(
+                            text = "Now try to capture this background",
                         )
-                    )
-                }
-
-                val appTitleDelta: Float by animateFloatAsState(
-                    if (searchMode) 0F else 1F,
-                    animationSpec = tween(durationMillis = 150, easing = LinearEasing)
-                )
-
-                val yAxisDeltaCoerced = yAxisDelta.coerceIn(0F, 1F)
-
-                val accessoryDelta: Float by animateFloatAsState(yAxisDeltaCoerced)
-                val rightIconColor: Color = if (style == FluentStyle.Neutral)
-                    FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
-                        FluentTheme.themeMode
-                    )
-                else
-                    FluentColor(
-                        light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                            ThemeMode.Light
-                        ),
-                        dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
-                            ThemeMode.Dark
-                        )
-                    ).value(FluentTheme.themeMode)
-                val appBarTokens = object : AppBarTokens() {
-                    @Composable
-                    override fun tooltipVisibilityControls(info: AppBarInfo): TooltipControls {
-                        return TooltipControls(
-                            enableTitleTooltip = enableTooltips,
-                            enableSubtitleTooltip = enableTooltips,
-                            enableNavigationIconTooltip = enableTooltips,
+                        Text(
+                            text = "This text is inside the box whose background we want to capture.",
+                            modifier = Modifier
+                                .padding(16.dp)
                         )
                     }
-                }
-                AppBar(
-                    title = "Fluent UI Demo",
-                    navigationIcon = if (showNavigationIcon) {
-                        FluentIcon(
-                            SearchBarIcons.Arrowback,
-                            contentDescription = "Navigate Back",
-                            onLongClick = {
-                                Toast.makeText(
-                                    context,
-                                    "Navigation Icon long pressed",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            },
-                            onClick = {
-                                Toast.makeText(
-                                    context,
-                                    "Navigation Icon pressed",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            },
-                            flipOnRtl = true
-                        )
-                    } else null,
-                    subTitle = subtitle,
-                    centerAlignAppBar = centerAlignAppBar,
-                    logo = if (enableLogo) {
-                        {
-                            Avatar(
-                                Person(
-                                    "Allan",
-                                    "Munger",
-                                    status = AvatarStatus.DND,
-                                    isActive = true
-                                ),
-                                enablePresence = true,
-                                size = AvatarSize.Size32,
-                                modifier = if (!showNavigationIcon) {
-                                    Modifier.padding(start = 16.dp)
-                                } else Modifier
+
+                    Spacer(modifier = Modifier.height(20.dp))
+
+                    Button(onClick = {
+                        composableBounds?.let { bounds ->
+                            // Ensure the view has been laid out and has dimensions.
+                            if (view.width > 0 && view.height > 0) {
+                                // Capture the entire view's bitmap.
+                                val fullBitmap = view.drawToBitmap()
+
+                                // Crop the bitmap to the bounds of the Text composable.
+                                // We must ensure the crop area is within the bitmap's dimensions.
+                                val croppedBitmap = Bitmap.createBitmap(
+                                    fullBitmap,
+                                    bounds.left.toInt().coerceAtLeast(0),
+                                    bounds.top.toInt().coerceAtLeast(0),
+                                    bounds.width.toInt().coerceIn(0, fullBitmap.width - bounds.left.toInt()),
+                                    bounds.height.toInt().coerceIn(0, fullBitmap.height - bounds.top.toInt())
+                                )
+                                capturedBitmap = croppedBitmap
+                            }
+                        }
+                    })
+
+                    Spacer(modifier = Modifier.height(20.dp))
+
+                    // Display the captured bitmap.
+                    capturedBitmap?.let { bmp ->
+                        Text("Captured Background:")
+                        Box(
+                            modifier = Modifier
+                        ){
+                            Image(
+                                bitmap = bmp.asImageBitmap(),
+                                contentDescription = "Captured Background",
+                                modifier = Modifier.blur(radius = 4.dp)
+                            )
+                            Text(
+                                text = "Now try to capture this background",
+                            )
+                            Text(
+                                text = "This text is inside the box whose background we want to capture.",
+                                modifier = Modifier
+                                    .padding(16.dp)
                             )
                         }
-                    } else null,
-                    postTitleIcon = FluentIcon(
-                        ListItemIcons.Chevron,
-                        contentDescription = LocalContext.current.resources.getString(R.string.fluentui_chevron),
-                        flipOnRtl = true
-                    ) {
-                        Toast.makeText(context, "Title Icon pressed", Toast.LENGTH_SHORT).show()
-                    },
-                    postSubtitleIcon = FluentIcon(
-                        ListItemIcons.Chevron,
-                        contentDescription = LocalContext.current.resources.getString(R.string.fluentui_chevron),
-                        onClick = {
-                            Toast.makeText(context, "Subtitle Icon pressed", Toast.LENGTH_SHORT)
-                                .show()
-                        },
-                        flipOnRtl = true
-                    ),
-                    appBarSize = appBarSize,
-                    style = style,
-                    searchMode = searchMode,
-                    bottomBorder = enableBottomBorder,
-                    searchBar = if (enableSearchBar) {
-                        {
-                            SearchBar(
-                                onValueChange = { _, _ -> },
-                                modifier = Modifier.onFocusChanged { focusState ->
-                                    when {
-                                        focusState.isFocused -> {
-                                            searchMode = true
-                                        }
-                                    }
-                                },
-                                style = style,
-                                navigationIconCallback = { searchMode = false }
-                            )
-                        }
-                    } else null,
-                    bottomBar = if (enableButtonBar) {
-                        { PillBar(metadataList = buttonBarList, style = style) }
-                    } else null,
-                    appTitleDelta = appTitleDelta,
-                    accessoryDelta = accessoryDelta,
-                    appBarTokens = appBarTokens,
-                    rightAccessoryView = {
-                        Icon(
-                            Icons.Filled.Add,
-                            "Add",
-                            modifier = Modifier
-                                .padding(10.dp)
-                                .requiredSize(24.dp),
-                            tint = rightIconColor,
-                            onClick = {
-                                Toast
-                                    .makeText(
-                                        context,
-                                        "Navigation Icon 1 Pressed",
-                                        Toast.LENGTH_SHORT
-                                    )
-                                    .show()
-                            }
-                        )
-                        Icon(
-                            Icons.Filled.Email,
-                            "E-mail",
-                            modifier = Modifier
-                                .padding(10.dp)
-                                .requiredSize(24.dp),
-                            tint = rightIconColor,
-                            onClick = {
-                                Toast
-                                    .makeText(
-                                        context,
-                                        "Navigation Icon 2 Pressed",
-                                        Toast.LENGTH_SHORT
-                                    )
-                                    .show()
-                            }
-                        )
                     }
-                )
+                }
             }
+
+//            var style: FluentStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
+//            var appBarSize: AppBarSize by rememberSaveable { mutableStateOf(AppBarSize.Small) }
+//            var searchMode: Boolean by rememberSaveable { mutableStateOf(false) }
+//            var subtitle: String? by rememberSaveable { mutableStateOf("Subtitle") }
+//            var enableSearchBar: Boolean by rememberSaveable { mutableStateOf(false) }
+//            var enableButtonBar: Boolean by rememberSaveable { mutableStateOf(false) }
+//            var enableBottomBorder: Boolean by rememberSaveable { mutableStateOf(true) }
+//            var centerAlignAppBar: Boolean by rememberSaveable { mutableStateOf(false) }
+//            var enableTooltips: Boolean by rememberSaveable { mutableStateOf(false) }
+//            var showNavigationIcon: Boolean by rememberSaveable { mutableStateOf(true) }
+//            var yAxisDelta: Float by rememberSaveable { mutableStateOf(1.0F) }
+//            var enableLogo: Boolean by rememberSaveable { mutableStateOf(true) }
+//
+//            Column(modifier = Modifier.pointerInput(Unit) {
+//                detectDragGestures { _, distance ->
+//                    if (searchMode)
+//                        yAxisDelta = 0F
+//                    else
+//                        yAxisDelta = max(0F, distance.y + 10F) / 20F
+//                }
+//            }) {
+//                ListItem.SectionHeader(
+//                    title = LocalContext.current.resources.getString(R.string.app_modifiable_parameters),
+//                    modifier = Modifier.testTag(APP_BAR_MODIFIABLE_PARAMETER_SECTION),
+//                    enableChevron = true,
+//                    enableContentOpenCloseTransition = true,
+//                    chevronOrientation = ChevronOrientation(90f, 0f),
+//                ) {
+//                    Column {
+//                        ListItem.Header(LocalContext.current.resources.getString(R.string.app_bar_size))
+//                        PillBar(
+//                            mutableListOf(
+//                                PillMetaData(
+//                                    text = LocalContext.current.resources.getString(R.string.fluentui_large),
+//                                    onClick = { appBarSize = AppBarSize.Large },
+//                                    selected = appBarSize == AppBarSize.Large
+//                                ),
+//                                PillMetaData(
+//                                    text = LocalContext.current.resources.getString(R.string.fluentui_medium),
+//                                    onClick = { appBarSize = AppBarSize.Medium },
+//                                    selected = appBarSize == AppBarSize.Medium
+//                                ),
+//                                PillMetaData(
+//                                    text = LocalContext.current.resources.getString(R.string.fluentui_small),
+//                                    onClick = { appBarSize = AppBarSize.Small },
+//                                    selected = appBarSize == AppBarSize.Small
+//                                ),
+//                                PillMetaData(
+//                                    text = LocalContext.current.resources.getString(R.string.fluentui_search),
+//                                    onClick = { searchMode = !searchMode },
+//                                    selected = searchMode
+//                                )
+//                            ), style = style,
+//                            showBackground = true
+//                        )
+//
+//                        val subtitleText =
+//                            LocalContext.current.resources.getString(R.string.app_bar_subtitle)
+//                        ListItem.Item(
+//                            text = subtitleText,
+//                            subText = if (subtitle.isNullOrBlank())
+//                                LocalContext.current.resources.getString(R.string.fluentui_disabled)
+//                            else
+//                                LocalContext.current.resources.getString(R.string.fluentui_enabled),
+//                            trailingAccessoryContent = {
+//                                ToggleSwitch(
+//                                    onValueChange = {
+//                                        subtitle =
+//                                            if (subtitle.isNullOrBlank())
+//                                                subtitleText
+//                                            else
+//                                                null
+//                                    },
+//                                    modifier = Modifier.testTag(APP_BAR_SUBTITLE_PARAM),
+//                                    checkedState = !subtitle.isNullOrBlank()
+//                                )
+//                            }
+//                        )
+//
+//                        ListItem.Item(
+//                            text = LocalContext.current.resources.getString(R.string.app_bar_style),
+//                            subText = if (style == FluentStyle.Neutral)
+//                                LocalContext.current.resources.getString(R.string.fluentui_neutral)
+//                            else
+//                                LocalContext.current.resources.getString(R.string.fluentui_brand),
+//                            trailingAccessoryContent = {
+//                                ToggleSwitch(
+//                                    onValueChange = {
+//                                        style =
+//                                            if (style == FluentStyle.Neutral)
+//                                                FluentStyle.Brand
+//                                            else
+//                                                FluentStyle.Neutral
+//                                    },
+//                                    modifier = Modifier.testTag(APP_BAR_STYLE_PARAM),
+//                                    checkedState = style == FluentStyle.Brand
+//                                )
+//                            }
+//                        )
+//
+//                        ListItem.Item(
+//                            text = LocalContext.current.resources.getString(R.string.buttonbar),
+//                            subText = if (enableButtonBar)
+//                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+//                            else
+//                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+//                            trailingAccessoryContent = {
+//                                ToggleSwitch(
+//                                    onValueChange = {
+//                                        enableButtonBar = !enableButtonBar
+//                                    },
+//                                    modifier = Modifier.testTag(APP_BAR_BUTTONBAR_PARAM),
+//                                    checkedState = enableButtonBar
+//                                )
+//                            }
+//                        )
+//
+//                        ListItem.Item(
+//                            text = LocalContext.current.resources.getString(R.string.searchbar),
+//                            subText = if (enableSearchBar)
+//                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+//                            else
+//                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+//                            trailingAccessoryContent = {
+//                                enableSearchBar = enableSearchBar || searchMode
+//                                ToggleSwitch(
+//                                    onValueChange = {
+//                                        enableSearchBar = !enableSearchBar
+//                                    },
+//                                    modifier = Modifier.testTag(APP_BAR_SEARCHBAR_PARAM),
+//                                    checkedState = enableSearchBar,
+//                                    enabledSwitch = !searchMode
+//                                )
+//                            }
+//                        )
+//
+//                        ListItem.Item(
+//                            text = LocalContext.current.resources.getString(R.string.app_bar_bottom_border),
+//                            subText = if (enableBottomBorder)
+//                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+//                            else
+//                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+//                            trailingAccessoryContent = {
+//                                ToggleSwitch(
+//                                    onValueChange = {
+//                                        enableBottomBorder = !enableBottomBorder
+//                                    },
+//                                    checkedState = enableBottomBorder,
+//                                )
+//                            }
+//                        )
+//
+//                        ListItem.Item(
+//                            text = LocalContext.current.resources.getString(R.string.left_logo),
+//                            subText = if (enableLogo)
+//                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+//                            else
+//                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+//                            trailingAccessoryContent = {
+//                                ToggleSwitch(
+//                                    onValueChange = {
+//                                        enableLogo = !enableLogo
+//                                    },
+//                                    modifier = Modifier.testTag(APP_BAR_LOGO_PARAM),
+//                                    checkedState = enableLogo
+//                                )
+//                            }
+//                        )
+//
+//                        ListItem.Item(
+//                            text = LocalContext.current.resources.getString(R.string.navigation_icon),
+//                            subText = if (showNavigationIcon)
+//                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+//                            else
+//                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+//                            trailingAccessoryContent = {
+//                                ToggleSwitch(
+//                                    onValueChange = {
+//                                        showNavigationIcon = !showNavigationIcon
+//                                    },
+//                                    modifier = Modifier.testTag(APP_BAR_NAVIGATION_ICON_PARAM),
+//                                    checkedState = showNavigationIcon
+//                                )
+//                            }
+//                        )
+//                        ListItem.Item(
+//                            text = LocalContext.current.resources.getString(R.string.center_title_alignment),
+//                            subText = if (centerAlignAppBar)
+//                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+//                            else
+//                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+//                            trailingAccessoryContent = {
+//                                ToggleSwitch(
+//                                    onValueChange = {
+//                                        centerAlignAppBar = !centerAlignAppBar
+//                                    },
+//                                    modifier = Modifier.testTag(APP_BAR_CENTER_ALIGN_PARAM),
+//                                    checkedState = centerAlignAppBar
+//                                )
+//                            }
+//                        )
+//                        ListItem.Item(
+//                            text = LocalContext.current.resources.getString(R.string.enable_tooltips),
+//                            subText = if (enableTooltips)
+//                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+//                            else
+//                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+//                            trailingAccessoryContent = {
+//                                ToggleSwitch(
+//                                    onValueChange = {
+//                                        enableTooltips = !enableTooltips
+//                                    },
+//                                    modifier = Modifier.testTag(APP_BAR_ENABLE_TOOLTIPS_PARAM),
+//                                    checkedState = enableTooltips
+//                                )
+//                            }
+//                        )
+//                    }
+//                }
+//
+//                val buttonBarList = mutableListOf<PillMetaData>()
+//                for (idx in 1..6) {
+//                    buttonBarList.add(
+//                        PillMetaData(
+//                            "Button $idx",
+//                            {
+//                                Toast.makeText(
+//                                    context,
+//                                    "Button $idx pressed",
+//                                    Toast.LENGTH_SHORT
+//                                ).show()
+//                            }
+//                        )
+//                    )
+//                }
+//
+//                val appTitleDelta: Float by animateFloatAsState(
+//                    if (searchMode) 0F else 1F,
+//                    animationSpec = tween(durationMillis = 150, easing = LinearEasing)
+//                )
+//
+//                val yAxisDeltaCoerced = yAxisDelta.coerceIn(0F, 1F)
+//
+//                val accessoryDelta: Float by animateFloatAsState(yAxisDeltaCoerced)
+//                val rightIconColor: Color = if (style == FluentStyle.Neutral)
+//                    FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+//                        FluentTheme.themeMode
+//                    )
+//                else
+//                    FluentColor(
+//                        light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+//                            ThemeMode.Light
+//                        ),
+//                        dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+//                            ThemeMode.Dark
+//                        )
+//                    ).value(FluentTheme.themeMode)
+//                val appBarTokens = object : AppBarTokens() {
+//                    @Composable
+//                    override fun tooltipVisibilityControls(info: AppBarInfo): TooltipControls {
+//                        return TooltipControls(
+//                            enableTitleTooltip = enableTooltips,
+//                            enableSubtitleTooltip = enableTooltips,
+//                            enableNavigationIconTooltip = enableTooltips,
+//                        )
+//                    }
+//                }
+//                AppBar(
+//                    title = "Fluent UI Demo",
+//                    navigationIcon = if (showNavigationIcon) {
+//                        FluentIcon(
+//                            SearchBarIcons.Arrowback,
+//                            contentDescription = "Navigate Back",
+//                            onLongClick = {
+//                                Toast.makeText(
+//                                    context,
+//                                    "Navigation Icon long pressed",
+//                                    Toast.LENGTH_SHORT
+//                                ).show()
+//                            },
+//                            onClick = {
+//                                Toast.makeText(
+//                                    context,
+//                                    "Navigation Icon pressed",
+//                                    Toast.LENGTH_SHORT
+//                                ).show()
+//                            },
+//                            flipOnRtl = true
+//                        )
+//                    } else null,
+//                    subTitle = subtitle,
+//                    centerAlignAppBar = centerAlignAppBar,
+//                    logo = if (enableLogo) {
+//                        {
+//                            Avatar(
+//                                Person(
+//                                    "Allan",
+//                                    "Munger",
+//                                    status = AvatarStatus.DND,
+//                                    isActive = true
+//                                ),
+//                                enablePresence = true,
+//                                size = AvatarSize.Size32,
+//                                modifier = if (!showNavigationIcon) {
+//                                    Modifier.padding(start = 16.dp)
+//                                } else Modifier
+//                            )
+//                        }
+//                    } else null,
+//                    postTitleIcon = FluentIcon(
+//                        ListItemIcons.Chevron,
+//                        contentDescription = LocalContext.current.resources.getString(R.string.fluentui_chevron),
+//                        flipOnRtl = true
+//                    ) {
+//                        Toast.makeText(context, "Title Icon pressed", Toast.LENGTH_SHORT).show()
+//                    },
+//                    postSubtitleIcon = FluentIcon(
+//                        ListItemIcons.Chevron,
+//                        contentDescription = LocalContext.current.resources.getString(R.string.fluentui_chevron),
+//                        onClick = {
+//                            Toast.makeText(context, "Subtitle Icon pressed", Toast.LENGTH_SHORT)
+//                                .show()
+//                        },
+//                        flipOnRtl = true
+//                    ),
+//                    appBarSize = appBarSize,
+//                    style = style,
+//                    searchMode = searchMode,
+//                    bottomBorder = enableBottomBorder,
+//                    searchBar = if (enableSearchBar) {
+//                        {
+//                            SearchBar(
+//                                onValueChange = { _, _ -> },
+//                                modifier = Modifier.onFocusChanged { focusState ->
+//                                    when {
+//                                        focusState.isFocused -> {
+//                                            searchMode = true
+//                                        }
+//                                    }
+//                                },
+//                                style = style,
+//                                navigationIconCallback = { searchMode = false }
+//                            )
+//                        }
+//                    } else null,
+//                    bottomBar = if (enableButtonBar) {
+//                        { PillBar(metadataList = buttonBarList, style = style) }
+//                    } else null,
+//                    appTitleDelta = appTitleDelta,
+//                    accessoryDelta = accessoryDelta,
+//                    appBarTokens = appBarTokens,
+//                    rightAccessoryView = {
+//                        Icon(
+//                            Icons.Filled.Add,
+//                            "Add",
+//                            modifier = Modifier
+//                                .padding(10.dp)
+//                                .requiredSize(24.dp),
+//                            tint = rightIconColor,
+//                            onClick = {
+//                                Toast
+//                                    .makeText(
+//                                        context,
+//                                        "Navigation Icon 1 Pressed",
+//                                        Toast.LENGTH_SHORT
+//                                    )
+//                                    .show()
+//                            }
+//                        )
+//                        Icon(
+//                            Icons.Filled.Email,
+//                            "E-mail",
+//                            modifier = Modifier
+//                                .padding(10.dp)
+//                                .requiredSize(24.dp),
+//                            tint = rightIconColor,
+//                            onClick = {
+//                                Toast
+//                                    .makeText(
+//                                        context,
+//                                        "Navigation Icon 2 Pressed",
+//                                        Toast.LENGTH_SHORT
+//                                    )
+//                                    .show()
+//                            }
+//                        )
+//                    }
+//                )
+//            }
         }
     }
 }

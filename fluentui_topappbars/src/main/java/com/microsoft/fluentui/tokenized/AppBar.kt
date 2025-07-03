@@ -30,7 +30,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
 import androidx.compose.runtime.*
 import androidx.compose.ui.unit.*
 import com.microsoft.fluentui.util.clickableWithTooltip
-
 /**
  * An app bar appears at the top of an app screen, below the status bar,
  * and enables navigation through a series of hierarchical screens.
