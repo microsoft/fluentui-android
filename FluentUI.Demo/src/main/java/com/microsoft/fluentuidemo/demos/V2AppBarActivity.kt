@@ -112,8 +112,9 @@ class V2AppBarActivity : V2DemoActivity() {
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
+                val scrollState = rememberScrollState()
                 // Background that we want to capture a part of.
-                Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                Column(modifier = Modifier.verticalScroll(scrollState)) {
                     for(i in 0..15){
                         Image(
                             painter = painterResource(id = R.drawable.avatar_miguel_garcia), // Add a background_image to your drawables
@@ -123,32 +124,32 @@ class V2AppBarActivity : V2DemoActivity() {
                     }
                 }
 
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    var composableBounds by remember { mutableStateOf<Rect?>(null) }
+                Column() {
+                        var composableBounds by remember { mutableStateOf<Rect?>(null) }
 
-                    // The composable whose background we want to capture.
-                    Box(
-                        modifier = Modifier
-                            .onGloballyPositioned { layoutCoordinates ->
-                                // *** THIS IS THE FIX ***
-                                // Use boundsInRoot() to get coordinates relative to the Compose root,
-                                // which matches the coordinate system of the view bitmap.
-                                composableBounds = layoutCoordinates.boundsInRoot()
-                            }
-                    ){
-                        Text(
-                            text = "Now try to capture this background",
-                        )
-                        Text(
-                            text = "This text is inside the box whose background we want to capture.",
+                        // The composable whose background we want to capture.
+                        Box(
                             modifier = Modifier
-                                .padding(16.dp)
-                        )
-                    }
+                                .onGloballyPositioned { layoutCoordinates ->
+                                    // *** THIS IS THE FIX ***
+                                    // Use boundsInRoot() to get coordinates relative to the Compose root,
+                                    // which matches the coordinate system of the view bitmap.
+                                    composableBounds = layoutCoordinates.boundsInRoot()
+                                }
+                        ) {
+                            Text(
+                                text = "Now try to capture this background",
+                            )
+                            Text(
+                                text = "This text is inside the box whose background we want to capture.",
+                                modifier = Modifier
+                                    .padding(16.dp)
+                            )
+                        }
 
-                    Spacer(modifier = Modifier.height(20.dp))
+//                    Spacer(modifier = Modifier.height(20.dp))
 
-                    Button(onClick = {
+//                    Button(onClick = {
                         composableBounds?.let { bounds ->
                             // Ensure the view has been laid out and has dimensions.
                             if (view.width > 0 && view.height > 0) {
@@ -161,37 +162,39 @@ class V2AppBarActivity : V2DemoActivity() {
                                     fullBitmap,
                                     bounds.left.toInt().coerceAtLeast(0),
                                     bounds.top.toInt().coerceAtLeast(0),
-                                    bounds.width.toInt().coerceIn(0, fullBitmap.width - bounds.left.toInt()),
-                                    bounds.height.toInt().coerceIn(0, fullBitmap.height - bounds.top.toInt())
+                                    bounds.width.toInt()
+                                        .coerceIn(0, fullBitmap.width - bounds.left.toInt()),
+                                    bounds.height.toInt()
+                                        .coerceIn(0, fullBitmap.height - bounds.top.toInt())
                                 )
                                 capturedBitmap = croppedBitmap
                             }
                         }
-                    })
+//                    })
 
-                    Spacer(modifier = Modifier.height(20.dp))
+                        //   Spacer(modifier = Modifier.height(20.dp))
 
-                    // Display the captured bitmap.
-                    capturedBitmap?.let { bmp ->
-                        Text("Captured Background:")
-                        Box(
-                            modifier = Modifier
-                        ){
-                            Image(
-                                bitmap = bmp.asImageBitmap(),
-                                contentDescription = "Captured Background",
-                                modifier = Modifier.blur(radius = 4.dp)
-                            )
-                            Text(
-                                text = "Now try to capture this background",
-                            )
-                            Text(
-                                text = "This text is inside the box whose background we want to capture.",
+                        // Display the captured bitmap.
+                        capturedBitmap?.let { bmp ->
+                            //  Text("Captured Background:")
+                            Box(
                                 modifier = Modifier
-                                    .padding(16.dp)
-                            )
+                            ) {
+                                Image(
+                                    bitmap = bmp.asImageBitmap(),
+                                    contentDescription = scrollState.toString(),
+                                    modifier = Modifier.blur(radius = 4.dp)
+                                )
+                                Text(
+                                    text = "Now try to capture this background",
+                                )
+                                Text(
+                                    text = "This text is inside the box whose background we want to capture.",
+                                    modifier = Modifier
+                                        .padding(16.dp)
+                                )
+                            }
                         }
-                    }
                 }
             }
 
