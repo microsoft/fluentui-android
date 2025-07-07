@@ -5,11 +5,13 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -27,6 +29,12 @@ enum class AppBarSize {
     Medium,
     Small
 }
+
+open class TooltipControls(
+    var enableTitleTooltip: Boolean = false,
+    var enableSubtitleTooltip: Boolean = false,
+    var enableNavigationIconTooltip: Boolean = false
+) {}
 
 open class AppBarInfo(
     val style: FluentStyle = FluentStyle.Neutral,
@@ -141,6 +149,55 @@ open class AppBarTokens : IControlToken, Parcelable {
                     )
                 ).value(themeMode = FluentTheme.themeMode)
         }
+    }
+
+    @Composable
+    open fun tooltipVisibilityControls(info: AppBarInfo): TooltipControls {
+        return TooltipControls(
+            enableTitleTooltip = false,
+            enableSubtitleTooltip = false,
+            enableNavigationIconTooltip = false
+        )
+    }
+
+    @Composable
+    open fun tooltipTextStyle(info: AppBarInfo): TextStyle {
+        return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2].merge(
+            TextStyle(
+                color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic].value(
+                    themeMode = FluentTheme.themeMode
+                )
+            )
+        )
+    }
+
+    @Composable
+    open fun tooltipBackgroundBrush(info: AppBarInfo): Brush {
+        return SolidColor(
+            FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.BackgroundDarkStatic].value(
+                themeMode = FluentTheme.themeMode
+            )
+        )
+    }
+
+    @Composable
+    open fun tooltipCornerRadius(info: AppBarInfo): Dp {
+        return FluentGlobalTokens.CornerRadiusTokens.CornerRadius80.value
+    }
+
+    @Composable
+    open fun tooltipRippleColor(info: AppBarInfo): Color {
+        return Color.Unspecified
+    }
+
+    @Composable
+    open fun tooltipOffset(info: AppBarInfo): DpOffset {
+        return DpOffset(x = 0.dp, y = 0.dp)
+    }
+
+    @Composable
+    open fun tooltipTimeout(info: AppBarInfo): Long {
+        return 2000L // Default timeout for tooltip in milliseconds
     }
 
     @Composable

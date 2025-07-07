@@ -2,13 +2,9 @@ package com.microsoft.fluentui.tokenized
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicText
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -31,6 +27,9 @@ import com.microsoft.fluentui.theme.token.*
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
+import androidx.compose.runtime.*
+import androidx.compose.ui.unit.*
+import com.microsoft.fluentui.util.clickableWithTooltip
 
 /**
  * An app bar appears at the top of an app screen, below the status bar,
@@ -102,9 +101,8 @@ fun AppBar(
 
     val token = appBarTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AppBarControlType] as AppBarTokens
-
-
     val appBarInfo = AppBarInfo(style, appBarSize)
+    val tooltipControls = token.tooltipVisibilityControls(appBarInfo)
     Box(
         modifier = modifier
             .fillMaxWidth()
@@ -145,25 +143,19 @@ fun AppBar(
                 if (navigationIcon !== null && navigationIcon.isIconAvailable()) {
                     Icon(
                         navigationIcon,
-                        modifier =
-                        Modifier.then(
-                            if (navigationIcon.onClick != null)
-                                Modifier.then (
-                                    if(navigationIcon.onLongClick != null) Modifier.clickAndLongClick(
-                                        onClick = navigationIcon.onClick!!,
-                                        onLongClick = navigationIcon.onLongClick!!,
-                                        rippleColor = token.navigationIconRippleColor()
-                                    )
-                                    else Modifier.clickable(
-                                        interactionSource = remember { MutableInteractionSource() },
-                                        indication = rememberRipple(color = token.navigationIconRippleColor()),
-                                        enabled = navigationIcon.enabled,
-                                        onClick = navigationIcon.onClick!!
-                                    )
-                                )
-                            else
-                                Modifier
-                        )
+                        modifier = Modifier
+                            .clickableWithTooltip(
+                                tooltipText = navigationIcon.contentDescription ?: "",
+                                tooltipEnabled = tooltipControls.enableNavigationIconTooltip,
+                                backgroundColor = token.tooltipBackgroundBrush(appBarInfo),
+                                textStyle = token.tooltipTextStyle(appBarInfo),
+                                cornerRadius = token.tooltipCornerRadius(appBarInfo),
+                                clickRippleColor = token.navigationIconRippleColor(),
+                                onClick = navigationIcon.onClick,
+                                onLongClick = navigationIcon.onLongClick,
+                                offset = token.tooltipOffset(appBarInfo),
+                                timeout = token.tooltipTimeout(appBarInfo),
+                            )
                             .padding(token.navigationIconPadding(appBarInfo))
                             .size(token.leftIconSize(appBarInfo)),
                         tint = token.navigationIconColor(appBarInfo)
@@ -187,13 +179,29 @@ fun AppBar(
                     ) {
                         // title
                         Row(
-                            modifier = Modifier
-                                .then(
-                                    postTitleIcon.onClick?.takeIf { appBarSize == AppBarSize.Small }
-                                        ?.let {
-                                            Modifier.clickable(onClick = it)
-                                        } ?: Modifier
-                                ), verticalAlignment = Alignment.CenterVertically
+                            modifier = Modifier.clickableWithTooltip(
+                                tooltipText = title,
+                                tooltipEnabled = tooltipControls.enableTitleTooltip,
+                                backgroundColor = token.tooltipBackgroundBrush(
+                                    appBarInfo
+                                ),
+                                textStyle = token.tooltipTextStyle(appBarInfo),
+                                cornerRadius = token.tooltipCornerRadius(appBarInfo),
+                                clickRippleColor = token.tooltipRippleColor(appBarInfo),
+                                onClick = {
+                                    if (appBarSize == AppBarSize.Small) {
+                                        postTitleIcon.onClick?.invoke()
+                                    }
+                                },
+                                onLongClick = {
+                                    if (appBarSize == AppBarSize.Small) {
+                                        postTitleIcon.onLongClick?.invoke()
+                                    }
+                                },
+                                offset = token.tooltipOffset(appBarInfo),
+                                timeout = token.tooltipTimeout(appBarInfo)
+                            ),
+                            verticalAlignment = Alignment.CenterVertically
                         ) {
                             BasicText(
                                 text = title,
@@ -227,13 +235,31 @@ fun AppBar(
                         // subtitle
                         if (!subTitle.isNullOrBlank()) {
                             Row(
-                                modifier = Modifier
-                                    .then(
-                                        postSubtitleIcon.onClick?.takeIf { appBarSize == AppBarSize.Small }
-                                            ?.let {
-                                                Modifier.clickable(onClick = it)
-                                            } ?: Modifier
-                                    ), verticalAlignment = Alignment.CenterVertically
+                                modifier = Modifier.clickableWithTooltip(
+                                    tooltipText = subTitle,
+                                    tooltipEnabled = tooltipControls.enableSubtitleTooltip,
+                                    backgroundColor = token.tooltipBackgroundBrush(
+                                        appBarInfo
+                                    ),
+                                    textStyle = token.tooltipTextStyle(appBarInfo),
+                                    cornerRadius = token.tooltipCornerRadius(appBarInfo),
+                                    clickRippleColor = token.tooltipRippleColor(
+                                        appBarInfo
+                                    ),
+                                    onClick = {
+                                        if (appBarSize == AppBarSize.Small) {
+                                            preSubtitleIcon.onClick?.invoke()
+                                        }
+                                    },
+                                    onLongClick = {
+                                        if (appBarSize == AppBarSize.Small) {
+                                            postSubtitleIcon.onLongClick?.invoke()
+                                        }
+                                    },
+                                    offset = token.tooltipOffset(appBarInfo),
+                                    timeout = token.tooltipTimeout(appBarInfo)
+                                ),
+                                verticalAlignment = Alignment.CenterVertically
                             ) {
                                 if (preSubtitleIcon.isIconAvailable())
                                     Icon(
@@ -276,6 +302,19 @@ fun AppBar(
                 } else {
                     Column(
                         modifier = Modifier
+                            .clickableWithTooltip(
+                                tooltipText = title,
+                                tooltipEnabled = tooltipControls.enableTitleTooltip,
+                                backgroundColor = token.tooltipBackgroundBrush(appBarInfo),
+                                cornerRadius = token.tooltipCornerRadius(appBarInfo),
+                                textStyle = token.tooltipTextStyle(appBarInfo),
+                                clickRippleColor = token.tooltipRippleColor(appBarInfo),
+                                showRippleOnClick = false,
+                                onClick = {},
+                                onLongClick = {},
+                                offset = token.tooltipOffset(appBarInfo),
+                                timeout = token.tooltipTimeout(appBarInfo)
+                            )
                             .padding(token.textPadding(appBarInfo))
                             .weight(1F)
                             .semantics { heading() },
