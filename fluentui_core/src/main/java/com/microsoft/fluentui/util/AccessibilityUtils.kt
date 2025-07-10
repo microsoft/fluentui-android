@@ -57,6 +57,44 @@ val Context.isAccessibilityEnabled: Boolean
 val Context.accessibilityManager: AccessibilityManager
     get() = getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
 
+/**
+ * A Modifier that makes a composable clickable, long clickable and displays a tooltip on a long press.
+ *
+ * This modifier combines click and long-press gesture detection with a tooltip that appears
+ * above or below the composable. The tooltip is dismissed after a specified timeout or when
+ * the user clicks outside of it.
+ *
+ * Example usage:
+ * ```
+ * Box(
+ *     modifier = Modifier
+ *         .clickableWithTooltip(
+ *             tooltipText = "This is a tooltip!",
+ *             tooltipEnabled = true,
+ *             onClick = { Log.d("TAG", "Clicked!") },
+ *             onLongClick = { Log.d("TAG", "Long clicked!") }
+ *         ),
+ *     contentAlignment = Alignment.Center
+ * ) {
+ *     Text("Hover or Long Press")
+ * }
+ * ```
+ *
+ * @param tooltipText The text to be displayed inside the tooltip.
+ * @param tooltipEnabled A boolean to enable or disable the tooltip functionality. Defaults to `false`.
+ * @param backgroundColor The background brush for the tooltip. Can be a solid color or a gradient. Defaults to `Color.Unspecified`.
+ * @param cornerRadius The corner radius for the tooltip's background shape. Defaults to `8.dp`.
+ * @param textStyle The text style for the tooltip's content.
+ * @param padding The internal padding around the tooltip's text. Defaults to `12.dp`.
+ * @param offset The DpOffset to adjust the tooltip's position relative to the composable. `x` adjusts horizontal position, `y` adjusts vertical. Defaults to `DpOffset(0.dp, 0.dp)`.
+ * @param timeout The duration in milliseconds for which the tooltip remains visible before automatically dismissing. Defaults to `2000L`.
+ * @param showRippleOnClick If true, a ripple effect will be shown on tap. Defaults to `true`.
+ * @param clickRippleColor The color of the ripple effect. Defaults to `Color.Unspecified` which uses the theme's default.
+ * @param onClick A lambda to be executed when the composable is tapped.
+ * @param onLongClick A lambda to be executed when the composable is long-pressed. This action also triggers the tooltip if `tooltipEnabled` is true.
+ * @return Returns a [Modifier] that applies the click and tooltip behavior.
+ */
+
 @OptIn(ExperimentalFoundationApi::class)
 fun Modifier.clickableWithTooltip(
     tooltipText: String,
