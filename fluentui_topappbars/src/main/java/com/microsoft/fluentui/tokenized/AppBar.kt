@@ -143,8 +143,7 @@ fun AppBar(
                 if (navigationIcon !== null && navigationIcon.isIconAvailable()) {
                     Icon(
                         navigationIcon,
-                        modifier = Modifier
-                            .clickableWithTooltip(
+                        modifier = Modifier.clickableWithTooltip(
                                 tooltipText = navigationIcon.contentDescription ?: "",
                                 tooltipEnabled = tooltipControls.enableNavigationIconTooltip,
                                 backgroundColor = token.tooltipBackgroundBrush(appBarInfo),
@@ -179,8 +178,7 @@ fun AppBar(
                     ) {
                         // title
                         Row(
-                            modifier = Modifier
-                                .clickableWithTooltip(
+                            modifier = Modifier.clickableWithTooltip(
                                     tooltipText = title,
                                     tooltipEnabled = tooltipControls.enableTitleTooltip,
                                     backgroundColor = token.tooltipBackgroundBrush(
@@ -236,8 +234,7 @@ fun AppBar(
                         // subtitle
                         if (!subTitle.isNullOrBlank()) {
                             Row(
-                                modifier = Modifier
-                                    .clickableWithTooltip(
+                                modifier = Modifier.clickableWithTooltip(
                                         tooltipText = subTitle,
                                         tooltipEnabled = tooltipControls.enableSubtitleTooltip,
                                         backgroundColor = token.tooltipBackgroundBrush(
@@ -303,8 +300,7 @@ fun AppBar(
                     }
                 } else {
                     Column(
-                        modifier = Modifier
-                            .clickableWithTooltip(
+                        modifier = Modifier.clickableWithTooltip(
                                 tooltipText = title,
                                 tooltipEnabled = tooltipControls.enableTitleTooltip,
                                 backgroundColor = token.tooltipBackgroundBrush(appBarInfo),
