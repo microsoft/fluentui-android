@@ -241,7 +241,7 @@ extends:
                   targetType: "inline"
                   script: |
                     $sourceApkPath = "$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk"
-                    $targetApkPath = "$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood/Fluent UI Demo v$(releaseVersion).apk"
+                    $targetApkPath = "$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood/FluentUI_Demo_v$(releaseVersion).apk"
 
                     if (Test-Path $sourceApkPath) {
                         Copy-Item -Path $sourceApkPath -Destination $targetApkPath
