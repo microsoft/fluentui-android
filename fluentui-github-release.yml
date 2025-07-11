@@ -66,24 +66,37 @@ extends:
                         $lines = $content -split "`r?`n"
                         $formattedLines = @()
 
-                        # Add release version header
-                        $formattedLines += "### Release Version ${version}:"
-                        $formattedLines += ""
-
                         $inSection = $false
                         $currentSection = ""
                         $listItemNumber = 1
+                        $inNumberedList = $false
+                        $numberedListItems = @()
 
                         foreach ($line in $lines) {
                             $trimmedLine = $line.Trim()
 
                             # Skip empty lines at the beginning
-                            if (-not $trimmedLine -and $formattedLines.Count -le 2) {
+                            if (-not $trimmedLine -and $formattedLines.Count -eq 0) {
+                                continue
+                            }
+
+                            # Detect and format existing release version header
+                            if ($trimmedLine -match "^Release version (.+)$") {
+                                $versionNumber = $matches[1]
+                                $formattedLines += "### Release Version ${versionNumber}:"
                                 continue
                             }
 
                             # Detect section headers (What's new, Fix/enhancement, etc.)
                             if ($trimmedLine -match "^(What's new|Fix/enhancement|Note|Notes?)$") {
+                                # Close any open numbered list before starting new section
+                                if ($inNumberedList) {
+                                    $formattedLines += "``````"
+                                    $formattedLines += ""
+                                    $inNumberedList = $false
+                                    $numberedListItems = @()
+                                }
+
                                 $formattedLines += "### $trimmedLine"
                                 $currentSection = $trimmedLine
                                 $inSection = $true
@@ -93,20 +106,45 @@ extends:
 
                             # Detect Fluent version headers
                             if ($trimmedLine -match "^Fluent v[12]:?$") {
-                                $formattedLines += "**$trimmedLine**  "
+                                # Close any open numbered list before Fluent version header
+                                if ($inNumberedList) {
+                                    $formattedLines += "``````"
+                                    $formattedLines += ""
+                                    $inNumberedList = $false
+                                    $numberedListItems = @()
+                                }
+
+                                $formattedLines += "**$trimmedLine**"
                                 continue
                             }
 
                             # Handle numbered list items (lines starting with numbers)
-                            if ($trimmedLine -match "^\d+\.\s*(.+)$") {
+                            if ($trimmedLine -match "^\s*\d+\.\s*(.+)$") {
                                 $itemText = $matches[1]
-                                $formattedLines += "    $listItemNumber. $itemText"
+
+                                # Start numbered list code block if not already started
+                                if (-not $inNumberedList) {
+                                    $formattedLines += ""
+                                    $formattedLines += "``````"
+                                    $inNumberedList = $true
+                                }
+
+                                # Add the numbered item with proper indentation
+                                $formattedLines += "`t$listItemNumber. $itemText"
                                 $listItemNumber++
                                 continue
                             }
 
                             # Handle bullet points or dashes
                             if ($trimmedLine -match "^[-•]\s*(.+)$") {
+                                # Close any open numbered list before bullet points
+                                if ($inNumberedList) {
+                                    $formattedLines += "``````"
+                                    $formattedLines += ""
+                                    $inNumberedList = $false
+                                    $numberedListItems = @()
+                                }
+
                                 $itemText = $matches[1]
                                 $formattedLines += "- $itemText"
                                 continue
@@ -114,23 +152,57 @@ extends:
 
                             # Handle "None" responses
                             if ($trimmedLine -eq "None") {
+                                # Close any open numbered list before "None"
+                                if ($inNumberedList) {
+                                    $formattedLines += "``````"
+                                    $formattedLines += ""
+                                    $inNumberedList = $false
+                                    $numberedListItems = @()
+                                }
+
                                 $formattedLines += "    None"
                                 continue
                             }
 
                             # Handle regular content lines
                             if ($trimmedLine) {
+                                # Close any open numbered list before regular content
+                                if ($inNumberedList) {
+                                    $formattedLines += "``````"
+                                    $formattedLines += ""
+                                    $inNumberedList = $false
+                                    $numberedListItems = @()
+                                }
+
                                 # If it looks like a standalone statement, treat it as a list item
                                 if ($currentSection -eq "Fix/enhancement" -and $trimmedLine -notmatch "^(Fluent|Note|What's)" -and $trimmedLine -ne "None") {
-                                    $formattedLines += "    $listItemNumber. $trimmedLine"
+                                    # Start numbered list code block for standalone statements
+                                    if (-not $inNumberedList) {
+                                        $formattedLines += ""
+                                        $formattedLines += "``````"
+                                        $inNumberedList = $true
+                                    }
+                                    $formattedLines += "`t$listItemNumber. $trimmedLine"
                                     $listItemNumber++
                                 } else {
                                     $formattedLines += $trimmedLine
                                 }
                             } else {
+                                # Handle empty lines - close numbered list if open
+                                if ($inNumberedList) {
+                                    $formattedLines += "``````"
+                                    $formattedLines += ""
+                                    $inNumberedList = $false
+                                    $numberedListItems = @()
+                                }
                                 # Preserve empty lines for spacing
                                 $formattedLines += ""
                             }
+                        }
+
+                        # Close any remaining open numbered list at the end
+                        if ($inNumberedList) {
+                            $formattedLines += "``````"
                         }
 
                         return $formattedLines -join "`n"
@@ -162,6 +234,24 @@ extends:
                         exit 1
                     }
 
+              # Rename APK file to desired format
+              - task: PowerShell@2
+                displayName: "Rename APK Asset"
+                inputs:
+                  targetType: "inline"
+                  script: |
+                    $sourceApkPath = "$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk"
+                    $targetApkPath = "$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood/Fluent UI Demo v$(releaseVersion).apk"
+
+                    if (Test-Path $sourceApkPath) {
+                        Copy-Item -Path $sourceApkPath -Destination $targetApkPath
+                        Write-Host "APK renamed successfully to: Fluent UI Demo v$(releaseVersion).apk"
+                        Write-Host "##vso[task.setvariable variable=RenamedApkPath]$targetApkPath"
+                    } else {
+                        Write-Error "Source APK file not found at: $sourceApkPath"
+                        exit 1
+                    }
+
               - task: GitHubRelease@1
                 displayName: "Create GitHub Release"
                 inputs:
@@ -174,6 +264,6 @@ extends:
                   title: "Release version $(releaseVersion)"
                   releaseNotesSource: "filePath"
                   releaseNotesFilePath: "$(ReleaseNotesFilePath)"
-                  assets: "$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk"
+                  assets: "$(RenamedApkPath)"
                   addChangeLog: false
                   isPreRelease: false
