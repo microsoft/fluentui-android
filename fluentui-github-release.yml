@@ -68,7 +68,7 @@ extends:
             target: '$(Build.SourceVersion)'
             tagSource: 'userSpecifiedTag'
             tag: 'v$(releaseVersion)'
-            title: 'FluentUI Android v$(releaseVersion)'
+            title: 'Release version $(releaseVersion)'
             releaseNotesSource: 'inline'
             releaseNotesInline: '$(ReleaseNotesContent)'
             assets: '$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk'
