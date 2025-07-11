@@ -1,0 +1,76 @@
+trigger: none
+name: $(Date:yyyyMMdd).$(Rev:r)
+
+resources:
+  pipelines:
+  - pipeline: 'fluentui-android-maven-publish'
+    project: 'ISS'
+    source: 'fluentui-maven-central-publish [1es-pt]'
+  repositories:
+  - repository: OfficePipelineTemplates
+    type: git
+    name: 1ESPipelineTemplates/OfficePipelineTemplates
+    ref: refs/tags/release
+
+extends:
+  template: v1/Office.Official.PipelineTemplate.yml@OfficePipelineTemplates
+  parameters:
+    pool:
+      name: Azure-Pipelines-1ESPT-ExDShared
+      image: windows-2022
+      os: windows
+    customBuildTags:
+    - ES365AIMigrationTooling-Release
+    stages:
+    - stage: Stage_1
+      displayName: GitHub Release
+      jobs:
+      - job: Job_1
+        displayName: Agent job
+        condition: succeeded()
+        timeoutInMinutes: 0
+        templateContext:
+          type: releaseJob
+          isProduction: true
+          inputs:
+          - input: pipelineArtifact
+            buildType: 'specific'
+            project: '$(projectName)'
+            definition: '$(pipelineDefinition)'
+            buildVersionToDownload: 'specific'
+            pipelineId: '$(buildId)'
+            artifactName: 'dogfood'
+            targetPath: '$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood'
+          - input: pipelineArtifact
+            buildType: 'specific'
+            project: '$(projectName)'
+            definition: '$(pipelineDefinition)'
+            buildVersionToDownload: 'specific'
+            pipelineId: '$(buildId)'
+            artifactName: 'notes'
+            targetPath: '$(Pipeline.Workspace)/fluentui-android-maven-publish/notes'
+        steps:
+        # Read release notes content
+        - task: PowerShell@2
+          displayName: 'Read Release Notes'
+          inputs:
+            targetType: 'inline'
+            script: |
+              $releaseNotesContent = Get-Content -Path "$(Pipeline.Workspace)/fluentui-android-maven-publish/notes/dogfood-release-notes.txt" -Raw
+              Write-Host "##vso[task.setvariable variable=ReleaseNotesContent]$releaseNotesContent"
+
+        - task: GitHubRelease@1
+          displayName: 'Create GitHub Release'
+          inputs:
+            gitHubConnection: 'GitHub-FluentUI-Android'
+            repositoryName: 'microsoft/fluentui-android'
+            action: 'create'
+            target: '$(Build.SourceVersion)'
+            tagSource: 'userSpecifiedTag'
+            tag: 'v$(releaseVersion)'
+            title: 'FluentUI Android v$(releaseVersion)'
+            releaseNotesSource: 'inline'
+            releaseNotesInline: '$(ReleaseNotesContent)'
+            assets: '$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk'
+            addChangeLog: false
+            isPreRelease: false
