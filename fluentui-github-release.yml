@@ -57,18 +57,103 @@ extends:
                   targetType: "inline"
                   script: |
                     $sourceNotesPath = "$(Pipeline.Workspace)/fluentui-android-maven-publish/notes/dogfood-release-notes.txt"
-                    $tempNotesPath = "$(Agent.TempDirectory)/github-release-notes.txt"
+                    $tempNotesPath = "$(Agent.TempDirectory)/github-release-notes.md"
 
-                    # Copy the release notes to a temporary location for the GitHub release task
-                    Copy-Item -Path $sourceNotesPath -Destination $tempNotesPath -Force
+                    # Function to format release notes with markdown
+                    function Format-ReleaseNotesMarkdown {
+                        param([string]$content, [string]$version)
 
-                    # Verify the file exists and show preview
-                    if (Test-Path $tempNotesPath) {
-                        $content = Get-Content -Path $tempNotesPath -Raw
+                        $lines = $content -split "`r?`n"
+                        $formattedLines = @()
+
+                        # Add release version header
+                        $formattedLines += "### Release Version ${version}:"
+                        $formattedLines += ""
+
+                        $inSection = $false
+                        $currentSection = ""
+                        $listItemNumber = 1
+
+                        foreach ($line in $lines) {
+                            $trimmedLine = $line.Trim()
+
+                            # Skip empty lines at the beginning
+                            if (-not $trimmedLine -and $formattedLines.Count -le 2) {
+                                continue
+                            }
+
+                            # Detect section headers (What's new, Fix/enhancement, etc.)
+                            if ($trimmedLine -match "^(What's new|Fix/enhancement|Note|Notes?)$") {
+                                $formattedLines += "### $trimmedLine"
+                                $currentSection = $trimmedLine
+                                $inSection = $true
+                                $listItemNumber = 1
+                                continue
+                            }
+
+                            # Detect Fluent version headers
+                            if ($trimmedLine -match "^Fluent v[12]:?$") {
+                                $formattedLines += "**$trimmedLine**  "
+                                continue
+                            }
+
+                            # Handle numbered list items (lines starting with numbers)
+                            if ($trimmedLine -match "^\d+\.\s*(.+)$") {
+                                $itemText = $matches[1]
+                                $formattedLines += "    $listItemNumber. $itemText"
+                                $listItemNumber++
+                                continue
+                            }
+
+                            # Handle bullet points or dashes
+                            if ($trimmedLine -match "^[-•]\s*(.+)$") {
+                                $itemText = $matches[1]
+                                $formattedLines += "- $itemText"
+                                continue
+                            }
+
+                            # Handle "None" responses
+                            if ($trimmedLine -eq "None") {
+                                $formattedLines += "    None"
+                                continue
+                            }
+
+                            # Handle regular content lines
+                            if ($trimmedLine) {
+                                # If it looks like a standalone statement, treat it as a list item
+                                if ($currentSection -eq "Fix/enhancement" -and $trimmedLine -notmatch "^(Fluent|Note|What's)" -and $trimmedLine -ne "None") {
+                                    $formattedLines += "    $listItemNumber. $trimmedLine"
+                                    $listItemNumber++
+                                } else {
+                                    $formattedLines += $trimmedLine
+                                }
+                            } else {
+                                # Preserve empty lines for spacing
+                                $formattedLines += ""
+                            }
+                        }
+
+                        return $formattedLines -join "`n"
+                    }
+
+                    # Read and format the release notes
+                    if (Test-Path $sourceNotesPath) {
+                        $originalContent = Get-Content -Path $sourceNotesPath -Raw
+                        Write-Host "Original release notes content:"
+                        Write-Host $originalContent
+                        Write-Host "---"
+
+                        # Format the content with markdown
+                        $formattedContent = Format-ReleaseNotesMarkdown -content $originalContent -version "$(releaseVersion)"
+
+                        # Write formatted content to temporary file
+                        $formattedContent | Out-File -FilePath $tempNotesPath -Encoding UTF8 -NoNewline
+
+                        Write-Host "Formatted release notes:"
+                        Write-Host $formattedContent
+                        Write-Host "---"
                         Write-Host "Release notes file prepared successfully at: $tempNotesPath"
-                        Write-Host "Content length: $($content.Length) characters"
-                        Write-Host "Content preview (first 300 chars):"
-                        Write-Host $content.Substring(0, [Math]::Min(300, $content.Length))
+                        Write-Host "Formatted content length: $($formattedContent.Length) characters"
 
                         # Set the file path as a variable for the GitHub release task
                         Write-Host "##vso[task.setvariable variable=ReleaseNotesFilePath]$tempNotesPath"
