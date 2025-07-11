@@ -66,42 +66,16 @@ extends:
                         $lines = $content -split "`r?`n"
                         $formattedLines = @()
 
+                        # Add release version header
+                        $formattedLines += "### Release Version ${version}:"
+                        $formattedLines += ""
+
+                        $inSection = $false
                         $currentSection = ""
-                        $currentFluentVersion = ""
                         $listItemNumber = 1
-                        $numberedItems = @()
-
-                        # Helper function to output code block with collected items
-                        function Add-CodeBlock {
-                            param($items, $outputLines)
-                            if ($items.Count -gt 0) {
-                                $outputLines.Add("``````")
-                                foreach ($item in $items) {
-                                    $outputLines.Add("    $item")
-                                }
-                                $outputLines.Add("``````")
-                                $outputLines.Add("")
-                                return @()  # Return empty array to clear items
-                            }
-                            return $items
-                        }
-
-                        # Convert to ArrayList for better performance
-                        $formattedLines = [System.Collections.ArrayList]@()
 
                         foreach ($line in $lines) {
                             $trimmedLine = $line.Trim()
-
-                            # Handle first line - format as release version header if it contains version info
-                            if ($formattedLines.Count -eq 0 -and $trimmedLine) {
-                                if ($trimmedLine -match "Release Version|Version") {
-                                    $formattedLines.Add("### $trimmedLine") | Out-Null
-                                } else {
-                                    $formattedLines.Add("### Release Version ${version}:") | Out-Null
-                                }
-                                $formattedLines.Add("") | Out-Null
-                                continue
-                            }
 
                             # Skip empty lines at the beginning
                             if (-not $trimmedLine -and $formattedLines.Count -le 2) {
@@ -110,80 +84,54 @@ extends:
 
                             # Detect section headers (What's new, Fix/enhancement, etc.)
                             if ($trimmedLine -match "^(What's new|Fix/enhancement|Note|Notes?)$") {
-                                $numberedItems = Add-CodeBlock -items $numberedItems -outputLines $formattedLines
-                                $formattedLines.Add("### $trimmedLine") | Out-Null
-                                $formattedLines.Add("") | Out-Null  # Add blank line after section header
+                                $formattedLines += "### $trimmedLine"
                                 $currentSection = $trimmedLine
+                                $inSection = $true
                                 $listItemNumber = 1
                                 continue
                             }
 
                             # Detect Fluent version headers
                             if ($trimmedLine -match "^Fluent v[12]:?$") {
-                                $numberedItems = Add-CodeBlock -items $numberedItems -outputLines $formattedLines
-                                $formattedLines.Add("**$trimmedLine**  ") | Out-Null
-                                $currentFluentVersion = $trimmedLine
-                                continue
-                            }
-
-                            # Detect subsection headers like "Fix/enhancement" under Fluent versions
-                            if ($trimmedLine -match "^(Fix/enhancement|Enhancement|Bug fixes?)$" -and $currentFluentVersion) {
-                                $numberedItems = Add-CodeBlock -items $numberedItems -outputLines $formattedLines
-                                $formattedLines.Add("**$trimmedLine**  ") | Out-Null
-                                $formattedLines.Add("") | Out-Null
-                                $listItemNumber = 1
+                                $formattedLines += "**$trimmedLine**  "
                                 continue
                             }
 
                             # Handle numbered list items (lines starting with numbers)
                             if ($trimmedLine -match "^\d+\.\s*(.+)$") {
                                 $itemText = $matches[1]
-                                $numberedItems += "$listItemNumber. $itemText"
+                                $formattedLines += "    $listItemNumber. $itemText"
                                 $listItemNumber++
-                                Write-Host "DEBUG: Added numbered item: $listItemNumber. $itemText"
                                 continue
                             }
 
                             # Handle bullet points or dashes
                             if ($trimmedLine -match "^[-•]\s*(.+)$") {
-                                $numberedItems = Add-CodeBlock -items $numberedItems -outputLines $formattedLines
                                 $itemText = $matches[1]
-                                $formattedLines.Add("- $itemText") | Out-Null
+                                $formattedLines += "- $itemText"
                                 continue
                             }
 
                             # Handle "None" responses
                             if ($trimmedLine -eq "None") {
-                                $formattedLines.Add("``````") | Out-Null
-                                $formattedLines.Add("    None") | Out-Null
-                                $formattedLines.Add("``````") | Out-Null
-                                $formattedLines.Add("") | Out-Null
+                                $formattedLines += "    None"
                                 continue
                             }
 
                             # Handle regular content lines
                             if ($trimmedLine) {
-                                # If it looks like a standalone statement under Fix/enhancement, treat it as a list item
-                                if ($currentSection -eq "Fix/enhancement" -and $currentFluentVersion -and $trimmedLine -notmatch "^(Fluent|Note|What's|Fix/enhancement)" -and $trimmedLine -ne "None") {
-                                    $numberedItems += "$listItemNumber. $trimmedLine"
+                                # If it looks like a standalone statement, treat it as a list item
+                                if ($currentSection -eq "Fix/enhancement" -and $trimmedLine -notmatch "^(Fluent|Note|What's)" -and $trimmedLine -ne "None") {
+                                    $formattedLines += "    $listItemNumber. $trimmedLine"
                                     $listItemNumber++
-                                    Write-Host "DEBUG: Added content as numbered item: $listItemNumber. $trimmedLine"
                                 } else {
-                                    $numberedItems = Add-CodeBlock -items $numberedItems -outputLines $formattedLines
-                                    $formattedLines.Add($trimmedLine) | Out-Null
+                                    $formattedLines += $trimmedLine
                                 }
                             } else {
-                                # Close code block on empty lines and preserve spacing
-                                $numberedItems = Add-CodeBlock -items $numberedItems -outputLines $formattedLines
-                                $formattedLines.Add("") | Out-Null
+                                # Preserve empty lines for spacing
+                                $formattedLines += ""
                             }
                         }
-
-                        # Close any remaining code block at the end
-                        $numberedItems = Add-CodeBlock -items $numberedItems -outputLines $formattedLines
-
-                        Write-Host "DEBUG: Final formatted lines count: $($formattedLines.Count)"
-                        Write-Host "DEBUG: Final numbered items count: $($numberedItems.Count)"
 
                         return $formattedLines -join "`n"
                     }
@@ -214,24 +162,6 @@ extends:
                         exit 1
                     }
 
-              # Rename APK file for better asset naming
-              - task: PowerShell@2
-                displayName: "Rename APK Asset"
-                inputs:
-                  targetType: "inline"
-                  script: |
-                    $sourceApk = "$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk"
-                    $targetApk = "$(Agent.TempDirectory)/Fluent UI Demo v$(releaseVersion).apk"
-
-                    if (Test-Path $sourceApk) {
-                        Copy-Item -Path $sourceApk -Destination $targetApk -Force
-                        Write-Host "APK renamed successfully: $targetApk"
-                        Write-Host "##vso[task.setvariable variable=RenamedApkPath]$targetApk"
-                    } else {
-                        Write-Error "Source APK not found at: $sourceApk"
-                        exit 1
-                    }
-
               - task: GitHubRelease@1
                 displayName: "Create GitHub Release"
                 inputs:
@@ -244,6 +174,6 @@ extends:
                   title: "Release version $(releaseVersion)"
                   releaseNotesSource: "filePath"
                   releaseNotesFilePath: "$(ReleaseNotesFilePath)"
-                  assets: "$(RenamedApkPath)"
+                  assets: "$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk"
                   addChangeLog: false
                   isPreRelease: false
