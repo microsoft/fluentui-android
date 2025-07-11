@@ -85,6 +85,7 @@ extends:
                             # Detect section headers (What's new, Fix/enhancement, etc.)
                             if ($trimmedLine -match "^(What's new|Fix/enhancement|Note|Notes?)$") {
                                 $formattedLines += "### $trimmedLine"
+                                $formattedLines += ""  # Add blank line after section header
                                 $currentSection = $trimmedLine
                                 $inSection = $true
                                 $listItemNumber = 1
