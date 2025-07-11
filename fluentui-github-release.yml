@@ -66,16 +66,40 @@ extends:
                         $lines = $content -split "`r?`n"
                         $formattedLines = @()
 
-                        # Add release version header
-                        $formattedLines += "### Release Version ${version}:"
-                        $formattedLines += ""
-
                         $inSection = $false
                         $currentSection = ""
+                        $currentFluentVersion = ""
                         $listItemNumber = 1
+                        $numberedItems = @()
+                        $inCodeBlock = $false
+
+                        # Helper function to close any open code block
+                        function Close-CodeBlock {
+                            if ($numberedItems.Count -gt 0) {
+                                $formattedLines += "``````"
+                                foreach ($item in $numberedItems) {
+                                    $formattedLines += "    $item"
+                                }
+                                $formattedLines += "``````"
+                                $formattedLines += ""
+                                $numberedItems = @()
+                                $script:inCodeBlock = $false
+                            }
+                        }
 
                         foreach ($line in $lines) {
                             $trimmedLine = $line.Trim()
+
+                            # Handle first line - format as release version header if it contains version info
+                            if ($formattedLines.Count -eq 0 -and $trimmedLine) {
+                                if ($trimmedLine -match "Release Version|Version") {
+                                    $formattedLines += "### $trimmedLine"
+                                } else {
+                                    $formattedLines += "### Release Version ${version}:"
+                                }
+                                $formattedLines += ""
+                                continue
+                            }
 
                             # Skip empty lines at the beginning
                             if (-not $trimmedLine -and $formattedLines.Count -le 2) {
@@ -84,6 +108,7 @@ extends:
 
                             # Detect section headers (What's new, Fix/enhancement, etc.)
                             if ($trimmedLine -match "^(What's new|Fix/enhancement|Note|Notes?)$") {
+                                Close-CodeBlock
                                 $formattedLines += "### $trimmedLine"
                                 $formattedLines += ""  # Add blank line after section header
                                 $currentSection = $trimmedLine
@@ -94,20 +119,33 @@ extends:
 
                             # Detect Fluent version headers
                             if ($trimmedLine -match "^Fluent v[12]:?$") {
+                                Close-CodeBlock
                                 $formattedLines += "**$trimmedLine**  "
+                                $currentFluentVersion = $trimmedLine
+                                continue
+                            }
+
+                            # Detect subsection headers like "Fix/enhancement" under Fluent versions
+                            if ($trimmedLine -match "^(Fix/enhancement|Enhancement|Bug fixes?)$" -and $currentFluentVersion) {
+                                Close-CodeBlock
+                                $formattedLines += "**$trimmedLine**  "
+                                $formattedLines += ""
+                                $listItemNumber = 1
                                 continue
                             }
 
                             # Handle numbered list items (lines starting with numbers)
                             if ($trimmedLine -match "^\d+\.\s*(.+)$") {
                                 $itemText = $matches[1]
-                                $formattedLines += "    $listItemNumber. $itemText"
+                                $numberedItems += "$listItemNumber. $itemText"
                                 $listItemNumber++
+                                $inCodeBlock = $true
                                 continue
                             }
 
                             # Handle bullet points or dashes
                             if ($trimmedLine -match "^[-•]\s*(.+)$") {
+                                Close-CodeBlock
                                 $itemText = $matches[1]
                                 $formattedLines += "- $itemText"
                                 continue
@@ -115,24 +153,34 @@ extends:
 
                             # Handle "None" responses
                             if ($trimmedLine -eq "None") {
+                                Close-CodeBlock
+                                $formattedLines += "``````"
                                 $formattedLines += "    None"
+                                $formattedLines += "``````"
+                                $formattedLines += ""
                                 continue
                             }
 
                             # Handle regular content lines
                             if ($trimmedLine) {
-                                # If it looks like a standalone statement, treat it as a list item
-                                if ($currentSection -eq "Fix/enhancement" -and $trimmedLine -notmatch "^(Fluent|Note|What's)" -and $trimmedLine -ne "None") {
-                                    $formattedLines += "    $listItemNumber. $trimmedLine"
+                                # If it looks like a standalone statement under Fix/enhancement, treat it as a list item
+                                if ($currentSection -eq "Fix/enhancement" -and $currentFluentVersion -and $trimmedLine -notmatch "^(Fluent|Note|What's|Fix/enhancement)" -and $trimmedLine -ne "None") {
+                                    $numberedItems += "$listItemNumber. $trimmedLine"
                                     $listItemNumber++
+                                    $inCodeBlock = $true
                                 } else {
+                                    Close-CodeBlock
                                     $formattedLines += $trimmedLine
                                 }
                             } else {
-                                # Preserve empty lines for spacing
+                                # Close code block on empty lines and preserve spacing
+                                Close-CodeBlock
                                 $formattedLines += ""
                             }
                         }
+
+                        # Close any remaining code block at the end
+                        Close-CodeBlock
 
                         return $formattedLines -join "`n"
                     }
@@ -163,6 +211,24 @@ extends:
                         exit 1
                     }
 
+              # Rename APK file for better asset naming
+              - task: PowerShell@2
+                displayName: "Rename APK Asset"
+                inputs:
+                  targetType: "inline"
+                  script: |
+                    $sourceApk = "$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk"
+                    $targetApk = "$(Agent.TempDirectory)/Fluent UI Demo v$(releaseVersion).apk"
+
+                    if (Test-Path $sourceApk) {
+                        Copy-Item -Path $sourceApk -Destination $targetApk -Force
+                        Write-Host "APK renamed successfully: $targetApk"
+                        Write-Host "##vso[task.setvariable variable=RenamedApkPath]$targetApk"
+                    } else {
+                        Write-Error "Source APK not found at: $sourceApk"
+                        exit 1
+                    }
+
               - task: GitHubRelease@1
                 displayName: "Create GitHub Release"
                 inputs:
@@ -175,6 +241,6 @@ extends:
                   title: "Release version $(releaseVersion)"
                   releaseNotesSource: "filePath"
                   releaseNotesFilePath: "$(ReleaseNotesFilePath)"
-                  assets: "$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk"
+                  assets: "$(RenamedApkPath)"
                   addChangeLog: false
                   isPreRelease: false
