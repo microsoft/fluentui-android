@@ -62,7 +62,7 @@ extends:
         - task: GitHubRelease@1
           displayName: 'Create GitHub Release'
           inputs:
-            gitHubConnection: 'GitHub-FluentUI-Android'
+            gitHubConnection: 'github.com_Dhruv-Mishra'
             repositoryName: 'microsoft/fluentui-android'
             action: 'create'
             target: '$(Build.SourceVersion)'
