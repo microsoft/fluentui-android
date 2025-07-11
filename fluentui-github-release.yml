@@ -50,7 +50,6 @@ extends:
                   artifactName: "notes"
                   targetPath: "$(Pipeline.Workspace)/fluentui-android-maven-publish/notes"
             steps:
-              # Prepare release notes for GitHub release
               - task: PowerShell@2
                 displayName: "Prepare Release Notes"
                 inputs:
@@ -58,183 +57,104 @@ extends:
                   script: |
                     $sourceNotesPath = "$(Pipeline.Workspace)/fluentui-android-maven-publish/notes/dogfood-release-notes.txt"
                     $tempNotesPath = "$(Agent.TempDirectory)/github-release-notes.md"
-
-                    # Function to format release notes with markdown
                     function Format-ReleaseNotesMarkdown {
-                        param([string]$content, [string]$version)
-
+                        param([string]$content)
                         $lines = $content -split "`r?`n"
                         $formattedLines = @()
-
-                        $inSection = $false
                         $currentSection = ""
                         $listItemNumber = 1
                         $inNumberedList = $false
-                        $numberedListItems = @()
-
+                        # Helper function to close numbered list code block
+                        function Close-NumberedList {
+                            if ($inNumberedList) {
+                                $formattedLines += "``````"
+                                $formattedLines += ""
+                                $script:inNumberedList = $false
+                            }
+                        }
+                        # Helper function to start numbered list code block
+                        function Start-NumberedList {
+                            if (-not $inNumberedList) {
+                                $formattedLines += ""
+                                $formattedLines += "``````"
+                                $script:inNumberedList = $true
+                            }
+                        }
                         foreach ($line in $lines) {
                             $trimmedLine = $line.Trim()
-
-                            # Skip empty lines at the beginning
                             if (-not $trimmedLine -and $formattedLines.Count -eq 0) {
                                 continue
                             }
-
-                            # Detect and format existing release version header
-                            if ($trimmedLine -match "^Release version (.+)$") {
-                                $versionNumber = $matches[1]
-                                $formattedLines += "### Release Version ${versionNumber}:"
-                                continue
-                            }
-
-                            # Detect section headers (What's new, Fix/enhancement, etc.)
-                            if ($trimmedLine -match "^(What's new|Fix/enhancement|Note|Notes?)$") {
-                                # Close any open numbered list before starting new section
-                                if ($inNumberedList) {
-                                    $formattedLines += "``````"
-                                    $formattedLines += ""
-                                    $inNumberedList = $false
-                                    $numberedListItems = @()
+                            switch -Regex ($trimmedLine) {
+                                "^Release version (.+)$" {
+                                    $versionNumber = $matches[1]
+                                    $formattedLines += "### Release Version ${versionNumber}:"
+                                    continue
                                 }
-
-                                $formattedLines += "### $trimmedLine"
-                                $currentSection = $trimmedLine
-                                $inSection = $true
-                                $listItemNumber = 1
-                                continue
-                            }
-
-                            # Detect Fluent version headers
-                            if ($trimmedLine -match "^Fluent v[12]:?$") {
-                                # Close any open numbered list before Fluent version header
-                                if ($inNumberedList) {
-                                    $formattedLines += "``````"
-                                    $formattedLines += ""
-                                    $inNumberedList = $false
-                                    $numberedListItems = @()
+                                "^(What's new|Fix/enhancement|Note|Notes?)$" {
+                                    Close-NumberedList
+                                    $formattedLines += "### $trimmedLine"
+                                    $currentSection = $trimmedLine
+                                    $listItemNumber = 1
+                                    continue
                                 }
-
-                                $formattedLines += "**$trimmedLine**"
-                                continue
-                            }
-
-                            # Handle numbered list items (lines starting with numbers)
-                            if ($trimmedLine -match "^\s*\d+\.\s*(.+)$") {
-                                $itemText = $matches[1]
-
-                                # Start numbered list code block if not already started
-                                if (-not $inNumberedList) {
-                                    $formattedLines += ""
-                                    $formattedLines += "``````"
-                                    $inNumberedList = $true
+                                "^Fluent v[12]:?$" {
+                                    Close-NumberedList
+                                    $formattedLines += "**$trimmedLine**"
+                                    continue
                                 }
-
-                                # Add the numbered item with proper indentation
-                                $formattedLines += "`t$listItemNumber. $itemText"
-                                $listItemNumber++
-                                continue
-                            }
-
-                            # Handle bullet points or dashes
-                            if ($trimmedLine -match "^[-•]\s*(.+)$") {
-                                # Close any open numbered list before bullet points
-                                if ($inNumberedList) {
-                                    $formattedLines += "``````"
-                                    $formattedLines += ""
-                                    $inNumberedList = $false
-                                    $numberedListItems = @()
-                                }
-
-                                $itemText = $matches[1]
-                                $formattedLines += "- $itemText"
-                                continue
-                            }
-
-                            # Handle "None" responses
-                            if ($trimmedLine -eq "None") {
-                                # Close any open numbered list before "None"
-                                if ($inNumberedList) {
-                                    $formattedLines += "``````"
-                                    $formattedLines += ""
-                                    $inNumberedList = $false
-                                    $numberedListItems = @()
-                                }
-
-                                $formattedLines += "    None"
-                                continue
-                            }
-
-                            # Handle regular content lines
-                            if ($trimmedLine) {
-                                # Close any open numbered list before regular content
-                                if ($inNumberedList) {
-                                    $formattedLines += "``````"
-                                    $formattedLines += ""
-                                    $inNumberedList = $false
-                                    $numberedListItems = @()
-                                }
-
-                                # If it looks like a standalone statement, treat it as a list item
-                                if ($currentSection -eq "Fix/enhancement" -and $trimmedLine -notmatch "^(Fluent|Note|What's)" -and $trimmedLine -ne "None") {
-                                    # Start numbered list code block for standalone statements
-                                    if (-not $inNumberedList) {
-                                        $formattedLines += ""
-                                        $formattedLines += "``````"
-                                        $inNumberedList = $true
-                                    }
-                                    $formattedLines += "`t$listItemNumber. $trimmedLine"
+                                "^\s*\d+\.\s*(.+)$" {
+                                    $itemText = $matches[1]
+                                    Start-NumberedList
+                                    $formattedLines += "`t$listItemNumber. $itemText"
                                     $listItemNumber++
-                                } else {
-                                    $formattedLines += $trimmedLine
+                                    continue
                                 }
-                            } else {
-                                # Handle empty lines - close numbered list if open
-                                if ($inNumberedList) {
-                                    $formattedLines += "``````"
+                                "^[-•]\s*(.+)$" {
+                                    Close-NumberedList
+                                    $itemText = $matches[1]
+                                    $formattedLines += "- $itemText"
+                                    continue
+                                }
+                                "^None$" {
+                                    Close-NumberedList
+                                    $formattedLines += "    None"
+                                    continue
+                                }
+                                ".+" {
+                                    # Check if this should be treated as a numbered list item in Fix/enhancement section
+                                    $isStandaloneFixItem = ($currentSection -eq "Fix/enhancement" -and
+                                                          $trimmedLine -notmatch "^(Fluent|Note|What's)" -and
+                                                          $trimmedLine -ne "None")
+                                    if ($isStandaloneFixItem) {
+                                        Start-NumberedList
+                                        $formattedLines += "`t$listItemNumber. $trimmedLine"
+                                        $listItemNumber++
+                                    } else {
+                                        Close-NumberedList
+                                        $formattedLines += $trimmedLine
+                                    }
+                                    continue
+                                }
+                                default {
+                                    Close-NumberedList
                                     $formattedLines += ""
-                                    $inNumberedList = $false
-                                    $numberedListItems = @()
                                 }
-                                # Preserve empty lines for spacing
-                                $formattedLines += ""
                             }
                         }
-
-                        # Close any remaining open numbered list at the end
-                        if ($inNumberedList) {
-                            $formattedLines += "``````"
-                        }
-
+                        Close-NumberedList
                         return $formattedLines -join "`n"
                     }
 
-                    # Read and format the release notes
                     if (Test-Path $sourceNotesPath) {
                         $originalContent = Get-Content -Path $sourceNotesPath -Raw
-                        Write-Host "Original release notes content:"
-                        Write-Host $originalContent
-                        Write-Host "---"
-
-                        # Format the content with markdown
-                        $formattedContent = Format-ReleaseNotesMarkdown -content $originalContent -version "$(releaseVersion)"
-
-                        # Write formatted content to temporary file
+                        $formattedContent = Format-ReleaseNotesMarkdown -content $originalContent
                         $formattedContent | Out-File -FilePath $tempNotesPath -Encoding UTF8 -NoNewline
-
-                        Write-Host "Formatted release notes:"
-                        Write-Host $formattedContent
-                        Write-Host "---"
-                        Write-Host "Release notes file prepared successfully at: $tempNotesPath"
-                        Write-Host "Formatted content length: $($formattedContent.Length) characters"
-
-                        # Set the file path as a variable for the GitHub release task
                         Write-Host "##vso[task.setvariable variable=ReleaseNotesFilePath]$tempNotesPath"
                     } else {
                         Write-Error "Release notes file not found at: $sourceNotesPath"
                         exit 1
                     }
-
-              # Rename APK file to desired format
               - task: PowerShell@2
                 displayName: "Rename APK Asset"
                 inputs:
@@ -242,16 +162,13 @@ extends:
                   script: |
                     $sourceApkPath = "$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk"
                     $targetApkPath = "$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood/FluentUI_Demo_v$(releaseVersion).apk"
-
                     if (Test-Path $sourceApkPath) {
                         Copy-Item -Path $sourceApkPath -Destination $targetApkPath
-                        Write-Host "APK renamed successfully to: Fluent UI Demo v$(releaseVersion).apk"
                         Write-Host "##vso[task.setvariable variable=RenamedApkPath]$targetApkPath"
                     } else {
                         Write-Error "Source APK file not found at: $sourceApkPath"
                         exit 1
                     }
-
               - task: GitHubRelease@1
                 displayName: "Create GitHub Release"
                 inputs:
