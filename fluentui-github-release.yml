@@ -3,14 +3,14 @@ name: $(Date:yyyyMMdd).$(Rev:r)
 
 resources:
   pipelines:
-  - pipeline: 'fluentui-android-maven-publish'
-    project: 'ISS'
-    source: 'fluentui-maven-central-publish [1es-pt]'
+    - pipeline: "fluentui-android-maven-publish"
+      project: "ISS"
+      source: "fluentui-maven-central-publish [1es-pt]"
   repositories:
-  - repository: OfficePipelineTemplates
-    type: git
-    name: 1ESPipelineTemplates/OfficePipelineTemplates
-    ref: refs/tags/release
+    - repository: OfficePipelineTemplates
+      type: git
+      name: 1ESPipelineTemplates/OfficePipelineTemplates
+      ref: refs/tags/release
 
 extends:
   template: v1/Office.Official.PipelineTemplate.yml@OfficePipelineTemplates
@@ -20,57 +20,167 @@ extends:
       image: windows-2022
       os: windows
     customBuildTags:
-    - ES365AIMigrationTooling-Release
+      - ES365AIMigrationTooling-Release
     stages:
-    - stage: Stage_1
-      displayName: GitHub Release
-      jobs:
-      - job: Job_1
-        displayName: Agent job
-        condition: succeeded()
-        timeoutInMinutes: 0
-        templateContext:
-          type: releaseJob
-          isProduction: true
-          inputs:
-          - input: pipelineArtifact
-            buildType: 'specific'
-            project: '$(projectName)'
-            definition: '$(pipelineDefinition)'
-            buildVersionToDownload: 'specific'
-            pipelineId: '$(buildId)'
-            artifactName: 'dogfood'
-            targetPath: '$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood'
-          - input: pipelineArtifact
-            buildType: 'specific'
-            project: '$(projectName)'
-            definition: '$(pipelineDefinition)'
-            buildVersionToDownload: 'specific'
-            pipelineId: '$(buildId)'
-            artifactName: 'notes'
-            targetPath: '$(Pipeline.Workspace)/fluentui-android-maven-publish/notes'
-        steps:
-        # Read release notes content
-        - task: PowerShell@2
-          displayName: 'Read Release Notes'
-          inputs:
-            targetType: 'inline'
-            script: |
-              $releaseNotesContent = Get-Content -Path "$(Pipeline.Workspace)/fluentui-android-maven-publish/notes/dogfood-release-notes.txt" -Raw
-              Write-Host "##vso[task.setvariable variable=ReleaseNotesContent]$releaseNotesContent"
+      - stage: Stage_1
+        displayName: GitHub Release
+        jobs:
+          - job: Job_1
+            displayName: Agent job
+            condition: succeeded()
+            timeoutInMinutes: 0
+            templateContext:
+              type: releaseJob
+              isProduction: true
+              inputs:
+                - input: pipelineArtifact
+                  buildType: "specific"
+                  project: "$(projectName)"
+                  definition: "$(pipelineDefinition)"
+                  buildVersionToDownload: "specific"
+                  pipelineId: "$(buildId)"
+                  artifactName: "dogfood"
+                  targetPath: "$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood"
+                - input: pipelineArtifact
+                  buildType: "specific"
+                  project: "$(projectName)"
+                  definition: "$(pipelineDefinition)"
+                  buildVersionToDownload: "specific"
+                  pipelineId: "$(buildId)"
+                  artifactName: "notes"
+                  targetPath: "$(Pipeline.Workspace)/fluentui-android-maven-publish/notes"
+            steps:
+              - task: PowerShell@2
+                displayName: "Prepare Release Notes"
+                inputs:
+                  targetType: "inline"
+                  script: |
+                    $sourceNotesPath = "$(Pipeline.Workspace)/fluentui-android-maven-publish/notes/dogfood-release-notes.txt"
+                    $tempNotesPath = "$(Agent.TempDirectory)/github-release-notes.md"
+                    function Format-ReleaseNotesMarkdown {
+                        param([string]$content)
+                        $lines = $content -split "`r?`n"
+                        $formattedLines = @()
+                        $currentSection = ""
+                        $listItemNumber = 1
+                        $inNumberedList = $false
+                        # Helper function to close numbered list code block
+                        function Close-NumberedList {
+                            if ($inNumberedList) {
+                                $formattedLines += "``````"
+                                $formattedLines += ""
+                                $script:inNumberedList = $false
+                            }
+                        }
+                        # Helper function to start numbered list code block
+                        function Start-NumberedList {
+                            if (-not $inNumberedList) {
+                                $formattedLines += ""
+                                $formattedLines += "``````"
+                                $script:inNumberedList = $true
+                            }
+                        }
+                        foreach ($line in $lines) {
+                            $trimmedLine = $line.Trim()
+                            if (-not $trimmedLine -and $formattedLines.Count -eq 0) {
+                                continue
+                            }
+                            switch -Regex ($trimmedLine) {
+                                "^Release version (.+)$" {
+                                    $versionNumber = $matches[1]
+                                    $formattedLines += "### Release Version ${versionNumber}:"
+                                    continue
+                                }
+                                "^(What's new|Fix/enhancement|Note|Notes?)$" {
+                                    Close-NumberedList
+                                    $formattedLines += "### $trimmedLine"
+                                    $currentSection = $trimmedLine
+                                    $listItemNumber = 1
+                                    continue
+                                }
+                                "^Fluent v[12]:?$" {
+                                    Close-NumberedList
+                                    $formattedLines += "**$trimmedLine**"
+                                    continue
+                                }
+                                "^\s*\d+\.\s*(.+)$" {
+                                    $itemText = $matches[1]
+                                    Start-NumberedList
+                                    $formattedLines += "`t$listItemNumber. $itemText"
+                                    $listItemNumber++
+                                    continue
+                                }
+                                "^[-•]\s*(.+)$" {
+                                    Close-NumberedList
+                                    $itemText = $matches[1]
+                                    $formattedLines += "- $itemText"
+                                    continue
+                                }
+                                "^None$" {
+                                    Close-NumberedList
+                                    $formattedLines += "    None"
+                                    continue
+                                }
+                                ".+" {
+                                    # Check if this should be treated as a numbered list item in Fix/enhancement section
+                                    $isStandaloneFixItem = ($currentSection -eq "Fix/enhancement" -and
+                                                          $trimmedLine -notmatch "^(Fluent|Note|What's)" -and
+                                                          $trimmedLine -ne "None")
+                                    if ($isStandaloneFixItem) {
+                                        Start-NumberedList
+                                        $formattedLines += "`t$listItemNumber. $trimmedLine"
+                                        $listItemNumber++
+                                    } else {
+                                        Close-NumberedList
+                                        $formattedLines += $trimmedLine
+                                    }
+                                    continue
+                                }
+                                default {
+                                    Close-NumberedList
+                                    $formattedLines += ""
+                                }
+                            }
+                        }
+                        Close-NumberedList
+                        return $formattedLines -join "`n"
+                    }
 
-        - task: GitHubRelease@1
-          displayName: 'Create GitHub Release'
-          inputs:
-            gitHubConnection: 'GitHub-FluentUI-Android'
-            repositoryName: 'microsoft/fluentui-android'
-            action: 'create'
-            target: '$(Build.SourceVersion)'
-            tagSource: 'userSpecifiedTag'
-            tag: 'v$(releaseVersion)'
-            title: 'FluentUI Android v$(releaseVersion)'
-            releaseNotesSource: 'inline'
-            releaseNotesInline: '$(ReleaseNotesContent)'
-            assets: '$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk'
-            addChangeLog: false
-            isPreRelease: false
+                    if (Test-Path $sourceNotesPath) {
+                        $originalContent = Get-Content -Path $sourceNotesPath -Raw
+                        $formattedContent = Format-ReleaseNotesMarkdown -content $originalContent
+                        $formattedContent | Out-File -FilePath $tempNotesPath -Encoding UTF8 -NoNewline
+                        Write-Host "##vso[task.setvariable variable=ReleaseNotesFilePath]$tempNotesPath"
+                    } else {
+                        Write-Error "Release notes file not found at: $sourceNotesPath"
+                        exit 1
+                    }
+              - task: PowerShell@2
+                displayName: "Rename APK Asset"
+                inputs:
+                  targetType: "inline"
+                  script: |
+                    $sourceApkPath = "$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood/FluentUI.Demo-dogfood-release.apk"
+                    $targetApkPath = "$(Pipeline.Workspace)/fluentui-android-maven-publish/dogfood/FluentUI_Demo_v$(releaseVersion).apk"
+                    if (Test-Path $sourceApkPath) {
+                        Copy-Item -Path $sourceApkPath -Destination $targetApkPath
+                        Write-Host "##vso[task.setvariable variable=RenamedApkPath]$targetApkPath"
+                    } else {
+                        Write-Error "Source APK file not found at: $sourceApkPath"
+                        exit 1
+                    }
+              - task: GitHubRelease@1
+                displayName: "Create GitHub Release"
+                inputs:
+                  gitHubConnection: "$(githubServiceConnectionName)"
+                  repositoryName: "microsoft/fluentui-android"
+                  action: "create"
+                  target: "$(Build.SourceVersion)"
+                  tagSource: "userSpecifiedTag"
+                  tag: "v$(releaseVersion)"
+                  title: "Release version $(releaseVersion)"
+                  releaseNotesSource: "filePath"
+                  releaseNotesFilePath: "$(ReleaseNotesFilePath)"
+                  assets: "$(RenamedApkPath)"
+                  addChangeLog: false
+                  isPreRelease: false
