@@ -7,11 +7,10 @@ package com.microsoft.fluentui.util
 
 import android.content.Context
 import android.view.accessibility.AccessibilityManager
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.indication
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -31,7 +30,6 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.platform.LocalDensity
@@ -96,6 +94,8 @@ val Context.accessibilityManager: AccessibilityManager
  * @param onLongClick A lambda to be executed when the composable is long-pressed. This action also triggers the tooltip if `tooltipEnabled` is true.
  * @return Returns a [Modifier] that applies the click and tooltip behavior.
  */
+
+@OptIn(ExperimentalFoundationApi::class)
 fun Modifier.clickableWithTooltip(
     tooltipText: String,
     tooltipEnabled: Boolean = false,
@@ -118,33 +118,17 @@ fun Modifier.clickableWithTooltip(
     val currentOnLongClick by rememberUpdatedState(onLongClick)
     val currentTooltipEnabled by rememberUpdatedState(tooltipEnabled)
 
-    val indicationModifier = Modifier.indication(
+    val clickableModifier = Modifier.combinedClickable(
         interactionSource = interactionSource,
-        indication = rememberRipple(color = clickRippleColor)
+        indication = if (showRippleOnClick) rememberRipple(color = clickRippleColor) else null,
+        onClick = { currentOnClick?.invoke() },
+        onLongClick = {
+            currentOnLongClick?.invoke()
+            if (currentTooltipEnabled) {
+                isTooltipVisible = true
+            }
+        }
     )
-
-    val gestureModifier = Modifier.pointerInput(Unit) {
-        detectTapGestures(
-            onPress = { offset ->
-                val press = PressInteraction.Press(offset)
-                interactionSource.emit(press)
-                val released = tryAwaitRelease() // for hold clicks
-                val endInteraction = if (released) {
-                    PressInteraction.Release(press)
-                } else {
-                    PressInteraction.Cancel(press)
-                }
-                interactionSource.emit(endInteraction)
-            },
-            onLongPress = {
-                currentOnLongClick?.invoke()
-                if (currentTooltipEnabled) {
-                    isTooltipVisible = true
-                }
-            },
-            onTap = { currentOnClick?.invoke() }
-        )
-    }
 
     val positionModifier = Modifier.onGloballyPositioned { layoutCoordinates ->
         anchorBounds = IntRect(
@@ -173,9 +157,8 @@ fun Modifier.clickableWithTooltip(
     }
 
     this
-        .then(if (showRippleOnClick) indicationModifier else Modifier)
         .then(if (tooltipEnabled) positionModifier else Modifier)
-        .then(gestureModifier)
+        .then(clickableModifier)
 }
 
 @Composable
