@@ -11,6 +11,8 @@ import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -100,7 +102,7 @@ class ListContentBuilder {
         header: String? = null,
         maxItemInRow: Int = 4,
         equidistant: Boolean = false,
-        tabItemTokens: TabItemTokens? = null
+        tabItemTokens: TabItemTokens? = TabItemTokens()
     ): ListContentBuilder {
         add(VerticalGridContentData(itemDataList, header, maxItemInRow, equidistant, tabItemTokens))
         return this
@@ -157,7 +159,7 @@ class ListContentBuilder {
         header: String?,
         maxItemsInRow: Int,
         equidistant: Boolean,
-        tabItemTokens: TabItemTokens? = null
+        tabItemTokens: TabItemTokens? = TabItemTokens()
     ): LazyListScope.() -> Unit {
         return {
             if (header != null) {
@@ -189,13 +191,16 @@ class ListContentBuilder {
                         else
                             1.0f / min(itemsInRow, (size - (row * itemsInRow)))
                         while (col < itemsInRow && (row * itemsInRow + col) < size) {
+                            val titleString = itemDataList[row * itemsInRow + col].title
                             TabItem(
-                                title = itemDataList[row * itemsInRow + col].title,
+                                title = titleString,
                                 enabled = itemDataList[row * itemsInRow + col].enabled,
                                 onClick = itemDataList[row * itemsInRow + col].onClick,
                                 accessory = itemDataList[row * itemsInRow + col].accessory,
                                 icon = itemDataList[row * itemsInRow + col].icon,
-                                modifier = Modifier.fillMaxWidth(widthRatio),
+                                modifier = Modifier.fillMaxWidth(widthRatio).semantics {
+                                    contentDescription = titleString
+                                },
                                 tabItemTokens = tabItemTokens
                             )
                             col++
@@ -233,7 +238,7 @@ class ListContentBuilder {
         itemDataList: List<ItemData>,
         header: String?,
         fixedWidth: Boolean = false,
-        tabItemTokens: TabItemTokens? = null
+        tabItemTokens: TabItemTokens? = TabItemTokens()
     ): LazyListScope.() -> Unit {
         return {
             if (header != null) {
@@ -277,6 +282,9 @@ class ListContentBuilder {
                                             )
                                         }
                                     }
+                                }
+                                .semantics {
+                                    contentDescription = item.title
                                 },
                             tabItemTokens = tabItemTokens
                         )
@@ -289,7 +297,7 @@ class ListContentBuilder {
     private fun createVerticalList(
         itemDataList: List<ItemData>,
         header: String?,
-        listItemTokens: ListItemTokens? = null
+        listItemTokens: ListItemTokens? = ListItemTokens()
     ): LazyListScope.() -> Unit {
         return {
             if (header != null) {

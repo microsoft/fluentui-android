@@ -4,12 +4,12 @@ variables:
   value: production,externalfacing
 resources:
   repositories:
-  - repository: OfficePipelineTemplates
+  - repository: M365GPT
     type: git
-    name: 1ESPipelineTemplates/OfficePipelineTemplates
+    name: 1ESPipelineTemplates/M365GPT
     ref: refs/tags/release
 extends:
-  template: v1/Office.Unofficial.PipelineTemplate.yml@OfficePipelineTemplates
+  template: v1/M365.Official.PipelineTemplate.yml@M365GPT
   parameters:
     pool:
       name: Azure-Pipelines-1ESPT-ExDShared
@@ -62,6 +62,6 @@ extends:
             vstsFeedPublish: 'Office'
             vstsFeedPackagePublish: 'fluentuiandroid'
             versionOption: 'custom'
-            versionPublish: '0.3.7'
+            versionPublish: '0.3.8'
             packagePublishDescription: 'Fluent Universal Package'
             publishedPackageVar: 'fluent package'

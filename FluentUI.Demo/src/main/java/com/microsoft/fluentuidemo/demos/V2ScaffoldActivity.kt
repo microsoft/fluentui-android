@@ -160,6 +160,7 @@ class V2ScaffoldActivity : V2DemoActivity() {
         }
     }
 
+    @OptIn(ExperimentalLayoutApi::class)
     @Composable
     private fun GetContent(context: Context, snackbarState: SnackbarState? = null) {
         val size = remember { mutableStateOf(5) }
@@ -171,7 +172,7 @@ class V2ScaffoldActivity : V2DemoActivity() {
                 drawerState = drawerState,
                 drawerContent = { CreateList(size = 20, context = context) }
             )
-            Row(
+            FlowRow(
                 modifier = Modifier.padding(8.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
