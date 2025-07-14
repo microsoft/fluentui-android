@@ -688,8 +688,9 @@ class SearchableDrawerTokens{
 
     }
 }
+
 @Composable
-fun TopOptionsRow(
+fun SearchableDrawerHeader(
     tokens: SearchableDrawerTokens = SearchableDrawerTokens(),
     onLeftTextClick: () -> Unit = {},
     onCenterTextClick: () -> Unit = {},
@@ -786,7 +787,7 @@ fun TopOptionsRow(
 }
 
 @Composable
-fun KeyboardDetection(
+private fun KeyboardPopupCallbacks(
     onKeyboardVisible: () -> Unit = {},
     onKeyboardHidden: () -> Unit = {}
 ) {
@@ -1157,7 +1158,7 @@ fun BottomDrawerSearchableList(
     val filteredSearchItems = mutableListOf<SearchItem>()
     val selectedSearchItems = remember { mutableStateListOf<SearchItem>() }
     val inSearchView by remember { derivedStateOf { selectedSearchItems.isEmpty() } }
-    KeyboardDetection(
+    KeyboardPopupCallbacks(
         onKeyboardVisible = expand,
         onKeyboardHidden = open
     )
@@ -1165,7 +1166,7 @@ fun BottomDrawerSearchableList(
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        TopOptionsRow()
+        SearchableDrawerHeader()
 
         if(inSearchView) {
             SearchBar(
