@@ -435,7 +435,10 @@ internal fun Scrim(
 }
 
 @Composable
-internal fun AnnounceDrawerActions(drawerState: DrawerState, talkbackAnnouncement: DrawerAccessibilityAnnouncement){ // Announces actions for drawer through Talkback
+internal fun AnnounceDrawerActions(
+    drawerState: DrawerState,
+    talkbackAnnouncement: DrawerAccessibilityAnnouncement
+) { // Announces actions for drawer through Talkback
     val view = LocalView.current
     var previousState by remember { mutableStateOf(drawerState.enable) }
 
@@ -451,6 +454,7 @@ internal fun AnnounceDrawerActions(drawerState: DrawerState, talkbackAnnouncemen
     }
 
 }
+
 /**
  *
  * Drawer block interaction with the rest of an app’s content with a scrim.
@@ -673,19 +677,66 @@ fun BottomDrawer(
     }
 }
 
-class SearchableDrawerTokens{
+class SearchableDrawerTokens {
     @Composable
-    fun topRowTextColours(): List<Brush> {
+    fun topRowTextColours(): List<Color> {
         return listOf(
-            Brush.linearGradient(
-                colors = listOf(Color(0xFFFAFAFA), Color(0xFFF5F5F5)),
-            )
+            Color(0xFF616161),
+            Color(0xFF242424),
+            Color(0xFF464FEB)
         )
     }
 
     @Composable
-    fun drawerTokens(){
+    fun drawerTokens() {
 
+    }
+}
+
+@Composable
+private fun ClickableTextHeader(
+    text: String,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {},
+    textStyle: TextStyle = TextStyle(
+        color = Color(0xFF242424),
+        fontSize = 17.sp,
+        lineHeight = 22.sp,
+        letterSpacing = -0.43.sp,
+        textAlign = TextAlign.Start,
+        fontWeight = FontWeight(400)
+    )
+) {
+    val interactionSourceStart = remember { MutableInteractionSource() }
+    val animatedFontSizeStart by animateDpAsState(
+        targetValue = if (interactionSourceStart.collectIsPressedAsState().value) 18.5.dp else 17.dp,
+        label = "FontSizeAnimation"
+    )
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .then(modifier)
+    ) {
+        BasicText(
+            text = text,
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable(
+                    enabled = true,
+                    indication = null,
+                    interactionSource = interactionSourceStart
+                ) {
+                    onClick()
+                },
+            style = TextStyle(
+                color = textStyle.color,
+                fontSize = animatedFontSizeStart.value.sp,
+                lineHeight = textStyle.lineHeight,
+                letterSpacing = textStyle.letterSpacing,
+                textAlign = textStyle.textAlign,
+                fontWeight = textStyle.fontWeight
+            )
+        )
     }
 }
 
@@ -695,94 +746,53 @@ fun SearchableDrawerHeader(
     onLeftTextClick: () -> Unit = {},
     onCenterTextClick: () -> Unit = {},
     onRightTextClick: () -> Unit = {},
-){
+) {
     val textColours = tokens.topRowTextColours()
     Row(
-        modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 10.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 20.dp, vertical = 10.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        val interactionSourceStart = remember { MutableInteractionSource() }
-        val animatedFontSizeStart by animateDpAsState(
-            targetValue = if (interactionSourceStart.collectIsPressedAsState().value) 18.5.dp else 17.dp,
-            label = "FontSizeAnimation"
-        )
-        Box(
-            modifier = Modifier.fillMaxWidth().weight(1f)
-        ) {
-            BasicText(
-                text = "Clear",
-                modifier = Modifier.fillMaxWidth().clickable(
-                    enabled = true,
-                    indication = null,
-                    interactionSource = interactionSourceStart
-                ) {
-                    onLeftTextClick()
-                },
-                style = TextStyle(
-                    color = Color(0xFF616161),
-                    fontSize = animatedFontSizeStart.value.sp,
-                    lineHeight = 22.sp,
-                    letterSpacing = -0.43.sp,
-                    textAlign = TextAlign.Start,
-                    fontWeight = FontWeight(400)
-                )
+        ClickableTextHeader(
+            text = "Clear",
+            modifier = Modifier.fillMaxWidth().weight(1f),
+            onClick = onLeftTextClick,
+            textStyle = TextStyle(
+                color = textColours.get(0),
+                lineHeight = 22.sp,
+                letterSpacing = -0.43.sp,
+                textAlign = TextAlign.Start,
+                fontWeight = FontWeight(400)
             )
-        }
-        val interactionSourceCenter = remember { MutableInteractionSource() }
-        val animatedFontSizeCenter by animateDpAsState(
-            targetValue = if (interactionSourceCenter.collectIsPressedAsState().value) 18.5.dp else 17.dp,
-            label = "FontSizeAnimation"
         )
-        Box(
-            modifier = Modifier.fillMaxWidth().weight(1f)
-        ) {
-            BasicText(
-                text = "Person",
-                modifier = Modifier.fillMaxWidth().clickable(
-                    enabled = true,
-                    indication = null,
-                    interactionSource = interactionSourceCenter
-                ) {
-                    //close()
-                },
-                style = TextStyle(
-                    color = Color(0xFF242424),
-                    fontSize = animatedFontSizeCenter.value.sp,
-                    lineHeight = 22.sp,
-                    letterSpacing = -0.43.sp,
-                    textAlign = TextAlign.Center,
-                    fontWeight = FontWeight(600)
-                )
+        ClickableTextHeader(
+            text = "Person",
+            modifier = Modifier.fillMaxWidth().weight(1f),
+            onClick = onCenterTextClick,
+            textStyle = TextStyle(
+                color = textColours.get(1),
+                lineHeight = 22.sp,
+                letterSpacing = -0.43.sp,
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight(600),
+                textDirection = TextDirection.ContentOrLtr
             )
-        }
-        val interactionSourceEnd = remember { MutableInteractionSource() }
-        val animatedFontSizeEnd by animateDpAsState(
-            targetValue = if (interactionSourceEnd.collectIsPressedAsState().value) 18.5.dp else 17.dp,
-            label = "FontSizeAnimation"
         )
-        Box(
-            modifier = Modifier.fillMaxWidth().weight(1f)
-        ) {
-            BasicText(
-                text = "Apply",
-                modifier = Modifier.fillMaxWidth().clickable(
-                    enabled = true,
-                    indication = null,
-                    interactionSource = interactionSourceEnd
-                ) {
-                    // close()
-                },
-                style = TextStyle(
-                    color = Color(0xFF464FEB),
-                    fontSize = animatedFontSizeEnd.value.sp,
-                    lineHeight = 22.sp,
-                    letterSpacing = -0.43.sp,
-                    textAlign = TextAlign.End,
-                    fontWeight = FontWeight(400)
-                )
+        ClickableTextHeader(
+            text = "Done",
+            modifier = Modifier.fillMaxWidth().weight(1f),
+            onClick = onRightTextClick,
+            textStyle = TextStyle(
+                color = textColours.get(2),
+                lineHeight = 22.sp,
+                letterSpacing = -0.43.sp,
+                textAlign = TextAlign.End,
+                fontWeight = FontWeight(400),
+                textDirection = TextDirection.ContentOrLtr
             )
-        }
+        )
     }
 }
 
@@ -884,7 +894,7 @@ class SearchItem(
     val onClick: () -> Unit = {},
     val onLongClick: () -> Unit = {},
     val enabled: Boolean = true,
-){}
+) {}
 
 @Composable
 fun SearchBar(
@@ -903,8 +913,10 @@ fun SearchBar(
     rightAccessoryIcon: FluentIcon? = null,
     searchBarTokens: SearchBarTokens? = null
 ) {
-    val themeID = FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
-    val token = searchBarTokens ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.SearchBarControlType] as SearchBarTokens
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
+    val token = searchBarTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.SearchBarControlType] as SearchBarTokens
     val searchBarInfo = SearchBarInfo(style)
     val focusManager = LocalFocusManager.current
     val focusRequester = remember { FocusRequester() }
@@ -961,16 +973,19 @@ fun SearchBar(
                             navigationIconCallback?.invoke()
                         }
                         icon = Icons.Outlined.ArrowBack
-                        contentDescription = LocalContext.current.resources.getString(R.string.fluentui_back)
+                        contentDescription =
+                            LocalContext.current.resources.getString(R.string.fluentui_back)
                         if (LocalLayoutDirection.current == LayoutDirection.Rtl)
                             mirrorImage = true
                     }
+
                     false -> {
                         onClick = {
                             focusRequester.requestFocus()
                         }
                         icon = leftAccessoryIcon ?: Icons.Outlined.Search
-                        contentDescription = LocalContext.current.resources.getString(R.string.fluentui_search)
+                        contentDescription =
+                            LocalContext.current.resources.getString(R.string.fluentui_search)
                         mirrorImage = false
                     }
                 }
@@ -1055,7 +1070,7 @@ fun SearchBar(
                         if (microphoneCallback != null) {
                             Icon(
                                 Icons.Outlined.Star,
-                                contentDescription = LocalContext.current.resources.getString( R.string.fluentui_microphone),
+                                contentDescription = LocalContext.current.resources.getString(R.string.fluentui_microphone),
                                 modifier = Modifier
                                     .padding(
                                         (44.dp - token.rightIconSize(searchBarInfo)) / 2,
@@ -1070,6 +1085,7 @@ fun SearchBar(
                                 onClick = microphoneCallback
                             )
                         }
+
                     false ->
                         Box(
                             modifier = Modifier
@@ -1144,7 +1160,7 @@ fun BottomDrawerSearchableList(
     open: () -> Unit = {},
     expand: () -> Unit = {},
     close: () -> Unit = {},
-    autoCorrectEnabled : Boolean = false,
+    autoCorrectEnabled: Boolean = false,
     searchBarStyle: FluentStyle = FluentStyle.Neutral,
     induceDelay: Boolean = false,
     itemsList: List<SearchItem> = emptyList(),
@@ -1168,7 +1184,7 @@ fun BottomDrawerSearchableList(
     ) {
         SearchableDrawerHeader()
 
-        if(inSearchView) {
+        if (inSearchView) {
             SearchBar(
                 onValueChange = { query ->
                     scope.launch {
@@ -1197,9 +1213,9 @@ fun BottomDrawerSearchableList(
                 modifier = Modifier.padding(horizontal = 10.dp, vertical = 20.dp),
                 searchHint = searchBarHintText
             )
-        }
-        else{
-            BasicText("Selected Items: ${selectedSearchItems.size}",
+        } else {
+            BasicText(
+                "Selected Items: ${selectedSearchItems.size}",
                 modifier = Modifier.padding(horizontal = 10.dp, vertical = 20.dp),
                 style = TextStyle(
                     color = Color(0xFF242424),
@@ -1235,7 +1251,7 @@ fun AllItemsList(
     searchItems: List<SearchItem>,
     selectedSearchItems: MutableList<SearchItem> = mutableListOf(),
     border: BorderType = BorderType.NoBorder,
-){
+) {
     val scope = rememberCoroutineScope()
     var enableStatus by rememberSaveable { mutableStateOf(false) }
     val lazyListState = rememberLazyListState()
@@ -1252,20 +1268,19 @@ fun AllItemsList(
         )
     ) {
         itemsIndexed(searchItems) { index, item ->
-            var isSelected by remember { mutableStateOf(selectedSearchItems.contains(item))}
-            val listItemTokens: ListItemTokens = object: ListItemTokens(){
+            var isSelected by remember { mutableStateOf(selectedSearchItems.contains(item)) }
+            val listItemTokens: ListItemTokens = object : ListItemTokens() {
                 @Composable
                 override fun backgroundBrush(listItemInfo: ListItemInfo): StateBrush {
                     return StateBrush(
                         rest =
-                        if(!isSelected) {
+                        if (!isSelected) {
                             SolidColor(
                                 FluentTheme.aliasTokens.neutralBackgroundColor[Background1].value(
                                     themeMode = FluentTheme.themeMode
                                 )
                             )
-                        }
-                        else{
+                        } else {
                             SolidColor(
                                 FluentTheme.aliasTokens.neutralBackgroundColor[Background1Selected].value(
                                     themeMode = FluentTheme.themeMode
@@ -1296,26 +1311,42 @@ fun AllItemsList(
                 text = item.title,
                 modifier = Modifier
                     .clearAndSetSemantics {
-                        contentDescription = "${item.title}, ${item.subTitle}" + if(enableStatus) statusString.format( item.status )else ""
-                        stateDescription = if (searchItems.size > 1) positionString.format(index+1, searchItems.size ) else ""
+                        contentDescription =
+                            "${item.title}, ${item.subTitle}" + if (enableStatus) statusString.format(
+                                item.status
+                            ) else ""
+                        stateDescription = if (searchItems.size > 1) positionString.format(
+                            index + 1,
+                            searchItems.size
+                        ) else ""
                         role = Role.Button
                     },
                 subText = item.subTitle,
                 secondarySubText = item.footer,
-                onClick = {item.onClick
-                          if(!selectedSearchItems.isEmpty()){
-                                if(isSelected){ selectedSearchItems.remove(item)
-                                isSelected = false }
-                                else { selectedSearchItems.add(item)
-                                isSelected = true }}},
+                onClick = {
+                    item.onClick
+                    if (!selectedSearchItems.isEmpty()) {
+                        if (isSelected) {
+                            selectedSearchItems.remove(item)
+                            isSelected = false
+                        } else {
+                            selectedSearchItems.add(item)
+                            isSelected = true
+                        }
+                    }
+                },
                 onLongClick = {
-                    println("###  "+ isSelected)
+                    println("###  " + isSelected)
                     item.onLongClick()
-                    if(isSelected){ selectedSearchItems.remove(item)
-                        isSelected = false }
-                    else { selectedSearchItems.add(item)
-                        isSelected = true }
-                              println("###  "+ selectedSearchItems)},
+                    if (isSelected) {
+                        selectedSearchItems.remove(item)
+                        isSelected = false
+                    } else {
+                        selectedSearchItems.add(item)
+                        isSelected = true
+                    }
+                    println("###  " + selectedSearchItems)
+                },
                 border = border,
                 //borderInset = borderInset,
                 listItemTokens = listItemTokens,
