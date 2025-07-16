@@ -748,6 +748,10 @@ fun SearchableDrawerHeader(
     onRightTextClick: () -> Unit = {},
 ) {
     val textColours = tokens.topRowTextColours()
+    val textHeaders = listOf("Clear", "Person", "Done")
+    val textOnClicks = listOf(onLeftTextClick, onCenterTextClick, onRightTextClick)
+    val textFontWeights = listOf(FontWeight(400), FontWeight(600), FontWeight(400))
+    val textAlignments = listOf(TextAlign.Start, TextAlign.Center, TextAlign.End)
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -755,44 +759,22 @@ fun SearchableDrawerHeader(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        ClickableTextHeader(
-            text = "Clear",
-            modifier = Modifier.fillMaxWidth().weight(1f),
-            onClick = onLeftTextClick,
-            textStyle = TextStyle(
-                color = textColours.get(0),
-                lineHeight = 22.sp,
-                letterSpacing = -0.43.sp,
-                textAlign = TextAlign.Start,
-                fontWeight = FontWeight(400)
+        for (i in 0..2) {
+            ClickableTextHeader(
+                text = textHeaders[i],
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f),
+                onClick = textOnClicks.get(i),
+                textStyle = TextStyle(
+                    color = textColours.get(i),
+                    lineHeight = 22.sp,
+                    letterSpacing = -0.43.sp,
+                    textAlign = textAlignments.get(i),
+                    fontWeight = textFontWeights.get(i),
+                )
             )
-        )
-        ClickableTextHeader(
-            text = "Person",
-            modifier = Modifier.fillMaxWidth().weight(1f),
-            onClick = onCenterTextClick,
-            textStyle = TextStyle(
-                color = textColours.get(1),
-                lineHeight = 22.sp,
-                letterSpacing = -0.43.sp,
-                textAlign = TextAlign.Center,
-                fontWeight = FontWeight(600),
-                textDirection = TextDirection.ContentOrLtr
-            )
-        )
-        ClickableTextHeader(
-            text = "Done",
-            modifier = Modifier.fillMaxWidth().weight(1f),
-            onClick = onRightTextClick,
-            textStyle = TextStyle(
-                color = textColours.get(2),
-                lineHeight = 22.sp,
-                letterSpacing = -0.43.sp,
-                textAlign = TextAlign.End,
-                fontWeight = FontWeight(400),
-                textDirection = TextDirection.ContentOrLtr
-            )
-        )
+        }
     }
 }
 
