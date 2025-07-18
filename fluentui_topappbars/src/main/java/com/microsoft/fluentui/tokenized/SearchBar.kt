@@ -1,11 +1,21 @@
 package com.microsoft.fluentui.tokenized
 
+import Searchable
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.rememberDraggableState
+import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.BasicTextField
@@ -22,20 +32,29 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.microsoft.fluentui.icons.ListItemIcons
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.listitemicons.Chevron
@@ -45,12 +64,20 @@ import com.microsoft.fluentui.icons.searchbaricons.Microphone
 import com.microsoft.fluentui.icons.searchbaricons.Search
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.*
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background1
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background1Pressed
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background1Selected
+import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
+import com.microsoft.fluentui.theme.token.controlTokens.BorderType
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemInfo
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemTokens
 import com.microsoft.fluentui.theme.token.controlTokens.SearchBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.SearchBarTokens
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.SearchBarPersonaChip
 import com.microsoft.fluentui.tokenized.progress.CircularProgressIndicator
 import com.microsoft.fluentui.topappbars.R
+import kotlinx.coroutines.launch
 
 /**
  * API to create a searchbar. This control takes input from user's keyboard and runs it against a lambda
@@ -391,6 +418,333 @@ fun SearchBar(
                     )
                 }
             }
+        }
+    }
+}
+
+
+
+class SearchableDrawerTokens {
+    @Composable
+    fun topRowTextColours(): List<Color> {
+        return listOf(
+            Color(0xFF616161),
+            Color(0xFF242424),
+            Color(0xFF464FEB)
+        )
+    }
+
+    @Composable
+    fun drawerTokens() {
+
+    }
+}
+
+@Composable
+private fun ClickableTextHeader(
+    text: String,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {},
+    textStyle: TextStyle = TextStyle(
+        color = Color(0xFF242424),
+        fontSize = 17.sp,
+        lineHeight = 22.sp,
+        letterSpacing = -0.43.sp,
+        textAlign = TextAlign.Start,
+        fontWeight = FontWeight(400)
+    )
+) {
+    val interactionSourceStart = remember { MutableInteractionSource() }
+    val animatedFontSizeStart by animateDpAsState(
+        targetValue = if (interactionSourceStart.collectIsPressedAsState().value) 18.5.dp else 17.dp,
+        label = "FontSizeAnimation"
+    )
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .then(modifier)
+    ) {
+        BasicText(
+            text = text,
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable(
+                    enabled = true,
+                    indication = null,
+                    interactionSource = interactionSourceStart
+                ) {
+                    onClick()
+                },
+            style = TextStyle(
+                color = textStyle.color,
+                fontSize = animatedFontSizeStart.value.sp,
+                lineHeight = textStyle.lineHeight,
+                letterSpacing = textStyle.letterSpacing,
+                textAlign = textStyle.textAlign,
+                fontWeight = textStyle.fontWeight
+            )
+        )
+    }
+}
+
+@Composable
+fun SearchableDrawerHeader(
+    tokens: SearchableDrawerTokens = SearchableDrawerTokens(),
+    onLeftTextClick: () -> Unit = {},
+    onCenterTextClick: () -> Unit = {},
+    onRightTextClick: () -> Unit = {},
+) {
+    val textColours = tokens.topRowTextColours()
+    val textHeaders = listOf("Clear", "Person", "Done")
+    val textOnClicks = listOf(onLeftTextClick, onCenterTextClick, onRightTextClick)
+    val textFontWeights = listOf(FontWeight(400), FontWeight(600), FontWeight(400))
+    val textAlignments = listOf(TextAlign.Start, TextAlign.Center, TextAlign.End)
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 20.dp, vertical = 10.dp),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        for (i in 0..2) {
+            ClickableTextHeader(
+                text = textHeaders[i],
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f),
+                onClick = textOnClicks.get(i),
+                textStyle = TextStyle(
+                    color = textColours.get(i),
+                    lineHeight = 22.sp,
+                    letterSpacing = -0.43.sp,
+                    textAlign = textAlignments.get(i),
+                    fontWeight = textFontWeights.get(i),
+                )
+            )
+        }
+    }
+}
+
+@Composable
+private fun KeyboardPopupCallbacks(
+    onKeyboardVisible: () -> Unit = {},
+    onKeyboardHidden: () -> Unit = {}
+) {
+    val imeInsets = WindowInsets.ime
+    val density = LocalDensity.current
+    val isKeyboardVisible by remember {
+        derivedStateOf {
+            imeInsets.getBottom(density) > 0
+        }
+    }
+
+    LaunchedEffect(isKeyboardVisible) {
+        if (isKeyboardVisible) {
+            onKeyboardVisible()
+        } else {
+            onKeyboardHidden()
+        }
+    }
+}
+
+class SearchItem(
+    val title: String,
+    val subTitle: String? = null,
+    val footer: String? = null,
+    val leftAccessory: @Composable (() -> Unit)? = null,
+    val rightAccessory: @Composable (() -> Unit)? = null,
+    val status: AvatarStatus? = null,
+    val onClick: () -> Unit = {},
+    val onLongClick: () -> Unit = {},
+    val enabled: Boolean = true,
+    val getUniqueId: () -> String = { title },
+) {}
+
+@Composable
+fun SearchHeader(
+    SearchBarComposable: @Composable () -> Unit,
+    numSelected: Int,
+) {
+
+    if (numSelected == 0) {
+        SearchBarComposable()
+    } else {
+        BasicText(
+            "Selected Items: ${numSelected}",
+            modifier = Modifier.padding(horizontal = 10.dp, vertical = 20.dp),
+            style = TextStyle(
+                color = Color(0xFF242424),
+                fontSize = 17.sp,
+                lineHeight = 22.sp,
+                letterSpacing = -0.43.sp,
+                textAlign = TextAlign.Start,
+                fontWeight = FontWeight(400)
+            )
+        )
+    }
+}
+
+@Composable
+fun BottomDrawerSearchableList(
+    onTitleClick: () -> Unit = {},
+    onLeftTextClick: () -> Unit = {},
+    onRightTextClick: () -> Unit = {},
+    openDrawer: () -> Unit = {},
+    expandDrawer: () -> Unit = {},
+    closeDrawer: () -> Unit = {},
+    selectItem: (Searchable) -> Unit = {},
+    deselectItem: (Searchable) -> Unit = {},
+    filteredSearchItems: List<Searchable> = listOf(), // PASS ALL ITEMS IF NOTHING SEARCHED , WILL STABLE LISTS HELP HERE?
+    selectedSearchItems: MutableList<Searchable> = mutableListOf(),
+    SearchBarComposable: @Composable () -> Unit,
+    SelectedItemScreenComposable: @Composable (numSelected: Int) -> Unit,
+    ListItemComposable: @Composable (index: Int, item: Searchable) -> Unit, // This is a placeholder for the ListItem composable, can be replaced with actual implementation
+) {
+    KeyboardPopupCallbacks(
+        onKeyboardVisible = expandDrawer,
+        onKeyboardHidden = openDrawer
+    )
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        SearchableDrawerHeader(
+            onLeftTextClick = onLeftTextClick,
+            onRightTextClick = onRightTextClick,
+            onCenterTextClick = onTitleClick
+        )
+        SearchHeader(
+            SearchBarComposable = { SearchBarComposable() },
+            numSelected = selectedSearchItems.size
+        )
+        AllItemsList(
+            filteredSearchItems = filteredSearchItems,
+            inSelectionMode = selectedSearchItems.size > 0,
+            selectedSearchItems = selectedSearchItems,
+            selectItem = selectItem,
+            deselectItem = deselectItem,
+            ListItemComposable = ListItemComposable,
+            border = BorderType.NoBorder
+        )
+    }
+}
+
+
+@Composable
+fun AllItemsList(
+    modifier: Modifier = Modifier,
+    filteredSearchItems: List<Searchable>,// CHECK IF STABLE LIST WILL BE MORE PERFORMANT HERE
+    inSelectionMode: Boolean = false,
+    selectedSearchItems: MutableList<Searchable> = mutableListOf(), // CHECK IF STABLE LIST WILL BE MORE PERFORMANT HERE
+    selectItem: (Searchable) -> Unit = {},
+    deselectItem: (Searchable) -> Unit = {},
+    ListItemComposable: @Composable (index:Int, item: Searchable) -> Unit, // This is a placeholder for the ListItem composable, can be replaced with actual implementation
+    border: BorderType = BorderType.NoBorder,
+) {
+    val scope = rememberCoroutineScope()
+    var enableStatus by rememberSaveable { mutableStateOf(false) }
+    val lazyListState = rememberLazyListState()
+    val positionString: String = LocalContext.current.resources.getString(R.string.position_string)
+    val statusString: String = LocalContext.current.resources.getString(R.string.status_string)
+    LazyColumn(
+        state = lazyListState, modifier = modifier.draggable(
+            orientation = Orientation.Vertical,
+            state = rememberDraggableState { delta ->
+                scope.launch {
+                    lazyListState.scrollBy(-delta)
+                }
+            },
+        )
+    ) {
+        itemsIndexed(items = filteredSearchItems, key = {index, item -> item.getUniqueId()}) { index, item ->  // Unique key for each item to ensure stable list updates, will prevent recomps
+            var isSelectedLocal by remember { mutableStateOf(false) } // Local state to track selection for each item, DOES NOT UPDATE THE VIEWMODEL
+            val listItemTokens: ListItemTokens = object : ListItemTokens() {
+                @Composable
+                override fun backgroundBrush(listItemInfo: ListItemInfo): StateBrush {
+                    return StateBrush(
+                        rest = if (!isSelectedLocal) {
+                            SolidColor(
+                                FluentTheme.aliasTokens.neutralBackgroundColor[Background1].value(
+                                    themeMode = FluentTheme.themeMode
+                                )
+                            )
+                        } else {
+                            SolidColor(
+                                FluentTheme.aliasTokens.neutralBackgroundColor[Background1Selected].value(
+                                    themeMode = FluentTheme.themeMode
+                                )
+                            )
+                        },
+                        pressed = SolidColor(
+                            FluentTheme.aliasTokens.neutralBackgroundColor[Background1Pressed].value(
+                                themeMode = FluentTheme.themeMode
+                            )
+                        )
+                    )
+                }
+
+                @Composable
+                override fun primaryTextTypography(listItemInfo: ListItemInfo): TextStyle {
+                    return TextStyle(
+                        color = Color(0xFF242424),
+                        fontSize = 17.sp,
+                        lineHeight = 22.sp,
+                        letterSpacing = -0.43.sp,
+                        textAlign = TextAlign.Start,
+                        fontWeight = FontWeight(400)
+                    )
+                }
+            } // ****** INSTEAD OF PASSING MULTIPLE VALUES, PASS A LISTITEM OBJECT HERE WHICH WILL CREATE THE LISTITEM, CAN PASS EVERYTHING LIKE INDEX AND POSITIONAL STRING INSIDE IT
+            ListItemComposable(index = index, item = item) // I CAN ALSO ADD A DEPENDENCY ON FLUENTUI_LISTITEM INSIDE FLUENTUI_TOPAPPBARS
+//            ListItem.Item(
+//                text = item.title,
+//                modifier = Modifier
+//                    .clearAndSetSemantics {
+//                        contentDescription =
+//                            "${item.title}, ${item.subTitle}" + if (enableStatus) statusString.format(
+//                                item.status
+//                            ) else ""
+//                        stateDescription = if (filteredSearchItems.size > 1) positionString.format(
+//                            index + 1,
+//                            filteredSearchItems.size
+//                        ) else ""
+//                        role = Role.Button
+//                    },
+//                subText = item.subTitle,
+//                secondarySubText = item.footer,
+//                onClick = {
+//                    item.onClick
+//                    if (inSelectionMode) { // CHANGE THE LOGIC TO CHECK IF ANY ITEM IS SELECTED OR NOT
+//                        if (isSelectedLocal) {
+//                            selectedSearchItems.remove(item)
+//                            deselectItem(item)
+//                            isSelectedLocal = false
+//                        } else {
+//                            selectedSearchItems.add(item)
+//                            selectItem(item)
+//                            isSelectedLocal = true
+//                        }
+//                    }
+//                },
+//                onLongClick = {
+//                    item.onLongClick()
+//                    if (isSelectedLocal) {
+//                        selectedSearchItems.remove(item)
+//                        deselectItem(item)
+//                        isSelectedLocal = false
+//                    } else {
+//                        selectedSearchItems.add(item)
+//                        selectItem(item)
+//                        isSelectedLocal = true
+//                    }
+//                },
+//                border = border,
+//                //borderInset = borderInset,
+//                listItemTokens = listItemTokens,
+//                enabled = item.enabled,
+//                leadingAccessoryContent = item.leftAccessory,
+//                trailingAccessoryContent = item.rightAccessory,
+//                //textAccessibilityProperties = textAccessibilityProperties,
+//            )
         }
     }
 }

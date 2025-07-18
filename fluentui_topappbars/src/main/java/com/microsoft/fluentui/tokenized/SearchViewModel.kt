@@ -41,7 +41,7 @@ class SearchViewModel<T : Searchable>(
     initialItems: List<T>
 ) : ViewModel() {
     private val _searchQuery = MutableStateFlow("")
-    private val _allItems = MutableStateFlow(initialItems)
+    private val _allItems = MutableStateFlow(initialItems)  // CAN CONSIDER USING IMMUTABLE TYPES FOR STABLE UPDATES AND PERFORMANCE
     private val _selectedItems = MutableStateFlow<Set<T>>(emptySet())
 
     val uiState: StateFlow<SearchUiState<T>> =
