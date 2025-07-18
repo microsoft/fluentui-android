@@ -876,6 +876,7 @@ class SearchItem(
     val onClick: () -> Unit = {},
     val onLongClick: () -> Unit = {},
     val enabled: Boolean = true,
+    val getUniqueId: () -> String = { title },
 ) {}
 
 @Composable
@@ -1135,103 +1136,111 @@ fun SearchBar(
 }
 
 @Composable
-fun BottomDrawerSearchableList(
-    onTitleClick: () -> Unit = {},
-    onLeftAccesoryClick: () -> Unit = {},
-    onRightAccesoryClick: () -> Unit = {},
-    open: () -> Unit = {},
-    expand: () -> Unit = {},
-    close: () -> Unit = {},
-    autoCorrectEnabled: Boolean = false,
-    searchBarStyle: FluentStyle = FluentStyle.Neutral,
-    induceDelay: Boolean = false,
-    itemsList: List<SearchItem> = emptyList(),
-    searchBarTokens: SearchBarTokens = SearchBarTokens(),
-    searchBarHintText: String = LocalContext.current.resources.getString(R.string.fluentui_search)
+fun SearchHeader(
+    SearchBarComposable: @Composable () -> Unit,
+    numSelected: Int,
 ) {
-    val scope = rememberCoroutineScope()
-    var loading by rememberSaveable { mutableStateOf(false) }
-    val keyboardController = LocalSoftwareKeyboardController.current
-    var isSelected by remember { mutableStateOf(false) }
-    val filteredSearchItems = mutableListOf<SearchItem>()
-    val selectedSearchItems = remember { mutableStateListOf<SearchItem>() }
-    val inSearchView by remember { derivedStateOf { selectedSearchItems.isEmpty() } }
-    KeyboardPopupCallbacks(
-        onKeyboardVisible = expand,
-        onKeyboardHidden = open
-    )
-    var filteredItems by rememberSaveable { mutableStateOf(itemsList.toMutableList()) }
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        SearchableDrawerHeader()
 
-        if (inSearchView) {
-            SearchBar(
-                onValueChange = { query ->
-                    scope.launch {
-                        loading = true
-                        if (induceDelay)
-                            delay(2000)
-                        filteredItems = itemsList.filter {
-                            it.title.lowercase().contains(query.lowercase())
-                        } as MutableList<SearchItem>
-                        loading = false
-                    }
-                },
-                style = searchBarStyle,
-                loading = loading,
-                keyboardOptions = KeyboardOptions(
-                    autoCorrect = autoCorrectEnabled,
-                    keyboardType = KeyboardType.Email,
-                    imeAction = ImeAction.Search
-                ),
-                keyboardActions = KeyboardActions(
-                    onSearch = {
-                        keyboardController?.hide()
-                    }
-                ),
-                searchBarTokens = searchBarTokens,
-                modifier = Modifier.padding(horizontal = 10.dp, vertical = 20.dp),
-                searchHint = searchBarHintText
+    if (numSelected == 0) {
+        SearchBarComposable()
+//            SearchBar(
+//                onValueChange = { query ->
+//                    scope.launch {
+//                        loading = true
+//                        if (induceDelay)
+//                            delay(2000)
+//                        filteredItems = itemsList.filter {
+//                            it.title.lowercase().contains(query.lowercase())
+//                        } as MutableList<SearchItem>
+//                        loading = false
+//                    }
+//                },
+//                style = searchBarStyle,
+//                loading = loading,
+//                keyboardOptions = KeyboardOptions(
+//                    autoCorrect = autoCorrectEnabled,
+//                    keyboardType = KeyboardType.Email,
+//                    imeAction = ImeAction.Search
+//                ),
+//                keyboardActions = KeyboardActions(
+//                    onSearch = {
+//                        keyboardController?.hide()
+//                    }
+//                ),
+//                searchBarTokens = searchBarTokens,
+//                modifier = Modifier.padding(horizontal = 10.dp, vertical = 20.dp),
+//                searchHint = searchBarHintText
+//            )
+    } else {
+        BasicText(
+            "Selected Items: ${numSelected}",
+            modifier = Modifier.padding(horizontal = 10.dp, vertical = 20.dp),
+            style = TextStyle(
+                color = Color(0xFF242424),
+                fontSize = 17.sp,
+                lineHeight = 22.sp,
+                letterSpacing = -0.43.sp,
+                textAlign = TextAlign.Start,
+                fontWeight = FontWeight(400)
             )
-        } else {
-            BasicText(
-                "Selected Items: ${selectedSearchItems.size}",
-                modifier = Modifier.padding(horizontal = 10.dp, vertical = 20.dp),
-                style = TextStyle(
-                    color = Color(0xFF242424),
-                    fontSize = 17.sp,
-                    lineHeight = 22.sp,
-                    letterSpacing = -0.43.sp,
-                    textAlign = TextAlign.Start,
-                    fontWeight = FontWeight(400)
-                )
-            )
-        }
-        filteredItems.forEach {
-            filteredSearchItems.add(
-                SearchItem(
-                    it.title,
-                    leftAccessory = it.leftAccessory,
-                    rightAccessory = it.rightAccessory,
-                    status = it.status
-                )
-            )
-        }
-        AllItemsList(
-            searchItems = filteredSearchItems,
-            selectedSearchItems = selectedSearchItems,
-            border = BorderType.NoBorder
         )
     }
 }
 
 @Composable
+fun BottomDrawerSearchableList(
+    onTitleClick: () -> Unit = {},
+    onLeftTextClick: () -> Unit = {},
+    onRightTextClick: () -> Unit = {},
+    openDrawer: () -> Unit = {},
+    expandDrawer: () -> Unit = {},
+    closeDrawer: () -> Unit = {},
+    selectItem: (SearchItem) -> Unit = {},
+    deselectItem: (SearchItem) -> Unit = {},
+    filteredSearchItems: List<SearchItem> = listOf(), // PASS ALL ITEMS IF NOTHING SEARCHED , WILL STABLE LISTS HELP HERE?
+    selectedSearchItems: MutableList<SearchItem> = mutableListOf(),
+    SearchBarComposable: @Composable () -> Unit,
+    SelectedItemScreenComposable: @Composable (numSelected: Int) -> Unit,
+) {
+    // val filteredSearchItems = mutableListOf<SearchItem>() // GET FROM VIEW MODEL, WILL BE PASSED AS FUNCTION ARGUMENT
+    // val selectedSearchItems = remember { mutableStateListOf<SearchItem>() } // GET FROM VIEW MODEL, WILL BE PASSED AS FUNCTION ARGUMENT
+    KeyboardPopupCallbacks(
+        onKeyboardVisible = expandDrawer,
+        onKeyboardHidden = openDrawer
+    )
+    // var filteredItems by rememberSaveable { mutableStateOf(itemsList.toMutableList()) } //GET IT FROM VIEW MODEL
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        SearchableDrawerHeader(
+            onLeftTextClick = onLeftTextClick,
+            onRightTextClick = onRightTextClick,
+            onCenterTextClick = onTitleClick
+        )
+        SearchHeader(
+            SearchBarComposable = { SearchBarComposable() },
+            numSelected = selectedSearchItems.size
+        )
+        AllItemsList(
+            filteredSearchItems = filteredSearchItems,
+            inSelectionMode = selectedSearchItems.size > 0,
+            selectedSearchItems = selectedSearchItems,
+            selectItem = selectItem,
+            deselectItem = deselectItem,
+            border = BorderType.NoBorder
+        )
+    }
+}
+
+
+@Composable
 fun AllItemsList(
     modifier: Modifier = Modifier,
-    searchItems: List<SearchItem>,
-    selectedSearchItems: MutableList<SearchItem> = mutableListOf(),
+    filteredSearchItems: List<SearchItem>,// CHECK IF STABLE LIST WILL BE MORE PERFORMANT HERE
+    inSelectionMode: Boolean = false,
+    selectedSearchItems: MutableList<SearchItem> = mutableListOf(), // CHECK IF STABLE LIST WILL BE MORE PERFORMANT HERE
+    selectItem: (SearchItem) -> Unit = {},
+    deselectItem: (SearchItem) -> Unit = {},
     border: BorderType = BorderType.NoBorder,
 ) {
     val scope = rememberCoroutineScope()
@@ -1249,14 +1258,13 @@ fun AllItemsList(
             },
         )
     ) {
-        itemsIndexed(searchItems) { index, item ->
-            var isSelected by remember { mutableStateOf(selectedSearchItems.contains(item)) }
+        itemsIndexed(items = filteredSearchItems, key = {index, item -> item.getUniqueId()}) { index, item ->  // Unique key for each item to ensure stable list updates, will prevent recomps
+            var isSelectedLocal by remember { mutableStateOf(false) } // Local state to track selection for each item, DOES NOT UPDATE THE VIEWMODEL
             val listItemTokens: ListItemTokens = object : ListItemTokens() {
                 @Composable
                 override fun backgroundBrush(listItemInfo: ListItemInfo): StateBrush {
                     return StateBrush(
-                        rest =
-                        if (!isSelected) {
+                        rest = if (!isSelectedLocal) {
                             SolidColor(
                                 FluentTheme.aliasTokens.neutralBackgroundColor[Background1].value(
                                     themeMode = FluentTheme.themeMode
@@ -1297,9 +1305,9 @@ fun AllItemsList(
                             "${item.title}, ${item.subTitle}" + if (enableStatus) statusString.format(
                                 item.status
                             ) else ""
-                        stateDescription = if (searchItems.size > 1) positionString.format(
+                        stateDescription = if (filteredSearchItems.size > 1) positionString.format(
                             index + 1,
-                            searchItems.size
+                            filteredSearchItems.size
                         ) else ""
                         role = Role.Button
                     },
@@ -1307,27 +1315,29 @@ fun AllItemsList(
                 secondarySubText = item.footer,
                 onClick = {
                     item.onClick
-                    if (!selectedSearchItems.isEmpty()) {
-                        if (isSelected) {
+                    if (inSelectionMode) { // CHANGE THE LOGIC TO CHECK IF ANY ITEM IS SELECTED OR NOT
+                        if (isSelectedLocal) {
                             selectedSearchItems.remove(item)
-                            isSelected = false
+                            deselectItem(item)
+                            isSelectedLocal = false
                         } else {
                             selectedSearchItems.add(item)
-                            isSelected = true
+                            selectItem(item)
+                            isSelectedLocal = true
                         }
                     }
                 },
                 onLongClick = {
-                    println("###  " + isSelected)
                     item.onLongClick()
-                    if (isSelected) {
+                    if (isSelectedLocal) {
                         selectedSearchItems.remove(item)
-                        isSelected = false
+                        deselectItem(item)
+                        isSelectedLocal = false
                     } else {
                         selectedSearchItems.add(item)
-                        isSelected = true
+                        selectItem(item)
+                        isSelectedLocal = true
                     }
-                    println("###  " + selectedSearchItems)
                 },
                 border = border,
                 //borderInset = borderInset,
