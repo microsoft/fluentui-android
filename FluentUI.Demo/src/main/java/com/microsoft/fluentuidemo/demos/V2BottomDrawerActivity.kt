@@ -541,8 +541,10 @@ private fun CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
                 SearchBarComposable = {
                     SearchBar(
                         onValueChange = { query, selectedPerson ->
-                            viewModel.onQueryChanged(query)
-                            println("Search query changed: $query")
+                            scope.launch {
+                                viewModel.onQueryChanged(query)
+                                println("Search query changed: $query")
+                            }
                         }
                     )
                 },
