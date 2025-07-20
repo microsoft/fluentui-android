@@ -1,5 +1,8 @@
 package com.microsoft.fluentuidemo.demos
 
+import SearchViewModel
+import SearchViewModelFactory
+import Searchable
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
@@ -7,9 +10,11 @@ import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.selection.toggleable
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Slider
 import androidx.compose.material.SliderDefaults
 import androidx.compose.runtime.Composable
@@ -21,14 +26,24 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
+import com.microsoft.fluentui.tokenized.SearchBar
+import com.microsoft.fluentui.tokenized.SearchableListComposable
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.drawer.BottomDrawer
@@ -42,6 +57,7 @@ import com.microsoft.fluentuidemo.util.getAndroidViewAsContent
 import com.microsoft.fluentuidemo.util.getDrawerAsContent
 import com.microsoft.fluentuidemo.util.getDynamicListGeneratorAsContent
 import kotlinx.coroutines.launch
+import rememberUniqueId
 
 class V2BottomDrawerActivity : V2DemoActivity() {
     init {
@@ -81,24 +97,34 @@ private fun CreateActivityUI() {
     var preventDismissalOnScrimClick by rememberSaveable { mutableStateOf(false) }
     var isLandscapeOrientation: Boolean = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
+        CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
             slideOver = slideOver,
-            scrimVisible = scrimVisible,
-            skipOpenState = skipOpenState,
             expandable = expandable,
+            skipOpenState = skipOpenState,
+            scrimVisible = scrimVisible,
             showHandle = showHandle,
             preventDismissalOnScrimClick = preventDismissalOnScrimClick,
             enableSwipeDismiss = enableSwipeDismiss,
-            maxLandscapeWidthFraction = maxLandscapeWidthFraction,
-            drawerContent =
-            if (listContent)
-                getAndroidViewAsContent(selectedContent)
-            else if (nestedDrawerContent) {
-                getDrawerAsContent()
-            } else {
-                getDynamicListGeneratorAsContent()
-            }
+            maxLandscapeWidthFraction = maxLandscapeWidthFraction
         )
+//        CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
+//            slideOver = slideOver,
+//            scrimVisible = scrimVisible,
+//            skipOpenState = skipOpenState,
+//            expandable = expandable,
+//            showHandle = showHandle,
+//            preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+//            enableSwipeDismiss = enableSwipeDismiss,
+//            maxLandscapeWidthFraction = maxLandscapeWidthFraction,
+//            drawerContent =
+//            if (listContent)
+//                getAndroidViewAsContent(selectedContent)
+//            else if (nestedDrawerContent) {
+//                getDrawerAsContent()
+//            } else {
+//                getDynamicListGeneratorAsContent()
+//            }
+//        )
         //Other content on Primary surface
         LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
             item {
@@ -405,6 +431,150 @@ private fun CreateActivityUI() {
             }
         }
     }
+}
+
+data class SearchableItem(
+    val title: String,
+    val subTitle: String? = null,
+    val description: String? = null,
+    val footer: String? = null,
+    val leftAccessory: @Composable (() -> Unit)? = null,
+    val rightAccessory: @Composable (() -> Unit)? = null,
+    val status: AvatarStatus? = null,
+    val onClick: () -> Unit = {},
+    val onLongClick: () -> Unit = {},
+    val enabled: Boolean = true,
+    val id: Any = rememberUniqueId()
+) : Searchable {
+    override fun getSearchKey(): String = title
+
+    override fun getUniqueId(): Any = id
+}
+
+@Composable
+private fun CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
+    slideOver: Boolean,
+    expandable: Boolean,
+    skipOpenState: Boolean,
+    scrimVisible: Boolean,
+    showHandle: Boolean,
+    preventDismissalOnScrimClick: Boolean,
+    enableSwipeDismiss: Boolean,
+    maxLandscapeWidthFraction: Float
+) {
+    val scope = rememberCoroutineScope()
+
+    val drawerState = rememberBottomDrawerState(
+        initialValue = DrawerValue.Closed,
+        expandable = expandable,
+        skipOpenState = skipOpenState
+    )
+
+    val open: () -> Unit = {
+        scope.launch { drawerState.open() }
+    }
+    val expand: () -> Unit = {
+        scope.launch {
+            drawerState.expand()
+        }
+    }
+    val close: () -> Unit = {
+        scope.launch { drawerState.close() }
+    }
+
+    Row {
+        PrimarySurfaceContent(
+            open,
+            text = stringResource(id = R.string.drawer_open)
+        )
+        Spacer(modifier = Modifier.width(10.dp))
+        PrimarySurfaceContent(
+            expand,
+            text = stringResource(id = R.string.drawer_expand)
+        )
+    }
+
+    val viewModel: SearchViewModel<SearchableItem> = viewModel(
+        factory = SearchViewModelFactory(initialItems = List(100) { index ->
+            SearchableItem(
+                title = "Item $index",
+                description = "Description for item $index",
+                id = index
+            )
+        })
+    )
+
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+    val selectItem = { item: Searchable ->
+        viewModel.selectItem(item as SearchableItem)
+    }
+
+    val deselectItem = { item: Searchable ->
+        viewModel.deselectItem(item as SearchableItem)
+    }
+
+    BottomDrawer(
+        drawerState = drawerState,
+        drawerContent = {
+            SearchableListComposable(
+                onTitleClick = {
+                    if (drawerState.currentValue == DrawerValue.Open) {
+                        expand()
+                    } else {
+                        open()
+                    }
+                },
+                onLeftTextClick = {
+                    close()
+                },
+                onRightTextClick = {
+                    // EXECUTE ACTION ON RIGHT TEXT CLICK
+                },
+                openDrawer = open,
+                expandDrawer = expand,
+                closeDrawer = close,
+                selectItem = selectItem,
+                deselectItem = deselectItem,
+                filteredSearchItems = uiState.filteredItems,
+                selectedSearchItems = uiState.selectedItems,
+                SearchBarComposable = {
+                    SearchBar(
+                        onValueChange = { query, selectedPerson ->
+                            viewModel.onQueryChanged(query)
+                            println("Search query changed: $query")
+                        }
+                    )
+                },
+                SelectedItemScreenComposable = {
+                    MultiSelectScreen(uiState.selectionSize)
+                },
+                // ListItemComposable = {}
+            )
+        },
+        scrimVisible = scrimVisible,
+        slideOver = slideOver,
+        showHandle = showHandle,
+        enableSwipeDismiss = enableSwipeDismiss,
+        maxLandscapeWidthFraction = maxLandscapeWidthFraction,
+        preventDismissalOnScrimClick = preventDismissalOnScrimClick
+    )
+}
+
+@Composable
+private fun MultiSelectScreen(numSelected: Int){
+    BasicText(
+        "Selected Items: ${numSelected}",
+        modifier = Modifier.padding(horizontal = 10.dp, vertical = 20.dp),
+        style = TextStyle(
+            color = Color(0xFF242424),
+            fontSize = 17.sp,
+            lineHeight = 22.sp,
+            letterSpacing = -0.43.sp,
+            textAlign = TextAlign.Start,
+            fontWeight = FontWeight(400)
+        )
+    )
 }
 
 @Composable
