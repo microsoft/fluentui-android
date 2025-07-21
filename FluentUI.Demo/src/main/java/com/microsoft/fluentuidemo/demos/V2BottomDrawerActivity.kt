@@ -28,11 +28,9 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.text.BasicText
-import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.Slider
 import androidx.compose.material.SliderDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -56,7 +54,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.size
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -84,8 +81,8 @@ import com.microsoft.fluentuidemo.util.PrimarySurfaceContent
 import com.microsoft.fluentuidemo.util.getAndroidViewAsContent
 import com.microsoft.fluentuidemo.util.getDrawerAsContent
 import com.microsoft.fluentuidemo.util.getDynamicListGeneratorAsContent
+import generateUniqueId
 import kotlinx.coroutines.launch
-import rememberUniqueId
 
 class V2BottomDrawerActivity : V2DemoActivity() {
     init {
@@ -533,7 +530,7 @@ data class SearchableItem(
     val onClick: () -> Unit = {},
     val onLongClick: () -> Unit = {},
     val enabled: Boolean = true,
-    val id: Any = rememberUniqueId()
+    val id: Any = generateUniqueId()
 ) : Searchable {
     override fun getSearchKey(): String = title
 

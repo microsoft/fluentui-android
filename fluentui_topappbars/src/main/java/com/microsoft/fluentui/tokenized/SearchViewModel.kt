@@ -14,7 +14,7 @@ import java.util.UUID
  * @param id An optional existing ID of type [Any].
  * @return The provided [id] or a newly generated unique ID.
  */
-fun rememberUniqueId(id: Any? = null): Any {
+fun generateUniqueId(id: Any? = null): Any {
     return id ?: { UUID.randomUUID().toString() }
 }
 
