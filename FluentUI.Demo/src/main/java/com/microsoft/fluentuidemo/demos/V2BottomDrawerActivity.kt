@@ -7,13 +7,20 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.gestures.scrollBy
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -21,9 +28,11 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.Slider
 import androidx.compose.material.SliderDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -41,8 +50,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.onClick
-import androidx.compose.ui.semantics.onLongClick
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.TextStyle
@@ -63,8 +70,8 @@ import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemInfo
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemTokens
+import com.microsoft.fluentui.tokenized.KeyboardVisibilityObserver
 import com.microsoft.fluentui.tokenized.SearchBar
-import com.microsoft.fluentui.tokenized.SearchableListComposable
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.drawer.BottomDrawer
@@ -512,6 +519,17 @@ private fun CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
 ) {
     val scope = rememberCoroutineScope()
 
+    val viewModel: SearchViewModel<SearchableItem> = viewModel(
+        factory = SearchViewModelFactory(initialItems = List(100) { index ->
+            SearchableItem(
+                title = "Item $index",
+                subTitle = "Subtitle for item $index",
+                description = "Description for item $index",
+                id = index
+            )
+        })
+    )
+
     val drawerState = rememberBottomDrawerState(
         initialValue = DrawerValue.Closed,
         expandable = expandable,
@@ -519,15 +537,29 @@ private fun CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     )
 
     val open: () -> Unit = {
-        scope.launch { drawerState.open() }
+        scope.launch {
+            viewModel.clearSelection()
+            drawerState.open()
+        }
     }
+
     val expand: () -> Unit = {
         scope.launch {
             drawerState.expand()
         }
     }
+
     val close: () -> Unit = {
-        scope.launch { drawerState.close() }
+        scope.launch {
+            drawerState.close()
+            viewModel.clearSelection()
+        }
+    }
+
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+    val toggleItemSelection = { item: Searchable ->
+        viewModel.toggleSelection(item as SearchableItem)
     }
 
     Row {
@@ -542,73 +574,58 @@ private fun CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
         )
     }
 
-    val viewModel: SearchViewModel<SearchableItem> = viewModel(
-        factory = SearchViewModelFactory(initialItems = List(100) { index ->
-            SearchableItem(
-                title = "Item $index",
-                description = "Description for item $index",
-                id = index
-            )
-        })
-    )
-
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
-    val selectItem = { item: Searchable ->
-        viewModel.selectItem(item as SearchableItem)
-    }
-
-    val deselectItem = { item: Searchable ->
-        viewModel.deselectItem(item as SearchableItem)
-    }
-
     BottomDrawer(
         drawerState = drawerState,
         drawerContent = {
-            SearchableListComposable(
-                onTitleClick = {
+            KeyboardVisibilityObserver(
+                onKeyboardVisible = {
                     if (drawerState.currentValue == DrawerValue.Open) {
                         expand()
-                    } else {
-                        open()
                     }
                 },
-                onLeftTextClick = {
-                    close()
-                },
-                onRightTextClick = {
-                    // EXECUTE ACTION ON RIGHT TEXT CLICK
-                },
-                openDrawer = open,
-                expandDrawer = expand,
-                closeDrawer = close,
-                SearchBarComposable = {
-                    SearchBar(
-                        onValueChange = { query, selectedPerson ->
-                            scope.launch {
-                                viewModel.onQueryChanged(query)
-                                println("Search query changed: $query")
+                onKeyboardHidden = {
+                    if (drawerState.currentValue == DrawerValue.Expanded) {
+                        open()
+                    }
+                }
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    SearchableDrawerHeader(
+                        onLeftTextClick = close,
+                        onRightTextClick = close,
+                        onCenterTextClick = {
+                            if (drawerState.currentValue == DrawerValue.Open) {
+                                expand()
+                            } else {
+                                open()
                             }
                         }
                     )
-                },
-                SelectedItemScreenComposable = {
-                    MultiSelectScreen(uiState.selectionSize)
-                },
-                enableSelectionScreen = true,
-                inSelectionState = uiState.selectionSize > 0,
-                SearchableListItems = {
+
+                    if (uiState.selectionSize <= 0) {
+                        SearchBar(
+                            onValueChange = { query, selectedPerson ->
+                                scope.launch {
+                                    viewModel.onQueryChanged(query)
+                                }
+                            }
+                        )
+                    } else {
+                        MultiSelectScreen(uiState.selectionSize)
+                    }
+
                     LazyItemsList(
                         modifier = Modifier,
                         filteredSearchItems = uiState.filteredItems,
                         selectedSearchItems = uiState.selectedItems,
                         inSelectionMode = uiState.selectionSize > 0,
-                        selectItem = selectItem,
-                        deselectItem = deselectItem,
-                        border = BorderType.NoBorder // No border for the list items, can be changed to BorderType.Border or BorderType.InsetBorder
+                        toggleItemSelection = toggleItemSelection,
+                        border = BorderType.NoBorder
                     )
                 }
-            )
+            }
         },
         scrimVisible = scrimVisible,
         slideOver = slideOver,
@@ -617,6 +634,90 @@ private fun CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
         maxLandscapeWidthFraction = maxLandscapeWidthFraction,
         preventDismissalOnScrimClick = preventDismissalOnScrimClick
     )
+}
+
+@Composable
+private fun ClickableTextHeader(
+    text: String,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {},
+    textStyle: TextStyle = TextStyle(
+        color = Color(0xFF242424),
+        fontSize = 17.sp,
+        lineHeight = 22.sp,
+        letterSpacing = -0.43.sp,
+        textAlign = TextAlign.Start,
+        fontWeight = FontWeight(400)
+    )
+) {
+    val interactionSourceStart = remember { MutableInteractionSource() }
+    val animatedFontSizeStart by animateDpAsState(
+        targetValue = if (interactionSourceStart.collectIsPressedAsState().value) 18.5.dp else 17.dp,
+        label = "FontSizeAnimation"
+    )
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .then(modifier)
+    ) {
+        BasicText(
+            text = text,
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable(
+                    enabled = true,
+                    indication = null,
+                    interactionSource = interactionSourceStart
+                ) {
+                    onClick()
+                },
+            style = TextStyle(
+                color = textStyle.color,
+                fontSize = animatedFontSizeStart.value.sp,
+                lineHeight = textStyle.lineHeight,
+                letterSpacing = textStyle.letterSpacing,
+                textAlign = textStyle.textAlign,
+                fontWeight = textStyle.fontWeight
+            )
+        )
+    }
+}
+
+@Composable
+fun SearchableDrawerHeader(
+    onLeftTextClick: () -> Unit = {},
+    onCenterTextClick: () -> Unit = {},
+    onRightTextClick: () -> Unit = {},
+) {
+    val textColours = listOf(Color(0xFF616161), Color(0xFF242424), Color(0xFF464FEB))
+    val textHeaders = listOf("Clear", "Person", "Done")
+    val textOnClicks = listOf(onLeftTextClick, onCenterTextClick, onRightTextClick)
+    val textFontWeights = listOf(FontWeight(400), FontWeight(600), FontWeight(400))
+    val textAlignments = listOf(TextAlign.Start, TextAlign.Center, TextAlign.End)
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 20.dp, vertical = 10.dp),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        for (i in 0..2) {
+            ClickableTextHeader(
+                text = textHeaders[i],
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f),
+                onClick = textOnClicks.get(i),
+                textStyle = TextStyle(
+                    color = textColours.get(i),
+                    lineHeight = 22.sp,
+                    letterSpacing = -0.43.sp,
+                    textAlign = textAlignments.get(i),
+                    fontWeight = textFontWeights.get(i),
+                )
+            )
+        }
+    }
 }
 
 @Composable
@@ -635,15 +736,13 @@ private fun MultiSelectScreen(numSelected: Int) {
     )
 }
 
-
 @Composable
 fun LazyItemsList(
     modifier: Modifier = Modifier,
     filteredSearchItems: List<SearchableItem>,// CHECK IF STABLE LIST WILL BE MORE PERFORMANT HERE
     selectedSearchItems: Set<SearchableItem> = setOf(), // CHECK IF STABLE LIST WILL BE MORE PERFORMANT HERE
     inSelectionMode: Boolean = false,
-    selectItem: (SearchableItem) -> Unit = {},
-    deselectItem: (SearchableItem) -> Unit = {},
+    toggleItemSelection: (SearchableItem) -> Unit = {},
     border: BorderType = BorderType.NoBorder,
 ) {
     val scope = rememberCoroutineScope()
@@ -666,7 +765,13 @@ fun LazyItemsList(
         itemsIndexed(
             items = filteredSearchItems,
             key = { index, item -> item.getUniqueId() }) { index, item ->  // Unique key for each item to ensure stable list updates, will prevent recomps
-            var isSelectedLocal by remember { mutableStateOf(false) } // Local state to track selection for each item, DOES NOT UPDATE THE VIEWMODEL
+            var isSelectedLocal by rememberSaveable {
+                mutableStateOf(
+                    selectedSearchItems.contains(
+                        item
+                    )
+                )
+            } // Local state to track selection for each item, DOES NOT UPDATE THE VIEWMODEL
             val listItemTokens: ListItemTokens = object : ListItemTokens() {
                 @Composable
                 override fun backgroundBrush(listItemInfo: ListItemInfo): StateBrush {
@@ -721,30 +826,17 @@ fun LazyItemsList(
                 subText = item.subTitle,
                 secondarySubText = item.footer,
                 onClick = {
-                    item.onClick
-                    if (inSelectionMode) { // CHANGE THE LOGIC TO CHECK IF ANY ITEM IS SELECTED OR NOT
-                        if (isSelectedLocal) {
-                            //selectedSearchItems.remove(item)
-                            deselectItem(item)
-                            isSelectedLocal = false
-                        } else {
-                            // selectedSearchItems.add(item)
-                            selectItem(item)
-                            isSelectedLocal = true
-                        }
+                    if (inSelectionMode) {
+                        toggleItemSelection(item)
+                        isSelectedLocal = !isSelectedLocal
+                    } else {
+                        item.onClick()
                     }
                 },
                 onLongClick = {
                     item.onLongClick()
-                    if (isSelectedLocal) {
-                        //selectedSearchItems.remove(item)
-                        deselectItem(item)
-                        isSelectedLocal = false
-                    } else {
-                        // selectedSearchItems.add(item)
-                        selectItem(item)
-                        isSelectedLocal = true
-                    }
+                    toggleItemSelection(item)
+                    isSelectedLocal = !isSelectedLocal
                 },
                 border = border,
                 //borderInset = borderInset,

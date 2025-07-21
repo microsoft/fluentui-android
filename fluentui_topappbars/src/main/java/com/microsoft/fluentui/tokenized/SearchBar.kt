@@ -402,112 +402,11 @@ fun SearchBar(
     }
 }
 
-
-class SearchableDrawerTokens {
-    @Composable
-    fun topRowTextColours(): List<Color> {
-        return listOf(
-            Color(0xFF616161),
-            Color(0xFF242424),
-            Color(0xFF464FEB)
-        )
-    }
-
-    @Composable
-    fun drawerTokens() {
-
-    }
-}
-
 @Composable
-private fun ClickableTextHeader(
-    text: String,
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit = {},
-    textStyle: TextStyle = TextStyle(
-        color = Color(0xFF242424),
-        fontSize = 17.sp,
-        lineHeight = 22.sp,
-        letterSpacing = -0.43.sp,
-        textAlign = TextAlign.Start,
-        fontWeight = FontWeight(400)
-    )
-) {
-    val interactionSourceStart = remember { MutableInteractionSource() }
-    val animatedFontSizeStart by animateDpAsState(
-        targetValue = if (interactionSourceStart.collectIsPressedAsState().value) 18.5.dp else 17.dp,
-        label = "FontSizeAnimation"
-    )
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .then(modifier)
-    ) {
-        BasicText(
-            text = text,
-            modifier = Modifier
-                .fillMaxWidth()
-                .clickable(
-                    enabled = true,
-                    indication = null,
-                    interactionSource = interactionSourceStart
-                ) {
-                    onClick()
-                },
-            style = TextStyle(
-                color = textStyle.color,
-                fontSize = animatedFontSizeStart.value.sp,
-                lineHeight = textStyle.lineHeight,
-                letterSpacing = textStyle.letterSpacing,
-                textAlign = textStyle.textAlign,
-                fontWeight = textStyle.fontWeight
-            )
-        )
-    }
-}
-
-@Composable
-fun SearchableDrawerHeader(
-    tokens: SearchableDrawerTokens = SearchableDrawerTokens(),
-    onLeftTextClick: () -> Unit = {},
-    onCenterTextClick: () -> Unit = {},
-    onRightTextClick: () -> Unit = {},
-) {
-    val textColours = tokens.topRowTextColours()
-    val textHeaders = listOf("Clear", "Person", "Done")
-    val textOnClicks = listOf(onLeftTextClick, onCenterTextClick, onRightTextClick)
-    val textFontWeights = listOf(FontWeight(400), FontWeight(600), FontWeight(400))
-    val textAlignments = listOf(TextAlign.Start, TextAlign.Center, TextAlign.End)
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 20.dp, vertical = 10.dp),
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        for (i in 0..2) {
-            ClickableTextHeader(
-                text = textHeaders[i],
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f),
-                onClick = textOnClicks.get(i),
-                textStyle = TextStyle(
-                    color = textColours.get(i),
-                    lineHeight = 22.sp,
-                    letterSpacing = -0.43.sp,
-                    textAlign = textAlignments.get(i),
-                    fontWeight = textFontWeights.get(i),
-                )
-            )
-        }
-    }
-}
-
-@Composable
-private fun KeyboardPopupCallbacks(
+fun KeyboardVisibilityObserver(
     onKeyboardVisible: () -> Unit = {},
-    onKeyboardHidden: () -> Unit = {}
+    onKeyboardHidden: () -> Unit = {},
+    content: @Composable () -> Unit
 ) {
     val imeInsets = WindowInsets.ime
     val density = LocalDensity.current
@@ -524,52 +423,5 @@ private fun KeyboardPopupCallbacks(
             onKeyboardHidden()
         }
     }
-}
-
-@Composable
-fun SearchHeader(
-    SearchBarComposable: @Composable () -> Unit,
-    SelectedItemScreenComposable: @Composable () -> Unit,
-    showSelectionScreen: Boolean = false,
-) {
-    if (!showSelectionScreen) {
-        SearchBarComposable()
-    } else {
-        SelectedItemScreenComposable()
-    }
-}
-
-@Composable
-fun SearchableListComposable(
-    onTitleClick: () -> Unit = {},
-    onLeftTextClick: () -> Unit = {},
-    onRightTextClick: () -> Unit = {},
-    openDrawer: () -> Unit = {},
-    expandDrawer: () -> Unit = {},
-    closeDrawer: () -> Unit = {},
-    enableSelectionScreen: Boolean = true,
-    inSelectionState: Boolean = false,
-    SearchBarComposable: @Composable () -> Unit,
-    SelectedItemScreenComposable: @Composable () -> Unit,
-    SearchableListItems: @Composable () -> Unit,
-) {
-    KeyboardPopupCallbacks(
-        onKeyboardVisible = expandDrawer,
-        onKeyboardHidden = openDrawer
-    )
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        SearchableDrawerHeader(
-            onLeftTextClick = onLeftTextClick,
-            onRightTextClick = onRightTextClick,
-            onCenterTextClick = onTitleClick
-        )
-        SearchHeader(
-            SearchBarComposable = { SearchBarComposable() },
-            SelectedItemScreenComposable = { SelectedItemScreenComposable() },
-            showSelectionScreen = if (enableSelectionScreen) inSelectionState else false
-        )
-        SearchableListItems()
-    }
+    content()
 }

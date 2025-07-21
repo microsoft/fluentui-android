@@ -97,6 +97,12 @@ class SearchViewModel<T : Searchable>(
         }
     }
 
+    /** Clears all items from the master list. */
+    fun clearItems() {
+        _selectedItems.value = emptySet()
+        _allItems.value = emptyList()
+    }
+
     /**
      * Adds a single item to the selection set.
      */
@@ -129,6 +135,11 @@ class SearchViewModel<T : Searchable>(
                 currentSet + item
             }
         }
+    }
+
+    /** Clears all selected items. */
+    fun clearSelection() {
+        _selectedItems.value = emptySet()
     }
 }
 
