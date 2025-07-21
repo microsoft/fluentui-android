@@ -646,12 +646,12 @@ private fun CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
                     }
 
                     LazyItemsList(
-                        modifier = Modifier,
                         filteredSearchItems = uiState.filteredItems,
                         selectedSearchItems = uiState.selectedItems,
                         inSelectionMode = uiState.selectionSize > 0,
                         toggleItemSelection = toggleItemSelection,
-                        border = BorderType.NoBorder
+                        border = BorderType.NoBorder,
+                        modifier = Modifier,
                     )
                 }
             }
@@ -767,18 +767,40 @@ private fun MultiSelectScreen(numSelected: Int) {
 
 @Composable
 fun LazyItemsList(
-    modifier: Modifier = Modifier,
     filteredSearchItems: List<SearchableItem>,// CHECK IF STABLE LIST WILL BE MORE PERFORMANT HERE
     selectedSearchItems: Set<SearchableItem> = setOf(), // CHECK IF STABLE LIST WILL BE MORE PERFORMANT HERE
     inSelectionMode: Boolean = false,
     toggleItemSelection: (SearchableItem) -> Unit = {},
     border: BorderType = BorderType.NoBorder,
+    modifier: Modifier = Modifier,
 ) {
     val scope = rememberCoroutineScope()
     var enableStatus by rememberSaveable { mutableStateOf(false) }
     val lazyListState = rememberLazyListState()
     val positionString: String = LocalContext.current.resources.getString(com.microsoft.fluentui.topappbars.R.string.position_string)
     val statusString: String = LocalContext.current.resources.getString(com.microsoft.fluentui.topappbars.R.string.status_string)
+    val listItemTokens: ListItemTokens = object : ListItemTokens() {
+        @Composable
+        override fun backgroundBrush(listItemInfo: ListItemInfo): StateBrush {
+            return StateBrush(
+                rest = SolidColor(
+                    FluentTheme.aliasTokens.neutralBackgroundColor[Background1].value(
+                        themeMode = FluentTheme.themeMode
+                    )
+                ),
+                pressed = SolidColor(
+                    FluentTheme.aliasTokens.neutralBackgroundColor[Background1Pressed].value(
+                        themeMode = FluentTheme.themeMode
+                    )
+                ),
+                selected = SolidColor(
+                    FluentTheme.aliasTokens.neutralBackgroundColor[Background1Selected].value(
+                        themeMode = FluentTheme.themeMode
+                    )
+                )
+            )
+        }
+    }
     LazyColumn(
         state = lazyListState, modifier = modifier.draggable(
             orientation = Orientation.Vertical,
@@ -792,41 +814,7 @@ fun LazyItemsList(
         itemsIndexed(
             items = filteredSearchItems,
             key = { index, item -> item.getUniqueId() }) { index, item ->  // ensure stable render updates, will prevent recomps
-            var isSelectedLocal = selectedSearchItems.contains(item)
-            val listItemTokens: ListItemTokens = object : ListItemTokens() {
-                @Composable
-                override fun backgroundBrush(listItemInfo: ListItemInfo): StateBrush {
-                    return StateBrush(
-                        rest = SolidColor(
-                            FluentTheme.aliasTokens.neutralBackgroundColor[Background1].value(
-                                themeMode = FluentTheme.themeMode
-                            )
-                        ),
-                        pressed = SolidColor(
-                            FluentTheme.aliasTokens.neutralBackgroundColor[Background1Pressed].value(
-                                themeMode = FluentTheme.themeMode
-                            )
-                        ),
-                        selected = SolidColor(
-                            FluentTheme.aliasTokens.neutralBackgroundColor[Background1Selected].value(
-                                themeMode = FluentTheme.themeMode
-                            )
-                        )
-                    )
-                }
-
-                @Composable
-                override fun primaryTextTypography(listItemInfo: ListItemInfo): TextStyle {
-                    return TextStyle(
-                        color = Color(0xFF242424),
-                        fontSize = 17.sp,
-                        lineHeight = 22.sp,
-                        letterSpacing = -0.43.sp,
-                        textAlign = TextAlign.Start,
-                        fontWeight = FontWeight(400)
-                    )
-                }
-            }
+            val isSelected = selectedSearchItems.contains(item)
             ListItem.Item(
                 text = item.title,
                 modifier = Modifier
@@ -846,7 +834,6 @@ fun LazyItemsList(
                 onClick = {
                     if (inSelectionMode) {
                         toggleItemSelection(item)
-                        isSelectedLocal = !isSelectedLocal
                     } else {
                         item.onClick()
                     }
@@ -854,13 +841,12 @@ fun LazyItemsList(
                 onLongClick = {
                     item.onLongClick()
                     toggleItemSelection(item)
-                    isSelectedLocal = !isSelectedLocal
                 },
                 border = border,
                 //borderInset = borderInset,
                 listItemTokens = listItemTokens,
                 enabled = item.enabled,
-                selected = isSelectedLocal,
+                selected = isSelected,
                 leadingAccessoryContent = item.leftAccessory,
                 trailingAccessoryContent = item.rightAccessory,
                 //textAccessibilityProperties = textAccessibilityProperties,
