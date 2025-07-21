@@ -7,12 +7,19 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.rememberDraggableState
+import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.add
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Slider
@@ -21,27 +28,42 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.onClick
+import androidx.compose.ui.semantics.onLongClick
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.size
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background1
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background1Pressed
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background1Selected
+import com.microsoft.fluentui.theme.token.StateBrush
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
+import com.microsoft.fluentui.theme.token.controlTokens.BorderType
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemInfo
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemTokens
 import com.microsoft.fluentui.tokenized.SearchBar
 import com.microsoft.fluentui.tokenized.SearchableListComposable
 import com.microsoft.fluentui.tokenized.controls.RadioButton
@@ -65,18 +87,24 @@ class V2BottomDrawerActivity : V2DemoActivity() {
     }
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-9"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-9"
-    private val onBackCallback = object: OnBackPressedCallback(true) { //callback to end the activity
-        override fun handleOnBackPressed() {
-            finish()
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-9"
+    private val onBackCallback =
+        object : OnBackPressedCallback(true) { //callback to end the activity
+            override fun handleOnBackPressed() {
+                finish()
+            }
+
         }
 
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setActivityContent {
             CreateActivityUI()
-            LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher?.addCallback(this, onBackCallback) //registering the callback to end the activity when back button is pressed
+            LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher?.addCallback(
+                this,
+                onBackCallback
+            ) //registering the callback to end the activity when back button is pressed
         }
     }
 }
@@ -95,7 +123,8 @@ private fun CreateActivityUI() {
     var enableSwipeDismiss by rememberSaveable { mutableStateOf(true) }
     var maxLandscapeWidthFraction by rememberSaveable { mutableFloatStateOf(1F) }
     var preventDismissalOnScrimClick by rememberSaveable { mutableStateOf(false) }
-    var isLandscapeOrientation: Boolean = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
+    var isLandscapeOrientation: Boolean =
+        LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
             slideOver = slideOver,
@@ -129,7 +158,8 @@ private fun CreateActivityUI() {
         LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
             item {
                 ListItem.Header(title = stringResource(id = R.string.drawer_select_drawer_type))
-                ListItem.Item(text = stringResource(id = R.string.drawer_bottom),
+                ListItem.Item(
+                    text = stringResource(id = R.string.drawer_bottom),
                     subText = stringResource(id = R.string.drawer_bottom_description),
                     subTextMaxLines = Int.MAX_VALUE,
                     onClick = { slideOver = false },
@@ -142,7 +172,8 @@ private fun CreateActivityUI() {
                         )
                     }
                 )
-                ListItem.Item(text = stringResource(id = R.string.drawer_bottom_slide_over),
+                ListItem.Item(
+                    text = stringResource(id = R.string.drawer_bottom_slide_over),
                     subText = stringResource(id = R.string.drawer_bottom_slide_over_description),
                     subTextMaxLines = Int.MAX_VALUE,
                     onClick = { slideOver = true },
@@ -158,15 +189,16 @@ private fun CreateActivityUI() {
             }
             item {
                 val scrimVisibleText = stringResource(id = R.string.drawer_scrim_visible)
-                ListItem.Header(title = scrimVisibleText, modifier = Modifier
-                    .toggleable(
-                        value = scrimVisible,
-                        role = Role.Switch,
-                        onValueChange = { scrimVisible = !scrimVisible }
-                    )
-                    .clearAndSetSemantics {
-                        this.contentDescription = scrimVisibleText
-                    }, trailingAccessoryContent = {
+                ListItem.Header(
+                    title = scrimVisibleText, modifier = Modifier
+                        .toggleable(
+                            value = scrimVisible,
+                            role = Role.Switch,
+                            onValueChange = { scrimVisible = !scrimVisible }
+                        )
+                        .clearAndSetSemantics {
+                            this.contentDescription = scrimVisibleText
+                        }, trailingAccessoryContent = {
                     ToggleSwitch(
                         onValueChange = { scrimVisible = !scrimVisible },
                         checkedState = scrimVisible
@@ -176,7 +208,8 @@ private fun CreateActivityUI() {
             }
             item {
                 val expandableText = stringResource(id = R.string.drawer_expandable)
-                ListItem.Header(title = expandableText,
+                ListItem.Header(
+                    title = expandableText,
                     modifier = Modifier
                         .toggleable(
                             value = expandable,
@@ -196,10 +229,10 @@ private fun CreateActivityUI() {
                         ToggleSwitch(
                             onValueChange = {
                                 expandable = it
-                                if(!it) {
+                                if (!it) {
                                     skipOpenState = false
                                 }
-                                            },
+                            },
                             checkedState = expandable,
                             enabledSwitch = !skipOpenState
                         )
@@ -208,7 +241,8 @@ private fun CreateActivityUI() {
             }
             item {
                 val skipOpenStateText = stringResource(id = R.string.skip_open_state)
-                ListItem.Header(title = skipOpenStateText,
+                ListItem.Header(
+                    title = skipOpenStateText,
                     modifier = Modifier
                         .toggleable(
                             value = skipOpenState,
@@ -239,20 +273,26 @@ private fun CreateActivityUI() {
                 )
             }
             item {
-                val preventDismissalOnScrimClickText = stringResource(id = R.string.prevent_scrim_click_dismissal)
-                ListItem.Header(title = preventDismissalOnScrimClickText,
+                val preventDismissalOnScrimClickText =
+                    stringResource(id = R.string.prevent_scrim_click_dismissal)
+                ListItem.Header(
+                    title = preventDismissalOnScrimClickText,
                     modifier = Modifier
                         .toggleable(
                             value = preventDismissalOnScrimClick,
                             role = Role.Switch,
-                            onValueChange = { preventDismissalOnScrimClick = !preventDismissalOnScrimClick }
+                            onValueChange = {
+                                preventDismissalOnScrimClick = !preventDismissalOnScrimClick
+                            }
                         )
                         .clearAndSetSemantics {
                             this.contentDescription = preventDismissalOnScrimClickText
                         },
                     trailingAccessoryContent = {
                         ToggleSwitch(
-                            onValueChange = { preventDismissalOnScrimClick = !preventDismissalOnScrimClick },
+                            onValueChange = {
+                                preventDismissalOnScrimClick = !preventDismissalOnScrimClick
+                            },
                             checkedState = preventDismissalOnScrimClick
                         )
                     }
@@ -260,7 +300,8 @@ private fun CreateActivityUI() {
             }
             item {
                 val showHandleText = stringResource(id = R.string.drawer_show_handle)
-                ListItem.Header(title = showHandleText,
+                ListItem.Header(
+                    title = showHandleText,
                     modifier = Modifier
                         .toggleable(
                             value = showHandle,
@@ -280,7 +321,8 @@ private fun CreateActivityUI() {
             }
             item {
                 val showDismissText = stringResource(id = R.string.drawer_enable_swipe_dismiss)
-                ListItem.Header(title = showDismissText,
+                ListItem.Header(
+                    title = showDismissText,
                     modifier = Modifier
                         .toggleable(
                             value = enableSwipeDismiss,
@@ -300,8 +342,10 @@ private fun CreateActivityUI() {
             }
 
             item {
-                val maxLandscapeWidthFractionText = stringResource(id = R.string.bottom_drawer_max_width_landscape)
-                ListItem.Header(title = maxLandscapeWidthFractionText + if(!isLandscapeOrientation) " (Rotate to landscape Mode to use this)" else "",
+                val maxLandscapeWidthFractionText =
+                    stringResource(id = R.string.bottom_drawer_max_width_landscape)
+                ListItem.Header(
+                    title = maxLandscapeWidthFractionText + if (!isLandscapeOrientation) " (Rotate to landscape Mode to use this)" else "",
                     titleMaxLines = 2,
                     enabled = isLandscapeOrientation,
                     modifier = Modifier
@@ -337,7 +381,8 @@ private fun CreateActivityUI() {
             }
             item {
                 ListItem.Header(title = stringResource(id = R.string.drawer_select_drawer_content))
-                ListItem.Item(text = stringResource(id = R.string.drawer_full_screen_size_scrollable_content),
+                ListItem.Item(
+                    text = stringResource(id = R.string.drawer_full_screen_size_scrollable_content),
                     onClick = {
                         selectedContent = ContentType.FULL_SCREEN_SCROLLABLE_CONTENT
                         listContent = true
@@ -356,7 +401,8 @@ private fun CreateActivityUI() {
                         )
                     }
                 )
-                ListItem.Item(text = stringResource(id = R.string.drawer_more_than_half_screen_content),
+                ListItem.Item(
+                    text = stringResource(id = R.string.drawer_more_than_half_screen_content),
                     onClick = {
                         selectedContent = ContentType.EXPANDABLE_SIZE_CONTENT
                         listContent = true
@@ -375,7 +421,8 @@ private fun CreateActivityUI() {
                         )
                     }
                 )
-                ListItem.Item(text = stringResource(id = R.string.drawer_less_than_half_screen_content),
+                ListItem.Item(
+                    text = stringResource(id = R.string.drawer_less_than_half_screen_content),
                     onClick = {
                         selectedContent = ContentType.WRAPPED_SIZE_CONTENT
                         listContent = true
@@ -394,7 +441,8 @@ private fun CreateActivityUI() {
                         )
                     }
                 )
-                ListItem.Item(text = stringResource(id = R.string.drawer_dynamic_size_content),
+                ListItem.Item(
+                    text = stringResource(id = R.string.drawer_dynamic_size_content),
                     onClick = {
                         dynamicSizeContent = true
                         nestedDrawerContent = false
@@ -411,7 +459,8 @@ private fun CreateActivityUI() {
                         )
                     }
                 )
-                ListItem.Item(text = stringResource(id = R.string.drawer_nested_drawer_content),
+                ListItem.Item(
+                    text = stringResource(id = R.string.drawer_nested_drawer_content),
                     onClick = {
                         nestedDrawerContent = true
                         dynamicSizeContent = false
@@ -536,8 +585,6 @@ private fun CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
                 closeDrawer = close,
                 selectItem = selectItem,
                 deselectItem = deselectItem,
-                filteredSearchItems = uiState.filteredItems,
-                selectedSearchItems = uiState.selectedItems,
                 SearchBarComposable = {
                     SearchBar(
                         onValueChange = { query, selectedPerson ->
@@ -551,7 +598,19 @@ private fun CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
                 SelectedItemScreenComposable = {
                     MultiSelectScreen(uiState.selectionSize)
                 },
-                // ListItemComposable = {}
+                enableSelectionScreen = true,
+                inSelectionState = uiState.selectionSize > 0,
+                SearchableListItems = {
+                    LazyItemsList(
+                        modifier = Modifier,
+                        filteredSearchItems = uiState.filteredItems,
+                        selectedSearchItems = uiState.selectedItems,
+                        inSelectionMode = uiState.selectionSize > 0,
+                        selectItem = selectItem,
+                        deselectItem = deselectItem,
+                        border = BorderType.NoBorder // No border for the list items, can be changed to BorderType.Border or BorderType.InsetBorder
+                    )
+                }
             )
         },
         scrimVisible = scrimVisible,
@@ -564,7 +623,7 @@ private fun CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
 }
 
 @Composable
-private fun MultiSelectScreen(numSelected: Int){
+private fun MultiSelectScreen(numSelected: Int) {
     BasicText(
         "Selected Items: ${numSelected}",
         modifier = Modifier.padding(horizontal = 10.dp, vertical = 20.dp),
@@ -577,6 +636,129 @@ private fun MultiSelectScreen(numSelected: Int){
             fontWeight = FontWeight(400)
         )
     )
+}
+
+
+@Composable
+fun LazyItemsList(
+    modifier: Modifier = Modifier,
+    filteredSearchItems: List<SearchableItem>,// CHECK IF STABLE LIST WILL BE MORE PERFORMANT HERE
+    selectedSearchItems: Set<SearchableItem> = setOf(), // CHECK IF STABLE LIST WILL BE MORE PERFORMANT HERE
+    inSelectionMode: Boolean = false,
+    selectItem: (SearchableItem) -> Unit = {},
+    deselectItem: (SearchableItem) -> Unit = {},
+    border: BorderType = BorderType.NoBorder,
+) {
+    val scope = rememberCoroutineScope()
+    var enableStatus by rememberSaveable { mutableStateOf(false) }
+    val lazyListState = rememberLazyListState()
+    val positionString: String =
+        LocalContext.current.resources.getString(com.microsoft.fluentui.topappbars.R.string.position_string)
+    val statusString: String =
+        LocalContext.current.resources.getString(com.microsoft.fluentui.topappbars.R.string.status_string)
+    LazyColumn(
+        state = lazyListState, modifier = modifier.draggable(
+            orientation = Orientation.Vertical,
+            state = rememberDraggableState { delta ->
+                scope.launch {
+                    lazyListState.scrollBy(-delta)
+                }
+            },
+        )
+    ) {
+        itemsIndexed(
+            items = filteredSearchItems,
+            key = { index, item -> item.getUniqueId() }) { index, item ->  // Unique key for each item to ensure stable list updates, will prevent recomps
+            var isSelectedLocal by remember { mutableStateOf(false) } // Local state to track selection for each item, DOES NOT UPDATE THE VIEWMODEL
+            val listItemTokens: ListItemTokens = object : ListItemTokens() {
+                @Composable
+                override fun backgroundBrush(listItemInfo: ListItemInfo): StateBrush {
+                    return StateBrush(
+                        rest = if (!isSelectedLocal) {
+                            SolidColor(
+                                FluentTheme.aliasTokens.neutralBackgroundColor[Background1].value(
+                                    themeMode = FluentTheme.themeMode
+                                )
+                            )
+                        } else {
+                            SolidColor(
+                                FluentTheme.aliasTokens.neutralBackgroundColor[Background1Selected].value(
+                                    themeMode = FluentTheme.themeMode
+                                )
+                            )
+                        },
+                        pressed = SolidColor(
+                            FluentTheme.aliasTokens.neutralBackgroundColor[Background1Pressed].value(
+                                themeMode = FluentTheme.themeMode
+                            )
+                        )
+                    )
+                }
+
+                @Composable
+                override fun primaryTextTypography(listItemInfo: ListItemInfo): TextStyle {
+                    return TextStyle(
+                        color = Color(0xFF242424),
+                        fontSize = 17.sp,
+                        lineHeight = 22.sp,
+                        letterSpacing = -0.43.sp,
+                        textAlign = TextAlign.Start,
+                        fontWeight = FontWeight(400)
+                    )
+                }
+            }
+            ListItem.Item(
+                text = item.title,
+                modifier = Modifier
+                    .clearAndSetSemantics {
+                        contentDescription =
+                            "${item.title}, ${item.subTitle}" + if (enableStatus) statusString.format(
+                                item.status
+                            ) else ""
+                        stateDescription = if (filteredSearchItems.size > 1) positionString.format(
+                            index + 1,
+                            filteredSearchItems.size
+                        ) else ""
+                        role = Role.Button
+                    },
+                subText = item.subTitle,
+                secondarySubText = item.footer,
+                onClick = {
+                    item.onClick
+                    if (inSelectionMode) { // CHANGE THE LOGIC TO CHECK IF ANY ITEM IS SELECTED OR NOT
+                        if (isSelectedLocal) {
+                            //selectedSearchItems.remove(item)
+                            deselectItem(item)
+                            isSelectedLocal = false
+                        } else {
+                            // selectedSearchItems.add(item)
+                            selectItem(item)
+                            isSelectedLocal = true
+                        }
+                    }
+                },
+                onLongClick = {
+                    item.onLongClick()
+                    if (isSelectedLocal) {
+                        //selectedSearchItems.remove(item)
+                        deselectItem(item)
+                        isSelectedLocal = false
+                    } else {
+                        // selectedSearchItems.add(item)
+                        selectItem(item)
+                        isSelectedLocal = true
+                    }
+                },
+                border = border,
+                //borderInset = borderInset,
+                listItemTokens = listItemTokens,
+                enabled = item.enabled,
+                leadingAccessoryContent = item.leftAccessory,
+                trailingAccessoryContent = item.rightAccessory,
+                //textAccessibilityProperties = textAccessibilityProperties,
+            )
+        }
+    }
 }
 
 @Composable
@@ -593,7 +775,11 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
 ) {
     val scope = rememberCoroutineScope()
 
-    val drawerState = rememberBottomDrawerState(initialValue = DrawerValue.Closed, expandable = expandable, skipOpenState = skipOpenState)
+    val drawerState = rememberBottomDrawerState(
+        initialValue = DrawerValue.Closed,
+        expandable = expandable,
+        skipOpenState = skipOpenState
+    )
 
     val open: () -> Unit = {
         scope.launch { drawerState.open() }

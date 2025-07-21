@@ -423,7 +423,6 @@ fun SearchBar(
 }
 
 
-
 class SearchableDrawerTokens {
     @Composable
     fun topRowTextColours(): List<Color> {
@@ -569,15 +568,13 @@ fun SearchableListComposable(
     expandDrawer: () -> Unit = {},
     closeDrawer: () -> Unit = {},
     enableSelectionScreen: Boolean = true,
+    inSelectionState: Boolean = false,
     selectItem: (Searchable) -> Unit = {},
     deselectItem: (Searchable) -> Unit = {},
-    filteredSearchItems: List<Searchable> = listOf(), // PASS ALL ITEMS IF NOTHING SEARCHED , WILL STABLE LISTS HELP HERE?
-    selectedSearchItems: Set<Searchable> = setOf(), // CHECK IF STABLE SET WILL BE MORE PERFORMANT HERE
     SearchBarComposable: @Composable () -> Unit,
     SelectedItemScreenComposable: @Composable () -> Unit,
-    // ListItemComposable: @Composable (index: Int, item: Searchable) -> Unit, // This is a placeholder for the ListItem composable, can be replaced with actual implementation
+    SearchableListItems: @Composable () -> Unit,
 ) {
-    val isAnyItemSelected by remember { derivedStateOf { selectedSearchItems.isNotEmpty() } }
     KeyboardPopupCallbacks(
         onKeyboardVisible = expandDrawer,
         onKeyboardHidden = openDrawer
@@ -593,8 +590,9 @@ fun SearchableListComposable(
         SearchHeader(
             SearchBarComposable = { SearchBarComposable() },
             SelectedItemScreenComposable = { SelectedItemScreenComposable() },
-            showSelectionScreen = if(enableSelectionScreen) isAnyItemSelected else false
+            showSelectionScreen = if (enableSelectionScreen) inSelectionState else false
         )
+        SearchableListItems()
 //        // INSTEAD OF ALL ITEMS LIST, TAKE A SINGLE COMPOSABLE FOR RENDERING ALL ITEMS HERE, ADD DEFINITION IN THE DEMO APP
 //        AllItemsList(
 //            filteredSearchItems = filteredSearchItems,
@@ -605,126 +603,5 @@ fun SearchableListComposable(
 //            ListItemComposable = ListItemComposable,
 //            border = BorderType.NoBorder
 //        )
-    }
-}
-
-
-@Composable
-fun AllItemsList(
-    modifier: Modifier = Modifier,
-    filteredSearchItems: List<Searchable>,// CHECK IF STABLE LIST WILL BE MORE PERFORMANT HERE
-    inSelectionMode: Boolean = false,
-    selectedSearchItems: Set<Searchable> = setOf(), // CHECK IF STABLE LIST WILL BE MORE PERFORMANT HERE
-    selectItem: (Searchable) -> Unit = {},
-    deselectItem: (Searchable) -> Unit = {},
-    ListItemComposable: @Composable (index:Int, item: Searchable) -> Unit, // This is a placeholder for the ListItem composable, can be replaced with actual implementation
-    border: BorderType = BorderType.NoBorder,
-) {
-    val scope = rememberCoroutineScope()
-    var enableStatus by rememberSaveable { mutableStateOf(false) }
-    val lazyListState = rememberLazyListState()
-    val positionString: String = LocalContext.current.resources.getString(R.string.position_string)
-    val statusString: String = LocalContext.current.resources.getString(R.string.status_string)
-    LazyColumn(
-        state = lazyListState, modifier = modifier.draggable(
-            orientation = Orientation.Vertical,
-            state = rememberDraggableState { delta ->
-                scope.launch {
-                    lazyListState.scrollBy(-delta)
-                }
-            },
-        )
-    ) {
-        itemsIndexed(items = filteredSearchItems, key = {index, item -> item.getUniqueId()}) { index, item ->  // Unique key for each item to ensure stable list updates, will prevent recomps
-            var isSelectedLocal by remember { mutableStateOf(false) } // Local state to track selection for each item, DOES NOT UPDATE THE VIEWMODEL
-            val listItemTokens: ListItemTokens = object : ListItemTokens() {
-                @Composable
-                override fun backgroundBrush(listItemInfo: ListItemInfo): StateBrush {
-                    return StateBrush(
-                        rest = if (!isSelectedLocal) {
-                            SolidColor(
-                                FluentTheme.aliasTokens.neutralBackgroundColor[Background1].value(
-                                    themeMode = FluentTheme.themeMode
-                                )
-                            )
-                        } else {
-                            SolidColor(
-                                FluentTheme.aliasTokens.neutralBackgroundColor[Background1Selected].value(
-                                    themeMode = FluentTheme.themeMode
-                                )
-                            )
-                        },
-                        pressed = SolidColor(
-                            FluentTheme.aliasTokens.neutralBackgroundColor[Background1Pressed].value(
-                                themeMode = FluentTheme.themeMode
-                            )
-                        )
-                    )
-                }
-
-                @Composable
-                override fun primaryTextTypography(listItemInfo: ListItemInfo): TextStyle {
-                    return TextStyle(
-                        color = Color(0xFF242424),
-                        fontSize = 17.sp,
-                        lineHeight = 22.sp,
-                        letterSpacing = -0.43.sp,
-                        textAlign = TextAlign.Start,
-                        fontWeight = FontWeight(400)
-                    )
-                }
-            } // ****** INSTEAD OF PASSING MULTIPLE VALUES, PASS A LISTITEM OBJECT HERE WHICH WILL CREATE THE LISTITEM, CAN PASS EVERYTHING LIKE INDEX AND POSITIONAL STRING INSIDE IT
-            //  ListItemComposable(index = index, item = item) // I CAN ALSO ADD A DEPENDENCY ON FLUENTUI_LISTITEM INSIDE FLUENTUI_TOPAPPBARS
-//            ListItem.Item(
-//                text = item.title,
-//                modifier = Modifier
-//                    .clearAndSetSemantics {
-//                        contentDescription =
-//                            "${item.title}, ${item.subTitle}" + if (enableStatus) statusString.format(
-//                                item.status
-//                            ) else ""
-//                        stateDescription = if (filteredSearchItems.size > 1) positionString.format(
-//                            index + 1,
-//                            filteredSearchItems.size
-//                        ) else ""
-//                        role = Role.Button
-//                    },
-//                subText = item.subTitle,
-//                secondarySubText = item.footer,
-//                onClick = {
-//                    item.onClick
-//                    if (inSelectionMode) { // CHANGE THE LOGIC TO CHECK IF ANY ITEM IS SELECTED OR NOT
-//                        if (isSelectedLocal) {
-//                            selectedSearchItems.remove(item)
-//                            deselectItem(item)
-//                            isSelectedLocal = false
-//                        } else {
-//                            selectedSearchItems.add(item)
-//                            selectItem(item)
-//                            isSelectedLocal = true
-//                        }
-//                    }
-//                },
-//                onLongClick = {
-//                    item.onLongClick()
-//                    if (isSelectedLocal) {
-//                        selectedSearchItems.remove(item)
-//                        deselectItem(item)
-//                        isSelectedLocal = false
-//                    } else {
-//                        selectedSearchItems.add(item)
-//                        selectItem(item)
-//                        isSelectedLocal = true
-//                    }
-//                },
-//                border = border,
-//                //borderInset = borderInset,
-//                listItemTokens = listItemTokens,
-//                enabled = item.enabled,
-//                leadingAccessoryContent = item.leftAccessory,
-//                trailingAccessoryContent = item.rightAccessory,
-//                //textAccessibilityProperties = textAccessibilityProperties,
-//            )
-        }
     }
 }
