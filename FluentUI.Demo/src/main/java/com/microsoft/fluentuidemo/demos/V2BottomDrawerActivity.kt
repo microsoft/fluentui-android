@@ -133,7 +133,7 @@ private fun CreateActivityUI() {
     var isLandscapeOrientation: Boolean =
         LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        if(searchableDrawerContent) {
+        if (searchableDrawerContent) {
             CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
                 slideOver = slideOver,
                 expandable = expandable,
@@ -618,7 +618,11 @@ private fun CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     SearchableDrawerHeader(
-                        onLeftTextClick = close,
+                        onLeftTextClick = {
+                            scope.launch {
+                                viewModel.clearSelection()
+                            }
+                        },
                         onRightTextClick = close,
                         onCenterTextClick = {
                             if (drawerState.currentValue == DrawerValue.Open) {
@@ -788,32 +792,23 @@ fun LazyItemsList(
         itemsIndexed(
             items = filteredSearchItems,
             key = { index, item -> item.getUniqueId() }) { index, item ->  // ensure stable render updates, will prevent recomps
-            var isSelectedLocal by rememberSaveable {
-                mutableStateOf(
-                    selectedSearchItems.contains(
-                        item
-                    )
-                )
-            } // Local state to track selection for each item, DOES NOT UPDATE THE VIEWMODEL
+            var isSelectedLocal = selectedSearchItems.contains(item)
             val listItemTokens: ListItemTokens = object : ListItemTokens() {
                 @Composable
                 override fun backgroundBrush(listItemInfo: ListItemInfo): StateBrush {
                     return StateBrush(
-                        rest = if (!isSelectedLocal) {
-                            SolidColor(
-                                FluentTheme.aliasTokens.neutralBackgroundColor[Background1].value(
-                                    themeMode = FluentTheme.themeMode
-                                )
+                        rest = SolidColor(
+                            FluentTheme.aliasTokens.neutralBackgroundColor[Background1].value(
+                                themeMode = FluentTheme.themeMode
                             )
-                        } else {
-                            SolidColor(
-                                FluentTheme.aliasTokens.neutralBackgroundColor[Background1Selected].value(
-                                    themeMode = FluentTheme.themeMode
-                                )
-                            )
-                        },
+                        ),
                         pressed = SolidColor(
                             FluentTheme.aliasTokens.neutralBackgroundColor[Background1Pressed].value(
+                                themeMode = FluentTheme.themeMode
+                            )
+                        ),
+                        selected = SolidColor(
+                            FluentTheme.aliasTokens.neutralBackgroundColor[Background1Selected].value(
                                 themeMode = FluentTheme.themeMode
                             )
                         )
@@ -865,6 +860,7 @@ fun LazyItemsList(
                 //borderInset = borderInset,
                 listItemTokens = listItemTokens,
                 enabled = item.enabled,
+                selected = isSelectedLocal,
                 leadingAccessoryContent = item.leftAccessory,
                 trailingAccessoryContent = item.rightAccessory,
                 //textAccessibilityProperties = textAccessibilityProperties,
