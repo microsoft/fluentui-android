@@ -1,21 +1,13 @@
 package com.microsoft.fluentui.tokenized
 
-import Searchable
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.draggable
-import androidx.compose.foundation.gestures.rememberDraggableState
-import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.BasicTextField
@@ -33,7 +25,6 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.key
@@ -43,11 +34,8 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -64,20 +52,12 @@ import com.microsoft.fluentui.icons.searchbaricons.Microphone
 import com.microsoft.fluentui.icons.searchbaricons.Search
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.*
-import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background1
-import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background1Pressed
-import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background1Selected
-import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
-import com.microsoft.fluentui.theme.token.controlTokens.BorderType
-import com.microsoft.fluentui.theme.token.controlTokens.ListItemInfo
-import com.microsoft.fluentui.theme.token.controlTokens.ListItemTokens
 import com.microsoft.fluentui.theme.token.controlTokens.SearchBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.SearchBarTokens
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.SearchBarPersonaChip
 import com.microsoft.fluentui.tokenized.progress.CircularProgressIndicator
 import com.microsoft.fluentui.topappbars.R
-import kotlinx.coroutines.launch
 
 /**
  * API to create a searchbar. This control takes input from user's keyboard and runs it against a lambda
@@ -569,8 +549,6 @@ fun SearchableListComposable(
     closeDrawer: () -> Unit = {},
     enableSelectionScreen: Boolean = true,
     inSelectionState: Boolean = false,
-    selectItem: (Searchable) -> Unit = {},
-    deselectItem: (Searchable) -> Unit = {},
     SearchBarComposable: @Composable () -> Unit,
     SelectedItemScreenComposable: @Composable () -> Unit,
     SearchableListItems: @Composable () -> Unit,
@@ -593,15 +571,5 @@ fun SearchableListComposable(
             showSelectionScreen = if (enableSelectionScreen) inSelectionState else false
         )
         SearchableListItems()
-//        // INSTEAD OF ALL ITEMS LIST, TAKE A SINGLE COMPOSABLE FOR RENDERING ALL ITEMS HERE, ADD DEFINITION IN THE DEMO APP
-//        AllItemsList(
-//            filteredSearchItems = filteredSearchItems,
-//            inSelectionMode = isAnyItemSelected,
-//            selectedSearchItems = selectedSearchItems,
-//            selectItem = selectItem,
-//            deselectItem = deselectItem,
-//            ListItemComposable = ListItemComposable,
-//            border = BorderType.NoBorder
-//        )
     }
 }
