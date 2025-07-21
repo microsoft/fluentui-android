@@ -121,6 +121,7 @@ private fun CreateActivityUI() {
     var dynamicSizeContent by rememberSaveable { mutableStateOf(false) }
     var nestedDrawerContent by rememberSaveable { mutableStateOf(false) }
     var listContent by rememberSaveable { mutableStateOf(true) }
+    var searchableDrawerContent by rememberSaveable { mutableStateOf(false) }
     var expandable by rememberSaveable { mutableStateOf(true) }
     var skipOpenState by rememberSaveable { mutableStateOf(false) }
     var selectedContent by rememberSaveable { mutableStateOf(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT) }
@@ -132,34 +133,37 @@ private fun CreateActivityUI() {
     var isLandscapeOrientation: Boolean =
         LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-            slideOver = slideOver,
-            expandable = expandable,
-            skipOpenState = skipOpenState,
-            scrimVisible = scrimVisible,
-            showHandle = showHandle,
-            preventDismissalOnScrimClick = preventDismissalOnScrimClick,
-            enableSwipeDismiss = enableSwipeDismiss,
-            maxLandscapeWidthFraction = maxLandscapeWidthFraction
-        )
-//        CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-//            slideOver = slideOver,
-//            scrimVisible = scrimVisible,
-//            skipOpenState = skipOpenState,
-//            expandable = expandable,
-//            showHandle = showHandle,
-//            preventDismissalOnScrimClick = preventDismissalOnScrimClick,
-//            enableSwipeDismiss = enableSwipeDismiss,
-//            maxLandscapeWidthFraction = maxLandscapeWidthFraction,
-//            drawerContent =
-//            if (listContent)
-//                getAndroidViewAsContent(selectedContent)
-//            else if (nestedDrawerContent) {
-//                getDrawerAsContent()
-//            } else {
-//                getDynamicListGeneratorAsContent()
-//            }
-//        )
+        if(searchableDrawerContent) {
+            CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
+                slideOver = slideOver,
+                expandable = expandable,
+                skipOpenState = skipOpenState,
+                scrimVisible = scrimVisible,
+                showHandle = showHandle,
+                preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+                enableSwipeDismiss = enableSwipeDismiss,
+                maxLandscapeWidthFraction = maxLandscapeWidthFraction
+            )
+        } else {
+            CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
+                slideOver = slideOver,
+                scrimVisible = scrimVisible,
+                skipOpenState = skipOpenState,
+                expandable = expandable,
+                showHandle = showHandle,
+                preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+                enableSwipeDismiss = enableSwipeDismiss,
+                maxLandscapeWidthFraction = maxLandscapeWidthFraction,
+                drawerContent =
+                    if (listContent)
+                        getAndroidViewAsContent(selectedContent)
+                    else if (nestedDrawerContent) {
+                        getDrawerAsContent()
+                    } else {
+                        getDynamicListGeneratorAsContent()
+                    }
+            )
+        }
         //Other content on Primary surface
         LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
             item {
@@ -394,6 +398,7 @@ private fun CreateActivityUI() {
                         listContent = true
                         nestedDrawerContent = false
                         dynamicSizeContent = false
+                        searchableDrawerContent = false
                     },
                     trailingAccessoryContent = {
                         RadioButton(
@@ -402,6 +407,7 @@ private fun CreateActivityUI() {
                                 listContent = true
                                 nestedDrawerContent = false
                                 dynamicSizeContent = false
+                                searchableDrawerContent = false
                             },
                             selected = selectedContent == ContentType.FULL_SCREEN_SCROLLABLE_CONTENT && listContent
                         )
@@ -414,6 +420,7 @@ private fun CreateActivityUI() {
                         listContent = true
                         nestedDrawerContent = false
                         dynamicSizeContent = false
+                        searchableDrawerContent = false
                     },
                     trailingAccessoryContent = {
                         RadioButton(
@@ -422,6 +429,7 @@ private fun CreateActivityUI() {
                                 listContent = true
                                 nestedDrawerContent = false
                                 dynamicSizeContent = false
+                                searchableDrawerContent = false
                             },
                             selected = selectedContent == ContentType.EXPANDABLE_SIZE_CONTENT && listContent
                         )
@@ -434,6 +442,7 @@ private fun CreateActivityUI() {
                         listContent = true
                         dynamicSizeContent = false
                         nestedDrawerContent = false
+                        searchableDrawerContent = false
                     },
                     trailingAccessoryContent = {
                         RadioButton(
@@ -442,6 +451,7 @@ private fun CreateActivityUI() {
                                 listContent = true
                                 dynamicSizeContent = false
                                 nestedDrawerContent = false
+                                searchableDrawerContent = false
                             },
                             selected = selectedContent == ContentType.WRAPPED_SIZE_CONTENT && listContent
                         )
@@ -453,6 +463,7 @@ private fun CreateActivityUI() {
                         dynamicSizeContent = true
                         nestedDrawerContent = false
                         listContent = false
+                        searchableDrawerContent = false
                     },
                     trailingAccessoryContent = {
                         RadioButton(
@@ -460,6 +471,7 @@ private fun CreateActivityUI() {
                                 dynamicSizeContent = true
                                 nestedDrawerContent = false
                                 listContent = false
+                                searchableDrawerContent = false
                             },
                             selected = dynamicSizeContent
                         )
@@ -471,6 +483,7 @@ private fun CreateActivityUI() {
                         nestedDrawerContent = true
                         dynamicSizeContent = false
                         listContent = false
+                        searchableDrawerContent = false
                     },
                     trailingAccessoryContent = {
                         RadioButton(
@@ -478,8 +491,29 @@ private fun CreateActivityUI() {
                                 nestedDrawerContent = true
                                 dynamicSizeContent = false
                                 listContent = false
+                                searchableDrawerContent = false
                             },
                             selected = nestedDrawerContent
+                        )
+                    }
+                )
+                ListItem.Item(
+                    text = "Searchable Drawer Content",//stringResource(id = R.string.drawer_dynamic_size_content),
+                    onClick = {
+                        dynamicSizeContent = false
+                        nestedDrawerContent = false
+                        listContent = false
+                        searchableDrawerContent = true
+                    },
+                    trailingAccessoryContent = {
+                        RadioButton(
+                            onClick = {
+                                dynamicSizeContent = false
+                                nestedDrawerContent = false
+                                listContent = false
+                                searchableDrawerContent = true
+                            },
+                            selected = searchableDrawerContent
                         )
                     }
                 )
@@ -518,7 +552,6 @@ private fun CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     maxLandscapeWidthFraction: Float
 ) {
     val scope = rememberCoroutineScope()
-
     val viewModel: SearchViewModel<SearchableItem> = viewModel(
         factory = SearchViewModelFactory(initialItems = List(100) { index ->
             SearchableItem(
@@ -529,39 +562,32 @@ private fun CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
             )
         })
     )
-
     val drawerState = rememberBottomDrawerState(
         initialValue = DrawerValue.Closed,
         expandable = expandable,
         skipOpenState = skipOpenState
     )
-
     val open: () -> Unit = {
         scope.launch {
             viewModel.clearSelection()
             drawerState.open()
         }
     }
-
     val expand: () -> Unit = {
         scope.launch {
             drawerState.expand()
         }
     }
-
     val close: () -> Unit = {
         scope.launch {
             drawerState.close()
             viewModel.clearSelection()
         }
     }
-
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
     val toggleItemSelection = { item: Searchable ->
         viewModel.toggleSelection(item as SearchableItem)
     }
-
     Row {
         PrimarySurfaceContent(
             open,
@@ -573,7 +599,6 @@ private fun CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
             text = stringResource(id = R.string.drawer_expand)
         )
     }
-
     BottomDrawer(
         drawerState = drawerState,
         drawerContent = {
@@ -650,9 +675,9 @@ private fun ClickableTextHeader(
         fontWeight = FontWeight(400)
     )
 ) {
-    val interactionSourceStart = remember { MutableInteractionSource() }
+    val interactionSource = remember { MutableInteractionSource() }
     val animatedFontSizeStart by animateDpAsState(
-        targetValue = if (interactionSourceStart.collectIsPressedAsState().value) 18.5.dp else 17.dp,
+        targetValue = if (interactionSource.collectIsPressedAsState().value) 18.5.dp else 17.dp,
         label = "FontSizeAnimation"
     )
     Box(
@@ -667,7 +692,7 @@ private fun ClickableTextHeader(
                 .clickable(
                     enabled = true,
                     indication = null,
-                    interactionSource = interactionSourceStart
+                    interactionSource = interactionSource
                 ) {
                     onClick()
                 },
@@ -748,10 +773,8 @@ fun LazyItemsList(
     val scope = rememberCoroutineScope()
     var enableStatus by rememberSaveable { mutableStateOf(false) }
     val lazyListState = rememberLazyListState()
-    val positionString: String =
-        LocalContext.current.resources.getString(com.microsoft.fluentui.topappbars.R.string.position_string)
-    val statusString: String =
-        LocalContext.current.resources.getString(com.microsoft.fluentui.topappbars.R.string.status_string)
+    val positionString: String = LocalContext.current.resources.getString(com.microsoft.fluentui.topappbars.R.string.position_string)
+    val statusString: String = LocalContext.current.resources.getString(com.microsoft.fluentui.topappbars.R.string.status_string)
     LazyColumn(
         state = lazyListState, modifier = modifier.draggable(
             orientation = Orientation.Vertical,
@@ -764,7 +787,7 @@ fun LazyItemsList(
     ) {
         itemsIndexed(
             items = filteredSearchItems,
-            key = { index, item -> item.getUniqueId() }) { index, item ->  // Unique key for each item to ensure stable list updates, will prevent recomps
+            key = { index, item -> item.getUniqueId() }) { index, item ->  // ensure stable render updates, will prevent recomps
             var isSelectedLocal by rememberSaveable {
                 mutableStateOf(
                     selectedSearchItems.contains(
