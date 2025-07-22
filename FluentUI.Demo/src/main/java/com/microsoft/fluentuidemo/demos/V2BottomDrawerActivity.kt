@@ -566,7 +566,9 @@ private fun CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     )
     val open: () -> Unit = {
         scope.launch {
-            viewModel.clearSelection()
+            if(drawerState.currentValue == DrawerValue.Closed) {
+                viewModel.clearSelection()
+            }
             drawerState.open()
         }
     }
