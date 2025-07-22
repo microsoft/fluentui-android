@@ -75,6 +75,7 @@ import com.microsoft.fluentui.tokenized.drawer.BottomDrawer
 import com.microsoft.fluentui.tokenized.drawer.DrawerValue
 import com.microsoft.fluentui.tokenized.drawer.rememberBottomDrawerState
 import com.microsoft.fluentui.tokenized.listitem.ListItem
+import com.microsoft.fluentui.util.getStringResource
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.util.PrimarySurfaceContent
@@ -495,7 +496,7 @@ private fun CreateActivityUI() {
                     }
                 )
                 ListItem.Item(
-                    text = "Searchable Drawer Content",//stringResource(id = R.string.drawer_dynamic_size_content),
+                    text = "Searchable Drawer Content",//stringResource(id = R.string.searchable_drawer_content),
                     onClick = {
                         dynamicSizeContent = false
                         nestedDrawerContent = false
@@ -667,14 +668,7 @@ private fun ClickableTextHeader(
     text: String,
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
-    textStyle: TextStyle = TextStyle(
-        color = Color(0xFF242424),
-        fontSize = 17.sp,
-        lineHeight = 22.sp,
-        letterSpacing = -0.43.sp,
-        textAlign = TextAlign.Start,
-        fontWeight = FontWeight(400)
-    )
+    textStyle: TextStyle = TextStyle.Default
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val animatedFontSizeStart by animateDpAsState(
@@ -697,14 +691,7 @@ private fun ClickableTextHeader(
                 ) {
                     onClick()
                 },
-            style = TextStyle(
-                color = textStyle.color,
-                fontSize = animatedFontSizeStart.value.sp,
-                lineHeight = textStyle.lineHeight,
-                letterSpacing = textStyle.letterSpacing,
-                textAlign = textStyle.textAlign,
-                fontWeight = textStyle.fontWeight
-            )
+            style = textStyle.merge(fontSize = animatedFontSizeStart.value.sp)
         )
     }
 }
@@ -716,9 +703,17 @@ fun SearchableDrawerHeader(
     onRightTextClick: () -> Unit = {},
 ) {
     val textColours = listOf(Color(0xFF616161), Color(0xFF242424), Color(0xFF464FEB))
-    val textHeaders = listOf("Clear", "Person", "Done")
+    val textHeaders = listOf(
+        getStringResource(id = R.string.fluentui_clear_text),
+        getStringResource(id = R.string.fluentui_title),
+        getStringResource(id = R.string.popup_menu_item_share)
+    )
     val textOnClicks = listOf(onLeftTextClick, onCenterTextClick, onRightTextClick)
-    val textFontWeights = listOf(FontWeight(400), FontWeight(600), FontWeight(400))
+    val textFontStyles = listOf(
+        FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1],
+        FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title2],
+        FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1]
+    )
     val textAlignments = listOf(TextAlign.Start, TextAlign.Center, TextAlign.End)
     Row(
         modifier = Modifier
@@ -734,12 +729,9 @@ fun SearchableDrawerHeader(
                     .fillMaxWidth()
                     .weight(1f),
                 onClick = textOnClicks.get(i),
-                textStyle = TextStyle(
+                textStyle = textFontStyles.get(i).copy(
                     color = textColours.get(i),
-                    lineHeight = 22.sp,
-                    letterSpacing = -0.43.sp,
-                    textAlign = textAlignments.get(i),
-                    fontWeight = textFontWeights.get(i),
+                    textAlign = textAlignments.get(i)
                 )
             )
         }
@@ -774,8 +766,10 @@ fun LazyItemsList(
     val scope = rememberCoroutineScope()
     var enableStatus by rememberSaveable { mutableStateOf(false) }
     val lazyListState = rememberLazyListState()
-    val positionString: String = LocalContext.current.resources.getString(com.microsoft.fluentui.topappbars.R.string.position_string)
-    val statusString: String = LocalContext.current.resources.getString(com.microsoft.fluentui.topappbars.R.string.status_string)
+    val positionString: String =
+        getStringResource(com.microsoft.fluentui.topappbars.R.string.position_string)
+    val statusString: String =
+        getStringResource(com.microsoft.fluentui.topappbars.R.string.status_string)
     val listItemTokens: ListItemTokens = object : ListItemTokens() {
         @Composable
         override fun backgroundBrush(listItemInfo: ListItemInfo): StateBrush {
@@ -840,13 +834,11 @@ fun LazyItemsList(
                     toggleItemSelection(item)
                 },
                 border = border,
-                //borderInset = borderInset,
                 listItemTokens = listItemTokens,
                 enabled = item.enabled,
                 selected = isSelected,
                 leadingAccessoryContent = item.leftAccessory,
                 trailingAccessoryContent = item.rightAccessory,
-                //textAccessibilityProperties = textAccessibilityProperties,
             )
         }
     }

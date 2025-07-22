@@ -850,6 +850,8 @@
     <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Searchable Drawer Content</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
     <!-- UI Label for Expandable -->
