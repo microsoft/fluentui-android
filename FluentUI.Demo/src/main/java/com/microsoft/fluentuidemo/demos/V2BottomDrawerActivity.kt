@@ -43,7 +43,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
@@ -704,7 +703,7 @@ fun SearchableDrawerHeader(
 ) {
     val textColours = listOf(Color(0xFF616161), Color(0xFF242424), Color(0xFF464FEB))
     val textHeaders = listOf(
-        getStringResource(id = R.string.fluentui_clear_text),
+        getStringResource(id = R.string.fluentui_back),
         getStringResource(id = R.string.fluentui_title),
         getStringResource(id = R.string.popup_menu_item_share)
     )
