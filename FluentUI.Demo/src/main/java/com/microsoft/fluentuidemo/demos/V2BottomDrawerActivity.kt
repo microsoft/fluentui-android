@@ -756,8 +756,8 @@ private fun MultiSelectScreen(numSelected: Int) {
 
 @Composable
 fun LazyItemsList(
-    filteredSearchItems: List<SearchableItem>,// CHECK IF STABLE LIST WILL BE MORE PERFORMANT HERE
-    selectedSearchItems: Set<SearchableItem> = setOf(), // CHECK IF STABLE LIST WILL BE MORE PERFORMANT HERE
+    filteredSearchItems: List<SearchableItem>,
+    selectedSearchItems: Set<SearchableItem> = setOf(),
     inSelectionMode: Boolean = false,
     toggleItemSelection: (SearchableItem) -> Unit = {},
     border: BorderType = BorderType.NoBorder,
@@ -804,7 +804,7 @@ fun LazyItemsList(
     ) {
         itemsIndexed(
             items = filteredSearchItems,
-            key = { index, item -> item.getUniqueId() }) { index, item ->  // ensure stable render updates, will prevent recomps
+            key = { index, item -> item.getUniqueId() }) { index, item ->  // ensures stable render updates, will prevent recomps
             val isSelected = selectedSearchItems.contains(item)
             ListItem.Item(
                 text = item.title,
