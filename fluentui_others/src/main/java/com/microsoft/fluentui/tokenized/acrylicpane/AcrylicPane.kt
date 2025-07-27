@@ -1,5 +1,7 @@
 package com.microsoft.fluentui.tokenized.acrylicpane
 
+import android.os.Build
+import android.view.WindowManager
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -8,13 +10,49 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
+import androidx.compose.ui.window.DialogWindowProvider
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AcrylicPaneInfo
 import com.microsoft.fluentui.theme.token.controlTokens.AcrylicPaneTokens
 
+@Composable
+fun NonModalBlurredDialog(
+    onDismissRequest: () -> Unit,
+    content: @Composable () -> Unit
+) {
+    val dialogProperties = DialogProperties(
+        usePlatformDefaultWidth = false,
+        decorFitsSystemWindows = false
+    )
+
+    Dialog(
+        onDismissRequest = onDismissRequest,
+        properties = dialogProperties
+    ) {
+        val window = (LocalView.current.parent as? DialogWindowProvider)?.window
+
+        SideEffect {
+            if (window != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                window.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL)
+                window.addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
+                window.setBackgroundBlurRadius(60)
+                window.addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND)
+                window.setDimAmount(0f)
+
+                // CRUCIAL: The window's decor view itself must be transparent.
+                window.decorView.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+            }
+        }
+        content()
+    }
+}
 
 @Composable
 private fun AcrylicPane(
@@ -28,11 +66,20 @@ private fun AcrylicPane(
     ) {
         backgroundContent()
 
-        Box(
-            modifier = modifier
+        NonModalBlurredDialog(
+            onDismissRequest = {}
         ) {
-            component()
+            Box(
+                modifier = modifier
+            ){
+                component()
+            }
         }
+//        Box(
+//            modifier = modifier
+//        ) {
+//            component()
+//        }
     }
 }
 
