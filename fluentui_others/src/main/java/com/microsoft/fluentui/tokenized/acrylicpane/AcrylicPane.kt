@@ -28,7 +28,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.AcrylicPaneTokens
 
 @Composable
 private fun BlurBehindDialog(
-    onDismissRequest: () -> Unit,
     orientation: AcrylicPaneOrientation = AcrylicPaneOrientation.BOTTOM,
     blurRadius: Int = 60,
     offset: IntOffset = IntOffset(0, 0),
@@ -42,17 +41,19 @@ private fun BlurBehindDialog(
     )
 
     Dialog(
-        onDismissRequest = onDismissRequest,
+        onDismissRequest = {},
         properties = dialogProperties
     ) {
         val window = (LocalView.current.parent as? DialogWindowProvider)?.window
 
         SideEffect {
-            if (window != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (window != null) {
                 window.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL)
                 window.addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
-                window.setBackgroundBlurRadius(blurRadius)
                 window.addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND)
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    window.setBackgroundBlurRadius(blurRadius)
+                }
                 window.setDimAmount(0f)
                 window.setGravity(
                     when (orientation) {
@@ -111,10 +112,9 @@ fun AcrylicPane(
         backgroundContent()
 
         BlurBehindDialog(
-            onDismissRequest = {},
             orientation = orientation,
             blurRadius = blurRadius,
-            offset = IntOffset(0, 0)
+            offset = offset
         ) {
             Box(
                 modifier = modifier

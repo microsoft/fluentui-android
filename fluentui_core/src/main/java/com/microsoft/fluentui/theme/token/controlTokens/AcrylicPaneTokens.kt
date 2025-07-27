@@ -28,6 +28,9 @@ open class AcrylicPaneInfo(
 
 @Parcelize
 open class AcrylicPaneTokens : IControlToken, Parcelable {
+    companion object {
+        const val DEFAULT_BLUR_RADIUS = 60 // Default value, can be overridden by theme
+    }
 
     @Composable
     open fun acrylicPaneGradient(acrylicPaneInfo: AcrylicPaneInfo): Brush {
@@ -71,6 +74,6 @@ open class AcrylicPaneTokens : IControlToken, Parcelable {
 
     @Composable
     open fun acrylicPaneBlurRadius(acrylicPaneInfo: AcrylicPaneInfo): Int {
-        return 60 // Need blur tokens
+        return DEFAULT_BLUR_RADIUS // Need blur tokens
     }
 }

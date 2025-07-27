@@ -93,7 +93,7 @@ fun CreateAcrylicPaneActivityUI(
     AcrylicPane(
         paneHeight = (acrylicPaneSizeFraction * 500).toInt().dp,
         orientation = acrylicPaneOrientation,
-        component = { acrylicPaneContent(context = context) },
+        component = { AcrylicPaneContent(context = context) },
         backgroundContent = {
             Column(
                 modifier = Modifier
@@ -111,18 +111,18 @@ fun CreateAcrylicPaneActivityUI(
                             this.contentDescription = "Acrylic Pane Orientation"
                         },
                 )
-                var checkBoxSelectedValues = List(3) { rememberSaveable { mutableStateOf(false) } }
+                val checkBoxSelectedValues = List(3) { rememberSaveable { mutableStateOf(false) } }
                 when (acrylicPaneOrientation) {
                     AcrylicPaneOrientation.TOP -> checkBoxSelectedValues[0].value = true
                     AcrylicPaneOrientation.CENTER -> checkBoxSelectedValues[1].value = true
                     AcrylicPaneOrientation.BOTTOM -> checkBoxSelectedValues[2].value = true
                 }
-                var acrylicPaneOrientations = listOf(
+                val acrylicPaneOrientations = listOf(
                     AcrylicPaneOrientation.TOP,
                     AcrylicPaneOrientation.CENTER,
                     AcrylicPaneOrientation.BOTTOM,
                 )
-                var orientations = listOf("Top", "Center", "Bottom")
+                val orientations = listOf("Top", "Center", "Bottom")
                 for (i in 0..2) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
@@ -214,7 +214,7 @@ fun CreateAcrylicPaneActivityUI(
                             this.contentDescription = "Test Bottom Drawer"
                         },
                 )
-                showBottomDrawer()
+                ShowBottomDrawer()
                 ListItem.Header(
                     title = "Scroll Test",
                     titleMaxLines = 2,
@@ -251,7 +251,7 @@ fun CreateAcrylicPaneActivityUI(
 }
 
 @Composable
-fun showBottomDrawer() {
+fun ShowBottomDrawer() {
     val scope = rememberCoroutineScope()
 
     val drawerState = rememberBottomDrawerState(
@@ -297,7 +297,7 @@ fun showBottomDrawer() {
 }
 
 @Composable
-fun acrylicPaneContent(context: Context) {
+fun AcrylicPaneContent(context: Context) {
     val scope = rememberCoroutineScope()
 
     val microphonePressedString = getDemoAppString(DemoAppStrings.MicrophonePressed)
