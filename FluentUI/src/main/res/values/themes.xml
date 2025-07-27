@@ -29,8 +29,6 @@
 
         <!-- *** Base Semantic Colors *** -->
 
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
         <!--Backgrounds-->
         <item name="fluentuiBackgroundColor">@color/fluentui_white</item>
         <item name="fluentuiBackgroundPressedColor">@color/fluentui_gray_100</item>
@@ -123,6 +121,8 @@
         <item name="fluentuiDialogBackgroundColor">?attr/fluentuiBackgroundColor</item>
         <item name="fluentuiDialogCloseIconColor">?attr/colorPrimary</item>
         <item name="fluentuiDialogTabLayoutBackgroundColor">?attr/fluentuiDialogBackgroundColor</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
 
         <!--Drawer-->
         <item name="fluentuiDrawerBackgroundColor">?attr/fluentuiBackgroundColor</item>

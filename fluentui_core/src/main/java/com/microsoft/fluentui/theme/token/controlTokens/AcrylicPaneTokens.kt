@@ -15,8 +15,15 @@ import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
+enum class AcrylicPaneOrientation {
+    TOP,
+    BOTTOM,
+    CENTER
+}
+
 open class AcrylicPaneInfo(
-    val style: FluentStyle = FluentStyle.Neutral
+    val style: FluentStyle = FluentStyle.Neutral,
+    val orientation: AcrylicPaneOrientation = AcrylicPaneOrientation.BOTTOM
 ) : ControlInfo
 
 @Parcelize
@@ -32,14 +39,35 @@ open class AcrylicPaneTokens : IControlToken, Parcelable {
                 ThemeMode.Dark
             )
         ).value(FluentTheme.themeMode)
-        return Brush.verticalGradient(
-            colors = listOf(
-                startColor,
-                startColor,
-                startColor.copy(alpha = 0.5f),
-                startColor.copy(alpha = 0.0f),
-            ),
-            tileMode = TileMode.Decal
-        )
+        when (acrylicPaneInfo.orientation) {
+            AcrylicPaneOrientation.CENTER -> return Brush.verticalGradient(
+                colors = listOf(
+                    startColor,
+                    startColor,
+                    startColor.copy(alpha = 0.5f),
+                    startColor.copy(alpha = 0.0f),
+                ),
+                tileMode = TileMode.Decal
+            )
+            AcrylicPaneOrientation.TOP -> return Brush.verticalGradient(
+                colors = listOf(
+                    startColor.copy(alpha = 0.0f),
+                    startColor.copy(alpha = 0.5f),
+                    startColor,
+                    startColor,
+                    startColor.copy(alpha = 0.5f),
+                    startColor.copy(alpha = 0.0f),
+                ),
+                tileMode = TileMode.Decal
+            )
+            AcrylicPaneOrientation.BOTTOM -> return Brush.verticalGradient(
+                colors = listOf(
+                    startColor.copy(alpha = 0.0f),
+                    startColor.copy(alpha = 0.5f),
+                    startColor
+                ),
+                tileMode = TileMode.Decal
+            )
+        }
     }
 }

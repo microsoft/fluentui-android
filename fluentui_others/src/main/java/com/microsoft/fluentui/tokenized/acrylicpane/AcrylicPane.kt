@@ -1,6 +1,7 @@
 package com.microsoft.fluentui.tokenized.acrylicpane
 
 import android.os.Build
+import android.view.Gravity
 import android.view.WindowManager
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,11 +21,13 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AcrylicPaneInfo
+import com.microsoft.fluentui.theme.token.controlTokens.AcrylicPaneOrientation
 import com.microsoft.fluentui.theme.token.controlTokens.AcrylicPaneTokens
 
 @Composable
 fun NonModalBlurredDialog(
     onDismissRequest: () -> Unit,
+    orientation: AcrylicPaneOrientation = AcrylicPaneOrientation.BOTTOM,
     content: @Composable () -> Unit
 ) {
     val dialogProperties = DialogProperties(
@@ -45,7 +48,13 @@ fun NonModalBlurredDialog(
                 window.setBackgroundBlurRadius(60)
                 window.addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND)
                 window.setDimAmount(0f)
-
+                window.setGravity(
+                    when (orientation) {
+                        AcrylicPaneOrientation.TOP -> Gravity.TOP
+                        AcrylicPaneOrientation.BOTTOM -> Gravity.BOTTOM
+                        AcrylicPaneOrientation.CENTER -> Gravity.CENTER
+                    }
+                )
                 // CRUCIAL: The window's decor view itself must be transparent.
                 window.decorView.setBackgroundColor(android.graphics.Color.TRANSPARENT)
             }
@@ -57,6 +66,7 @@ fun NonModalBlurredDialog(
 @Composable
 private fun AcrylicPane(
     modifier: Modifier = Modifier,
+    orientation: AcrylicPaneOrientation = AcrylicPaneOrientation.BOTTOM,
     backgroundContent: @Composable () -> Unit,
     component: @Composable BoxScope.() -> Unit
 ) {
@@ -66,7 +76,8 @@ private fun AcrylicPane(
         backgroundContent()
 
         NonModalBlurredDialog(
-            onDismissRequest = {}
+            onDismissRequest = {},
+            orientation = orientation
         ) {
             Box(
                 modifier = modifier
@@ -92,8 +103,8 @@ fun roundToNearestTen(value: Int): Int { // Added for anti-aliasing
  */
 
 @Composable
-fun AcrylicPane(modifier: Modifier = Modifier, paneHeight: Dp = 300.dp, acrylicPaneStyle:FluentStyle = FluentStyle.Neutral, component: @Composable () -> Unit, backgroundContent: @Composable () -> Unit, acrylicPaneTokens: AcrylicPaneTokens? = null) {
-    val paneInfo: AcrylicPaneInfo = AcrylicPaneInfo(style = acrylicPaneStyle)
+fun AcrylicPane(modifier: Modifier = Modifier, orientation: AcrylicPaneOrientation = AcrylicPaneOrientation.BOTTOM, paneHeight: Dp = 300.dp, acrylicPaneStyle:FluentStyle = FluentStyle.Neutral, component: @Composable () -> Unit, backgroundContent: @Composable () -> Unit, acrylicPaneTokens: AcrylicPaneTokens? = null) {
+    val paneInfo: AcrylicPaneInfo = AcrylicPaneInfo(style = acrylicPaneStyle, orientation = orientation)
     val newPaneHeight = roundToNearestTen(paneHeight.value.toInt()).dp
     val themeID = FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = acrylicPaneTokens
@@ -105,6 +116,7 @@ fun AcrylicPane(modifier: Modifier = Modifier, paneHeight: Dp = 300.dp, acrylicP
             .background(
                 token.acrylicPaneGradient(acrylicPaneInfo = paneInfo)
             ),
+        orientation = orientation,
         backgroundContent = {
             backgroundContent()
         }
