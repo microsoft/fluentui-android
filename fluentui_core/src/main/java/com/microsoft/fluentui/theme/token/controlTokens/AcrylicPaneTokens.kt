@@ -48,6 +48,7 @@ open class AcrylicPaneTokens : IControlToken, Parcelable {
                 ),
                 tileMode = TileMode.Decal
             )
+
             AcrylicPaneOrientation.CENTER -> return Brush.verticalGradient(
                 colors = listOf(
                     startColor.copy(alpha = 0.0f),
@@ -56,6 +57,7 @@ open class AcrylicPaneTokens : IControlToken, Parcelable {
                 ),
                 tileMode = TileMode.Decal
             )
+
             AcrylicPaneOrientation.BOTTOM -> return Brush.verticalGradient(
                 colors = listOf(
                     startColor.copy(alpha = 0.0f),

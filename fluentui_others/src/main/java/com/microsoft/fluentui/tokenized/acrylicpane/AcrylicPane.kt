@@ -73,6 +73,7 @@ private fun BlurBehindDialog(
 fun roundToNearestTen(value: Int): Int { // Added for anti-aliasing
     return ((value + 5) / 10) * 10
 }
+
 /**
  * A composable function that creates an AcrylicPane with specified properties and content.
  *
@@ -85,10 +86,21 @@ fun roundToNearestTen(value: Int): Int { // Added for anti-aliasing
  */
 
 @Composable
-fun AcrylicPane(modifier: Modifier = Modifier, orientation: AcrylicPaneOrientation = AcrylicPaneOrientation.BOTTOM, offset: IntOffset = IntOffset(0,0) ,paneHeight: Dp = 300.dp, acrylicPaneStyle:FluentStyle = FluentStyle.Neutral, component: @Composable () -> Unit, backgroundContent: @Composable () -> Unit, acrylicPaneTokens: AcrylicPaneTokens? = null) {
-    val paneInfo: AcrylicPaneInfo = AcrylicPaneInfo(style = acrylicPaneStyle, orientation = orientation)
+fun AcrylicPane(
+    modifier: Modifier = Modifier,
+    orientation: AcrylicPaneOrientation = AcrylicPaneOrientation.BOTTOM,
+    offset: IntOffset = IntOffset(0, 0),
+    paneHeight: Dp = 300.dp,
+    acrylicPaneStyle: FluentStyle = FluentStyle.Neutral,
+    component: @Composable () -> Unit,
+    backgroundContent: @Composable () -> Unit,
+    acrylicPaneTokens: AcrylicPaneTokens? = null
+) {
+    val paneInfo: AcrylicPaneInfo =
+        AcrylicPaneInfo(style = acrylicPaneStyle, orientation = orientation)
     val newPaneHeight = roundToNearestTen(paneHeight.value.toInt()).dp
-    val themeID = FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = acrylicPaneTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AcrylicPaneControlType] as AcrylicPaneTokens
     val backgroundColor: Brush = token.acrylicPaneGradient(acrylicPaneInfo = paneInfo)
@@ -111,7 +123,7 @@ fun AcrylicPane(modifier: Modifier = Modifier, orientation: AcrylicPaneOrientati
                     .background(
                         backgroundColor
                     )
-            ){
+            ) {
                 component()
             }
         }

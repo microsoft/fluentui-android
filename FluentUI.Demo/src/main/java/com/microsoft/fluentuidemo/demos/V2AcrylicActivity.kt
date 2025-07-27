@@ -63,8 +63,10 @@ class V2AcrylicPaneActivity : V2DemoActivity() {
         setupActivity(this)
     }
 
-    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-18" //TODO: Update this URL
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-18"
+    override val paramsUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#params-18" //TODO: Update this URL
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-18"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,7 +79,7 @@ class V2AcrylicPaneActivity : V2DemoActivity() {
 @Composable
 fun CreateAcrylicPaneActivityUI(
     context: Context
-){
+) {
     var acrylicPaneSizeFraction by rememberSaveable { mutableFloatStateOf(0.5F) }
     var acrylicPaneOrientation by rememberSaveable { mutableStateOf(AcrylicPaneOrientation.BOTTOM) }
     var acrylicPaneBlurRadius by rememberSaveable { mutableStateOf(0.0f) }
@@ -110,7 +112,7 @@ fun CreateAcrylicPaneActivityUI(
                         },
                 )
                 var checkBoxSelectedValues = List(3) { rememberSaveable { mutableStateOf(false) } }
-                when( acrylicPaneOrientation) {
+                when (acrylicPaneOrientation) {
                     AcrylicPaneOrientation.TOP -> checkBoxSelectedValues[0].value = true
                     AcrylicPaneOrientation.CENTER -> checkBoxSelectedValues[1].value = true
                     AcrylicPaneOrientation.BOTTOM -> checkBoxSelectedValues[2].value = true
@@ -229,9 +231,16 @@ fun CreateAcrylicPaneActivityUI(
                             .fillMaxWidth()
                             .padding(horizontal = 12.dp, vertical = 5.dp)
                     ) {
-                        Text(text = "Text $it", fontSize = 14.sp,
+                        Text(
+                            text = "Text $it", fontSize = 14.sp,
                             style = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1]
-                                .merge(TextStyle(color = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(themeMode = FluentTheme.themeMode)))
+                                .merge(
+                                    TextStyle(
+                                        color = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
+                                            themeMode = FluentTheme.themeMode
+                                        )
+                                    )
+                                )
                         )
                     }
                 }
@@ -242,10 +251,14 @@ fun CreateAcrylicPaneActivityUI(
 }
 
 @Composable
-fun showBottomDrawer(){
+fun showBottomDrawer() {
     val scope = rememberCoroutineScope()
 
-    val drawerState = rememberBottomDrawerState(initialValue = DrawerValue.Closed, expandable = true, skipOpenState = false)
+    val drawerState = rememberBottomDrawerState(
+        initialValue = DrawerValue.Closed,
+        expandable = true,
+        skipOpenState = false
+    )
 
     val open: () -> Unit = {
         scope.launch { drawerState.open() }
@@ -284,7 +297,7 @@ fun showBottomDrawer(){
 }
 
 @Composable
-fun acrylicPaneContent(context: Context){
+fun acrylicPaneContent(context: Context) {
     val scope = rememberCoroutineScope()
 
     val microphonePressedString = getDemoAppString(DemoAppStrings.MicrophonePressed)
@@ -300,9 +313,11 @@ fun acrylicPaneContent(context: Context){
     val showCustomizedAppBar = false
     Column {
         Spacer(modifier = Modifier.height(80.dp))
-        Row(Modifier
-            .height(5.dp)
-            .padding(20.dp)) {
+        Row(
+            Modifier
+                .height(5.dp)
+                .padding(20.dp)
+        ) {
             SearchBar(
                 onValueChange = { query, selectedPerson ->
                     scope.launch {
