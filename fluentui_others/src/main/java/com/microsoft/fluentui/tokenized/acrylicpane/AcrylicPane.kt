@@ -51,7 +51,7 @@ private fun BlurBehindDialog(
                 window.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL)
                 window.addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
                 window.addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND)
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                     window.setBackgroundBlurRadius(blurRadius)
                 }
                 window.setDimAmount(0f)
@@ -77,8 +77,21 @@ fun roundToNearestTen(value: Int): Int { // Added for anti-aliasing
 
 /**
  * A composable function that creates an AcrylicPane with specified properties and content.
+ * This component leverages a real-time, window-level blur to create its acrylic effect.
+ * This behavior is subject to specific system conditions.
+ *
+ * Platform-Specific Behavior & Requirements:
+ * API Level: The background blur is only supported on Android 12 (API 31) and newer.
+ * Device Setting: For the blur to be visible, the "Allow window-level blurs" option must be enabled in the device's Developer Options.
+ *
+ * Fallback Mechanism:
+ * On devices running older Android versions (below API 31) or when the necessary developer
+ * option is disabled, the AcrylicPane will gracefully fall back to a semi-transparent gradient effect.
+ * This ensures the UI remains functional and aesthetically pleasing even when the blur effect is not available.
  *
  * @param modifier The modifier to be applied to the AcrylicPane.
+ * @param orientation The orientation of the AcrylicPane, default is AcrylicPaneOrientation.BOTTOM.
+ * @param offset The offset of the pane from the top-left corner of the screen, default is IntOffset(0, 0).
  * @param paneHeight The height of the pane, default is 300.dp.
  * @param acrylicPaneStyle The style of the pane, default is FluentStyle.Neutral.
  * @param component The main composable content to be displayed within the pane.

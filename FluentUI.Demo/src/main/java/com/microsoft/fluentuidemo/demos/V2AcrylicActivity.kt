@@ -80,7 +80,7 @@ class V2AcrylicPaneActivity : V2DemoActivity() {
 fun CreateAcrylicPaneActivityUI(
     context: Context
 ) {
-    var acrylicPaneSizeFraction by rememberSaveable { mutableFloatStateOf(0.5F) }
+    var acrylicPaneSize by rememberSaveable { mutableFloatStateOf(250.0f) }
     var acrylicPaneOrientation by rememberSaveable { mutableStateOf(AcrylicPaneOrientation.BOTTOM) }
     var acrylicPaneBlurRadius by rememberSaveable { mutableStateOf(0.0f) }
     val acrylicPaneTokens: AcrylicPaneTokens = object : AcrylicPaneTokens() {
@@ -91,7 +91,7 @@ fun CreateAcrylicPaneActivityUI(
     }
 
     AcrylicPane(
-        paneHeight = (acrylicPaneSizeFraction * 500).toInt().dp,
+        paneHeight = acrylicPaneSize.toInt().dp,
         orientation = acrylicPaneOrientation,
         component = { AcrylicPaneContent(context = context) },
         backgroundContent = {
@@ -183,9 +183,9 @@ fun CreateAcrylicPaneActivityUI(
                         },
                 )
                 Slider(
-                    value = acrylicPaneSizeFraction,
-                    onValueChange = { acrylicPaneSizeFraction = it },
-                    valueRange = 0F..1F,
+                    value = acrylicPaneSize,
+                    onValueChange = { acrylicPaneSize = it },
+                    valueRange = 0F..500F,
                     colors = SliderDefaults.colors(
                         thumbColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                             FluentTheme.themeMode
