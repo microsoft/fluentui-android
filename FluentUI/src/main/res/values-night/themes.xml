@@ -14,6 +14,8 @@
 
         <!-- *** Base Semantic Colors *** -->
 
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
         <!--Backgrounds-->
         <item name="fluentuiBackgroundColor">@color/fluentui_black</item>
         <item name="fluentuiBackgroundPressedColor">@color/fluentui_gray_900</item>
