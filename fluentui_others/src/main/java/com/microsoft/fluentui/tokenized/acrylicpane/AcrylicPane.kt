@@ -57,9 +57,8 @@ fun NonModalBlurredDialog(
 @Composable
 private fun AcrylicPane(
     modifier: Modifier = Modifier,
-    component: @Composable BoxScope.() -> Unit,
     backgroundContent: @Composable () -> Unit,
-    triggerRecomposition: Boolean = false
+    component: @Composable BoxScope.() -> Unit
 ) {
     Box(
         modifier = Modifier.fillMaxSize()
@@ -75,11 +74,6 @@ private fun AcrylicPane(
                 component()
             }
         }
-//        Box(
-//            modifier = modifier
-//        ) {
-//            component()
-//        }
     }
 }
 
@@ -98,11 +92,10 @@ fun roundToNearestTen(value: Int): Int { // Added for anti-aliasing
  */
 
 @Composable
-public fun AcrylicPane(modifier: Modifier = Modifier, paneHeight: Dp = 300.dp, acrylicPaneStyle:FluentStyle = FluentStyle.Neutral, component: @Composable () -> Unit, backgroundContent: @Composable () -> Unit, acrylicPaneTokens: AcrylicPaneTokens? = null) {
+fun AcrylicPane(modifier: Modifier = Modifier, paneHeight: Dp = 300.dp, acrylicPaneStyle:FluentStyle = FluentStyle.Neutral, component: @Composable () -> Unit, backgroundContent: @Composable () -> Unit, acrylicPaneTokens: AcrylicPaneTokens? = null) {
     val paneInfo: AcrylicPaneInfo = AcrylicPaneInfo(style = acrylicPaneStyle)
     val newPaneHeight = roundToNearestTen(paneHeight.value.toInt()).dp
-    val themeID =
-        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
+    val themeID = FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = acrylicPaneTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AcrylicPaneControlType] as AcrylicPaneTokens
     AcrylicPane(
@@ -112,12 +105,10 @@ public fun AcrylicPane(modifier: Modifier = Modifier, paneHeight: Dp = 300.dp, a
             .background(
                 token.acrylicPaneGradient(acrylicPaneInfo = paneInfo)
             ),
-        component = {
-            component()
-        },
         backgroundContent = {
             backgroundContent()
-        },
-        triggerRecomposition = false
-    )
+        }
+    ){
+        component()
+    }
 }
