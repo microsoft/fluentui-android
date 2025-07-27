@@ -40,22 +40,18 @@ open class AcrylicPaneTokens : IControlToken, Parcelable {
             )
         ).value(FluentTheme.themeMode)
         when (acrylicPaneInfo.orientation) {
-            AcrylicPaneOrientation.CENTER -> return Brush.verticalGradient(
+            AcrylicPaneOrientation.TOP -> return Brush.verticalGradient(
                 colors = listOf(
-                    startColor,
                     startColor,
                     startColor.copy(alpha = 0.5f),
                     startColor.copy(alpha = 0.0f),
                 ),
                 tileMode = TileMode.Decal
             )
-            AcrylicPaneOrientation.TOP -> return Brush.verticalGradient(
+            AcrylicPaneOrientation.CENTER -> return Brush.verticalGradient(
                 colors = listOf(
                     startColor.copy(alpha = 0.0f),
-                    startColor.copy(alpha = 0.5f),
                     startColor,
-                    startColor,
-                    startColor.copy(alpha = 0.5f),
                     startColor.copy(alpha = 0.0f),
                 ),
                 tileMode = TileMode.Decal
@@ -69,5 +65,10 @@ open class AcrylicPaneTokens : IControlToken, Parcelable {
                 tileMode = TileMode.Decal
             )
         }
+    }
+
+    @Composable
+    open fun acrylicPaneBlurRadius(acrylicPaneInfo: AcrylicPaneInfo): Int {
+        return 60 // Need blur tokens
     }
 }
