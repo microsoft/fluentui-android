@@ -4,6 +4,8 @@ import android.os.Parcelable
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.ControlInfo
@@ -37,6 +39,14 @@ open class PillSwitchTokens : PillBarTokens(), Parcelable {
                     )
                 ).value(FluentTheme.themeMode)
             )
+        }
+    }
+
+    @Composable
+    open fun pillSwitchRowPadding(pillSwitchInfo: PillSwitchInfo): Dp {
+        return when (pillSwitchInfo.style) {
+            FluentStyle.Neutral -> 16.dp
+            FluentStyle.Brand -> 16.dp
         }
     }
 }

@@ -61,14 +61,14 @@ fun PillSwitch(
     Row(
         modifier = Modifier
             .wrapContentWidth()
-            .padding(horizontal = 16.dp)
+            .padding(horizontal = token.pillSwitchRowPadding(pillSwitchInfo))
             .background(Color.Transparent)
             .focusable(false)
     ) {
         LazyRow(
             modifier = modifier
                 .wrapContentWidth()
-                .padding(horizontal = 16.dp)
+                .padding(horizontal = token.pillSwitchRowPadding(pillSwitchInfo))
                 .focusable(enabled = false)
                 .clip(shape)
                 .background(token.backgroundBrush(pillSwitchInfo), shape),
