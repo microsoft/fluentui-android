@@ -50,8 +50,8 @@ private fun BlurBehindDialog(
             if (window != null) {
                 window.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL)
                 window.addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
-                window.addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND)
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    window.addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND)
                     window.setBackgroundBlurRadius(blurRadius)
                 }
                 window.setDimAmount(0f)
