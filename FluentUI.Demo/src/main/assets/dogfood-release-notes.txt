@@ -1,10 +1,14 @@
-Release version 0.3.8
+Release version 0.3.9
 What's new
 Fluent v2:
 Fix/enhancement:
-    1. Restored Shimmer Tokens for 'delay' and 'orientation' in the Shimmer component
-    2. Fixed V2 Bottomsheet not appearing when content loading was delayed
-    3. Fixed large title truncates post title icons in V2 AppBar
+    1. Added elevation tokens for V2 Snackbar
+    2. Fluent V2 Native Controls Accessibility Fixes
+    3. Added Tooltip support for V2 AppBar, along with a new modifier to add tooltips to any component
+    4. Added TextOverflow Tokens for V2 ListItem
+    5. Fixed V2 AppBar Layout Focus Navigation
+    6. V2 Acrylic Pane now supports blur behind effect
+    7. Added a new default SearchViewModel for V2 Searchbar
 
-Note: Fluent versions 0.2.x will support compose version 1.5.1 (BOM 2023.09.00) .
-Fluent version 0.3.x will support compose foundation version 1.6.0 .
+Note:
+The Demo App for Fluent Controls will now also be published on Github starting from v0.3.8
