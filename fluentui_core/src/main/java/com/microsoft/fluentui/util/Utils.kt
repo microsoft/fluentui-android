@@ -25,10 +25,22 @@ fun dpToPx(value: Dp) = (value * Resources
 fun getStringResource(id: Int): String {
     return LocalContext.current.resources.getString(id)
 }
+
 @Composable
 fun getStringResource(id: Int, vararg formatArgs: Any): String {
     return LocalContext.current.resources.getString(id, *formatArgs)
 }
+
+/**
+ * A composable function that observes the visibility of the software keyboard and triggers
+ * callbacks when the keyboard becomes visible or hidden.
+ *
+ * @param onKeyboardVisible A lambda function to be executed when the keyboard becomes visible.
+ *                          Defaults to an empty lambda.
+ * @param onKeyboardHidden A lambda function to be executed when the keyboard becomes hidden.
+ *                         Defaults to an empty lambda.
+ * @param content A composable content block to be displayed within this observer.
+ */
 @Composable
 fun KeyboardVisibilityObserver(
     onKeyboardVisible: () -> Unit = {},
