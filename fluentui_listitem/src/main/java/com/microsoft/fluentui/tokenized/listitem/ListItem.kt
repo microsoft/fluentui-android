@@ -35,7 +35,6 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.text.*
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.*
 import com.microsoft.fluentui.listitem.R
 import com.microsoft.fluentui.icons.ListItemIcons
@@ -212,6 +211,7 @@ object ListItem {
         textAlignment: ListItemTextAlignment = ListItemTextAlignment.Regular,
         unreadDot: Boolean = false,
         enabled: Boolean = true,
+        selected: Boolean = false,
         textMaxLines: Int = 1,
         subTextMaxLines: Int = 1,
         secondarySubTextMaxLines: Int = 1,
@@ -252,7 +252,7 @@ object ListItem {
         )
         val backgroundColor =
             token.backgroundBrush(listItemInfo).getBrushByState(
-                enabled = true, selected = false, interactionSource = interactionSource
+                enabled = true, selected = selected, interactionSource = interactionSource
             )
         val primaryTextTypography = token.primaryTextTypography(listItemInfo)
         val subTextTypography = token.subTextTypography(listItemInfo)
@@ -261,17 +261,17 @@ object ListItem {
         val primaryTextColor = token.primaryTextColor(
             listItemInfo
         ).getColorByState(
-            enabled = enabled, selected = false, interactionSource = interactionSource
+            enabled = enabled, selected = selected, interactionSource = interactionSource
         )
         val subTextColor = token.subTextColor(
             listItemInfo
         ).getColorByState(
-            enabled = enabled, selected = false, interactionSource = interactionSource
+            enabled = enabled, selected = selected, interactionSource = interactionSource
         )
         val secondarySubTextColor = token.secondarySubTextColor(
             listItemInfo
         ).getColorByState(
-            enabled = enabled, selected = false, interactionSource = interactionSource
+            enabled = enabled, selected = selected, interactionSource = interactionSource
         )
         val rippleColor = token.rippleColor(listItemInfo)
         val unreadDotColor = token.unreadDotColor(listItemInfo)
@@ -281,7 +281,7 @@ object ListItem {
             token.borderInset(listItemInfo).toPx()
         }
         val borderColor = token.borderColor(listItemInfo).getColorByState(
-            enabled = enabled, selected = false, interactionSource = interactionSource
+            enabled = enabled, selected = selected, interactionSource = interactionSource
         )
         val textAccessoryContentTextSpacing = token.textAccessoryContentTextSpacing(listItemInfo)
         val leadingAccessoryAlignment = when (leadingAccessoryContentAlignment) {
@@ -446,6 +446,7 @@ object ListItem {
      * @param textAlignment Optional [ListItemTextAlignment] to align text in the center or start at the lead.
      * @param unreadDot Option boolean value that display a dot on leading edge of the accessory Content and makes the primary text bold on true
      * @param enabled Optional enable/disable List item
+     * @param selected Optional selected state for List item.
      * @param textMaxLines Optional max visible lines for primary text.
      * @param subTextMaxLines Optional max visible lines for secondary text.
      * @param secondarySubTextMaxLines Optional max visible lines for tertiary text.
@@ -475,6 +476,7 @@ object ListItem {
         textAlignment: ListItemTextAlignment = ListItemTextAlignment.Regular,
         unreadDot: Boolean = false,
         enabled: Boolean = true,
+        selected: Boolean = false,
         textMaxLines: Int = 1,
         subTextMaxLines: Int = 1,
         secondarySubTextMaxLines: Int = 1,
@@ -503,6 +505,7 @@ object ListItem {
             textAlignment = textAlignment,
             unreadDot = unreadDot,
             enabled = enabled,
+            selected = selected,
             textMaxLines = textMaxLines,
             subTextMaxLines = subTextMaxLines,
             secondarySubTextMaxLines = secondarySubTextMaxLines,
@@ -536,6 +539,7 @@ object ListItem {
      * @param textAlignment Optional [ListItemTextAlignment] to align text in the center or start at the lead.
      * @param unreadDot Option boolean value that display a dot on leading edge of the accessory Content and makes the primary text bold on true
      * @param enabled Optional enable/disable List item
+     * @param selected Optional selected state for the list item.
      * @param textMaxLines Optional max visible lines for primary text.
      * @param subTextMaxLines Optional max visible lines for secondary text.
      * @param secondarySubTextMaxLines Optional max visible lines for tertiary text.
@@ -566,6 +570,7 @@ object ListItem {
         textAlignment: ListItemTextAlignment = ListItemTextAlignment.Regular,
         unreadDot: Boolean = false,
         enabled: Boolean = true,
+        selected: Boolean = false,
         textMaxLines: Int = 1,
         subTextMaxLines: Int = 1,
         secondarySubTextMaxLines: Int = 1,
@@ -595,6 +600,7 @@ object ListItem {
             textAlignment = textAlignment,
             unreadDot = unreadDot,
             enabled = enabled,
+            selected = selected,
             textMaxLines = textMaxLines,
             subTextMaxLines = subTextMaxLines,
             secondarySubTextMaxLines = secondarySubTextMaxLines,

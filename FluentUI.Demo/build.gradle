@@ -103,6 +103,8 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     debugImplementation "androidx.test:monitor:$androidTestMonitor"
     implementation "androidx.compose.runtime:runtime-livedata"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleComposeVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-compose:$lifecycleComposeVersion"
 
     // App Center
     dogfoodImplementation "com.microsoft.appcenter:appcenter-analytics:$appCenterSdkVersion"
