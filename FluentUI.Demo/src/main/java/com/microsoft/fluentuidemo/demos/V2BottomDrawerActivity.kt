@@ -66,7 +66,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemInfo
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemTokens
-import com.microsoft.fluentui.tokenized.KeyboardVisibilityObserver
 import com.microsoft.fluentui.tokenized.SearchBar
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
@@ -74,6 +73,7 @@ import com.microsoft.fluentui.tokenized.drawer.BottomDrawer
 import com.microsoft.fluentui.tokenized.drawer.DrawerValue
 import com.microsoft.fluentui.tokenized.drawer.rememberBottomDrawerState
 import com.microsoft.fluentui.tokenized.listitem.ListItem
+import com.microsoft.fluentui.util.KeyboardVisibilityObserver
 import com.microsoft.fluentui.util.getStringResource
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
@@ -495,7 +495,7 @@ private fun CreateActivityUI() {
                     }
                 )
                 ListItem.Item(
-                    text = "Searchable Drawer Content",//stringResource(id = R.string.searchable_drawer_content),
+                    text = stringResource(id = R.string.searchable_drawer_content),
                     onClick = {
                         dynamicSizeContent = false
                         nestedDrawerContent = false
