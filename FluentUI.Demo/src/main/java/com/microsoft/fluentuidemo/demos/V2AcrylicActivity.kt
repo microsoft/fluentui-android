@@ -42,6 +42,9 @@ import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralForegroundColorTokens.Foreground2
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.controlTokens.AcrylicPaneInfo
+import com.microsoft.fluentui.theme.token.controlTokens.AcrylicPaneOrientation
+import com.microsoft.fluentui.theme.token.controlTokens.AcrylicPaneTokens
 import com.microsoft.fluentui.tokenized.SearchBar
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.drawer.DrawerValue
@@ -60,8 +63,10 @@ class V2AcrylicPaneActivity : V2DemoActivity() {
         setupActivity(this)
     }
 
-    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-18" //TODO: Update this URL
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-18"
+    override val paramsUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#params-18" //TODO: Update this URL
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-18"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,32 +79,81 @@ class V2AcrylicPaneActivity : V2DemoActivity() {
 @Composable
 fun CreateAcrylicPaneActivityUI(
     context: Context
-){
-    var acrylicPaneSizeFraction by rememberSaveable { mutableFloatStateOf(0.5F) }
-    var acrylicPaneStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
+) {
+    var acrylicPaneSize by rememberSaveable { mutableFloatStateOf(250.0f) }
+    var acrylicPaneOrientation by rememberSaveable { mutableStateOf(AcrylicPaneOrientation.BOTTOM) }
+    var acrylicPaneBlurRadius by rememberSaveable { mutableStateOf(0.0f) }
+    val acrylicPaneTokens: AcrylicPaneTokens = object : AcrylicPaneTokens() {
+        @Composable
+        override fun acrylicPaneBlurRadius(acrylicPaneInfo: AcrylicPaneInfo): Int {
+            return acrylicPaneBlurRadius.toInt()
+        }
+    }
 
     AcrylicPane(
-        paneHeight = (acrylicPaneSizeFraction * 500).toInt().dp,
-        acrylicPaneStyle = acrylicPaneStyle,
-        component = { acrylicPaneContent(context = context) },
+        paneHeight = acrylicPaneSize.toInt().dp,
+        orientation = acrylicPaneOrientation,
+        component = { AcrylicPaneContent(context = context) },
         backgroundContent = {
             Column(
-                modifier = Modifier.verticalScroll(rememberScrollState()).fillMaxWidth().padding(10.dp),
+                modifier = Modifier
+                    .verticalScroll(rememberScrollState())
+                    .fillMaxWidth()
+                    .padding(10.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Spacer(Modifier.height(300.dp))
                 ListItem.Header(
-                    title = "Acrylic Pane Size",
+                    title = "Acrylic Pane Orientation",
                     titleMaxLines = 2,
                     modifier = Modifier
                         .clearAndSetSemantics {
-                            this.contentDescription = "Acrylic Pane Size"
+                            this.contentDescription = "Acrylic Pane Orientation"
+                        },
+                )
+                val checkBoxSelectedValues = List(3) { rememberSaveable { mutableStateOf(false) } }
+                when (acrylicPaneOrientation) {
+                    AcrylicPaneOrientation.TOP -> checkBoxSelectedValues[0].value = true
+                    AcrylicPaneOrientation.CENTER -> checkBoxSelectedValues[1].value = true
+                    AcrylicPaneOrientation.BOTTOM -> checkBoxSelectedValues[2].value = true
+                }
+                val acrylicPaneOrientations = listOf(
+                    AcrylicPaneOrientation.TOP,
+                    AcrylicPaneOrientation.CENTER,
+                    AcrylicPaneOrientation.BOTTOM,
+                )
+                val orientations = listOf("Top", "Center", "Bottom")
+                for (i in 0..2) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Start,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 10.dp, vertical = 3.dp)
+                    ) {
+                        Text(text = "Orientation ${orientations[i]}")
+                        Spacer(modifier = Modifier.width(320.dp))
+                        RadioButton(
+                            onClick = {
+                                selectRadioGroupButton(i, checkBoxSelectedValues)
+                                acrylicPaneOrientation = acrylicPaneOrientations[i]
+                            },
+                            selected = checkBoxSelectedValues[i].value
+                        )
+                    }
+                }
+                ListItem.Header(
+                    title = "Blur Radius",
+                    titleMaxLines = 2,
+                    modifier = Modifier
+                        .clearAndSetSemantics {
+                            this.contentDescription = "Acrylic Pane Blur Radius"
                         },
                 )
                 Slider(
-                    value = acrylicPaneSizeFraction,
-                    onValueChange = { acrylicPaneSizeFraction = it },
-                    valueRange = 0F..1F,
+                    value = acrylicPaneBlurRadius,
+                    onValueChange = { acrylicPaneBlurRadius = it },
+                    valueRange = 0F..200F,
                     colors = SliderDefaults.colors(
                         thumbColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                             FluentTheme.themeMode
@@ -121,36 +175,37 @@ fun CreateAcrylicPaneActivityUI(
                     steps = 9
                 )
                 ListItem.Header(
-                    title = "Acrylic Pane Theme",
+                    title = "Acrylic Pane Size",
                     titleMaxLines = 2,
                     modifier = Modifier
                         .clearAndSetSemantics {
-                            this.contentDescription = "Acrylic Pane Theme"
+                            this.contentDescription = "Acrylic Pane Size"
                         },
                 )
-                var checkBoxSelectedValues = List(2) { rememberSaveable { mutableStateOf(false) } }
-                var acrylicPaneStyles = listOf(
-                    FluentStyle.Neutral,
-                    FluentStyle.Brand
-                )
-                for (i in 0..1) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Start,
-                        modifier = Modifier.fillMaxWidth()
-                            .padding(horizontal = 10.dp, vertical = 3.dp)
-                    ) {
-                        Text(text = "Theme $i")
-                        Spacer(modifier = Modifier.width(320.dp))
-                        RadioButton(
-                            onClick = {
-                                selectRadioGroupButton(i, checkBoxSelectedValues)
-                                acrylicPaneStyle = acrylicPaneStyles[i]
-                            },
-                            selected = checkBoxSelectedValues[i].value
+                Slider(
+                    value = acrylicPaneSize,
+                    onValueChange = { acrylicPaneSize = it },
+                    valueRange = 0F..500F,
+                    colors = SliderDefaults.colors(
+                        thumbColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            FluentTheme.themeMode
+                        ),
+                        activeTrackColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color80],
+                        inactiveTrackColor = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
+                            FluentTheme.themeMode
+                        ),
+                        disabledThumbColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                            FluentTheme.themeMode
+                        ),
+                        disabledActiveTrackColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                            FluentTheme.themeMode
+                        ),
+                        disabledInactiveTrackColor = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                            FluentTheme.themeMode
                         )
-                    }
-                }
+                    ),
+                    steps = 9
+                )
                 ListItem.Header(
                     title = "Test Bottom Drawer",
                     titleMaxLines = 2,
@@ -159,7 +214,7 @@ fun CreateAcrylicPaneActivityUI(
                             this.contentDescription = "Test Bottom Drawer"
                         },
                 )
-                showBottomDrawer()
+                ShowBottomDrawer()
                 ListItem.Header(
                     title = "Scroll Test",
                     titleMaxLines = 2,
@@ -172,24 +227,38 @@ fun CreateAcrylicPaneActivityUI(
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Start,
-                        modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 5.dp)
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 12.dp, vertical = 5.dp)
                     ) {
-                        Text(text = "Text $it", fontSize = 14.sp,
+                        Text(
+                            text = "Text $it", fontSize = 14.sp,
                             style = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1]
-                                .merge(TextStyle(color = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(themeMode = FluentTheme.themeMode)))
+                                .merge(
+                                    TextStyle(
+                                        color = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
+                                            themeMode = FluentTheme.themeMode
+                                        )
+                                    )
+                                )
                         )
                     }
                 }
             }
-        }
+        },
+        acrylicPaneTokens = acrylicPaneTokens
     )
 }
 
 @Composable
-fun showBottomDrawer(){
+fun ShowBottomDrawer() {
     val scope = rememberCoroutineScope()
 
-    val drawerState = rememberBottomDrawerState(initialValue = DrawerValue.Closed, expandable = true, skipOpenState = false)
+    val drawerState = rememberBottomDrawerState(
+        initialValue = DrawerValue.Closed,
+        expandable = true,
+        skipOpenState = false
+    )
 
     val open: () -> Unit = {
         scope.launch { drawerState.open() }
@@ -228,7 +297,7 @@ fun showBottomDrawer(){
 }
 
 @Composable
-fun acrylicPaneContent(context: Context){
+fun AcrylicPaneContent(context: Context) {
     val scope = rememberCoroutineScope()
 
     val microphonePressedString = getDemoAppString(DemoAppStrings.MicrophonePressed)
@@ -244,7 +313,11 @@ fun acrylicPaneContent(context: Context){
     val showCustomizedAppBar = false
     Column {
         Spacer(modifier = Modifier.height(80.dp))
-        Row(Modifier.height(5.dp).padding(20.dp)) {
+        Row(
+            Modifier
+                .height(5.dp)
+                .padding(20.dp)
+        ) {
             SearchBar(
                 onValueChange = { query, selectedPerson ->
                     scope.launch {
