@@ -23,3 +23,25 @@ pipelines:
           lastModifiedDate: 2024-09-23
         armory:
           lastModifiedDate: 2024-09-23
+  34367:
+    retail:
+      source:
+        credscan:
+          lastModifiedDate: 2025-08-04
+        eslint:
+          lastModifiedDate: 2025-08-04
+        bandit:
+          lastModifiedDate: 2025-08-04
+        psscriptanalyzer:
+          lastModifiedDate: 2025-08-04
+        armory:
+          lastModifiedDate: 2025-08-04
+      binary:
+        credscan:
+          lastModifiedDate: 2025-08-04
+        binskim:
+          lastModifiedDate: 2025-08-04
+        prefast:
+          lastModifiedDate: 2025-08-04
+        roslyn:
+          lastModifiedDate: 2025-08-04
