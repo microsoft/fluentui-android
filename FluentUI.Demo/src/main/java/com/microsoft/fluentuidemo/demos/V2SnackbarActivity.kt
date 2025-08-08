@@ -31,6 +31,7 @@ import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.notification.AnimationBehavior
 import com.microsoft.fluentui.tokenized.notification.AnimationVariables
+import com.microsoft.fluentui.tokenized.notification.DemoCardStack
 import com.microsoft.fluentui.tokenized.notification.NotificationDuration
 import com.microsoft.fluentui.tokenized.notification.NotificationResult
 import com.microsoft.fluentui.tokenized.notification.Snackbar
@@ -65,9 +66,10 @@ class V2SnackbarActivity : V2DemoActivity() {
         val context = this
 
         setActivityContent {
-            Box(modifier = Modifier.fillMaxSize()){
-            StackableSnackbar()
-                }
+            DemoCardStack()
+//            Box(modifier = Modifier.fillMaxSize()){
+//            StackableSnackbar()
+//                }
 //            val snackbarState = remember { SnackbarState() }
 //
 //            val scope = rememberCoroutineScope()
