@@ -33,6 +33,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalView
@@ -110,6 +111,7 @@ fun CardStack(
     cardWidth: Dp = 320.dp,
     cardHeight: Dp = 160.dp,
     peekHeight: Dp = 10.dp,
+    stackOffset: Offset = Offset(0f, 0f), // offset for the stack position
     stackAbove: Boolean = true, // if true, cards stack above each other (negative offset)
     contentModifier: Modifier = Modifier
 ) {
@@ -119,7 +121,7 @@ fun CardStack(
 
     val targetHeight by remember(count, cardHeight, peekHeight, state.expanded) {
         mutableStateOf(
-            if (state.expanded) {
+            if (state.expanded || true) {
                 cardHeight * count + (if (count > 0) (count - 1) * peekHeight else 0.dp)
             } else {
                 cardHeight + (if (count > 0) (count - 1) * peekHeight else 0.dp)
@@ -147,8 +149,8 @@ fun CardStack(
                 window.addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
                 window.setDimAmount(0f)
                 window.setGravity(Gravity.BOTTOM)
-                // window.attributes.height = 0
-                // window.attributes.width = 0
+                window.attributes.y = stackOffset.y.roundToInt()
+                window.attributes.x = stackOffset.x.roundToInt()
                 window.attributes.y = 200
             }
         }
@@ -214,7 +216,8 @@ private fun CardStackItem(
     val scope = rememberCoroutineScope()
 
     // Card Adjust Animation
-    val targetYOffset = mutableStateOf( with(LocalDensity.current) { if (expanded) (index * ( peekHeight + cardHeight) ).toPx() else (index * peekHeight).toPx() })
+    val targetYOffset =
+        mutableStateOf(with(LocalDensity.current) { if (expanded) (index * (peekHeight + cardHeight)).toPx() else (index * peekHeight).toPx() })
     val animatedYOffset = remember { Animatable(targetYOffset.value) }
     LaunchedEffect(index, expanded) {
         animatedYOffset.animateTo(
@@ -226,7 +229,6 @@ private fun CardStackItem(
     // Slide In Animation TODO: Add configurations
     val slideInProgress = remember { Animatable(1f) } // 1 = offscreen right, 0 = in place
     LaunchedEffect(model.id) {
-        // if this is top when added, slide from right
         if (isTop) {
             slideInProgress.snapTo(1f)
             slideInProgress.animateTo(
@@ -242,22 +244,17 @@ private fun CardStackItem(
     val opacityProgress = remember { Animatable(1f) }
     LaunchedEffect(model.inRemoval) {
         if (model.inRemoval) {
-//            if (!isTop) {
             opacityProgress.snapTo(1f)
             opacityProgress.animateTo(
                 0f,
                 animationSpec = tween(durationMillis = 350, easing = FastOutSlowInEasing)
             )
-//            } else {
-//                slideInProgress.snapTo(1f)
-//            }
         }
     }
 
     val swipeX = remember { Animatable(0f) }
-    val removalJob = remember { mutableStateOf<Job?>(null) }
 
-    val offsetX: Float = if (isTop) swipeX.value else 0f
+    val offsetX: Float = if (isTop || expanded) swipeX.value else 0f
     val localDensity = LocalDensity.current
     Box(
         modifier = Modifier
@@ -273,7 +270,7 @@ private fun CardStackItem(
             .width(cardWidth)
             .height(cardHeight)
             .padding(horizontal = 0.dp)
-            .then(if (isTop) Modifier.pointerInput(model.id) {
+            .then(if (isTop || expanded) Modifier.pointerInput(model.id) {
                 detectDragGestures(
                     onDragStart = { /* no-op */ },
                     onDragEnd = {
@@ -325,7 +322,10 @@ private fun CardStackItem(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .shadow(elevation = if (isTop) 12.dp else 4.dp, shape = RoundedCornerShape(12.dp))
+                .shadow(
+                    elevation = if (isTop || expanded) 12.dp else 4.dp,
+                    shape = RoundedCornerShape(12.dp)
+                )
                 .border(width = 1.dp, color = Color(0x22000000), shape = RoundedCornerShape(12.dp))
                 .background(color = Color.LightGray, shape = RoundedCornerShape(12.dp))
                 .then(contentModifier),
