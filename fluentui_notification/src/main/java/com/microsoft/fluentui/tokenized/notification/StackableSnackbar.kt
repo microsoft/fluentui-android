@@ -33,21 +33,6 @@ import com.microsoft.fluentui.util.dpToPx
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
-/*
- CardStack.kt
- Production-ready Jetpack Compose component that displays a vertically-stacking deck of cards.
- Features:
-  - Exposes CardStackState with addCard/removeCard functions
-  - Each card is a Box with outline and elevation (Card composable)
-  - New cards slide in from the right and push the stack up a bit
-  - Front card is swipeable horizontally; swiping past threshold removes it with animation
-  - Stack keeps the same width; height grows as you add cards (peek of cards visible)
-  - Uses composable lambdas as card content so you can pass any UI inside cards
-
- Usage example at bottom.
-*/
-
-
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -68,6 +53,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.times
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.abs
 import kotlin.math.roundToInt
@@ -75,6 +61,7 @@ import kotlin.math.roundToInt
 /** Single card model contains an id and a composable content lambda. */
 data class CardModel(
     val id: String,
+    var inRemoval: Boolean = false,
     val content: @Composable () -> Unit
 )
 
@@ -84,9 +71,12 @@ class CardStackState(
 ) {
     internal val snapshotStateList = mutableStateListOf<CardModel>().apply { addAll(cards) }
 
-    fun addCard(card: CardModel) {
+    suspend fun addCard(card: CardModel, maxSize: Int = 5) {
         // add to front so index 0 is top
         snapshotStateList.add(0, card)
+        if(snapshotStateList.size >= maxSize) {
+            popBack()
+        }
     }
 
     fun removeCardById(id: String) {
@@ -95,6 +85,12 @@ class CardStackState(
 
     fun popFront(): CardModel? {
         return if (snapshotStateList.isNotEmpty()) snapshotStateList.removeAt(0) else null
+    }
+
+    suspend fun popBack(): CardModel? {
+        snapshotStateList.get(snapshotStateList.size -1).inRemoval = true
+        delay(360)
+        return if (snapshotStateList.isNotEmpty()) snapshotStateList.removeAt(snapshotStateList.size - 1) else null
     }
 
     fun size(): Int = snapshotStateList.size
@@ -119,7 +115,7 @@ fun CardStack(
     modifier: Modifier = Modifier,
     cardWidth: Dp = 320.dp,
     cardHeight: Dp = 160.dp,
-    peekHeight: Dp = 24.dp,
+    peekHeight: Dp = 10.dp,
     stackAbove: Boolean = true, // if true, cards stack above each other (negative offset)
     contentModifier: Modifier = Modifier
 ) {
@@ -192,11 +188,9 @@ private fun CardStackItem(
 ) {
     val scope = rememberCoroutineScope()
 
-    // y offset for stacking
+    // Card Adjust Animation
     val targetYOffset = with(LocalDensity.current) { (index * peekHeight).toPx() }
     val animatedYOffset = remember { Animatable(targetYOffset) }
-
-    // When index changes (stack updated), animate to new y offset
     LaunchedEffect(index) {
         animatedYOffset.animateTo(
             targetYOffset * (if (stackAbove) -1f else 1f),
@@ -204,7 +198,7 @@ private fun CardStackItem(
         )
     }
 
-    // Slide in animation for a newly added top card
+    // Slide In Animation TODO: Add configurations
     val slideInProgress = remember { Animatable(1f) } // 1 = offscreen right, 0 = in place
     LaunchedEffect(model.id) {
         // if this is top when added, slide from right
@@ -219,7 +213,22 @@ private fun CardStackItem(
         }
     }
 
-    // horizontal drag and swipe logic (only for top)
+    // Fade Out Animation  TODO: Add configurations
+    val opacityProgress = remember { Animatable(1f) }
+    LaunchedEffect(model.inRemoval) {
+        if(model.inRemoval) {
+            if (!isTop) {
+                opacityProgress.snapTo(1f)
+                opacityProgress.animateTo(
+                    0f,
+                    animationSpec = tween(durationMillis = 350, easing = FastOutSlowInEasing)
+                )
+            } else {
+                slideInProgress.snapTo(1f)
+            }
+        }
+    }
+
     val swipeX = remember { Animatable(0f) }
     val removalJob = remember { mutableStateOf<Job?>(null) }
 
@@ -233,6 +242,9 @@ private fun CardStackItem(
                     animatedYOffset.value.roundToInt()
                 )
             }
+            .graphicsLayer(
+                alpha = opacityProgress.value
+            )
             .width(cardWidth)
             .height(cardHeight)
             .padding(horizontal = 0.dp)
@@ -284,7 +296,7 @@ private fun CardStackItem(
                 )
             } else Modifier)
     ) {
-        // Card visuals
+        // Card visuals TODO: Replace with card composable
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -303,14 +315,14 @@ private fun CardStackItem(
 @Composable
 fun DemoCardStack() {
     val stackState = rememberCardStackState()
-
+    val scope = rememberCoroutineScope()
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Bottom) {
         CardStack(
             state = stackState,
             modifier = Modifier.padding(16.dp),
             cardWidth = 340.dp,
             cardHeight = 180.dp,
-            peekHeight = 28.dp,
+            peekHeight = 10.dp,
             stackAbove = true
         )
 
@@ -319,12 +331,14 @@ fun DemoCardStack() {
         Row {
             Button(onClick = {
                 val id = java.util.UUID.randomUUID().toString()
-                stackState.addCard(CardModel(id = id) {
-                    Column(modifier = Modifier.padding(12.dp)) {
-                        BasicText("Card: $id")
-                        BasicText("Some detail here")
-                    }
-                })
+                scope.launch {
+                    stackState.addCard(CardModel(id = id) {
+                        Column(modifier = Modifier.padding(12.dp)) {
+                            BasicText("Card: $id")
+                            BasicText("Some detail here")
+                        }
+                    })
+                }
             }, text = "Add card")
 
             Spacer(modifier = Modifier.width(12.dp))
@@ -332,197 +346,13 @@ fun DemoCardStack() {
             Button(onClick = {
                 stackState.popFront()
             }, text = "Remove top card")
-        }
-    }
-}
+            Spacer(modifier = Modifier.width(12.dp))
 
-/* Notes & production tips:
- - This implementation stores composable lambdas in CardModel so you can pass arbitrary content.
- - If you plan to persist models across process death, store only IDs and data (not lambdas).
- - You can extend swipe gestures to support velocity and fling using androidx.compose.foundation.gestures.
- - Improve accessibility by adding semantics for swipe actions and content descriptions.
- - Tweak animation timings and easings to match your app design system.
-*/
-
-
-open class StackableSnackbarBehavior : AnimationBehavior() {
-    override suspend fun onShowAnimation() {
-        animationVariables.offsetX = Animatable(100f)
-        coroutineScope {
-            launch { // move the entire stack up, pass offset Y in each card
-                animationVariables.offsetY = Animatable(0f)
-                animationVariables.offsetY.animateTo(
-                    targetValue = -100f,
-                    animationSpec = tween(
-                        easing = LinearEasing,
-                        durationMillis = 200,
-                    )
-                )
-            }
-            launch {
-                animationVariables.alpha.animateTo(
-                    targetValue = 1F,
-                    animationSpec = tween(
-                        easing = LinearEasing,
-                        durationMillis = 200,
-                    )
-                )
-            }
-
-//            launch {
-//                animationVariables.offsetX.animateTo(
-//                    targetValue = 0f,
-//                    animationSpec = tween(
-//                        easing = LinearEasing,
-//                        durationMillis = 200,
-//                    )
-//                )
-//            }
-        }
-    }
-
-    override suspend fun onDismissAnimation() {
-        animationVariables.offsetX.animateTo(
-            0f,
-            animationSpec = tween(
-                easing = LinearEasing,
-                durationMillis = 150,
-            )
-        )
-        animationVariables.alpha.animateTo(
-            0F,
-            animationSpec = tween(
-                easing = LinearEasing,
-                durationMillis = 150,
-            )
-        )
-    }
-}
-
-@Composable
-fun Modifier.swipeToDismissFromStack(
-    animationVariables: AnimationVariables,
-    scope: CoroutineScope,
-    onDismiss: () -> Unit,
-): Modifier {
-    val configuration = LocalConfiguration.current
-    val dismissThreshold =
-        dpToPx(configuration.screenWidthDp.dp) * 0.33f  // One-third of screen width
-    return this.pointerInput(Unit) {
-        detectHorizontalDragGestures(
-            onDragEnd = {
-                if (animationVariables.offsetX.value < -dismissThreshold) {
-                    scope.launch {
-                        onDismiss()
-                    }
-                } else {
-                    scope.launch {
-                        animationVariables.offsetX.animateTo(
-                            0f,
-                            animationSpec = tween(300)
-                        )
-                    }
-                }
-            },
-            onHorizontalDrag = { _, dragAmount ->
+            Button(onClick = {
                 scope.launch {
-                    animationVariables.offsetX.snapTo(animationVariables.offsetX.value + dragAmount)
+                    stackState.popBack()
                 }
-            }
-        )
-    }
-}
-
-@Composable
-fun StackableSnackbar() {
-    var enableDialog by remember { mutableStateOf(false) }
-    Column() {
-
-        if (!enableDialog) {
-            SingleSnackbarTile()
-            SingleSnackbarTile()
-            SingleSnackbarTile()
-        } else {
-            val popupProperties = PopupProperties(
-                focusable = true
-            )
-            Popup(
-                onDismissRequest = {
-                    enableDialog = false
-                }
-            ) {
-                Column(
-                    modifier = Modifier.verticalScroll(rememberScrollState())
-                ) {
-                    BasicCard(modifier = Modifier.padding(10.dp)) {
-                        BasicText("This is a Stackable Snackbar")
-                    }
-                    BasicCard(modifier = Modifier.padding(10.dp)) {
-                        BasicText("This is a Stackable Snackbar")
-                    }
-                    BasicCard(modifier = Modifier.padding(10.dp)) {
-                        BasicText("This is a Stackable Snackbar")
-                    }
-                    BasicCard(modifier = Modifier.padding(10.dp)) {
-                        BasicText("This is a Stackable Snackbar")
-                    }
-                }
-            }
+            }, text = "Remove last card")
         }
-    }
-}
-
-
-@Composable
-private fun SingleSnackbarTile() {
-    var enableDialog by remember { mutableStateOf(false) }
-    var stackableSnackbarBehavior: StackableSnackbarBehavior = remember {
-        StackableSnackbarBehavior()
-    }
-    var animationVariables = stackableSnackbarBehavior.animationVariables
-    val scope = rememberCoroutineScope()
-    var isShown by remember { mutableStateOf(false) }
-    Button(
-        onClick = {
-            scope.launch {
-                if (isShown) {
-                    stackableSnackbarBehavior.onShowAnimation()
-                } else {
-                    stackableSnackbarBehavior.onDismissAnimation()
-                }
-            }
-            isShown = !isShown
-        }
-    )
-    if (isShown) {
-        BasicCard(
-            modifier = Modifier
-                .padding(10.dp)
-                .graphicsLayer(
-                    scaleX = animationVariables.scale.value,
-                    scaleY = animationVariables.scale.value,
-                    alpha = animationVariables.alpha.value,
-                    translationX = animationVariables.offsetX.value,
-                    translationY = animationVariables.offsetY.value
-                )
-                .swipeToDismissFromStack(
-                    animationVariables = animationVariables,
-                    scope = scope,
-                    onDismiss = {
-                        isShown = false
-                    }
-                )
-                .clickableWithTooltip(
-                    onClick = {
-                        // enableDialog = true
-
-                    },
-                    tooltipText = "Snackbar clicked",
-                    tooltipEnabled = true
-                )
-        ) {
-            BasicText("Click here to show Stackable Snackbar")
-        }
-        Spacer(modifier = Modifier.height(10.dp))
     }
 }
