@@ -1,5 +1,8 @@
 package com.microsoft.fluentui.tokenized.notification
 
+import android.os.Build
+import android.view.Gravity
+import android.view.WindowManager
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
@@ -47,14 +50,20 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.times
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
+import androidx.compose.ui.window.DialogWindowProvider
+import com.microsoft.fluentui.theme.token.controlTokens.AcrylicPaneOrientation
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.UUID
 import kotlin.math.abs
 import kotlin.math.roundToInt
 
@@ -70,11 +79,11 @@ class CardStackState(
     internal val cards: MutableList<CardModel>
 ) {
     internal val snapshotStateList = mutableStateListOf<CardModel>().apply { addAll(cards) }
+    internal var expanded by mutableStateOf(false)
 
-    suspend fun addCard(card: CardModel, maxSize: Int = 5) {
-        // add to front so index 0 is top
+    suspend fun addCard(card: CardModel, maxSize: Int = 6) {
         snapshotStateList.add(0, card)
-        if(snapshotStateList.size >= maxSize) {
+        if (snapshotStateList.size >= maxSize) {
             popBack()
         }
     }
@@ -83,14 +92,18 @@ class CardStackState(
         snapshotStateList.removeAll { it.id == id }
     }
 
-    fun popFront(): CardModel? {
+    suspend fun popFront(): CardModel? {
+        if (snapshotStateList.isEmpty()) return null
+        snapshotStateList.get(0).inRemoval = true
+        delay(360)
         return if (snapshotStateList.isNotEmpty()) snapshotStateList.removeAt(0) else null
     }
 
     suspend fun popBack(): CardModel? {
-        snapshotStateList.get(snapshotStateList.size -1).inRemoval = true
+        if (snapshotStateList.isEmpty()) return null
+        snapshotStateList.get(snapshotStateList.size - 1).inRemoval = true
         delay(360)
-        return if (snapshotStateList.isNotEmpty()) snapshotStateList.removeAt(snapshotStateList.size - 1) else null
+        return snapshotStateList.removeAt(snapshotStateList.size - 1)
     }
 
     fun size(): Int = snapshotStateList.size
@@ -120,10 +133,17 @@ fun CardStack(
     contentModifier: Modifier = Modifier
 ) {
     // Total stack height: cardHeight + (count-1) * peekHeight
+    // Total in expanded state: cardHeight * count + (count-1) * peekHeight
     val count by remember { derivedStateOf { state.size() } }
 
     val targetHeight by remember(count, cardHeight, peekHeight) {
-        mutableStateOf(cardHeight + (if (count > 0) (count - 1) * peekHeight else 0.dp))
+        mutableStateOf(
+            if (state.expanded) {
+                cardHeight * count + (if (count > 0) (count - 1) * peekHeight else 0.dp)
+            } else {
+                cardHeight + (if (count > 0) (count - 1) * peekHeight else 0.dp)
+            }
+        )
     }
 
     // Smoothly animate stack height when count changes
@@ -132,43 +152,66 @@ fun CardStack(
         animationSpec = spring(stiffness = Spring.StiffnessMedium)
     )
 
-    Box(
-        modifier = modifier
-            .width(cardWidth)
-            .height(animatedStackHeight)
-            .wrapContentHeight(
-                align = if (stackAbove) {
-                    Alignment.Bottom
-                } else {
-                    Alignment.Top
-                }
-            )
-            .clickableWithTooltip(
-                onClick = {},
-                tooltipText = "Notification Stack",
-            )
+    Dialog(
+        onDismissRequest = {},
+        properties = DialogProperties(
+            dismissOnBackPress = false,
+            dismissOnClickOutside = false
+        )
     ) {
-        // Show cards in reverse visual order: bottom-most drawn first
-        val listSnapshot = state.snapshotStateList.toList()
-
-        listSnapshot.reversed().forEachIndexed { visuallyReversedIndex, cardModel ->
-            // compute logical index from top (0 is top)
-            val logicalIndex = listSnapshot.size - 1 - visuallyReversedIndex
-            val isTop = logicalIndex == 0
-
-            key(cardModel.id) {
-                // Each card will be placed offset from top by logicalIndex * peekHeight
-                CardStackItem(
-                    model = cardModel,
-                    index = logicalIndex,
-                    isTop = isTop,
-                    cardHeight = cardHeight,
-                    peekHeight = peekHeight,
-                    cardWidth = cardWidth,
-                    onSwipedAway = { idToRemove -> state.removeCardById(idToRemove) },
-                    stackAbove = stackAbove,
-                    contentModifier = contentModifier
+        val window = (LocalView.current.parent as? DialogWindowProvider)?.window
+        SideEffect {
+            if (window != null) {
+                window.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL)
+                window.addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
+                window.setDimAmount(0f)
+                window.setGravity(Gravity.BOTTOM)
+                // window.attributes.height = 0
+                // window.attributes.width = 0
+                window.attributes.y = 200
+            }
+        }
+        Box(
+            modifier = modifier
+                .width(cardWidth)
+                .height(if (state.snapshotStateList.size == 0) 0.dp else animatedStackHeight)
+                .wrapContentHeight(
+                    align = if (stackAbove) {
+                        Alignment.Bottom
+                    } else {
+                        Alignment.Top
+                    }
                 )
+                .clickableWithTooltip(
+                    onClick = {
+                        state.expanded = !state.expanded
+                    },
+                    tooltipText = "Notification Stack",
+                )
+        ) {
+            // Show cards in reverse visual order: bottom-most drawn first
+            val listSnapshot = state.snapshotStateList.toList()
+
+            listSnapshot.reversed().forEachIndexed { visuallyReversedIndex, cardModel ->
+                // compute logical index from top (0 is top)
+                val logicalIndex = listSnapshot.size - 1 - visuallyReversedIndex
+                val isTop = logicalIndex == 0
+
+                key(cardModel.id) {
+                    // Each card will be placed offset from top by logicalIndex * peekHeight
+                    CardStackItem(
+                        model = cardModel,
+                        expanded = state.expanded,
+                        index = logicalIndex,
+                        isTop = isTop,
+                        cardHeight = cardHeight,
+                        peekHeight = peekHeight,
+                        cardWidth = cardWidth,
+                        onSwipedAway = { idToRemove -> state.removeCardById(idToRemove) },
+                        stackAbove = stackAbove,
+                        contentModifier = contentModifier
+                    )
+                }
             }
         }
     }
@@ -177,6 +220,7 @@ fun CardStack(
 @Composable
 private fun CardStackItem(
     model: CardModel,
+    expanded: Boolean,
     index: Int,
     isTop: Boolean,
     cardWidth: Dp,
@@ -189,11 +233,11 @@ private fun CardStackItem(
     val scope = rememberCoroutineScope()
 
     // Card Adjust Animation
-    val targetYOffset = with(LocalDensity.current) { (index * peekHeight).toPx() }
-    val animatedYOffset = remember { Animatable(targetYOffset) }
+    val targetYOffset = mutableStateOf( with(LocalDensity.current) { if (expanded) (index * ( peekHeight + cardHeight) ).toPx() else (index * peekHeight).toPx() })
+    val animatedYOffset = remember { Animatable(targetYOffset.value) }
     LaunchedEffect(index) {
         animatedYOffset.animateTo(
-            targetYOffset * (if (stackAbove) -1f else 1f),
+            targetYOffset.value * (if (stackAbove) -1f else 1f),
             animationSpec = spring(stiffness = Spring.StiffnessLow)
         )
     }
@@ -216,16 +260,16 @@ private fun CardStackItem(
     // Fade Out Animation  TODO: Add configurations
     val opacityProgress = remember { Animatable(1f) }
     LaunchedEffect(model.inRemoval) {
-        if(model.inRemoval) {
-            if (!isTop) {
-                opacityProgress.snapTo(1f)
-                opacityProgress.animateTo(
-                    0f,
-                    animationSpec = tween(durationMillis = 350, easing = FastOutSlowInEasing)
-                )
-            } else {
-                slideInProgress.snapTo(1f)
-            }
+        if (model.inRemoval) {
+//            if (!isTop) {
+            opacityProgress.snapTo(1f)
+            opacityProgress.animateTo(
+                0f,
+                animationSpec = tween(durationMillis = 350, easing = FastOutSlowInEasing)
+            )
+//            } else {
+//                slideInProgress.snapTo(1f)
+//            }
         }
     }
 
@@ -316,12 +360,16 @@ private fun CardStackItem(
 fun DemoCardStack() {
     val stackState = rememberCardStackState()
     val scope = rememberCoroutineScope()
-    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Bottom) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Bottom
+    ) {
         CardStack(
             state = stackState,
             modifier = Modifier.padding(16.dp),
             cardWidth = 340.dp,
-            cardHeight = 180.dp,
+            cardHeight = 100.dp,
             peekHeight = 10.dp,
             stackAbove = true
         )
@@ -330,7 +378,7 @@ fun DemoCardStack() {
 
         Row {
             Button(onClick = {
-                val id = java.util.UUID.randomUUID().toString()
+                val id = UUID.randomUUID().toString()
                 scope.launch {
                     stackState.addCard(CardModel(id = id) {
                         Column(modifier = Modifier.padding(12.dp)) {
@@ -344,7 +392,9 @@ fun DemoCardStack() {
             Spacer(modifier = Modifier.width(12.dp))
 
             Button(onClick = {
-                stackState.popFront()
+                scope.launch {
+                    stackState.popFront()
+                }
             }, text = "Remove top card")
             Spacer(modifier = Modifier.width(12.dp))
 

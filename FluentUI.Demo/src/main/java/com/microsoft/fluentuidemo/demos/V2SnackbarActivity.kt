@@ -36,7 +36,6 @@ import com.microsoft.fluentui.tokenized.notification.NotificationDuration
 import com.microsoft.fluentui.tokenized.notification.NotificationResult
 import com.microsoft.fluentui.tokenized.notification.Snackbar
 import com.microsoft.fluentui.tokenized.notification.SnackbarState
-import com.microsoft.fluentui.tokenized.notification.StackableSnackbar
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillBar
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentuidemo.R
