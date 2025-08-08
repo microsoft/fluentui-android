@@ -53,6 +53,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -119,6 +120,7 @@ fun CardStack(
     cardWidth: Dp = 320.dp,
     cardHeight: Dp = 160.dp,
     peekHeight: Dp = 24.dp,
+    stackAbove: Boolean = true, // if true, cards stack above each other (negative offset)
     contentModifier: Modifier = Modifier
 ) {
     // Total stack height: cardHeight + (count-1) * peekHeight
@@ -138,7 +140,17 @@ fun CardStack(
         modifier = modifier
             .width(cardWidth)
             .height(animatedStackHeight)
-            .wrapContentHeight(align = Alignment.Top)
+            .wrapContentHeight(
+                align = if (stackAbove) {
+                    Alignment.Bottom
+                } else {
+                    Alignment.Top
+                }
+            )
+            .clickableWithTooltip(
+                onClick = {},
+                tooltipText = "Notification Stack",
+            )
     ) {
         // Show cards in reverse visual order: bottom-most drawn first
         val listSnapshot = state.snapshotStateList.toList()
@@ -158,6 +170,7 @@ fun CardStack(
                     peekHeight = peekHeight,
                     cardWidth = cardWidth,
                     onSwipedAway = { idToRemove -> state.removeCardById(idToRemove) },
+                    stackAbove = stackAbove,
                     contentModifier = contentModifier
                 )
             }
@@ -174,6 +187,7 @@ private fun CardStackItem(
     cardHeight: Dp,
     peekHeight: Dp,
     onSwipedAway: (String) -> Unit,
+    stackAbove: Boolean = false,
     contentModifier: Modifier = Modifier
 ) {
     val scope = rememberCoroutineScope()
@@ -185,7 +199,7 @@ private fun CardStackItem(
     // When index changes (stack updated), animate to new y offset
     LaunchedEffect(index) {
         animatedYOffset.animateTo(
-            targetYOffset,
+            targetYOffset * (if (stackAbove) -1f else 1f),
             animationSpec = spring(stiffness = Spring.StiffnessLow)
         )
     }
@@ -290,13 +304,14 @@ private fun CardStackItem(
 fun DemoCardStack() {
     val stackState = rememberCardStackState()
 
-    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxSize()) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Bottom) {
         CardStack(
             state = stackState,
             modifier = Modifier.padding(16.dp),
             cardWidth = 340.dp,
             cardHeight = 180.dp,
-            peekHeight = 28.dp
+            peekHeight = 28.dp,
+            stackAbove = true
         )
 
         Spacer(modifier = Modifier.height(20.dp))
