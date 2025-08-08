@@ -1,21 +1,15 @@
 package com.microsoft.fluentui.tokenized.notification
 
-import android.os.Build
 import android.view.Gravity
 import android.view.WindowManager
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.gestures.detectHorizontalDragGestures
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.BasicText
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -25,16 +19,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Popup
-import androidx.compose.ui.window.PopupProperties
-import com.microsoft.fluentui.tokenized.controls.BasicCard
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.util.clickableWithTooltip
-import com.microsoft.fluentui.util.dpToPx
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
@@ -46,23 +33,17 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.times
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.window.DialogWindowProvider
-import com.microsoft.fluentui.theme.token.controlTokens.AcrylicPaneOrientation
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import java.util.UUID
 import kotlin.math.abs
 import kotlin.math.roundToInt
@@ -136,7 +117,7 @@ fun CardStack(
     // Total in expanded state: cardHeight * count + (count-1) * peekHeight
     val count by remember { derivedStateOf { state.size() } }
 
-    val targetHeight by remember(count, cardHeight, peekHeight) {
+    val targetHeight by remember(count, cardHeight, peekHeight, state.expanded) {
         mutableStateOf(
             if (state.expanded) {
                 cardHeight * count + (if (count > 0) (count - 1) * peekHeight else 0.dp)
@@ -235,7 +216,7 @@ private fun CardStackItem(
     // Card Adjust Animation
     val targetYOffset = mutableStateOf( with(LocalDensity.current) { if (expanded) (index * ( peekHeight + cardHeight) ).toPx() else (index * peekHeight).toPx() })
     val animatedYOffset = remember { Animatable(targetYOffset.value) }
-    LaunchedEffect(index) {
+    LaunchedEffect(index, expanded) {
         animatedYOffset.animateTo(
             targetYOffset.value * (if (stackAbove) -1f else 1f),
             animationSpec = spring(stiffness = Spring.StiffnessLow)
