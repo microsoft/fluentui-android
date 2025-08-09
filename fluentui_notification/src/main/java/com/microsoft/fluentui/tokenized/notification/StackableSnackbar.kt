@@ -135,25 +135,25 @@ fun CardStack(
         animationSpec = spring(stiffness = Spring.StiffnessMedium)
     )
 
-    Dialog(
-        onDismissRequest = {},
-        properties = DialogProperties(
-            dismissOnBackPress = false,
-            dismissOnClickOutside = false
-        )
-    ) {
-        val window = (LocalView.current.parent as? DialogWindowProvider)?.window
-        SideEffect {
-            if (window != null) {
-                window.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL)
-                window.addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
-                window.setDimAmount(0f)
-                window.setGravity(Gravity.BOTTOM)
-                window.attributes.y = stackOffset.y.roundToInt()
-                window.attributes.x = stackOffset.x.roundToInt()
-                window.attributes.y = 200
-            }
-        }
+//    Dialog(
+//        onDismissRequest = {},
+//        properties = DialogProperties(
+//            dismissOnBackPress = false,
+//            dismissOnClickOutside = false
+//        )
+//    ) {
+//        val window = (LocalView.current.parent as? DialogWindowProvider)?.window
+//        SideEffect {
+//            if (window != null) {
+//                window.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL)
+//                window.addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
+//                if(state.expanded) window.setDimAmount(0.2f) else window.setDimAmount(0f)
+//                window.setGravity(Gravity.BOTTOM)
+//                window.attributes.y = stackOffset.y.roundToInt()
+//                window.attributes.x = stackOffset.x.roundToInt()
+//                window.attributes.y = 200
+//            }
+//        }
         Box(
             modifier = modifier
                 .width(cardWidth)
@@ -197,7 +197,7 @@ fun CardStack(
                 }
             }
         }
-    }
+    //}
 }
 
 @Composable
