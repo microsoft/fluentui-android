@@ -121,7 +121,7 @@ fun CardStack(
 
     val targetHeight by remember(count, cardHeight, peekHeight, state.expanded) {
         mutableStateOf(
-            if (state.expanded || true) {
+            if (state.expanded) {
                 cardHeight * count + (if (count > 0) (count - 1) * peekHeight else 0.dp)
             } else {
                 cardHeight + (if (count > 0) (count - 1) * peekHeight else 0.dp)
@@ -134,6 +134,7 @@ fun CardStack(
         targetValue = targetHeight,
         animationSpec = spring(stiffness = Spring.StiffnessMedium)
     )
+   // var animatedStackHeight = targetHeight
 
 //    Dialog(
 //        onDismissRequest = {},
