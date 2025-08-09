@@ -47,6 +47,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import java.util.UUID
 import kotlin.math.abs
+import kotlin.math.pow
 import kotlin.math.roundToInt
 
 /** Single card model contains an id and a composable content lambda. */
@@ -210,6 +211,7 @@ private fun CardStackItem(
     cardWidth: Dp,
     cardHeight: Dp,
     peekHeight: Dp,
+    stackedWidthScaleFactor: Float = 0.95f,
     onSwipedAway: (String) -> Unit,
     stackAbove: Boolean = false,
     contentModifier: Modifier = Modifier
@@ -223,6 +225,16 @@ private fun CardStackItem(
     LaunchedEffect(index, expanded) {
         animatedYOffset.animateTo(
             targetYOffset.value * (if (stackAbove) -1f else 1f),
+            animationSpec = spring(stiffness = Spring.StiffnessLow)
+        )
+    }
+
+    // Card Width Animation
+    val targetWidth = mutableStateOf(with(LocalDensity.current) { if(expanded) { cardWidth.toPx() } else { cardWidth.toPx() * stackedWidthScaleFactor.pow(index) } })
+    val animatedWidth = remember { Animatable(targetWidth.value) }
+    LaunchedEffect(index, expanded) {
+        animatedWidth.animateTo(
+            targetWidth.value,
             animationSpec = spring(stiffness = Spring.StiffnessLow)
         )
     }
@@ -266,7 +278,8 @@ private fun CardStackItem(
                 )
             }
             .graphicsLayer(
-                alpha = opacityProgress.value
+                alpha = opacityProgress.value,
+                scaleX = animatedWidth.value / with(localDensity) { cardWidth.toPx() },
             )
             .width(cardWidth)
             .height(cardHeight)
