@@ -43,17 +43,23 @@ import androidx.compose.ui.unit.times
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.window.DialogWindowProvider
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay
 import java.util.UUID
 import kotlin.math.abs
 import kotlin.math.pow
 import kotlin.math.roundToInt
 
+// Constants
+private const val FADE_OUT_DURATION = 350 // milliseconds
+
 /** Single card model contains an id and a composable content lambda. */
 data class CardModel(
     val id: String,
-    var inRemoval: Boolean = false,
+    var inRemoval: MutableState<Boolean> = mutableStateOf(false),
     val content: @Composable () -> Unit
 )
 
@@ -63,11 +69,14 @@ class CardStackState(
 ) {
     internal val snapshotStateList = mutableStateListOf<CardModel>().apply { addAll(cards) }
     internal var expanded by mutableStateOf(false)
+    internal var scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
-    suspend fun addCard(card: CardModel, maxSize: Int = 6) {
+    fun addCard(card: CardModel, maxSize: Int = 6) {
         snapshotStateList.add(0, card)
         if (snapshotStateList.size >= maxSize) {
-            popBack()
+            scope.launch {
+                popBack()
+            }
         }
     }
 
@@ -75,18 +84,26 @@ class CardStackState(
         snapshotStateList.removeAll { it.id == id }
     }
 
-    suspend fun popFront(): CardModel? {
-        if (snapshotStateList.isEmpty()) return null
-        snapshotStateList.get(0).inRemoval = true
-        delay(360)
-        return if (snapshotStateList.isNotEmpty()) snapshotStateList.removeAt(0) else null
+    fun popFront(): CardModel? {
+        if (snapshotStateList.isEmpty() || snapshotStateList[0].inRemoval.value) return null
+        val poppedCardModel: CardModel = snapshotStateList[0]
+        scope.launch {
+            snapshotStateList[0].inRemoval.value = true
+            delay(FADE_OUT_DURATION.toLong())
+            if (snapshotStateList.isNotEmpty()) snapshotStateList.removeAt(0)
+        }
+        return poppedCardModel
     }
 
-    suspend fun popBack(): CardModel? {
-        if (snapshotStateList.isEmpty()) return null
-        snapshotStateList.get(snapshotStateList.size - 1).inRemoval = true
-        delay(360)
-        return snapshotStateList.removeAt(snapshotStateList.size - 1)
+    fun popBack(): CardModel? {
+        if (snapshotStateList.isEmpty() || snapshotStateList[0].inRemoval.value) return null
+        val poppedCardModel: CardModel = snapshotStateList[snapshotStateList.size - 1]
+        scope.launch {
+            snapshotStateList[snapshotStateList.size - 1].inRemoval.value = true
+            delay(FADE_OUT_DURATION.toLong())
+            if (snapshotStateList.isNotEmpty()) snapshotStateList.removeAt(snapshotStateList.size - 1)
+        }
+        return poppedCardModel
     }
 
     fun size(): Int = snapshotStateList.size
@@ -135,7 +152,7 @@ fun CardStack(
         targetValue = targetHeight,
         animationSpec = spring(stiffness = Spring.StiffnessMedium)
     )
-   // var animatedStackHeight = targetHeight
+    // var animatedStackHeight = targetHeight
 
 //    Dialog(
 //        onDismissRequest = {},
@@ -156,55 +173,57 @@ fun CardStack(
 //                window.attributes.y = 200
 //            }
 //        }
-        Box(
-            modifier = modifier
-                .width(cardWidth)
-                .height(if (state.snapshotStateList.size == 0) 0.dp else animatedStackHeight)
-                .wrapContentHeight(
-                    align = if (stackAbove) {
-                        Alignment.Bottom
-                    } else {
-                        Alignment.Top
-                    }
-                )
-                .clickableWithTooltip(
-                    onClick = {
-                        state.expanded = !state.expanded
-                    },
-                    tooltipText = "Notification Stack",
-                )
-        ) {
-            // Show cards in reverse visual order: bottom-most drawn first
-            val listSnapshot = state.snapshotStateList.toList()
-
-            listSnapshot.reversed().forEachIndexed { visuallyReversedIndex, cardModel ->
-                // compute logical index from top (0 is top)
-                val logicalIndex = listSnapshot.size - 1 - visuallyReversedIndex
-                val isTop = logicalIndex == 0
-
-                key(cardModel.id) {
-                    // Each card will be placed offset from top by logicalIndex * peekHeight
-                    CardStackItem(
-                        model = cardModel,
-                        expanded = state.expanded,
-                        index = logicalIndex,
-                        isTop = isTop,
-                        cardHeight = cardHeight,
-                        peekHeight = peekHeight,
-                        cardWidth = cardWidth,
-                        onSwipedAway = { idToRemove -> state.removeCardById(idToRemove) },
-                        stackAbove = stackAbove,
-                        contentModifier = contentModifier
-                    )
+    Box(
+        modifier = modifier
+            .width(cardWidth)
+            .height(if (state.snapshotStateList.size == 0) 0.dp else animatedStackHeight)
+            .wrapContentHeight(
+                align = if (stackAbove) {
+                    Alignment.Bottom
+                } else {
+                    Alignment.Top
                 }
+            )
+            .clickableWithTooltip(
+                onClick = {
+                    state.expanded = !state.expanded
+                },
+                tooltipText = "Notification Stack",
+            )
+    ) {
+        // Show cards in reverse visual order: bottom-most drawn first
+        val listSnapshot = state.snapshotStateList.toList()
+
+        listSnapshot.reversed().forEachIndexed { visuallyReversedIndex, cardModel ->
+            // compute logical index from top (0 is top)
+            val logicalIndex = listSnapshot.size - 1 - visuallyReversedIndex
+            val isTop = logicalIndex == 0
+
+            key(cardModel.id) {
+                // Each card will be placed offset from top by logicalIndex * peekHeight
+                CardStackItem(
+                    model = cardModel,
+                    inRemoval = cardModel.inRemoval.value,
+                    expanded = state.expanded,
+                    index = logicalIndex,
+                    isTop = isTop,
+                    cardHeight = cardHeight,
+                    peekHeight = peekHeight,
+                    cardWidth = cardWidth,
+                    onSwipedAway = { idToRemove -> state.removeCardById(idToRemove) },
+                    stackAbove = stackAbove,
+                    contentModifier = contentModifier
+                )
             }
         }
+    }
     //}
 }
 
 @Composable
 private fun CardStackItem(
     model: CardModel,
+    inRemoval: Boolean,
     expanded: Boolean,
     index: Int,
     isTop: Boolean,
@@ -230,7 +249,13 @@ private fun CardStackItem(
     }
 
     // Card Width Animation
-    val targetWidth = mutableStateOf(with(LocalDensity.current) { if(expanded) { cardWidth.toPx() } else { cardWidth.toPx() * stackedWidthScaleFactor.pow(index) } })
+    val targetWidth = mutableStateOf(with(LocalDensity.current) {
+        if (expanded) {
+            cardWidth.toPx()
+        } else {
+            cardWidth.toPx() * stackedWidthScaleFactor.pow(index)
+        }
+    })
     val animatedWidth = remember { Animatable(targetWidth.value) }
     LaunchedEffect(index, expanded) {
         animatedWidth.animateTo(
@@ -255,12 +280,12 @@ private fun CardStackItem(
 
     // Fade Out Animation  TODO: Add configurations
     val opacityProgress = remember { Animatable(1f) }
-    LaunchedEffect(model.inRemoval) {
-        if (model.inRemoval) {
-            opacityProgress.snapTo(1f)
+    LaunchedEffect(inRemoval) {
+        if (inRemoval) {
+            //opacityProgress.snapTo(1f)
             opacityProgress.animateTo(
                 0f,
-                animationSpec = tween(durationMillis = 350, easing = FastOutSlowInEasing)
+                animationSpec = tween(durationMillis = FADE_OUT_DURATION, easing = FastOutSlowInEasing)
             )
         }
     }
@@ -387,16 +412,12 @@ fun DemoCardStack() {
             Spacer(modifier = Modifier.width(12.dp))
 
             Button(onClick = {
-                scope.launch {
-                    stackState.popFront()
-                }
+                stackState.popFront()
             }, text = "Remove top card")
             Spacer(modifier = Modifier.width(12.dp))
 
             Button(onClick = {
-                scope.launch {
-                    stackState.popBack()
-                }
+                stackState.popBack()
             }, text = "Remove last card")
         }
     }
