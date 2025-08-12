@@ -50,32 +50,41 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay
 import java.util.UUID
 import kotlin.math.abs
+import kotlin.math.max
 import kotlin.math.pow
 import kotlin.math.roundToInt
 
 // Constants
 private const val FADE_OUT_DURATION = 350 // milliseconds
+private const val STACKED_WIDTH_SCALE_FACTOR = 0.95f // Scale factor for stacked cards
 
 /** Single card model contains an id and a composable content lambda. */
 data class CardModel(
     val id: String,
     var inRemoval: MutableState<Boolean> = mutableStateOf(false),
+    var isHidden: MutableState<Boolean> = mutableStateOf(false),
     val content: @Composable () -> Unit
 )
 
 /** Public state object to control the stack. */
 class CardStackState(
-    internal val cards: MutableList<CardModel>
+    internal val cards: MutableList<CardModel>,
+    internal val scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Default),
+    internal val maxCollapsedSize: Int = 5,
+    internal val maxExpandedSize: Int = 10
 ) {
     internal val snapshotStateList = mutableStateListOf<CardModel>().apply { addAll(cards) }
     internal var expanded by mutableStateOf(false)
-    internal var scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+    internal val maxSize =
+        max(maxCollapsedSize, maxExpandedSize) // All cards above this will be deleted
 
-    fun addCard(card: CardModel, maxSize: Int = 6) {
-        snapshotStateList.add(0, card)
-        if (snapshotStateList.size >= maxSize) {
-            scope.launch {
+    fun addCard(card: CardModel) {
+        snapshotStateList.add(card)
+        val maxSize = if (expanded) maxExpandedSize else maxCollapsedSize
+        scope.launch {
+            if (snapshotStateList.count { !it.inRemoval.value } > maxSize) {
                 popBack()
+                //delay(10) // TODO: Check without delay
             }
         }
     }
@@ -84,26 +93,97 @@ class CardStackState(
         snapshotStateList.removeAll { it.id == id }
     }
 
-    fun popFront(): CardModel? {
-        if (snapshotStateList.isEmpty() || snapshotStateList[0].inRemoval.value) return null
-        val poppedCardModel: CardModel = snapshotStateList[0]
+    fun expand() {
+        if (!expanded) {
+            expanded = true
+            val maxSize = maxExpandedSize
+
+            scope.launch {
+                while (snapshotStateList.count { !it.inRemoval.value } > maxSize) {
+                    popBack()
+                    delay(10) // prevent tight loop
+                }
+            }
+        }
+    }
+
+    fun collapse() {
+        if (expanded) {
+            expanded = false
+            val maxSize = maxCollapsedSize
+
+            scope.launch {
+                while (snapshotStateList.count { !it.inRemoval.value } > maxSize) {
+                    popBack()
+                    delay(10) // prevent tight loop
+                }
+            }
+        }
+    }
+
+    fun toggleExpanded() {
+        if (expanded) {
+            collapse()
+        } else {
+            expand()
+        }
+    }
+
+    fun popAt(index: Int): CardModel? {
+        if (snapshotStateList.isEmpty() || index !in snapshotStateList.indices) return null
+        val poppedCardModel: CardModel = snapshotStateList[index]
+        if (poppedCardModel.inRemoval.value) return null
         scope.launch {
-            snapshotStateList[0].inRemoval.value = true
+            snapshotStateList[index].inRemoval.value = true
             delay(FADE_OUT_DURATION.toLong())
-            if (snapshotStateList.isNotEmpty()) snapshotStateList.removeAt(0)
+            val currentIndex = snapshotStateList.indexOfFirst { it.id == poppedCardModel.id }
+            if (currentIndex != -1) {
+                snapshotStateList.removeAt(currentIndex)
+            }
         }
         return poppedCardModel
     }
 
     fun popBack(): CardModel? {
-        if (snapshotStateList.isEmpty() || snapshotStateList[0].inRemoval.value) return null
-        val poppedCardModel: CardModel = snapshotStateList[snapshotStateList.size - 1]
+        val index = snapshotStateList.indexOfFirst { !it.inRemoval.value }
+        return if (index != -1) popAt(index) else null
+    }
+
+    fun popFront(): CardModel? {
+        val index = snapshotStateList.indexOfLast { !it.inRemoval.value }
+        return if (index != -1) popAt(index) else null
+    }
+
+    /**
+     * Hides the card at the specified index.
+     * @param index index of the card to hide
+     * @return the hidden card or null if index is invalid
+     */
+    fun hideAt(index: Int): CardModel? {
+        if (snapshotStateList.isEmpty() || index !in snapshotStateList.indices) return null
+        val card = snapshotStateList[index]
+        if (card.isHidden.value) return null
         scope.launch {
-            snapshotStateList[snapshotStateList.size - 1].inRemoval.value = true
+            card.inRemoval.value = true // reuse the same animation trigger state as pop
             delay(FADE_OUT_DURATION.toLong())
-            if (snapshotStateList.isNotEmpty()) snapshotStateList.removeAt(snapshotStateList.size - 1)
+            card.isHidden.value = true
+            card.inRemoval.value = false // reset animation flag
         }
-        return poppedCardModel
+        return card
+    }
+
+    fun hideFront(): CardModel? {
+        val index = snapshotStateList.indexOfFirst { !it.isHidden.value && !it.inRemoval.value }
+        return if (index != -1) hideAt(index) else null
+    }
+
+    fun hideBack(): CardModel? {
+        val index = snapshotStateList.indexOfLast { !it.isHidden.value && !it.inRemoval.value }
+        return if (index != -1) hideAt(index) else null
+    }
+
+    fun unhideAll() {
+        snapshotStateList.forEach { it.isHidden.value = false }
     }
 
     fun size(): Int = snapshotStateList.size
@@ -192,11 +272,14 @@ fun CardStack(
             )
     ) {
         // Show cards in reverse visual order: bottom-most drawn first
-        val listSnapshot = state.snapshotStateList.toList()
+       // val listSnapshot = state.snapshotStateList.toList()
+        val visibleCards = state.snapshotStateList
+            .filter { !it.isHidden.value }
+            .toList() // to avoid concurrent modification issues
 
-        listSnapshot.reversed().forEachIndexed { visuallyReversedIndex, cardModel ->
+        visibleCards.forEachIndexed { index, cardModel ->
             // compute logical index from top (0 is top)
-            val logicalIndex = listSnapshot.size - 1 - visuallyReversedIndex
+            val logicalIndex = visibleCards.size - 1 - index
             val isTop = logicalIndex == 0
 
             key(cardModel.id) {
@@ -285,7 +368,10 @@ private fun CardStackItem(
             //opacityProgress.snapTo(1f)
             opacityProgress.animateTo(
                 0f,
-                animationSpec = tween(durationMillis = FADE_OUT_DURATION, easing = FastOutSlowInEasing)
+                animationSpec = tween(
+                    durationMillis = FADE_OUT_DURATION,
+                    easing = FastOutSlowInEasing
+                )
             )
         }
     }
@@ -379,7 +465,6 @@ private fun CardStackItem(
 @Composable
 fun DemoCardStack() {
     val stackState = rememberCardStackState()
-    val scope = rememberCoroutineScope()
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize(),
@@ -399,14 +484,12 @@ fun DemoCardStack() {
         Row {
             Button(onClick = {
                 val id = UUID.randomUUID().toString()
-                scope.launch {
-                    stackState.addCard(CardModel(id = id) {
-                        Column(modifier = Modifier.padding(12.dp)) {
-                            BasicText("Card: $id")
-                            BasicText("Some detail here")
-                        }
-                    })
-                }
+                stackState.addCard(CardModel(id = id) {
+                    Column(modifier = Modifier.padding(12.dp)) {
+                        BasicText("Card: $id")
+                        BasicText("Some detail here")
+                    }
+                })
             }, text = "Add card")
 
             Spacer(modifier = Modifier.width(12.dp))
