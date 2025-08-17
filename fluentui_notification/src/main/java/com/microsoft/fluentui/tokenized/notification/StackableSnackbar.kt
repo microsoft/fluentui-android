@@ -71,8 +71,6 @@ class CardStackState(
         mutableStateListOf<CardModel>().apply { addAll(cards) }
     internal val hiddenIndicesList: MutableList<Pair<Int, CardModel>> = mutableListOf()
     internal var expanded by mutableStateOf(false)
-    internal val maxSize =
-        max(maxCollapsedSize, maxExpandedSize) // All cards above this will be deleted
 
     fun addCard(card: CardModel) {
         snapshotStateList.add(card)
@@ -92,40 +90,15 @@ class CardStackState(
         }
     }
 
-    fun expand() {
-        if (!expanded) {
-            val maxSize = maxExpandedSize
-            val currentSize = snapshotStateList.count { !it.hidden.value }
-            if( currentSize > maxSize) {
-                hideAt((0..currentSize - maxSize - 1).toList(), remove = false)
-            }
-            else {
-                showAt((0..maxSize - currentSize).toList())
-            }
-            expanded = true
-        }
-    }
-
-    fun collapse() {
-        if (expanded) {
-            expanded = false
-            val maxSize = maxCollapsedSize
-            val currentSize = snapshotStateList.count { !it.hidden.value }
-            if( currentSize > maxSize) {
-                hideAt((0..currentSize - maxSize - 1).toList(), remove = false)
-            }
-            else {
-                showAt((0..maxSize - currentSize).toList())
-            }
-        }
-    }
-
     fun toggleExpanded() {
-        if (expanded) {
-            collapse()
+        val maxSize = if (expanded) maxCollapsedSize else maxExpandedSize
+        val currentSize = snapshotStateList.count { !it.hidden.value }
+        if (currentSize > maxSize) {
+            hideAt(indices = (0..currentSize - maxSize - 1).toList(), remove = false)
         } else {
-            expand()
+            showAt(indices = (0..maxSize - currentSize - 1).toList())
         }
+        expanded = !expanded
     }
 
     fun popAt(index: Int) {
@@ -147,29 +120,25 @@ class CardStackState(
      * @param indices list of indices to restore
      * @return list of restored cards
      */
-    fun showAt(indices: List<Int>): List<CardModel> {
-        val restored = mutableListOf<CardModel>()
-        indices.sortedDescending().forEach { idx ->
+    fun showAt(indices: List<Int>) {
+        indices.reversed().forEach { idx ->
             if (idx in hiddenIndicesList.indices) {
                 val (hiddenIndex, card) = hiddenIndicesList[idx]
                 if (card.hidden.value) {
-                    restored.add(card)
                     scope.launch {
                         card.isReshown.value = true
                         snapshotStateList.add(
-                            hiddenIndex.coerceAtMost(snapshotStateList.size),
+                            0,
                             card
                         )
                         card.hidden.value = false
-                        hiddenIndicesList.removeAt(idx)
-
                         delay(FADE_OUT_DURATION.toLong())
                         card.isReshown.value = false
+                        hiddenIndicesList.removeAt(idx)
                     }
                 }
             }
         }
-        return restored
     }
 
     /**
@@ -416,7 +385,8 @@ private fun CardStackItem(
     val scope = rememberCoroutineScope()
     val localDensity = LocalDensity.current
 
-    val targetYOffset = mutableStateOf(with(localDensity) { if (expanded) (index * (peekHeight + cardHeight)).toPx() else (index * peekHeight).toPx() })
+    val targetYOffset =
+        mutableStateOf(with(localDensity) { if (expanded) (index * (peekHeight + cardHeight)).toPx() else (index * peekHeight).toPx() })
     val animatedYOffset = remember {
         Animatable(
             if (isReshown && !expanded) {
