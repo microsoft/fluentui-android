@@ -1,5 +1,7 @@
 package com.microsoft.fluentui.tokenized.notification
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
@@ -104,6 +106,7 @@ class CardStackState(
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun toggleExpanded() {
         scope.launch {
             expandMutex.withLock {
@@ -149,6 +152,7 @@ class CardStackState(
     /**
      * Shows cards at the specified indices in parallel.
      */
+    @RequiresApi(Build.VERSION_CODES.N)
     fun showAt(indices: List<Int>) {
         scope.launch {
             showAtParallel(indices)
@@ -158,6 +162,7 @@ class CardStackState(
     /**
      * Shows cards in parallel for smooth animation
      */
+    @RequiresApi(Build.VERSION_CODES.N)
     private suspend fun showAtParallel(indices: List<Int>) {
         val cardsToShow = mutableListOf<Pair<Int, CardModel>>()
 
@@ -287,6 +292,7 @@ fun rememberCardStackState(initial: List<CardModel> = emptyList()): CardStackSta
  * @param peekHeight how much of the previous card is visible under the top card
  * @param contentModifier modifier applied to each card slot
  */
+@RequiresApi(Build.VERSION_CODES.N)
 @Composable
 fun CardStack(
     state: CardStackState,
@@ -588,6 +594,7 @@ private fun CardStackItem(
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.N)
 @Composable
 fun DemoCardStack() {
     val stackState = rememberCardStackState()
