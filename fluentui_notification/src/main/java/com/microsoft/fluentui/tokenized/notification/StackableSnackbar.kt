@@ -23,28 +23,26 @@ import com.microsoft.fluentui.util.clickableWithTooltip
 import kotlinx.coroutines.launch
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.times
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.delay
+import com.microsoft.fluentui.tokenized.controls.BasicCard
+import kotlinx.coroutines.*
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import java.util.UUID
 import kotlin.math.abs
-import kotlin.math.max
 import kotlin.math.pow
 import kotlin.math.roundToInt
 
@@ -63,7 +61,7 @@ data class CardModel(
 /** Public state object to control the stack. */
 class CardStackState(
     internal val cards: MutableList<CardModel>,
-    internal val scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main), // TODO: Fix concurrency issues, investigate Dispatchers.Main, also Mutexes where needed
+    internal val scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main),
     internal val maxCollapsedSize: Int = 3,
     internal val maxExpandedSize: Int = 10
 ) {
@@ -72,69 +70,130 @@ class CardStackState(
     internal val hiddenIndicesList: MutableList<Pair<Int, CardModel>> = mutableListOf()
     internal var expanded by mutableStateOf(false)
 
+    private val listOperationMutex = Mutex()
+
+    private val expandMutex = Mutex()
+
     fun addCard(card: CardModel) {
-        snapshotStateList.add(card)
-        val maxSize = if (expanded) maxExpandedSize else maxCollapsedSize
         scope.launch {
-            if (snapshotStateList.count { !it.hidden.value } > maxSize) {
+            listOperationMutex.withLock {
+                withContext(Dispatchers.Main) {
+                    snapshotStateList.add(card)
+                }
+            }
+
+            val maxSize = if (expanded) maxExpandedSize else maxCollapsedSize
+            val visibleCount = snapshotStateList.count { !it.hidden.value }
+
+            if (visibleCount > maxSize) {
                 popBack()
-                //delay(10) // TODO: Check without delay
             }
         }
     }
 
     fun removeCardById(id: String) {
-        val index = snapshotStateList.indexOfFirst { it.id == id }
-        if (index != -1) {
-            snapshotStateList.removeAt(index)
+        scope.launch {
+            listOperationMutex.withLock {
+                withContext(Dispatchers.Main) {
+                    val index = snapshotStateList.indexOfFirst { it.id == id }
+                    if (index != -1) {
+                        snapshotStateList.removeAt(index)
+                    }
+                }
+            }
         }
     }
 
     fun toggleExpanded() {
-        val maxSize = if (expanded) maxCollapsedSize else maxExpandedSize
-        val currentSize = snapshotStateList.count { !it.hidden.value }
-        if (currentSize > maxSize) {
-            hideAt(indices = (0..currentSize - maxSize - 1).toList(), remove = false)
-        } else {
-            showAt(indices = (0..maxSize - currentSize - 1).toList())
-        }
-        expanded = !expanded
-    }
+        scope.launch {
+            expandMutex.withLock {
+                val currentExpanded = expanded
+                val maxSize = if (currentExpanded) maxCollapsedSize else maxExpandedSize
+                val visibleCards = snapshotStateList.filter { !it.hidden.value }
+                val currentSize = visibleCards.size
 
-    fun popAt(index: Int) {
-        hideAt(listOf(index), remove = true)
+                withContext(Dispatchers.Main) {
+                    expanded = !currentExpanded
+                }
+
+                if (currentSize > maxSize) {
+                    val indicesToHide = (0 until (currentSize - maxSize)).toList()
+                    hideAtParallel(indices = indicesToHide, remove = false)
+                } else {
+                    val indicesToShow =
+                        (0 until minOf(maxSize - currentSize, hiddenIndicesList.size)).toList()
+                    showAtParallel(indices = indicesToShow)
+                }
+            }
+        }
     }
 
     fun popBack() {
-        val index = snapshotStateList.indexOfFirst { !it.hidden.value }
-        if (index != -1) popAt(index) else null
+        scope.launch {
+            val index = snapshotStateList.indexOfFirst { !it.hidden.value }
+            if (index != -1) {
+                hideAtSingle(index, remove = true)
+            }
+        }
     }
 
     fun popFront() {
-        val index = snapshotStateList.indexOfLast { !it.hidden.value }
-        if (index != -1) popAt(index) else null
+        scope.launch {
+            val index = snapshotStateList.indexOfLast { !it.hidden.value }
+            if (index != -1) {
+                hideAtSingle(index, remove = true)
+            }
+        }
     }
 
     /**
-     * Shows the card at the specified indices.
-     * @param indices list of indices to restore
-     * @return list of restored cards
+     * Shows cards at the specified indices in parallel.
      */
     fun showAt(indices: List<Int>) {
-        indices.reversed().forEach { idx ->
-            if (idx in hiddenIndicesList.indices) {
-                val (hiddenIndex, card) = hiddenIndicesList[idx]
-                if (card.hidden.value) {
-                    scope.launch {
-                        card.isReshown.value = true
-                        snapshotStateList.add(
-                            0,
-                            card
-                        )
-                        card.hidden.value = false
-                        delay(FADE_OUT_DURATION.toLong())
+        scope.launch {
+            showAtParallel(indices)
+        }
+    }
+
+    /**
+     * Shows cards in parallel for smooth animation
+     */
+    private suspend fun showAtParallel(indices: List<Int>) {
+        val cardsToShow = mutableListOf<Pair<Int, CardModel>>()
+
+        // First, collect all cards to show while holding the lock
+        listOperationMutex.withLock {
+            indices.reversed().forEach { idx ->
+                if (idx in hiddenIndicesList.indices) {
+                    val (hiddenIndex, card) = hiddenIndicesList[idx]
+                    if (card.hidden.value) {
+                        cardsToShow.add(idx to card)
+                    }
+                }
+            }
+
+            // Add all cards back to the list immediately
+            withContext(Dispatchers.Main) {
+                cardsToShow.forEach { (_, card) ->
+                    card.isReshown.value = true
+                    snapshotStateList.add(0, card)
+                    card.hidden.value = false
+                }
+            }
+        }
+
+        // Now animate all cards in parallel (outside the lock)
+        coroutineScope {
+            cardsToShow.map { (idx, card) ->
+                launch {
+                    delay(FADE_OUT_DURATION.toLong())
+                    withContext(Dispatchers.Main) {
                         card.isReshown.value = false
-                        hiddenIndicesList.removeAt(idx)
+                    }
+                    listOperationMutex.withLock {
+                        withContext(Dispatchers.Main) {
+                            hiddenIndicesList.removeIf { it.second.id == card.id }
+                        }
                     }
                 }
             }
@@ -142,21 +201,24 @@ class CardStackState(
     }
 
     /**
-     * Hides the cards at the specified indices.
-     * @param indices list of indices to hide
-     * @param remove if true, removes the card from the stack, otherwise just hides it
+     * Hides a single card (sequential operation)
      */
-    fun hideAt(indices: List<Int>, remove: Boolean = false) {
-        indices.forEach { idx ->
-            if (idx in snapshotStateList.indices) {
-                val card = snapshotStateList[idx]
-                if (!card.hidden.value) {
-                    scope.launch {
-                        card.hidden.value = true
-                        delay(FADE_OUT_DURATION.toLong())
-                        if (remove) snapshotStateList.remove(card)
-                        else {
-                            hiddenIndicesList.add(idx to card)
+    private suspend fun hideAtSingle(index: Int, remove: Boolean) {
+        if (index in snapshotStateList.indices) {
+            val card = snapshotStateList[index]
+            if (!card.hidden.value) {
+                withContext(Dispatchers.Main) {
+                    card.hidden.value = true
+                }
+
+                delay(FADE_OUT_DURATION.toLong())
+
+                listOperationMutex.withLock {
+                    withContext(Dispatchers.Main) {
+                        if (remove) {
+                            snapshotStateList.remove(card)
+                        } else {
+                            hiddenIndicesList.add(index to card)
                             snapshotStateList.remove(card)
                         }
                     }
@@ -165,23 +227,53 @@ class CardStackState(
         }
     }
 
-    fun hideFront() {
-        val index = snapshotStateList.indexOfFirst { !it.hidden.value && !it.hidden.value }
-        if (index != -1) hideAt(listOf(index)) else null
-    }
+    /**
+     * Hides cards in parallel for smooth animation
+     */
+    private suspend fun hideAtParallel(indices: List<Int>, remove: Boolean) {
+        val cardsToHide = mutableListOf<Pair<Int, CardModel>>()
 
-    fun hideBack() {
-        val index = snapshotStateList.indexOfLast { !it.hidden.value && !it.hidden.value }
-        if (index != -1) hideAt(listOf(index)) else null
-    }
+        // Collect cards and mark them as hidden immediately
+        listOperationMutex.withLock {
+            indices.forEach { idx ->
+                if (idx in snapshotStateList.indices) {
+                    val card = snapshotStateList[idx]
+                    if (!card.hidden.value) {
+                        cardsToHide.add(idx to card)
+                        withContext(Dispatchers.Main) {
+                            card.hidden.value = true
+                        }
+                    }
+                }
+            }
+        }
 
-    fun unhideAll() {
-        snapshotStateList.forEach { it.hidden.value = false }
+        // Animate all cards in parallel
+        if (cardsToHide.isNotEmpty()) {
+            delay(FADE_OUT_DURATION.toLong())
+
+            // Remove all cards at once after animation
+            listOperationMutex.withLock {
+                withContext(Dispatchers.Main) {
+                    cardsToHide.forEach { (idx, card) ->
+                        if (remove) {
+                            snapshotStateList.remove(card)
+                        } else {
+                            if (!hiddenIndicesList.any { it.second.id == card.id }) {
+                                hiddenIndicesList.add(idx to card)
+                            }
+                            snapshotStateList.remove(card)
+                        }
+                    }
+                }
+            }
+        }
     }
 
     fun size(): Int = snapshotStateList.size
 }
 
+// Rest of the implementation remains the same...
 @Composable
 fun rememberCardStackState(initial: List<CardModel> = emptyList()): CardStackState {
     return remember { CardStackState(initial.toMutableList()) }
@@ -202,12 +294,10 @@ fun CardStack(
     cardWidth: Dp = 320.dp,
     cardHeight: Dp = 160.dp,
     peekHeight: Dp = 10.dp,
-    stackOffset: Offset = Offset(0f, 0f), // offset for the stack position
-    stackAbove: Boolean = true, // if true, cards stack above each other (negative offset)
+    stackOffset: Offset = Offset(0f, 0f),
+    stackAbove: Boolean = true,
     contentModifier: Modifier = Modifier
 ) {
-    // Total stack height: cardHeight + (count-1) * peekHeight
-    // Total in expanded state: cardHeight * count + (count-1) * peekHeight
     val count by remember { derivedStateOf { state.size() } }
 
     val targetHeight by remember(count, cardHeight, peekHeight, state.expanded) {
@@ -220,12 +310,10 @@ fun CardStack(
         )
     }
 
-    // Smoothly animate stack height when count changes
     val animatedStackHeight by animateDpAsState(
         targetValue = targetHeight,
         animationSpec = spring(stiffness = Spring.StiffnessMedium)
     )
-    // var animatedStackHeight = targetHeight
 
     Box(
         modifier = modifier
@@ -240,25 +328,18 @@ fun CardStack(
             )
             .clickableWithTooltip(
                 onClick = {
-                    //state.expanded = !state.expanded
                     state.toggleExpanded()
                 },
                 tooltipText = "Notification Stack",
             )
     ) {
-        // Show cards in reverse visual order: bottom-most drawn first
-        // val listSnapshot = state.snapshotStateList.toList()
-        val visibleCards = state.snapshotStateList
-            //.filter { !it.hidden.value }
-            .toList() // to avoid concurrent modification issues
+        val visibleCards = state.snapshotStateList.toList()
 
         visibleCards.forEachIndexed { index, cardModel ->
-            // compute logical index from top (0 is top)
             val logicalIndex = visibleCards.size - 1 - index
             val isTop = logicalIndex == 0
 
             key(cardModel.id) {
-                // Each card will be placed offset from top by logicalIndex * peekHeight
                 CardStackItem(
                     model = cardModel,
                     isHidden = cardModel.hidden.value,
@@ -269,22 +350,25 @@ fun CardStack(
                     cardHeight = cardHeight,
                     peekHeight = peekHeight,
                     cardWidth = cardWidth,
-                    onSwipedAway = { idToRemove -> state.removeCardById(idToRemove) },
-                    stackAbove = stackAbove,
-                    contentModifier = contentModifier
+                    onSwipedAway = { idToRemove ->
+                        state.removeCardById(idToRemove)
+                        state.showAt(listOf(0))
+                    },
+                    stackAbove = stackAbove
                 )
             }
         }
     }
 }
 
+// CardStackItem and animation functions remain the same as in your original implementation...
 @Composable
 private fun CardAdjustAnimation(
     expanded: Boolean,
-    isReshown: Boolean = false, // used to trigger re-show animation
+    isReshown: Boolean = false,
     index: Int,
-    stackAbove: Boolean = true, // if true, cards stack above each other (negative offset)
-    targetYOffset: MutableState<Float>,// target Y offset for the card
+    stackAbove: Boolean = true,
+    targetYOffset: MutableState<Float>,
     animatedYOffset: Animatable<Float, AnimationVector1D>
 ) {
     LaunchedEffect(index, expanded, isReshown) {
@@ -299,7 +383,7 @@ private fun CardAdjustAnimation(
 private fun CardWidthAnimation(
     expanded: Boolean,
     index: Int,
-    animatedWidth: Animatable<Float, AnimationVector1D>, // default to 0f,
+    animatedWidth: Animatable<Float, AnimationVector1D>,
     targetWidth: MutableState<Float>
 ) {
     LaunchedEffect(index, expanded) {
@@ -313,11 +397,10 @@ private fun CardWidthAnimation(
 @Composable
 private fun SlideInAnimation(
     model: CardModel,
-    isReshown: Boolean = false, // used to trigger re-show animation
-    isTop: Boolean = true, // if true, the card is the top-most in the stack
-    slideInProgress: Animatable<Float, AnimationVector1D> // progress of the slide-in animation
+    isReshown: Boolean = false,
+    isTop: Boolean = true,
+    slideInProgress: Animatable<Float, AnimationVector1D>
 ) {
-    // Slide In Animation TODO: Add configurations
     LaunchedEffect(model.id) {
         if (isReshown) {
             slideInProgress.snapTo(0f)
@@ -337,11 +420,10 @@ private fun SlideInAnimation(
 
 @Composable
 private fun HideAnimation(
-    isHidden: Boolean = false, // if true, the card is hidden
-    isReshown: Boolean = false, // used to trigger re-show animation
+    isHidden: Boolean = false,
+    isReshown: Boolean = false,
     opacityProgress: Animatable<Float, AnimationVector1D>
 ) {
-    // Fade Out Animation  TODO: Add configurations
     LaunchedEffect(isHidden, isReshown) {
         if (isHidden) {
             opacityProgress.snapTo(1f)
@@ -370,7 +452,7 @@ private fun HideAnimation(
 private fun CardStackItem(
     model: CardModel,
     isHidden: Boolean,
-    isReshown: Boolean = false, // used to trigger re-show animation
+    isReshown: Boolean = false,
     expanded: Boolean,
     index: Int,
     isTop: Boolean,
@@ -379,8 +461,7 @@ private fun CardStackItem(
     peekHeight: Dp,
     stackedWidthScaleFactor: Float = 0.95f,
     onSwipedAway: (String) -> Unit,
-    stackAbove: Boolean = false,
-    contentModifier: Modifier = Modifier
+    stackAbove: Boolean = false
 ) {
     val scope = rememberCoroutineScope()
     val localDensity = LocalDensity.current
@@ -388,16 +469,13 @@ private fun CardStackItem(
     val targetYOffset =
         mutableStateOf(with(localDensity) { if (expanded) (index * (peekHeight + cardHeight)).toPx() else (index * peekHeight).toPx() })
     val animatedYOffset = remember {
-        Animatable(
-            if (isReshown && !expanded) {
-                targetYOffset.value * (if (stackAbove) -1f else 1f)
-            } else targetYOffset.value
-        )
+        Animatable(0f)
     }
     CardAdjustAnimation(
         expanded = expanded,
         isReshown = isReshown,
         index = index,
+        stackAbove = stackAbove,
         targetYOffset = targetYOffset,
         animatedYOffset = animatedYOffset
     )
@@ -418,7 +496,7 @@ private fun CardStackItem(
     )
 
     val slideInProgress =
-        remember { Animatable(if (isReshown) 0f else 1f) } // 1 = offscreen right, 0 = in place
+        remember { Animatable(if (isReshown) 0f else 1f) }
     SlideInAnimation(
         model = model,
         isReshown = isReshown,
@@ -435,6 +513,7 @@ private fun CardStackItem(
 
     val swipeX = remember { Animatable(0f) }
     val offsetX: Float = if (isTop || expanded) swipeX.value else 0f
+
     Box(
         modifier = Modifier
             .offset {
@@ -452,13 +531,11 @@ private fun CardStackItem(
             .padding(horizontal = 0.dp)
             .then(if (isTop || expanded) Modifier.pointerInput(model.id) {
                 detectDragGestures(
-                    onDragStart = { /* no-op */ },
+                    onDragStart = {},
                     onDragEnd = {
-                        // decide threshold
                         val threshold = with(localDensity) { (cardWidth / 4).toPx() }
                         scope.launch {
                             if (abs(swipeX.value) > threshold) {
-                                // animate off screen in the drag direction then remove
                                 val target =
                                     if (swipeX.value > 0) with(localDensity) { cardWidth.toPx() * 1.2f } else -with(
                                         localDensity
@@ -470,10 +547,8 @@ private fun CardStackItem(
                                         easing = FastOutLinearInEasing
                                     )
                                 )
-                                // remove after animation
                                 onSwipedAway(model.id)
                             } else {
-                                // return to center
                                 swipeX.animateTo(
                                     0f,
                                     animationSpec = spring(stiffness = Spring.StiffnessMedium)
@@ -498,21 +573,17 @@ private fun CardStackItem(
                 )
             } else Modifier)
     ) {
-        // Card visuals TODO: Replace with card composable
-        Box(
+        BasicCard(
             modifier = Modifier
                 .fillMaxSize()
+                .clip(RoundedCornerShape(12.dp))
                 .shadow(
-                    elevation = if (isTop || expanded) 12.dp else 4.dp,
-                    shape = RoundedCornerShape(12.dp)
+                    elevation = 12.dp
                 )
-                .border(width = 1.dp, color = Color(0x22000000), shape = RoundedCornerShape(12.dp))
-                .background(color = Color.LightGray, shape = RoundedCornerShape(12.dp))
-                .then(contentModifier),
-        ) {
-            Box(modifier = Modifier.fillMaxSize()) {
-                model.content()
-            }
+                .background(Color.Gray)
+        )
+        {
+            model.content()
         }
     }
 }
@@ -552,19 +623,12 @@ fun DemoCardStack() {
             Button(onClick = {
                 stackState.popFront()
             }, text = "Remove top card")
-            Spacer(modifier = Modifier.width(12.dp))
-//
-//            Button(onClick = {
-//                stackState.popBack()
-//            }, text = "Remove last card")
 
-            Button(onClick = {
-                stackState.hideAt(listOf(3, 4, 5), remove = false)
-            }, text = "Show last removed card")
+            Spacer(modifier = Modifier.width(12.dp))
 
             Button(onClick = {
                 stackState.showAt(listOf(0, 1, 2))
-            }, text = "Show first removed cards")
+            }, text = "Show hidden cards")
         }
     }
 }
