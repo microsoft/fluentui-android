@@ -6,6 +6,7 @@ import android.graphics.PixelFormat
 import android.graphics.Rect
 import android.os.Build
 import android.view.Gravity
+import android.view.KeyEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewOutlineProvider
@@ -66,13 +67,15 @@ import java.util.UUID
  */
 @Composable
 fun ModalPopup(
-    onDismissRequest:(() -> Unit)? = null,
+    onDismissRequest: (() -> Unit)? = null,
+    properties: PopupProperties = PopupProperties(
+        focusable = true,
+        dismissOnBackPress = true,
+        dismissOnClickOutside = true
+    ),
     windowInsetsType: Int = WindowInsetsCompat.Type.systemBars(),
     content: @Composable () -> Unit,
 ) {
-    val properties = PopupProperties(
-        focusable = true,
-    )
     val view = LocalView.current
     val density = LocalDensity.current
     val layoutDirection = LocalLayoutDirection.current
@@ -263,6 +266,26 @@ private class ModalWindow(
         // Do nothing.
     }
 
+    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
+        if (event.keyCode == KeyEvent.KEYCODE_BACK && properties.dismissOnBackPress) {
+            if (keyDispatcherState == null) {
+                return super.dispatchKeyEvent(event)
+            }
+            if (event.action == KeyEvent.ACTION_DOWN && event.repeatCount == 0) {
+                val state = keyDispatcherState
+                state?.startTracking(event, this)
+                return true
+            } else if (event.action == KeyEvent.ACTION_UP) {
+                val state = keyDispatcherState
+                if (state != null && state.isTracking(event) && !event.isCanceled) {
+                    onDismissRequest?.invoke()
+                    return true
+                }
+            }
+        }
+        return super.dispatchKeyEvent(event)
+    }
+
     fun superSetLayoutDirection(layoutDirection: LayoutDirection) {
         val direction = when (layoutDirection) {
             LayoutDirection.Ltr -> android.util.LayoutDirection.LTR
@@ -271,7 +294,7 @@ private class ModalWindow(
         super.setLayoutDirection(direction)
     }
 
-    private fun createLayoutParams(): WindowManager.LayoutParams{
+    private fun createLayoutParams(): WindowManager.LayoutParams {
         return WindowManager.LayoutParams().apply {
             // Position bottom sheet from the bottom of the screen
             gravity = Gravity.BOTTOM or Gravity.START
@@ -326,7 +349,11 @@ private open class PopupLayoutHelperImpl {
 
 @RequiresApi(29) // android.view.View#setSystemGestureExclusionRects call requires API 29 and above
 private class PopupLayoutHelperImpl29 : PopupLayoutHelperImpl() {
-    override fun setGestureExclusionRects(composeView: View, width: Int, height: Int) { // We need to explicitly specify to exclude the entire screen from system gestures
+    override fun setGestureExclusionRects(
+        composeView: View,
+        width: Int,
+        height: Int
+    ) { // We need to explicitly specify to exclude the entire screen from system gestures
         composeView.systemGestureExclusionRects = mutableListOf(
             Rect(
                 0,
