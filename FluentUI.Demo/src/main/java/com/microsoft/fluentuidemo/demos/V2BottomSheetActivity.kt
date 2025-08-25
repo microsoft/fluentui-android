@@ -3,6 +3,9 @@ package com.microsoft.fluentuidemo.demos
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -44,6 +47,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -66,6 +70,7 @@ import com.microsoft.fluentui.tokenized.bottomsheet.BottomSheetValue
 import com.microsoft.fluentui.tokenized.bottomsheet.rememberBottomSheetState
 import com.microsoft.fluentui.tokenized.contentBuilder.ItemData
 import com.microsoft.fluentui.tokenized.contentBuilder.ListContentBuilder
+import com.microsoft.fluentui.tokenized.controls.BasicCard
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
@@ -151,434 +156,514 @@ private fun CreateActivityUI() {
     val selectedOption = remember { mutableStateOf(content[0]) }
 
     BottomSheet(
-        sheetContent = sheetContentState,
+        sheetContent = {
+            Row(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                for (i in 0..4) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(100.dp)
+                            .clickable(
+                                onClick = {
+                                    println("Clicked at position $i")
+                                }
+                            )
+                            .weight(1f)
+                            .background(Color.Red)
+                            .border(width = 2.dp, color = Color.Black)
+                    )
+                }
+            }
+        },
         expandable = expandableState,
         peekHeight = peekHeightState,
-        scrimVisible = scrimVisible,
-        showHandle = showHandleState,
+        scrimVisible = false,
+        showHandle = false,
         sheetState = bottomSheetState,
         slideOver = slideOverState,
         enableSwipeDismiss = enableSwipeDismiss,
-        preventDismissalOnScrimClick = preventDismissalOnScrimClick,
+        preventDismissalOnScrimClick = true,
         stickyThresholdUpward = stickyThresholdUpwardDrag,
         stickyThresholdDownward = stickyThresholdDownwardDrag
     ) {
         Column(
-            verticalArrangement = Arrangement.spacedBy(10.dp),
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.fillMaxWidth().verticalScroll(rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Button(
-                    style = ButtonStyle.OutlinedButton,
-                    size = ButtonSize.Medium,
-                    text = "Show",
-                    enabled = hidden,
-                    onClick = {
-                        hidden = false
-                        scope.launch { bottomSheetState.show() }
-                    }
-                )
-
-                Button(
-                    style = ButtonStyle.OutlinedButton,
-                    size = ButtonSize.Medium,
-                    text = "Jump Show",
-                    enabled = hidden,
-                    onClick = {
-                        hidden = false
-                        scope.launch {
-                            bottomSheetState.show()
-                            for (x in 1..9) {
-                                delay(17)
-                                peekHeightState += x.dp
-                            }
-
-                            for (x in 1..9) {
-                                delay(17)
-                                peekHeightState -= x.dp
-                            }
-
-                        }
-                    }
-                )
-
-                Button(
-                    style = ButtonStyle.OutlinedButton,
-                    size = ButtonSize.Medium,
-                    text = "Expand",
-                    enabled = expandableState,
-                    onClick = {
-                        scope.launch { bottomSheetState.expand() }
-                    }
-                )
-            }
-
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(30.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                BasicText(
-                    text = "Expandable",
-                    modifier = Modifier.weight(1F),
-                    style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            themeMode = ThemeMode.Auto
-                        )
-                    )
-                )
-                ToggleSwitch(checkedState = expandableState,
-                    onValueChange = { expandableState = it }
-                )
-            }
-
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(30.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                BasicText(
-                    text = "Show Handle",
-                    modifier = Modifier.weight(1F),
-                    style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            themeMode = ThemeMode.Auto
-                        )
-                    )
-                )
-                ToggleSwitch(checkedState = showHandleState,
-                    onValueChange = { showHandleState = it }
-                )
-            }
-
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(30.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                BasicText(
-                    text = "Slide Over",
-                    modifier = Modifier.weight(1F),
-                    style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            themeMode = ThemeMode.Auto
-                        )
-                    )
-                )
-                ToggleSwitch(checkedState = slideOverState,
-                    onValueChange = { slideOverState = it }
-                )
-            }
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(30.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                BasicText(
-                    text = stringResource(id = R.string.bottom_sheet_text_enable_swipe_dismiss),
-                    modifier = Modifier.weight(1F),
-                    style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            themeMode = ThemeMode.Auto
-                        )
-                    )
-                )
-                ToggleSwitch(
-                    modifier = Modifier.testTag(BOTTOM_SHEET_ENABLE_SWIPE_DISMISS_TEST_TAG),
-                    checkedState = enableSwipeDismiss,
-                    onValueChange = { enableSwipeDismiss = it }
-                )
-            }
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(30.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                BasicText(
-                    text = "Scrim Visible",
-                    modifier = Modifier.weight(1F),
-                    style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            themeMode = ThemeMode.Auto
-                        )
-                    )
-                )
-                ToggleSwitch(checkedState = scrimVisible,
-                    onValueChange = { scrimVisible = it }
-                )
-            }
-
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(30.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                BasicText(
-                    text = "Prevent Dismissal On Scrim Click",
-                    modifier = Modifier.weight(1F),
-                    style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            themeMode = ThemeMode.Auto
-                        )
-                    )
-                )
-                ToggleSwitch(checkedState = preventDismissalOnScrimClick,
-                    onValueChange = { preventDismissalOnScrimClick = it }
-                )
-            }
-
-            // New Row for Sticky Threshold Downward Drag
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(30.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                BasicText(
-                    text = "Sticky Threshold Upward Drag",
-                    modifier = Modifier.weight(1F),
-                    style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            themeMode = ThemeMode.Auto
-                        )
-                    )
-                )
-                Slider(
-                    modifier = Modifier
-                        .width(100.dp)
-                        .height(50.dp)
-                        .padding(0.dp, 0.dp, 0.dp, 0.dp),
-                    value = stickyThresholdUpwardDrag,
-                    onValueChange = {
-                        stickyThresholdUpwardDrag = it
-                        peekHeightState += 0.0001.dp
-                    },
-                    valueRange = 0f..500f,
-                    colors = SliderDefaults.colors(
-                        thumbColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color100],
-                        activeTrackColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color10],
-                    )
-                )
-                BasicText(
-                    text = "%.1fdp".format(stickyThresholdUpwardDrag),
-                    style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            themeMode = ThemeMode.Auto
-                        )
-                    )
-                )
-            }
-            // New Row for Sticky Threshold Upward Drag
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(30.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                BasicText(
-                    text = "Sticky Threshold Downward Drag",
-                    modifier = Modifier.weight(1F),
-                    style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            themeMode = ThemeMode.Auto
-                        )
-                    )
-                )
-                Slider(
-                    modifier = Modifier
-                        .width(100.dp)
-                        .height(50.dp)
-                        .padding(0.dp, 0.dp, 0.dp, 0.dp),
-                    value = stickyThresholdDownwardDrag,
-                    onValueChange = {
-                        stickyThresholdDownwardDrag = it
-                        peekHeightState += 0.0001.dp
-                    },
-                    valueRange = 0f..500f,
-                    colors = SliderDefaults.colors(
-                        thumbColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color100],
-                        activeTrackColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color10],
-                    )
-                )
-                BasicText(
-                    text = "%.1fdp".format(stickyThresholdDownwardDrag),
-                    style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            themeMode = ThemeMode.Auto
-                        )
-                    )
-                )
-            }
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                BasicText(
-                    text = "Peek Height $peekHeightState",
-                    modifier = Modifier.weight(1F),
-                    style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            themeMode = ThemeMode.Auto
-                        )
-                    )
-                )
-                Button(
-                    style = ButtonStyle.Button,
-                    size = ButtonSize.Medium,
-                    text = "+ 8 dp",
-                    onClick = { peekHeightState += 8.dp })
-
-                Button(
-                    style = ButtonStyle.Button,
-                    size = ButtonSize.Medium,
-                    text = "- 8 dp",
-                    enabled = peekHeightState > 0.dp,
-                    onClick = { peekHeightState -= 8.dp })
-            }
-
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(30.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                BasicText(
-                    text = "Note: When 'Slide Over' is On then Peek Height max limit is restricted to half of screen size. When 'Slide Over' is off then bottomSheet height does not vary with content height. It either open at peek height or expand to fullest or hide at bottom",
-                    modifier = Modifier.weight(1F)
-                )
-            }
-
-
-            Row {
-                BasicText(
-                    text = "Select SheetContent",
-                    modifier = Modifier.weight(1F),
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold,
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            themeMode = ThemeMode.Auto
-                        )
-                    )
-                )
-            }
-
-            Row {
-                BasicText(
-                    text = "From ItemListContentBuilder",
-                    modifier = Modifier.weight(1F),
-                    style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            themeMode = ThemeMode.Auto
-                        )
-                    )
-                )
-
-                RadioButton(
-                    selected = (selectedOption.value == content[0]),
-                    onClick = {
-                        selectedOption.value = content[0]
-                        sheetContentState = contentByListContentBuilder
-                    }
-                )
-            }
-            Row {
-                BasicText(
-                    text = "Using AndroidView",
-                    modifier = Modifier.weight(1F),
-                    style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            themeMode = ThemeMode.Auto
-                        )
-                    )
-                )
-
-                RadioButton(
-                    selected = (selectedOption.value == content[1]),
-                    onClick = {
-                        selectedOption.value = content[1]
-                        sheetContentState = content1(bottomSheetState)
-                    }
-                )
-            }
-            Row {
-                BasicText(
-                    text = "Compose Content",
-                    modifier = Modifier.weight(1F),
-                    style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            themeMode = ThemeMode.Auto
-                        )
-                    )
-                )
-
-                RadioButton(
-                    selected = (selectedOption.value == content[2]),
-                    onClick = {
-                        selectedOption.value = content[2]
-                        sheetContentState = content2(bottomSheetState)
-                    }
-                )
-            }
+            Button(
+                style = ButtonStyle.OutlinedButton,
+                size = ButtonSize.Medium,
+                text = "Show",
+                enabled = hidden,
+                onClick = {
+                    hidden = false
+                    scope.launch { bottomSheetState.show() }
+                }
+            )
 
             Button(
                 style = ButtonStyle.OutlinedButton,
                 size = ButtonSize.Medium,
-                enabled = !hidden,
-                text = "Jump to indicate more content",
+                text = "Jump Show",
+                enabled = hidden,
                 onClick = {
+                    hidden = false
                     scope.launch {
+                        bottomSheetState.show()
                         for (x in 1..9) {
                             delay(17)
                             peekHeightState += x.dp
                         }
+
                         for (x in 1..9) {
                             delay(17)
                             peekHeightState -= x.dp
                         }
+
                     }
                 }
             )
 
-            val nestedScrollConnection = remember {
-                object : NestedScrollConnection {
-                    override fun onPreScroll(
-                        available: Offset,
-                        source: NestedScrollSource
-                    ): Offset {
-                        val delta = available.y
-                        hidden = if (delta < 0) {
-                            scope.launch { bottomSheetState.hide() }
-                            true
-                        } else {
-                            scope.launch { bottomSheetState.show() }
-                            false
-                        }
-                        return Offset.Zero
-                    }
+            Button(
+                style = ButtonStyle.OutlinedButton,
+                size = ButtonSize.Medium,
+                text = "Expand",
+                enabled = expandableState,
+                onClick = {
+                    scope.launch { bottomSheetState.expand() }
                 }
-            }
-
-            Box(
-                modifier = Modifier
-                    .nestedScroll(nestedScrollConnection)
-                    .verticalScroll(
-                        rememberScrollState()
-                    )
-
             )
-            {
-                BasicText(
-                    text = context.resources.getString(R.string.large_scrollable_text),
-                    style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            themeMode = ThemeMode.Auto
-                        )
-                    )
-                )
+            for (i in 0..50) {
+                BasicCard(modifier = Modifier
+                    .width(300.dp)
+                    .height(60.dp)) {
+                    BasicText(text = "Hello BottomSheet $i")
+                }
             }
         }
+//        Column(
+//            verticalArrangement = Arrangement.spacedBy(10.dp),
+//            modifier = Modifier.padding(16.dp)
+//        ) {
+//            Row(
+//                horizontalArrangement = Arrangement.spacedBy(16.dp),
+//                verticalAlignment = Alignment.CenterVertically,
+//                modifier = Modifier.fillMaxWidth()
+//            ) {
+//                Button(
+//                    style = ButtonStyle.OutlinedButton,
+//                    size = ButtonSize.Medium,
+//                    text = "Show",
+//                    enabled = hidden,
+//                    onClick = {
+//                        hidden = false
+//                        scope.launch { bottomSheetState.show() }
+//                    }
+//                )
+//
+//                Button(
+//                    style = ButtonStyle.OutlinedButton,
+//                    size = ButtonSize.Medium,
+//                    text = "Jump Show",
+//                    enabled = hidden,
+//                    onClick = {
+//                        hidden = false
+//                        scope.launch {
+//                            bottomSheetState.show()
+//                            for (x in 1..9) {
+//                                delay(17)
+//                                peekHeightState += x.dp
+//                            }
+//
+//                            for (x in 1..9) {
+//                                delay(17)
+//                                peekHeightState -= x.dp
+//                            }
+//
+//                        }
+//                    }
+//                )
+//
+//                Button(
+//                    style = ButtonStyle.OutlinedButton,
+//                    size = ButtonSize.Medium,
+//                    text = "Expand",
+//                    enabled = expandableState,
+//                    onClick = {
+//                        scope.launch { bottomSheetState.expand() }
+//                    }
+//                )
+//            }
+//
+//            Row(
+//                horizontalArrangement = Arrangement.spacedBy(30.dp),
+//                verticalAlignment = Alignment.CenterVertically,
+//                modifier = Modifier.fillMaxWidth()
+//            ) {
+//                BasicText(
+//                    text = "Expandable",
+//                    modifier = Modifier.weight(1F),
+//                    style = TextStyle(
+//                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+//                            themeMode = ThemeMode.Auto
+//                        )
+//                    )
+//                )
+//                ToggleSwitch(
+//                    checkedState = expandableState,
+//                    onValueChange = { expandableState = it }
+//                )
+//            }
+//
+//            Row(
+//                horizontalArrangement = Arrangement.spacedBy(30.dp),
+//                verticalAlignment = Alignment.CenterVertically,
+//                modifier = Modifier.fillMaxWidth()
+//            ) {
+//                BasicText(
+//                    text = "Show Handle",
+//                    modifier = Modifier.weight(1F),
+//                    style = TextStyle(
+//                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+//                            themeMode = ThemeMode.Auto
+//                        )
+//                    )
+//                )
+//                ToggleSwitch(
+//                    checkedState = showHandleState,
+//                    onValueChange = { showHandleState = it }
+//                )
+//            }
+//
+//            Row(
+//                horizontalArrangement = Arrangement.spacedBy(30.dp),
+//                verticalAlignment = Alignment.CenterVertically,
+//                modifier = Modifier.fillMaxWidth()
+//            ) {
+//                BasicText(
+//                    text = "Slide Over",
+//                    modifier = Modifier.weight(1F),
+//                    style = TextStyle(
+//                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+//                            themeMode = ThemeMode.Auto
+//                        )
+//                    )
+//                )
+//                ToggleSwitch(
+//                    checkedState = slideOverState,
+//                    onValueChange = { slideOverState = it }
+//                )
+//            }
+//            Row(
+//                horizontalArrangement = Arrangement.spacedBy(30.dp),
+//                verticalAlignment = Alignment.CenterVertically,
+//                modifier = Modifier.fillMaxWidth()
+//            ) {
+//                BasicText(
+//                    text = stringResource(id = R.string.bottom_sheet_text_enable_swipe_dismiss),
+//                    modifier = Modifier.weight(1F),
+//                    style = TextStyle(
+//                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+//                            themeMode = ThemeMode.Auto
+//                        )
+//                    )
+//                )
+//                ToggleSwitch(
+//                    modifier = Modifier.testTag(BOTTOM_SHEET_ENABLE_SWIPE_DISMISS_TEST_TAG),
+//                    checkedState = enableSwipeDismiss,
+//                    onValueChange = { enableSwipeDismiss = it }
+//                )
+//            }
+//            Row(
+//                horizontalArrangement = Arrangement.spacedBy(30.dp),
+//                verticalAlignment = Alignment.CenterVertically,
+//                modifier = Modifier.fillMaxWidth()
+//            ) {
+//                BasicText(
+//                    text = "Scrim Visible",
+//                    modifier = Modifier.weight(1F),
+//                    style = TextStyle(
+//                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+//                            themeMode = ThemeMode.Auto
+//                        )
+//                    )
+//                )
+//                ToggleSwitch(
+//                    checkedState = scrimVisible,
+//                    onValueChange = { scrimVisible = it }
+//                )
+//            }
+//
+//            Row(
+//                horizontalArrangement = Arrangement.spacedBy(30.dp),
+//                verticalAlignment = Alignment.CenterVertically,
+//                modifier = Modifier.fillMaxWidth()
+//            ) {
+//                BasicText(
+//                    text = "Prevent Dismissal On Scrim Click",
+//                    modifier = Modifier.weight(1F),
+//                    style = TextStyle(
+//                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+//                            themeMode = ThemeMode.Auto
+//                        )
+//                    )
+//                )
+//                ToggleSwitch(
+//                    checkedState = preventDismissalOnScrimClick,
+//                    onValueChange = { preventDismissalOnScrimClick = it }
+//                )
+//            }
+//
+//            // New Row for Sticky Threshold Downward Drag
+//            Row(
+//                horizontalArrangement = Arrangement.spacedBy(30.dp),
+//                verticalAlignment = Alignment.CenterVertically,
+//                modifier = Modifier.fillMaxWidth()
+//            ) {
+//                BasicText(
+//                    text = "Sticky Threshold Upward Drag",
+//                    modifier = Modifier.weight(1F),
+//                    style = TextStyle(
+//                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+//                            themeMode = ThemeMode.Auto
+//                        )
+//                    )
+//                )
+//                Slider(
+//                    modifier = Modifier
+//                        .width(100.dp)
+//                        .height(50.dp)
+//                        .padding(0.dp, 0.dp, 0.dp, 0.dp),
+//                    value = stickyThresholdUpwardDrag,
+//                    onValueChange = {
+//                        stickyThresholdUpwardDrag = it
+//                        peekHeightState += 0.0001.dp
+//                    },
+//                    valueRange = 0f..500f,
+//                    colors = SliderDefaults.colors(
+//                        thumbColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color100],
+//                        activeTrackColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color10],
+//                    )
+//                )
+//                BasicText(
+//                    text = "%.1fdp".format(stickyThresholdUpwardDrag),
+//                    style = TextStyle(
+//                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+//                            themeMode = ThemeMode.Auto
+//                        )
+//                    )
+//                )
+//            }
+//            // New Row for Sticky Threshold Upward Drag
+//            Row(
+//                horizontalArrangement = Arrangement.spacedBy(30.dp),
+//                verticalAlignment = Alignment.CenterVertically,
+//                modifier = Modifier.fillMaxWidth()
+//            ) {
+//                BasicText(
+//                    text = "Sticky Threshold Downward Drag",
+//                    modifier = Modifier.weight(1F),
+//                    style = TextStyle(
+//                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+//                            themeMode = ThemeMode.Auto
+//                        )
+//                    )
+//                )
+//                Slider(
+//                    modifier = Modifier
+//                        .width(100.dp)
+//                        .height(50.dp)
+//                        .padding(0.dp, 0.dp, 0.dp, 0.dp),
+//                    value = stickyThresholdDownwardDrag,
+//                    onValueChange = {
+//                        stickyThresholdDownwardDrag = it
+//                        peekHeightState += 0.0001.dp
+//                    },
+//                    valueRange = 0f..500f,
+//                    colors = SliderDefaults.colors(
+//                        thumbColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color100],
+//                        activeTrackColor = FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color10],
+//                    )
+//                )
+//                BasicText(
+//                    text = "%.1fdp".format(stickyThresholdDownwardDrag),
+//                    style = TextStyle(
+//                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+//                            themeMode = ThemeMode.Auto
+//                        )
+//                    )
+//                )
+//            }
+//            Row(
+//                horizontalArrangement = Arrangement.spacedBy(16.dp),
+//                verticalAlignment = Alignment.CenterVertically,
+//                modifier = Modifier.fillMaxWidth()
+//            ) {
+//                BasicText(
+//                    text = "Peek Height $peekHeightState",
+//                    modifier = Modifier.weight(1F),
+//                    style = TextStyle(
+//                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+//                            themeMode = ThemeMode.Auto
+//                        )
+//                    )
+//                )
+//                Button(
+//                    style = ButtonStyle.Button,
+//                    size = ButtonSize.Medium,
+//                    text = "+ 8 dp",
+//                    onClick = { peekHeightState += 8.dp })
+//
+//                Button(
+//                    style = ButtonStyle.Button,
+//                    size = ButtonSize.Medium,
+//                    text = "- 8 dp",
+//                    enabled = peekHeightState > 0.dp,
+//                    onClick = { peekHeightState -= 8.dp })
+//            }
+//
+//            Row(
+//                horizontalArrangement = Arrangement.spacedBy(30.dp),
+//                verticalAlignment = Alignment.CenterVertically,
+//                modifier = Modifier.fillMaxWidth()
+//            ) {
+//                BasicText(
+//                    text = "Note: When 'Slide Over' is On then Peek Height max limit is restricted to half of screen size. When 'Slide Over' is off then bottomSheet height does not vary with content height. It either open at peek height or expand to fullest or hide at bottom",
+//                    modifier = Modifier.weight(1F)
+//                )
+//            }
+//
+//
+//            Row {
+//                BasicText(
+//                    text = "Select SheetContent",
+//                    modifier = Modifier.weight(1F),
+//                    style = TextStyle(
+//                        fontWeight = FontWeight.Bold,
+//                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+//                            themeMode = ThemeMode.Auto
+//                        )
+//                    )
+//                )
+//            }
+//
+//            Row {
+//                BasicText(
+//                    text = "From ItemListContentBuilder",
+//                    modifier = Modifier.weight(1F),
+//                    style = TextStyle(
+//                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+//                            themeMode = ThemeMode.Auto
+//                        )
+//                    )
+//                )
+//
+//                RadioButton(
+//                    selected = (selectedOption.value == content[0]),
+//                    onClick = {
+//                        selectedOption.value = content[0]
+//                        sheetContentState = contentByListContentBuilder
+//                    }
+//                )
+//            }
+//            Row {
+//                BasicText(
+//                    text = "Using AndroidView",
+//                    modifier = Modifier.weight(1F),
+//                    style = TextStyle(
+//                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+//                            themeMode = ThemeMode.Auto
+//                        )
+//                    )
+//                )
+//
+//                RadioButton(
+//                    selected = (selectedOption.value == content[1]),
+//                    onClick = {
+//                        selectedOption.value = content[1]
+//                        sheetContentState = content1(bottomSheetState)
+//                    }
+//                )
+//            }
+//            Row {
+//                BasicText(
+//                    text = "Compose Content",
+//                    modifier = Modifier.weight(1F),
+//                    style = TextStyle(
+//                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+//                            themeMode = ThemeMode.Auto
+//                        )
+//                    )
+//                )
+//
+//                RadioButton(
+//                    selected = (selectedOption.value == content[2]),
+//                    onClick = {
+//                        selectedOption.value = content[2]
+//                        sheetContentState = content2(bottomSheetState)
+//                    }
+//                )
+//            }
+//
+//            Button(
+//                style = ButtonStyle.OutlinedButton,
+//                size = ButtonSize.Medium,
+//                enabled = !hidden,
+//                text = "Jump to indicate more content",
+//                onClick = {
+//                    scope.launch {
+//                        for (x in 1..9) {
+//                            delay(17)
+//                            peekHeightState += x.dp
+//                        }
+//                        for (x in 1..9) {
+//                            delay(17)
+//                            peekHeightState -= x.dp
+//                        }
+//                    }
+//                }
+//            )
+//
+//            val nestedScrollConnection = remember {
+//                object : NestedScrollConnection {
+//                    override fun onPreScroll(
+//                        available: Offset,
+//                        source: NestedScrollSource
+//                    ): Offset {
+//                        val delta = available.y
+//                        hidden = if (delta < 0) {
+//                            scope.launch { bottomSheetState.hide() }
+//                            true
+//                        } else {
+//                            scope.launch { bottomSheetState.show() }
+//                            false
+//                        }
+//                        return Offset.Zero
+//                    }
+//                }
+//            }
+//
+//            Box(
+//                modifier = Modifier
+//                    .nestedScroll(nestedScrollConnection)
+//                    .verticalScroll(
+//                        rememberScrollState()
+//                    )
+//
+//            )
+//            {
+//                BasicText(
+//                    text = context.resources.getString(R.string.large_scrollable_text),
+//                    style = TextStyle(
+//                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+//                            themeMode = ThemeMode.Auto
+//                        )
+//                    )
+//                )
+//            }
+//        }
     }
 }
 
