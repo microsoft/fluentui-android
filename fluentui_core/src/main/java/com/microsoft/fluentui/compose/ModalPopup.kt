@@ -271,12 +271,11 @@ private class ModalWindow(
             if (keyDispatcherState == null) {
                 return super.dispatchKeyEvent(event)
             }
+            val state = keyDispatcherState
             if (event.action == KeyEvent.ACTION_DOWN && event.repeatCount == 0) {
-                val state = keyDispatcherState
                 state?.startTracking(event, this)
                 return true
             } else if (event.action == KeyEvent.ACTION_UP) {
-                val state = keyDispatcherState
                 if (state != null && state.isTracking(event) && !event.isCanceled) {
                     onDismissRequest?.invoke()
                     return true
