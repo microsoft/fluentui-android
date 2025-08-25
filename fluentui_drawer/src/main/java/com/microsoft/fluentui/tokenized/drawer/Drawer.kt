@@ -1,6 +1,5 @@
 package com.microsoft.fluentui.tokenized.drawer
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.fillMaxSize
@@ -327,7 +326,10 @@ internal fun Scrim(
 }
 
 @Composable
-internal fun AnnounceDrawerActions(drawerState: DrawerState, talkbackAnnouncement: DrawerAccessibilityAnnouncement){ // Announces actions for drawer through Talkback
+internal fun AnnounceDrawerActions(
+    drawerState: DrawerState,
+    talkbackAnnouncement: DrawerAccessibilityAnnouncement
+) { // Announces actions for drawer through Talkback
     val view = LocalView.current
     var previousState by remember { mutableStateOf(drawerState.enable) }
 
@@ -343,6 +345,7 @@ internal fun AnnounceDrawerActions(drawerState: DrawerState, talkbackAnnouncemen
     }
 
 }
+
 /**
  *
  * Drawer block interaction with the rest of an app’s content with a scrim.
@@ -522,12 +525,16 @@ fun BottomDrawer(
                 scope.launch { drawerState.close() }
             }
         }
-        BackHandler { //TODO: Add pull down animation with predictive back
-            close()
-        }
         ModalPopup(
             windowInsetsType = windowInsetsType,
-            onDismissRequest = close,
+            properties = PopupProperties(
+                focusable = true,
+                dismissOnBackPress = true,
+                dismissOnClickOutside = false
+            ),
+            onDismissRequest = {
+                close()
+            },
         )
         {
             val drawerShape: Shape =

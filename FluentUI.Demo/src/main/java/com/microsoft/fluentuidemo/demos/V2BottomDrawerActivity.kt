@@ -5,8 +5,6 @@ import SearchViewModelFactory
 import Searchable
 import android.content.res.Configuration
 import android.os.Bundle
-import androidx.activity.OnBackPressedCallback
-import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.Orientation
@@ -92,22 +90,11 @@ class V2BottomDrawerActivity : V2DemoActivity() {
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-9"
     override val controlTokensUrl =
         "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-9"
-    private val onBackCallback =
-        object : OnBackPressedCallback(true) { //callback to end the activity
-            override fun handleOnBackPressed() {
-                finish()
-            }
-
-        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setActivityContent {
             CreateActivityUI()
-            LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher?.addCallback(
-                this,
-                onBackCallback
-            ) //registering the callback to end the activity when back button is pressed
         }
     }
 }
@@ -566,7 +553,7 @@ private fun CreateSearchableDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     )
     val open: () -> Unit = {
         scope.launch {
-            if(drawerState.currentValue == DrawerValue.Closed) {
+            if (drawerState.currentValue == DrawerValue.Closed) {
                 viewModel.clearSelection()
             }
             drawerState.open()

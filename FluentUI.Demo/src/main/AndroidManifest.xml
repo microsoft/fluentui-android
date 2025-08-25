@@ -35,8 +35,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicControlsActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomDrawerActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:windowSoftInputMode="adjustResize"
-            android:enableOnBackInvokedCallback="true"/>
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomSheetActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity android:name="com.microsoft.fluentuidemo.demos.V2CardActivity" />
