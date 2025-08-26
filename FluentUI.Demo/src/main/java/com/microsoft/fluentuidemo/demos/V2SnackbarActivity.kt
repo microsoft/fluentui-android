@@ -34,13 +34,13 @@ import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.notification.AnimationBehavior
 import com.microsoft.fluentui.tokenized.notification.AnimationVariables
-import com.microsoft.fluentui.tokenized.notification.CardModel
-import com.microsoft.fluentui.tokenized.notification.CardStack
 import com.microsoft.fluentui.tokenized.notification.NotificationDuration
 import com.microsoft.fluentui.tokenized.notification.NotificationResult
 import com.microsoft.fluentui.tokenized.notification.Snackbar
+import com.microsoft.fluentui.tokenized.notification.SnackbarItemModel
+import com.microsoft.fluentui.tokenized.notification.SnackbarStack
 import com.microsoft.fluentui.tokenized.notification.SnackbarState
-import com.microsoft.fluentui.tokenized.notification.rememberCardStackState
+import com.microsoft.fluentui.tokenized.notification.rememberSnackbarStackState
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillBar
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentuidemo.R
@@ -343,13 +343,13 @@ class V2SnackbarActivity : V2DemoActivity() {
 @RequiresApi(Build.VERSION_CODES.N)
 @Composable
 fun DemoCardStack() {
-    val stackState = rememberCardStackState()
+    val stackState = rememberSnackbarStackState()
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Bottom
     ) {
-        CardStack(
+        SnackbarStack(
             state = stackState,
             modifier = Modifier.padding(16.dp),
             cardWidth = 340.dp,
@@ -363,7 +363,7 @@ fun DemoCardStack() {
         Row {
             Button(onClick = {
                 val id = UUID.randomUUID().toString()
-                stackState.addCard(CardModel(id = id) {
+                stackState.addCard(SnackbarItemModel(id = id) {
                     Column(modifier = Modifier.padding(12.dp)) {
                         BasicText("Card: $id")
                         BasicText("Some detail here")

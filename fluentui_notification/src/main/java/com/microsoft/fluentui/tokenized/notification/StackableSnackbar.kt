@@ -39,10 +39,11 @@ import kotlin.math.abs
 import kotlin.math.pow
 import kotlin.math.roundToInt
 
-private const val FADE_OUT_DURATION = 350 // milliseconds
-private const val STACKED_WIDTH_SCALE_FACTOR = 0.95f // Scale factor for stacked cards
+private const val FADE_OUT_DURATION = 350
+private const val STACKED_WIDTH_SCALE_FACTOR = 0.95f
 
-data class CardModel(
+@Stable
+data class SnackbarItemModel(
     val id: String,
     val hidden: MutableState<Boolean> = mutableStateOf(false),
     val isReshown: MutableState<Boolean> = mutableStateOf(false),
@@ -50,22 +51,22 @@ data class CardModel(
 )
 
 /** Public state object to control the stack. */
-class CardStackState(
-    internal val cards: MutableList<CardModel>,
+class SnackbarStackState(
+    internal val cards: MutableList<SnackbarItemModel>,
     internal val scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main),
     internal val maxCollapsedSize: Int = 3,
     internal val maxExpandedSize: Int = 10
 ) {
-    internal val snapshotStateList: MutableList<CardModel> =
-        mutableStateListOf<CardModel>().apply { addAll(cards) }
-    internal val hiddenIndicesList: MutableList<Pair<Int, CardModel>> = mutableListOf()
+    internal val snapshotStateList: MutableList<SnackbarItemModel> =
+        mutableStateListOf<SnackbarItemModel>().apply { addAll(cards) }
+    internal val hiddenIndicesList: MutableList<Pair<Int, SnackbarItemModel>> = mutableListOf()
     internal var expanded by mutableStateOf(false)
 
     private val listOperationMutex = Mutex()
 
     private val expandMutex = Mutex()
 
-    fun addCard(card: CardModel) {
+    fun addCard(card: SnackbarItemModel) {
         scope.launch {
             listOperationMutex.withLock {
                 snapshotStateList.add(card)
@@ -149,9 +150,8 @@ class CardStackState(
      * Shows cards in parallel for smooth animation
      */
     private suspend fun showAtParallel(indices: List<Int>) {
-        val cardsToShow = mutableListOf<Pair<Int, CardModel>>()
+        val cardsToShow = mutableListOf<Pair<Int, SnackbarItemModel>>()
 
-        // First, collect all cards to show while holding the lock
         listOperationMutex.withLock {
             indices.reversed().forEach { idx ->
                 if (idx in hiddenIndicesList.indices) {
@@ -162,8 +162,6 @@ class CardStackState(
                 }
             }
 
-            // Add all cards back to the list immediately
-
             cardsToShow.forEach { (_, card) ->
                 card.isReshown.value = true
                 snapshotStateList.add(0, card)
@@ -171,7 +169,6 @@ class CardStackState(
             }
         }
 
-        // Now animate all cards in parallel (outside the lock)
         coroutineScope {
             cardsToShow.map { (idx, card) ->
                 launch {
@@ -218,7 +215,7 @@ class CardStackState(
      * Hides cards in parallel for smooth animation
      */
     private suspend fun hideAtParallel(indices: List<Int>, remove: Boolean) {
-        val cardsToHide = mutableListOf<Pair<Int, CardModel>>()
+        val cardsToHide = mutableListOf<Pair<Int, SnackbarItemModel>>()
 
         // Collect cards and mark them as hidden immediately
         listOperationMutex.withLock {
@@ -233,11 +230,9 @@ class CardStackState(
             }
         }
 
-        // Animate all cards in parallel
         if (cardsToHide.isNotEmpty()) {
             delay(FADE_OUT_DURATION.toLong())
 
-            // Remove all cards at once after animation
             listOperationMutex.withLock {
                 cardsToHide.forEach { (idx, card) ->
                     if (remove) {
@@ -257,12 +252,12 @@ class CardStackState(
 }
 
 @Composable
-fun rememberCardStackState(initial: List<CardModel> = emptyList()): CardStackState {
-    return remember { CardStackState(initial.toMutableList()) }
+fun rememberSnackbarStackState(initial: List<SnackbarItemModel> = emptyList()): SnackbarStackState {
+    return remember { SnackbarStackState(initial.toMutableList()) }
 }
 
 /**
- * CardStack composable.
+ * SnackbarStack composable.
  * @param state state controlling cards
  * @param cardWidth fixed width of the stack
  * @param cardHeight base height for each card
@@ -270,8 +265,8 @@ fun rememberCardStackState(initial: List<CardModel> = emptyList()): CardStackSta
  * @param contentModifier modifier applied to each card slot
  */
 @Composable
-fun CardStack(
-    state: CardStackState,
+fun SnackbarStack(
+    state: SnackbarStackState,
     modifier: Modifier = Modifier,
     cardWidth: Dp = 320.dp,
     cardHeight: Dp = 160.dp,
@@ -281,14 +276,16 @@ fun CardStack(
 ) {
     val count by remember { derivedStateOf { state.size() } }
 
-    val targetHeight by remember(count, cardHeight, peekHeight, state.expanded) {
-        mutableStateOf(
-            if (state.expanded) {
-                cardHeight * count + (if (count > 0) (count - 1) * peekHeight else 0.dp)
+    val targetHeight by remember {
+        derivedStateOf {
+            if (count == 0) {
+                0.dp
+            } else if (state.expanded) {
+                cardHeight * count + (count - 1) * peekHeight
             } else {
-                cardHeight + (if (count > 0) (count - 1) * peekHeight else 0.dp)
+                cardHeight + (count - 1) * peekHeight
             }
-        )
+        }
     }
 
     val animatedStackHeight by animateDpAsState(
@@ -299,7 +296,7 @@ fun CardStack(
     Box(
         modifier = modifier
             .width(cardWidth)
-            .height(if (state.snapshotStateList.size == 0) 0.dp else animatedStackHeight)
+            .height(if (state.size() == 0) 0.dp else animatedStackHeight)
             .wrapContentHeight(
                 align = if (stackAbove) {
                     Alignment.Bottom
@@ -314,15 +311,15 @@ fun CardStack(
                 tooltipText = "Notification Stack",
             )
     ) {
-        state.snapshotStateList.forEachIndexed { index, cardModel ->
-            val logicalIndex = state.snapshotStateList.size - 1 - index
+        state.snapshotStateList.forEachIndexed { index, snackbarModel ->
+            val logicalIndex = state.size() - 1 - index
             val isTop = logicalIndex == 0
 
-            key(cardModel.id) {
-                CardStackItem(
-                    model = cardModel,
-                    isHidden = cardModel.hidden.value,
-                    isReshown = cardModel.isReshown.value,
+            key(snackbarModel.id) {
+                SnackbarStackItem(
+                    model = snackbarModel,
+                    isHidden = snackbarModel.hidden.value,
+                    isReshown = snackbarModel.isReshown.value,
                     expanded = state.expanded,
                     index = logicalIndex,
                     isTop = isTop,
@@ -340,7 +337,6 @@ fun CardStack(
     }
 }
 
-// CardStackItem and animation functions remain the same as in your original implementation...
 @Composable
 private fun CardAdjustAnimation(
     expanded: Boolean,
@@ -375,7 +371,7 @@ private fun CardWidthAnimation(
 
 @Composable
 private fun SlideInAnimation(
-    model: CardModel,
+    model: SnackbarItemModel,
     isReshown: Boolean = false,
     isTop: Boolean = true,
     slideInProgress: Animatable<Float, AnimationVector1D>
@@ -428,8 +424,8 @@ private fun HideAnimation(
 }
 
 @Composable
-private fun CardStackItem(
-    model: CardModel,
+private fun SnackbarStackItem(
+    model: SnackbarItemModel,
     isHidden: Boolean,
     isReshown: Boolean = false,
     expanded: Boolean,
