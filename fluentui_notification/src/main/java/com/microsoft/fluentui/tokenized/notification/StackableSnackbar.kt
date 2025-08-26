@@ -42,6 +42,14 @@ import kotlin.math.roundToInt
 private const val FADE_OUT_DURATION = 350
 private const val STACKED_WIDTH_SCALE_FACTOR = 0.95f
 
+/**
+ * Represents a single item within the Snackbar stack.
+ *
+ * @param id A unique identifier for this snackbar item.
+ * @param hidden A mutable state to control the visibility (hidden/shown) of the card. `true` if hidden, `false` otherwise.
+ * @param isReshown A mutable state to indicate if the card is being reshown after being hidden. This helps in triggering specific animations.
+ * @param content The composable content to be displayed inside the snackbar card.
+ */
 @Stable
 data class SnackbarItemModel(
     val id: String,
@@ -50,7 +58,15 @@ data class SnackbarItemModel(
     val content: @Composable () -> Unit
 )
 
-/** Public state object to control the stack. */
+/**
+ * A state object that can be hoisted to control and observe the [SnackbarStack].
+ * It provides methods to add, remove, and manage the state of snackbar items.
+ *
+ * @param cards The initial list of [SnackbarItemModel] to populate the stack.
+ * @param scope The [CoroutineScope] to launch operations like adding, removing, and animating cards.
+ * @param maxCollapsedSize The maximum number of visible cards when the stack is collapsed.
+ * @param maxExpandedSize The maximum number of visible cards when the stack is expanded.
+ */
 class SnackbarStackState(
     internal val cards: MutableList<SnackbarItemModel>,
     internal val scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main),
@@ -66,6 +82,11 @@ class SnackbarStackState(
 
     private val expandMutex = Mutex()
 
+    /**
+     * Adds a new snackbar card to the top of the stack.
+     * If the stack exceeds the maximum size, the oldest card will be hidden.
+     * @param card The [SnackbarItemModel] to add.
+     */
     fun addCard(card: SnackbarItemModel) {
         scope.launch {
             listOperationMutex.withLock {
@@ -81,6 +102,10 @@ class SnackbarStackState(
         }
     }
 
+    /**
+     * Removes a snackbar card from the stack by its unique [id].
+     * @param id The id of the card to remove.
+     */
     fun removeCardById(id: String) {
         scope.launch {
             listOperationMutex.withLock {
@@ -92,6 +117,10 @@ class SnackbarStackState(
         }
     }
 
+    /**
+     * Toggles the stack between its collapsed and expanded states.
+     * It automatically handles showing or hiding cards to match the respective size limits.
+     */
     fun toggleExpanded() {
         scope.launch {
             expandMutex.withLock {
@@ -112,6 +141,10 @@ class SnackbarStackState(
         }
     }
 
+    /**
+     * Hides the oldest visible card from the stack (the one at the bottom).
+     * @param remove If `true`, the card is permanently removed. If `false`, it's moved to a hidden list and can be reshown later.
+     */
     fun popBack(remove: Boolean = true) {
         scope.launch {
             val index = snapshotStateList.indexOfFirst { !it.hidden.value }
@@ -121,6 +154,10 @@ class SnackbarStackState(
         }
     }
 
+    /**
+     * Hides the newest visible card from the stack (the one at the top).
+     * @param remove If `true`, the card is permanently removed. If `false`, it's moved to a hidden list and can be reshown later.
+     */
     fun popFront(remove: Boolean = true) {
         scope.launch {
             val index = snapshotStateList.indexOfLast { !it.hidden.value }
@@ -131,7 +168,8 @@ class SnackbarStackState(
     }
 
     /**
-     * Shows cards at the specified indices in parallel.
+     * Reveals previously hidden cards at the specified indices in the hidden list.
+     * @param indices A list of indices corresponding to the cards in the hidden list to show.
      */
     fun showAt(indices: List<Int>) {
         scope.launch {
@@ -139,6 +177,9 @@ class SnackbarStackState(
         }
     }
 
+    /**
+     * Reveals all previously hidden cards.
+     */
     fun showAll() {
         scope.launch {
             val indicesToShow = (0 until hiddenIndicesList.size).toList()
@@ -147,7 +188,7 @@ class SnackbarStackState(
     }
 
     /**
-     * Shows cards in parallel for smooth animation
+     * Shows cards in parallel for smooth animation.
      */
     private suspend fun showAtParallel(indices: List<Int>) {
         val cardsToShow = mutableListOf<Pair<Int, SnackbarItemModel>>()
@@ -189,7 +230,7 @@ class SnackbarStackState(
     }
 
     /**
-     * Hides a single card (sequential operation)
+     * Hides a single card (sequential operation).
      */
     private suspend fun hideAtSingle(index: Int, remove: Boolean) {
         if (index in snapshotStateList.indices) {
@@ -212,12 +253,11 @@ class SnackbarStackState(
     }
 
     /**
-     * Hides cards in parallel for smooth animation
+     * Hides cards in parallel for smooth animation.
      */
     private suspend fun hideAtParallel(indices: List<Int>, remove: Boolean) {
         val cardsToHide = mutableListOf<Pair<Int, SnackbarItemModel>>()
 
-        // Collect cards and mark them as hidden immediately
         listOperationMutex.withLock {
             indices.forEach { idx ->
                 if (idx in snapshotStateList.indices) {
@@ -248,21 +288,36 @@ class SnackbarStackState(
         }
     }
 
+    /**
+     * Returns the current number of visible cards in the stack.
+     */
     fun size(): Int = snapshotStateList.size
 }
 
+/**
+ * Creates and remembers a [SnackbarStackState] in the current composition.
+ * This is the recommended way to create a state object for the [SnackbarStack].
+ *
+ * @param initial An optional initial list of [SnackbarItemModel]s to populate the stack.
+ * @return A remembered [SnackbarStackState] instance.
+ */
 @Composable
 fun rememberSnackbarStackState(initial: List<SnackbarItemModel> = emptyList()): SnackbarStackState {
     return remember { SnackbarStackState(initial.toMutableList()) }
 }
 
 /**
- * SnackbarStack composable.
- * @param state state controlling cards
- * @param cardWidth fixed width of the stack
- * @param cardHeight base height for each card
- * @param peekHeight how much of the previous card is visible under the top card
- * @param contentModifier modifier applied to each card slot
+ * A composable that displays a stack of snackbar notifications.
+ * It animates the cards based on the provided [SnackbarStackState].
+ * The stack can be expanded or collapsed by clicking on it.
+ *
+ * @param state The [SnackbarStackState] that controls the content and behavior of the stack.
+ * @param modifier The [Modifier] to be applied to the stack container.
+ * @param cardWidth The fixed width for each card in the stack.
+ * @param cardHeight The base height for each card in the stack.
+ * @param peekHeight The height of the portion of the underlying cards that is visible when the stack is collapsed.
+ * @param stackAbove If `true`, the stack builds upwards from the bottom. If `false`, it builds downwards from the top.
+ * @param contentModifier A modifier to be applied to each individual card slot within the stack.
  */
 @Composable
 fun SnackbarStack(
@@ -293,6 +348,7 @@ fun SnackbarStack(
         animationSpec = spring(stiffness = Spring.StiffnessMedium)
     )
 
+    val toggleExpanded = remember<() -> Unit> { { state.toggleExpanded() } }
     Box(
         modifier = modifier
             .width(cardWidth)
@@ -305,9 +361,7 @@ fun SnackbarStack(
                 }
             )
             .clickableWithTooltip(
-                onClick = {
-                    state.toggleExpanded()
-                },
+                onClick = toggleExpanded,
                 tooltipText = "Notification Stack",
             )
     ) {
@@ -337,6 +391,9 @@ fun SnackbarStack(
     }
 }
 
+/**
+ * Manages the vertical offset animation of a card when the stack's state changes.
+ */
 @Composable
 private fun CardAdjustAnimation(
     expanded: Boolean,
@@ -354,6 +411,9 @@ private fun CardAdjustAnimation(
     }
 }
 
+/**
+ * Manages the width animation of a card when the stack's state changes.
+ */
 @Composable
 private fun CardWidthAnimation(
     expanded: Boolean,
@@ -369,6 +429,9 @@ private fun CardWidthAnimation(
     }
 }
 
+/**
+ * Manages the initial slide-in animation for a new card.
+ */
 @Composable
 private fun SlideInAnimation(
     model: SnackbarItemModel,
@@ -393,6 +456,9 @@ private fun SlideInAnimation(
     }
 }
 
+/**
+ * Manages the fade-in/fade-out animation when a card is hidden or reshown.
+ */
 @Composable
 private fun HideAnimation(
     isHidden: Boolean = false,
@@ -423,6 +489,10 @@ private fun HideAnimation(
     }
 }
 
+/**
+ * A private composable that represents a single, animatable card within the [SnackbarStack].
+ * It handles its own animations for position, width, opacity, and swipe gestures.
+ */
 @Composable
 private fun SnackbarStackItem(
     model: SnackbarItemModel,
