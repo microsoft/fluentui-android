@@ -9,12 +9,7 @@ android {
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-        versionCode project.ext.fluentui_icons_version_code
-        versionName project.ext.fluentui_icons_versionid
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-    }
-    lintOptions {
-        abortOnError false
     }
     buildTypes {
         release {
@@ -42,6 +37,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'com.microsoft.fluentui_icons'
+    lint {
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -55,9 +54,9 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 }
 
-task sourceJar(type: Jar) {
+tasks.register('sourceJar', Jar) {
     from android.sourceSets.main.java.srcDirs
-    classifier "sources"
+    archiveClassifier.set("sources")
 }
 
 project.afterEvaluate {

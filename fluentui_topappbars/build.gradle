@@ -17,8 +17,6 @@ android {
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-        versionCode project.ext.fluentui_topappbars_version_code
-        versionName project.ext.fluentui_topappbars_versionid
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         consumerProguardFiles 'consumer-rules.pro'
         vectorDrawables.useSupportLibrary = true
@@ -32,16 +30,20 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion composeCompilerVersion
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-    lintOptions {
+
+    namespace 'com.microsoft.fluentui.topappbars'
+    lint {
         abortOnError false
     }
+}
+
+kotlin {
+    jvmToolchain(17)
 }
 
 dependencies {
@@ -63,9 +65,9 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 }
 
-task sourceJar(type: Jar) {
+tasks.register('sourceJar', Jar) {
     from android.sourceSets.main.java.srcDirs
-    classifier "sources"
+    archiveClassifier.set("sources")
 }
 
 project.afterEvaluate {

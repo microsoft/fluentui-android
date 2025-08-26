@@ -13,8 +13,6 @@ android {
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-        versionCode project.ext.FluentUI_version_code
-        versionName project.ext.FluentUI_versionid
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         consumerProguardFiles 'consumer-rules.pro'
 
@@ -32,10 +30,9 @@ android {
     }
     lint {
         baseline = file("lint-baseline.xml")
-    }
-    lintOptions {
         abortOnError false
     }
+    namespace 'com.microsoft.fluentui_container'
 }
 
 dependencies {
@@ -67,9 +64,9 @@ dependencies {
     implementation platform("androidx.compose:compose-bom:$composeBomVersion")
 }
 
-task sourceJar(type: Jar) {
+tasks.register('sourceJar', Jar) {
     from android.sourceSets.main.java.srcDirs
-    classifier "sources"
+    archiveClassifier.set("sources")
 }
 
 project.afterEvaluate {

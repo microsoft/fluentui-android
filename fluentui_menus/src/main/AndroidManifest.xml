@@ -3,7 +3,6 @@
   ~ Copyright (c) Microsoft Corporation. All rights reserved.
   ~ Licensed under the MIT License.
   -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.microsoft.fluentui.menus">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
 </manifest>

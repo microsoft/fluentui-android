@@ -4,5 +4,4 @@
   ~ Licensed under the MIT License.
   -->
 <!-- TODO Change package name to com.microsoft.fluentui once modularization is complete -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.microsoft.fluentui_container" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" />

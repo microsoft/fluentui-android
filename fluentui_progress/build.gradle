@@ -19,8 +19,6 @@ android {
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-        versionCode project.ext.fluentui_progress_version_code
-        versionName project.ext.fluentui_progress_versionid
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         consumerProguardFiles "consumer-rules.pro"
@@ -34,11 +32,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    namespace 'com.microsoft.fluentui.progress'
+    lint {
+        abortOnError false
+    }
     buildFeatures {
         compose true
-    }
-    lintOptions {
-        abortOnError false
     }
 }
 
@@ -58,9 +57,9 @@ dependencies {
     implementation("androidx.compose.ui:ui")
 }
 
-task sourceJar(type: Jar) {
+tasks.register('sourceJar', Jar) {
     from android.sourceSets.main.java.srcDirs
-    classifier "sources"
+    archiveClassifier.set("sources")
 }
 
 project.afterEvaluate {

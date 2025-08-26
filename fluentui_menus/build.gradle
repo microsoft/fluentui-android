@@ -13,8 +13,6 @@ android {
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-        versionCode project.ext.fluentui_menus_version_code
-        versionName project.ext.fluentui_menus_versionid
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -30,7 +28,8 @@ android {
     buildFeatures {
         compose true
     }
-    lintOptions {
+    namespace 'com.microsoft.fluentui.menus'
+    lint {
         abortOnError false
     }
 }
@@ -50,9 +49,9 @@ dependencies {
     implementation("androidx.compose.ui:ui")
 }
 
-task sourceJar(type: Jar) {
+tasks.register('sourceJar', Jar) {
     from android.sourceSets.main.java.srcDirs
-    classifier "sources"
+    archiveClassifier.set("sources")
 }
 
 project.afterEvaluate {

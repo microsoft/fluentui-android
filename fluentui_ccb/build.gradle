@@ -13,8 +13,6 @@ android {
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-        versionCode project.ext.fluentui_ccb_version_code
-        versionName project.ext.fluentui_ccb_versionid
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -33,7 +31,8 @@ android {
     buildFeatures {
         compose true
     }
-    lintOptions {
+    namespace 'com.microsoft.fluentui.ccb'
+    lint {
         abortOnError false
     }
 }
@@ -57,9 +56,9 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout-compose:$constraintLayoutComposeVersion")
 }
 
-task sourceJar(type: Jar) {
+tasks.register('sourceJar', Jar) {
     from android.sourceSets.main.java.srcDirs
-    classifier "sources"
+    archiveClassifier.set("sources")
 }
 
 project.afterEvaluate {

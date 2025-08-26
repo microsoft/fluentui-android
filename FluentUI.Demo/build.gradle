@@ -31,10 +31,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    lintOptions {
-        lintConfig = file("lint.xml")
-        abortOnError false
-    }
     buildTypes {
         release {
             minifyEnabled false
@@ -73,6 +69,10 @@ android {
                 showStackTraces true
             }
         }
+    }
+    namespace 'com.microsoft.fluentuidemo'
+    lint {
+        abortOnError false
     }
 }
 

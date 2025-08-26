@@ -15,8 +15,6 @@ android {
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-        versionCode project.ext.fluentui_core_version_code
-        versionName project.ext.fluentui_core_versionid
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         vectorDrawables.useSupportLibrary = true
     }
@@ -48,10 +46,9 @@ android {
     }
     lint {
         baseline = file("lint-baseline.xml")
-    }
-    lintOptions {
         abortOnError false
     }
+    namespace 'com.microsoft.fluentui.core'
 }
 
 gradle.taskGraph.whenReady { taskGraph ->
@@ -96,9 +93,9 @@ dependencies {
     implementation "androidx.compose.runtime:runtime-livedata"
 }
 
-task sourceJar(type: Jar) {
+tasks.register('sourceJar', Jar) {
     from android.sourceSets.main.java.srcDirs
-    classifier "sources"
+    archiveClassifier.set("sources")
 }
 
 project.afterEvaluate {
