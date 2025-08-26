@@ -22,8 +22,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     composeOptions {
         kotlinCompilerExtensionVersion composeCompilerVersion
@@ -35,6 +36,10 @@ android {
     lint {
         abortOnError false
     }
+}
+
+kotlin {
+    jvmToolchain(17)
 }
 
 dependencies {

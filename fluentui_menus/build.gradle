@@ -25,6 +25,10 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion composeCompilerVersion
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
     buildFeatures {
         compose true
     }
@@ -32,6 +36,10 @@ android {
     lint {
         abortOnError false
     }
+}
+
+kotlin {
+    jvmToolchain(17)
 }
 
 dependencies {

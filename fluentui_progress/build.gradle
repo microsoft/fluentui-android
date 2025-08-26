@@ -16,6 +16,10 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion composeCompilerVersion
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
@@ -29,9 +33,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
     namespace 'com.microsoft.fluentui.progress'
     lint {
         abortOnError false
@@ -39,6 +40,10 @@ android {
     buildFeatures {
         compose true
     }
+}
+
+kotlin {
+    jvmToolchain(17)
 }
 
 dependencies {

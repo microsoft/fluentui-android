@@ -28,6 +28,10 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion composeCompilerVersion
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
     testOptions {
         unitTests {
             includeAndroidResources = true
@@ -39,6 +43,10 @@ android {
     lint {
         abortOnError false
     }
+}
+
+kotlin {
+    jvmToolchain(17)
 }
 
 gradle.taskGraph.whenReady { taskGraph ->
