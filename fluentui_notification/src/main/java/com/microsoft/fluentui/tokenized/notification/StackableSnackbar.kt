@@ -1,15 +1,10 @@
 package com.microsoft.fluentui.tokenized.notification
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -20,20 +15,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.util.clickableWithTooltip
 import kotlinx.coroutines.launch
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
@@ -43,16 +35,13 @@ import com.microsoft.fluentui.tokenized.controls.BasicCard
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import java.util.UUID
 import kotlin.math.abs
 import kotlin.math.pow
 import kotlin.math.roundToInt
 
-// Constants
 private const val FADE_OUT_DURATION = 350 // milliseconds
 private const val STACKED_WIDTH_SCALE_FACTOR = 0.95f // Scale factor for stacked cards
 
-/** Single card model contains an id and a composable content lambda. */
 data class CardModel(
     val id: String,
     val hidden: MutableState<Boolean> = mutableStateOf(false),
@@ -79,16 +68,14 @@ class CardStackState(
     fun addCard(card: CardModel) {
         scope.launch {
             listOperationMutex.withLock {
-                withContext(Dispatchers.Main) {
-                    snapshotStateList.add(card)
-                }
+                snapshotStateList.add(card)
             }
 
             val maxSize = if (expanded) maxExpandedSize else maxCollapsedSize
             val visibleCount = snapshotStateList.count { !it.hidden.value }
 
             if (visibleCount > maxSize) {
-                popBack()
+                popBack(remove = false)
             }
         }
     }
@@ -96,17 +83,14 @@ class CardStackState(
     fun removeCardById(id: String) {
         scope.launch {
             listOperationMutex.withLock {
-                withContext(Dispatchers.Main) {
-                    val index = snapshotStateList.indexOfFirst { it.id == id }
-                    if (index != -1) {
-                        snapshotStateList.removeAt(index)
-                    }
+                val index = snapshotStateList.indexOfFirst { it.id == id }
+                if (index != -1) {
+                    snapshotStateList.removeAt(index)
                 }
             }
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
     fun toggleExpanded() {
         scope.launch {
             expandMutex.withLock {
@@ -114,11 +98,7 @@ class CardStackState(
                 val maxSize = if (currentExpanded) maxCollapsedSize else maxExpandedSize
                 val visibleCards = snapshotStateList.filter { !it.hidden.value }
                 val currentSize = visibleCards.size
-
-                withContext(Dispatchers.Main) {
-                    expanded = !currentExpanded
-                }
-
+                expanded = !currentExpanded
                 if (currentSize > maxSize) {
                     val indicesToHide = (0 until (currentSize - maxSize)).toList()
                     hideAtParallel(indices = indicesToHide, remove = false)
@@ -131,20 +111,20 @@ class CardStackState(
         }
     }
 
-    fun popBack() {
+    fun popBack(remove: Boolean = true) {
         scope.launch {
             val index = snapshotStateList.indexOfFirst { !it.hidden.value }
             if (index != -1) {
-                hideAtSingle(index, remove = true)
+                hideAtSingle(index, remove = remove)
             }
         }
     }
 
-    fun popFront() {
+    fun popFront(remove: Boolean = true) {
         scope.launch {
             val index = snapshotStateList.indexOfLast { !it.hidden.value }
             if (index != -1) {
-                hideAtSingle(index, remove = true)
+                hideAtSingle(index, remove = remove)
             }
         }
     }
@@ -152,17 +132,22 @@ class CardStackState(
     /**
      * Shows cards at the specified indices in parallel.
      */
-    @RequiresApi(Build.VERSION_CODES.N)
     fun showAt(indices: List<Int>) {
         scope.launch {
             showAtParallel(indices)
         }
     }
 
+    fun showAll() {
+        scope.launch {
+            val indicesToShow = (0 until hiddenIndicesList.size).toList()
+            showAtParallel(indices = indicesToShow)
+        }
+    }
+
     /**
      * Shows cards in parallel for smooth animation
      */
-    @RequiresApi(Build.VERSION_CODES.N)
     private suspend fun showAtParallel(indices: List<Int>) {
         val cardsToShow = mutableListOf<Pair<Int, CardModel>>()
 
@@ -178,12 +163,11 @@ class CardStackState(
             }
 
             // Add all cards back to the list immediately
-            withContext(Dispatchers.Main) {
-                cardsToShow.forEach { (_, card) ->
-                    card.isReshown.value = true
-                    snapshotStateList.add(0, card)
-                    card.hidden.value = false
-                }
+
+            cardsToShow.forEach { (_, card) ->
+                card.isReshown.value = true
+                snapshotStateList.add(0, card)
+                card.hidden.value = false
             }
         }
 
@@ -192,12 +176,14 @@ class CardStackState(
             cardsToShow.map { (idx, card) ->
                 launch {
                     delay(FADE_OUT_DURATION.toLong())
-                    withContext(Dispatchers.Main) {
-                        card.isReshown.value = false
-                    }
+                    card.isReshown.value = false
                     listOperationMutex.withLock {
-                        withContext(Dispatchers.Main) {
-                            hiddenIndicesList.removeIf { it.second.id == card.id }
+                        val iterator = hiddenIndicesList.iterator()
+                        while (iterator.hasNext()) {
+                            val item = iterator.next()
+                            if (item.second.id == card.id) {
+                                iterator.remove()
+                            }
                         }
                     }
                 }
@@ -212,20 +198,16 @@ class CardStackState(
         if (index in snapshotStateList.indices) {
             val card = snapshotStateList[index]
             if (!card.hidden.value) {
-                withContext(Dispatchers.Main) {
-                    card.hidden.value = true
-                }
+                card.hidden.value = true
 
                 delay(FADE_OUT_DURATION.toLong())
 
                 listOperationMutex.withLock {
-                    withContext(Dispatchers.Main) {
-                        if (remove) {
-                            snapshotStateList.remove(card)
-                        } else {
-                            hiddenIndicesList.add(index to card)
-                            snapshotStateList.remove(card)
-                        }
+                    if (remove) {
+                        snapshotStateList.remove(card)
+                    } else {
+                        hiddenIndicesList.add(index to card)
+                        snapshotStateList.remove(card)
                     }
                 }
             }
@@ -245,9 +227,7 @@ class CardStackState(
                     val card = snapshotStateList[idx]
                     if (!card.hidden.value) {
                         cardsToHide.add(idx to card)
-                        withContext(Dispatchers.Main) {
-                            card.hidden.value = true
-                        }
+                        card.hidden.value = true
                     }
                 }
             }
@@ -259,16 +239,14 @@ class CardStackState(
 
             // Remove all cards at once after animation
             listOperationMutex.withLock {
-                withContext(Dispatchers.Main) {
-                    cardsToHide.forEach { (idx, card) ->
-                        if (remove) {
-                            snapshotStateList.remove(card)
-                        } else {
-                            if (!hiddenIndicesList.any { it.second.id == card.id }) {
-                                hiddenIndicesList.add(idx to card)
-                            }
-                            snapshotStateList.remove(card)
+                cardsToHide.forEach { (idx, card) ->
+                    if (remove) {
+                        snapshotStateList.remove(card)
+                    } else {
+                        if (!hiddenIndicesList.any { it.second.id == card.id }) {
+                            hiddenIndicesList.add(idx to card)
                         }
+                        snapshotStateList.remove(card)
                     }
                 }
             }
@@ -278,7 +256,6 @@ class CardStackState(
     fun size(): Int = snapshotStateList.size
 }
 
-// Rest of the implementation remains the same...
 @Composable
 fun rememberCardStackState(initial: List<CardModel> = emptyList()): CardStackState {
     return remember { CardStackState(initial.toMutableList()) }
@@ -292,7 +269,6 @@ fun rememberCardStackState(initial: List<CardModel> = emptyList()): CardStackSta
  * @param peekHeight how much of the previous card is visible under the top card
  * @param contentModifier modifier applied to each card slot
  */
-@RequiresApi(Build.VERSION_CODES.N)
 @Composable
 fun CardStack(
     state: CardStackState,
@@ -300,7 +276,6 @@ fun CardStack(
     cardWidth: Dp = 320.dp,
     cardHeight: Dp = 160.dp,
     peekHeight: Dp = 10.dp,
-    stackOffset: Offset = Offset(0f, 0f),
     stackAbove: Boolean = true,
     contentModifier: Modifier = Modifier
 ) {
@@ -339,10 +314,8 @@ fun CardStack(
                 tooltipText = "Notification Stack",
             )
     ) {
-        val visibleCards = state.snapshotStateList.toList()
-
-        visibleCards.forEachIndexed { index, cardModel ->
-            val logicalIndex = visibleCards.size - 1 - index
+        state.snapshotStateList.forEachIndexed { index, cardModel ->
+            val logicalIndex = state.snapshotStateList.size - 1 - index
             val isTop = logicalIndex == 0
 
             key(cardModel.id) {
@@ -374,12 +347,12 @@ private fun CardAdjustAnimation(
     isReshown: Boolean = false,
     index: Int,
     stackAbove: Boolean = true,
-    targetYOffset: MutableState<Float>,
+    targetYOffset: Float,
     animatedYOffset: Animatable<Float, AnimationVector1D>
 ) {
     LaunchedEffect(index, expanded, isReshown) {
         animatedYOffset.animateTo(
-            targetYOffset.value * (if (stackAbove) -1f else 1f),
+            targetYOffset * (if (stackAbove) -1f else 1f),
             animationSpec = spring(stiffness = Spring.StiffnessLow)
         )
     }
@@ -390,11 +363,11 @@ private fun CardWidthAnimation(
     expanded: Boolean,
     index: Int,
     animatedWidth: Animatable<Float, AnimationVector1D>,
-    targetWidth: MutableState<Float>
+    targetWidth: Float
 ) {
     LaunchedEffect(index, expanded) {
         animatedWidth.animateTo(
-            targetWidth.value,
+            targetWidth,
             animationSpec = spring(stiffness = Spring.StiffnessLow)
         )
     }
@@ -465,7 +438,7 @@ private fun CardStackItem(
     cardWidth: Dp,
     cardHeight: Dp,
     peekHeight: Dp,
-    stackedWidthScaleFactor: Float = 0.95f,
+    stackedWidthScaleFactor: Float = STACKED_WIDTH_SCALE_FACTOR,
     onSwipedAway: (String) -> Unit,
     stackAbove: Boolean = false
 ) {
@@ -473,7 +446,7 @@ private fun CardStackItem(
     val localDensity = LocalDensity.current
 
     val targetYOffset =
-        mutableStateOf(with(localDensity) { if (expanded) (index * (peekHeight + cardHeight)).toPx() else (index * peekHeight).toPx() })
+        with(localDensity) { if (expanded) (index * (peekHeight + cardHeight)).toPx() else (index * peekHeight).toPx() }
     val animatedYOffset = remember {
         Animatable(0f)
     }
@@ -486,14 +459,14 @@ private fun CardStackItem(
         animatedYOffset = animatedYOffset
     )
 
-    val targetWidth = mutableStateOf(with(localDensity) {
+    val targetWidth = with(localDensity) {
         if (expanded) {
             cardWidth.toPx()
         } else {
             cardWidth.toPx() * stackedWidthScaleFactor.pow(index)
         }
-    })
-    val animatedWidth = remember { Animatable(targetWidth.value) }
+    }
+    val animatedWidth = remember { Animatable(targetWidth) }
     CardWidthAnimation(
         expanded = expanded,
         index = index,
@@ -590,52 +563,6 @@ private fun CardStackItem(
         )
         {
             model.content()
-        }
-    }
-}
-
-@RequiresApi(Build.VERSION_CODES.N)
-@Composable
-fun DemoCardStack() {
-    val stackState = rememberCardStackState()
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Bottom
-    ) {
-        CardStack(
-            state = stackState,
-            modifier = Modifier.padding(16.dp),
-            cardWidth = 340.dp,
-            cardHeight = 100.dp,
-            peekHeight = 10.dp,
-            stackAbove = true
-        )
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        Row {
-            Button(onClick = {
-                val id = UUID.randomUUID().toString()
-                stackState.addCard(CardModel(id = id) {
-                    Column(modifier = Modifier.padding(12.dp)) {
-                        BasicText("Card: $id")
-                        BasicText("Some detail here")
-                    }
-                })
-            }, text = "Add card")
-
-            Spacer(modifier = Modifier.width(12.dp))
-
-            Button(onClick = {
-                stackState.popFront()
-            }, text = "Remove top card")
-
-            Spacer(modifier = Modifier.width(12.dp))
-
-            Button(onClick = {
-                stackState.showAt(listOf(0, 1, 2))
-            }, text = "Show hidden cards")
         }
     }
 }

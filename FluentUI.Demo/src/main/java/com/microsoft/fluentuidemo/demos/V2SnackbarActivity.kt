@@ -1,7 +1,9 @@
 package com.microsoft.fluentuidemo.demos
 
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
@@ -9,6 +11,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.runtime.*
@@ -31,16 +34,19 @@ import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.notification.AnimationBehavior
 import com.microsoft.fluentui.tokenized.notification.AnimationVariables
-import com.microsoft.fluentui.tokenized.notification.DemoCardStack
+import com.microsoft.fluentui.tokenized.notification.CardModel
+import com.microsoft.fluentui.tokenized.notification.CardStack
 import com.microsoft.fluentui.tokenized.notification.NotificationDuration
 import com.microsoft.fluentui.tokenized.notification.NotificationResult
 import com.microsoft.fluentui.tokenized.notification.Snackbar
 import com.microsoft.fluentui.tokenized.notification.SnackbarState
+import com.microsoft.fluentui.tokenized.notification.rememberCardStackState
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillBar
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import kotlinx.coroutines.launch
+import java.util.UUID
 
 // Tags used for testing
 const val SNACK_BAR_MODIFIABLE_PARAMETER_SECTION = "Snack bar Modifiable Parameters"
@@ -60,6 +66,7 @@ class V2SnackbarActivity : V2DemoActivity() {
     override val controlTokensUrl =
         "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-34"
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val context = this
@@ -328,6 +335,54 @@ class V2SnackbarActivity : V2DemoActivity() {
 //                    Snackbar(snackbarState, Modifier.padding(bottom = 12.dp), null, true)
 //                }
 //            }
+        }
+    }
+}
+
+
+@RequiresApi(Build.VERSION_CODES.N)
+@Composable
+fun DemoCardStack() {
+    val stackState = rememberCardStackState()
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Bottom
+    ) {
+        CardStack(
+            state = stackState,
+            modifier = Modifier.padding(16.dp),
+            cardWidth = 340.dp,
+            cardHeight = 100.dp,
+            peekHeight = 10.dp,
+            stackAbove = true
+        )
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        Row {
+            Button(onClick = {
+                val id = UUID.randomUUID().toString()
+                stackState.addCard(CardModel(id = id) {
+                    Column(modifier = Modifier.padding(12.dp)) {
+                        BasicText("Card: $id")
+                        BasicText("Some detail here")
+                    }
+                })
+            }, text = "Add card")
+
+            Spacer(modifier = Modifier.width(12.dp))
+
+            Button(onClick = {
+                stackState.popFront()
+                stackState.showAt(listOf(0))
+            }, text = "Remove top card")
+
+            Spacer(modifier = Modifier.width(12.dp))
+
+            Button(onClick = {
+                stackState.showAll()
+            }, text = "Show hidden cards")
         }
     }
 }
