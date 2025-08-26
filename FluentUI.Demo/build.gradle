@@ -2,10 +2,10 @@
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Licensed under the MIT License.
  */
-
-apply plugin: 'com.android.application'
-
-apply plugin: 'kotlin-android'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
 
 android {
     compileSdkVersion constants.compileSdkVersion
@@ -55,7 +55,7 @@ android {
         }
     }
     testOptions {
-        unitTests{
+        unitTests {
             includeAndroidResources = true
         }
         unitTests.all {
@@ -95,9 +95,9 @@ dependencies {
     //Compose BOM
     implementation platform("androidx.compose:compose-bom:$composeBomVersion")
     implementation "androidx.compose.ui:ui"
-    implementation ("androidx.compose.foundation:foundation-layout")
-    implementation ("androidx.compose.material:material")
-    implementation ("androidx.activity:activity-compose:$composeActivityVersion")
+    implementation("androidx.compose.foundation:foundation-layout")
+    implementation("androidx.compose.material:material")
+    implementation("androidx.activity:activity-compose:$composeActivityVersion")
     implementation "androidx.test.ext:junit-ktx:$junitKtxVersion"
     implementation "androidx.test.uiautomator:uiautomator:$uiautomatorVersion"
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeTestVersion")
