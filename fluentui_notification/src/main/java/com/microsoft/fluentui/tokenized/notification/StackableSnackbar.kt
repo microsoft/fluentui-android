@@ -31,6 +31,11 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.times
+import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.token.ControlTokens
+import com.microsoft.fluentui.theme.token.controlTokens.SnackBarInfo
+import com.microsoft.fluentui.theme.token.controlTokens.SnackBarTokens
+import com.microsoft.fluentui.theme.token.controlTokens.SnackbarStyle
 import com.microsoft.fluentui.tokenized.controls.BasicCard
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Mutex
@@ -42,6 +47,10 @@ import kotlin.math.roundToInt
 private const val FADE_OUT_DURATION = 350
 private const val STACKED_WIDTH_SCALE_FACTOR = 0.95f
 
+//TODO: Make stack scrollable in expanded state
+//TODO: Add accessibility support for the stack and individual cards
+//TODO: Make dynamically sized cards based on content
+//TODO: Make card owner of the hide/show animation states
 /**
  * Represents a single item within the Snackbar stack.
  *
@@ -55,7 +64,9 @@ data class SnackbarItemModel(
     val id: String,
     val hidden: MutableState<Boolean> = mutableStateOf(false),
     val isReshown: MutableState<Boolean> = mutableStateOf(false),
-    val content: @Composable () -> Unit
+    val snackbarToken: SnackBarTokens = SnackBarTokens(),
+    val snackbarStyle: SnackbarStyle = SnackbarStyle.Neutral,
+    val content: @Composable () -> Unit,
 )
 
 /**
@@ -367,7 +378,6 @@ fun SnackbarStack(
     ) {
         state.snapshotStateList.forEachIndexed { index, snackbarModel ->
             val logicalIndex = state.size() - 1 - index
-            val isTop = logicalIndex == 0
 
             key(snackbarModel.id) {
                 SnackbarStackItem(
@@ -376,7 +386,6 @@ fun SnackbarStack(
                     isReshown = snackbarModel.isReshown.value,
                     expanded = state.expanded,
                     index = logicalIndex,
-                    isTop = isTop,
                     cardHeight = cardHeight,
                     peekHeight = peekHeight,
                     cardWidth = cardWidth,
@@ -500,7 +509,6 @@ private fun SnackbarStackItem(
     isReshown: Boolean = false,
     expanded: Boolean,
     index: Int,
-    isTop: Boolean,
     cardWidth: Dp,
     cardHeight: Dp,
     peekHeight: Dp,
@@ -510,7 +518,7 @@ private fun SnackbarStackItem(
 ) {
     val scope = rememberCoroutineScope()
     val localDensity = LocalDensity.current
-
+    val isTop = index == 0
     val targetYOffset =
         with(localDensity) { if (expanded) (index * (peekHeight + cardHeight)).toPx() else (index * peekHeight).toPx() }
     val animatedYOffset = remember {
@@ -558,6 +566,9 @@ private fun SnackbarStackItem(
 
     val swipeX = remember { Animatable(0f) }
     val offsetX: Float = if (isTop || expanded) swipeX.value else 0f
+
+    val token = model.snackbarToken
+    val snackBarInfo = SnackBarInfo(model.snackbarStyle, false)
 
     Box(
         modifier = Modifier
@@ -623,9 +634,9 @@ private fun SnackbarStackItem(
                 .fillMaxSize()
                 .clip(RoundedCornerShape(12.dp))
                 .shadow(
-                    elevation = 12.dp
+                    elevation = token.shadowElevationValue(snackBarInfo)
                 )
-                .background(Color.Gray)
+                .background(token.backgroundBrush(snackBarInfo))
         )
         {
             model.content()
