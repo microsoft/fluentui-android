@@ -72,6 +72,7 @@ class V2SnackbarActivity : V2DemoActivity() {
         val context = this
 
         setActivityContent {
+            DemoCardStack()
             val snackbarState = remember { SnackbarState() }
 
             val scope = rememberCoroutineScope()
@@ -359,6 +360,7 @@ class V2SnackbarActivity : V2DemoActivity() {
 @Composable
 fun DemoCardStack() {
     val stackState = rememberSnackbarStackState()
+    var counter by rememberSaveable { mutableIntStateOf(0) }
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize(),
@@ -377,8 +379,10 @@ fun DemoCardStack() {
 
         Row {
             Button(onClick = {
-                val id = UUID.randomUUID().toString()
-                stackState.addCard(SnackbarItemModel(id = id) {
+                // generate an id once per composition
+                val id = counter++
+
+                stackState.addCard(SnackbarItemModel(id = id.toString()) {
                     Column(modifier = Modifier.padding(12.dp)) {
                         BasicText("Card: $id")
                         BasicText("Some detail here")
@@ -390,7 +394,7 @@ fun DemoCardStack() {
 
             Button(onClick = {
                 stackState.popFront()
-                stackState.showAt(listOf(0))
+                stackState.showBack()
             }, text = "Remove top card")
 
             Spacer(modifier = Modifier.width(12.dp))

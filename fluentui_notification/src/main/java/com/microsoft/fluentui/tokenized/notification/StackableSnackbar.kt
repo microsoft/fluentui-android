@@ -87,7 +87,6 @@ class SnackbarStackState(
 ) {
     internal val snapshotStateList: MutableList<SnackbarItemModel> =
         mutableStateListOf<SnackbarItemModel>().apply { addAll(cards) }
-    internal val hiddenIndicesList: MutableList<Pair<Int, SnackbarItemModel>> = mutableListOf()
     internal var expanded by mutableStateOf(false)
 
     private val listOperationMutex = Mutex()
@@ -145,9 +144,15 @@ class SnackbarStackState(
                     val indicesToHide = (0 until (currentSize - maxSize)).toList()
                     hideAtParallel(indices = indicesToHide, remove = false)
                 } else {
-                    val indicesToShow =
-                        (0 until minOf(maxSize - currentSize, hiddenIndicesList.size)).toList()
-                    showAtParallel(indices = indicesToShow)
+                    val cardsToShow = mutableListOf<SnackbarItemModel>()
+                    var leftoverSlots = maxSize - currentSize
+                    snapshotStateList.reversed().forEach { card ->
+                        if (card.hidden.value && leftoverSlots > 0) {
+                            cardsToShow.add(card)
+                            leftoverSlots--
+                        }
+                    }
+                    showAtParallel(cardsToShow = cardsToShow)
                 }
             }
         }
@@ -158,10 +163,10 @@ class SnackbarStackState(
      * @param remove If `true`, the card is permanently removed. If `false`, it's moved to a hidden list and can be reshown later.
      */
     fun popBack(remove: Boolean = true) {
-        scope.launch {
-            val index = snapshotStateList.indexOfFirst { !it.hidden.value }
-            if (index != -1) {
-                hideAtSingle(index, remove = remove)
+        snapshotStateList.firstOrNull { !it.hidden.value }?.let {
+            it.hidden.value = true
+            if(remove){
+                snapshotStateList.remove(it)
             }
         }
     }
@@ -171,21 +176,18 @@ class SnackbarStackState(
      * @param remove If `true`, the card is permanently removed. If `false`, it's moved to a hidden list and can be reshown later.
      */
     fun popFront(remove: Boolean = true) {
-        scope.launch {
-            val index = snapshotStateList.indexOfLast { !it.hidden.value }
-            if (index != -1) {
-                hideAtSingle(index, remove = remove)
+        snapshotStateList.lastOrNull { !it.hidden.value }?.let {
+            it.hidden.value = true
+            if(remove){
+                snapshotStateList.remove(it)
             }
         }
     }
 
-    /**
-     * Reveals previously hidden cards at the specified indices in the hidden list.
-     * @param indices A list of indices corresponding to the cards in the hidden list to show.
-     */
-    fun showAt(indices: List<Int>) {
-        scope.launch {
-            showAtParallel(indices)
+    fun showBack() {
+        snapshotStateList.lastOrNull { it.hidden.value }?.let {
+            it.isReshown.value = true
+            it.hidden.value = false
         }
     }
 
@@ -194,72 +196,21 @@ class SnackbarStackState(
      */
     fun showAll() {
         scope.launch {
-            val indicesToShow = (0 until hiddenIndicesList.size).toList()
-            showAtParallel(indices = indicesToShow)
+            snapshotStateList.forEach {
+                it.isReshown.value = true
+                it.hidden.value = false
+            }
         }
     }
 
     /**
      * Shows cards in parallel for smooth animation.
      */
-    private suspend fun showAtParallel(indices: List<Int>) {
-        val cardsToShow = mutableListOf<Pair<Int, SnackbarItemModel>>()
-
+    private suspend fun showAtParallel(cardsToShow: List<SnackbarItemModel>) {
         listOperationMutex.withLock {
-            indices.reversed().forEach { idx ->
-                if (idx in hiddenIndicesList.indices) {
-                    val (hiddenIndex, card) = hiddenIndicesList[idx]
-                    if (card.hidden.value) {
-                        cardsToShow.add(idx to card)
-                    }
-                }
-            }
-
-            cardsToShow.forEach { (_, card) ->
+            cardsToShow.forEach { card ->
                 card.isReshown.value = true
-                snapshotStateList.add(0, card)
                 card.hidden.value = false
-            }
-        }
-
-        coroutineScope {
-            cardsToShow.map { (idx, card) ->
-                launch {
-                    delay(FADE_OUT_DURATION.toLong())
-                    card.isReshown.value = false
-                    listOperationMutex.withLock {
-                        val iterator = hiddenIndicesList.iterator()
-                        while (iterator.hasNext()) {
-                            val item = iterator.next()
-                            if (item.second.id == card.id) {
-                                iterator.remove()
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Hides a single card (sequential operation).
-     */
-    private suspend fun hideAtSingle(index: Int, remove: Boolean) {
-        if (index in snapshotStateList.indices) {
-            val card = snapshotStateList[index]
-            if (!card.hidden.value) {
-                card.hidden.value = true
-
-                delay(FADE_OUT_DURATION.toLong())
-
-                listOperationMutex.withLock {
-                    if (remove) {
-                        snapshotStateList.remove(card)
-                    } else {
-                        hiddenIndicesList.add(index to card)
-                        snapshotStateList.remove(card)
-                    }
-                }
             }
         }
     }
@@ -268,14 +219,14 @@ class SnackbarStackState(
      * Hides cards in parallel for smooth animation.
      */
     private suspend fun hideAtParallel(indices: List<Int>, remove: Boolean) {
-        val cardsToHide = mutableListOf<Pair<Int, SnackbarItemModel>>()
+        val cardsToHide = mutableListOf<SnackbarItemModel>()
 
         listOperationMutex.withLock {
             indices.forEach { idx ->
                 if (idx in snapshotStateList.indices) {
                     val card = snapshotStateList[idx]
                     if (!card.hidden.value) {
-                        cardsToHide.add(idx to card)
+                        cardsToHide.add(card)
                         card.hidden.value = true
                     }
                 }
@@ -286,13 +237,8 @@ class SnackbarStackState(
             delay(FADE_OUT_DURATION.toLong())
 
             listOperationMutex.withLock {
-                cardsToHide.forEach { (idx, card) ->
+                cardsToHide.forEach { card ->
                     if (remove) {
-                        snapshotStateList.remove(card)
-                    } else {
-                        if (!hiddenIndicesList.any { it.second.id == card.id }) {
-                            hiddenIndicesList.add(idx to card)
-                        }
                         snapshotStateList.remove(card)
                     }
                 }
@@ -356,7 +302,7 @@ fun SnackbarStack(
     }
 
     val animatedStackHeight by animateDpAsState(
-        targetValue = targetHeight,
+        targetValue = targetHeight + cardHeight,
         animationSpec = spring(stiffness = Spring.StiffnessMedium)
     )
 
@@ -383,9 +329,13 @@ fun SnackbarStack(
                     .height(contentHeight),
                 contentAlignment = Alignment.BottomCenter
             ) {
-                state.snapshotStateList.forEachIndexed { index, snackbarModel ->
-                    val logicalIndex = state.size() - 1 - index
-
+                val totalVisibleCards = state.snapshotStateList.count { !it.hidden.value }
+                var visibleIndex = 0;
+                state.snapshotStateList.forEach { snackbarModel ->
+                    var logicalIndex = 0;
+                    if (!snackbarModel.hidden.value) {
+                        logicalIndex = totalVisibleCards - 1 - visibleIndex++
+                    }
                     key(snackbarModel.id) {
                         SnackbarStackItem(
                             model = snackbarModel,
@@ -398,7 +348,7 @@ fun SnackbarStack(
                             cardWidth = cardWidth,
                             onSwipedAway = { idToRemove ->
                                 state.removeCardById(idToRemove)
-                                state.showAt(listOf(0))
+                                state.showBack()
                             },
                             stackAbove = stackAbove,
                             onClick = {
@@ -580,12 +530,16 @@ private fun SnackbarStackItem(
         slideInProgress = slideInProgress
     )
 
-    val opacityProgress = remember { Animatable(1f) }
-    HideAnimation(
-        isHidden = isHidden,
-        isReshown = isReshown,
-        opacityProgress = opacityProgress
-    )
+//    val opacityProgress = remember { Animatable(1f) }
+//    HideAnimation(
+//        isHidden = isHidden,
+//        isReshown = isReshown,
+//        opacityProgress = opacityProgress
+//    )
+    val opacityProgress = animateFloatAsState(
+        targetValue = if (isHidden) 0f else 1f,
+        animationSpec = tween(durationMillis = FADE_OUT_DURATION)
+    ).value
 
     val swipeX = remember { Animatable(0f) }
     val offsetX: Float = if (isTop || expanded) swipeX.value else 0f
@@ -602,7 +556,7 @@ private fun SnackbarStackItem(
                 )
             }
             .graphicsLayer(
-                alpha = opacityProgress.value,
+                alpha = opacityProgress,
                 scaleX = animatedWidth.value / with(localDensity) { cardWidth.toPx() },
             )
             .width(cardWidth)
