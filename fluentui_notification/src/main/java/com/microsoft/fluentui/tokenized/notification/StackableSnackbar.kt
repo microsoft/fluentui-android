@@ -88,7 +88,7 @@ class SnackbarStackState(
     internal val snapshotStateList: MutableList<SnackbarItemModel> =
         mutableStateListOf<SnackbarItemModel>().apply { addAll(cards) }
     internal var expanded by mutableStateOf(false)
-
+    private val maxSize = if (expanded) maxExpandedSize else maxCollapsedSize
     private val listOperationMutex = Mutex()
 
     private val expandMutex = Mutex()
@@ -99,17 +99,9 @@ class SnackbarStackState(
      * @param card The [SnackbarItemModel] to add.
      */
     fun addCard(card: SnackbarItemModel) {
-        scope.launch {
-            listOperationMutex.withLock {
-                snapshotStateList.add(card)
-            }
-
-            val maxSize = if (expanded) maxExpandedSize else maxCollapsedSize
-            val visibleCount = snapshotStateList.count { !it.hidden.value }
-
-            if (visibleCount > maxSize) {
-                popBack(remove = false)
-            }
+        snapshotStateList.add(card)
+        if (sizeVisible() > maxSize) {
+            popBack(remove = false)
         }
     }
 
@@ -118,13 +110,8 @@ class SnackbarStackState(
      * @param id The id of the card to remove.
      */
     fun removeCardById(id: String) {
-        scope.launch {
-            listOperationMutex.withLock {
-                val index = snapshotStateList.indexOfFirst { it.id == id }
-                if (index != -1) {
-                    snapshotStateList.removeAt(index)
-                }
-            }
+        snapshotStateList.firstOrNull { it.id == id }?.let {
+            snapshotStateList.remove(it)
         }
     }
 
@@ -165,7 +152,7 @@ class SnackbarStackState(
     fun popBack(remove: Boolean = true) {
         snapshotStateList.firstOrNull { !it.hidden.value }?.let {
             it.hidden.value = true
-            if(remove){
+            if (remove) {
                 snapshotStateList.remove(it)
             }
         }
@@ -178,7 +165,7 @@ class SnackbarStackState(
     fun popFront(remove: Boolean = true) {
         snapshotStateList.lastOrNull { !it.hidden.value }?.let {
             it.hidden.value = true
-            if(remove){
+            if (remove) {
                 snapshotStateList.remove(it)
             }
         }
@@ -250,6 +237,8 @@ class SnackbarStackState(
      * Returns the current number of visible cards in the stack.
      */
     fun size(): Int = snapshotStateList.size
+
+    fun sizeVisible(): Int = snapshotStateList.count { !it.hidden.value }
 }
 
 /**
