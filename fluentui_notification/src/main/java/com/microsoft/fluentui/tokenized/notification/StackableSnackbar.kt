@@ -371,7 +371,7 @@ private fun SnackbarStackItem(
     val animatedYOffset = remember {
         Animatable(with(localDensity) { cardHeight.toPx() * if (stackAbove) 1f else -1f })
     }
-    LaunchedEffect(index, expanded) {
+    LaunchedEffect(index, expanded, invertedIndex) {
         animatedYOffset.animateTo(
             targetYOffset * (if (stackAbove) -1f else 1f),
             animationSpec = spring(stiffness = Spring.StiffnessLow)
