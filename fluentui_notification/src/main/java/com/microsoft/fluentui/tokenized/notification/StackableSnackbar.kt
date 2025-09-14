@@ -15,29 +15,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.util.clickableWithTooltip
 import kotlinx.coroutines.launch
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.detectDragGestures
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.times
-import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.SnackBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.SnackBarTokens
 import com.microsoft.fluentui.theme.token.controlTokens.SnackbarStyle
 import com.microsoft.fluentui.tokenized.controls.BasicCard
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlin.math.abs
@@ -82,7 +83,7 @@ class SnackbarStackState(
     internal val cards: MutableList<SnackbarItemModel>,
     internal val scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main),
     internal val maxCollapsedSize: Int = 3,
-    internal val maxExpandedSize: Int = 10
+    internal val maxExpandedSize: Int = 20
 ) {
     internal val snapshotStateList: MutableList<SnackbarItemModel> =
         mutableStateListOf<SnackbarItemModel>().apply { addAll(cards) }
@@ -360,45 +361,66 @@ fun SnackbarStack(
     )
 
     val toggleExpanded = remember<() -> Unit> { { state.toggleExpanded() } }
-    Box(
-        modifier = modifier
-            .width(cardWidth)
-            .height(if (state.size() == 0) 0.dp else animatedStackHeight)
-            .wrapContentHeight(
-                align = if (stackAbove) {
-                    Alignment.Bottom
-                } else {
-                    Alignment.Top
-                }
-            )
-            .clickableWithTooltip(
-                onClick = toggleExpanded,
-                tooltipText = "Notification Stack",
-            )
-    ) {
-        state.snapshotStateList.forEachIndexed { index, snackbarModel ->
-            val logicalIndex = state.size() - 1 - index
+    val scrollState = rememberScrollState()
 
-            key(snackbarModel.id) {
-                SnackbarStackItem(
-                    model = snackbarModel,
-                    isHidden = snackbarModel.hidden.value,
-                    isReshown = snackbarModel.isReshown.value,
-                    expanded = state.expanded,
-                    index = logicalIndex,
-                    cardHeight = cardHeight,
-                    peekHeight = peekHeight,
-                    cardWidth = cardWidth,
-                    onSwipedAway = { idToRemove ->
-                        state.removeCardById(idToRemove)
-                        state.showAt(listOf(0))
-                    },
-                    stackAbove = stackAbove
-                )
+    BoxWithConstraints(modifier = modifier.fillMaxWidth()) {
+        val parentMaxHeight = this.maxHeight
+        val contentHeight = if (state.size() == 0) 0.dp else animatedStackHeight
+
+        val visibleHeight =
+            if (state.expanded) minOf(contentHeight, parentMaxHeight) else contentHeight
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(visibleHeight)
+                .then(if (state.expanded) Modifier.verticalScroll(scrollState) else Modifier),
+            contentAlignment = Alignment.BottomCenter
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(contentHeight),
+                contentAlignment = Alignment.BottomCenter
+            ) {
+                state.snapshotStateList.forEachIndexed { index, snackbarModel ->
+                    val logicalIndex = state.size() - 1 - index
+
+                    key(snackbarModel.id) {
+                        SnackbarStackItem(
+                            model = snackbarModel,
+                            isHidden = snackbarModel.hidden.value,
+                            isReshown = snackbarModel.isReshown.value,
+                            expanded = state.expanded,
+                            index = logicalIndex,
+                            cardHeight = cardHeight,
+                            peekHeight = peekHeight,
+                            cardWidth = cardWidth,
+                            onSwipedAway = { idToRemove ->
+                                state.removeCardById(idToRemove)
+                                state.showAt(listOf(0))
+                            },
+                            stackAbove = stackAbove,
+                            onClick = {
+                                toggleExpanded()
+                            }
+                        )
+                    }
+                }
+            }
+        }
+
+        LaunchedEffect(state.expanded, contentHeight, count) {
+            if (state.expanded) {
+                snapshotFlow { scrollState.maxValue }
+                    .filter { it > 0 }
+                    .first()
+                scrollState.animateScrollTo(scrollState.maxValue)
             }
         }
     }
 }
+
 
 /**
  * Manages the vertical offset animation of a card when the stack's state changes.
@@ -514,6 +536,7 @@ private fun SnackbarStackItem(
     peekHeight: Dp,
     stackedWidthScaleFactor: Float = STACKED_WIDTH_SCALE_FACTOR,
     onSwipedAway: (String) -> Unit,
+    onClick: () -> Unit = {},
     stackAbove: Boolean = false
 ) {
     val scope = rememberCoroutineScope()
@@ -585,49 +608,52 @@ private fun SnackbarStackItem(
             .width(cardWidth)
             .height(cardHeight)
             .padding(horizontal = 0.dp)
-            .then(if (isTop || expanded) Modifier.pointerInput(model.id) {
-                detectDragGestures(
-                    onDragStart = {},
-                    onDragEnd = {
-                        val threshold = with(localDensity) { (cardWidth / 4).toPx() }
-                        scope.launch {
-                            if (abs(swipeX.value) > threshold) {
-                                val target =
-                                    if (swipeX.value > 0) with(localDensity) { cardWidth.toPx() * 1.2f } else -with(
-                                        localDensity
-                                    ) { cardWidth.toPx() * 1.2f }
-                                swipeX.animateTo(
-                                    target,
-                                    animationSpec = tween(
-                                        durationMillis = 240,
-                                        easing = FastOutLinearInEasing
+            .then(
+                if (isTop || expanded) Modifier.pointerInput(model.id) {
+                    detectHorizontalDragGestures(
+                        onDragStart = {},
+                        onDragEnd = {
+                            val threshold = with(localDensity) { (cardWidth / 4).toPx() }
+                            scope.launch {
+                                if (abs(swipeX.value) > threshold) {
+                                    val target = if (swipeX.value > 0)
+                                        with(localDensity) { cardWidth.toPx() * 1.2f }
+                                    else
+                                        -with(localDensity) { cardWidth.toPx() * 1.2f }
+
+                                    swipeX.animateTo(
+                                        target,
+                                        animationSpec = tween(
+                                            durationMillis = 240,
+                                            easing = FastOutLinearInEasing
+                                        )
                                     )
-                                )
-                                onSwipedAway(model.id)
-                            } else {
+                                    onSwipedAway(model.id)
+                                } else {
+                                    swipeX.animateTo(
+                                        0f,
+                                        animationSpec = spring(stiffness = Spring.StiffnessMedium)
+                                    )
+                                }
+                            }
+                        },
+                        onDragCancel = {
+                            scope.launch {
                                 swipeX.animateTo(
                                     0f,
                                     animationSpec = spring(stiffness = Spring.StiffnessMedium)
                                 )
                             }
                         }
-                    },
-                    onDragCancel = {
-                        scope.launch {
-                            swipeX.animateTo(
-                                0f,
-                                animationSpec = spring(stiffness = Spring.StiffnessMedium)
-                            )
-                        }
-                    },
-                    onDrag = { change, dragAmount ->
+                    ) { change, dragAmountX ->
                         change.consume()
                         scope.launch {
-                            swipeX.snapTo(swipeX.value + dragAmount.x)
+                            swipeX.snapTo(swipeX.value + dragAmountX)
                         }
                     }
-                )
-            } else Modifier)
+                } else Modifier
+            )
+
     ) {
         BasicCard(
             modifier = Modifier
@@ -637,6 +663,11 @@ private fun SnackbarStackItem(
                     elevation = token.shadowElevationValue(snackBarInfo)
                 )
                 .background(token.backgroundBrush(snackBarInfo))
+                .clickable(
+                    onClick = {
+                        onClick()
+                    }
+                )
         )
         {
             model.content()
