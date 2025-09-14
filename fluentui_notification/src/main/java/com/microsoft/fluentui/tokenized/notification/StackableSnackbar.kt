@@ -88,7 +88,7 @@ class SnackbarStackState(
         mutableStateListOf<SnackbarItemModel>().apply { addAll(cards) }
 
     internal var expanded by mutableStateOf(false)
-    private set
+        private set
 
     internal var maxCurrentSize = maxCollapsedSize
 
@@ -314,6 +314,7 @@ fun SnackbarStack(
                 var visibleIndex = 0
                 state.snapshotStateList.forEach { snackBarModel ->
                     var logicalIndex = state.maxCurrentSize
+                    val invertedLogicalIndex = visibleIndex
                     if (!snackBarModel.hidden.value) {
                         logicalIndex = totalVisibleCards - 1 - visibleIndex++
                     }
@@ -323,6 +324,7 @@ fun SnackbarStack(
                             isHidden = snackBarModel.hidden.value,
                             expanded = state.expanded,
                             index = logicalIndex,
+                            invertedIndex = invertedLogicalIndex,
                             cardHeight = cardHeight,
                             peekHeight = peekHeight,
                             cardWidth = cardWidth,
@@ -342,26 +344,6 @@ fun SnackbarStack(
     }
 }
 
-
-/**
- * Manages the vertical offset animation of a card when the stack's state changes.
- */
-@Composable
-private fun CardAdjustAnimation(
-    expanded: Boolean,
-    index: Int,
-    stackAbove: Boolean = true,
-    targetYOffset: Float,
-    animatedYOffset: Animatable<Float, AnimationVector1D>
-) {
-    LaunchedEffect(index, expanded) {
-        animatedYOffset.animateTo(
-            targetYOffset * (if (stackAbove) -1f else 1f),
-            animationSpec = spring(stiffness = Spring.StiffnessLow)
-        )
-    }
-}
-
 /**
  * A private composable that represents a single, animatable card within the [SnackbarStack].
  * It handles its own animations for position, width, opacity, and swipe gestures.
@@ -372,6 +354,7 @@ private fun SnackbarStackItem(
     isHidden: Boolean,
     expanded: Boolean,
     index: Int,
+    invertedIndex: Int,
     cardWidth: Dp,
     cardHeight: Dp,
     peekHeight: Dp,
@@ -384,17 +367,16 @@ private fun SnackbarStackItem(
     val localDensity = LocalDensity.current
     val isTop = index == 0
     val targetYOffset =
-        with(localDensity) { if (expanded) (index * (peekHeight + cardHeight)).toPx() else (index * peekHeight).toPx() }
+        with(localDensity) { if (expanded) (invertedIndex * (peekHeight + cardHeight)).toPx() else (index * peekHeight).toPx() }
     val animatedYOffset = remember {
-        Animatable(0f)
+        Animatable(with(localDensity) { cardHeight.toPx() * if (stackAbove) 1f else -1f })
     }
-    CardAdjustAnimation(
-        expanded = expanded,
-        index = index,
-        stackAbove = stackAbove,
-        targetYOffset = targetYOffset,
-        animatedYOffset = animatedYOffset
-    )
+    LaunchedEffect(index, expanded) {
+        animatedYOffset.animateTo(
+            targetYOffset * (if (stackAbove) -1f else 1f),
+            animationSpec = spring(stiffness = Spring.StiffnessLow)
+        )
+    }
 
     val targetWidth = with(localDensity) {
         if (expanded) {
@@ -437,7 +419,7 @@ private fun SnackbarStackItem(
         modifier = Modifier
             .offset {
                 IntOffset(
-                    offsetX.roundToInt() + (slideInProgress.value * with(localDensity) { 200.dp.toPx() }).roundToInt(),
+                    offsetX.roundToInt() ,//+ (slideInProgress.value * with(localDensity) { 200.dp.toPx() }).roundToInt(),
                     animatedYOffset.value.roundToInt()
                 )
             }
