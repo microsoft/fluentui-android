@@ -39,12 +39,14 @@ import com.microsoft.fluentui.tokenized.notification.NotificationResult
 import com.microsoft.fluentui.tokenized.notification.Snackbar
 import com.microsoft.fluentui.tokenized.notification.SnackbarItemModel
 import com.microsoft.fluentui.tokenized.notification.SnackbarStack
+import com.microsoft.fluentui.tokenized.notification.SnackbarStackConfig
 import com.microsoft.fluentui.tokenized.notification.SnackbarState
 import com.microsoft.fluentui.tokenized.notification.rememberSnackbarStackState
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillBar
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.UUID
 
@@ -361,6 +363,7 @@ class V2SnackbarActivity : V2DemoActivity() {
 fun DemoCardStack() {
     val stackState = rememberSnackbarStackState()
     var counter by rememberSaveable { mutableIntStateOf(0) }
+    val scope = rememberCoroutineScope()
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize(),
@@ -369,17 +372,12 @@ fun DemoCardStack() {
         SnackbarStack(
             state = stackState,
             modifier = Modifier.padding(16.dp),
-            cardWidth = 340.dp,
-            cardHeight = 100.dp,
-            peekHeight = 10.dp,
-            stackAbove = true
         )
 
         Spacer(modifier = Modifier.height(20.dp))
 
         Row {
             Button(onClick = {
-                // generate an id once per composition
                 val id = counter++
 
                 stackState.addCard(SnackbarItemModel(id = id.toString()) {
@@ -393,15 +391,19 @@ fun DemoCardStack() {
             Spacer(modifier = Modifier.width(12.dp))
 
             Button(onClick = {
-                stackState.popFront()
-                stackState.showBack()
+                scope.launch {
+                    stackState.hideFront()
+                    delay(300)
+                    stackState.removeFront()
+                    stackState.showBack()
+                }
             }, text = "Remove top card")
 
             Spacer(modifier = Modifier.width(12.dp))
 
             Button(onClick = {
-                stackState.showAll()
-            }, text = "Show hidden cards")
+                stackState.showBack()
+            }, text = "Show last hidden card")
         }
     }
 }
