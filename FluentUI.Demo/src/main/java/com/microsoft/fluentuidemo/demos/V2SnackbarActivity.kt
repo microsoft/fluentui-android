@@ -36,19 +36,17 @@ import com.microsoft.fluentui.tokenized.notification.AnimationBehavior
 import com.microsoft.fluentui.tokenized.notification.AnimationVariables
 import com.microsoft.fluentui.tokenized.notification.NotificationDuration
 import com.microsoft.fluentui.tokenized.notification.NotificationResult
+import com.microsoft.fluentui.tokenized.notification.SnackBarItemModel
+import com.microsoft.fluentui.tokenized.notification.SnackBarStack
 import com.microsoft.fluentui.tokenized.notification.Snackbar
-import com.microsoft.fluentui.tokenized.notification.SnackbarItemModel
-import com.microsoft.fluentui.tokenized.notification.SnackbarStack
-import com.microsoft.fluentui.tokenized.notification.SnackbarStackConfig
 import com.microsoft.fluentui.tokenized.notification.SnackbarState
-import com.microsoft.fluentui.tokenized.notification.rememberSnackbarStackState
+import com.microsoft.fluentui.tokenized.notification.rememberSnackBarStackState
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillBar
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.UUID
 
 // Tags used for testing
 const val SNACK_BAR_MODIFIABLE_PARAMETER_SECTION = "Snack bar Modifiable Parameters"
@@ -361,7 +359,7 @@ class V2SnackbarActivity : V2DemoActivity() {
 
 @Composable
 fun DemoCardStack() {
-    val stackState = rememberSnackbarStackState()
+    val stackState = rememberSnackBarStackState()
     var counter by rememberSaveable { mutableIntStateOf(0) }
     val scope = rememberCoroutineScope()
     Column(
@@ -369,7 +367,7 @@ fun DemoCardStack() {
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Bottom
     ) {
-        SnackbarStack(
+        SnackBarStack(
             state = stackState,
             modifier = Modifier.padding(16.dp),
         )
@@ -380,7 +378,7 @@ fun DemoCardStack() {
             Button(onClick = {
                 val id = counter++
 
-                stackState.addCard(SnackbarItemModel(id = id.toString()) {
+                stackState.addCard(SnackBarItemModel(id = id.toString()) {
                     Column(modifier = Modifier.padding(12.dp)) {
                         BasicText("Card: $id")
                         BasicText("Some detail here")

@@ -23,7 +23,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -34,10 +33,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.times
 import com.microsoft.fluentui.theme.token.controlTokens.SnackBarInfo
-import com.microsoft.fluentui.theme.token.controlTokens.SnackBarTokens
 import com.microsoft.fluentui.theme.token.controlTokens.SnackbarStyle
+import com.microsoft.fluentui.theme.token.controlTokens.StackableSnackBarTokens
 import com.microsoft.fluentui.tokenized.controls.BasicCard
-import kotlinx.coroutines.*
 import kotlin.math.abs
 import kotlin.math.pow
 import kotlin.math.roundToInt
@@ -47,51 +45,54 @@ private const val STACKED_WIDTH_SCALE_FACTOR = 0.95f
 
 //TODO: Add accessibility support for the stack and individual cards
 //TODO: Make dynamically sized cards based on content
+
 /**
- * Represents a single item within the Snackbar stack.
+ * Represents a single item in the snackBar stack.
  *
- * @param id A unique identifier for this snackbar item.
- * @param hidden A mutable state to control the visibility (hidden/shown) of the card. `true` if hidden, `false` otherwise.
- * @param isReshown A mutable state to indicate if the card is being reshown after being hidden. This helps in triggering specific animations.
- * @param content The composable content to be displayed inside the snackbar card.
+ * @param snackBarToken The tokens to customize the appearance of the snackBar.
+ * @param snackBarStyle The style of the snackBar, e.g., Neutral, Success, Error.
+ * @param id A unique identifier for this snackBar item. Defaults to a random UUID.
+ * @param hidden A mutable state to control the visibility of the snackBar item.
+ * @param content The composable content to be displayed inside the snackBar.
  */
 @Stable
-data class SnackbarItemModel(
-    val id: String,
-    val hidden: MutableState<Boolean> = mutableStateOf(false),
-    val snackbarToken: SnackBarTokens = SnackBarTokens(),
-    val snackbarStyle: SnackbarStyle = SnackbarStyle.Neutral,
+data class SnackBarItemModel(
+    val snackBarToken: StackableSnackBarTokens = StackableSnackBarTokens(),
+    val snackBarStyle: SnackbarStyle = SnackbarStyle.Neutral,
+    val id: String = java.util.UUID.randomUUID().toString(),
+    internal val hidden: MutableState<Boolean> = mutableStateOf(false),
     val content: @Composable () -> Unit,
 )
 
 /**
- * A state object that can be hoisted to control and observe the [SnackbarStack].
- * It provides methods to add, remove, and manage the state of snackbar items.
+ * Manages the state of a [SnackbarStack]. It allows for adding, removing, hiding, and showing snackBar items.
  *
- * @param cards The initial list of [SnackbarItemModel] to populate the stack.
- * @param scope The [CoroutineScope] to launch operations like adding, removing, and animating cards.
- * @param maxCollapsedSize The maximum number of visible cards when the stack is collapsed.
- * @param maxExpandedSize The maximum number of visible cards when the stack is expanded.
+ * @param cards The initial list of [SnackbarItemModel] to be displayed.
+ * @param maxCollapsedSize The maximum number of visible snackBars when the stack is collapsed.
+ * @param maxExpandedSize The maximum number of visible snackBars when the stack is expanded.
  */
-class SnackbarStackState(
-    internal val cards: MutableList<SnackbarItemModel>,
+class SnackBarStackState(
+    internal val cards: MutableList<SnackBarItemModel>,
     internal var maxCollapsedSize: Int = 5,
     internal var maxExpandedSize: Int = 10
 ) {
-    internal val snapshotStateList: MutableList<SnackbarItemModel> =
-        mutableStateListOf<SnackbarItemModel>().apply { addAll(cards) }
+    internal val snapshotStateList: MutableList<SnackBarItemModel> =
+        mutableStateListOf<SnackBarItemModel>().apply { addAll(cards) }
 
+    /**
+     * Whether the snackBar stack is currently expanded.
+     */
     internal var expanded by mutableStateOf(false)
         private set
 
     internal var maxCurrentSize = maxCollapsedSize
 
     /**
-     * Adds a new snackbar card to the top of the stack.
-     * If the stack exceeds the maximum size, the oldest card will be hidden.
+     * Adds a new snackBar card to the top of the stack.
+     * If the number of visible cards exceeds the current maximum, the card at the back is hidden.
      * @param card The [SnackbarItemModel] to add.
      */
-    fun addCard(card: SnackbarItemModel) {
+    fun addCard(card: SnackBarItemModel) {
         maxCurrentSize = if (expanded) maxExpandedSize else maxCollapsedSize
         snapshotStateList.add(card)
         if (sizeVisible() > maxCurrentSize) {
@@ -100,10 +101,9 @@ class SnackbarStackState(
     }
 
     /**
-     * Removes a snackbar card from the stack by its unique [id].
-     * @param id The id of the card to remove.
-     * @return `true` if the card was found and removed, `false` otherwise.
-     * DOES NOT ANIMATE THE REMOVAL, JUST REMOVES IT IMMEDIATELY
+     * Removes a snackBar card from the stack by its ID.
+     * @param id The unique identifier of the card to remove.
+     * @return `true` if a card was removed, `false` otherwise.
      */
     fun removeCardById(id: String): Boolean {
         snapshotStateList.firstOrNull { it.id == id }?.let {
@@ -114,8 +114,8 @@ class SnackbarStackState(
     }
 
     /**
-     * Hides a specific card in the stack by its unique [id].
-     * @param id The id of the card to hide.
+     * Hides a snackBar card by its ID without removing it from the stack.
+     * @param id The unique identifier of the card to hide.
      * @return `true` if the card was found and hidden, `false` otherwise.
      */
     fun hideCardById(id: String): Boolean {
@@ -127,8 +127,8 @@ class SnackbarStackState(
     }
 
     /**
-     * Shows a specific card in the stack by its unique [id].
-     * @param id The id of the card to show.
+     * Shows a previously hidden snackBar card by its ID.
+     * @param id The unique identifier of the card to show.
      * @return `true` if the card was found and shown, `false` otherwise.
      */
     fun showCardById(id: String): Boolean {
@@ -140,8 +140,8 @@ class SnackbarStackState(
     }
 
     /**
-     * Toggles the stack between its collapsed and expanded states.
-     * It automatically handles showing or hiding cards to match the respective size limits.
+     * Toggles the expanded/collapsed state of the snackBar stack.
+     * This adjusts the visibility of cards based on [maxCollapsedSize] and [maxExpandedSize].
      */
     fun toggleExpanded() {
         val currentSize = snapshotStateList.count { !it.hidden.value }
@@ -165,8 +165,8 @@ class SnackbarStackState(
     }
 
     /**
-     * Hides the oldest visible card from the stack (the one at the bottom).
-     * @return `true` if a card was hidden, `false` if there were no visible cards.
+     * Hides the card at the back of the visible stack (the one added earliest).
+     * @return `true` if a card was hidden, `false` otherwise.
      */
     fun hideBack(): Boolean {
         snapshotStateList.firstOrNull { !it.hidden.value }?.let {
@@ -177,8 +177,8 @@ class SnackbarStackState(
     }
 
     /**
-     * Hides the newest visible card in the stack (the one at the top).
-     * @return `true` if a card was hidden, `false` if there were no visible cards.
+     * Hides the card at the front of the visible stack (the one added most recently).
+     * @return `true` if a card was hidden, `false` otherwise.
      */
     fun hideFront(): Boolean {
         snapshotStateList.lastOrNull { !it.hidden.value }?.let {
@@ -189,8 +189,9 @@ class SnackbarStackState(
     }
 
     /**
-     * Removes the oldest visible card from the stack (the one at the bottom).
-     * @return `true` if a card was removed, `false` if there were no visible cards.
+     * Removes the card at the back of the stack.
+     * @param skipHidden If `true`, removes the oldest *visible* card. If `false`, removes the oldest card regardless of visibility.
+     * @return `true` if a card was removed, `false` otherwise.
      */
     fun removeBack(skipHidden: Boolean = false): Boolean {
         snapshotStateList.firstOrNull { skipHidden && !it.hidden.value || !skipHidden }?.let {
@@ -201,8 +202,9 @@ class SnackbarStackState(
     }
 
     /**
-     * Removes the newest visible card from the stack (the one at the top).
-     * @return `true` if a card was removed, `false` if there were no visible cards.
+     * Removes the card at the front of the stack.
+     * @param skipHidden If `true`, removes the newest *visible* card. If `false`, removes the newest card regardless of visibility.
+     * @return `true` if a card was removed, `false` otherwise.
      */
     fun removeFront(skipHidden: Boolean = false): Boolean {
         snapshotStateList.lastOrNull { skipHidden && !it.hidden.value || !skipHidden }?.let {
@@ -213,8 +215,8 @@ class SnackbarStackState(
     }
 
     /**
-     * Reveals the oldest hidden card in the stack (the one at the bottom).
-     * @return `true` if a card was revealed, `false` if there were no hidden cards.
+     * Shows the newest hidden card from the back of the stack.
+     * @return `true` if a hidden card was shown, `false` otherwise.
      */
     fun showBack(): Boolean {
         snapshotStateList.lastOrNull { it.hidden.value }?.let {
@@ -225,8 +227,8 @@ class SnackbarStackState(
     }
 
     /**
-     * Reveals the newest hidden card in the stack (the one at the top).
-     * @return `true` if a card was revealed, `false` if there were no hidden cards.
+     * Shows the oldest hidden card from the front of the stack.
+     * @return `true` if a hidden card was shown, `false` otherwise.
      */
     fun showFront(): Boolean {
         snapshotStateList.firstOrNull { it.hidden.value }?.let {
@@ -237,7 +239,7 @@ class SnackbarStackState(
     }
 
     /**
-     * Reveals all previously hidden cards.
+     * Makes all snackBar cards in the stack visible.
      */
     fun showAll() {
         snapshotStateList.forEach {
@@ -246,31 +248,32 @@ class SnackbarStackState(
     }
 
     /**
-     * Returns the current number of cards in the stack.
+     * @return The total number of cards in the stack, including hidden ones.
      */
     fun size(): Int = snapshotStateList.size
 
     /**
-     * Returns the current number of visible cards in the stack.
+     * @return The number of currently visible cards in the stack.
      */
     fun sizeVisible(): Int = snapshotStateList.count { !it.hidden.value }
 }
 
 /**
- * Creates and remembers a [SnackbarStackState] in the current composition.
- * This is the recommended way to create a state object for the [SnackbarStack].
+ * Creates and remembers a [SnackbarStackState] instance.
  *
- * @param initial An optional initial list of [SnackbarItemModel]s to populate the stack.
+ * @param initial The initial list of [SnackbarItemModel]s to populate the stack.
+ * @param maxExpandedSize The maximum number of visible snackBars when the stack is expanded.
+ * @param maxCollapsedSize The maximum number of visible snackBars when the stack is collapsed.
  * @return A remembered [SnackbarStackState] instance.
  */
 @Composable
-fun rememberSnackbarStackState(
-    initial: List<SnackbarItemModel> = emptyList(),
+fun rememberSnackBarStackState(
+    initial: List<SnackBarItemModel> = emptyList(),
     maxExpandedSize: Int = 10,
     maxCollapsedSize: Int = 5
-): SnackbarStackState {
+): SnackBarStackState {
     return remember {
-        SnackbarStackState(
+        SnackBarStackState(
             cards = initial.toMutableList(),
             maxExpandedSize = maxExpandedSize,
             maxCollapsedSize = maxCollapsedSize
@@ -278,7 +281,18 @@ fun rememberSnackbarStackState(
     }
 }
 
-data class SnackbarStackConfig(
+/**
+ * Configuration for the visual properties of the [SnackBarStack].
+ *
+ * @param cardWidthExpanded The width of a snackBar card when the stack is expanded.
+ * @param cardHeightExpanded The height of a snackBar card when the stack is expanded.
+ * @param cardGapExpanded The vertical spacing between cards when the stack is expanded.
+ * @param cardWidthCollapsed The width of a snackBar card when the stack is collapsed.
+ * @param cardHeightCollapsed The height of a snackBar card when the stack is collapsed.
+ * @param cardGapCollapsed The vertical spacing (peek height) between cards when the stack is collapsed.
+ * @param stackAbove Internal flag to control stacking direction. Currently not implemented.
+ */
+data class SnackBarStackConfig(
     val cardWidthExpanded: Dp = 320.dp,
     val cardHeightExpanded: Dp = 160.dp,
     val cardGapExpanded: Dp = 10.dp,
@@ -289,24 +303,26 @@ data class SnackbarStackConfig(
 )
 
 /**
- * A composable that displays a stack of snackbar notifications.
- * It animates the cards based on the provided [SnackbarStackState].
- * The stack can be expanded or collapsed by clicking on it.
+ * A composable that displays a stack of snackBar notifications.
  *
- * @param state The [SnackbarStackState] that controls the content and behavior of the stack.
- * @param modifier The [Modifier] to be applied to the stack container.
- * @param cardWidth The fixed width for each card in the stack.
- * @param cardHeight The base height for each card in the stack.
- * @param peekHeight The height of the portion of the underlying cards that is visible when the stack is collapsed.
- * @param stackAbove If `true`, the stack builds upwards from the bottom. If `false`, it builds downwards from the top.
- * @param contentModifier A modifier to be applied to each individual card slot within the stack.
+ * The stack can be in a collapsed state, showing a condensed view of notifications,
+ * or an expanded state, showing a scrollable list.
+ *
+ * @param state The [SnackBarStackState] that manages the content and state of the stack.
+ * @param modifier The modifier to be applied to the stack container.
+ * @param contentModifier The modifier to be applied to the content within each snackBar card.
+ * @param snackBarStackConfig The configuration for the visual properties of the stack.
+ * @param enableSwipeToDismiss If `true`, allows users to swipe away the top card (in collapsed mode) or any card (in expanded mode).
+ * @param expandOnCardClick If `true`, toggles the expanded state of the stack when the top card is clicked.
  */
 @Composable
-fun SnackbarStack(
-    state: SnackbarStackState,
+fun SnackBarStack(
+    state: SnackBarStackState,
     modifier: Modifier = Modifier,
     contentModifier: Modifier = Modifier,
-    snackBarStackConfig: SnackbarStackConfig = SnackbarStackConfig(),
+    snackBarStackConfig: SnackBarStackConfig = SnackBarStackConfig(),
+    enableSwipeToDismiss: Boolean = true,
+    expandOnCardClick: Boolean = true,
 ) {
     val count by remember { derivedStateOf { state.sizeVisible() } }
 
@@ -365,7 +381,7 @@ fun SnackbarStack(
                         logicalIndex = totalVisibleCards - 1 - visibleIndex++
                     }
                     key(snackBarModel.id) {
-                        SnackbarStackItem(
+                        SnackBarStackItem(
                             model = snackBarModel,
                             isHidden = snackBarModel.hidden.value,
                             expanded = state.expanded,
@@ -376,8 +392,12 @@ fun SnackbarStack(
                                 state.showBack()
                             },
                             onClick = {
-                                state.toggleExpanded()
-                            }
+                                if(expandOnCardClick) {
+                                    state.toggleExpanded()
+                                }
+                            },
+                            snackBarStackConfig = snackBarStackConfig,
+                            enableSwipeToDismiss = enableSwipeToDismiss
                         )
                     }
                 }
@@ -387,12 +407,23 @@ fun SnackbarStack(
 }
 
 /**
- * A private composable that represents a single, animatable card within the [SnackbarStack].
- * It handles its own animations for position, width, opacity, and swipe gestures.
+ * Represents a single animated item within the [SnackBarStack].
+ * This composable manages its own position, scale, opacity, and swipe-to-dismiss behavior.
+ *
+ * @param model The data model for this snackBar item.
+ * @param isHidden Whether the item is currently hidden and should be faded out.
+ * @param expanded Whether the parent stack is in an expanded state.
+ * @param index The logical index of the card from the top of the stack (0 is the topmost).
+ * @param invertedIndex The logical index from the bottom of the stack (0 is the bottommost).
+ * @param stackedWidthScaleFactor The factor by which to scale the width of cards underneath the top card in collapsed mode.
+ * @param onSwipedAway Callback invoked when the card has been successfully swiped away.
+ * @param onClick Callback invoked when the card is clicked.
+ * @param snackBarStackConfig Configuration for the visual properties.
+ * @param enableSwipeToDismiss Whether swipe-to-dismiss is enabled for this item.
  */
 @Composable
-private fun SnackbarStackItem(
-    model: SnackbarItemModel,
+private fun SnackBarStackItem(
+    model: SnackBarItemModel,
     isHidden: Boolean,
     expanded: Boolean,
     index: Int,
@@ -400,7 +431,8 @@ private fun SnackbarStackItem(
     stackedWidthScaleFactor: Float = STACKED_WIDTH_SCALE_FACTOR,
     onSwipedAway: (String) -> Unit,
     onClick: () -> Unit = {},
-    snackBarStackConfig: SnackbarStackConfig = SnackbarStackConfig(),
+    snackBarStackConfig: SnackBarStackConfig,
+    enableSwipeToDismiss: Boolean = true,
 ) {
 
     val cardWidth =
@@ -417,6 +449,7 @@ private fun SnackbarStackItem(
     val scope = rememberCoroutineScope()
     val localDensity = LocalDensity.current
     val isTop = index == 0
+
     val targetYOffset =
         with(localDensity) { if (expanded) (invertedIndex * (peekHeight + cardHeight)).toPx() else (index * peekHeight).toPx() }
     val animatedYOffset = remember {
@@ -438,7 +471,6 @@ private fun SnackbarStackItem(
             cardWidth.toPx() * stackedWidthScaleFactor.pow(index)
         }
     }
-
     val animatedWidth = animateFloatAsState(
         targetValue = targetWidth,
         animationSpec = tween(durationMillis = 100, easing = FastOutSlowInEasing)
@@ -464,14 +496,14 @@ private fun SnackbarStackItem(
     val swipeX = remember { Animatable(0f) }
     val offsetX: Float = if (isTop || expanded) swipeX.value else 0f
 
-    val token = model.snackbarToken
-    val snackBarInfo = SnackBarInfo(model.snackbarStyle, false)
+    val token = model.snackBarToken
+    val snackBarInfo = SnackBarInfo(model.snackBarStyle, false)
 
     Box(
         modifier = Modifier
             .offset {
                 IntOffset(
-                    offsetX.roundToInt(),//+ (slideInProgress.value * with(localDensity) { 200.dp.toPx() }).roundToInt(),
+                    offsetX.roundToInt() + (slideInProgress.value * with(localDensity) { 200.dp.toPx() }).roundToInt(),
                     animatedYOffset.value.roundToInt()
                 )
             }
@@ -483,7 +515,7 @@ private fun SnackbarStackItem(
             .height(cardHeight)
             .padding(horizontal = 0.dp)
             .then(
-                if (isTop || expanded) Modifier.pointerInput(model.id) {
+                if (enableSwipeToDismiss && (isTop || expanded)) Modifier.pointerInput(model.id) {
                     detectHorizontalDragGestures(
                         onDragStart = {},
                         onDragEnd = {
@@ -532,7 +564,7 @@ private fun SnackbarStackItem(
         BasicCard(
             modifier = Modifier
                 .fillMaxSize()
-                .clip(RoundedCornerShape(12.dp))
+                .clip(token.cardShape(snackBarInfo))
                 .shadow(
                     elevation = token.shadowElevationValue(snackBarInfo)
                 )
@@ -543,6 +575,7 @@ private fun SnackbarStackItem(
                         onClick()
                     }
                 )
+                .padding(token.contentPadding(snackBarInfo))
                 .animateContentSize()
         )
         {
