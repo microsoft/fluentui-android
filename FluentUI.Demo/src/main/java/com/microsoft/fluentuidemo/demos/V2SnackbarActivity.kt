@@ -72,7 +72,7 @@ class V2SnackbarActivity : V2DemoActivity() {
         val context = this
 
         setActivityContent {
-            DemoCardStack()
+            SnackBarStackDemo()
             val snackbarState = remember { SnackbarState() }
 
             val scope = rememberCoroutineScope()
@@ -99,27 +99,6 @@ class V2SnackbarActivity : V2DemoActivity() {
                     modifier = Modifier.testTag(SNACK_BAR_MODIFIABLE_PARAMETER_SECTION)
                 ) {
                     LazyColumn(Modifier.fillMaxHeight(0.5F)) {
-                        item {
-                            PillBar(
-                                mutableListOf(
-                                    PillMetaData(
-                                        text = LocalContext.current.resources.getString(R.string.fluentui_indefinite),
-                                        onClick = {
-                                            duration = NotificationDuration.INDEFINITE
-                                        },
-                                        selected = duration == NotificationDuration.INDEFINITE
-                                    ),
-                                    PillMetaData(
-                                        text = LocalContext.current.resources.getString(R.string.fluentui_long),
-                                        onClick = {
-                                            duration = NotificationDuration.LONG
-                                        },
-                                        selected = duration == NotificationDuration.LONG
-                                    )
-                                ), style = FluentStyle.Neutral,
-                                showBackground = true
-                            )
-                        }
                         item {
                             PillBar(
                                 mutableListOf(
@@ -357,9 +336,13 @@ class V2SnackbarActivity : V2DemoActivity() {
     }
 }
 
+// Demo for SnackBarStack
 @Composable
-fun DemoCardStack() {
-    val stackState = rememberSnackBarStackState()
+fun SnackBarStackDemo() {
+    val stackState = rememberSnackBarStackState(
+        maxExpandedSize = 10,
+        maxCollapsedSize = 5
+    )
     var counter by rememberSaveable { mutableIntStateOf(0) }
     val scope = rememberCoroutineScope()
     Column(
@@ -384,7 +367,7 @@ fun DemoCardStack() {
                         BasicText("Some detail here")
                     }
                 })
-            }, text = "Add card")
+            }, text = "Add Snackbar")
 
             Spacer(modifier = Modifier.width(12.dp))
 
@@ -395,13 +378,13 @@ fun DemoCardStack() {
                     stackState.removeFront()
                     stackState.showBack()
                 }
-            }, text = "Remove top card")
+            }, text = "Remove latest")
 
             Spacer(modifier = Modifier.width(12.dp))
 
             Button(onClick = {
                 stackState.showBack()
-            }, text = "Show last hidden card")
+            }, text = "Show last hidden")
         }
     }
 }

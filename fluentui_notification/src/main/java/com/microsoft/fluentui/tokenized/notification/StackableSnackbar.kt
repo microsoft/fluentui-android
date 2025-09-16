@@ -351,55 +351,46 @@ fun SnackBarStack(
         animationSpec = spring(stiffness = Spring.StiffnessMedium)
     )
     val scrollState = rememberScrollState()
-
-    BoxWithConstraints(modifier = modifier.fillMaxWidth()) {
-        val parentMaxHeight = this.maxHeight
-        val contentHeight = if (state.size() == 0) 0.dp else animatedStackHeight
-
-        val visibleHeight =
-            if (state.expanded) minOf(contentHeight, parentMaxHeight) else contentHeight
-
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(animatedStackHeight)
+            .then(if (state.expanded) Modifier.verticalScroll(scrollState) else Modifier),
+        contentAlignment = Alignment.BottomCenter
+    ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(visibleHeight)
-                .then(if (state.expanded) Modifier.verticalScroll(scrollState) else Modifier),
+                .height(animatedStackHeight),
             contentAlignment = Alignment.BottomCenter
         ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(contentHeight),
-                contentAlignment = Alignment.BottomCenter
-            ) {
-                val totalVisibleCards = state.sizeVisible()
-                var visibleIndex = 0
-                state.snapshotStateList.forEach { snackBarModel ->
-                    var logicalIndex = state.maxCurrentSize
-                    val invertedLogicalIndex = visibleIndex
-                    if (!snackBarModel.hidden.value) {
-                        logicalIndex = totalVisibleCards - 1 - visibleIndex++
-                    }
-                    key(snackBarModel.id) {
-                        SnackBarStackItem(
-                            model = snackBarModel,
-                            isHidden = snackBarModel.hidden.value,
-                            expanded = state.expanded,
-                            index = logicalIndex,
-                            invertedIndex = invertedLogicalIndex,
-                            onSwipedAway = { idToRemove ->
-                                state.removeCardById(idToRemove)
-                                state.showBack()
-                            },
-                            onClick = {
-                                if(expandOnCardClick) {
-                                    state.toggleExpanded()
-                                }
-                            },
-                            snackBarStackConfig = snackBarStackConfig,
-                            enableSwipeToDismiss = enableSwipeToDismiss
-                        )
-                    }
+            val totalVisibleCards = state.sizeVisible()
+            var visibleIndex = 0
+            state.snapshotStateList.forEach { snackBarModel ->
+                var logicalIndex = state.maxCurrentSize
+                val invertedLogicalIndex = visibleIndex
+                if (!snackBarModel.hidden.value) {
+                    logicalIndex = totalVisibleCards - 1 - visibleIndex++
+                }
+                key(snackBarModel.id) {
+                    SnackBarStackItem(
+                        model = snackBarModel,
+                        isHidden = snackBarModel.hidden.value,
+                        expanded = state.expanded,
+                        index = logicalIndex,
+                        invertedIndex = invertedLogicalIndex,
+                        onSwipedAway = { idToRemove ->
+                            state.removeCardById(idToRemove)
+                            state.showBack()
+                        },
+                        onClick = {
+                            if (expandOnCardClick) {
+                                state.toggleExpanded()
+                            }
+                        },
+                        snackBarStackConfig = snackBarStackConfig,
+                        enableSwipeToDismiss = enableSwipeToDismiss
+                    )
                 }
             }
         }
@@ -462,17 +453,9 @@ private fun SnackBarStackItem(
         )
     }
 
-    val targetWidth = with(localDensity) {
-        if (expanded) {
-            cardWidth.toPx()
-        } else if (isHidden) {
-            cardWidth.toPx() * stackedWidthScaleFactor.pow(index)
-        } else {
-            cardWidth.toPx() * stackedWidthScaleFactor.pow(index)
-        }
-    }
-    val animatedWidth = animateFloatAsState(
-        targetValue = targetWidth,
+    val targetWidthScale = if (expanded) 1f else stackedWidthScaleFactor.pow(index)
+    val animatedWidthScale = animateFloatAsState(
+        targetValue = targetWidthScale,
         animationSpec = tween(durationMillis = 100, easing = FastOutSlowInEasing)
     )
 
@@ -501,15 +484,12 @@ private fun SnackBarStackItem(
 
     Box(
         modifier = Modifier
-            .offset {
-                IntOffset(
-                    offsetX.roundToInt() + (slideInProgress.value * with(localDensity) { 200.dp.toPx() }).roundToInt(),
-                    animatedYOffset.value.roundToInt()
-                )
-            }
             .graphicsLayer(
                 alpha = opacityProgress.value,
-                scaleX = animatedWidth.value / with(localDensity) { cardWidth.toPx() },
+                translationX = offsetX + (slideInProgress.value * with(localDensity) { 200.dp.toPx() }),
+                translationY = animatedYOffset.value,
+                scaleX = animatedWidthScale.value,
+                scaleY = animatedWidthScale.value
             )
             .width(cardWidth)
             .height(cardHeight)
@@ -564,10 +544,12 @@ private fun SnackBarStackItem(
         BasicCard(
             modifier = Modifier
                 .fillMaxSize()
-                .clip(token.cardShape(snackBarInfo))
                 .shadow(
-                    elevation = token.shadowElevationValue(snackBarInfo)
+                    elevation = token.shadowElevationValue(snackBarInfo),
+                    shape = token.cardShape(snackBarInfo),
+                    clip = false
                 )
+                .clip(token.cardShape(snackBarInfo))
                 .background(token.backgroundBrush(snackBarInfo))
                 .clickable(
                     enabled = isTop || expanded,
