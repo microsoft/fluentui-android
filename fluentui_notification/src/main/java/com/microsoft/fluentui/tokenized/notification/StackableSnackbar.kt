@@ -1,5 +1,6 @@
 package com.microsoft.fluentui.tokenized.notification
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
@@ -21,6 +22,7 @@ import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -28,9 +30,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.times
 import com.microsoft.fluentui.theme.token.controlTokens.SnackBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.SnackbarStyle
@@ -38,7 +40,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.StackableSnackBarTokens
 import com.microsoft.fluentui.tokenized.controls.BasicCard
 import kotlin.math.abs
 import kotlin.math.pow
-import kotlin.math.roundToInt
 
 private const val FADE_OUT_DURATION = 350
 private const val STACKED_WIDTH_SCALE_FACTOR = 0.95f
@@ -446,7 +447,7 @@ private fun SnackBarStackItem(
     val animatedYOffset = remember {
         Animatable(with(localDensity) { cardHeight.toPx() * if (stackAbove) 1f else -1f })
     }
-    LaunchedEffect(index, expanded, invertedIndex) {
+    LaunchedEffect(targetYOffset) {
         animatedYOffset.animateTo(
             targetYOffset * (if (stackAbove) -1f else 1f),
             animationSpec = spring(stiffness = Spring.StiffnessLow)
@@ -563,5 +564,38 @@ private fun SnackBarStackItem(
         {
             model.content()
         }
+    }
+}
+
+/**
+ * A composable that displays a scrim over its background. It dims the background
+ * and intercepts all clicks, preventing them from reaching the content behind it.
+ *
+ * @param isActivated Whether the scrim is currently active.
+ * @param onDismiss A lambda to be invoked when the scrim area is clicked.
+ */
+@Composable
+fun Scrim(
+    isActivated: Boolean,
+    onDismiss: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val scrimColor by animateColorAsState(
+        targetValue = if (isActivated) Color.Black.copy(alpha = 0.6f) else Color.Transparent,
+        animationSpec = tween(durationMillis = 300),
+        label = "ScrimColorAnimation"
+    )
+
+    if (scrimColor.alpha > 0f) {
+        Box(
+            modifier = modifier
+                .fillMaxSize()
+                .background(scrimColor)
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = null,
+                    onClick = onDismiss
+                )
+        )
     }
 }
