@@ -36,6 +36,7 @@ import com.microsoft.fluentui.tokenized.notification.AnimationBehavior
 import com.microsoft.fluentui.tokenized.notification.AnimationVariables
 import com.microsoft.fluentui.tokenized.notification.NotificationDuration
 import com.microsoft.fluentui.tokenized.notification.NotificationResult
+import com.microsoft.fluentui.tokenized.notification.Scrim
 import com.microsoft.fluentui.tokenized.notification.SnackBarItemModel
 import com.microsoft.fluentui.tokenized.notification.SnackBarStack
 import com.microsoft.fluentui.tokenized.notification.Snackbar
@@ -339,52 +340,58 @@ class V2SnackbarActivity : V2DemoActivity() {
 // Demo for SnackBarStack
 @Composable
 fun SnackBarStackDemo() {
-    val stackState = rememberSnackBarStackState(
-        maxExpandedSize = 10,
-        maxCollapsedSize = 5
-    )
-    var counter by rememberSaveable { mutableIntStateOf(0) }
-    val scope = rememberCoroutineScope()
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Bottom
-    ) {
-        SnackBarStack(
-            state = stackState,
-            modifier = Modifier.padding(16.dp),
+    Box() {
+        val stackState = rememberSnackBarStackState(
+            maxExpandedSize = 10,
+            maxCollapsedSize = 5
         )
+        var counter by rememberSaveable { mutableIntStateOf(0) }
+        val scope = rememberCoroutineScope()
+        Scrim(
+            isActivated = stackState.expanded,
+            onDismiss = {}
+        )
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Bottom
+        ) {
+            SnackBarStack(
+                state = stackState,
+                modifier = Modifier.padding(16.dp),
+            )
 
-        Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
-        Row {
-            Button(onClick = {
-                val id = counter++
+            Row {
+                Button(onClick = {
+                    val id = counter++
 
-                stackState.addCard(SnackBarItemModel(id = id.toString()) {
-                    Column(modifier = Modifier.padding(12.dp)) {
-                        BasicText("Card: $id")
-                        BasicText("Some detail here")
+                    stackState.addCard(SnackBarItemModel(id = id.toString()) {
+                        Column(modifier = Modifier.padding(12.dp)) {
+                            BasicText("Card: $id")
+                            BasicText("Some detail here")
+                        }
+                    })
+                }, text = "Add Snackbar")
+
+                Spacer(modifier = Modifier.width(12.dp))
+
+                Button(onClick = {
+                    scope.launch {
+                        stackState.hideFront()
+                        delay(300)
+                        stackState.removeFront()
+                        stackState.showBack()
                     }
-                })
-            }, text = "Add Snackbar")
+                }, text = "Remove latest")
 
-            Spacer(modifier = Modifier.width(12.dp))
+                Spacer(modifier = Modifier.width(12.dp))
 
-            Button(onClick = {
-                scope.launch {
-                    stackState.hideFront()
-                    delay(300)
-                    stackState.removeFront()
+                Button(onClick = {
                     stackState.showBack()
-                }
-            }, text = "Remove latest")
-
-            Spacer(modifier = Modifier.width(12.dp))
-
-            Button(onClick = {
-                stackState.showBack()
-            }, text = "Show last hidden")
+                }, text = "Show last hidden")
+            }
         }
     }
 }

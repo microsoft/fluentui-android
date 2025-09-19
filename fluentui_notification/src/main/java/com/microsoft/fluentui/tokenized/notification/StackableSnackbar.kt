@@ -83,7 +83,7 @@ class SnackBarStackState(
     /**
      * Whether the snackBar stack is currently expanded.
      */
-    internal var expanded by mutableStateOf(false)
+    var expanded by mutableStateOf(false)
         private set
 
     internal var maxCurrentSize = maxCollapsedSize
