@@ -1,7 +1,6 @@
 package com.microsoft.fluentui.tokenized.notification
 
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
@@ -31,6 +30,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.LayoutCoordinates
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.times
@@ -38,6 +39,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.SnackBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.SnackbarStyle
 import com.microsoft.fluentui.theme.token.controlTokens.StackableSnackBarTokens
 import com.microsoft.fluentui.tokenized.controls.BasicCard
+import kotlinx.coroutines.delay
 import kotlin.math.abs
 import kotlin.math.pow
 
@@ -62,7 +64,7 @@ data class SnackBarItemModel(
     val snackBarStyle: SnackbarStyle = SnackbarStyle.Neutral,
     val id: String = java.util.UUID.randomUUID().toString(),
     internal val hidden: MutableState<Boolean> = mutableStateOf(false),
-    val content: @Composable () -> Unit,
+    val content: @Composable () -> Unit
 )
 
 /**
@@ -77,7 +79,8 @@ class SnackBarStackState(
     internal var maxCollapsedSize: Int = 5,
     internal var maxExpandedSize: Int = 10
 ) {
-    internal val snapshotStateList: MutableList<SnackBarItemModel> =
+    val contentHeightList: MutableList<Int> = MutableList(cards.size) { 0 }
+    val snapshotStateList: MutableList<SnackBarItemModel> =
         mutableStateListOf<SnackBarItemModel>().apply { addAll(cards) }
 
     /**
@@ -94,8 +97,12 @@ class SnackBarStackState(
      * @param card The [SnackbarItemModel] to add.
      */
     fun addCard(card: SnackBarItemModel) {
+        if (snapshotStateList.any { it.id == card.id }) {
+            return
+        }
         maxCurrentSize = if (expanded) maxExpandedSize else maxCollapsedSize
         snapshotStateList.add(card)
+        contentHeightList.add(0)
         if (sizeVisible() > maxCurrentSize) {
             hideBack()
         }
@@ -108,10 +115,20 @@ class SnackBarStackState(
      */
     fun removeCardById(id: String): Boolean {
         snapshotStateList.firstOrNull { it.id == id }?.let {
+            contentHeightList.removeAt(snapshotStateList.indexOf(it))
             snapshotStateList.remove(it)
             return true
         }
         return false
+    }
+
+    suspend fun removeCardByIdWithAnimation(id: String, onRemoveCompleteCallback: () -> Unit = {}) {
+        val card = snapshotStateList.firstOrNull { it.id == id } ?: return
+        card.hidden.value = true
+        delay(FADE_OUT_DURATION.toLong())
+        contentHeightList.removeAt(snapshotStateList.indexOf(card))
+        snapshotStateList.remove(card)
+        onRemoveCompleteCallback()
     }
 
     /**
@@ -209,6 +226,7 @@ class SnackBarStackState(
      */
     fun removeFront(skipHidden: Boolean = false): Boolean {
         snapshotStateList.lastOrNull { skipHidden && !it.hidden.value || !skipHidden }?.let {
+            contentHeightList.removeAt(snapshotStateList.indexOf(it))
             snapshotStateList.remove(it)
             return true
         }
@@ -246,6 +264,26 @@ class SnackBarStackState(
         snapshotStateList.forEach {
             it.hidden.value = false
         }
+    }
+
+    /**
+     * Internal Functions to get offset heights when expanded
+     */
+    internal fun heightBeforeIndex(index: Int): Int {
+        return contentHeightList
+            .take(index)
+            .filterIndexed { i, _ -> !snapshotStateList[i].hidden.value }
+            .sum()
+    }
+
+    internal fun heightAfterIndex(index: Int): Int {
+        return contentHeightList
+            .drop(index + 1)
+            .filterIndexed { i, _ ->
+                // i here starts from 0 because of drop, so offset by index+1
+                !snapshotStateList[i + index + 1].hidden.value
+            }
+            .sum()
     }
 
     /**
@@ -325,33 +363,18 @@ fun SnackBarStack(
     enableSwipeToDismiss: Boolean = true,
     expandOnCardClick: Boolean = true,
 ) {
-    val count by remember { derivedStateOf { state.sizeVisible() } }
-
-    val cardHeight = animateDpAsState(
-        targetValue = if (state.expanded) snackBarStackConfig.cardHeightExpanded else snackBarStackConfig.cardHeightCollapsed,
-        animationSpec = spring(stiffness = Spring.StiffnessMedium)
-    )
-    val peekHeight = animateDpAsState(
-        targetValue = if (state.expanded) snackBarStackConfig.cardGapExpanded else snackBarStackConfig.cardGapCollapsed,
-        animationSpec = spring(stiffness = Spring.StiffnessMedium)
-    )
-    val targetHeight by remember {
-        derivedStateOf {
-            if (count == 0) {
-                0.dp
-            } else if (state.expanded) {
-                cardHeight.value * (count + 1) + (count - 1) * peekHeight.value
-            } else {
-                cardHeight.value + (count - 1) * peekHeight.value
-            }
-        }
-    }
-
+    val visibleCardsCount by remember { derivedStateOf { state.sizeVisible() } }
+    val localDensity = LocalDensity.current
+    val cardHeight = snackBarStackConfig.cardHeightCollapsed
+    val peekHeight = snackBarStackConfig.cardGapCollapsed
+    val targetHeight = if (visibleCardsCount == 0) { 0.dp }
+        else if (state.expanded) { with(localDensity) { state.heightAfterIndex(0).toDp() + 200.dp } }
+        else { cardHeight + (visibleCardsCount - 1) * peekHeight }
     val animatedStackHeight by animateDpAsState(
         targetValue = targetHeight,
         animationSpec = spring(stiffness = Spring.StiffnessMedium)
     )
-    val scrollState = rememberScrollState()
+    val scrollState = rememberScrollState() //TODO: Keep Focus Anchored To the Bottom when expanded and new card added
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -367,7 +390,7 @@ fun SnackBarStack(
         ) {
             val totalVisibleCards = state.sizeVisible()
             var visibleIndex = 0
-            state.snapshotStateList.forEach { snackBarModel ->
+            state.snapshotStateList.forEachIndexed { index, snackBarModel ->
                 var logicalIndex = state.maxCurrentSize
                 val invertedLogicalIndex = visibleIndex
                 if (!snackBarModel.hidden.value) {
@@ -376,10 +399,11 @@ fun SnackBarStack(
                 key(snackBarModel.id) {
                     SnackBarStackItem(
                         model = snackBarModel,
+                        state = state,
                         isHidden = snackBarModel.hidden.value,
                         expanded = state.expanded,
                         index = logicalIndex,
-                        invertedIndex = invertedLogicalIndex,
+                        trueIndex = index,
                         onSwipedAway = { idToRemove ->
                             state.removeCardById(idToRemove)
                             state.showBack()
@@ -416,10 +440,11 @@ fun SnackBarStack(
 @Composable
 private fun SnackBarStackItem(
     model: SnackBarItemModel,
+    state: SnackBarStackState,
     isHidden: Boolean,
     expanded: Boolean,
     index: Int,
-    invertedIndex: Int,
+    trueIndex: Int,
     stackedWidthScaleFactor: Float = STACKED_WIDTH_SCALE_FACTOR,
     onSwipedAway: (String) -> Unit,
     onClick: () -> Unit = {},
@@ -427,14 +452,11 @@ private fun SnackBarStackItem(
     enableSwipeToDismiss: Boolean = true,
 ) {
 
-    val cardWidth =
-        if (expanded) snackBarStackConfig.cardWidthExpanded else snackBarStackConfig.cardWidthCollapsed
+    val cardWidth = snackBarStackConfig.cardWidthCollapsed
 
-    val cardHeight =
-        if (expanded) snackBarStackConfig.cardHeightExpanded else snackBarStackConfig.cardHeightCollapsed
+    val cardHeight = snackBarStackConfig.cardHeightCollapsed
 
-    val peekHeight =
-        if (expanded) snackBarStackConfig.cardGapExpanded else snackBarStackConfig.cardGapCollapsed
+    val peekHeight = snackBarStackConfig.cardGapCollapsed
 
     val stackAbove = snackBarStackConfig.stackAbove
 
@@ -442,8 +464,10 @@ private fun SnackBarStackItem(
     val localDensity = LocalDensity.current
     val isTop = index == 0
 
+    val heightSumAfterIndex = if (isHidden) 0 else state.heightAfterIndex(trueIndex)
+
     val targetYOffset =
-        with(localDensity) { if (expanded) (invertedIndex * (peekHeight + cardHeight)).toPx() else (index * peekHeight).toPx() }
+        with(localDensity) { if (expanded) heightSumAfterIndex.toFloat() else (index * peekHeight).toPx() }
     val animatedYOffset = remember {
         Animatable(with(localDensity) { cardHeight.toPx() * if (stackAbove) 1f else -1f })
     }
@@ -459,14 +483,6 @@ private fun SnackBarStackItem(
         targetValue = targetWidthScale,
         animationSpec = tween(durationMillis = 100, easing = FastOutSlowInEasing)
     )
-
-    val slideInProgress = remember { Animatable(1f) }
-    LaunchedEffect(Unit) {
-        slideInProgress.animateTo(
-            0f,
-            animationSpec = tween(durationMillis = 350, easing = FastOutSlowInEasing)
-        )
-    }
 
     val opacityProgress = remember { Animatable(0f) }
     LaunchedEffect(isHidden) {
@@ -485,15 +501,31 @@ private fun SnackBarStackItem(
 
     Box(
         modifier = Modifier
+            .onGloballyPositioned(
+                onGloballyPositioned = { coordinates: LayoutCoordinates ->
+                    val contentHeight = coordinates.size.height
+                    state.contentHeightList[trueIndex] = contentHeight + with(localDensity) {
+                        20.dp.toPx().toInt()
+                    }
+                    return@onGloballyPositioned
+                }
+            )
             .graphicsLayer(
                 alpha = opacityProgress.value,
-                translationX = offsetX + (slideInProgress.value * with(localDensity) { 200.dp.toPx() }),
+                translationX = offsetX, //+ (slideInProgress.value * with(localDensity) { 200.dp.toPx() }),
                 translationY = animatedYOffset.value,
                 scaleX = animatedWidthScale.value,
                 scaleY = animatedWidthScale.value
             )
-            .width(cardWidth)
-            .height(cardHeight)
+            .then(
+                if (state.expanded) {
+                    Modifier.wrapContentSize()
+                } else {
+                    Modifier
+                        .width(cardWidth)
+                        .height(cardHeight)
+                }
+            )
             .padding(horizontal = 0.dp)
             .then(
                 if (enableSwipeToDismiss && (isTop || expanded)) Modifier.pointerInput(model.id) {
@@ -544,7 +576,15 @@ private fun SnackBarStackItem(
     ) {
         BasicCard(
             modifier = Modifier
-                .fillMaxSize()
+                .then(
+                    if (!state.expanded) {
+                        Modifier
+                            .height(cardHeight)
+                            .width(cardWidth)
+                    } else {
+                        Modifier
+                    }
+                )
                 .shadow(
                     elevation = token.shadowElevationValue(snackBarInfo),
                     shape = token.cardShape(snackBarInfo),
@@ -559,7 +599,6 @@ private fun SnackBarStackItem(
                     }
                 )
                 .padding(token.contentPadding(snackBarInfo))
-                .animateContentSize()
         )
         {
             model.content()

@@ -370,7 +370,7 @@ fun SnackBarStackDemo() {
                     stackState.addCard(SnackBarItemModel(id = id.toString()) {
                         Column(modifier = Modifier.padding(12.dp)) {
                             BasicText("Card: $id")
-                            BasicText("Some detail here")
+                            BasicText("Some detail here Some detail here Some detail here \n".repeat(id+3))
                         }
                     })
                 }, text = "Add Snackbar")
