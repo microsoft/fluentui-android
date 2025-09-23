@@ -367,12 +367,13 @@ fun SnackBarStackDemo() {
                 Button(onClick = {
                     val id = counter++
 
-                    stackState.addCard(SnackBarItemModel(id = id.toString()) {
-                        Column(modifier = Modifier.padding(12.dp)) {
-                            BasicText("Card: $id")
-                            BasicText("Some detail here Some detail here Some detail here \n".repeat(id+3))
+                    stackState.addCard(SnackBarItemModel(id = id.toString(), message = "Snackbar #$id", actionText = "Expand", onDismissClicked = {
+                        scope.launch {
+                            stackState.removeCardByIdWithAnimation(id.toString(), showLastHiddenCardOnRemove = true)
                         }
-                    })
+                    }, onActionTextClicked = {
+                        stackState.toggleExpanded()
+                    }))
                 }, text = "Add Snackbar")
 
                 Spacer(modifier = Modifier.width(12.dp))
@@ -386,11 +387,27 @@ fun SnackBarStackDemo() {
                     }
                 }, text = "Remove latest")
 
+                Button(onClick = {
+                    scope.launch {
+                        val id = counter++
+                        for(i in 0..15) {
+                            stackState.addCard(SnackBarItemModel(id = "$id-$i", message = "Snackbar #$id-$i".repeat(i + 4), actionText = "Expand", onDismissClicked = {
+                                scope.launch {
+                                    stackState.removeCardByIdWithAnimation("$id-$i", showLastHiddenCardOnRemove = true)
+                                }
+                            }, onActionTextClicked = {
+                                stackState.toggleExpanded()
+                            }))
+                            delay(2000)
+                        }
+                    }
+                }, text = "Keep Adding")
+
                 Spacer(modifier = Modifier.width(12.dp))
 
                 Button(onClick = {
                     stackState.showBack()
-                }, text = "Show last hidden")
+                }, text = "Show hidden")
             }
         }
     }
