@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -348,7 +349,7 @@ fun SnackBarStackDemo() {
         var counter by rememberSaveable { mutableIntStateOf(0) }
         val scope = rememberCoroutineScope()
         Scrim(
-            isActivated = stackState.expanded,
+            isActivated = stackState.expanded && stackState.sizeVisible() > 0,
             onDismiss = {}
         )
         Column(
@@ -367,13 +368,28 @@ fun SnackBarStackDemo() {
                 Button(onClick = {
                     val id = counter++
 
-                    stackState.addCard(SnackBarItemModel(id = id.toString(), message = "Snackbar #$id", actionText = "Expand", onDismissClicked = {
-                        scope.launch {
-                            stackState.removeCardByIdWithAnimation(id.toString(), showLastHiddenCardOnRemove = true)
-                        }
-                    }, onActionTextClicked = {
-                        stackState.toggleExpanded()
-                    }))
+                    stackState.addCard(
+                        SnackBarItemModel(
+                            id = id.toString(),
+                            message = "Snackbar #$id",
+                            actionText = "Expand",
+                            trailingIcon = FluentIcon(
+                                Icons.Default.Close,
+                                Icons.Default.Close,
+                                contentDescription = "Close",
+                                onClick = {
+                                    scope.launch {
+                                        stackState.removeCardByIdWithAnimation(
+                                            id.toString(),
+                                            showLastHiddenCardOnRemove = true
+                                        )
+                                    }
+                                }
+                            ),
+                            onActionTextClicked = {
+                                stackState.toggleExpanded()
+                            })
+                    )
                 }, text = "Add Snackbar")
 
                 Spacer(modifier = Modifier.width(12.dp))
@@ -390,14 +406,29 @@ fun SnackBarStackDemo() {
                 Button(onClick = {
                     scope.launch {
                         val id = counter++
-                        for(i in 0..15) {
-                            stackState.addCard(SnackBarItemModel(id = "$id-$i", message = "Snackbar #$id-$i".repeat(i + 4), actionText = "Expand", onDismissClicked = {
-                                scope.launch {
-                                    stackState.removeCardByIdWithAnimation("$id-$i", showLastHiddenCardOnRemove = true)
-                                }
-                            }, onActionTextClicked = {
-                                stackState.toggleExpanded()
-                            }))
+                        for (i in 0..15) {
+                            stackState.addCard(
+                                SnackBarItemModel(
+                                    id = "$id-$i",
+                                    message = "Snackbar #$id-$i".repeat(i + 4),
+                                    actionText = "Expand",
+                                    trailingIcon = FluentIcon(
+                                        Icons.Default.Close,
+                                        Icons.Default.Close,
+                                        contentDescription = "Close",
+                                        onClick = {
+                                            scope.launch {
+                                                stackState.removeCardByIdWithAnimation(
+                                                    "$id-$i",
+                                                    showLastHiddenCardOnRemove = true
+                                                )
+                                            }
+                                        }
+                                    ),
+                                    onActionTextClicked = {
+                                        stackState.toggleExpanded()
+                                    })
+                            )
                             delay(2000)
                         }
                     }

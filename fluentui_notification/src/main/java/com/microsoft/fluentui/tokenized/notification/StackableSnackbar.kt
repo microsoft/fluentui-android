@@ -37,6 +37,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.LiveRegionMode
@@ -84,14 +85,13 @@ data class SnackBarItemModel(
     val message: String,
     val id: String = java.util.UUID.randomUUID().toString(),
     val style: SnackbarStyle = SnackbarStyle.Neutral,
-    val enableDismiss: Boolean = true,
-    val icon: FluentIcon? = null,
+    val leadingIcon: FluentIcon? = null,
+    val trailingIcon: FluentIcon? = null,
     val subTitle: String? = null,
     val actionText: String? = null,
     val snackBarToken: StackableSnackBarTokens = DEFAULT_SNACKBAR_TOKENS,
     val onActionTextClicked: () -> Unit = {},
-    val onDismissClicked: () -> Unit = {},
-    internal val hidden: MutableState<Boolean> = mutableStateOf(false),
+    internal val hidden: MutableState<Int> = mutableIntStateOf(0), // 0 = visible, 1 = hidden, won't be removed, 2 = being removed
 )
 
 /**
@@ -106,7 +106,8 @@ class SnackBarStackState(
     internal var maxCollapsedSize: Int = 5,
     internal var maxExpandedSize: Int = 10
 ) {
-    val contentHeightList: MutableList<Int> = MutableList(cards.size) { 0 }
+    val contentHeightList = mutableStateListOf<Int>().apply { addAll(List(cards.size) { 0 }) }
+
     val snapshotStateList: MutableList<SnackBarItemModel> =
         mutableStateListOf<SnackBarItemModel>().apply { addAll(cards) }
 
@@ -155,7 +156,7 @@ class SnackBarStackState(
         onRemoveCompleteCallback: () -> Unit = {}
     ) {
         val card = snapshotStateList.firstOrNull { it.id == id } ?: return
-        card.hidden.value = true
+        card.hidden.value = 2
         delay(FADE_OUT_DURATION.toLong())
         contentHeightList.removeAt(snapshotStateList.indexOf(card))
         snapshotStateList.remove(card)
@@ -172,7 +173,7 @@ class SnackBarStackState(
      */
     fun hideCardById(id: String): Boolean {
         snapshotStateList.firstOrNull { it.id == id }?.let {
-            it.hidden.value = true
+            it.hidden.value = 1
             return true
         }
         return false
@@ -185,7 +186,7 @@ class SnackBarStackState(
      */
     fun showCardById(id: String): Boolean {
         snapshotStateList.firstOrNull { it.id == id }?.let {
-            it.hidden.value = false
+            it.hidden.value = 0
             return true
         }
         return false
@@ -202,12 +203,12 @@ class SnackBarStackState(
     }
 
     private fun onVisibleSizeChange() {
-        val currentSize = snapshotStateList.count { !it.hidden.value }
+        val currentSize = snapshotStateList.count { it.hidden.value == 0 }
         val (count, sequence, targetHidden) =
             if (currentSize > maxCurrentSize) {
-                Triple(currentSize - maxCurrentSize, snapshotStateList, true)
+                Triple(currentSize - maxCurrentSize, snapshotStateList, 1)
             } else {
-                Triple(maxCurrentSize - currentSize, snapshotStateList.asReversed(), false)
+                Triple(maxCurrentSize - currentSize, snapshotStateList.asReversed(), 0)
             }
 
         var slots = count
@@ -225,8 +226,8 @@ class SnackBarStackState(
      * @return `true` if a card was hidden, `false` otherwise.
      */
     fun hideBack(): Boolean {
-        snapshotStateList.firstOrNull { !it.hidden.value }?.let {
-            it.hidden.value = true
+        snapshotStateList.firstOrNull { it.hidden.value == 0 }?.let {
+            it.hidden.value = 1
             return true
         }
         return false
@@ -237,8 +238,8 @@ class SnackBarStackState(
      * @return `true` if a card was hidden, `false` otherwise.
      */
     fun hideFront(): Boolean {
-        snapshotStateList.lastOrNull { !it.hidden.value }?.let {
-            it.hidden.value = true
+        snapshotStateList.lastOrNull { it.hidden.value == 0 }?.let {
+            it.hidden.value = 1
             return true
         }
         return false
@@ -250,7 +251,7 @@ class SnackBarStackState(
      * @return `true` if a card was removed, `false` otherwise.
      */
     fun removeBack(skipHidden: Boolean = false): Boolean {
-        snapshotStateList.firstOrNull { skipHidden && !it.hidden.value || !skipHidden }?.let {
+        snapshotStateList.firstOrNull { skipHidden && it.hidden.value == 0 || !skipHidden }?.let {
             snapshotStateList.remove(it)
             return true
         }
@@ -263,7 +264,7 @@ class SnackBarStackState(
      * @return `true` if a card was removed, `false` otherwise.
      */
     fun removeFront(skipHidden: Boolean = false): Boolean {
-        snapshotStateList.lastOrNull { skipHidden && !it.hidden.value || !skipHidden }?.let {
+        snapshotStateList.lastOrNull { skipHidden && it.hidden.value == 0 || !skipHidden }?.let {
             contentHeightList.removeAt(snapshotStateList.indexOf(it))
             snapshotStateList.remove(it)
             return true
@@ -276,8 +277,8 @@ class SnackBarStackState(
      * @return `true` if a hidden card was shown, `false` otherwise.
      */
     fun showBack(): Boolean {
-        snapshotStateList.lastOrNull { it.hidden.value }?.let {
-            it.hidden.value = false
+        snapshotStateList.lastOrNull { it.hidden.value == 1 }?.let {
+            it.hidden.value = 0
             return true
         }
         return false
@@ -288,8 +289,8 @@ class SnackBarStackState(
      * @return `true` if a hidden card was shown, `false` otherwise.
      */
     fun showFront(): Boolean {
-        snapshotStateList.firstOrNull { it.hidden.value }?.let {
-            it.hidden.value = false
+        snapshotStateList.firstOrNull { it.hidden.value == 1 }?.let {
+            it.hidden.value = 0
             return true
         }
         return false
@@ -300,7 +301,7 @@ class SnackBarStackState(
      */
     fun showAll() {
         snapshotStateList.forEach {
-            it.hidden.value = false
+            it.hidden.value = 0
         }
     }
 
@@ -310,7 +311,7 @@ class SnackBarStackState(
     internal fun heightBeforeIndex(index: Int): Int {
         return contentHeightList
             .take(index)
-            .filterIndexed { i, _ -> !snapshotStateList[i].hidden.value }
+            .filterIndexed { i, _ -> snapshotStateList[i].hidden.value == 0 }
             .sum()
     }
 
@@ -319,7 +320,7 @@ class SnackBarStackState(
             .drop(index + 1)
             .filterIndexed { i, _ ->
                 // i here starts from 0 because of drop, so offset by index+1
-                !snapshotStateList[i + index + 1].hidden.value
+                snapshotStateList[i + index + 1].hidden.value == 0
             }
             .sum()
     }
@@ -328,7 +329,7 @@ class SnackBarStackState(
         return contentHeightList
             .drop(index + 1)
             .filterIndexed { i, _ ->
-                !snapshotStateList[i + index + 1].hidden.value
+                snapshotStateList[i + index + 1].hidden.value == 0
             }.size
     }
 
@@ -340,7 +341,7 @@ class SnackBarStackState(
     /**
      * @return The number of currently visible cards in the stack.
      */
-    fun sizeVisible(): Int = snapshotStateList.count { !it.hidden.value }
+    fun sizeVisible(): Int = snapshotStateList.count { it.hidden.value == 0 }
 }
 
 /**
@@ -409,27 +410,27 @@ fun SnackBarStack(
     enableSwipeToDismiss: Boolean = true,
     expandOnCardClick: Boolean = true,
 ) {
-    val visibleCardsCount by remember { derivedStateOf { state.sizeVisible() } }
     val localDensity = LocalDensity.current
-    val cardHeight = snackBarStackConfig.cardHeightCollapsed
-    val peekHeight = snackBarStackConfig.cardGapCollapsed
+
+    val visibleCardsCount by remember { derivedStateOf { state.sizeVisible() } }
     val targetHeight = if (visibleCardsCount == 0) {
-        0.dp
+        snackBarStackConfig.cardHeightCollapsed
     } else if (state.expanded) {
         with(localDensity) { state.heightAfterIndex(0).toDp() + 200.dp }
     } else {
-        cardHeight + (visibleCardsCount - 1) * peekHeight
+        snackBarStackConfig.cardHeightCollapsed + (visibleCardsCount - 1) * snackBarStackConfig.cardGapCollapsed
     }
     val animatedStackHeight by animateDpAsState( //TODO: CHANGE TO LAUNCHED EFFECT WITH ONLY A TRIGGER ON VISIBLE CARDS TOTAL HEIGHT CHANGE
         targetValue = targetHeight,
-        animationSpec = spring(stiffness = Spring.StiffnessMedium)
+        animationSpec = tween(durationMillis = 300, easing = FastOutSlowInEasing)
     )
+
     val scrollState =
         rememberScrollState() //TODO: Keep Focus Anchored To the Bottom when expanded and new card added
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(animatedStackHeight)
+            .wrapContentHeight()
             .then(if (state.expanded) Modifier.verticalScroll(scrollState) else Modifier),
         contentAlignment = Alignment.BottomCenter
     ) {
@@ -442,26 +443,16 @@ fun SnackBarStack(
             val totalVisibleCards = state.sizeVisible()
             var visibleIndex = 0
             state.snapshotStateList.forEachIndexed { index, snackBarModel ->
-                var logicalIndex = state.maxCurrentSize
-                if (!snackBarModel.hidden.value) {
-                    logicalIndex = totalVisibleCards - 1 - visibleIndex++
-                }
+                val logicalIndex = totalVisibleCards - 1 - visibleIndex
+                visibleIndex += if (snackBarModel.hidden.value == 0) 1 else 0
                 key(snackBarModel.id) {
                     SnackBarStackItem(
-                        model = snackBarModel,
                         state = state,
-                        isHidden = snackBarModel.hidden.value,
-                        expanded = state.expanded,
-                        index = logicalIndex,
+                        visibleIndex = logicalIndex,
                         trueIndex = index,
                         onSwipedAway = { idToRemove ->
                             state.removeCardById(idToRemove)
                             state.showBack()
-                        },
-                        onClick = {
-                            if (expandOnCardClick) {
-                                state.toggleExpanded()
-                            }
                         },
                         snackBarStackConfig = snackBarStackConfig,
                         enableSwipeToDismiss = enableSwipeToDismiss
@@ -489,59 +480,70 @@ fun SnackBarStack(
  */
 @Composable
 private fun SnackBarStackItem(
-    model: SnackBarItemModel,
     state: SnackBarStackState,
-    isHidden: Boolean,
-    expanded: Boolean,
-    index: Int,
+    visibleIndex: Int,
     trueIndex: Int,
     stackedWidthScaleFactor: Float = STACKED_WIDTH_SCALE_FACTOR,
     onSwipedAway: (String) -> Unit,
-    onClick: () -> Unit = {},
     snackBarStackConfig: SnackBarStackConfig,
     enableSwipeToDismiss: Boolean = true,
 ) {
-
-    val cardWidth = snackBarStackConfig.cardWidthCollapsed
-
+    val model = state.snapshotStateList[trueIndex]
     val cardHeight = snackBarStackConfig.cardHeightCollapsed
-
     val peekHeight = snackBarStackConfig.cardGapCollapsed
+    val screenWidth = LocalConfiguration.current.screenWidthDp.dp
 
     val scope = rememberCoroutineScope()
     val localDensity = LocalDensity.current
-    val isTop = index == 0
+    val isTop = visibleIndex == 0
 
     val animatedYOffset = remember { Animatable(with(localDensity) { cardHeight.toPx() }) }
-    LaunchedEffect(trueIndex, expanded, state.snapshotStateList.size, state.heightAfterIndex(trueIndex)) {
+    LaunchedEffect(
+        trueIndex,
+        state.expanded,
+        state.snapshotStateList.size,
+        state.heightAfterIndex(trueIndex),
+        model.hidden.value
+    ) {
+        if (model.hidden.value == 2) {
+            return@LaunchedEffect
+        }
         animatedYOffset.animateTo(
-            with(localDensity) { if (expanded) -state.heightAfterIndex(trueIndex).toFloat() else (state.visibleCountAfterIndex(trueIndex) * -peekHeight).toPx() },
+            with(localDensity) {
+                if (state.expanded) -state.heightAfterIndex(trueIndex)
+                    .toFloat() else (state.visibleCountAfterIndex(trueIndex) * -peekHeight).toPx()
+            },
             animationSpec = spring(stiffness = Spring.StiffnessLow)
         )
     }
 
-    val targetWidthScale = if (expanded) 1f else stackedWidthScaleFactor.pow(index)
+    val targetWidthScale = if (state.expanded) 1f else stackedWidthScaleFactor.pow(visibleIndex)
     val animatedWidthScale = animateFloatAsState(
         targetValue = targetWidthScale,
         animationSpec = tween(durationMillis = 100, easing = FastOutSlowInEasing)
     )
 
     val opacityProgress = remember { Animatable(0f) }
-    LaunchedEffect(isHidden) {
-        if (isHidden) {
-            opacityProgress.animateTo(0f, tween(FADE_OUT_DURATION))
-        } else {
-            opacityProgress.animateTo(1f, tween(FADE_OUT_DURATION))
-        }
+    LaunchedEffect(model.hidden.value) {
+        opacityProgress.animateTo(if (model.hidden.value > 0) 0f else 1f, tween(FADE_OUT_DURATION))
     }
 
     val swipeX = remember { Animatable(0f) }
-    val offsetX: Float = if (isTop || expanded) swipeX.value else 0f
+    LaunchedEffect(model.hidden.value, state.expanded) {
+        if (model.hidden.value == 2) {
+            swipeX.animateTo(
+                with(localDensity) { -screenWidth.toPx() * 1.2f },
+                animationSpec = tween(durationMillis = 240, easing = FastOutLinearInEasing)
+            )
+        } else {
+            swipeX.snapTo(0f)
+        }
+    }
 
     val token = model.snackBarToken
     val snackBarInfo = SnackBarInfo(model.style, false)
-    var textPaddingValues =
-        if (model.actionText == null && !model.enableDismiss) PaddingValues(
+    val textPaddingValues =
+        if (model.actionText == null && model.trailingIcon != null) PaddingValues(
             start = 16.dp,
             top = 12.dp,
             bottom = 12.dp,
@@ -549,18 +551,25 @@ private fun SnackBarStackItem(
         ) else PaddingValues(start = 16.dp, top = 12.dp, bottom = 12.dp)
     Box(
         modifier = Modifier
-            .onGloballyPositioned(
-                onGloballyPositioned = { coordinates: LayoutCoordinates ->
-                    val contentHeight = coordinates.size.height
-                    state.contentHeightList[trueIndex] = contentHeight + with(localDensity) {
-                        20.dp.toPx().toInt()
-                    }
-                    return@onGloballyPositioned
+            .then(
+                if (state.expanded) {
+                    Modifier.onGloballyPositioned(
+                        onGloballyPositioned = { coordinates: LayoutCoordinates ->
+                            val contentHeight = coordinates.size.height
+                            state.contentHeightList[trueIndex] =
+                                contentHeight + with(localDensity) {
+                                    20.dp.toPx().toInt()
+                                }
+                            return@onGloballyPositioned
+                        }
+                    )
+                } else {
+                    Modifier
                 }
             )
             .graphicsLayer(
                 alpha = opacityProgress.value,
-                translationX = offsetX,
+                translationX = swipeX.value,
                 translationY = animatedYOffset.value,
                 scaleX = animatedWidthScale.value,
                 scaleY = animatedWidthScale.value
@@ -570,23 +579,22 @@ private fun SnackBarStackItem(
                     Modifier.wrapContentSize()
                 } else {
                     Modifier
-                        .width(cardWidth)
                         .height(cardHeight)
                 }
             )
             .padding(horizontal = 0.dp)
             .then(
-                if (enableSwipeToDismiss && (isTop || expanded)) Modifier.pointerInput(model.id) {
+                if (enableSwipeToDismiss && (isTop || state.expanded)) Modifier.pointerInput(model.id) {
                     detectHorizontalDragGestures(
                         onDragStart = {},
                         onDragEnd = {
-                            val threshold = with(localDensity) { (cardWidth / 4).toPx() }
+                            val threshold = with(localDensity) { (screenWidth / 4).toPx() }
                             scope.launch {
                                 if (abs(swipeX.value) > threshold) {
                                     val target = if (swipeX.value > 0)
-                                        with(localDensity) { cardWidth.toPx() * 1.2f }
+                                        with(localDensity) { screenWidth.toPx() * 1.2f }
                                     else
-                                        -with(localDensity) { cardWidth.toPx() * 1.2f }
+                                        -with(localDensity) { screenWidth.toPx() * 1.2f }
 
                                     swipeX.animateTo(
                                         target,
@@ -638,24 +646,24 @@ private fun SnackBarStackItem(
                 .testTag(SNACK_BAR),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            if (model.icon != null && model.icon.isIconAvailable()) {
+            if (model.leadingIcon != null && model.leadingIcon.isIconAvailable()) {
                 Box(
                     modifier = Modifier
                         .testTag(SNACK_BAR_ICON)
                         .then(
-                            if (model.icon.onClick != null) {
+                            if (model.leadingIcon.onClick != null) {
                                 Modifier.clickable(
                                     interactionSource = remember { MutableInteractionSource() },
                                     indication = rememberRipple(),
                                     enabled = true,
                                     role = Role.Image,
-                                    onClick = model.icon.onClick!!
+                                    onClick = model.leadingIcon.onClick!!
                                 )
                             } else Modifier
                         )
                 ) {
                     Icon(
-                        model.icon,
+                        model.leadingIcon,
                         modifier = Modifier
                             .padding(start = 16.dp, top = 12.dp, bottom = 12.dp)
                             .size(token.leftIconSize(snackBarInfo)),
@@ -690,7 +698,7 @@ private fun SnackBarStackItem(
                     modifier = Modifier
                         .testTag(SNACK_BAR_ACTION_BUTTON)
                         .then(
-                            if (!model.enableDismiss)
+                            if (model.trailingIcon != null)
                                 Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
                             else
                                 Modifier.padding(start = 16.dp, top = 12.dp, bottom = 12.dp)
@@ -711,27 +719,27 @@ private fun SnackBarStackItem(
                 )
             }
 
-            if (model.enableDismiss) {
+            if (model.trailingIcon != null && model.trailingIcon.isIconAvailable()) {
                 Box(
                     modifier = Modifier
-                        .clickable(
-                            interactionSource = remember { MutableInteractionSource() },
-                            indication = rememberRipple(),
-                            enabled = true,
-                            role = Role.Image,
-                            onClickLabel = "Dismiss",
-                            onClick = {
-                                model.onDismissClicked()
-                            }
+                        .testTag(SNACK_BAR_ICON)
+                        .then(
+                            if (model.trailingIcon.onClick != null) {
+                                Modifier.clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = rememberRipple(),
+                                    enabled = true,
+                                    role = Role.Image,
+                                    onClick = model.trailingIcon.onClick!!
+                                )
+                            } else Modifier
                         )
-                        .testTag(SNACK_BAR_DISMISS_BUTTON)
                 ) {
                     Icon(
-                        Icons.Filled.Close,
-                        "Dismiss",
+                        model.trailingIcon,
                         modifier = Modifier
-                            .padding(start = 12.dp, top = 12.dp, bottom = 12.dp, end = 16.dp)
-                            .size(token.dismissIconSize(snackBarInfo)),
+                            .padding(top = 12.dp, bottom = 12.dp, end = 16.dp)
+                            .size(token.leftIconSize(snackBarInfo)),
                         tint = token.iconColor(snackBarInfo)
                     )
                 }
