@@ -44,6 +44,7 @@ import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.times
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.StateColor
@@ -65,16 +66,18 @@ private const val STACKED_WIDTH_SCALE_FACTOR = 0.95f
 //TODO: Add accessibility support for the stack and individual cards
 //TODO: Perf, reduce recompositions, make stable, minimize launch effect tracked variables
 
-/**
- * Represents possible visibility states for snackBar items.
- */
 enum class ItemVisibility {
     Visible,
     Hidden,
     BeingRemoved
 }
 
-private val DEFAULT_SNACKBAR_TOKENS = StackableSnackBarTokens()
+private val DEFAULT_SNACKBAR_TOKENS = object : StackableSnackBarTokens() {
+    @Composable
+    override fun shadowElevationValue(snackBarInfo: SnackBarInfo): Dp {
+        return FluentGlobalTokens.ShadowTokens.Shadow08.value
+    }
+}
 
 @Stable
 data class SnackBarItemModel(
@@ -89,63 +92,42 @@ data class SnackBarItemModel(
     val onActionTextClicked: () -> Unit = {}
 )
 
-/**
- * Manages the state of a [SnackbarStack]. It allows for adding, removing, hiding, and showing snackBar items.
- *
- * @param cards The initial list of [SnackbarItemModel] to be displayed.
- * @param maxCollapsedSize The maximum number of visible snackBars when the stack is collapsed.
- * @param maxExpandedSize The maximum number of visible snackBars when the stack is expanded.
- */
 class SnackBarStackState(
     internal val cards: MutableList<SnackBarItemModel>,
     internal var maxCollapsedSize: Int = 5,
     internal var maxExpandedSize: Int = 10
 ) {
-    val contentHeightList = mutableStateListOf<Int>().apply { addAll(List(cards.size) { 0 }) }
-    val itemVisibilityMap = mutableStateMapOf<String, ItemVisibility>().apply { putAll(cards.associate { it.id to ItemVisibility.Visible }) }
+    val contentHeightMap =
+        mutableStateMapOf<String, Int>().apply { putAll(cards.associate { it.id to 0 }) }
+    val itemVisibilityMap =
+        mutableStateMapOf<String, ItemVisibility>().apply { putAll(cards.associate { it.id to ItemVisibility.Visible }) }
 
     val snapshotStateList: MutableList<SnackBarItemModel> =
         mutableStateListOf<SnackBarItemModel>().apply { addAll(cards) }
 
-    /**
-     * Whether the snackBar stack is currently expanded.
-     */
     var expanded by mutableStateOf(false)
         private set
 
     internal var maxCurrentSize = maxCollapsedSize
 
-    /**
-     * Adds a new snackBar card to the top of the stack.
-     * If the number of visible cards exceeds the current maximum, the card at the back is hidden.
-     * @param card The [SnackbarItemModel] to add.
-     */
     fun addCard(card: SnackBarItemModel) {
         if (snapshotStateList.any { it.id == card.id }) {
             return
         }
         maxCurrentSize = if (expanded) maxExpandedSize else maxCollapsedSize
         snapshotStateList.add(card)
-        contentHeightList.add(0)
+        contentHeightMap[card.id] = 0
         itemVisibilityMap[card.id] = ItemVisibility.Visible
         if (sizeVisible() > maxCurrentSize) {
             hideBack()
         }
     }
 
-    /**
-     * Removes a snackBar card from the stack by its ID.
-     * @param id The unique identifier of the card to remove.
-     * @return `true` if a card was removed, `false` otherwise.
-     */
     fun removeCardById(id: String): Boolean {
         snapshotStateList.firstOrNull { it.id == id }?.let {
-            val idx = snapshotStateList.indexOf(it)
-            if (idx in contentHeightList.indices) {
-                contentHeightList.removeAt(idx)
-            }
-            snapshotStateList.remove(it)
+            contentHeightMap.remove(it.id)
             itemVisibilityMap.remove(it.id)
+            snapshotStateList.remove(it)
             return true
         }
         return false
@@ -159,10 +141,7 @@ class SnackBarStackState(
         val card = snapshotStateList.firstOrNull { it.id == id } ?: return
         itemVisibilityMap[card.id] = ItemVisibility.BeingRemoved
         delay(FADE_OUT_DURATION.toLong())
-        val idx = snapshotStateList.indexOf(card)
-        if (idx in contentHeightList.indices) {
-            contentHeightList.removeAt(idx)
-        }
+        contentHeightMap.remove(card.id)
         snapshotStateList.remove(card)
         itemVisibilityMap.remove(card.id)
         if (showLastHiddenCardOnRemove) {
@@ -171,36 +150,6 @@ class SnackBarStackState(
         onRemoveCompleteCallback()
     }
 
-    /**
-     * Hides a snackBar card by its ID without removing it from the stack.
-     * @param id The unique identifier of the card to hide.
-     * @return `true` if the card was found and hidden, `false` otherwise.
-     */
-    fun hideCardById(id: String): Boolean {
-        snapshotStateList.firstOrNull { it.id == id }?.let {
-            itemVisibilityMap[it.id] = ItemVisibility.Hidden
-            return true
-        }
-        return false
-    }
-
-    /**
-     * Shows a previously hidden snackBar card by its ID.
-     * @param id The unique identifier of the card to show.
-     * @return `true` if the card was found and shown, `false` otherwise.
-     */
-    fun showCardById(id: String): Boolean {
-        snapshotStateList.firstOrNull { it.id == id }?.let {
-            itemVisibilityMap[it.id] = ItemVisibility.Visible
-            return true
-        }
-        return false
-    }
-
-    /**
-     * Toggles the expanded/collapsed state of the snackBar stack.
-     * This adjusts the visibility of cards based on [maxCollapsedSize] and [maxExpandedSize].
-     */
     fun toggleExpanded() {
         expanded = !expanded
         maxCurrentSize = if (expanded) maxExpandedSize else maxCollapsedSize
@@ -208,12 +157,17 @@ class SnackBarStackState(
     }
 
     private fun onVisibleSizeChange() {
-        val currentSize = snapshotStateList.count { itemVisibilityMap[it.id] == ItemVisibility.Visible }
+        val currentSize =
+            snapshotStateList.count { itemVisibilityMap[it.id] == ItemVisibility.Visible }
         val (count, sequence, targetHidden) =
             if (currentSize > maxCurrentSize) {
                 Triple(currentSize - maxCurrentSize, snapshotStateList, ItemVisibility.Hidden)
             } else {
-                Triple(maxCurrentSize - currentSize, snapshotStateList.asReversed(), ItemVisibility.Visible)
+                Triple(
+                    maxCurrentSize - currentSize,
+                    snapshotStateList.asReversed(),
+                    ItemVisibility.Visible
+                )
             }
 
         var slots = count
@@ -226,10 +180,6 @@ class SnackBarStackState(
         }
     }
 
-    /**
-     * Hides the card at the back of the visible stack (the one added earliest).
-     * @return `true` if a card was hidden, `false` otherwise.
-     */
     fun hideBack(): Boolean {
         snapshotStateList.firstOrNull { itemVisibilityMap[it.id] == ItemVisibility.Visible }?.let {
             itemVisibilityMap[it.id] = ItemVisibility.Hidden
@@ -238,10 +188,6 @@ class SnackBarStackState(
         return false
     }
 
-    /**
-     * Hides the card at the front of the visible stack (the one added most recently).
-     * @return `true` if a card was hidden, `false` otherwise.
-     */
     fun hideFront(): Boolean {
         snapshotStateList.lastOrNull { itemVisibilityMap[it.id] == ItemVisibility.Visible }?.let {
             itemVisibilityMap[it.id] = ItemVisibility.Hidden
@@ -250,42 +196,17 @@ class SnackBarStackState(
         return false
     }
 
-    /**
-     * Removes the card at the back of the stack.
-     * @param skipHidden If `true`, removes the oldest *visible* card. If `false`, removes the oldest card regardless of visibility.
-     * @return `true` if a card was removed, `false` otherwise.
-     */
-    fun removeBack(skipHidden: Boolean = false): Boolean {
-        snapshotStateList.firstOrNull { (skipHidden && itemVisibilityMap[it.id] == ItemVisibility.Visible) || !skipHidden }?.let {
-            snapshotStateList.remove(it)
-            itemVisibilityMap.remove(it.id)
-            return true
-        }
-        return false
-    }
-
-    /**
-     * Removes the card at the front of the stack.
-     * @param skipHidden If `true`, removes the newest *visible* card. If `false`, removes the newest card regardless of visibility.
-     * @return `true` if a card was removed, `false` otherwise.
-     */
     fun removeFront(skipHidden: Boolean = false): Boolean {
-        snapshotStateList.lastOrNull { (skipHidden && itemVisibilityMap[it.id] == ItemVisibility.Visible) || !skipHidden }?.let {
-            val idx = snapshotStateList.indexOf(it)
-            if (idx in contentHeightList.indices) {
-                contentHeightList.removeAt(idx)
+        snapshotStateList.lastOrNull { (skipHidden && itemVisibilityMap[it.id] == ItemVisibility.Visible) || !skipHidden }
+            ?.let {
+                contentHeightMap.remove(it.id)
+                snapshotStateList.remove(it)
+                itemVisibilityMap.remove(it.id)
+                return true
             }
-            snapshotStateList.remove(it)
-            itemVisibilityMap.remove(it.id)
-            return true
-        }
         return false
     }
 
-    /**
-     * Shows the newest hidden card from the back of the stack.
-     * @return `true` if a hidden card was shown, `false` otherwise.
-     */
     fun showBack(): Boolean {
         snapshotStateList.lastOrNull { itemVisibilityMap[it.id] == ItemVisibility.Hidden }?.let {
             itemVisibilityMap[it.id] = ItemVisibility.Visible
@@ -294,64 +215,26 @@ class SnackBarStackState(
         return false
     }
 
-    /**
-     * Shows the oldest hidden card from the front of the stack.
-     * @return `true` if a hidden card was shown, `false` otherwise.
-     */
-    fun showFront(): Boolean {
-        snapshotStateList.firstOrNull { itemVisibilityMap[it.id] == ItemVisibility.Hidden }?.let {
-            itemVisibilityMap[it.id] = ItemVisibility.Visible
-            return true
-        }
-        return false
-    }
-
-    /**
-     * Makes all snackBar cards in the stack visible.
-     */
-    fun showAll() {
-        snapshotStateList.forEach {
-            itemVisibilityMap[it.id] = ItemVisibility.Visible
-        }
-    }
-
-    /**
-     * Internal Functions to get offset heights when expanded
-     */
-    internal fun heightBeforeIndex(index: Int): Int {
-        return contentHeightList
-            .take(index)
-            .filterIndexed { i, _ -> itemVisibilityMap[snapshotStateList[i].id] == ItemVisibility.Visible }
-            .sum()
-    }
-
     internal fun heightAfterIndex(index: Int): Int {
-        return contentHeightList
-            .drop(index + 1)
-            .filterIndexed { i, _ ->
-                // i here starts from 0 because of drop, so offset by index+1
-                itemVisibilityMap[snapshotStateList[i + index + 1].id] == ItemVisibility.Visible
+        var ans = 0
+        snapshotStateList.drop(index + 1).forEach {
+            if (itemVisibilityMap[it.id] == ItemVisibility.Visible) {
+                ans += (contentHeightMap[it.id] ?: 0)
             }
-            .sum()
+        }
+        return ans
     }
 
     internal fun visibleCountAfterIndex(index: Int): Int {
-        return contentHeightList
-            .drop(index + 1)
-            .filterIndexed { i, _ ->
-                itemVisibilityMap[snapshotStateList[i + index + 1].id] == ItemVisibility.Visible
-            }.size
+        return snapshotStateList.drop(index + 1).filterIndexed { i, _ ->
+            itemVisibilityMap[snapshotStateList[i + index + 1].id] == ItemVisibility.Visible
+        }.size
     }
 
-    /**
-     * @return The total number of cards in the stack, including hidden ones.
-     */
     fun size(): Int = snapshotStateList.size
 
-    /**
-     * @return The number of currently visible cards in the stack.
-     */
-    fun sizeVisible(): Int = snapshotStateList.count { itemVisibilityMap[it.id] == ItemVisibility.Visible }
+    fun sizeVisible(): Int =
+        snapshotStateList.count { itemVisibilityMap[it.id] == ItemVisibility.Visible }
 }
 
 /**
@@ -473,21 +356,6 @@ fun SnackBarStack(
     }
 }
 
-/**
- * Represents a single animated item within the [SnackBarStack].
- * This composable manages its own position, scale, opacity, and swipe-to-dismiss behavior.
- *
- * @param model The data model for this snackBar item.
- * @param isHidden Whether the item is currently hidden and should be faded out.
- * @param expanded Whether the parent stack is in an expanded state.
- * @param index The logical index of the card from the top of the stack (0 is the topmost).
- * @param invertedIndex The logical index from the bottom of the stack (0 is the bottommost).
- * @param stackedWidthScaleFactor The factor by which to scale the width of cards underneath the top card in collapsed mode.
- * @param onSwipedAway Callback invoked when the card has been successfully swiped away.
- * @param onClick Callback invoked when the card is clicked.
- * @param snackBarStackConfig Configuration for the visual properties.
- * @param enableSwipeToDismiss Whether swipe-to-dismiss is enabled for this item.
- */
 @Composable
 private fun SnackBarStackItem(
     state: SnackBarStackState,
@@ -521,7 +389,7 @@ private fun SnackBarStackItem(
         animatedYOffset.animateTo(
             with(localDensity) {
                 if (state.expanded) -state.heightAfterIndex(trueIndex)
-                    .toFloat() else (state.visibleCountAfterIndex(trueIndex) * -peekHeight).toPx()
+                    .toFloat() else (visibleIndex * -peekHeight).toPx()
             },
             animationSpec = spring(stiffness = Spring.StiffnessLow)
         )
@@ -536,7 +404,10 @@ private fun SnackBarStackItem(
     val opacityProgress = remember { Animatable(0f) }
     LaunchedEffect(state.itemVisibilityMap[model.id]) {
         val visibility = state.itemVisibilityMap[model.id] ?: ItemVisibility.Visible
-        opacityProgress.animateTo(if (visibility != ItemVisibility.Visible) 0f else 1f, tween(FADE_OUT_DURATION))
+        opacityProgress.animateTo(
+            if (visibility != ItemVisibility.Visible) 0f else 1f,
+            tween(FADE_OUT_DURATION)
+        )
     }
 
     val swipeX = remember { Animatable(0f) }
@@ -567,7 +438,7 @@ private fun SnackBarStackItem(
                     Modifier.onGloballyPositioned(
                         onGloballyPositioned = { coordinates: LayoutCoordinates ->
                             val contentHeight = coordinates.size.height
-                            state.contentHeightList[trueIndex] =
+                            state.contentHeightMap[model.id] =
                                 contentHeight + with(localDensity) {
                                     20.dp.toPx().toInt()
                                 }
@@ -759,13 +630,6 @@ private fun SnackBarStackItem(
     }
 }
 
-/**
- * A composable that displays a scrim over its background. It dims the background
- * and intercepts all clicks, preventing them from reaching the content behind it.
- *
- * @param isActivated Whether the scrim is currently active.
- * @param onDismiss A lambda to be invoked when the scrim area is clicked.
- */
 @Composable
 fun Scrim(
     isActivated: Boolean,
