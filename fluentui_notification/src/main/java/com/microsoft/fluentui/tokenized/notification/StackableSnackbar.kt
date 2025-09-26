@@ -42,6 +42,7 @@ import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.times
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens
@@ -93,21 +94,16 @@ data class SnackBarItemModel(
 )
 
 class SnackBarStackState(
-    internal val cards: MutableList<SnackBarItemModel>,
+    internal val cards: MutableList<SnackBarItemModel> = mutableListOf(),
     internal var maxCollapsedSize: Int = 5,
     internal var maxExpandedSize: Int = 10
 ) {
-    val contentHeightMap =
-        mutableStateMapOf<String, Int>().apply { putAll(cards.associate { it.id to 0 }) }
-    val itemVisibilityMap =
-        mutableStateMapOf<String, ItemVisibility>().apply { putAll(cards.associate { it.id to ItemVisibility.Visible }) }
-
-    val snapshotStateList: MutableList<SnackBarItemModel> =
-        mutableStateListOf<SnackBarItemModel>().apply { addAll(cards) }
+    val snapshotStateList: MutableList<SnackBarItemModel> = mutableStateListOf<SnackBarItemModel>().apply { addAll(cards) }
+    val contentHeightMap = mutableStateMapOf<String, Int>().apply { putAll(cards.associate { it.id to 0 }) }
+    val itemVisibilityMap = mutableStateMapOf<String, ItemVisibility>().apply { putAll(cards.associate { it.id to ItemVisibility.Visible }) }
 
     var expanded by mutableStateOf(false)
         private set
-
     internal var maxCurrentSize = maxCollapsedSize
 
     fun addCard(card: SnackBarItemModel) {
@@ -272,11 +268,9 @@ fun rememberSnackBarStackState(
  * @param stackAbove Internal flag to control stacking direction. Currently not implemented.
  */
 data class SnackBarStackConfig(
-    val cardWidthExpanded: Dp = 320.dp,
-    val cardHeightExpanded: Dp = 160.dp,
     val cardGapExpanded: Dp = 10.dp,
-    val cardWidthCollapsed: Dp = 280.dp,
     val cardHeightCollapsed: Dp = 80.dp,
+    val cardCollapsedMaxLines: Int = 2,
     val cardGapCollapsed: Dp = 8.dp,
     internal val stackAbove: Boolean = true, //TODO: Fix Stack Above option, working for true, disabling for now
 )
@@ -318,13 +312,13 @@ fun SnackBarStack(
         animationSpec = tween(durationMillis = 300, easing = FastOutSlowInEasing)
     )
 
-    val scrollState =
-        rememberScrollState() //TODO: Keep Focus Anchored To the Bottom when expanded and new card added
+    val scrollState = rememberScrollState() //TODO: Keep Focus Anchored To the Bottom when expanded and new card added
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
-            .then(if (state.expanded) Modifier.verticalScroll(scrollState) else Modifier),
+            .verticalScroll(scrollState, enabled = state.expanded)
+            .padding(bottom = 20.dp), //TODO: Make this customizable,
         contentAlignment = Alignment.BottomCenter
     ) {
         Box(
@@ -456,14 +450,15 @@ private fun SnackBarStackItem(
                 scaleX = animatedWidthScale.value,
                 scaleY = animatedWidthScale.value
             )
-            .then(
-                if (state.expanded) {
-                    Modifier.wrapContentSize()
-                } else {
-                    Modifier
-                        .height(cardHeight)
-                }
-            )
+            .wrapContentHeight()
+//            .then(
+//                if (state.expanded) {
+//                    Modifier.wrapContentSize()
+//                } else {
+//                    Modifier
+//                        .height(cardHeight)
+//                }
+//            )
             .padding(horizontal = 0.dp)
             .then(
                 if (enableSwipeToDismiss && (isTop || state.expanded)) Modifier.pointerInput(model.id) {
@@ -558,14 +553,20 @@ private fun SnackBarStackItem(
                     .weight(1F)
                     .padding(textPaddingValues)
             ) {
+                val messageMaxLines = if (state.expanded) Int.MAX_VALUE else snackBarStackConfig.cardCollapsedMaxLines
+
                 BasicText(
                     text = model.message,
-                    style = token.titleTypography(snackBarInfo)
+                    style = token.titleTypography(snackBarInfo),
+                    maxLines = messageMaxLines,
+                    overflow = TextOverflow.Ellipsis
                 )
                 if (!model.subTitle.isNullOrBlank()) {
                     BasicText(
                         text = model.subTitle,
                         style = token.subtitleTypography(snackBarInfo),
+                        maxLines = messageMaxLines,
+                        overflow = TextOverflow.Ellipsis,
                         modifier = Modifier.testTag(SNACK_BAR_SUBTITLE)
                     )
                 }
