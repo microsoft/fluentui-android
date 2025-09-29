@@ -14,12 +14,14 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.notification.Scrim
 import com.microsoft.fluentui.tokenized.notification.SnackBarItemModel
 import com.microsoft.fluentui.tokenized.notification.SnackBarStack
+import com.microsoft.fluentui.tokenized.notification.SnackBarStackConfig
 import com.microsoft.fluentui.tokenized.notification.rememberSnackBarStackState
 import com.microsoft.fluentuidemo.V2DemoActivity
 import kotlinx.coroutines.delay
@@ -103,7 +105,10 @@ fun SnackBarStackDemoLayout(context: V2StackableSnackbarActivity) {
         ) {
 
             SnackBarStack(
-                state = stackState
+                state = stackState,
+                snackBarStackConfig = SnackBarStackConfig(
+                    snackbarGapWhenExpanded = 10.dp
+                )
             )
             Spacer(modifier = Modifier.height(10.dp))
             Row() {
