@@ -58,6 +58,8 @@ import com.microsoft.fluentui.persona.PersonaListView
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.controlTokens.BottomSheetInfo
+import com.microsoft.fluentui.theme.token.controlTokens.BottomSheetTokens
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.tokenized.bottomsheet.BottomSheet
@@ -150,6 +152,12 @@ private fun CreateActivityUI() {
     val content = listOf(0, 1, 2)
     val selectedOption = remember { mutableStateOf(content[0]) }
 
+    val customSheetTokens: BottomSheetTokens = object: BottomSheetTokens(){
+        override fun additionalOffset(bottomSheetInfo: BottomSheetInfo): Int {
+            return 0
+        }
+    }
+
     BottomSheet(
         sheetContent = sheetContentState,
         expandable = expandableState,
@@ -161,7 +169,8 @@ private fun CreateActivityUI() {
         enableSwipeDismiss = enableSwipeDismiss,
         preventDismissalOnScrimClick = preventDismissalOnScrimClick,
         stickyThresholdUpward = stickyThresholdUpwardDrag,
-        stickyThresholdDownward = stickyThresholdDownwardDrag
+        stickyThresholdDownward = stickyThresholdDownwardDrag,
+        bottomSheetTokens = customSheetTokens
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(10.dp),
