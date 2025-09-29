@@ -105,7 +105,7 @@ fun SnackBarStackDemoLayout(context: V2StackableSnackbarActivity) {
             SnackBarStack(
                 state = stackState
             )
-
+            Spacer(modifier = Modifier.height(10.dp))
             Row() {
                 Button(onClick = {
                     val id = counter++
@@ -177,6 +177,7 @@ fun SnackBarStackDemoLayout(context: V2StackableSnackbarActivity) {
                     }
                 }, text = "Keep Adding")
             }
+            Spacer(modifier = Modifier.height(10.dp))
         }
     }
 }

@@ -26,8 +26,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -101,7 +101,7 @@ class SnackBarStackState(
         private set
     internal var maxCurrentSize = maxCollapsedSize
 
-    internal var combinedStackHeight by mutableStateOf(0)
+    internal var combinedStackHeight by mutableIntStateOf(0)
 
     fun addSnackbar(snackbar: SnackBarItemModel) {
         if (snapshotStateList.any { it.id == snackbar.id }) {
@@ -269,6 +269,9 @@ fun SnackBarStack(
         animationSpec = tween(durationMillis = ANIMATION_DURATION_MS, easing = FastOutSlowInEasing)
     )
 
+    val screenWidth = LocalConfiguration.current.screenWidthDp.dp
+    val screenWidthPx = with(localDensity) { screenWidth.toPx() }
+
     val scrollState = rememberScrollState() //TODO: Keep Focus Anchored To the Bottom when expanded and new snackbar added
     Column(
         modifier = Modifier
@@ -299,7 +302,8 @@ fun SnackBarStack(
                             state.showBack()
                         },
                         snackBarStackConfig = snackBarStackConfig,
-                        enableSwipeToDismiss = enableSwipeToDismiss
+                        enableSwipeToDismiss = enableSwipeToDismiss,
+                        screenWidthPx = screenWidthPx
                     )
                 }
             }
@@ -314,12 +318,12 @@ private fun SnackBarStackItem(
     trueIndex: Int,
     onSwipedAway: (String) -> Unit,
     snackBarStackConfig: SnackBarStackConfig,
-    enableSwipeToDismiss: Boolean = true
+    enableSwipeToDismiss: Boolean = true,
+    screenWidthPx: Float
 ) {
     val model = state.snapshotStateList[trueIndex]
     val cardHeight = snackBarStackConfig.snackbarHeightWhenCollapsed
     val peekHeight = snackBarStackConfig.snackbarPeekHeightWhenCollapsed
-    val screenWidth = LocalConfiguration.current.screenWidthDp.dp
 
     val scope = rememberCoroutineScope()
     val localDensity = LocalDensity.current
@@ -374,8 +378,8 @@ private fun SnackBarStackItem(
     }
 
     val initialXOffset = when (entryAnimationType) {
-        StackableSnackbarEntryAnimationType.SlideInFromLeft -> -with(localDensity) { screenWidth.toPx() }
-        StackableSnackbarEntryAnimationType.SlideInFromRight -> with(localDensity) { screenWidth.toPx() }
+        StackableSnackbarEntryAnimationType.SlideInFromLeft -> -screenWidthPx
+        StackableSnackbarEntryAnimationType.SlideInFromRight -> screenWidthPx
         StackableSnackbarEntryAnimationType.FadeIn -> 0f
         StackableSnackbarEntryAnimationType.SlideInFromAbove -> 0f
         StackableSnackbarEntryAnimationType.SlideInFromBelow -> 0f
@@ -384,8 +388,8 @@ private fun SnackBarStackItem(
     LaunchedEffect(state.itemVisibilityMap[model.id], state.expanded, visibleIndex) {
         if (state.itemVisibilityMap[model.id] == ItemVisibility.BeingRemoved) {
             val target = when (exitAnimationType) {
-                StackableSnackbarExitAnimationType.SlideOutToLeft -> -with(localDensity) { screenWidth.toPx() * 1.2f }
-                StackableSnackbarExitAnimationType.SlideOutToRight -> with(localDensity) { screenWidth.toPx() * 1.2f }
+                StackableSnackbarExitAnimationType.SlideOutToLeft -> screenWidthPx * -1.2f
+                StackableSnackbarExitAnimationType.SlideOutToRight -> screenWidthPx * 1.2f
                 StackableSnackbarExitAnimationType.FadeOut -> 0f
             }
             swipeX.animateTo(
@@ -444,13 +448,13 @@ private fun SnackBarStackItem(
                     detectHorizontalDragGestures(
                         onDragStart = {},
                         onDragEnd = {
-                            val threshold = with(localDensity) { (screenWidth / 4).toPx() }
+                            val threshold = screenWidthPx / 4
                             scope.launch {
                                 if (abs(swipeX.value) > threshold) {
                                     val target = if (swipeX.value > 0)
-                                        with(localDensity) { screenWidth.toPx() * 1.2f }
+                                        screenWidthPx * 1.2f
                                     else
-                                        -with(localDensity) { screenWidth.toPx() * 1.2f }
+                                        screenWidthPx * -1.2f
 
                                     swipeX.animateTo(
                                         target,
@@ -534,14 +538,14 @@ private fun SnackBarStackItem(
             ) {
                 val messageMaxLines = if (state.expanded) Int.MAX_VALUE else snackBarStackConfig.maximumTextLinesWhenCollapsed
 
-                BasicText(
+                Text(
                     text = model.message,
                     style = token.titleTypography(snackBarInfo),
                     maxLines = messageMaxLines,
                     overflow = TextOverflow.Ellipsis
                 )
                 if (!model.subTitle.isNullOrBlank()) {
-                    BasicText(
+                    Text(
                         text = model.subTitle,
                         style = token.subtitleTypography(snackBarInfo),
                         maxLines = messageMaxLines,
