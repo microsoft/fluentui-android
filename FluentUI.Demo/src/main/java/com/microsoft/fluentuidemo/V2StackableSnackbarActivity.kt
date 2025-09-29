@@ -33,9 +33,9 @@ class V2StackableSnackbarActivity : V2DemoActivity() {
         setupActivity(this)
     }
 
-    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-36"
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-37"
     override val controlTokensUrl =
-        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-34"
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-35"
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
