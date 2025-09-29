@@ -57,4 +57,7 @@ open class BottomSheetTokens : IControlToken, Parcelable {
 
     @Composable
     open fun maxLandscapeWidth (bottomSheetInfo: BottomSheetInfo): Float = 1F
+
+    @Composable
+    open fun additionalOffset (bottomSheetInfo: BottomSheetInfo): Int = 0
 }
