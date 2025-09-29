@@ -73,6 +73,7 @@ open class ControlTokens : IControlTokens {
         ShimmerControlType,
         SideRailControlType,
         SnackbarControlType,
+        StackableSnackbarControlType,
         TabBarControlType,
         TabItemControlType,
         TextFieldControlType,
@@ -124,6 +125,7 @@ open class ControlTokens : IControlTokens {
                 ControlType.ShimmerControlType -> ShimmerTokens()
                 ControlType.SideRailControlType -> SideRailTokens()
                 ControlType.SnackbarControlType -> SnackBarTokens()
+                ControlType.StackableSnackbarControlType -> StackableSnackBarTokens()
                 ControlType.TabBarControlType -> TabBarTokens()
                 ControlType.TabItemControlType -> TabItemTokens()
                 ControlType.TextFieldControlType -> TextFieldTokens()

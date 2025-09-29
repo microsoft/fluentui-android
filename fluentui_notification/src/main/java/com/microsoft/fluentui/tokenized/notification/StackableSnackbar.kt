@@ -23,6 +23,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
@@ -45,7 +46,6 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.times
-import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.StateColor
@@ -56,15 +56,15 @@ import com.microsoft.fluentui.theme.token.controlTokens.ButtonTokens
 import com.microsoft.fluentui.theme.token.controlTokens.SnackBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.SnackbarStyle
 import com.microsoft.fluentui.theme.token.controlTokens.StackableSnackBarTokens
+import com.microsoft.fluentui.theme.token.controlTokens.StackableSnackbarEntryAnimationType
+import com.microsoft.fluentui.theme.token.controlTokens.StackableSnackbarExitAnimationType
 import com.microsoft.fluentui.tokenized.controls.Button
 import kotlinx.coroutines.delay
 import kotlin.math.abs
 import kotlin.math.pow
 
-private const val FADE_OUT_DURATION = 350
-private const val STACKED_WIDTH_SCALE_FACTOR = 0.95f
-
-//TODO: Add accessibility support for the stack and individual cards
+private const val ANIMATION_DURATION_MS = 250
+//TODO: Add accessibility support for the stack and individual snackbars
 //TODO: Perf, reduce recompositions, make stable, minimize launch effect tracked variables
 
 enum class ItemVisibility {
@@ -73,12 +73,7 @@ enum class ItemVisibility {
     BeingRemoved
 }
 
-private val DEFAULT_SNACKBAR_TOKENS = object : StackableSnackBarTokens() {
-    @Composable
-    override fun shadowElevationValue(snackBarInfo: SnackBarInfo): Dp {
-        return FluentGlobalTokens.ShadowTokens.Shadow08.value
-    }
-}
+private val DEFAULT_SNACKBAR_TOKENS = StackableSnackBarTokens()
 
 @Stable
 data class SnackBarItemModel(
@@ -94,32 +89,34 @@ data class SnackBarItemModel(
 )
 
 class SnackBarStackState(
-    internal val cards: MutableList<SnackBarItemModel> = mutableListOf(),
+    internal val initialSnackbars: MutableList<SnackBarItemModel> = mutableListOf(),
     internal var maxCollapsedSize: Int = 5,
     internal var maxExpandedSize: Int = 10
 ) {
-    val snapshotStateList: MutableList<SnackBarItemModel> = mutableStateListOf<SnackBarItemModel>().apply { addAll(cards) }
-    val contentHeightMap = mutableStateMapOf<String, Int>().apply { putAll(cards.associate { it.id to 0 }) }
-    val itemVisibilityMap = mutableStateMapOf<String, ItemVisibility>().apply { putAll(cards.associate { it.id to ItemVisibility.Visible }) }
+    val snapshotStateList: MutableList<SnackBarItemModel> = mutableStateListOf<SnackBarItemModel>().apply { addAll(initialSnackbars) }
+    val contentHeightMap = mutableStateMapOf<String, Int>().apply { putAll(initialSnackbars.associate { it.id to 0 }) }
+    val itemVisibilityMap = mutableStateMapOf<String, ItemVisibility>().apply { putAll(initialSnackbars.associate { it.id to ItemVisibility.Visible }) }
 
     var expanded by mutableStateOf(false)
         private set
     internal var maxCurrentSize = maxCollapsedSize
 
-    fun addCard(card: SnackBarItemModel) {
-        if (snapshotStateList.any { it.id == card.id }) {
+    internal var combinedStackHeight by mutableStateOf(0)
+
+    fun addSnackbar(snackbar: SnackBarItemModel) {
+        if (snapshotStateList.any { it.id == snackbar.id }) {
             return
         }
         maxCurrentSize = if (expanded) maxExpandedSize else maxCollapsedSize
-        snapshotStateList.add(card)
-        contentHeightMap[card.id] = 0
-        itemVisibilityMap[card.id] = ItemVisibility.Visible
+        snapshotStateList.add(snackbar)
+        contentHeightMap[snackbar.id] = 0
+        itemVisibilityMap[snackbar.id] = ItemVisibility.Visible
         if (sizeVisible() > maxCurrentSize) {
             hideBack()
         }
     }
 
-    fun removeCardById(id: String): Boolean {
+    fun removeSnackbarById(id: String): Boolean {
         snapshotStateList.firstOrNull { it.id == id }?.let {
             contentHeightMap.remove(it.id)
             itemVisibilityMap.remove(it.id)
@@ -129,24 +126,24 @@ class SnackBarStackState(
         return false
     }
 
-    suspend fun removeCardByIdWithAnimation(
+    suspend fun removeSnackbarByIdWithAnimation(
         id: String,
-        showLastHiddenCardOnRemove: Boolean = true,
+        showLastHiddenSnackbarOnRemove: Boolean = true,
         onRemoveCompleteCallback: () -> Unit = {}
     ) {
-        val card = snapshotStateList.firstOrNull { it.id == id } ?: return
-        itemVisibilityMap[card.id] = ItemVisibility.BeingRemoved
-        delay(FADE_OUT_DURATION.toLong())
-        contentHeightMap.remove(card.id)
-        snapshotStateList.remove(card)
-        itemVisibilityMap.remove(card.id)
-        if (showLastHiddenCardOnRemove) {
+        val snackbar = snapshotStateList.firstOrNull { it.id == id } ?: return
+        itemVisibilityMap[snackbar.id] = ItemVisibility.BeingRemoved
+        delay(ANIMATION_DURATION_MS.toLong())
+        contentHeightMap.remove(snackbar.id)
+        snapshotStateList.remove(snackbar)
+        itemVisibilityMap.remove(snackbar.id)
+        if (showLastHiddenSnackbarOnRemove) {
             onVisibleSizeChange()
         }
         onRemoveCompleteCallback()
     }
 
-    fun toggleExpanded() {
+    fun toggleExpandedState() {
         expanded = !expanded
         maxCurrentSize = if (expanded) maxExpandedSize else maxCollapsedSize
         onVisibleSizeChange()
@@ -221,26 +218,12 @@ class SnackBarStackState(
         return ans
     }
 
-    internal fun visibleCountAfterIndex(index: Int): Int {
-        return snapshotStateList.drop(index + 1).filterIndexed { i, _ ->
-            itemVisibilityMap[snapshotStateList[i + index + 1].id] == ItemVisibility.Visible
-        }.size
-    }
-
     fun size(): Int = snapshotStateList.size
 
     fun sizeVisible(): Int =
         snapshotStateList.count { itemVisibilityMap[it.id] == ItemVisibility.Visible }
 }
 
-/**
- * Creates and remembers a [SnackbarStackState] instance.
- *
- * @param initial The initial list of [SnackBarItemModel]s to populate the stack.
- * @param maxExpandedSize The maximum number of visible snackBars when the stack is expanded.
- * @param maxCollapsedSize The maximum number of visible snackBars when the stack is collapsed.
- * @return A remembered [SnackbarStackState] instance.
- */
 @Composable
 fun rememberSnackBarStackState(
     initial: List<SnackBarItemModel> = emptyList(),
@@ -249,77 +232,52 @@ fun rememberSnackBarStackState(
 ): SnackBarStackState {
     return remember {
         SnackBarStackState(
-            cards = initial.toMutableList(),
+            initialSnackbars = initial.toMutableList(),
             maxExpandedSize = maxExpandedSize,
             maxCollapsedSize = maxCollapsedSize
         )
     }
 }
 
-/**
- * Configuration for the visual properties of the [SnackBarStack].
- *
- * @param cardWidthExpanded The width of a snackBar card when the stack is expanded.
- * @param cardHeightExpanded The height of a snackBar card when the stack is expanded.
- * @param cardGapExpanded The vertical spacing between cards when the stack is expanded.
- * @param cardWidthCollapsed The width of a snackBar card when the stack is collapsed.
- * @param cardHeightCollapsed The height of a snackBar card when the stack is collapsed.
- * @param cardGapCollapsed The vertical spacing (peek height) between cards when the stack is collapsed.
- * @param stackAbove Internal flag to control stacking direction. Currently not implemented.
- */
 data class SnackBarStackConfig(
-    val cardGapExpanded: Dp = 10.dp,
-    val cardHeightCollapsed: Dp = 80.dp,
-    val cardCollapsedMaxLines: Int = 2,
-    val cardGapCollapsed: Dp = 8.dp,
-    internal val stackAbove: Boolean = true, //TODO: Fix Stack Above option, working for true, disabling for now
+    val snackbarGapWhenExpanded: Dp = 10.dp,
+    val snackbarHeightWhenCollapsed: Dp = 80.dp,
+    val maximumTextLinesWhenCollapsed: Int = 2,
+    val snackbarPeekHeightWhenCollapsed: Dp = 8.dp,
+    val snackbarStackBottomPadding: Dp = 20.dp,
+    val snackbarStackExpandedTopPadding: Dp = 200.dp
 )
 
-/**
- * A composable that displays a stack of snackBar notifications.
- *
- * The stack can be in a collapsed state, showing a condensed view of notifications,
- * or an expanded state, showing a scrollable list.
- *
- * @param state The [SnackBarStackState] that manages the content and state of the stack.
- * @param modifier The modifier to be applied to the stack container.
- * @param contentModifier The modifier to be applied to the content within each snackBar card.
- * @param snackBarStackConfig The configuration for the visual properties of the stack.
- * @param enableSwipeToDismiss If `true`, allows users to swipe away the top card (in collapsed mode) or any card (in expanded mode).
- * @param expandOnCardClick If `true`, toggles the expanded state of the stack when the top card is clicked.
- */
 @Composable
 fun SnackBarStack(
     state: SnackBarStackState,
-    modifier: Modifier = Modifier,
-    contentModifier: Modifier = Modifier,
     snackBarStackConfig: SnackBarStackConfig = SnackBarStackConfig(),
     enableSwipeToDismiss: Boolean = true,
-    expandOnCardClick: Boolean = true,
 ) {
     val localDensity = LocalDensity.current
 
-    val visibleCardsCount by remember { derivedStateOf { state.sizeVisible() } }
-    val targetHeight = if (visibleCardsCount == 0) {
-        snackBarStackConfig.cardHeightCollapsed
+    val visibleSnackbarsCount by remember { derivedStateOf { state.sizeVisible() } }
+    val targetHeight = if (visibleSnackbarsCount == 0) {
+        0.dp
     } else if (state.expanded) {
-        with(localDensity) { state.heightAfterIndex(0).toDp() + 200.dp }
+        with(localDensity) { state.combinedStackHeight.toDp() + snackBarStackConfig.snackbarStackExpandedTopPadding }
     } else {
-        snackBarStackConfig.cardHeightCollapsed + (visibleCardsCount - 1) * snackBarStackConfig.cardGapCollapsed
+        snackBarStackConfig.snackbarHeightWhenCollapsed + (visibleSnackbarsCount - 1) * snackBarStackConfig.snackbarPeekHeightWhenCollapsed
     }
-    val animatedStackHeight by animateDpAsState( //TODO: CHANGE TO LAUNCHED EFFECT WITH ONLY A TRIGGER ON VISIBLE CARDS TOTAL HEIGHT CHANGE
+    val animatedStackHeight by animateDpAsState(
         targetValue = targetHeight,
-        animationSpec = tween(durationMillis = 300, easing = FastOutSlowInEasing)
+        animationSpec = tween(durationMillis = ANIMATION_DURATION_MS, easing = FastOutSlowInEasing)
     )
 
-    val scrollState = rememberScrollState() //TODO: Keep Focus Anchored To the Bottom when expanded and new card added
-    Box(
+    val scrollState = rememberScrollState() //TODO: Keep Focus Anchored To the Bottom when expanded and new snackbar added
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
             .verticalScroll(scrollState, enabled = state.expanded)
-            .padding(bottom = 20.dp), //TODO: Make this customizable,
-        contentAlignment = Alignment.BottomCenter
+            .padding(bottom = snackBarStackConfig.snackbarStackBottomPadding),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Bottom
     ) {
         Box(
             modifier = Modifier
@@ -327,10 +285,9 @@ fun SnackBarStack(
                 .height(animatedStackHeight),
             contentAlignment = Alignment.BottomCenter
         ) {
-            val totalVisibleCards = state.sizeVisible()
             var visibleIndex = 0
             state.snapshotStateList.forEachIndexed { index, snackBarModel ->
-                val logicalIndex = totalVisibleCards - 1 - visibleIndex
+                val logicalIndex = visibleSnackbarsCount - 1 - visibleIndex
                 visibleIndex += if (state.itemVisibilityMap[snackBarModel.id] == ItemVisibility.Visible) 1 else 0
                 key(snackBarModel.id) {
                     SnackBarStackItem(
@@ -338,7 +295,7 @@ fun SnackBarStack(
                         visibleIndex = logicalIndex,
                         trueIndex = index,
                         onSwipedAway = { idToRemove ->
-                            state.removeCardById(idToRemove)
+                            state.removeSnackbarById(idToRemove)
                             state.showBack()
                         },
                         snackBarStackConfig = snackBarStackConfig,
@@ -355,21 +312,32 @@ private fun SnackBarStackItem(
     state: SnackBarStackState,
     visibleIndex: Int,
     trueIndex: Int,
-    stackedWidthScaleFactor: Float = STACKED_WIDTH_SCALE_FACTOR,
     onSwipedAway: (String) -> Unit,
     snackBarStackConfig: SnackBarStackConfig,
-    enableSwipeToDismiss: Boolean = true,
+    enableSwipeToDismiss: Boolean = true
 ) {
     val model = state.snapshotStateList[trueIndex]
-    val cardHeight = snackBarStackConfig.cardHeightCollapsed
-    val peekHeight = snackBarStackConfig.cardGapCollapsed
+    val cardHeight = snackBarStackConfig.snackbarHeightWhenCollapsed
+    val peekHeight = snackBarStackConfig.snackbarPeekHeightWhenCollapsed
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
 
     val scope = rememberCoroutineScope()
     val localDensity = LocalDensity.current
     val isTop = visibleIndex == 0
 
-    val animatedYOffset = remember { Animatable(with(localDensity) { cardHeight.toPx() }) }
+    val token = model.snackBarToken
+    val snackBarInfo = SnackBarInfo(model.style, false)
+    val entryAnimationType = token.entryAnimationType(snackBarInfo)
+    val exitAnimationType = token.exitAnimationType(snackBarInfo)
+
+    val initialYOffset = when (entryAnimationType) {
+        StackableSnackbarEntryAnimationType.SlideInFromAbove -> -with(localDensity) { cardHeight.toPx() }
+        StackableSnackbarEntryAnimationType.SlideInFromBelow -> with(localDensity) { cardHeight.toPx() }
+        StackableSnackbarEntryAnimationType.FadeIn -> 0f
+        StackableSnackbarEntryAnimationType.SlideInFromLeft -> 0f
+        StackableSnackbarEntryAnimationType.SlideInFromRight -> 0f
+    }
+    val animatedYOffset = remember { Animatable(initialYOffset) }
     LaunchedEffect(
         trueIndex,
         state.expanded,
@@ -389,10 +357,11 @@ private fun SnackBarStackItem(
         )
     }
 
+    val stackedWidthScaleFactor = token.snackbarWidthScalingFactor(snackBarInfo).coerceIn(0.01f, 2.0f)
     val targetWidthScale = if (state.expanded) 1f else stackedWidthScaleFactor.pow(visibleIndex)
     val animatedWidthScale = animateFloatAsState(
         targetValue = targetWidthScale,
-        animationSpec = tween(durationMillis = 100, easing = FastOutSlowInEasing)
+        animationSpec = tween(durationMillis = ANIMATION_DURATION_MS, easing = FastOutSlowInEasing)
     )
 
     val opacityProgress = remember { Animatable(0f) }
@@ -400,24 +369,39 @@ private fun SnackBarStackItem(
         val visibility = state.itemVisibilityMap[model.id] ?: ItemVisibility.Visible
         opacityProgress.animateTo(
             if (visibility != ItemVisibility.Visible) 0f else 1f,
-            tween(FADE_OUT_DURATION)
+            tween(ANIMATION_DURATION_MS)
         )
     }
 
-    val swipeX = remember { Animatable(0f) }
-    LaunchedEffect(state.itemVisibilityMap[model.id], state.expanded) {
+    val initialXOffset = when (entryAnimationType) {
+        StackableSnackbarEntryAnimationType.SlideInFromLeft -> -with(localDensity) { screenWidth.toPx() }
+        StackableSnackbarEntryAnimationType.SlideInFromRight -> with(localDensity) { screenWidth.toPx() }
+        StackableSnackbarEntryAnimationType.FadeIn -> 0f
+        StackableSnackbarEntryAnimationType.SlideInFromAbove -> 0f
+        StackableSnackbarEntryAnimationType.SlideInFromBelow -> 0f
+    }
+    val swipeX = remember { Animatable(initialXOffset) }
+    LaunchedEffect(state.itemVisibilityMap[model.id], state.expanded, visibleIndex) {
         if (state.itemVisibilityMap[model.id] == ItemVisibility.BeingRemoved) {
+            val target = when (exitAnimationType) {
+                StackableSnackbarExitAnimationType.SlideOutToLeft -> -with(localDensity) { screenWidth.toPx() * 1.2f }
+                StackableSnackbarExitAnimationType.SlideOutToRight -> with(localDensity) { screenWidth.toPx() * 1.2f }
+                StackableSnackbarExitAnimationType.FadeOut -> 0f
+            }
             swipeX.animateTo(
-                with(localDensity) { -screenWidth.toPx() * 1.2f },
-                animationSpec = tween(durationMillis = 240, easing = FastOutLinearInEasing)
+                with(localDensity) { target },
+                animationSpec = tween(durationMillis = ANIMATION_DURATION_MS, easing = FastOutLinearInEasing)
             )
         } else {
-            swipeX.snapTo(0f)
+            if(isTop) {
+                swipeX.animateTo(0f)
+            }
+            else {
+                swipeX.snapTo(0f)
+            }
         }
     }
 
-    val token = model.snackBarToken
-    val snackBarInfo = SnackBarInfo(model.style, false)
     val textPaddingValues =
         if (model.actionText == null && model.trailingIcon != null) PaddingValues(
             start = 16.dp,
@@ -432,10 +416,14 @@ private fun SnackBarStackItem(
                     Modifier.onGloballyPositioned(
                         onGloballyPositioned = { coordinates: LayoutCoordinates ->
                             val contentHeight = coordinates.size.height
+                            if( model.id in state.contentHeightMap && state.contentHeightMap[model.id] == contentHeight) {
+                                return@onGloballyPositioned
+                            }
                             state.contentHeightMap[model.id] =
                                 contentHeight + with(localDensity) {
-                                    20.dp.toPx().toInt()
+                                    snackBarStackConfig.snackbarGapWhenExpanded.toPx().toInt()
                                 }
+                            state.combinedStackHeight = state.heightAfterIndex(0)
                             return@onGloballyPositioned
                         }
                     )
@@ -451,15 +439,6 @@ private fun SnackBarStackItem(
                 scaleY = animatedWidthScale.value
             )
             .wrapContentHeight()
-//            .then(
-//                if (state.expanded) {
-//                    Modifier.wrapContentSize()
-//                } else {
-//                    Modifier
-//                        .height(cardHeight)
-//                }
-//            )
-            .padding(horizontal = 0.dp)
             .then(
                 if (enableSwipeToDismiss && (isTop || state.expanded)) Modifier.pointerInput(model.id) {
                     detectHorizontalDragGestures(
@@ -476,7 +455,7 @@ private fun SnackBarStackItem(
                                     swipeX.animateTo(
                                         target,
                                         animationSpec = tween(
-                                            durationMillis = 240,
+                                            durationMillis = ANIMATION_DURATION_MS,
                                             easing = FastOutLinearInEasing
                                         )
                                     )
@@ -553,7 +532,7 @@ private fun SnackBarStackItem(
                     .weight(1F)
                     .padding(textPaddingValues)
             ) {
-                val messageMaxLines = if (state.expanded) Int.MAX_VALUE else snackBarStackConfig.cardCollapsedMaxLines
+                val messageMaxLines = if (state.expanded) Int.MAX_VALUE else snackBarStackConfig.maximumTextLinesWhenCollapsed
 
                 BasicText(
                     text = model.message,
@@ -639,7 +618,7 @@ fun Scrim(
 ) {
     val scrimColor by animateColorAsState(
         targetValue = if (isActivated) Color.Black.copy(alpha = 0.6f) else Color.Transparent,
-        animationSpec = tween(durationMillis = 300),
+        animationSpec = tween(durationMillis = ANIMATION_DURATION_MS),
         label = "ScrimColorAnimation"
     )
 

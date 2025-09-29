@@ -11,9 +11,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -37,17 +35,12 @@ import com.microsoft.fluentui.tokenized.notification.AnimationBehavior
 import com.microsoft.fluentui.tokenized.notification.AnimationVariables
 import com.microsoft.fluentui.tokenized.notification.NotificationDuration
 import com.microsoft.fluentui.tokenized.notification.NotificationResult
-import com.microsoft.fluentui.tokenized.notification.Scrim
-import com.microsoft.fluentui.tokenized.notification.SnackBarItemModel
-import com.microsoft.fluentui.tokenized.notification.SnackBarStack
 import com.microsoft.fluentui.tokenized.notification.Snackbar
 import com.microsoft.fluentui.tokenized.notification.SnackbarState
-import com.microsoft.fluentui.tokenized.notification.rememberSnackBarStackState
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillBar
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 // Tags used for testing
@@ -74,7 +67,6 @@ class V2SnackbarActivity : V2DemoActivity() {
         val context = this
 
         setActivityContent {
-            SnackBarStackDemo()
             val snackbarState = remember { SnackbarState() }
 
             val scope = rememberCoroutineScope()
@@ -333,112 +325,6 @@ class V2SnackbarActivity : V2DemoActivity() {
                 Box(Modifier.fillMaxHeight(), contentAlignment = Alignment.Center) {
                     Snackbar(snackbarState, Modifier.padding(bottom = 12.dp), null, true)
                 }
-            }
-        }
-    }
-}
-
-// Demo for SnackBarStack
-@Composable
-fun SnackBarStackDemo() {
-    Box() {
-        val stackState = rememberSnackBarStackState(
-            maxExpandedSize = 10,
-            maxCollapsedSize = 5
-        )
-        var counter by rememberSaveable { mutableIntStateOf(0) }
-        val scope = rememberCoroutineScope()
-        Scrim(
-            isActivated = stackState.expanded && stackState.sizeVisible() > 0,
-            onDismiss = {}
-        )
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Bottom
-        ) {
-            SnackBarStack(
-                state = stackState,
-                modifier = Modifier.padding(16.dp),
-            )
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Row {
-                Button(onClick = {
-                    val id = counter++
-
-                    stackState.addCard(
-                        SnackBarItemModel(
-                            id = id.toString(),
-                            message = "Snackbar #$id",
-                            actionText = "Expand",
-                            trailingIcon = FluentIcon(
-                                Icons.Default.Close,
-                                Icons.Default.Close,
-                                contentDescription = "Close",
-                                onClick = {
-                                    scope.launch {
-                                        stackState.removeCardByIdWithAnimation(
-                                            id.toString(),
-                                            showLastHiddenCardOnRemove = true
-                                        )
-                                    }
-                                }
-                            ),
-                            onActionTextClicked = {
-                                stackState.toggleExpanded()
-                            })
-                    )
-                }, text = "Add Snackbar")
-
-                Spacer(modifier = Modifier.width(12.dp))
-
-                Button(onClick = {
-                    scope.launch {
-                        stackState.hideFront()
-                        delay(300)
-                        stackState.removeFront()
-                        stackState.showBack()
-                    }
-                }, text = "Remove latest")
-
-                Button(onClick = {
-                    scope.launch {
-                        val id = counter++
-                        for (i in 0..15) {
-                            stackState.addCard(
-                                SnackBarItemModel(
-                                    id = "$id-$i",
-                                    message = "Snackbar #$id-$i".repeat(i + 4),
-                                    actionText = "Expand",
-                                    trailingIcon = FluentIcon(
-                                        Icons.Default.Close,
-                                        Icons.Default.Close,
-                                        contentDescription = "Close",
-                                        onClick = {
-                                            scope.launch {
-                                                stackState.removeCardByIdWithAnimation(
-                                                    "$id-$i",
-                                                    showLastHiddenCardOnRemove = true
-                                                )
-                                            }
-                                        }
-                                    ),
-                                    onActionTextClicked = {
-                                        stackState.toggleExpanded()
-                                    })
-                            )
-                            delay(2000)
-                        }
-                    }
-                }, text = "Keep Adding")
-
-                Spacer(modifier = Modifier.width(12.dp))
-
-                Button(onClick = {
-                    stackState.showBack()
-                }, text = "Show hidden")
             }
         }
     }
