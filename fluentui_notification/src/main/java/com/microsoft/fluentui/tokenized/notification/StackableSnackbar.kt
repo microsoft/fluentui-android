@@ -32,13 +32,14 @@ import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableIntState
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -84,6 +85,8 @@ import kotlin.math.pow
 private const val ANIMATION_DURATION_MS = 250
 private const val SWIPE_AWAY_ANIMATION_TARGET_FACTOR = 1.2f
 private const val SWIPE_TO_DISMISS_THRESHOLD_DIVISOR = 4
+private const val DEFAULT_NUMBER_OF_SNACKBARS_EXPANDED = 10
+private const val DEFAULT_NUMBER_OF_SNACKBARS_COLLAPSED = 5
 
 //TODO: Add accessibility support for the stack and individual snackbars
 //TODO: Perf, reduce recompositions, make stable, minimize launch effect tracked variables
@@ -101,8 +104,10 @@ private object SnackBarTestTags {
 enum class ItemVisibility {
     /** The snackbar is currently visible. */
     Visible,
+
     /** The snackbar is currently hidden. */
     Hidden,
+
     /** The snackbar is being removed with an animation. */
     BeingRemoved
 }
@@ -135,6 +140,12 @@ data class SnackBarItemModel(
     val onActionTextClicked: () -> Unit = {}
 )
 
+internal data class SnackbarItemInternal(
+    val model: SnackBarItemModel,
+    var visibility: MutableState<ItemVisibility> = mutableStateOf(ItemVisibility.Visible),
+    var contentHeight: MutableIntState = mutableIntStateOf(0)
+)
+
 /**
  * State holder for a stack of snackbars. It manages the list of items, their visibility, and height,
  * providing methods to add, remove, and toggle the stack's expanded state.
@@ -145,18 +156,41 @@ data class SnackBarItemModel(
  */
 class SnackBarStackState(
     internal val initialSnackbars: MutableList<SnackBarItemModel> = mutableListOf(),
-    internal var maxCollapsedSize: Int = 5,
-    internal var maxExpandedSize: Int = 10
+    internal var maxCollapsedSize: Int = DEFAULT_NUMBER_OF_SNACKBARS_COLLAPSED,
+    internal var maxExpandedSize: Int = DEFAULT_NUMBER_OF_SNACKBARS_EXPANDED
 ) {
-    val snapshotStateList: MutableList<SnackBarItemModel> = mutableStateListOf<SnackBarItemModel>().apply { addAll(initialSnackbars) }
-    val contentHeightMap = mutableStateMapOf<String, Int>().apply { putAll(initialSnackbars.associate { it.id to 0 }) }
-    val itemVisibilityMap = mutableStateMapOf<String, ItemVisibility>().apply { putAll(initialSnackbars.associate { it.id to ItemVisibility.Visible }) }
+    internal val snapshotStateList: MutableList<SnackbarItemInternal> =
+        mutableStateListOf<SnackbarItemInternal>().apply {
+            addAll(initialSnackbars.map { SnackbarItemInternal(it) })
+        }
 
     var expanded by mutableStateOf(false)
         private set
     internal var maxCurrentSize = maxCollapsedSize
 
     internal var combinedStackHeight by mutableIntStateOf(0)
+
+    fun getSnackBarItemById(id: String): SnackBarItemModel? =
+        snapshotStateList.firstOrNull { it.model.id == id }?.model
+
+    fun getSnackbarItemByIndex(index: Int): SnackBarItemModel? =
+        snapshotStateList.getOrNull(index)?.model
+
+    fun getSnackBarItemIndexById(id: String): Int? =
+        snapshotStateList.indexOfFirst { it.model.id == id }.let { if (it == -1) null else it }
+
+    fun getAllSnackBarItems(): List<SnackBarItemModel> = snapshotStateList.map { it.model }
+
+    suspend fun clearAllSnackBars(animateRemoval: Boolean = false) {
+        if (animateRemoval) {
+            snapshotStateList.reversed().forEach {
+                it.visibility.value = ItemVisibility.BeingRemoved
+                delay(40)
+            }
+            delay(ANIMATION_DURATION_MS.toLong())
+        }
+        snapshotStateList.clear()
+    }
 
     /**
      * Adds a new snackbar to the stack. If the stack exceeds its maximum current size, the
@@ -165,15 +199,13 @@ class SnackBarStackState(
      * @param snackbar The [SnackBarItemModel] to add.
      */
     fun addSnackbar(snackbar: SnackBarItemModel) {
-        if (snapshotStateList.any { it.id == snackbar.id }) {
+        if (snapshotStateList.any { it.model.id == snackbar.id }) {
             return
         }
         maxCurrentSize = if (expanded) maxExpandedSize else maxCollapsedSize
-        snapshotStateList.add(snackbar)
-        contentHeightMap[snackbar.id] = 0
-        itemVisibilityMap[snackbar.id] = ItemVisibility.Visible
+        snapshotStateList.add(SnackbarItemInternal(snackbar))
         if (sizeVisible() > maxCurrentSize) {
-            hideBack()
+            hideOldest()
         }
     }
 
@@ -184,9 +216,7 @@ class SnackBarStackState(
      * @return `true` if the snackbar was found and removed, `false` otherwise.
      */
     fun removeSnackbarById(id: String): Boolean {
-        snapshotStateList.firstOrNull { it.id == id }?.let {
-            contentHeightMap.remove(it.id)
-            itemVisibilityMap.remove(it.id)
+        snapshotStateList.firstOrNull { it.model.id == id }?.let {
             snapshotStateList.remove(it)
             return true
         }
@@ -206,12 +236,10 @@ class SnackBarStackState(
         showLastHiddenSnackbarOnRemove: Boolean = true,
         onRemoveCompleteCallback: () -> Unit = {}
     ) {
-        val snackbar = snapshotStateList.firstOrNull { it.id == id } ?: return
-        itemVisibilityMap[snackbar.id] = ItemVisibility.BeingRemoved
+        val snackbar = snapshotStateList.firstOrNull { it.model.id == id } ?: return
+        snackbar.visibility.value = ItemVisibility.BeingRemoved
         delay(ANIMATION_DURATION_MS.toLong())
-        contentHeightMap.remove(snackbar.id)
         snapshotStateList.remove(snackbar)
-        itemVisibilityMap.remove(snackbar.id)
         if (showLastHiddenSnackbarOnRemove) {
             onVisibleSizeChange()
         }
@@ -234,25 +262,28 @@ class SnackBarStackState(
      * does not exceed the allowed maximum.
      */
     private fun onVisibleSizeChange() {
-        val currentSize =
-            snapshotStateList.count { itemVisibilityMap[it.id] == ItemVisibility.Visible }
-        val (count, sequence, targetHidden) =
-            if (currentSize > maxCurrentSize) {
-                Triple(currentSize - maxCurrentSize, snapshotStateList, ItemVisibility.Hidden)
+        val numVisibleSnackbars =
+            snapshotStateList.count { it.visibility.value == ItemVisibility.Visible }
+        var (numUpdatesRequired, sequenceIterationOrder, targetVisibilityAfterUpdate) =
+            if (numVisibleSnackbars > maxCurrentSize) {
+                Triple(
+                    numVisibleSnackbars - maxCurrentSize,
+                    snapshotStateList,
+                    ItemVisibility.Hidden
+                )
             } else {
                 Triple(
-                    maxCurrentSize - currentSize,
+                    maxCurrentSize - numVisibleSnackbars,
                     snapshotStateList.asReversed(),
                     ItemVisibility.Visible
                 )
             }
 
-        var slots = count
-        sequence.forEach {
-            if (slots <= 0) return@forEach
-            if (itemVisibilityMap[it.id] != targetHidden) {
-                itemVisibilityMap[it.id] = targetHidden
-                slots--
+        sequenceIterationOrder.forEach {
+            if (numUpdatesRequired <= 0) return@forEach
+            if (it.visibility.value != targetVisibilityAfterUpdate) {
+                it.visibility.value = targetVisibilityAfterUpdate
+                numUpdatesRequired--
             }
         }
     }
@@ -262,9 +293,9 @@ class SnackBarStackState(
      *
      * @return `true` if a snackbar was hidden, `false` otherwise.
      */
-    fun hideBack(): Boolean {
-        snapshotStateList.firstOrNull { itemVisibilityMap[it.id] == ItemVisibility.Visible }?.let {
-            itemVisibilityMap[it.id] = ItemVisibility.Hidden
+    fun hideOldest(): Boolean {
+        snapshotStateList.firstOrNull { it.visibility.value == ItemVisibility.Visible }?.let {
+            it.visibility.value = ItemVisibility.Hidden
             return true
         }
         return false
@@ -275,9 +306,9 @@ class SnackBarStackState(
      *
      * @return `true` if a snackbar was hidden, `false` otherwise.
      */
-    fun hideFront(): Boolean {
-        snapshotStateList.lastOrNull { itemVisibilityMap[it.id] == ItemVisibility.Visible }?.let {
-            itemVisibilityMap[it.id] = ItemVisibility.Hidden
+    fun hideLatest(): Boolean {
+        snapshotStateList.lastOrNull { it.visibility.value == ItemVisibility.Visible }?.let {
+            it.visibility.value = ItemVisibility.Hidden
             return true
         }
         return false
@@ -289,12 +320,10 @@ class SnackBarStackState(
      * @param skipHidden If `true`, only visible snackbars are considered for removal.
      * @return `true` if a snackbar was removed, `false` otherwise.
      */
-    fun removeFront(skipHidden: Boolean = false): Boolean {
-        snapshotStateList.lastOrNull { (skipHidden && itemVisibilityMap[it.id] == ItemVisibility.Visible) || !skipHidden }
+    fun removeLatest(skipHidden: Boolean = false): Boolean {
+        snapshotStateList.lastOrNull { (skipHidden && it.visibility.value == ItemVisibility.Visible) || !skipHidden }
             ?.let {
-                contentHeightMap.remove(it.id)
                 snapshotStateList.remove(it)
-                itemVisibilityMap.remove(it.id)
                 return true
             }
         return false
@@ -305,9 +334,9 @@ class SnackBarStackState(
      *
      * @return `true` if a snackbar was shown, `false` otherwise.
      */
-    fun showBack(): Boolean {
-        snapshotStateList.lastOrNull { itemVisibilityMap[it.id] == ItemVisibility.Hidden }?.let {
-            itemVisibilityMap[it.id] = ItemVisibility.Visible
+    fun showLastHidden(): Boolean {
+        snapshotStateList.lastOrNull { it.visibility.value == ItemVisibility.Hidden }?.let {
+            it.visibility.value = ItemVisibility.Visible
             return true
         }
         return false
@@ -322,8 +351,8 @@ class SnackBarStackState(
     internal fun heightAfterIndex(index: Int): Int {
         var ans = 0
         snapshotStateList.drop(index + 1).forEach {
-            if (itemVisibilityMap[it.id] == ItemVisibility.Visible) {
-                ans += (contentHeightMap[it.id] ?: 0)
+            if (it.visibility.value == ItemVisibility.Visible) {
+                ans += it.contentHeight.intValue
             }
         }
         return ans
@@ -342,7 +371,7 @@ class SnackBarStackState(
      * @return The number of visible snackbars.
      */
     fun sizeVisible(): Int =
-        snapshotStateList.count { itemVisibilityMap[it.id] == ItemVisibility.Visible }
+        snapshotStateList.count { it.visibility.value == ItemVisibility.Visible }
 }
 
 /**
@@ -356,8 +385,8 @@ class SnackBarStackState(
 @Composable
 fun rememberSnackBarStackState(
     initial: List<SnackBarItemModel> = emptyList(),
-    maxExpandedSize: Int = 10,
-    maxCollapsedSize: Int = 5
+    maxExpandedSize: Int = DEFAULT_NUMBER_OF_SNACKBARS_EXPANDED,
+    maxCollapsedSize: Int = DEFAULT_NUMBER_OF_SNACKBARS_COLLAPSED
 ): SnackBarStackState {
     return remember {
         SnackBarStackState(
@@ -404,13 +433,13 @@ fun SnackBarStack(
 ) {
     val localDensity = LocalDensity.current
 
-    val visibleSnackbarsCount by remember { derivedStateOf { state.sizeVisible() } }
-    val targetHeight = if (visibleSnackbarsCount == 0) {
+    val totalVisibleSnackbars by remember { derivedStateOf { state.sizeVisible() } }
+    val targetHeight = if (totalVisibleSnackbars == 0) {
         0.dp
     } else if (state.expanded) {
         with(localDensity) { state.combinedStackHeight.toDp() + snackBarStackConfig.snackbarStackExpandedTopPadding }
     } else {
-        snackBarStackConfig.maxSnackbarHeightWhenCollapsed + (visibleSnackbarsCount - 1) * snackBarStackConfig.snackbarPeekHeightWhenCollapsed
+        snackBarStackConfig.maxSnackbarHeightWhenCollapsed + (totalVisibleSnackbars - 1) * snackBarStackConfig.snackbarPeekHeightWhenCollapsed
     }
     val animatedStackHeight by animateDpAsState(
         targetValue = targetHeight,
@@ -421,7 +450,8 @@ fun SnackBarStack(
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     val screenWidthPx = with(localDensity) { screenWidth.toPx() }
 
-    val scrollState = rememberScrollState() //TODO: Keep Focus Anchored To the Bottom when expanded and new snackbar added
+    val scrollState =
+        rememberScrollState() //TODO: Keep Focus Anchored To the Bottom when expanded and new snackbar added
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -437,18 +467,18 @@ fun SnackBarStack(
                 .height(animatedStackHeight),
             contentAlignment = Alignment.BottomCenter
         ) {
-            var visibleIndex = 0
+            var visibleSnackbarsEncountered = 0
             state.snapshotStateList.forEachIndexed { index, snackBarModel ->
-                val logicalIndex = visibleSnackbarsCount - 1 - visibleIndex
-                visibleIndex += if (state.itemVisibilityMap[snackBarModel.id] == ItemVisibility.Visible) 1 else 0
-                key(snackBarModel.id) {
+                val visibleIndex = totalVisibleSnackbars - 1 - visibleSnackbarsEncountered
+                visibleSnackbarsEncountered += if (snackBarModel.visibility.value == ItemVisibility.Visible) 1 else 0
+                key(snackBarModel.model.id) {
                     SnackBarStackItem(
                         state = state,
-                        visibleIndex = logicalIndex,
+                        visibleIndex = visibleIndex,
                         trueIndex = index,
                         onSwipedAway = { idToRemove ->
                             state.removeSnackbarById(idToRemove)
-                            state.showBack()
+                            state.showLastHidden()
                         },
                         snackBarStackConfig = snackBarStackConfig,
                         enableSwipeToDismiss = enableSwipeToDismiss,
@@ -482,7 +512,8 @@ private fun SnackBarStackItem(
     enableSwipeToDismiss: Boolean = true,
     screenWidthPx: Float
 ) {
-    val model = state.snapshotStateList[trueIndex]
+    val modelWrapper = state.snapshotStateList[trueIndex]
+    val model = modelWrapper.model
     val cardHeight = snackBarStackConfig.maxSnackbarHeightWhenCollapsed
     val peekHeight = snackBarStackConfig.snackbarPeekHeightWhenCollapsed
 
@@ -495,6 +526,7 @@ private fun SnackBarStackItem(
     val entryAnimationType = token.entryAnimationType(snackBarInfo)
     val exitAnimationType = token.exitAnimationType(snackBarInfo)
 
+    // Vertical Offset Animation: Related to Stack Expansion/Collapse and Item Position in Stack
     val initialYOffset = when (entryAnimationType) {
         StackableSnackbarEntryAnimationType.SlideInFromAbove -> -with(localDensity) { cardHeight.toPx() }
         StackableSnackbarEntryAnimationType.SlideInFromBelow -> with(localDensity) { cardHeight.toPx() }
@@ -508,9 +540,9 @@ private fun SnackBarStackItem(
         state.expanded,
         state.snapshotStateList.size,
         state.heightAfterIndex(trueIndex),
-        state.itemVisibilityMap[model.id]
+        modelWrapper.visibility.value
     ) {
-        if (state.itemVisibilityMap[model.id] == ItemVisibility.BeingRemoved) {
+        if (modelWrapper.visibility.value == ItemVisibility.BeingRemoved) {
             return@LaunchedEffect
         }
         animatedYOffset.animateTo(
@@ -522,7 +554,9 @@ private fun SnackBarStackItem(
         )
     }
 
-    val stackedWidthScaleFactor = token.snackbarWidthScalingFactor(snackBarInfo).coerceIn(0.01f, 2.0f)
+    // Width Scale Animation: Related to Cards Shrinking when stacked
+    val stackedWidthScaleFactor =
+        token.snackbarWidthScalingFactor(snackBarInfo).coerceIn(0.01f, 2.0f)
     val targetWidthScale = if (state.expanded) 1f else stackedWidthScaleFactor.pow(visibleIndex)
     val animatedWidthScale = animateFloatAsState(
         targetValue = targetWidthScale,
@@ -530,15 +564,17 @@ private fun SnackBarStackItem(
         label = "WidthScaleAnimation"
     )
 
+    // Opacity Animation: Related to Entry/Exit Fade Animations
     val opacityProgress = remember { Animatable(0f) }
-    LaunchedEffect(state.itemVisibilityMap[model.id]) {
-        val visibility = state.itemVisibilityMap[model.id] ?: ItemVisibility.Visible
+    LaunchedEffect(modelWrapper.visibility.value) {
+        val visibility = modelWrapper.visibility.value
         opacityProgress.animateTo(
             if (visibility != ItemVisibility.Visible) 0f else 1f,
             tween(ANIMATION_DURATION_MS)
         )
     }
 
+    // Horizontal Animations: Related to Swipe to Dismiss and Entry/Exit
     val initialXOffset = when (entryAnimationType) {
         StackableSnackbarEntryAnimationType.SlideInFromLeft -> -screenWidthPx
         StackableSnackbarEntryAnimationType.SlideInFromRight -> screenWidthPx
@@ -547,8 +583,8 @@ private fun SnackBarStackItem(
         StackableSnackbarEntryAnimationType.SlideInFromBelow -> 0f
     }
     val swipeX = remember { Animatable(initialXOffset) }
-    LaunchedEffect(state.itemVisibilityMap[model.id], state.expanded, visibleIndex) {
-        if (state.itemVisibilityMap[model.id] == ItemVisibility.BeingRemoved) {
+    LaunchedEffect(modelWrapper.visibility.value, state.expanded, visibleIndex) {
+        if (modelWrapper.visibility.value == ItemVisibility.BeingRemoved) {
             val target = when (exitAnimationType) {
                 StackableSnackbarExitAnimationType.SlideOutToLeft -> screenWidthPx * -SWIPE_AWAY_ANIMATION_TARGET_FACTOR
                 StackableSnackbarExitAnimationType.SlideOutToRight -> screenWidthPx * SWIPE_AWAY_ANIMATION_TARGET_FACTOR
@@ -556,13 +592,15 @@ private fun SnackBarStackItem(
             }
             swipeX.animateTo(
                 with(localDensity) { target },
-                animationSpec = tween(durationMillis = ANIMATION_DURATION_MS, easing = FastOutLinearInEasing)
+                animationSpec = tween(
+                    durationMillis = ANIMATION_DURATION_MS,
+                    easing = FastOutLinearInEasing
+                )
             )
         } else {
-            if(isTop) {
+            if (isTop) {
                 swipeX.animateTo(0f)
-            }
-            else {
+            } else {
                 swipeX.snapTo(0f)
             }
         }
@@ -582,10 +620,10 @@ private fun SnackBarStackItem(
                     Modifier.onGloballyPositioned(
                         onGloballyPositioned = { coordinates: LayoutCoordinates ->
                             val contentHeight = coordinates.size.height
-                            if( model.id in state.contentHeightMap && state.contentHeightMap[model.id] == contentHeight) {
+                            if (modelWrapper.contentHeight.intValue == contentHeight) {
                                 return@onGloballyPositioned
                             }
-                            state.contentHeightMap[model.id] =
+                            modelWrapper.contentHeight.intValue =
                                 contentHeight + with(localDensity) {
                                     snackBarStackConfig.snackbarGapWhenExpanded.toPx().toInt()
                                 }
@@ -698,7 +736,8 @@ private fun SnackBarStackItem(
                     .weight(1F)
                     .padding(textPaddingValues)
             ) {
-                val messageMaxLines = if (state.expanded) Int.MAX_VALUE else snackBarStackConfig.maximumTextLinesWhenCollapsed
+                val messageMaxLines =
+                    if (state.expanded) Int.MAX_VALUE else snackBarStackConfig.maximumTextLinesWhenCollapsed
 
                 Text(
                     text = model.message,
@@ -776,6 +815,8 @@ private fun SnackBarStackItem(
     }
 }
 
+private const val SCRIM_DEFAULT_OPACITY = 0.6f
+
 /**
  * A composable that provides a semi-transparent overlay (scrim) that can be used to block user
  * interaction with content behind it. The scrim animates its color and alpha.
@@ -788,7 +829,7 @@ private fun SnackBarStackItem(
 fun Scrim(
     isActivated: Boolean,
     onDismiss: () -> Unit,
-    activatedColor: Color = Color.Black.copy(alpha = 0.6f),
+    activatedColor: Color = Color.Black.copy(alpha = SCRIM_DEFAULT_OPACITY),
     modifier: Modifier = Modifier
 ) {
     val scrimColor by animateColorAsState(

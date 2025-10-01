@@ -143,12 +143,9 @@ fun SnackBarStackDemoLayout(context: V2StackableSnackbarActivity) {
 
                 Button(onClick = {
                     scope.launch {
-                        stackState.hideFront()
-                        delay(300)
-                        stackState.removeFront()
-                        stackState.showBack()
+                        stackState.clearAllSnackBars(animateRemoval = true)
                     }
-                }, text = "Remove latest")
+                }, text = "Clear All")
 
                 Spacer(modifier = Modifier.width(12.dp))
                 Button(onClick = {
