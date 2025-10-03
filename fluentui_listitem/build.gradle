@@ -52,6 +52,11 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
 
+    // Override corrupted versions from OfficeFeed
+    implementation "androidx.compose.animation:animation:$composeAnimationVersion"
+    implementation "androidx.compose.animation:animation-core:$composeAnimationVersion"
+    implementation "androidx.compose.runtime:runtime-saveable:$composeRuntimeSaveableVersion"
+    
     implementation("androidx.compose.foundation:foundation")
     implementation("androidx.compose.material:material")
     implementation("androidx.compose.runtime:runtime")

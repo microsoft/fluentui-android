@@ -84,6 +84,12 @@ dependencies {
 
     //Compose BOM
     implementation platform("androidx.compose:compose-bom:$composeBomVersion")
+    
+    // Override corrupted versions from OfficeFeed
+    implementation "androidx.compose.animation:animation:$composeAnimationVersion"
+    implementation "androidx.compose.animation:animation-core:$composeAnimationVersion"
+    implementation "androidx.compose.runtime:runtime-saveable:$composeRuntimeSaveableVersion"
+    
     implementation "androidx.compose.ui:ui-text"
     implementation "androidx.compose.ui:ui-graphics"
     implementation "androidx.compose.ui:ui-unit"
