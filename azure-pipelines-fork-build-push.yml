@@ -56,7 +56,7 @@ jobs:
 
       - task: Gradle@3
         displayName: Hydra Lab UI test
-        condition: eq(coalesce(variables['runHydraLabTests'], 'false'), 'true')
+        condition: eq(toLower(coalesce(variables['runHydraLabTests'], 'false')), 'true')
         inputs:
           gradleWrapperFile: "gradlew"
           tasks: "requestHydraLabTest -PappPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/development/debug/FluentUI.Demo-development-debug.apk -PtestAppPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/androidTest/development/debug/FluentUI.Demo-development-debug-androidTest.apk -PbuildFlavor=$(buildFlavor) -PtestSuiteName=$(testSuiteName) -PrunTimeOutSeconds=$(timeOutSeconds) -PdeviceIdentifier=$(deviceIdentifier) -PgroupTestType=$(groupTestType) -PreportAudience=TestLabOwner -PauthToken=$(authToken) -PpkgName=$(pkgName) -PtestPkgName=$(testPkgName) -PrunningType=$(runningType) -PframeworkType=$(frameworkType) -PhydraLabAPIHost=$(hydraLabAPIHost) -PhydraLabAPISchema=$(hydraLabAPISchema)"
