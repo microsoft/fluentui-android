@@ -65,6 +65,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2ShimmerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2SideRailActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2SnackbarActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2StackableSnackbarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2TabBarActivity" />
         <activity
             android:name="com.microsoft.fluentuidemo.demos.V2TextFieldActivity"

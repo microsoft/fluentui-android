@@ -1,7 +1,9 @@
 package com.microsoft.fluentuidemo.demos
 
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
@@ -59,6 +61,7 @@ class V2SnackbarActivity : V2DemoActivity() {
     override val controlTokensUrl =
         "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-34"
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val context = this
