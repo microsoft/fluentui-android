@@ -1,14 +1,10 @@
-Release version 0.3.9
+Release version 0.3.10
 What's new
 Fluent v2:
 Fix/enhancement:
-    1. Added elevation tokens for V2 Snackbar
-    2. Fluent V2 Native Controls Accessibility Fixes
-    3. Added Tooltip support for V2 AppBar, along with a new modifier to add tooltips to any component
-    4. Added TextOverflow Tokens for V2 ListItem
-    5. Fixed V2 AppBar Layout Focus Navigation
-    6. V2 Acrylic Pane now supports blur behind effect
-    7. Added a new default SearchViewModel for V2 Searchbar
+    1. Added new Stackable Snackbar Component which allows showing multiple notifications at once.
+    2. Fixed V2 BottomDrawer not dismissing on back button press when in focus
+    3. Added Offset Tokens for V2 BottomSheet to Offset the Anchors
 
 Note:
 The Demo App for Fluent Controls will now also be published on Github starting from v0.3.8
