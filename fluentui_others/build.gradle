@@ -61,6 +61,10 @@ dependencies {
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    
+    // Override corrupted versions from OfficeFeed
+    implementation "androidx.compose.runtime:runtime-saveable:$composeRuntimeSaveableVersion"
+    
     implementation "androidx.compose.foundation:foundation"
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
