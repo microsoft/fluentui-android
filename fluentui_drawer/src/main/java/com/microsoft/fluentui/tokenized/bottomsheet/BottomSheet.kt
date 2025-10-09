@@ -387,7 +387,7 @@ fun BottomSheet(
                         // if we do know our anchors, respect them
                         sheetState.offset.value.roundToInt()
                     }
-                    IntOffset(0, y)
+                    IntOffset(0, y + tokens.additionalOffset(bottomSheetInfo))
                 }
                 .bottomSheetSwipeable(
                     sheetState,
