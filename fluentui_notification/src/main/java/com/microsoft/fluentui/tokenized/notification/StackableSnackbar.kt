@@ -133,7 +133,7 @@ data class SnackBarItemModel(
     val id: String = java.util.UUID.randomUUID().toString(),
     val style: SnackbarStyle = SnackbarStyle.Neutral,
     val leadingIcon: FluentIcon? = null,
-    val trailingIcon: FluentIcon? = null,
+    var trailingIcon: FluentIcon? = null,
     val subTitle: String? = null,
     val actionText: String? = null,
     val snackBarToken: StackableSnackBarTokens = DEFAULT_SNACKBAR_TOKENS,
@@ -786,24 +786,24 @@ private fun SnackBarStackItem(
                 )
             }
 
-            if (model.trailingIcon != null && model.trailingIcon.isIconAvailable()) {
+            if (model.trailingIcon != null && model.trailingIcon!!.isIconAvailable()) {
                 Box(
                     modifier = Modifier
                         .testTag(SnackBarTestTags.SNACK_BAR_ICON)
                         .then(
-                            if (model.trailingIcon.onClick != null) {
+                            if (model.trailingIcon!!.onClick != null) {
                                 Modifier.clickable(
                                     interactionSource = remember { MutableInteractionSource() },
                                     indication = rememberRipple(),
                                     enabled = true,
                                     role = Role.Image,
-                                    onClick = model.trailingIcon.onClick!!
+                                    onClick = model.trailingIcon!!.onClick!!
                                 )
                             } else Modifier
                         )
                 ) {
                     Icon(
-                        model.trailingIcon,
+                        model.trailingIcon!!,
                         modifier = Modifier
                             .padding(top = 12.dp, bottom = 12.dp, end = 16.dp)
                             .size(token.leftIconSize(snackBarInfo)),
