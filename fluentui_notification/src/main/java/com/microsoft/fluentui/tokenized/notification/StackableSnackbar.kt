@@ -606,6 +606,7 @@ private fun SnackBarStackItem(
         }
     }
 
+
     val textPaddingValues =
         if (model.actionText == null && model.trailingIcon != null) PaddingValues(
             start = 16.dp,
