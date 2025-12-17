@@ -2,9 +2,7 @@ Release version 0.3.10
 What's new
 Fluent v2:
 Fix/enhancement:
-    1. Added new Stackable Snackbar Component which allows showing multiple notifications at once.
-    2. Fixed V2 BottomDrawer not dismissing on back button press when in focus
-    3. Added Offset Tokens for V2 BottomSheet to Offset the Anchors
+    1. Modified the Stackable Snackbar's Trailing Icon to be mutable
 
 Note:
 The Demo App for Fluent Controls will now also be published on Github starting from v0.3.8
