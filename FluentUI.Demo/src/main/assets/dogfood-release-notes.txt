@@ -1,4 +1,4 @@
-Release version 0.3.10
+Release version 0.3.11
 What's new
 Fluent v2:
 Fix/enhancement:
