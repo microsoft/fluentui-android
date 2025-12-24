@@ -2,10 +2,10 @@
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Licensed under the MIT License.
  */
-
-apply plugin: 'com.android.application'
-
-apply plugin: 'kotlin-android'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
 
 android {
     compileSdkVersion constants.compileSdkVersion
@@ -17,9 +17,6 @@ android {
         versionName '0.3.11'
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
     buildFeatures {
         viewBinding true
         compose true
@@ -28,12 +25,8 @@ android {
         kotlinCompilerExtensionVersion composeCompilerVersion
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    lintOptions {
-        lintConfig = file("lint.xml")
-        abortOnError false
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     buildTypes {
         release {
@@ -62,7 +55,7 @@ android {
         }
     }
     testOptions {
-        unitTests{
+        unitTests {
             includeAndroidResources = true
         }
         unitTests.all {
@@ -74,6 +67,14 @@ android {
             }
         }
     }
+    namespace 'com.microsoft.fluentuidemo'
+    lint {
+        abortOnError false
+    }
+}
+
+kotlin {
+    jvmToolchain(17)
 }
 
 dependencies {
@@ -94,9 +95,9 @@ dependencies {
     //Compose BOM
     implementation platform("androidx.compose:compose-bom:$composeBomVersion")
     implementation "androidx.compose.ui:ui"
-    implementation ("androidx.compose.foundation:foundation-layout")
-    implementation ("androidx.compose.material:material")
-    implementation ("androidx.activity:activity-compose:$composeActivityVersion")
+    implementation("androidx.compose.foundation:foundation-layout")
+    implementation("androidx.compose.material:material")
+    implementation("androidx.activity:activity-compose:$composeActivityVersion")
     implementation "androidx.test.ext:junit-ktx:$junitKtxVersion"
     implementation "androidx.test.uiautomator:uiautomator:$uiautomatorVersion"
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeTestVersion")
