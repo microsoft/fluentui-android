@@ -135,7 +135,8 @@ fun SnackBarStackDemoLayout(context: V2StackableSnackbarActivity) {
                             ),
                             onActionTextClicked = {
                                 stackState.toggleExpandedState()
-                            })
+                            },
+                            enableSwipeToDismiss = (counter % 2 == 0)) // making all even indexed snackbars dismissable for demo purposes
                     )
                 }, text = "Add Snackbar")
 
@@ -172,7 +173,8 @@ fun SnackBarStackDemoLayout(context: V2StackableSnackbarActivity) {
                                     ),
                                     onActionTextClicked = {
                                         stackState.toggleExpandedState()
-                                    })
+                                    },
+                                    enableSwipeToDismiss = (counter % 2 == 0)) // making all even indexed snackbars dismissable for demo purposes
                             )
                             delay(2000)
                         }
