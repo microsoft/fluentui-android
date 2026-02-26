@@ -430,6 +430,7 @@ fun SnackBarStack(
     state: SnackBarStackState,
     snackBarStackConfig: SnackBarStackConfig = SnackBarStackConfig(),
     enableSwipeToDismiss: Boolean = true,
+    getTrailingIconBasedOnOverflow: (Boolean) -> FluentIcon?
 ) {
     val localDensity = LocalDensity.current
 
@@ -482,7 +483,8 @@ fun SnackBarStack(
                         },
                         snackBarStackConfig = snackBarStackConfig,
                         enableSwipeToDismiss = enableSwipeToDismiss,
-                        screenWidthPx = screenWidthPx
+                        screenWidthPx = screenWidthPx,
+                        getTrailingIconBasedOnOverflow = getTrailingIconBasedOnOverflow
                     )
                 }
             }
@@ -510,7 +512,8 @@ private fun SnackBarStackItem(
     onSwipedAway: (String) -> Unit,
     snackBarStackConfig: SnackBarStackConfig,
     enableSwipeToDismiss: Boolean = true,
-    screenWidthPx: Float
+    screenWidthPx: Float,
+    getTrailingIconBasedOnOverflow: (Boolean) -> FluentIcon?
 ) {
     val modelWrapper = state.snapshotStateList[trueIndex]
     val model = modelWrapper.model
@@ -706,6 +709,8 @@ private fun SnackBarStackItem(
                 .testTag(SnackBarTestTags.SNACK_BAR),
             verticalAlignment = Alignment.CenterVertically
         ) {
+
+            var trailingIcon by remember { mutableStateOf(model.trailingIcon) }
             if (model.leadingIcon != null && model.leadingIcon.isIconAvailable()) {
                 Box(
                     modifier = Modifier
@@ -743,7 +748,10 @@ private fun SnackBarStackItem(
                     text = model.message,
                     style = token.titleTypography(snackBarInfo),
                     maxLines = messageMaxLines,
-                    overflow = TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis,
+                    onTextLayout = { textLayout ->
+                        trailingIcon = getTrailingIconBasedOnOverflow(textLayout.hasVisualOverflow) ?: model.trailingIcon
+                    }
                 )
                 if (!model.subTitle.isNullOrBlank()) {
                     Text(
@@ -786,29 +794,31 @@ private fun SnackBarStackItem(
                 )
             }
 
-            if (model.trailingIcon != null && model.trailingIcon!!.isIconAvailable()) {
-                Box(
-                    modifier = Modifier
-                        .testTag(SnackBarTestTags.SNACK_BAR_ICON)
-                        .then(
-                            if (model.trailingIcon!!.onClick != null) {
-                                Modifier.clickable(
-                                    interactionSource = remember { MutableInteractionSource() },
-                                    indication = rememberRipple(),
-                                    enabled = true,
-                                    role = Role.Image,
-                                    onClick = model.trailingIcon!!.onClick!!
-                                )
-                            } else Modifier
-                        )
-                ) {
-                    Icon(
-                        model.trailingIcon!!,
+            trailingIcon?.let { icon ->
+                if (icon.isIconAvailable()) {
+                    Box(
                         modifier = Modifier
-                            .padding(top = 12.dp, bottom = 12.dp, end = 16.dp)
-                            .size(token.leftIconSize(snackBarInfo)),
-                        tint = token.iconColor(snackBarInfo)
-                    )
+                            .testTag(SnackBarTestTags.SNACK_BAR_ICON)
+                            .then(
+                                icon.onClick?.let {
+                                    Modifier.clickable(
+                                        interactionSource = remember { MutableInteractionSource() },
+                                        indication = rememberRipple(),
+                                        enabled = true,
+                                        role = Role.Image,
+                                        onClick = model.trailingIcon!!.onClick!!
+                                    )
+                                } ?: Modifier
+                            )
+                    ) {
+                        Icon(
+                            icon,
+                            modifier = Modifier
+                                .padding(top = 12.dp, bottom = 12.dp, end = 16.dp)
+                                .size(token.leftIconSize(snackBarInfo)),
+                            tint = token.iconColor(snackBarInfo)
+                        )
+                    }
                 }
             }
         }
