@@ -137,7 +137,8 @@ data class SnackBarItemModel(
     val subTitle: String? = null,
     val actionText: String? = null,
     val snackBarToken: StackableSnackBarTokens = DEFAULT_SNACKBAR_TOKENS,
-    val onActionTextClicked: () -> Unit = {}
+    val onActionTextClicked: () -> Unit = {},
+    val getTrailingIconBasedOnOverflow: (Boolean) -> FluentIcon?
 )
 
 internal data class SnackbarItemInternal(
@@ -429,8 +430,7 @@ data class SnackBarStackConfig(
 fun SnackBarStack(
     state: SnackBarStackState,
     snackBarStackConfig: SnackBarStackConfig = SnackBarStackConfig(),
-    enableSwipeToDismiss: Boolean = true,
-    getTrailingIconBasedOnOverflow: (Boolean) -> FluentIcon?
+    enableSwipeToDismiss: Boolean = true
 ) {
     val localDensity = LocalDensity.current
 
@@ -483,8 +483,7 @@ fun SnackBarStack(
                         },
                         snackBarStackConfig = snackBarStackConfig,
                         enableSwipeToDismiss = enableSwipeToDismiss,
-                        screenWidthPx = screenWidthPx,
-                        getTrailingIconBasedOnOverflow = getTrailingIconBasedOnOverflow
+                        screenWidthPx = screenWidthPx
                     )
                 }
             }
@@ -512,8 +511,7 @@ private fun SnackBarStackItem(
     onSwipedAway: (String) -> Unit,
     snackBarStackConfig: SnackBarStackConfig,
     enableSwipeToDismiss: Boolean = true,
-    screenWidthPx: Float,
-    getTrailingIconBasedOnOverflow: (Boolean) -> FluentIcon?
+    screenWidthPx: Float
 ) {
     val modelWrapper = state.snapshotStateList[trueIndex]
     val model = modelWrapper.model
@@ -750,7 +748,7 @@ private fun SnackBarStackItem(
                     maxLines = messageMaxLines,
                     overflow = TextOverflow.Ellipsis,
                     onTextLayout = { textLayout ->
-                        trailingIcon = getTrailingIconBasedOnOverflow(textLayout.hasVisualOverflow) ?: model.trailingIcon
+                        trailingIcon = model.getTrailingIconBasedOnOverflow(textLayout.hasVisualOverflow) ?: model.trailingIcon
                     }
                 )
                 if (!model.subTitle.isNullOrBlank()) {
