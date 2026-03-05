@@ -126,6 +126,7 @@ private val DEFAULT_SNACKBAR_TOKENS = StackableSnackBarTokens()
  * @property actionText Optional text for the action button. If null, no action button is shown.
  * @property snackBarToken The tokens for customizing the snackbar's appearance.
  * @property onActionTextClicked The callback to be invoked when the action button is clicked.
+ * @property getTrailingIconBasedOnOverflow The callback to determine the trailing icon based on whether the text has overflow. It receives a boolean indicating if there is an overflow and returns a FluentIcon to be used as the trailing icon.
  */
 @Stable
 data class SnackBarItemModel(
@@ -138,7 +139,7 @@ data class SnackBarItemModel(
     val actionText: String? = null,
     val snackBarToken: StackableSnackBarTokens = DEFAULT_SNACKBAR_TOKENS,
     val onActionTextClicked: () -> Unit = {},
-    val getTrailingIconBasedOnOverflow: (Boolean) -> FluentIcon?
+    val getTrailingIconBasedOnOverflow: (Boolean) -> FluentIcon? = { _ -> trailingIcon }
 )
 
 internal data class SnackbarItemInternal(
@@ -798,13 +799,13 @@ private fun SnackBarStackItem(
                         modifier = Modifier
                             .testTag(SnackBarTestTags.SNACK_BAR_ICON)
                             .then(
-                                icon.onClick?.let {
+                                icon.onClick?.let { onClick ->
                                     Modifier.clickable(
                                         interactionSource = remember { MutableInteractionSource() },
                                         indication = rememberRipple(),
                                         enabled = true,
                                         role = Role.Image,
-                                        onClick = model.trailingIcon!!.onClick!!
+                                        onClick = onClick
                                     )
                                 } ?: Modifier
                             )
