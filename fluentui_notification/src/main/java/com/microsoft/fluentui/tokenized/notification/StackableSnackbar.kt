@@ -98,6 +98,12 @@ private object SnackBarTestTags {
     const val SNACK_BAR_ACTION_BUTTON = "snack_bar_action_button"
 }
 
+private object SnackBarLabels {
+    const val STACK_HEIGHT_ANIMATION = "StackHeightAnimation"
+    const val WIDTH_SCALE_ANIMATION = "WidthScaleAnimation"
+    const val SCRIM_COLOR_ANIMATION = "ScrimColorAnimation"
+}
+
 /**
  * Enum class to define the visibility state of a snackbar item within the stack.
  */
@@ -126,6 +132,7 @@ private val DEFAULT_SNACKBAR_TOKENS = StackableSnackBarTokens()
  * @property actionText Optional text for the action button. If null, no action button is shown.
  * @property snackBarToken The tokens for customizing the snackbar's appearance.
  * @property onActionTextClicked The callback to be invoked when the action button is clicked.
+ * @property enableSwipeToDismiss If `true`, swiping the snackbar item horizontally will dismiss it.
  */
 @Stable
 data class SnackBarItemModel(
@@ -137,7 +144,8 @@ data class SnackBarItemModel(
     val subTitle: String? = null,
     val actionText: String? = null,
     val snackBarToken: StackableSnackBarTokens = DEFAULT_SNACKBAR_TOKENS,
-    val onActionTextClicked: () -> Unit = {}
+    val onActionTextClicked: () -> Unit = {},
+    val enableSwipeToDismiss: Boolean = true
 )
 
 internal data class SnackbarItemInternal(
@@ -423,13 +431,11 @@ data class SnackBarStackConfig(
  *
  * @param state The state object that manages the snackbar stack.
  * @param snackBarStackConfig The configuration for the stack's appearance and behavior.
- * @param enableSwipeToDismiss If `true`, the top visible snackbar can be swiped to dismiss it.
  */
 @Composable
 fun SnackBarStack(
     state: SnackBarStackState,
-    snackBarStackConfig: SnackBarStackConfig = SnackBarStackConfig(),
-    enableSwipeToDismiss: Boolean = true,
+    snackBarStackConfig: SnackBarStackConfig = SnackBarStackConfig()
 ) {
     val localDensity = LocalDensity.current
 
@@ -444,7 +450,7 @@ fun SnackBarStack(
     val animatedStackHeight by animateDpAsState(
         targetValue = targetHeight,
         animationSpec = tween(durationMillis = ANIMATION_DURATION_MS, easing = FastOutSlowInEasing),
-        label = "StackHeightAnimation"
+        label = SnackBarLabels.STACK_HEIGHT_ANIMATION
     )
 
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
@@ -481,7 +487,6 @@ fun SnackBarStack(
                             state.showLastHidden()
                         },
                         snackBarStackConfig = snackBarStackConfig,
-                        enableSwipeToDismiss = enableSwipeToDismiss,
                         screenWidthPx = screenWidthPx
                     )
                 }
@@ -499,7 +504,6 @@ fun SnackBarStack(
  * @param trueIndex The actual index of the snackbar in the full list.
  * @param onSwipedAway A callback to be invoked when the snackbar is swiped off-screen.
  * @param snackBarStackConfig The configuration for the stack's appearance.
- * @param enableSwipeToDismiss If `true`, swiping the snackbar horizontally will dismiss it.
  * @param screenWidthPx The width of the screen in pixels, used for swipe animation.
  */
 @Composable
@@ -509,7 +513,6 @@ private fun SnackBarStackItem(
     trueIndex: Int,
     onSwipedAway: (String) -> Unit,
     snackBarStackConfig: SnackBarStackConfig,
-    enableSwipeToDismiss: Boolean = true,
     screenWidthPx: Float
 ) {
     val modelWrapper = state.snapshotStateList[trueIndex]
@@ -561,7 +564,7 @@ private fun SnackBarStackItem(
     val animatedWidthScale = animateFloatAsState(
         targetValue = targetWidthScale,
         animationSpec = tween(durationMillis = ANIMATION_DURATION_MS, easing = FastOutSlowInEasing),
-        label = "WidthScaleAnimation"
+        label = SnackBarLabels.WIDTH_SCALE_ANIMATION
     )
 
     // Opacity Animation: Related to Entry/Exit Fade Animations
@@ -644,7 +647,7 @@ private fun SnackBarStackItem(
             )
             .wrapContentHeight()
             .then(
-                if (enableSwipeToDismiss && (isTop || state.expanded)) Modifier.pointerInput(model.id) {
+                if (model.enableSwipeToDismiss && (isTop || state.expanded)) Modifier.pointerInput(model.id) {
                     detectHorizontalDragGestures(
                         onDragStart = {},
                         onDragEnd = {
@@ -835,7 +838,7 @@ fun Scrim(
     val scrimColor by animateColorAsState(
         targetValue = if (isActivated) activatedColor else Color.Transparent,
         animationSpec = tween(durationMillis = ANIMATION_DURATION_MS),
-        label = "ScrimColorAnimation"
+        label = SnackBarLabels.SCRIM_COLOR_ANIMATION
     )
 
     if (scrimColor.alpha > 0f) {
