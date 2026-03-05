@@ -108,10 +108,7 @@ fun SnackBarStackDemoLayout(context: V2StackableSnackbarActivity) {
                 state = stackState,
                 snackBarStackConfig = SnackBarStackConfig(
                     snackbarGapWhenExpanded = 10.dp
-                ),
-                getTrailingIconBasedOnOverflow = {
-                    null
-                }
+                )
             )
             Spacer(modifier = Modifier.height(10.dp))
             Row() {
@@ -136,6 +133,9 @@ fun SnackBarStackDemoLayout(context: V2StackableSnackbarActivity) {
                                     }
                                 }
                             ),
+                            getTrailingIconBasedOnOverflow = {
+                                null
+                            },
                             onActionTextClicked = {
                                 stackState.toggleExpandedState()
                             })
@@ -173,6 +173,9 @@ fun SnackBarStackDemoLayout(context: V2StackableSnackbarActivity) {
                                             }
                                         }
                                     ),
+                                    getTrailingIconBasedOnOverflow = {
+                                        null
+                                    },
                                     onActionTextClicked = {
                                         stackState.toggleExpandedState()
                                     })
