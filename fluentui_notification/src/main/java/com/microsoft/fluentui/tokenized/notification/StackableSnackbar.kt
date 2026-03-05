@@ -709,7 +709,8 @@ private fun SnackBarStackItem(
             verticalAlignment = Alignment.CenterVertically
         ) {
 
-            var trailingIcon by remember { mutableStateOf(model.trailingIcon) }
+            var hasTextOverflow by remember { mutableStateOf(false) }
+            val trailingIcon by remember { derivedStateOf { model.getTrailingIconBasedOnOverflow(hasTextOverflow) ?: model.trailingIcon } }
             if (model.leadingIcon != null && model.leadingIcon.isIconAvailable()) {
                 Box(
                     modifier = Modifier
@@ -749,7 +750,9 @@ private fun SnackBarStackItem(
                     maxLines = messageMaxLines,
                     overflow = TextOverflow.Ellipsis,
                     onTextLayout = { textLayout ->
-                        trailingIcon = model.getTrailingIconBasedOnOverflow(textLayout.hasVisualOverflow) ?: model.trailingIcon
+                        if (hasTextOverflow != textLayout.hasVisualOverflow) {
+                            hasTextOverflow = textLayout.hasVisualOverflow
+                        }
                     }
                 )
                 if (!model.subTitle.isNullOrBlank()) {
