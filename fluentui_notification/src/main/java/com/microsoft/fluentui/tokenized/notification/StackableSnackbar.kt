@@ -149,7 +149,7 @@ data class SnackBarItemModel(
     val actionText: String? = null,
     val snackBarToken: StackableSnackBarTokens = DEFAULT_SNACKBAR_TOKENS,
     val onActionTextClicked: () -> Unit = {},
-    val enableSwipeToDismiss: Boolean = true
+    val enableSwipeToDismiss: Boolean = true,
     val getTrailingIconBasedOnOverflow: (Boolean) -> FluentIcon? = { _ -> trailingIcon }
 )
 
