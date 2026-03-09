@@ -768,10 +768,7 @@ private fun SnackBarStackItem(
                     modifier = Modifier
                         .testTag(SnackBarTestTags.SNACK_BAR_ACTION_BUTTON)
                         .then(
-                            if (model.trailingIcon != null)
-                                Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
-                            else
-                                Modifier.padding(start = 16.dp, top = 12.dp, bottom = 12.dp)
+                            Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
                         ),
                     text = model.actionText,
                     style = ButtonStyle.TextButton,
