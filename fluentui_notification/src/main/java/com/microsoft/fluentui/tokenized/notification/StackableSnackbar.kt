@@ -56,14 +56,17 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.times
+import com.microsoft.fluentui.notification.R
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.StateColor
@@ -839,6 +842,7 @@ fun Scrim(
     )
 
     if (scrimColor.alpha > 0f) {
+        val scrimContentDescription = stringResource(R.string.scrim_content_description)
         Box(
             modifier = modifier
                 .fillMaxSize()
@@ -848,6 +852,9 @@ fun Scrim(
                     indication = null,
                     onClick = onDismiss
                 )
+                .semantics {
+                    contentDescription = scrimContentDescription
+                }
         )
     }
 }
