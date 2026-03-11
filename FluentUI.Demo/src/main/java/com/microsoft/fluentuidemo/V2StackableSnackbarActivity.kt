@@ -133,6 +133,9 @@ fun SnackBarStackDemoLayout(context: V2StackableSnackbarActivity) {
                                     }
                                 }
                             ),
+                            getTrailingIconBasedOnOverflow = {
+                                null
+                            },
                             onActionTextClicked = {
                                 stackState.toggleExpandedState()
                             },
@@ -172,6 +175,9 @@ fun SnackBarStackDemoLayout(context: V2StackableSnackbarActivity) {
                                             }
                                         }
                                     ),
+                                    getTrailingIconBasedOnOverflow = {
+                                        null
+                                    },
                                     onActionTextClicked = {
                                         stackState.toggleExpandedState()
                                     },
