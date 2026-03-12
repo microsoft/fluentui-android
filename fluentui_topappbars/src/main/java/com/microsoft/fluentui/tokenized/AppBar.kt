@@ -178,7 +178,7 @@ fun AppBar(
                     ) {
                         // title
                         Row(
-                            modifier = if (postTitleIcon.isIconAvailable() || postTitleIcon.onClick != null) {
+                            modifier = if (postTitleIcon.isIconAvailable() && postTitleIcon.onClick != null) {
                                 Modifier.clickableWithTooltip(
                                     tooltipText = title,
                                     tooltipEnabled = tooltipControls.enableTitleTooltip,
