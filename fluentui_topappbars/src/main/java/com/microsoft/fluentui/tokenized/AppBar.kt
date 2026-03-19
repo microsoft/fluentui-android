@@ -178,7 +178,8 @@ fun AppBar(
                     ) {
                         // title
                         Row(
-                            modifier = Modifier.clickableWithTooltip(
+                            modifier = if (postTitleIcon.isIconAvailable() && postTitleIcon.onClick != null) {
+                                Modifier.clickableWithTooltip(
                                     tooltipText = title,
                                     tooltipEnabled = tooltipControls.enableTitleTooltip,
                                     backgroundColor = token.tooltipBackgroundBrush(
@@ -199,7 +200,8 @@ fun AppBar(
                                     },
                                     offset = token.tooltipOffset(appBarInfo),
                                     timeout = token.tooltipTimeout(appBarInfo)
-                                ),
+                                )
+                            } else Modifier,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             BasicText(

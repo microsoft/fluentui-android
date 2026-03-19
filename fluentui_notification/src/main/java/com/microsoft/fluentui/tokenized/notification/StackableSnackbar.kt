@@ -139,6 +139,7 @@ private val DEFAULT_SNACKBAR_TOKENS = StackableSnackBarTokens()
  * @property snackBarToken The tokens for customizing the snackbar's appearance.
  * @property onActionTextClicked The callback to be invoked when the action button is clicked.
  * @property enableSwipeToDismiss If `true`, swiping the snackbar item horizontally will dismiss it.
+ * @property getTrailingIconBasedOnOverflow The callback to determine the trailing icon based on whether the text has overflow. It receives a boolean indicating if there is an overflow and returns a FluentIcon to be used as the trailing icon.
  */
 @Stable
 data class SnackBarItemModel(
@@ -151,7 +152,8 @@ data class SnackBarItemModel(
     val actionText: String? = null,
     val snackBarToken: StackableSnackBarTokens = DEFAULT_SNACKBAR_TOKENS,
     val onActionTextClicked: () -> Unit = {},
-    val enableSwipeToDismiss: Boolean = true
+    val enableSwipeToDismiss: Boolean = true,
+    val getTrailingIconBasedOnOverflow: (Boolean) -> FluentIcon? = { _ -> trailingIcon }
 )
 
 internal data class SnackbarItemInternal(
@@ -727,6 +729,9 @@ private fun SnackBarStackItem(
                 .testTag(SnackBarTestTags.SNACK_BAR),
             verticalAlignment = Alignment.CenterVertically
         ) {
+
+            var hasTextOverflow by remember { mutableStateOf(false) }
+            val trailingIcon by remember { derivedStateOf { model.getTrailingIconBasedOnOverflow(hasTextOverflow) ?: model.trailingIcon } }
             if (model.leadingIcon != null && model.leadingIcon.isIconAvailable()) {
                 Box(
                     modifier = Modifier
@@ -764,7 +769,12 @@ private fun SnackBarStackItem(
                     text = model.message,
                     style = token.titleTypography(snackBarInfo),
                     maxLines = messageMaxLines,
-                    overflow = TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis,
+                    onTextLayout = { textLayout ->
+                        if (hasTextOverflow != textLayout.hasVisualOverflow) {
+                            hasTextOverflow = textLayout.hasVisualOverflow
+                        }
+                    }
                 )
                 if (!model.subTitle.isNullOrBlank()) {
                     Text(
@@ -804,29 +814,31 @@ private fun SnackBarStackItem(
                 )
             }
 
-            if (model.trailingIcon != null && model.trailingIcon!!.isIconAvailable()) {
-                Box(
-                    modifier = Modifier
-                        .testTag(SnackBarTestTags.SNACK_BAR_ICON)
-                        .then(
-                            if (model.trailingIcon!!.onClick != null) {
-                                Modifier.clickable(
-                                    interactionSource = remember { MutableInteractionSource() },
-                                    indication = rememberRipple(),
-                                    enabled = true,
-                                    role = Role.Image,
-                                    onClick = model.trailingIcon!!.onClick!!
-                                )
-                            } else Modifier
-                        )
-                ) {
-                    Icon(
-                        model.trailingIcon!!,
+            trailingIcon?.let { icon ->
+                if (icon.isIconAvailable()) {
+                    Box(
                         modifier = Modifier
-                            .padding(top = 12.dp, bottom = 12.dp, end = 16.dp)
-                            .size(token.leftIconSize(snackBarInfo)),
-                        tint = token.iconColor(snackBarInfo)
-                    )
+                            .testTag(SnackBarTestTags.SNACK_BAR_ICON)
+                            .then(
+                                icon.onClick?.let { onClick ->
+                                    Modifier.clickable(
+                                        interactionSource = remember { MutableInteractionSource() },
+                                        indication = rememberRipple(),
+                                        enabled = true,
+                                        role = Role.Image,
+                                        onClick = onClick
+                                    )
+                                } ?: Modifier
+                            )
+                    ) {
+                        Icon(
+                            icon,
+                            modifier = Modifier
+                                .padding(top = 12.dp, bottom = 12.dp, end = 16.dp)
+                                .size(token.leftIconSize(snackBarInfo)),
+                            tint = token.iconColor(snackBarInfo)
+                        )
+                    }
                 }
             }
         }
