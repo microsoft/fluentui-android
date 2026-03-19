@@ -44,6 +44,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -55,6 +56,7 @@ import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.LiveRegionMode
@@ -81,6 +83,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.StackableSnackbarEntryAn
 import com.microsoft.fluentui.theme.token.controlTokens.StackableSnackbarExitAnimationType
 import com.microsoft.fluentui.tokenized.controls.Button
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.launch
 import kotlin.math.abs
 import kotlin.math.pow
@@ -443,6 +446,7 @@ fun SnackBarStack(
     snackBarStackConfig: SnackBarStackConfig = SnackBarStackConfig()
 ) {
     val localDensity = LocalDensity.current
+    val view = LocalView.current
 
     val totalVisibleSnackbars by remember { derivedStateOf { state.sizeVisible() } }
     val targetHeight = if (totalVisibleSnackbars == 0) {
@@ -458,11 +462,22 @@ fun SnackBarStack(
         label = SnackBarLabels.STACK_HEIGHT_ANIMATION
     )
 
+    val expandedAnnouncement = stringResource(R.string.expanded_announcement)
+    val collapsedAnnouncement = stringResource(R.string.collapsed_announcement)
+
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     val screenWidthPx = with(localDensity) { screenWidth.toPx() }
 
     val scrollState =
         rememberScrollState() //TODO: Keep Focus Anchored To the Bottom when expanded and new snackbar added
+
+    LaunchedEffect(Unit) {
+        snapshotFlow { state.expanded }
+            .drop(1) // dropping the first emission since it's not a result of user interaction and can cause unwanted announcements on initial load.
+            .collect { isExpanded ->
+                view.announceForAccessibility(if (isExpanded) expandedAnnouncement else collapsedAnnouncement)
+            }
+    }
     Column(
         modifier = Modifier
             .fillMaxWidth()
