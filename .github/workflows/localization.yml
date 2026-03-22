@@ -18,19 +18,19 @@ jobs:
       run: |
           # 1. Get the GitHub OIDC federated token
           FEDERATED_TOKEN=$(curl -s -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange" | jq -r '.value')
-          
-          # 2. Exchange it for a TouchDown Build access token (v1.0 endpoint)
-          RESPONSE=$(curl -s -X POST \
-            "https://login.microsoftonline.com/${{ secrets.AZURE_TENANT_ID }}/oauth2/token" \
-            -H "Content-Type: application/x-www-form-urlencoded" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=api://AzureADTokenExchange" | jq -r '.value')
+
+          # 2. Exchange it for a TouchDown Build access token (v2.0 endpoint)
+            RESPONSE=$(curl -s -X POST \
+            "https://login.microsoftonline.com/${{ secrets.AZURE_TENANT_ID }}/oauth2/v2.0/token" \
+          -H "Content-Type: application/x-www-form-urlencoded" \
             -d "client_id=${{ secrets.AZURE_CLIENT_ID }}" \
-            -d "resource=https://microsoft.onmicrosoft.com/tdb-touchdownbuild-prod" \
+            -d "scope=https://prdtrs01.onmicrosoft.com/touchdownbuildservice_prod/.default" \
             -d "client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer" \
             -d "client_assertion=$FEDERATED_TOKEN" \
             -d "grant_type=client_credentials")
-          
-          TOKEN=$(echo "$RESPONSE" | jq -r '.access_token')
+            
+            TOKEN=$(echo "$RESPONSE" | jq -r '.access_token')
           
           if [ "$TOKEN" = "null" ] || [ -z "$TOKEN" ]; then
             echo "ERROR: Failed to get access token"
