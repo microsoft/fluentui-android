@@ -68,13 +68,7 @@ function jsonValue ()
 
 function oauthToken ()
 {
-  tokenFetchCmd=`curl -v -sw "%{http_code}" \
-    -X POST \
-    -H "Content-Type: application/x-www-form-urlencoded" \
-    -d "client_id=$alias&resource=https://microsoft.onmicrosoft.com/$tokenServer&client_secret=$password&grant_type=client_credentials" \
-    "https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token"`
-  tokenValue=`echo $tokenFetchCmd | jsonValue access_token 1`
-  echo $tokenValue
+  echo "$alias"
 }
 
 # =========================
