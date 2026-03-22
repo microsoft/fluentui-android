@@ -13,21 +13,34 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Azure Login (OIDC)
-      uses: azure/login@v2
-      with:
-        client-id: ${{ secrets.AZURE_CLIENT_ID }}
-        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-        allow-no-subscriptions: true
-
-    - name: Get access token
+    - name: Get access token for TouchDown Build
       id: get-token
       run: |
-            TOKEN=$(az account get-access-token \
-              --resource "https://microsoft.onmicrosoft.com/tdb-touchdownbuild-prod" \
-              --query accessToken -o tsv)
-            echo "::add-mask::$TOKEN"
-            echo "TD_ACCESS_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+          # 1. Get the GitHub OIDC federated token
+          FEDERATED_TOKEN=$(curl -s -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange" | jq -r '.value')
+          
+          # 2. Exchange it for a TouchDown Build access token
+          RESPONSE=$(curl -s -X POST \
+            "https://login.microsoftonline.com/${{ secrets.AZURE_TENANT_ID }}/oauth2/v2.0/token" \
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            -d "client_id=${{ secrets.AZURE_CLIENT_ID }}" \
+            -d "scope=https://microsoft.onmicrosoft.com/tdb-touchdownbuild-prod/.default" \
+            -d "client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer" \
+            -d "client_assertion=$FEDERATED_TOKEN" \
+            -d "grant_type=client_credentials")
+          
+          TOKEN=$(echo "$RESPONSE" | jq -r '.access_token')
+          
+          if [ "$TOKEN" = "null" ] || [ -z "$TOKEN" ]; then
+            echo "ERROR: Failed to get access token"
+            echo "$RESPONSE" | jq .
+            exit 1
+          fi
+          
+          echo "::add-mask::$TOKEN"
+          echo "TD_ACCESS_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+          echo "Token acquired successfully (length: ${#TOKEN})"
     - shell: bash
       name: Localize
       env:
