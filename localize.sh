@@ -47,83 +47,66 @@ if [ -z $TDBUILD_TEAM_ID ]; then
   read TDBUILD_TEAM_ID
 fi
 
-if [ -z $TDBUILD_AAD_APPLICATION_CLIENT_ID ]; then
-  printf "Alias: "
-  read TDBUILD_AAD_APPLICATION_CLIENT_ID
-fi
-
-if [ -z $TDBUILD_AAD_APPLICATION_CLIENT_SECRET ]; then
-  stty -echo
-  printf "Password: "
-  read TDBUILD_AAD_APPLICATION_CLIENT_SECRET
-  stty echo
-  printf "\n"
+if [ -z "$TD_ACCESS_TOKEN" ]; then
+  echo "ERROR: TD_ACCESS_TOKEN is not set. Run azure/login first."
+  exit 1
 fi
 
 echo "Using Team ID: $TDBUILD_TEAM_ID"
-echo "Using Alias: $TDBUILD_AAD_APPLICATION_CLIENT_ID"
+echo "Using pre-fetched OIDC token (length: ${#TD_ACCESS_TOKEN})"
 
 start_ts=$(date +%s)
 
 ./GetLocalizedFiles.sh -t $TDBUILD_TEAM_ID -u \
-  -a $TDBUILD_AAD_APPLICATION_CLIENT_ID \
-  -p $TDBUILD_AAD_APPLICATION_CLIENT_SECRET \
+  -a "$TD_ACCESS_TOKEN" \
   -f FluentUI.Demo/src/main/res/values \
   -r demo \
   -o FluentUI.Demo/src/main/res/values
 
 ./GetLocalizedFiles.sh -t $TDBUILD_TEAM_ID -u \
-  -a $TDBUILD_AAD_APPLICATION_CLIENT_ID \
-  -p $TDBUILD_AAD_APPLICATION_CLIENT_SECRET \
+  -a "$TD_ACCESS_TOKEN" \
   -f fluentui_calendar/src/main/res/values \
   -r fluentui_calendar \
   -o fluentui_calendar/src/main/res/values
 
 ./GetLocalizedFiles.sh -t $TDBUILD_TEAM_ID -u \
-  -a $TDBUILD_AAD_APPLICATION_CLIENT_ID \
-  -p $TDBUILD_AAD_APPLICATION_CLIENT_SECRET \
+  -a "$TD_ACCESS_TOKEN" \
   -f fluentui_ccb/src/main/res/values \
   -r fluentui_ccb \
   -o fluentui_ccb/src/main/res/values
 
 ./GetLocalizedFiles.sh -t $TDBUILD_TEAM_ID -u \
-  -a $TDBUILD_AAD_APPLICATION_CLIENT_ID \
-  -p $TDBUILD_AAD_APPLICATION_CLIENT_SECRET \
+  -a "$TD_ACCESS_TOKEN" \
   -f fluentui_controls/src/main/res/values \
   -r fluentui_controls \
   -o fluentui_controls/src/main/res/values
 
 ./GetLocalizedFiles.sh -t $TDBUILD_TEAM_ID -u \
-  -a $TDBUILD_AAD_APPLICATION_CLIENT_ID \
-  -p $TDBUILD_AAD_APPLICATION_CLIENT_SECRET \
+  -a "$TD_ACCESS_TOKEN" \
   -f fluentui_core/src/main/res/values \
   -r fluentui_core \
   -o fluentui_core/src/main/res/values
 
 ./GetLocalizedFiles.sh -t $TDBUILD_TEAM_ID -u \
-  -a $TDBUILD_AAD_APPLICATION_CLIENT_ID \
-  -p $TDBUILD_AAD_APPLICATION_CLIENT_SECRET \
+  -a "$TD_ACCESS_TOKEN" \
   -f fluentui_drawer/src/main/res/values \
   -r fluentui_drawer \
   -o fluentui_drawer/src/main/res/values
 
 ./GetLocalizedFiles.sh -t $TDBUILD_TEAM_ID -u \
-  -a $TDBUILD_AAD_APPLICATION_CLIENT_ID \
-  -p $TDBUILD_AAD_APPLICATION_CLIENT_SECRET \
+  -a "$TD_ACCESS_TOKEN" \
   -f fluentui_listitem/src/main/res/values \
   -r fluentui_listitem \
   -o fluentui_listitem/src/main/res/values
 
 ./GetLocalizedFiles.sh -t $TDBUILD_TEAM_ID -u \
-  -a $TDBUILD_AAD_APPLICATION_CLIENT_ID \
-  -p $TDBUILD_AAD_APPLICATION_CLIENT_SECRET \
+  -a "$TD_ACCESS_TOKEN" \
   -f fluentui_menus/src/main/res/values \
   -r fluentui_menus \
   -o fluentui_menus/src/main/res/values
 
 ./GetLocalizedFiles.sh -t $TDBUILD_TEAM_ID -u \
-  -a $TDBUILD_AAD_APPLICATION_CLIENT_ID \
-  -p $TDBUILD_AAD_APPLICATION_CLIENT_SECRET \
+  -a "$TD_ACCESS_TOKEN" \
   -f fluentui_notification/src/main/res/values \
   -r fluentui_notification \
   -o fluentui_notification/src/main/res/values
