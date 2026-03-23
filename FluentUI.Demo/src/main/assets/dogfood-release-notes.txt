@@ -1,8 +1,13 @@
-Release version 0.3.11
+Release version 0.3.12
 What's new
 Fluent v2:
 Fix/enhancement:
-    1. Modified the Stackable Snackbar's Trailing Icon to be mutable
+    1. Adding dismissible properties to individual snackbar item in StackableSnackbar.
+    2. Adding talkback semantics to scrim in StackableSnackbar.
+    3. Adding icon level callback to StackableSnackbar for custom icon rendering.
+    4. Padding fix for action text when trailing icon is absent in StackableSnackbar.
+    5. Adding fix for talkback in AppBar where talkback was reading the content since the title was always clickable.
+    6. Updating the pipeline to use Ubuntu 22.04 runners.
 
 Note:
 The Demo App for Fluent Controls will now also be published on Github starting from v0.3.8
