@@ -49,6 +49,8 @@ jobs:
       run: ./localize.sh
     - name: Create Pull Request
       env:
+        GH_TOKEN: ${{ github.token }}
+        # Optional: keep this too if some step/action expects GITHUB_TOKEN
         GITHUB_TOKEN: ${{ github.token }}
       run: |
         set -e
