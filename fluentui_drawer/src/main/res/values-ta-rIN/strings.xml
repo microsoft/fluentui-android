@@ -9,6 +9,8 @@
     <string name="drag_handle">இழுவைக் கைப்பிடி</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">விரிவாக்கு</string>
+    <string name="expanded">expanded</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">சுருக்கு</string>
+    <string name="collapsed">collapsed</string>
 </resources>

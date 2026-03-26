@@ -9,6 +9,8 @@
     <string name="drag_handle">دستگیره کشیدن</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">باز کردن</string>
+    <string name="expanded">expanded</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">جمع کردن</string>
+    <string name="collapsed">collapsed</string>
 </resources>

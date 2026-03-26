@@ -18,7 +18,7 @@
     <!-- Describes the action button component -->
     <string name="fluentui_action_button">Кнопка дії</string>
     <!-- Describes the dismiss button component -->
-    <string name="fluentui_dismiss_button">Dismiss</string>
+    <string name="fluentui_dismiss_button">Закрити</string>
     <!-- Describes enabled action-->
     <string name="fluentui_enabled">Активовано</string>
     <!-- Describes close action for a sheet-->

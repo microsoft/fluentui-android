@@ -21,7 +21,7 @@
     <!-- Text for button that starts the demo -->
     <string name="actionbar_start_button">Avvia demo</string>
     <!-- Texts for radio buttons -->
-    <string name="actionbar_carousel_radio_label">Sequenza</string>
+    <string name="actionbar_carousel_radio_label">Carousel</string>
     <string name="actionbar_icon_radio_label">Icona</string>
     <string name="actionbar_basic_radio_label">Base</string>
     <string name="actionbar_position_bottom_radio_label">In fondo</string>
@@ -41,6 +41,21 @@
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Icona di spostamento selezionata.</string>
+
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Center align app bar</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">App Bar size</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Left Logo</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Navigation Icon</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Enable Tooltips</string>
 
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Bandiera</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Elimina</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Elimina elemento selezionato</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Toggle</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Toggle item clicked</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
@@ -409,9 +428,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Espandi foglio inferiore permanente</string>
-    <string name="collapse_persistent_sheet_button"> Nascondi foglio inferiore permanente</string>
-    <string name="show_persistent_sheet_button"> Mostra foglio inferiore permanente</string>
+    <string name="expand_bottom_sheet_button">Expand Persistent Bottom Sheet</string>
+    <string name="collapse_persistent_sheet_button"> Hide Persistent Bottom Sheet</string>
+    <string name="show_persistent_sheet_button"> Show Persistent Bottom Sheet</string>
     <string name="new_view">Questa è la nuova visualizzazione</string>
     <string name="toggle_sheet_content">Attiva/Disattiva contenuto del foglio inferiore</string>
     <string name="switch_to_custom_content">Passa al contenuto personalizzato</string>
@@ -761,6 +780,8 @@
     <string name="menu_xOffset">Offset X (in dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Offset Y (in dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Tip Offset (in dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Testo contenuto</string>
     <!-- UI Label for repeat content text -->
@@ -851,6 +872,8 @@
     <string name="drawer_less_than_half_screen_content">Contenuto a meno di metà schermo</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Contenuto di dimensioni dinamiche</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Searchable Drawer Content</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Contenuto pannello annidato</string>
     <!-- UI Label for Expandable -->
@@ -861,6 +884,8 @@
     <string name="prevent_scrim_click_dismissal">Impedisci chiusura al clic Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Mostra quadratino</string>
+    <string name="drawer_enable_swipe_dismiss">Enable Swipe Dismiss</string>
+    <string name="bottom_drawer_max_width_landscape">Max Landscape width</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
@@ -878,7 +903,7 @@
     <!--UI label showing tooltip message -->
     <string name="tooltip_bottom_end">Bordo inferiore </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center">Centro </string>
+    <string name="tooltip_center">Centrato </string>
     <!--UI label showing tooltip message -->
     <string name="tooltip_custom_center">Centro personalizzato</string>
 
