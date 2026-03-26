@@ -79,7 +79,7 @@ jobs:
                 /repos/${GITHUB_REPOSITORY}/pulls \
                 -f title="$message" \
               -f body="Localized files" \
-              -f head="$branch" \
+              -f head="${GITHUB_REPOSITORY_OWNER}:$branch" \
               -f base='master'
         else
             echo "No changes since last run"
