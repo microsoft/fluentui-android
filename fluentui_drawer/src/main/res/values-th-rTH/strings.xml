@@ -9,6 +9,8 @@
     <string name="drag_handle">จุดจับลาก</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">ขยาย</string>
+    <string name="expanded">expanded</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">ยุบ</string>
+    <string name="collapsed">collapsed</string>
 </resources>

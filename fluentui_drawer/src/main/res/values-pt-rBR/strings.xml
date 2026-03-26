@@ -9,6 +9,8 @@
     <string name="drag_handle">Arrastar a Alça</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">expandir</string>
+    <string name="expanded">expanded</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">recolher</string>
+    <string name="collapsed">collapsed</string>
 </resources>
