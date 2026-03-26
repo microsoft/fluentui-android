@@ -14,4 +14,8 @@
     <string name="Active">Virk(ur)</string>
     <!-- String specifying the work status of a person -->
     <string name="Inactive">Óvirk(ur)</string>
+    <!-- Describes the Numbering of Persona List items -->
+    <string name="position_string">%d atriði á lista yfir %d</string>
+    <!-- Status of a person -->
+    <string name="status_string">Status: %s</string>
 </resources>

@@ -18,7 +18,7 @@
     <!-- Describes the action button component -->
     <string name="fluentui_action_button">చర్యా బటన్</string>
     <!-- Describes the dismiss button component -->
-    <string name="fluentui_dismiss_button">Dismiss</string>
+    <string name="fluentui_dismiss_button">విస్మరించు</string>
     <!-- Describes enabled action-->
     <string name="fluentui_enabled">ప్రారంభించబడింది</string>
     <!-- Describes close action for a sheet-->

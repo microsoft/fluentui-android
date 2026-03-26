@@ -18,7 +18,7 @@
     <!-- Describes the action button component -->
     <string name="fluentui_action_button">Interaktivni gumb</string>
     <!-- Describes the dismiss button component -->
-    <string name="fluentui_dismiss_button">Dismiss</string>
+    <string name="fluentui_dismiss_button">Opusti</string>
     <!-- Describes enabled action-->
     <string name="fluentui_enabled">Omogočeno</string>
     <!-- Describes close action for a sheet-->

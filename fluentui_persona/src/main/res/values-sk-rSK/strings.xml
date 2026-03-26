@@ -14,4 +14,8 @@
     <string name="Active">Aktívny</string>
     <!-- String specifying the work status of a person -->
     <string name="Inactive">Neaktívny</string>
+    <!-- Describes the Numbering of Persona List items -->
+    <string name="position_string">Položka %d v zozname %d</string>
+    <!-- Status of a person -->
+    <string name="status_string">Status: %s</string>
 </resources>

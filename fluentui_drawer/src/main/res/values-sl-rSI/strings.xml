@@ -9,6 +9,8 @@
     <string name="drag_handle">Povlecite ročico</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">razširi</string>
+    <string name="expanded">expanded</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">strni</string>
+    <string name="collapsed">collapsed</string>
 </resources>

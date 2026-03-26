@@ -14,4 +14,8 @@
     <string name="Active">ใช้งานอยู่</string>
     <!-- String specifying the work status of a person -->
     <string name="Inactive">ไม่ได้ใช้งาน</string>
+    <!-- Describes the Numbering of Persona List items -->
+    <string name="position_string">รายการ %d ในรายการของ %d</string>
+    <!-- Status of a person -->
+    <string name="status_string">Status: %s</string>
 </resources>
