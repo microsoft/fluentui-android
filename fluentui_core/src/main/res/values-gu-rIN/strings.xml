@@ -18,7 +18,7 @@
     <!-- Describes the action button component -->
     <string name="fluentui_action_button">ક્રિયા બટન</string>
     <!-- Describes the dismiss button component -->
-    <string name="fluentui_dismiss_button">Dismiss</string>
+    <string name="fluentui_dismiss_button">કાઢી નાંખો</string>
     <!-- Describes enabled action-->
     <string name="fluentui_enabled">સક્ષમ કરેલ છે</string>
     <!-- Describes close action for a sheet-->

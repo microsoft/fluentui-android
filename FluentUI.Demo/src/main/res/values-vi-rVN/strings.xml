@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Đã bấm vào biểu tượng điều hướng.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Center align app bar</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">App Bar size</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Left Logo</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Navigation Icon</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Enable Tooltips</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Cờ</string>
     <string name="app_bar_layout_menu_settings">Cài đặt</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Xóa</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Đã bấm vào mục Xóa</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Toggle</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Toggle item clicked</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Hình đại diện</string>
     <!--Double line items-->
@@ -407,9 +426,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Bung rộng chân trang tính liên tục</string>
-    <string name="collapse_persistent_sheet_button">Ẩn chân trang tính liên tục</string>
-    <string name="show_persistent_sheet_button"> Hiển thị BottomSheet liên tục</string>
+    <string name="expand_bottom_sheet_button">Expand Persistent Bottom Sheet</string>
+    <string name="collapse_persistent_sheet_button"> Hide Persistent Bottom Sheet</string>
+    <string name="show_persistent_sheet_button"> Show Persistent Bottom Sheet</string>
     <string name="new_view">Đây là dạng xem mới</string>
     <string name="toggle_sheet_content">Chuyển đổi nội dung Bottomsheet</string>
     <string name="switch_to_custom_content">Chuyển sang Nội dung tùy chỉnh</string>
@@ -759,6 +778,8 @@
     <string name="menu_xOffset">Độ lệch X (tính bằng dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Độ lệch Y (tính bằng dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Tip Offset (in dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Văn bản nội dung</string>
     <!-- UI Label for repeat content text -->
@@ -804,7 +825,7 @@
     <!-- UI Label Cancel -->
     <string name="cancel">Hủy bỏ</string>
     <!-- UI Label Ok -->
-    <string name="ok">Ok</string>
+    <string name="ok">Đồng ý</string>
     <!-- A sample description -->
     <string name="dialog_description">Hộp thoại là một cửa sổ nhỏ nhắc người dùng đưa ra quyết định hoặc nhập thông tin bổ sung.</string>
 
@@ -849,6 +870,8 @@
     <string name="drawer_less_than_half_screen_content">Nội dung chiếm dưới một nửa màn hình</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Nội dung có kích cỡ động</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Searchable Drawer Content</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Nội dung ngăn xếp chồng nhau</string>
     <!-- UI Label for Expandable -->
@@ -859,6 +882,8 @@
     <string name="prevent_scrim_click_dismissal">Ngăn Bỏ qua khi Bấm Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Hiện núm điều khiển</string>
+    <string name="drawer_enable_swipe_dismiss">Enable Swipe Dismiss</string>
+    <string name="bottom_drawer_max_width_landscape">Max Landscape width</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

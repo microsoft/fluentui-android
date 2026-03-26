@@ -9,6 +9,8 @@
     <string name="drag_handle">Перетягнути маркер</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">розгорнути</string>
+    <string name="expanded">expanded</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">згорнути</string>
+    <string name="collapsed">collapsed</string>
 </resources>

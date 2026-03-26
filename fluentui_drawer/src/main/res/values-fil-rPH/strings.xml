@@ -9,6 +9,8 @@
     <string name="drag_handle">I-drag ang Hawakan</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">palawakin</string>
+    <string name="expanded">expanded</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">paliitin</string>
+    <string name="collapsed">collapsed</string>
 </resources>

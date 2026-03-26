@@ -1,6 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
 <resources>
-  <string name="drag_handle">Rukoväť presunutia</string>
-  <string name="expand">rozbaliť</string>
-  <string name="collapse">zbaliť</string>
+    <!--SheetBehavior Address-->
+
+    <!-- Text for bottomsheet handle -->
+    <string name="drag_handle">Rukoväť presunutia</string>
+    <!-- onClick Label for bottomsheet to expand -->
+    <string name="expand">rozbaliť</string>
+    <string name="expanded">expanded</string>
+    <!-- onClick Label for bottomsheet to collapse -->
+    <string name="collapse">zbaliť</string>
+    <string name="collapsed">collapsed</string>
 </resources>

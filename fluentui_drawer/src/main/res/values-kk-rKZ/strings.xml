@@ -9,6 +9,8 @@
     <string name="drag_handle">Таңбалауышты апару</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">кеңейту</string>
+    <string name="expanded">expanded</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">тасалау</string>
+    <string name="collapsed">collapsed</string>
 </resources>

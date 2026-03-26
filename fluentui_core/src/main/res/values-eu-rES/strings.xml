@@ -18,7 +18,7 @@
     <!-- Describes the action button component -->
     <string name="fluentui_action_button">Ekintza-botoia</string>
     <!-- Describes the dismiss button component -->
-    <string name="fluentui_dismiss_button">Dismiss</string>
+    <string name="fluentui_dismiss_button">Baztertu</string>
     <!-- Describes enabled action-->
     <string name="fluentui_enabled">Gaituta</string>
     <!-- Describes close action for a sheet-->
