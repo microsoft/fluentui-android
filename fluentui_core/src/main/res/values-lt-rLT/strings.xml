@@ -18,7 +18,7 @@
     <!-- Describes the action button component -->
     <string name="fluentui_action_button">Veiksmo mygtukas</string>
     <!-- Describes the dismiss button component -->
-    <string name="fluentui_dismiss_button">Dismiss</string>
+    <string name="fluentui_dismiss_button">Atmesti</string>
     <!-- Describes enabled action-->
     <string name="fluentui_enabled">Įgalinta</string>
     <!-- Describes close action for a sheet-->

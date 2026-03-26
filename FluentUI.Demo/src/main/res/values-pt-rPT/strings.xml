@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Ícone de navegação clicado.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Center align app bar</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">App Bar size</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Left Logo</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Navigation Icon</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Enable Tooltips</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Sinalizador</string>
     <string name="app_bar_layout_menu_settings">Definições</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Eliminar</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Eliminar item clicado</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Toggle</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Toggle item clicked</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
@@ -409,9 +428,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Expandir BottomSheet Persistente</string>
-    <string name="collapse_persistent_sheet_button"> Ocultar BottomSheet Persistente</string>
-    <string name="show_persistent_sheet_button"> Mostrar BottomSheet Persistente</string>
+    <string name="expand_bottom_sheet_button">Expand Persistent Bottom Sheet</string>
+    <string name="collapse_persistent_sheet_button"> Hide Persistent Bottom Sheet</string>
+    <string name="show_persistent_sheet_button"> Show Persistent Bottom Sheet</string>
     <string name="new_view">Esta é a Nova Vista</string>
     <string name="toggle_sheet_content">Ativar/Desativar Conteúdo da BottomSheet</string>
     <string name="switch_to_custom_content">Mudar para Conteúdo personalizado</string>
@@ -761,6 +780,8 @@
     <string name="menu_xOffset">Desvio X (em dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Desvio Y (em dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Tip Offset (in dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Texto do Conteúdo</string>
     <!-- UI Label for repeat content text -->
@@ -806,7 +827,7 @@
     <!-- UI Label Cancel -->
     <string name="cancel">Cancelar</string>
     <!-- UI Label Ok -->
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <!-- A sample description -->
     <string name="dialog_description">Uma caixa de diálogo é uma pequena janela que pede ao utilizador para tomar uma decisão ou introduzir informações adicionais.</string>
 
@@ -851,6 +872,8 @@
     <string name="drawer_less_than_half_screen_content">Conteúdo em menos de metade do ecrã</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Conteúdo de tamanho dinâmico</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Searchable Drawer Content</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Conteúdo da Gaveta Aninhada</string>
     <!-- UI Label for Expandable -->
@@ -861,6 +884,8 @@
     <string name="prevent_scrim_click_dismissal">Impedir Dispensa ao Clicar no Ecrã</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Mostrar Alça</string>
+    <string name="drawer_enable_swipe_dismiss">Enable Swipe Dismiss</string>
+    <string name="bottom_drawer_max_width_landscape">Max Landscape width</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

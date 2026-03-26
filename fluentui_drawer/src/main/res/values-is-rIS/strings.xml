@@ -9,6 +9,8 @@
     <string name="drag_handle">Draga hald</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">stækka</string>
+    <string name="expanded">expanded</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">minnka</string>
+    <string name="collapsed">collapsed</string>
 </resources>

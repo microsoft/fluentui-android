@@ -18,7 +18,7 @@
     <!-- Describes the action button component -->
     <string name="fluentui_action_button">动作按钮</string>
     <!-- Describes the dismiss button component -->
-    <string name="fluentui_dismiss_button">Dismiss</string>
+    <string name="fluentui_dismiss_button">关闭</string>
     <!-- Describes enabled action-->
     <string name="fluentui_enabled">已启用</string>
     <!-- Describes close action for a sheet-->

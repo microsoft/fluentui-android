@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Kliknięto ikonę nawigacji.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Center align app bar</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">App Bar size</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Left Logo</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Navigation Icon</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Enable Tooltips</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Flaga</string>
     <string name="app_bar_layout_menu_settings">Ustawienia</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Usuń</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Kliknięto element Usuń</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Toggle</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Toggle item clicked</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Awatar</string>
     <!--Double line items-->
@@ -410,9 +429,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Rozwiń trwały arkusz dolny</string>
-    <string name="collapse_persistent_sheet_button"> Ukryj trwały arkusz dolny</string>
-    <string name="show_persistent_sheet_button"> Pokaż trwały arkusz dolny</string>
+    <string name="expand_bottom_sheet_button">Expand Persistent Bottom Sheet</string>
+    <string name="collapse_persistent_sheet_button"> Hide Persistent Bottom Sheet</string>
+    <string name="show_persistent_sheet_button"> Show Persistent Bottom Sheet</string>
     <string name="new_view">To jest nowy widok</string>
     <string name="toggle_sheet_content">Przełącz zawartość arkusza dolnego</string>
     <string name="switch_to_custom_content">Przełącz do zawartości niestandardowej</string>
@@ -762,6 +781,8 @@
     <string name="menu_xOffset">Przesunięcie X (w dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Przesunięcie Y (w dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Tip Offset (in dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Tekst zawartości</string>
     <!-- UI Label for repeat content text -->
@@ -852,6 +873,8 @@
     <string name="drawer_less_than_half_screen_content">Mniej niż połowa zawartości ekranu</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Zawartość o rozmiarze dynamicznym</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Searchable Drawer Content</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Zawartość zagnieżdżonej szuflady</string>
     <!-- UI Label for Expandable -->
@@ -862,6 +885,8 @@
     <string name="prevent_scrim_click_dismissal">Zapobiegaj odrzuceniu po kliknięciu przycisku Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Pokaż uchwyt</string>
+    <string name="drawer_enable_swipe_dismiss">Enable Swipe Dismiss</string>
+    <string name="bottom_drawer_max_width_landscape">Max Landscape width</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
