@@ -9,6 +9,8 @@
     <string name="drag_handle">Kéo núm điều tác</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">bung rộng</string>
+    <string name="expanded">expanded</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">thu gọn</string>
+    <string name="collapsed">collapsed</string>
 </resources>

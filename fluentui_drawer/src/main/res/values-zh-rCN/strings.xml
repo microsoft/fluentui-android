@@ -9,6 +9,8 @@
     <string name="drag_handle">拖动图柄</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">展开</string>
+    <string name="expanded">expanded</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">折叠</string>
+    <string name="collapsed">collapsed</string>
 </resources>

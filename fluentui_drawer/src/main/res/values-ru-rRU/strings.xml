@@ -9,6 +9,8 @@
     <string name="drag_handle">Маркер перетаскивания</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">развернуть</string>
+    <string name="expanded">expanded</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">свернуть</string>
+    <string name="collapsed">collapsed</string>
 </resources>

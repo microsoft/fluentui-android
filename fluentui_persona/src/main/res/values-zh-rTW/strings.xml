@@ -14,4 +14,8 @@
     <string name="Active">作用中</string>
     <!-- String specifying the work status of a person -->
     <string name="Inactive">非使用中</string>
+    <!-- Describes the Numbering of Persona List items -->
+    <string name="position_string">Item %d in list of %d</string>
+    <!-- Status of a person -->
+    <string name="status_string">Status: %s</string>
 </resources>

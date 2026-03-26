@@ -9,6 +9,8 @@
     <string name="drag_handle">გადათრევის სახელური</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">გაშლა</string>
+    <string name="expanded">expanded</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">აკეცვა</string>
+    <string name="collapsed">collapsed</string>
 </resources>
