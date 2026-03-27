@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Spustelėta naršymo piktograma.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Programėlės juostos lygiavimas centre</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">Programėlės juostos dydis</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Kairysis logotipas</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Naršymo piktograma</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Įgalinti patarimus</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Vėliavėlė</string>
     <string name="app_bar_layout_menu_settings">Parametrai</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Naikinti</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Spustelėtas elemento naikinimas</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Perjungti</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Spustelėtas elemento perjungimas</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Pseudonimas</string>
     <!--Double line items-->
@@ -410,8 +429,8 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Išplėsti nuolatinį BottomSheet</string>
-    <string name="collapse_persistent_sheet_button"> Slėpti nuolatinį BottomSheet</string>
+    <string name="expand_bottom_sheet_button">Išplėsti nuolatinį apatinį lapą</string>
+    <string name="collapse_persistent_sheet_button"> Slėpti nuolatinį apatinį lapą</string>
     <string name="show_persistent_sheet_button"> Rodyti nuolatinį apatinį lapą</string>
     <string name="new_view">Tai yra naujas rodinys</string>
     <string name="toggle_sheet_content">Perjungti apatinio lapo turinį</string>
@@ -762,6 +781,8 @@
     <string name="menu_xOffset">Poslinkis X (dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Poslinkis Y (dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Patarimo poslinkis (dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Turinio tekstas</string>
     <!-- UI Label for repeat content text -->
@@ -807,7 +828,7 @@
     <!-- UI Label Cancel -->
     <string name="cancel">Atšaukti</string>
     <!-- UI Label Ok -->
-    <string name="ok">Gerai</string>
+    <string name="ok">Ok</string>
     <!-- A sample description -->
     <string name="dialog_description">Dialogas yra mažas langas, raginantis vartotoją priimti sprendimą arba įvesti papildomą informaciją.</string>
 
@@ -852,6 +873,8 @@
     <string name="drawer_less_than_half_screen_content">Mažiau nei pusė ekrano turinio</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Dinaminio dydžio turinys</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Ieškomas stalčiaus turinys</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Įdėtojo stalčiaus turinys</string>
     <!-- UI Label for Expandable -->
@@ -862,6 +885,8 @@
     <string name="prevent_scrim_click_dismissal">Drausti atsisakyti „Scrim“ spustelėjimu</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Rodyti rankenėlę</string>
+    <string name="drawer_enable_swipe_dismiss">Įgalinti perbraukimo atmetimą</string>
+    <string name="bottom_drawer_max_width_landscape">Maksimalus gulsčios padėties plotis</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

@@ -9,6 +9,8 @@
     <string name="drag_handle">हँडल ड्रॅग करा</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">विस्तृत करा</string>
+    <string name="expanded">विस्तारित केले</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">आकुंचित करा</string>
+    <string name="collapsed">आकुंचित केले</string>
 </resources>

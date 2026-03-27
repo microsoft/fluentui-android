@@ -14,4 +14,8 @@
     <string name="Active">Белсенді</string>
     <!-- String specifying the work status of a person -->
     <string name="Inactive">Белсенді емес</string>
+    <!-- Describes the Numbering of Persona List items -->
+    <string name="position_string">%d тізіміндегі %d элемент</string>
+    <!-- Status of a person -->
+    <string name="status_string">Күйі: %s</string>
 </resources>

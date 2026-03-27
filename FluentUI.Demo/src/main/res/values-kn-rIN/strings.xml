@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">ನ್ಯಾವಿಗೇಶನ್ ಐಕಾನ್ ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">ಆ್ಯಪ್‌ ಬಾರ್ ಅನ್ನು ಮಧ್ಯಕ್ಕೆ ಒಗ್ಗೂಡಿಸಿ</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">ಆ್ಯಪ್ ಪಟ್ಟಿಯ ಗಾತ್ರ</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">ಎಡ ಲೋಗೋ</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">ನ್ಯಾವಿಗೇಶನ್ ಐಕಾನ್</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">ಪರಿಕರಸೂಚಿಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">ಫ್ಲ್ಯಾಗ್</string>
     <string name="app_bar_layout_menu_settings">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">ಅಳಿಸಿ</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">ಕ್ಲಿಕ್ ಮಾಡಲಾದ ಐಟಂ ಅಳಿಸಿ</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">ಟಾಗಲ್ ಮಾಡಿ</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">ಕ್ಲಿಕ್ ಮಾಡಲಾದ ಐಟಂ ಟಾಗಲ್ ಮಾಡಿ</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">ಅವತಾರ್</string>
     <!--Double line items-->
@@ -408,9 +427,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">ನಿರಂತರ BottomSheet ಮರೆಮಾಡಿ</string>
-    <string name="collapse_persistent_sheet_button"> ನಿರಂತರ BottomSheet ಮರೆಮಾಡಿ</string>
-    <string name="show_persistent_sheet_button"> ನಿರಂತರ BottomSheet ತೋರಿಸಿ</string>
+    <string name="expand_bottom_sheet_button">ನಿರಂತರ ಬಾಟಮ್ ಶೀಟ್ ವಿಸ್ತರಿಸಿ</string>
+    <string name="collapse_persistent_sheet_button"> ನಿರಂತರ ಬಾಟಮ್ ಶೀಟ್ ಮರೆಮಾಡಿ</string>
+    <string name="show_persistent_sheet_button"> ನಿರಂತರ ಬಾಟಮ್ ಶೀಟ್ ತೋರಿಸಿ</string>
     <string name="new_view">ಇದು ಹೊಸ ವೀಕ್ಷಣೆ</string>
     <string name="toggle_sheet_content">ಕೆಳಹಾಳೆ ವಿಷಯ ಟಾಗಲ್ ಮಾಡಿ</string>
     <string name="switch_to_custom_content">ಕಸ್ಟಮ್ ವಿಷಯಕ್ಕೆ ಸ್ವಿಚ್ ಮಾಡಿ</string>
@@ -760,6 +779,8 @@
     <string name="menu_xOffset">ಆಫ್‌ಸೆಟ್ X (ಡಿಪಿ ಯಲ್ಲಿ)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">ಆಫ್‌ಸೆಟ್ Y (ಡಿಪಿ ಯಲ್ಲಿ)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">ಸುಳಿವು ಆಫ್‌ಸೆಟ್ (dp ನಲ್ಲಿ)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">ವಿಷಯ ಪಠ್ಯ</string>
     <!-- UI Label for repeat content text -->
@@ -850,6 +871,8 @@
     <string name="drawer_less_than_half_screen_content">ಅರ್ಧಕ್ಕಿಂತ ಕಡಿಮೆ ಪರದೆ ವಿಷಯ</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">ಡೈನಾಮಿಕ್ ಗಾತ್ರ ವಿಷಯ</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">ಶೋಧಿಸಬಹುದಾದ ಡ್ರಾಯರ್ ವಿಷಯ</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">ನೆಸ್ಟೆಡ್ ಡ್ರಾಯರ್ ವಿಷಯ</string>
     <!-- UI Label for Expandable -->
@@ -860,6 +883,8 @@
     <string name="prevent_scrim_click_dismissal">ಸ್ಕ್ರಿಮ್ ಕ್ಲಿಕ್‌ನಲ್ಲಿ ವಜಾ ತಡೆಯಿರಿ</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">ಹ್ಯಾಂಡಲ್ ತೋರಿಸಿ</string>
+    <string name="drawer_enable_swipe_dismiss">ಸ್ವೈಪ್ ತ್ಯಜಿಸುವಿಕೆ ಸಕ್ರಿಯಗೊಳಿಸಿ</string>
+    <string name="bottom_drawer_max_width_landscape">ಗರಿಷ್ಠ ಲ್ಯಾಂಡ್ ಸ್ಕೇಪ್ ಅಗಲ</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

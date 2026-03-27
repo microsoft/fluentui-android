@@ -1,6 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
 <resources>
-  <string name="drag_handle">مقبض السحب</string>
-  <string name="expand">توسيع</string>
-  <string name="collapse">طي</string>
+    <!--SheetBehavior Address-->
+
+    <!-- Text for bottomsheet handle -->
+    <string name="drag_handle">مقبض السحب</string>
+    <!-- onClick Label for bottomsheet to expand -->
+    <string name="expand">توسيع</string>
+    <string name="expanded">تم التوسيع</string>
+    <!-- onClick Label for bottomsheet to collapse -->
+    <string name="collapse">طي</string>
+    <string name="collapsed">تم الطي</string>
 </resources>

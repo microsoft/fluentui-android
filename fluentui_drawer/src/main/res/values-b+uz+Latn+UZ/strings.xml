@@ -9,6 +9,8 @@
     <string name="drag_handle">Dastakni tortish</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">yoyish</string>
+    <string name="expanded">kengaytirilgan</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">yigʻish</string>
+    <string name="collapsed">yig‘ilgan</string>
 </resources>

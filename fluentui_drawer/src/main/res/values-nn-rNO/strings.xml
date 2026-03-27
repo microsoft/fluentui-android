@@ -9,6 +9,8 @@
     <string name="drag_handle">Drahandtak</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">utvid</string>
+    <string name="expanded">utvida</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">skjul</string>
+    <string name="collapsed">skjult</string>
 </resources>

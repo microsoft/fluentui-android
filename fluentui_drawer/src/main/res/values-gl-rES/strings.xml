@@ -9,6 +9,8 @@
     <string name="drag_handle">Arrastrar controlador</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">expandir</string>
+    <string name="expanded">expandido</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">contraer</string>
+    <string name="collapsed">contraído</string>
 </resources>
