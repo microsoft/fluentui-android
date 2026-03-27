@@ -9,6 +9,8 @@
     <string name="drag_handle">Povuci hvatište</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">proširi</string>
+    <string name="expanded">prošireno</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">sažmi</string>
+    <string name="collapsed">sažeto</string>
 </resources>

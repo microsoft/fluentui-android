@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Siirtymiskuvaketta napsautetaan.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Keskitä sovelluspalkki</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">Sovelluspalkin koko</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Vasen logo</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Siirtymiskuvake</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Ota työkaluvihjeet käyttöön</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Merkintä</string>
     <string name="app_bar_layout_menu_settings">Asetukset</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Poista</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Kohteen poistaminen napsautetaan</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Vaihda</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Vaihda kohdetta napsautetaan</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
@@ -760,6 +779,8 @@
     <string name="menu_xOffset">Siirtymä X (dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Siirtymä Y (dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Vihjeen siirtymä (dp:nä)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Sisällön teksti</string>
     <!-- UI Label for repeat content text -->
@@ -850,6 +871,8 @@
     <string name="drawer_less_than_half_screen_content">Alle puolet näytön sisällöstä</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Sisällön dynaaminen koko</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Haettavan vetolaatikon sisältö</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Sisäkkäinen valikon sisältö</string>
     <!-- UI Label for Expandable -->
@@ -860,6 +883,8 @@
     <string name="prevent_scrim_click_dismissal">Estä Scrim-napsautuksen ohittaminen</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Näytä kahva</string>
+    <string name="drawer_enable_swipe_dismiss">Ota käyttöön hylkääminen pyyhkäisemällä</string>
+    <string name="bottom_drawer_max_width_landscape">Max vaakaleveys</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

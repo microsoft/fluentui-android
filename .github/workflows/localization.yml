@@ -1,5 +1,10 @@
 on: workflow_dispatch
 
+permissions:
+  id-token: write
+  contents: write
+  pull-requests: write
+
 jobs:
   Localize:
     runs-on: ubuntu-22.04
@@ -7,12 +12,40 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    - name: Get access token for TouchDown Build
+      id: get-token
+      run: |
+          # 1. Get the GitHub OIDC federated token
+          FEDERATED_TOKEN=$(curl -s -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange" | jq -r '.value')
+          
+          # 2. Exchange it for a TouchDown Build access token (v2.0 endpoint)
+          RESPONSE=$(curl -s -X POST \
+          "https://login.microsoftonline.com/${{ secrets.AZURE_TENANT_ID }}/oauth2/v2.0/token" \
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            -d "client_id=${{ secrets.AZURE_CLIENT_ID }}" \
+            -d "scope=https://prdtrs01.onmicrosoft.com/touchdownbuildservice_prod/.default" \
+            -d "client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer" \
+            -d "client_assertion=$FEDERATED_TOKEN" \
+            -d "grant_type=client_credentials")
+          
+          TOKEN=$(echo "$RESPONSE" | jq -r '.access_token')
+          
+          if [ "$TOKEN" = "null" ] || [ -z "$TOKEN" ]; then
+            echo "ERROR: Failed to get access token"
+            echo "$RESPONSE" | jq .
+            exit 1
+          fi
+          
+          echo "::add-mask::$TOKEN"
+          echo "TD_ACCESS_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+          echo "Token acquired successfully (length: ${#TOKEN})"
     - shell: bash
       name: Localize
       env:
         TDBUILD_TEAM_ID: ${{ secrets.TDBUILD_TEAM_ID }}
-        TDBUILD_AAD_APPLICATION_CLIENT_ID: ${{ secrets.TDBUILD_AAD_APPLICATION_CLIENT_ID }}
-        TDBUILD_AAD_APPLICATION_CLIENT_SECRET: ${{ secrets.TDBUILD_AAD_APPLICATION_CLIENT_SECRET }}
+        TD_ACCESS_TOKEN: ${{ env.TD_ACCESS_TOKEN }}
       run: ./localize.sh
     - name: Create Pull Request
       env:

@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Ikoon vir navigasie is geklik.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Belyn die toepassingsbalk in die middel</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">Toepassingbalkgrootte</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Linkerlogo</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Navigasie-ikoon</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Skakel nutsmiddelwenke aan</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Vlag</string>
     <string name="app_bar_layout_menu_settings">Instellings</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Skrap</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Skrap-item is geklik</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Wissel</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Wisselitem is geklik</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
@@ -408,9 +427,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Vou voortdurende BottomSheet uit</string>
-    <string name="collapse_persistent_sheet_button"> Versteek voortdurende BottomSheet</string>
-    <string name="show_persistent_sheet_button"> Wys voortdurende ondersteblad</string>
+    <string name="expand_bottom_sheet_button">Vou voortdurende onderste werkblad uit</string>
+    <string name="collapse_persistent_sheet_button"> Versteek voortdurende onderste werkblad</string>
+    <string name="show_persistent_sheet_button"> Wys voortdurende onderste werkblad</string>
     <string name="new_view">Hierdie is ’n nuwe aansig</string>
     <string name="toggle_sheet_content">Wissel ondersteblad se inhoud</string>
     <string name="switch_to_custom_content">Skakel oor na gepasmaakte inhoud</string>
@@ -760,6 +779,8 @@
     <string name="menu_xOffset">Verplaas X (in dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Verplaas Y (in dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Wenkverplasing (in dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Inhoudteks</string>
     <!-- UI Label for repeat content text -->
@@ -805,7 +826,7 @@
     <!-- UI Label Cancel -->
     <string name="cancel">Kanselleer</string>
     <!-- UI Label Ok -->
-    <string name="ok">Goed</string>
+    <string name="ok">OK</string>
     <!-- A sample description -->
     <string name="dialog_description">’n Dialoogblokkie is ’n klein venster wat die gebruiker por om ’n besluit te neem of bykomende inligting in te voer.</string>
 
@@ -850,6 +871,8 @@
     <string name="drawer_less_than_half_screen_content">Minder as die halwe skerminhoud</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Dinamiese grootte-inhoud</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Soekbare laai-inhoud</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Geneste laai-inhoud</string>
     <!-- UI Label for Expandable -->
@@ -860,6 +883,8 @@
     <string name="prevent_scrim_click_dismissal">Voorkom weiering by Scrim-klik</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Wys handvatsel</string>
+    <string name="drawer_enable_swipe_dismiss">Aktiveer vee om te weier</string>
+    <string name="bottom_drawer_max_width_landscape">Maksimum landskapwydte</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

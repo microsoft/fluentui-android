@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Значок навигации нажат.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Выровнять панель приложений по центру</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">Размер панели приложений</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Логотип слева</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Значок навигации</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Включить подсказки</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Флаг</string>
     <string name="app_bar_layout_menu_settings">Параметры</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Удаление</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Нажат элемент "Удалить"</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Переключить</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Нажат элемент-переключатель</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Аватар</string>
     <!--Double line items-->
@@ -410,9 +429,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Развернуть постоянную нижнюю таблицу</string>
-    <string name="collapse_persistent_sheet_button"> Скрыть постоянную нижнюю таблицу</string>
-    <string name="show_persistent_sheet_button"> Показать постоянную нижнюю таблицу</string>
+    <string name="expand_bottom_sheet_button">Развернуть постоянный нижний лист</string>
+    <string name="collapse_persistent_sheet_button"> Скрыть постоянный нижний лист</string>
+    <string name="show_persistent_sheet_button"> Показать постоянный нижний лист</string>
     <string name="new_view">Это новое представление</string>
     <string name="toggle_sheet_content">Переключить содержимое нижней таблицы</string>
     <string name="switch_to_custom_content">Переключиться на пользовательское содержимое</string>
@@ -762,6 +781,8 @@
     <string name="menu_xOffset">Смещение X (дп)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Смещение Y (дп)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Смещение подсказки (в абстрактных пикселях)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Текст содержимого</string>
     <!-- UI Label for repeat content text -->
@@ -852,6 +873,8 @@
     <string name="drawer_less_than_half_screen_content">Содержимое размером менее половины экрана</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Содержимое динамического размера</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Содержимое ящика с возможностью поиска</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Содержимое вложенной панели</string>
     <!-- UI Label for Expandable -->
@@ -862,6 +885,8 @@
     <string name="prevent_scrim_click_dismissal">Запретить закрытие по щелчку перекрывающей области</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Показать маркер</string>
+    <string name="drawer_enable_swipe_dismiss">Включить возможность закрытия жестом горизонтальной прокрутки</string>
+    <string name="bottom_drawer_max_width_landscape">Максимальная ширина в альбомной ориентации</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

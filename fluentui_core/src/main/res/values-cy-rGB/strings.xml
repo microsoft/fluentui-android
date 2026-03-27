@@ -18,7 +18,7 @@
     <!-- Describes the action button component -->
     <string name="fluentui_action_button">Botwm Gweithredu</string>
     <!-- Describes the dismiss button component -->
-    <string name="fluentui_dismiss_button">Dismiss</string>
+    <string name="fluentui_dismiss_button">Diystyru</string>
     <!-- Describes enabled action-->
     <string name="fluentui_enabled">Wedi\'i alluogi</string>
     <!-- Describes close action for a sheet-->

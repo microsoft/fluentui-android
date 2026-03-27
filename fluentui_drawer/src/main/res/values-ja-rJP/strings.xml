@@ -9,6 +9,8 @@
     <string name="drag_handle">ハンドルをドラッグ</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">展開</string>
+    <string name="expanded">展開されています</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">折りたたみ</string>
+    <string name="collapsed">折りたたまれています</string>
 </resources>

@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Изабрана је икона за навигацију.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Центрирање траке апликације</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">Величина траке апликације</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Логотип лево</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Икона навигације</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Омогућите описе алата</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Обележити заставицом</string>
     <string name="app_bar_layout_menu_settings">Поставке</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Избришите</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Изабрана ставка брисања</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Укључи/искључи</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Кликнуто је на преклопну ставку</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Аватар</string>
     <!--Double line items-->
@@ -409,9 +428,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Развиј трајни доњи лист</string>
+    <string name="expand_bottom_sheet_button">Прошири трајни доњи лист</string>
     <string name="collapse_persistent_sheet_button"> Сакриј трајни доњи лист</string>
-    <string name="show_persistent_sheet_button"> Прикажи трајни BottomSheet</string>
+    <string name="show_persistent_sheet_button"> Прикажи трајни доњи лист</string>
     <string name="new_view">Ово је нови приказ</string>
     <string name="toggle_sheet_content">Укључи/искључи садржај доњег листа</string>
     <string name="switch_to_custom_content">Пребаци се на прилагођени садржај</string>
@@ -761,6 +780,8 @@
     <string name="menu_xOffset">Помак по X оси (у dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Помак по Y оси (у dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Помак врха (у dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Текст садржаја</string>
     <!-- UI Label for repeat content text -->
@@ -851,6 +872,8 @@
     <string name="drawer_less_than_half_screen_content">Мање од пола садржаја екрана</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Садржај динамичке величине</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Садржај претраживе фиоке</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Садржај угнежђене фиоке</string>
     <!-- UI Label for Expandable -->
@@ -861,6 +884,8 @@
     <string name="prevent_scrim_click_dismissal">Спречи одбацивање кликом ван дијалога</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Прикажи регулатор</string>
+    <string name="drawer_enable_swipe_dismiss">Омогући брзо превлачење за одбацивање</string>
+    <string name="bottom_drawer_max_width_landscape">Макс. ширина у пејзажном режиму</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

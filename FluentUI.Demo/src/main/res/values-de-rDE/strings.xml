@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Auf das Navigationssymbol wurde geklickt.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">App-Leiste zentriert ausrichten</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">Größe der App-Leiste</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Linkes Logo</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Navigationssymbol</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Quickinfos aktivieren</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Kennzeichnen</string>
     <string name="app_bar_layout_menu_settings">Einstellungen</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Löschen</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Auf Element löschen geklickt</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Umschalten</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Element umschalten angeklickt</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
@@ -408,9 +427,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Persistentes BottomSheet erweitern</string>
-    <string name="collapse_persistent_sheet_button"> Persistentes BottomSheet ausblenden</string>
-    <string name="show_persistent_sheet_button"> Persistentes BottomSheet anzeigen</string>
+    <string name="expand_bottom_sheet_button">Beständiges unteres Blatt erweitern</string>
+    <string name="collapse_persistent_sheet_button"> Beständiges unteres Blatt ausblenden</string>
+    <string name="show_persistent_sheet_button"> Beständiges unteres Blatt anzeigen</string>
     <string name="new_view">Dies ist eine neue Ansicht</string>
     <string name="toggle_sheet_content">Inhalt des Bottomsheet umschalten</string>
     <string name="switch_to_custom_content">Zu benutzerdefiniertem Inhalt wechseln</string>
@@ -491,7 +510,7 @@
     <!-- Designations -->
     <string name="persona_subtitle_designer">Designer</string>
     <string name="persona_subtitle_engineer">Konstrukteur(in)</string>
-    <string name="persona_subtitle_manager">Manager*in</string>
+    <string name="persona_subtitle_manager">Manager</string>
     <string name="persona_subtitle_researcher">Recherche</string>
     <!-- UI labels -->
     <string name="persona_truncation">\ (Beispiel für langen Text zum Testen der Kürzung)</string>
@@ -760,6 +779,8 @@
     <string name="menu_xOffset">Abstand X (in DP)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Abstand Y (in DP)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Tipp-Offset (in DP)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Inhaltstext</string>
     <!-- UI Label for repeat content text -->
@@ -850,6 +871,8 @@
     <string name="drawer_less_than_half_screen_content">Weniger als halber Bildschirminhalt</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Dynamische Größenanpassung von Inhalten</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Durchsuchbarer Drawer-Inhalt</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Inhalt der geschachtelten Schublade</string>
     <!-- UI Label for Expandable -->
@@ -860,6 +883,8 @@
     <string name="prevent_scrim_click_dismissal">Beenden bei Scrim-Klick verhindern</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Ziehpunkt anzeigen</string>
+    <string name="drawer_enable_swipe_dismiss">Wischen zum Schließen aktivieren</string>
+    <string name="bottom_drawer_max_width_landscape">Maximale Querformatbreite</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

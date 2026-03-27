@@ -9,6 +9,8 @@
     <string name="drag_handle">Llusgo\'r Ddolen</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">ehangu</string>
+    <string name="expanded">wedi ehangu</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">crebachu</string>
+    <string name="collapsed">wedi crebachu</string>
 </resources>

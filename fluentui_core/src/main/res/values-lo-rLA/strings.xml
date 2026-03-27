@@ -18,7 +18,7 @@
     <!-- Describes the action button component -->
     <string name="fluentui_action_button">ປຸ່ມ​ການ​ກະ​ທຳ</string>
     <!-- Describes the dismiss button component -->
-    <string name="fluentui_dismiss_button">Dismiss</string>
+    <string name="fluentui_dismiss_button">ປ່ອຍໄປ</string>
     <!-- Describes enabled action-->
     <string name="fluentui_enabled">ເປີດນຳໃຊ້ແລ້ວ</string>
     <!-- Describes close action for a sheet-->

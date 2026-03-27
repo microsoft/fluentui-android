@@ -18,7 +18,7 @@
     <!-- Describes the action button component -->
     <string name="fluentui_action_button">Butang Tindakan</string>
     <!-- Describes the dismiss button component -->
-    <string name="fluentui_dismiss_button">Dismiss</string>
+    <string name="fluentui_dismiss_button">Tolak</string>
     <!-- Describes enabled action-->
     <string name="fluentui_enabled">Didayakan</string>
     <!-- Describes close action for a sheet-->

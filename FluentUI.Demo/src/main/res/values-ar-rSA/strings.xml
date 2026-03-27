@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">تم النقر فوق أيقونة التنقل.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">محاذاة الوسط لشريط التطبيقات</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">حجم شريط التطبيقات</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">الشعار الأيسر</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">أيقونة التنقل</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">تمكين تلميحات الأدوات</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">وضع علامة</string>
     <string name="app_bar_layout_menu_settings">الإعدادات</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">حذف</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">حذف العنصر الذي تم النقر فوقه</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">تشغيل</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">تشغيل العنصر الذي سبق النقر فوقه</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">أفاتار</string>
     <!--Double line items-->
@@ -764,6 +783,8 @@
     <string name="menu_xOffset">إزاحة X (في dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">إزاحة Y (في dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">إزاحة التلميح (في dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">نص المحتوى</string>
     <!-- UI Label for repeat content text -->
@@ -854,6 +875,8 @@
     <string name="drawer_less_than_half_screen_content">محتوى أقل من نصف الشاشة</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">محتوى ديناميكي الحجم</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">محتوى درج قابل للبحث</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">محتوى الدرج المتداخل</string>
     <!-- UI Label for Expandable -->
@@ -864,6 +887,8 @@
     <string name="prevent_scrim_click_dismissal">منع الرفض عند النقر فوق scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">إظهار المقبض</string>
+    <string name="drawer_enable_swipe_dismiss">تمكين تجاهل السحب</string>
+    <string name="bottom_drawer_max_width_landscape">الحد الأقصى للعرض الأفقي</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

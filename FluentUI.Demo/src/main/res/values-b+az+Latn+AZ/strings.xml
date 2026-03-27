@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Naviqasiya piktoqramı klikləndi.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Proqram panelini mərkəzə düzləndir</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">Proqram Zolağının ölçüsü</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Sol Loqo</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Naviqasiya Piktoqramı</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Alət izahlarını aktiv edin</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Bayraq</string>
     <string name="app_bar_layout_menu_settings">Parametrlər</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Sil</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Elementi sil klikləndi</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Dəyişdir</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Elementi dəyişdir seçiminə klikləndi</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
@@ -408,9 +427,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Daimi AltSheet Genişləndir</string>
-    <string name="collapse_persistent_sheet_button"> Davamlı AltSheet Gizlət</string>
-    <string name="show_persistent_sheet_button"> Davamlı AltSheet Gizlət</string>
+    <string name="expand_bottom_sheet_button">Davamlı Aşağı Cədvəli Genişləndirin</string>
+    <string name="collapse_persistent_sheet_button"> Davamlı Aşağı Cədvəli Gizlədin</string>
+    <string name="show_persistent_sheet_button"> Davamlı Aşağı Cədvəli Göstərin</string>
     <string name="new_view">Bu Yeni Baxışdır</string>
     <string name="toggle_sheet_content">AltSheet Məzmununu Dəyişdir</string>
     <string name="switch_to_custom_content">Fərdi Məzmuna Keç</string>
@@ -760,6 +779,8 @@
     <string name="menu_xOffset">X üzrə yerdəyişmə (dp-də)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Y üzrə yerdəyişmə (dp-də)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">İpucunun Əks Olunan İşıqlandırması (dp-də)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Məzmun Mətni</string>
     <!-- UI Label for repeat content text -->
@@ -850,6 +871,8 @@
     <string name="drawer_less_than_half_screen_content">Yarıdan az ekran məzmunu</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Dinamik ölçülü məzmun</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Axtarıla Bilən Sİyirmə Kontenti</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">İç-içə Siyirmə Məzmunu</string>
     <!-- UI Label for Expandable -->
@@ -860,6 +883,8 @@
     <string name="prevent_scrim_click_dismissal">Daha yavaş klikləmədə bağlanmanın qarşısını alın</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Tutacağı Göstərin</string>
+    <string name="drawer_enable_swipe_dismiss">Sürüşdürərək Bağlamağı Aktivləşdirin</string>
+    <string name="bottom_drawer_max_width_landscape">Maksimum Albom eni</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

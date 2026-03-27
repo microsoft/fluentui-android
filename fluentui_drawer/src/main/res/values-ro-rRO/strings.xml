@@ -9,6 +9,8 @@
     <string name="drag_handle">Glisați handle-ul</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">extindeți</string>
+    <string name="expanded">extinsă</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">restrângeți</string>
+    <string name="collapsed">restrânsă</string>
 </resources>

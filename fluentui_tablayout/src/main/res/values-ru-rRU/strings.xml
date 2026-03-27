@@ -4,5 +4,11 @@
     <string name="tab_content_description">\u0020 вкладка %1$d из %2$d</string>
 
     <!-- Describes the Numbering of Pill Butons Inside PillBar -->
-    <string name="position_string">Элемент %d в списке %d</string>
+    <string name="position_string">Элемент %1$d в списке из %2$d</string>
+
+    <!-- String specifying the Active status of a tab -->
+    <string name="tab_active">Активно</string>
+
+    <!-- String specifying the Inactive status of a tab -->
+    <string name="tab_inactive">Неактивно</string>
 </resources>

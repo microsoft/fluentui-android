@@ -9,6 +9,8 @@
     <string name="drag_handle">Faire glisser la poignée</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">développer</string>
+    <string name="expanded">développée</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">réduire</string>
+    <string name="collapsed">réduite</string>
 </resources>
