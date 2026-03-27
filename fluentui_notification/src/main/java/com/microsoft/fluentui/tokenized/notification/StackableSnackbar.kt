@@ -1,5 +1,6 @@
 package com.microsoft.fluentui.tokenized.notification
 
+import android.util.Log
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutLinearInEasing
@@ -11,6 +12,7 @@ import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -49,6 +51,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
@@ -56,13 +61,12 @@ import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
@@ -182,6 +186,10 @@ class SnackBarStackState(
 
     var expanded by mutableStateOf(false)
         private set
+    var selectedItemId by mutableStateOf<String?>(null)
+        private set
+    var focusRequestToken by mutableIntStateOf(0)
+        private set
     internal var maxCurrentSize = maxCollapsedSize
 
     internal var combinedStackHeight by mutableIntStateOf(0)
@@ -239,6 +247,10 @@ class SnackBarStackState(
         return false
     }
 
+    fun updateSelectedItem(id: String) {
+        selectedItemId = id
+    }
+
     /**
      * Removes a snackbar with an exit animation. The actual removal from the state list is
      * delayed to allow the animation to complete.
@@ -270,6 +282,12 @@ class SnackBarStackState(
         expanded = !expanded
         maxCurrentSize = if (expanded) maxExpandedSize else maxCollapsedSize
         onVisibleSizeChange()
+        if (expanded) {
+            selectedItemId = snapshotStateList.firstOrNull { it.visibility.value == ItemVisibility.Visible }?.model?.id
+            focusRequestToken++
+        } else {
+            selectedItemId = null
+        }
     }
 
     /**
@@ -447,6 +465,7 @@ fun SnackBarStack(
 ) {
     val localDensity = LocalDensity.current
     val view = LocalView.current
+    val focusManager = LocalFocusManager.current
 
     val totalVisibleSnackbars by remember { derivedStateOf { state.sizeVisible() } }
     val targetHeight = if (totalVisibleSnackbars == 0) {
@@ -475,9 +494,27 @@ fun SnackBarStack(
         snapshotFlow { state.expanded }
             .drop(1) // dropping the first emission since it's not a result of user interaction and can cause unwanted announcements on initial load.
             .collect { isExpanded ->
+                if (!isExpanded) {
+                    focusManager.clearFocus()
+                }
                 view.announceForAccessibility(if (isExpanded) expandedAnnouncement else collapsedAnnouncement)
             }
     }
+
+    val focusRequesters = remember { mutableMapOf<String, FocusRequester>() }
+
+    LaunchedEffect(state.focusRequestToken) {
+        val targetId = state.selectedItemId ?: return@LaunchedEffect
+        delay(ANIMATION_DURATION_MS.toLong())
+        focusRequesters[targetId]?.let { requester ->
+            try {
+                requester.requestFocus()
+            } catch (e: Exception) {
+                Log.e("SnackBarStack", "Failed to request focus for snackbar with id $targetId", e)
+            }
+        }
+    }
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -507,7 +544,8 @@ fun SnackBarStack(
                             state.showLastHidden()
                         },
                         snackBarStackConfig = snackBarStackConfig,
-                        screenWidthPx = screenWidthPx
+                        screenWidthPx = screenWidthPx,
+                        focusRequester = focusRequesters.getOrPut(snackBarModel.model.id) { FocusRequester() }
                     )
                 }
             }
@@ -533,7 +571,8 @@ private fun SnackBarStackItem(
     trueIndex: Int,
     onSwipedAway: (String) -> Unit,
     snackBarStackConfig: SnackBarStackConfig,
-    screenWidthPx: Float
+    screenWidthPx: Float,
+    focusRequester: FocusRequester
 ) {
     val modelWrapper = state.snapshotStateList[trueIndex]
     val model = modelWrapper.model
@@ -723,9 +762,22 @@ private fun SnackBarStackItem(
                 )
                 .clip(RoundedCornerShape(8.dp))
                 .background(token.backgroundBrush(snackBarInfo))
-                .semantics {
-                    liveRegion = LiveRegionMode.Polite
+                .focusRequester(focusRequester)
+                .onFocusChanged{
+                    if (it.isFocused) {
+                        state.updateSelectedItem(model.id)
+                    }
                 }
+                .focusable()
+                .then(
+                    if (state.expanded) {
+                        Modifier.semantics {
+                            contentDescription = "${trueIndex+1} of ${state.snapshotStateList.size} ${model.message}"
+                        }
+                    } else {
+                        Modifier
+                    }
+                )
                 .testTag(SnackBarTestTags.SNACK_BAR),
             verticalAlignment = Alignment.CenterVertically
         ) {
