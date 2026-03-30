@@ -490,7 +490,7 @@ fun SnackBarStack(
     val scrollState =
         rememberScrollState() //TODO: Keep Focus Anchored To the Bottom when expanded and new snackbar added
 
-    LaunchedEffect(Unit) {
+    LaunchedEffect(expandedAnnouncement, collapsedAnnouncement) {
         snapshotFlow { state.expanded }
             .drop(1) // dropping the first emission since it's not a result of user interaction and can cause unwanted announcements on initial load.
             .collect { isExpanded ->
