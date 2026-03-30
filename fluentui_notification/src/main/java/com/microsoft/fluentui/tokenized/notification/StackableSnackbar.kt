@@ -186,7 +186,7 @@ class SnackBarStackState(
 
     var expanded by mutableStateOf(false)
         private set
-    var selectedItemId by mutableStateOf<String?>(null)
+    var selectedItemId: String? = null
         private set
     var focusRequestToken by mutableIntStateOf(0)
         private set
@@ -500,21 +500,6 @@ fun SnackBarStack(
                 view.announceForAccessibility(if (isExpanded) expandedAnnouncement else collapsedAnnouncement)
             }
     }
-
-    val focusRequesters = remember { mutableMapOf<String, FocusRequester>() }
-
-    LaunchedEffect(state.focusRequestToken) {
-        val targetId = state.selectedItemId ?: return@LaunchedEffect
-        delay(ANIMATION_DURATION_MS.toLong())
-        focusRequesters[targetId]?.let { requester ->
-            try {
-                requester.requestFocus()
-            } catch (e: Exception) {
-                Log.e("SnackBarStack", "Failed to request focus for snackbar with id $targetId", e)
-            }
-        }
-    }
-
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -544,8 +529,7 @@ fun SnackBarStack(
                             state.showLastHidden()
                         },
                         snackBarStackConfig = snackBarStackConfig,
-                        screenWidthPx = screenWidthPx,
-                        focusRequester = focusRequesters.getOrPut(snackBarModel.model.id) { FocusRequester() }
+                        screenWidthPx = screenWidthPx
                     )
                 }
             }
@@ -571,8 +555,7 @@ private fun SnackBarStackItem(
     trueIndex: Int,
     onSwipedAway: (String) -> Unit,
     snackBarStackConfig: SnackBarStackConfig,
-    screenWidthPx: Float,
-    focusRequester: FocusRequester
+    screenWidthPx: Float
 ) {
     val modelWrapper = state.snapshotStateList[trueIndex]
     val model = modelWrapper.model
@@ -587,6 +570,19 @@ private fun SnackBarStackItem(
     val snackBarInfo = SnackBarInfo(model.style, false)
     val entryAnimationType = token.entryAnimationType(snackBarInfo)
     val exitAnimationType = token.exitAnimationType(snackBarInfo)
+
+    val focusRequester = remember { FocusRequester() }
+
+    LaunchedEffect(state.focusRequestToken) {
+        if (state.selectedItemId == model.id) {
+            delay(ANIMATION_DURATION_MS.toLong())
+            try {
+                focusRequester.requestFocus()
+            } catch (e: Exception) {
+                Log.e("SnackBarStackItem", "Failed to request focus for snackbar with id ${model.id}", e)
+            }
+        }
+    }
 
     // Vertical Offset Animation: Related to Stack Expansion/Collapse and Item Position in Stack
     val initialYOffset = when (entryAnimationType) {
