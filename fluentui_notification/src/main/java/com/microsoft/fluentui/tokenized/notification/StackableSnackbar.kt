@@ -150,7 +150,7 @@ data class SnackBarItemModel(
     val snackBarToken: StackableSnackBarTokens = DEFAULT_SNACKBAR_TOKENS,
     val onActionTextClicked: () -> Unit = {},
     val enableSwipeToDismiss: Boolean = true,
-    val onTitleOverflowChange: (Boolean) -> Unit = { }
+    val onTitleOverflowChange: ((Boolean) -> Unit)? = null
 )
 
 internal data class SnackbarItemInternal(
@@ -757,7 +757,7 @@ private fun SnackBarStackItem(
                     onTextLayout = { textLayout ->
                         if (hasTextOverflow != textLayout.hasVisualOverflow) {
                             hasTextOverflow = textLayout.hasVisualOverflow
-                            model.onTitleOverflowChange(hasTextOverflow)
+                            model.onTitleOverflowChange?.invoke(hasTextOverflow)
                         }
                     }
                 )
