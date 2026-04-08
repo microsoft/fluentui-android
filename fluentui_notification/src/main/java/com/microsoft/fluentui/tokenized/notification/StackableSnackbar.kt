@@ -143,7 +143,7 @@ private val DEFAULT_SNACKBAR_TOKENS = StackableSnackBarTokens()
  * @property snackBarToken The tokens for customizing the snackbar's appearance.
  * @property onActionTextClicked The callback to be invoked when the action button is clicked.
  * @property enableSwipeToDismiss If `true`, swiping the snackbar item horizontally will dismiss it.
- * @property getTrailingIconBasedOnOverflow The callback to determine the trailing icon based on whether the text has overflow. It receives a boolean indicating if there is an overflow and returns a FluentIcon to be used as the trailing icon.
+ * @property onTitleOverflowChange The callback to determine on whether the text(title) has overflown. It receives a boolean indicating if there is an overflow.
  */
 @Stable
 data class SnackBarItemModel(
@@ -157,7 +157,7 @@ data class SnackBarItemModel(
     val snackBarToken: StackableSnackBarTokens = DEFAULT_SNACKBAR_TOKENS,
     val onActionTextClicked: () -> Unit = {},
     val enableSwipeToDismiss: Boolean = true,
-    val getTrailingIconBasedOnOverflow: (Boolean) -> FluentIcon? = { _ -> trailingIcon }
+    val onTitleOverflowChange: ((Boolean) -> Unit)? = null
 )
 
 internal data class SnackbarItemInternal(
@@ -779,7 +779,6 @@ private fun SnackBarStackItem(
         ) {
 
             var hasTextOverflow by remember { mutableStateOf(false) }
-            val trailingIcon by remember { derivedStateOf { model.getTrailingIconBasedOnOverflow(hasTextOverflow) ?: model.trailingIcon } }
             if (model.leadingIcon != null && model.leadingIcon.isIconAvailable()) {
                 Box(
                     modifier = Modifier
@@ -821,6 +820,7 @@ private fun SnackBarStackItem(
                     onTextLayout = { textLayout ->
                         if (hasTextOverflow != textLayout.hasVisualOverflow) {
                             hasTextOverflow = textLayout.hasVisualOverflow
+                            model.onTitleOverflowChange?.invoke(hasTextOverflow)
                         }
                     }
                 )
@@ -862,7 +862,7 @@ private fun SnackBarStackItem(
                 )
             }
 
-            trailingIcon?.let { icon ->
+            model.trailingIcon?.let { icon ->
                 if (icon.isIconAvailable()) {
                     Box(
                         modifier = Modifier

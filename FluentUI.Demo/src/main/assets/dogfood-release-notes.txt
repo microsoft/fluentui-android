@@ -1,8 +1,8 @@
-Release version 0.3.11
+Release version 0.3.13
 What's new
 Fluent v2:
 Fix/enhancement:
-    1. Modified the Stackable Snackbar's Trailing Icon to be mutable
+    1. Adding fix for icon level callback for StackableSnackbar where the icon was missing in some conditions due to default value being cached as null.
 
 Note:
 The Demo App for Fluent Controls will now also be published on Github starting from v0.3.8
