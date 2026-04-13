@@ -64,10 +64,9 @@ jsonParseCmd=`awk -F"[,:}]" '{for(i=1;i<=NF;i++){if($i~/'$KEY'\042/){print $(i+1
 echo $jsonParseCmd
 }
 
-function oauthToken() {
-tokenFetchCmd=`curl -sw "%{http_code}" -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "client_id=$alias&resource=https://microsoft.onmicrosoft.com/$tokenServer&client_secret=$password&grant_type=client_credentials" "https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token"`
-tokenValue=`echo $tokenFetchCmd | jsonValue access_token 1`
-echo $tokenValue
+function oauthToken ()
+{
+  echo "$alias"
 }
 
 if [ -d $filePath ]; then
@@ -155,7 +154,7 @@ then
   echo "Deleting values-$folderWithoutTrailingSlash from ${resDir} as it already exists"
   rm -r "${resDir}/values-${folderWithoutTrailingSlash}"
 fi
- 
+
 mv $folder "${outputDirectory}/values-${folderWithoutTrailingSlash}"
 mv ${valuesDir}/values-${folderWithoutTrailingSlash} $resDir
 
