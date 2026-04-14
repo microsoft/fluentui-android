@@ -4,5 +4,11 @@
     <string name="tab_content_description">\u0020 탭 %1$d/%2$d</string>
 
     <!-- Describes the Numbering of Pill Butons Inside PillBar -->
-    <string name="position_string">항목 %d(%d 목록)</string>
+    <string name="position_string">%2$d 목록에 항목 %1$d이(가) 있습니다.</string>
+
+    <!-- String specifying the Active status of a tab -->
+    <string name="tab_active">활성</string>
+
+    <!-- String specifying the Inactive status of a tab -->
+    <string name="tab_inactive">비활성</string>
 </resources>

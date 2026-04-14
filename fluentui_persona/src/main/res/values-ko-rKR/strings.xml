@@ -14,4 +14,8 @@
     <string name="Active">활성</string>
     <!-- String specifying the work status of a person -->
     <string name="Inactive">비활성</string>
+    <!-- Describes the Numbering of Persona List items -->
+    <string name="position_string">항목 %d(%d 목록)</string>
+    <!-- Status of a person -->
+    <string name="status_string">상태 %s</string>
 </resources>

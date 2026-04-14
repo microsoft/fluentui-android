@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">नेविगेशन आइकन क्लिक किया गया.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">ऐप पट्टी को केंद्र में संरेखित करें</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">ऐप पट्टी का आकार</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">बाएँ लोगो</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">नेविगेशन आइकन</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">टूलटिप्स सक्षम करें</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">ध्वज</string>
     <string name="app_bar_layout_menu_settings">सेटिंग</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">हटाएँ</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">आइटम हटाएँ क्लिक किया गया</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">टॉगल करें</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">आइटम टॉगल करें पर क्लिक किया गया</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">अवतार</string>
     <!--Double line items-->
@@ -408,9 +427,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">निर्बाध BottomSheet विस्तृत करें</string>
-    <string name="collapse_persistent_sheet_button"> निर्बाध BottomSheet छुपाएँ</string>
-    <string name="show_persistent_sheet_button"> निर्बाध निचला पत्रक दिखाएँ</string>
+    <string name="expand_bottom_sheet_button">स्थायी निचला पत्रक विस्तृत करें</string>
+    <string name="collapse_persistent_sheet_button"> स्थायी निचला पत्रक छुपाएँ</string>
+    <string name="show_persistent_sheet_button"> स्थायी निचला पत्रक दिखाएँ</string>
     <string name="new_view">यह नया दृश्य है</string>
     <string name="toggle_sheet_content">निचला पत्रक सामग्री टॉगल करें</string>
     <string name="switch_to_custom_content">कस्टम सामग्री पर स्विच करें</string>
@@ -760,6 +779,8 @@
     <string name="menu_xOffset">ऑफ़सेट X (dp में)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">ऑफ़सेट Y (dp में)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">युक्ति ऑफ़सेट (DP में)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">कंटेंट टेक्स्ट</string>
     <!-- UI Label for repeat content text -->
@@ -805,7 +826,7 @@
     <!-- UI Label Cancel -->
     <string name="cancel">रद्द करें</string>
     <!-- UI Label Ok -->
-    <string name="ok">ठीक है</string>
+    <string name="ok">ठीक</string>
     <!-- A sample description -->
     <string name="dialog_description">संवाद एक छोटी विंडो है जो उपयोगकर्ता को कोई निर्णय लेने या अतिरिक्त जानकारी दर्ज करने का संकेत देता है.</string>
 
@@ -850,6 +871,8 @@
     <string name="drawer_less_than_half_screen_content">आधी स्क्रीन सामग्री से कम</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">डायनेमिक आकार की सामग्री</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">खोज योग्य ड्रॉवर सामग्री</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">नेस्टेड ड्रॉवर सामग्री</string>
     <!-- UI Label for Expandable -->
@@ -860,6 +883,8 @@
     <string name="prevent_scrim_click_dismissal">Scrim क्लिक पर ख़ारिज करना रोकें</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">हैंडल दिखाएँ</string>
+    <string name="drawer_enable_swipe_dismiss">स्वाइप खारिज करने को सक्षम करें</string>
+    <string name="bottom_drawer_max_width_landscape">मैक्स लैंडस्केप चौड़ाई</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

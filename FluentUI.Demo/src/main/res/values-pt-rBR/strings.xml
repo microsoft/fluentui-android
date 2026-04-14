@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Ícone de navegação clicado.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Centralizar a barra de aplicativos</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">Tamanho da Barra de Aplicativos</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Logotipo à Esquerda</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Ícone de navegação</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Habilitar Dicas de Ferramentas</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Sinalizador</string>
     <string name="app_bar_layout_menu_settings">Configurações</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Excluir</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Excluir item clicado</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Ativar/desativar</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Item de ativação/desativação clicado</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
@@ -409,9 +428,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Expandir BottomSheet Persistente</string>
-    <string name="collapse_persistent_sheet_button"> Ocultar BottomSheet Persistente</string>
-    <string name="show_persistent_sheet_button"> Mostrar BottomSheet Persistente</string>
+    <string name="expand_bottom_sheet_button">Expandir planilha inferior persistente</string>
+    <string name="collapse_persistent_sheet_button"> Ocultar a planilha inferior persistente</string>
+    <string name="show_persistent_sheet_button"> Mostrar a planilha inferior persistente</string>
     <string name="new_view">Este é o Novo Modo de Exibição</string>
     <string name="toggle_sheet_content">Ativar/Desativar Conteúdo de Bottomsheet</string>
     <string name="switch_to_custom_content">Alternar para Conteúdo personalizado</string>
@@ -761,6 +780,8 @@
     <string name="menu_xOffset">Deslocamento X (em dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Deslocamento Y (em dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Deslocamento da dica (em dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Texto do Conteúdo</string>
     <!-- UI Label for repeat content text -->
@@ -806,7 +827,7 @@
     <!-- UI Label Cancel -->
     <string name="cancel">Cancelar</string>
     <!-- UI Label Ok -->
-    <string name="ok">OK</string>
+    <string name="ok">Ok</string>
     <!-- A sample description -->
     <string name="dialog_description">Uma caixa de diálogo é uma pequena janela que solicita que o usuário tome uma decisão ou insira informações adicionais.</string>
 
@@ -851,6 +872,8 @@
     <string name="drawer_less_than_half_screen_content">Menos de metade do conteúdo da tela</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Conteúdo de tamanho dinâmico</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Conteúdo da gaveta pesquisável</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Conteúdo da Gaveta Aninhada</string>
     <!-- UI Label for Expandable -->
@@ -861,6 +884,8 @@
     <string name="prevent_scrim_click_dismissal">Impedir Descarte no Clique de Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Mostrar Identificador</string>
+    <string name="drawer_enable_swipe_dismiss">Habilitar Ignorar ao Passar o Dedo</string>
+    <string name="bottom_drawer_max_width_landscape">Largura Máxima em Paisagem</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

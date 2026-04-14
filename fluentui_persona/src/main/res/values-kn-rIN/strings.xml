@@ -14,4 +14,8 @@
     <string name="Active">ಸಕ್ರಿಯ</string>
     <!-- String specifying the work status of a person -->
     <string name="Inactive">ನಿಷ್ಕ್ರಿಯವಾಗಿದೆ</string>
+    <!-- Describes the Numbering of Persona List items -->
+    <string name="position_string">%d ಪಟ್ಟಿಯಲ್ಲಿ %d ಐಟಂ</string>
+    <!-- Status of a person -->
+    <string name="status_string">ಸ್ಥಿತಿ: %s</string>
 </resources>

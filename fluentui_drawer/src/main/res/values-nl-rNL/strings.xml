@@ -9,6 +9,8 @@
     <string name="drag_handle">Sleepgreep</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">uitvouwen</string>
+    <string name="expanded">uitgevouwen</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">samenvouwen</string>
+    <string name="collapsed">samengevouwen</string>
 </resources>

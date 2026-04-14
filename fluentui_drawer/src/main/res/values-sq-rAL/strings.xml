@@ -9,6 +9,8 @@
     <string name="drag_handle">Doreza e zvarritjes</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">zgjero</string>
+    <string name="expanded">zgjeruar</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">palos</string>
+    <string name="collapsed">palosur</string>
 </resources>

@@ -18,7 +18,7 @@
     <!-- Describes the action button component -->
     <string name="fluentui_action_button">ប៊ូតុងសកម្មភាព</string>
     <!-- Describes the dismiss button component -->
-    <string name="fluentui_dismiss_button">Dismiss</string>
+    <string name="fluentui_dismiss_button">បោះបង់</string>
     <!-- Describes enabled action-->
     <string name="fluentui_enabled">បានបើក</string>
     <!-- Describes close action for a sheet-->

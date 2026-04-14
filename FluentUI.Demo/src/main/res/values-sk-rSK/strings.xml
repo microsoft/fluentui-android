@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Kliklo sa na ikonu Navigácia.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Zarovnanie na stred panela aplikácie</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">Veľkosť panela aplikácie</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Ľavé logo</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Ikona navigácie</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Povoliť popisy</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Príznak</string>
     <string name="app_bar_layout_menu_settings">Nastavenia</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Odstrániť</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Kliklo sa na položku Odstrániť</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Prepnúť</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Kliklo sa na položku prepínača</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
@@ -762,6 +781,8 @@
     <string name="menu_xOffset">Odchýlka X (v dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Odchýlka Y (v dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Odsadenie hrotu (v dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Text obsahu</string>
     <!-- UI Label for repeat content text -->
@@ -852,6 +873,8 @@
     <string name="drawer_less_than_half_screen_content">Menej ako polovica obsahu obrazovky</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Obsah s dynamickou veľkosťou</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Prehľadávateľný obsah zásuvky</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Vnorený obsah zásuvky</string>
     <!-- UI Label for Expandable -->
@@ -862,6 +885,8 @@
     <string name="prevent_scrim_click_dismissal">Zabrániť zrýchľovaniu pri kliknutí na Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Zobraziť rukoväť</string>
+    <string name="drawer_enable_swipe_dismiss">Povoliť zrušenie potiahnutia prstom</string>
+    <string name="bottom_drawer_max_width_landscape">Maximálna šírka na šírku</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

@@ -4,5 +4,11 @@
     <string name="tab_content_description">Karta \u0020 %1$d z %2$d</string>
 
     <!-- Describes the Numbering of Pill Butons Inside PillBar -->
-    <string name="position_string">Element %d na liście %d</string>
+    <string name="position_string">Element %1$d na liście (%2$d)</string>
+
+    <!-- String specifying the Active status of a tab -->
+    <string name="tab_active">Aktywna</string>
+
+    <!-- String specifying the Inactive status of a tab -->
+    <string name="tab_inactive">Nieaktywna</string>
 </resources>

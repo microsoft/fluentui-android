@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Піктограму навігації натиснуто.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Вирівняти панель команд програми по центру</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">Розмір панелі команд програми</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Емблема ліворуч</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Піктограма навігації</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Увімкнути підказки</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Позначка</string>
     <string name="app_bar_layout_menu_settings">Параметри</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Видалити</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Видалений елемент клацнуто</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Перемкнути</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Переключити клацнутий елемент</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Аватар</string>
     <!--Double line items-->
@@ -412,7 +431,7 @@
     <!--Persistent BottomSheet-->
     <string name="expand_bottom_sheet_button">Розгорнути постійний нижній аркуш</string>
     <string name="collapse_persistent_sheet_button"> Приховати постійний нижній аркуш</string>
-    <string name="show_persistent_sheet_button"> Показати постійний нижній аркуш</string>
+    <string name="show_persistent_sheet_button"> Відображати постійний нижній аркуш</string>
     <string name="new_view">Це нове подання</string>
     <string name="toggle_sheet_content">Переключити вміст нижнього аркуша</string>
     <string name="switch_to_custom_content">Переключитися на спеціальний вміст</string>
@@ -762,6 +781,8 @@
     <string name="menu_xOffset">Зсув X (дп)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Зсув Y (дп)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Зсув підказки (у DP)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Текст вмісту</string>
     <!-- UI Label for repeat content text -->
@@ -852,6 +873,8 @@
     <string name="drawer_less_than_half_screen_content">Вміст менше ніж на половину екрана</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Вміст із динамічним розміром</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Вміст бічної панелі з пошуком</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Вкладений вміст бічної панелі</string>
     <!-- UI Label for Expandable -->
@@ -862,6 +885,8 @@
     <string name="prevent_scrim_click_dismissal">Заборонити функцію відхилення за допомогою клацання на полотні</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Показати маркер</string>
+    <string name="drawer_enable_swipe_dismiss">Увімкнути "Закрити проведення"</string>
+    <string name="bottom_drawer_max_width_landscape">Максимальна ширина альбомної орієнтації</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

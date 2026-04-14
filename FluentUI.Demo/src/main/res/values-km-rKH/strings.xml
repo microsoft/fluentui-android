@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">បានចុចរូបតំណាងប្រាប់ទិស។</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">តម្រឹមរបារកម្មវិធីឱ្យចំកណ្ដាល</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">ទំហំរបារកម្មវិធី</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">និមិត្តសញ្ញាខាងឆ្វេង</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">រូបតំណាងរុករក</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">បើកដំណើរការព័ត៌មានជំនួយ</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">ទង់</string>
     <string name="app_bar_layout_menu_settings">ការកំណត់</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">លុប</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">បានចុចលុបធាតុ</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">បិទ/បើក</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">បានចុចធាតុបិទ/បើក</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">អវតារ</string>
     <!--Double line items-->
@@ -407,9 +426,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">ពង្រីកសន្លឹកបាតជាប់រហូត</string>
-    <string name="collapse_persistent_sheet_button"> លាក់សន្លឹកបាតជាប់រហូត</string>
-    <string name="show_persistent_sheet_button"> បង្ហាញសន្លឹកបាតជាប់រហូត</string>
+    <string name="expand_bottom_sheet_button">ពង្រីកសន្លឹកផ្នែកខាងក្រោមជាប់លើអេក្រង់</string>
+    <string name="collapse_persistent_sheet_button"> លាក់សន្លឹកផ្នែកខាងក្រោមជាប់លើអេក្រង់</string>
+    <string name="show_persistent_sheet_button"> បង្ហាញសន្លឹកផ្នែកខាងក្រោមជាប់លើអេក្រង់</string>
     <string name="new_view">នេះជាការបង្ហាញថ្មី</string>
     <string name="toggle_sheet_content">បិទបើក ខ្លឹមសារសន្លឹកខាងក្រោម</string>
     <string name="switch_to_custom_content">ប្តូរទៅខ្លឹមសារផ្ទាល់ខ្លួន</string>
@@ -759,6 +778,8 @@
     <string name="menu_xOffset">អុហ្វសិត X (គិតជា dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">អុហ្វសិត Y (គិតជា dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">ការបែងភាគសេចក្ដីណែនាំខ្លីៗ (in dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">អត្ថបទខ្លឹមសារ</string>
     <!-- UI Label for repeat content text -->
@@ -849,6 +870,8 @@
     <string name="drawer_less_than_half_screen_content">ខ្លឹមសារតិចជាងពាក់កណ្តាលអេក្រង់</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">ខ្លឹមសារទំហំឌីណាមិក</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">ខ្លឹមសារថតដែលអាចស្វែងរកបាន</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">ខ្លឹមសារថតបង្កប់ក្នុង</string>
     <!-- UI Label for Expandable -->
@@ -859,6 +882,8 @@
     <string name="prevent_scrim_click_dismissal">ទប់ស្កាត់ការបោះបង់នៅពេលចុច Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">បង្ហាញចំណុចទាញ</string>
+    <string name="drawer_enable_swipe_dismiss">បើកការបោះបង់ការអូសរំកិល</string>
+    <string name="bottom_drawer_max_width_landscape">ទទឹងទិដ្ឋភាពផ្ដេកអតិបរមា</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

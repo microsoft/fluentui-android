@@ -9,6 +9,8 @@
     <string name="drag_handle">Arrastatu heldulekua</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">zabaldu</string>
+    <string name="expanded">zabalduta</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">tolestu</string>
+    <string name="collapsed">tolestuta</string>
 </resources>

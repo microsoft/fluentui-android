@@ -9,6 +9,8 @@
     <string name="drag_handle">Húzza a fogópontot</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">kibontás</string>
+    <string name="expanded">kibontva</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">összecsukás</string>
+    <string name="collapsed">összecsukva</string>
 </resources>

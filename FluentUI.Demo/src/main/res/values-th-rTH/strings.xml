@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">คลิกไอคอนการนําทางแล้ว</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">จัดแนวแถบแอปให้อยู่กึ่งกลาง</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">ขนาดแถบแอป</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">โลโก้ด้านซ้าย</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">ไอคอนการนำทาง</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">เปิดใช้งานคำแนะนำเครื่องมือ</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">ค่าสถานะ</string>
     <string name="app_bar_layout_menu_settings">การตั้งค่า</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">ลบ</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">คลิกลบรายการแล้ว</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">สลับ</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">สลับรายการที่คลิก</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">อวาตาร์</string>
     <!--Double line items-->
@@ -407,9 +426,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">ขยาย BottomSheet แบบถาวร</string>
-    <string name="collapse_persistent_sheet_button"> ซ่อน BottomSheet แบบถาวร</string>
-    <string name="show_persistent_sheet_button">แสดง BottomSheet แบบถาวร</string>
+    <string name="expand_bottom_sheet_button">ขยายแผ่นงานด้านล่างแบบถาวร</string>
+    <string name="collapse_persistent_sheet_button"> ซ่อนแผ่นงานด้านล่างแบบถาวร</string>
+    <string name="show_persistent_sheet_button"> แสดงแผ่นงานด้านล่างแบบถาวร</string>
     <string name="new_view">นี่คือมุมมองใหม่</string>
     <string name="toggle_sheet_content">สลับเนื้อหา Bottomsheet</string>
     <string name="switch_to_custom_content">สลับไปยังเนื้อหาแบบกําหนดเอง</string>
@@ -759,6 +778,8 @@
     <string name="menu_xOffset">ออฟเซต X (เป็น dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">ออฟเซต Y (เป็น dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">ออฟเซตเคล็ดลับ (เป็น dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">ข้อความเนื้อหา</string>
     <!-- UI Label for repeat content text -->
@@ -849,6 +870,8 @@
     <string name="drawer_less_than_half_screen_content">เนื้อหาน้อยกว่าครึ่งหน้าจอ</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">เนื้อหาขนาดแบบไดนามิก</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">เนื้อหาลิ้นชักที่สามารถค้นหาได้</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">เนื้อหาลิ้นชักที่ซ้อนกัน</string>
     <!-- UI Label for Expandable -->
@@ -859,6 +882,8 @@
     <string name="prevent_scrim_click_dismissal">ป้องกันการปิดเมื่อคลิก Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">แสดงจุดจับ</string>
+    <string name="drawer_enable_swipe_dismiss">เปิดใช้งานปัดเพื่อปิด</string>
+    <string name="bottom_drawer_max_width_landscape">ความกว้างแนวนอนสูงสุด</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

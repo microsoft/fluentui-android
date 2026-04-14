@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources />
+<resources>
+    <string name="scrim_content_description">關閉展開的通知</string>
+</resources>
