@@ -228,6 +228,8 @@ class SnackBarStackState(
         }
         maxCurrentSize = if (expanded) maxExpandedSize else maxCollapsedSize
         snapshotStateList.add(SnackbarItemInternal(snackbar))
+        selectedItemId = snackbar.id
+        focusRequestToken++
         if (sizeVisible() > maxCurrentSize) {
             hideOldest()
         }
@@ -240,11 +242,22 @@ class SnackBarStackState(
      * @return `true` if the snackbar was found and removed, `false` otherwise.
      */
     fun removeSnackbarById(id: String): Boolean {
-        snapshotStateList.firstOrNull { it.model.id == id }?.let {
-            snapshotStateList.remove(it)
+        val index = snapshotStateList.indexOfFirst { id == it.model.id }
+        if (index == -1) {
+            return false
+        }
+        if (id != selectedItemId) {
+            snapshotStateList.removeAt(index)
             return true
         }
-        return false
+        selectedItemId = if (index == snapshotStateList.size - 1){
+            snapshotStateList.firstOrNull{ it.visibility.value == ItemVisibility.Visible }?.model?.id
+        } else {
+            snapshotStateList[index+1].model.id
+        }
+        snapshotStateList.removeAt(index)
+        focusRequestToken++
+        return true
     }
 
     fun updateSelectedItem(id: String) {
@@ -265,9 +278,22 @@ class SnackBarStackState(
         onRemoveCompleteCallback: () -> Unit = {}
     ) {
         val snackbar = snapshotStateList.firstOrNull { it.model.id == id } ?: return
+        if (id == selectedItemId) {
+            val index = snapshotStateList.indexOf(snackbar)
+            selectedItemId = if (index == snapshotStateList.size - 1) {
+                snapshotStateList.firstOrNull {
+                    it.visibility.value == ItemVisibility.Visible && it.model.id != id
+                }?.model?.id
+            } else {
+                snapshotStateList.getOrNull(index + 1)?.model?.id
+            }
+        }
         snackbar.visibility.value = ItemVisibility.BeingRemoved
         delay(ANIMATION_DURATION_MS.toLong())
         snapshotStateList.remove(snackbar)
+        if (id != selectedItemId) {
+            focusRequestToken++
+        }
         if (showLastHiddenSnackbarOnRemove) {
             onVisibleSizeChange()
         }
@@ -282,12 +308,12 @@ class SnackBarStackState(
         expanded = !expanded
         maxCurrentSize = if (expanded) maxExpandedSize else maxCollapsedSize
         onVisibleSizeChange()
-        if (expanded) {
-            selectedItemId = snapshotStateList.firstOrNull { it.visibility.value == ItemVisibility.Visible }?.model?.id
-            focusRequestToken++
+        selectedItemId = if (expanded) {
+            snapshotStateList.firstOrNull { it.visibility.value == ItemVisibility.Visible }?.model?.id
         } else {
-            selectedItemId = null
+            snapshotStateList.lastOrNull()?.model?.id
         }
+        focusRequestToken++
     }
 
     /**
@@ -766,12 +792,13 @@ private fun SnackBarStackItem(
                 }
                 .focusable()
                 .then(
-                    if (state.expanded) {
-                        Modifier.semantics {
-                            contentDescription = "${trueIndex+1} of ${state.snapshotStateList.size} ${model.message}"
+                    Modifier.semantics {
+                        val resultString = buildString {
+                            append("${trueIndex+1} of ${state.snapshotStateList.size} ${model.message}")
+                            model.actionText?.let { append(", $it") }
+                            model.trailingIcon?.contentDescription?.let { append(", $it") }
                         }
-                    } else {
-                        Modifier
+                        contentDescription = resultString
                     }
                 )
                 .testTag(SnackBarTestTags.SNACK_BAR),
