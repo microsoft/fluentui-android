@@ -251,9 +251,9 @@ class SnackBarStackState(
             return true
         }
         selectedItemId = if (index == snapshotStateList.size - 1){
-            snapshotStateList.firstOrNull{ it.visibility.value == ItemVisibility.Visible }?.model?.id
+            snapshotStateList.firstOrNull{ it.visibility.value == ItemVisibility.Visible && it.model.id != selectedItemId }?.model?.id
         } else {
-            snapshotStateList[index+1].model.id
+            snapshotStateList.getOrNull(index+1)?.model?.id
         }
         snapshotStateList.removeAt(index)
         focusRequestToken++
