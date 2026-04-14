@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">탐색 아이콘을 클릭했습니다.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">앱 바 가운데 정렬</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">앱 바 크기</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">왼쪽 로고</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">탐색 아이콘</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">도구 설명 사용</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">플래그</string>
     <string name="app_bar_layout_menu_settings">설정</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">삭제</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">항목 삭제 클릭됨</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">토글</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">토글 항목 클릭됨</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">아바타</string>
     <!--Double line items-->
@@ -407,9 +426,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">영구 하위 시트 확장</string>
-    <string name="collapse_persistent_sheet_button"> 영구 하위시트 숨기기</string>
-    <string name="show_persistent_sheet_button"> 영구 하위시트 표시</string>
+    <string name="expand_bottom_sheet_button">고정 하단 시트 확장</string>
+    <string name="collapse_persistent_sheet_button"> 고정 하단 시트 숨기기</string>
+    <string name="show_persistent_sheet_button"> 고정 하단 시트 표시</string>
     <string name="new_view">새 보기입니다.</string>
     <string name="toggle_sheet_content">하위시트 콘텐츠 설정/해제</string>
     <string name="switch_to_custom_content">사용자 지정 콘텐츠로 전환</string>
@@ -759,6 +778,8 @@
     <string name="menu_xOffset">오프셋 X(dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">오프셋 Y(dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">팁 오프셋(dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">콘텐츠 텍스트</string>
     <!-- UI Label for repeat content text -->
@@ -849,6 +870,8 @@
     <string name="drawer_less_than_half_screen_content">절반 미만의 화면 콘텐츠</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">동적 크기 콘텐츠</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">검색 가능한 서랍 콘텐츠</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">중첩 서랍 콘텐츠</string>
     <!-- UI Label for Expandable -->
@@ -859,6 +882,8 @@
     <string name="prevent_scrim_click_dismissal">스크림 클릭 시 해제 방지</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">핸들 표시</string>
+    <string name="drawer_enable_swipe_dismiss">살짝 밀어 닫기 사용</string>
+    <string name="bottom_drawer_max_width_landscape">가로 모드 최대 너비</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

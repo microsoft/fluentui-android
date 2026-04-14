@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Ikona e navigacionit klikuar.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Rreshtimi në qendër i shiritit të aplikacionit</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">Madhësia e shiritit të aplikacionit</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Logoja në të majtë</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Ikona e navigimit</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Aktivizo këshillat e mjeteve</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Flamur</string>
     <string name="app_bar_layout_menu_settings">Parametrat</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Fshi</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Fshij njësinë klikuar</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Ndryshimi i gjendjes</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Njësia e ruajtur klikuar</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
@@ -408,9 +427,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">BottomSheet e zgjeruar e pandërprerë</string>
+    <string name="expand_bottom_sheet_button">Zgjero fletën e fundit të pandërprerë</string>
     <string name="collapse_persistent_sheet_button"> Fshih fletën e fundit të pandërprerë</string>
-    <string name="show_persistent_sheet_button"> Shfaq fletën fundore të pandërprerë</string>
+    <string name="show_persistent_sheet_button"> Shfaq fletën e fundit të pandërprerë</string>
     <string name="new_view">Kjo është pamja e re</string>
     <string name="toggle_sheet_content">Ndrysho përmbajtjen e faqes së poshtme</string>
     <string name="switch_to_custom_content">Kalo në përmbajtjen e personalizuar</string>
@@ -760,6 +779,8 @@
     <string name="menu_xOffset">Zhvendosja X (në dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Zhvendosja Y (në dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Zhvendosja e tipit (në dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Teksti i përmbajtjes</string>
     <!-- UI Label for repeat content text -->
@@ -850,6 +871,8 @@
     <string name="drawer_less_than_half_screen_content">Më pak se gjysma e përmbajtjes së ekranit</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Përmbajtje me madhësi dinamike</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Përmbajtja e sirtarit të kërkueshëm</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Përmbajtje e folezuar e sirtarit</string>
     <!-- UI Label for Expandable -->
@@ -860,6 +883,8 @@
     <string name="prevent_scrim_click_dismissal">Parandalo refuzimin në Scrim Click</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Shfaq dorezën</string>
+    <string name="drawer_enable_swipe_dismiss">Aktivizo reshqitjen për të refuzuar</string>
+    <string name="bottom_drawer_max_width_landscape">Gjerësia maks e peizazhit</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

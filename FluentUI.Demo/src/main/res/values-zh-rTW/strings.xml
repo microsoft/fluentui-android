@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">已點擊瀏覽圖示。</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">置中對齊應用程式列</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">應用程式列大小</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">左邊標誌</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">瀏覽圖示</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">啟用工具提示</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">標幟</string>
     <string name="app_bar_layout_menu_settings">設定</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">刪除</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">已點擊刪除項目</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">切換</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">切換已點擊的項目</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">虛擬人偶</string>
     <!--Double line items-->
@@ -407,9 +426,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">展開持續的底端工作表</string>
-    <string name="collapse_persistent_sheet_button"> 隱藏持續的底端工作表</string>
-    <string name="show_persistent_sheet_button"> 顯示持續底端工作表</string>
+    <string name="expand_bottom_sheet_button">展開持續底部工作表</string>
+    <string name="collapse_persistent_sheet_button"> 隱藏持續底部工作表</string>
+    <string name="show_persistent_sheet_button"> 顯示持續底部工作表</string>
     <string name="new_view">這是新檢視</string>
     <string name="toggle_sheet_content">切換底端工作表內容</string>
     <string name="switch_to_custom_content">切換至自訂內容</string>
@@ -759,6 +778,8 @@
     <string name="menu_xOffset">位移 X (以 dp 表示)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">位移 Y (以 dp 表示)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">提示位移 (以 dp 表示)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">內容文字</string>
     <!-- UI Label for repeat content text -->
@@ -849,6 +870,8 @@
     <string name="drawer_less_than_half_screen_content">不到一半螢幕內容</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">動態大小內容</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">可搜尋的隱藏式選單內容</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">巢狀隱藏式選單內容</string>
     <!-- UI Label for Expandable -->
@@ -859,6 +882,8 @@
     <string name="prevent_scrim_click_dismissal">防止在點擊 Scrim 時駁回</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">顯示控點</string>
+    <string name="drawer_enable_swipe_dismiss">啟用撥動關閉</string>
+    <string name="bottom_drawer_max_width_landscape">最大橫向寬度</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

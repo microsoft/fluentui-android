@@ -9,6 +9,8 @@
     <string name="drag_handle">ດ້າມລາກ</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">ຂະຫຍາຍ</string>
+    <string name="expanded">ຂະຫຍາຍແລ້ວ</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">ຫຍໍ້ເຂົ້າ</string>
+    <string name="collapsed">ຫຍໍ້ລົງແລ້ວ</string>
 </resources>

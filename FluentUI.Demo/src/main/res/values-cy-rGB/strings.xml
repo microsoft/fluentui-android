@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Wedi clicio ar eicon llywio.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Alinio\'r bar rhaglenni i\'r canol</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">Maint y Bar Rhaglenni</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Logo Chwith</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Eicon Llywio</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Galluogi Cynghorion Sgrin</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Fflagio</string>
     <string name="app_bar_layout_menu_settings">Gosodiadau</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Dileu</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Wedi clicio ar eitem dileu</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Toglo</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Eitem toglo wedi\'i chlicio</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Afatar</string>
     <!--Double line items-->
@@ -412,9 +431,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Ehangu DalenGwaelod Parhaus</string>
-    <string name="collapse_persistent_sheet_button"> Cuddio DalenGwaelod Parhaus</string>
-    <string name="show_persistent_sheet_button"> Dangos DalenGwaelod Parhaus</string>
+    <string name="expand_bottom_sheet_button">Ehangu\'r Ddalen Waelod Barhaus</string>
+    <string name="collapse_persistent_sheet_button"> Cuddio\'r Ddalen Waelod Barhaus</string>
+    <string name="show_persistent_sheet_button"> Dangos y Ddalen Waelod Barhaus</string>
     <string name="new_view">Dyma Wedd Newydd</string>
     <string name="toggle_sheet_content">Toglo Cynnwys Dalen Gwaelod</string>
     <string name="switch_to_custom_content">Newid i Gynnwys personol</string>
@@ -764,6 +783,8 @@
     <string name="menu_xOffset">Atred X (mewn dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Atred Y (mewn dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Cilosod y Cyngor (mewn dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Testun y Cynnwys</string>
     <!-- UI Label for repeat content text -->
@@ -854,6 +875,8 @@
     <string name="drawer_less_than_half_screen_content">Llai na hanner cynnwys y sgrin</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Cynnwys maint deinamig</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Cynnwys Drôr mae modd ei Chwilio</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Cynnwys Drôr wedi\'i Nythu</string>
     <!-- UI Label for Expandable -->
@@ -864,6 +887,8 @@
     <string name="prevent_scrim_click_dismissal">Atal Disodli ar Glic Sgrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Dangos y Ddolen</string>
+    <string name="drawer_enable_swipe_dismiss">Galluogi Diystyru Symud Bys</string>
+    <string name="bottom_drawer_max_width_landscape">Uchafswm Lled ar draws</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

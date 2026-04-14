@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">A navigációs ikonra kattintott.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Alkalmazássáv középre igazítása</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">Alkalmazássáv mérete</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Bal oldali logó</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Navigációs ikon</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Elemleírások engedélyezése</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Zászló</string>
     <string name="app_bar_layout_menu_settings">Beállítások</string>
@@ -170,7 +185,7 @@
     <!-- Announces italic action -->
     <string name="contextual_command_accessibility_italic">Dőlt</string>
     <!-- Announces undeline action -->
-    <string name="contextual_command_accessibility_underline">Aláhúzás</string>
+    <string name="contextual_command_accessibility_underline">Aláhúzott</string>
     <!-- Announces strikethrough action -->
     <string name="contextual_command_accessibility_strikethrough">Áthúzás</string>
     <!-- Announces undo action -->
@@ -210,13 +225,17 @@
     <!--UI Label for user action clicked on item reply-->
     <string name="bottom_sheet_item_reply_toast">A válaszelemre kattintott</string>
     <!--UI Label for item forward-->
-    <string name="bottom_sheet_item_forward_title">Továbbítás</string>
+    <string name="bottom_sheet_item_forward_title">Előtte</string>
     <!--UI Label for user action clicked on item forward-->
     <string name="bottom_sheet_item_forward_toast">Az elem továbbítására kattintott</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_delete_title">Törlés</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Az elem törlésére kattintott</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Be- vagy kikapcsolás</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Az elem váltására kattintott</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
@@ -408,9 +427,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Állandó alsó lap kibontása</string>
-    <string name="collapse_persistent_sheet_button"> Állandó alsó lap elrejtése</string>
-    <string name="show_persistent_sheet_button"> Állandó alsó lap megjelenítése</string>
+    <string name="expand_bottom_sheet_button">Állandó alsó munkalap kibontása</string>
+    <string name="collapse_persistent_sheet_button"> Állandó alsó munkalap elrejtése</string>
+    <string name="show_persistent_sheet_button"> Állandó alsó munkalap megjelenítése</string>
     <string name="new_view">Ez egy új nézet</string>
     <string name="toggle_sheet_content">Alsó lap tartalmának be-/kikapcsolása</string>
     <string name="switch_to_custom_content">Váltás egyéni tartalomra</string>
@@ -650,7 +669,7 @@
     <!-- UI text for text alignment of tab -->
     <string name="tabBar_text_alignment">Szöveg igazítása</string>
     <!-- UI text for vertical alignment of tab -->
-    <string name="tabBar_vertical">Függőleges</string>
+    <string name="tabBar_vertical">Függőlegesen</string>
     <!-- UI text for horizontal alignment of tab -->
     <string name="tabBar_horizontal">Vízszintes</string>
     <!-- UI text for no text of tab -->
@@ -760,6 +779,8 @@
     <string name="menu_xOffset">X eltolás (dp-ben)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Y eltolás (dp-ben)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Tip ofszet (dp-ben)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Tartalomszöveg</string>
     <!-- UI Label for repeat content text -->
@@ -850,6 +871,8 @@
     <string name="drawer_less_than_half_screen_content">Kevesebb mint félképernyős tartalom</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Tartalom dinamikus méretezése</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Kereshető fióktartalom</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Beágyazott fiók tartalma</string>
     <!-- UI Label for Expandable -->
@@ -860,6 +883,8 @@
     <string name="prevent_scrim_click_dismissal">Mellőzés megakadályozása Scrimre kattintáskor</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Fogópont megjelenítése</string>
+    <string name="drawer_enable_swipe_dismiss">Pöccintéses elutasítás engedélyezése</string>
+    <string name="bottom_drawer_max_width_landscape">Maximális fekvő szélesség</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

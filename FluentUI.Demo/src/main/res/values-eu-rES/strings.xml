@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Nabigazio-ikonoa sakatu da.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Lerrokatu aplikazio-barra erdian</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">Aplikazio-barraren tamaina</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Ezkerreko logotipoa</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Nabigazio-ikonoa</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Gaitu argibideak</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Markatu</string>
     <string name="app_bar_layout_menu_settings">Ezarpenak</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Ezabatu</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Ezabatzeko elementua sakatu da</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Txandakatu</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Txandakatzeko elementua sakatu da</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatarra</string>
     <!--Double line items-->
@@ -410,7 +429,7 @@
     <!--Persistent BottomSheet-->
     <string name="expand_bottom_sheet_button">Zabaldu beheko orri iraunkorra</string>
     <string name="collapse_persistent_sheet_button"> Ezkutatu beheko orri iraunkorra</string>
-    <string name="show_persistent_sheet_button">Erakutsi beheko orri iraunkorra</string>
+    <string name="show_persistent_sheet_button"> Erakutsi beheko orri iraunkorra</string>
     <string name="new_view">Ikuspegi berri bat da hau</string>
     <string name="toggle_sheet_content">Txandakatu beheko orriaren edukia</string>
     <string name="switch_to_custom_content">Aldatu eduki pertsonalizatura</string>
@@ -760,6 +779,8 @@
     <string name="menu_xOffset">X desplazamendua (dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Y desplazamendua (dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Argibidearen desplazamendua (dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Edukiaren testua</string>
     <!-- UI Label for repeat content text -->
@@ -850,6 +871,8 @@
     <string name="drawer_less_than_half_screen_content">Pantaila-erdiaren edukia baino gutxiago</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Tamaina dinamikoko edukia</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Bilatu daitekeen tiraderaren edukia</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Habia-tiraderaren edukia</string>
     <!-- UI Label for Expandable -->
@@ -860,6 +883,8 @@
     <string name="prevent_scrim_click_dismissal">Saihestu baztertzea klik ikusgaia sakatzean</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Erakutsi heldulekua</string>
+    <string name="drawer_enable_swipe_dismiss">Gaitu Pasatu hatza baztertzeko aukera</string>
+    <string name="bottom_drawer_max_width_landscape">Horizontalaren gehienezko zabalera</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

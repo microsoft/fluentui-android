@@ -14,4 +14,8 @@
     <string name="Active">Aktív</string>
     <!-- String specifying the work status of a person -->
     <string name="Inactive">Inaktív</string>
+    <!-- Describes the Numbering of Persona List items -->
+    <string name="position_string">%d. elem a(z) %d elemből álló listán</string>
+    <!-- Status of a person -->
+    <string name="status_string">Állapot: %s</string>
 </resources>

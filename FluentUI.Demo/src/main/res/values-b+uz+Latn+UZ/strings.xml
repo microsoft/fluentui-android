@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Navigatsiya belgisi bosildi.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Ilovalar panelini markazga tekislash</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">Ilovalar paneli hajmi</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Chap logotip</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Navigatsiya belgisi</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Vositalar bo‘yicha maslahatlarni yoqish</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Bayroq</string>
     <string name="app_bar_layout_menu_settings">Sozlamalar</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">O‘chirish</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Olib tashlash elementi bosildi</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Almashtirish</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Elementni almashtirish bosildi</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
@@ -408,9 +427,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Doimiy BottomSheet xizmatini kengaytirish</string>
-    <string name="collapse_persistent_sheet_button"> Doimiy BottomSheet xizmatini berkitish</string>
-    <string name="show_persistent_sheet_button"> Doyimiy pastki varaq xizmatini koʻrsatish</string>
+    <string name="expand_bottom_sheet_button">Doimiy Bottom Sheet xizmatini kengaytirish</string>
+    <string name="collapse_persistent_sheet_button"> Doimiy Bottom Sheet xizmatini berkitish</string>
+    <string name="show_persistent_sheet_button"> Doimiy Bottom Sheet xizmatini koʻrsatish</string>
     <string name="new_view">Bu yangi koʻrinish</string>
     <string name="toggle_sheet_content">Pastki varaq kontentini almashtirish</string>
     <string name="switch_to_custom_content">Maxsus kontentga almashtirish</string>
@@ -760,6 +779,8 @@
     <string name="menu_xOffset">X siljish (dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Y siljish (dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Chiptalarni almashtirish (dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Kontent matni</string>
     <!-- UI Label for repeat content text -->
@@ -850,6 +871,8 @@
     <string name="drawer_less_than_half_screen_content">Kontent ekranning yarmidan kichik</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Dinamik oʻlchamli kontent</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Qidirish mumkin bo‘lgan tortma kontenti</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Ichki panel kontenti</string>
     <!-- UI Label for Expandable -->
@@ -860,6 +883,8 @@
     <string name="prevent_scrim_click_dismissal">Scrim klik orqali oʻtkazib yuboruvchini oldini olish</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Dastakni chiqarish</string>
+    <string name="drawer_enable_swipe_dismiss">Swipe Dismiss xususiyatini yoqish</string>
+    <string name="bottom_drawer_max_width_landscape">Maksimal landshaft kengligi</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

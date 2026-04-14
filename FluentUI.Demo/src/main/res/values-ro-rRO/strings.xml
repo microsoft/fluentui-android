@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">S-a făcut clic pe pictograma de navigare.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Aliniați bara aplicației la centru</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">Dimensiunea barei aplicației</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Siglă stânga</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Pictograma Navigare</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Activați sfaturile ecran</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Fanion</string>
     <string name="app_bar_layout_menu_settings">Setări</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Ștergeți</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">S-a făcut clic pe Ștergeți elementul</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Comutați</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">S-a făcut clic pe Comutați elementul</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
@@ -411,7 +430,7 @@
     <!--Persistent BottomSheet-->
     <string name="expand_bottom_sheet_button">Extindeți foaia inferioară persistentă</string>
     <string name="collapse_persistent_sheet_button"> Ascundeți foaia inferioară persistentă</string>
-    <string name="show_persistent_sheet_button"> Afișați foaia de jos persistentă</string>
+    <string name="show_persistent_sheet_button"> Afișați foaia inferioară persistentă</string>
     <string name="new_view">Aceasta este o vizualizare nouă</string>
     <string name="toggle_sheet_content">Comutați conținutul foii de jos</string>
     <string name="switch_to_custom_content">Treceți la conținut personalizat</string>
@@ -761,6 +780,8 @@
     <string name="menu_xOffset">Deplasare X (în dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Deplasare Y (în dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Deplasare a vârfului (în dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Text conținut</string>
     <!-- UI Label for repeat content text -->
@@ -806,7 +827,7 @@
     <!-- UI Label Cancel -->
     <string name="cancel">Anulați</string>
     <!-- UI Label Ok -->
-    <string name="ok">OK</string>
+    <string name="ok">În regulă</string>
     <!-- A sample description -->
     <string name="dialog_description">Un dialog este o fereastră mică care îi solicită utilizatorului să ia o decizie sau să introducă informații suplimentare.</string>
 
@@ -851,6 +872,8 @@
     <string name="drawer_less_than_half_screen_content">Mai puțin de jumătate de conținut de ecran</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Conținut cu dimensiune dinamică</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Conținutul sertarului cu funcție de căutare</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Conținut de sertar imbricat</string>
     <!-- UI Label for Expandable -->
@@ -861,6 +884,8 @@
     <string name="prevent_scrim_click_dismissal">Împiedicați eliminarea la clic pe Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Afișați handle-ul</string>
+    <string name="drawer_enable_swipe_dismiss">Activați ignorarea prin tragerea cu degetul</string>
+    <string name="bottom_drawer_max_width_landscape">Lățime maximă pe peisaj</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

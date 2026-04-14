@@ -1,6 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
 <resources>
-  <string name="drag_handle">हैंडल खींचें</string>
-  <string name="expand">विस्तृत करें</string>
-  <string name="collapse">संक्षिप्त करें</string>
+    <!--SheetBehavior Address-->
+
+    <!-- Text for bottomsheet handle -->
+    <string name="drag_handle">हैंडल खींचें</string>
+    <!-- onClick Label for bottomsheet to expand -->
+    <string name="expand">विस्तृत करें</string>
+    <string name="expanded">विस्तृत किया गया</string>
+    <!-- onClick Label for bottomsheet to collapse -->
+    <string name="collapse">संक्षिप्त करें</string>
+    <string name="collapsed">संक्षिप्त किया गया</string>
 </resources>

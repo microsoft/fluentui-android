@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">नेव्हिगेशन प्रतीक क्लिक केले.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">मध्य संरेखन अनुप्रयोग पट्टी</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">अनुप्रयोग पट्टी आकार</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">डावा लोगो</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">नेव्हिगेशन प्रतीक</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">टूलटिप्स सक्रिय करा</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">ध्वजांकित करा</string>
     <string name="app_bar_layout_menu_settings">सेटिंग्ज</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">हटवा</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">आयटम हटवा क्लिक केले</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">टॉगल करा</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">टॉगल आयटम क्लिक केला</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">अवतार</string>
     <!--Double line items-->
@@ -760,6 +779,8 @@
     <string name="menu_xOffset">ऑफसेट X (dp मध्ये)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">ऑफसेट Y (dp मध्ये)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">टिप ऑफसेट (dp मध्ये)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">सामुग्री मजकूर</string>
     <!-- UI Label for repeat content text -->
@@ -850,6 +871,8 @@
     <string name="drawer_less_than_half_screen_content">अर्ध्यापेक्षा कमी स्क्रीन सामुग्री</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">डायनॅमिक आकार असलेली सामुग्री</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">शोधण्यायोग्य ड्रॉवर सामुग्री</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">नेस्टेड ड्रॉवर सामुग्री</string>
     <!-- UI Label for Expandable -->
@@ -860,6 +883,8 @@
     <string name="prevent_scrim_click_dismissal">स्क्रिम क्लिकवर डिसमिस करणे प्रतिबंधित करा</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">हँडल दर्शवा</string>
+    <string name="drawer_enable_swipe_dismiss">स्वाइप डिसमिस सक्रिय करा</string>
+    <string name="bottom_drawer_max_width_landscape">कमाल लँडस्केप रुंदी</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">בוצעה לחיצה על סמל ניווט.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">יישר את סרגל האפליקציות למרכז</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">גודל סרגל האפליקציות</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">לוגו שמאלי</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">סמל ניווט</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">הפעל תיאורי כלים</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">דגל</string>
     <string name="app_bar_layout_menu_settings">הגדרות</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">מחק</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">בוצעה לחיצה על מחיקת פריט</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">החלפת מצב</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">בוצעה לחיצה על פריט בלחצן דו-מצבי</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">אוואטאר</string>
     <!--Double line items-->
@@ -762,6 +781,8 @@
     <string name="menu_xOffset">היסט X (ב- dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">היסט Y (ב- dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">היסט הקצה (ב- dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">טקסט תוכן</string>
     <!-- UI Label for repeat content text -->
@@ -852,6 +873,8 @@
     <string name="drawer_less_than_half_screen_content">תוכן של פחות מחצי מסך</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">תוכן גודל דינאמי</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">תוכן מגירה ניתן לחיפוש</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">תוכן מגירה מקונן</string>
     <!-- UI Label for Expandable -->
@@ -862,6 +885,8 @@
     <string name="prevent_scrim_click_dismissal">מנע ביטול בעת לחיצה על Scrim</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">הצג נקודת אחיזה</string>
+    <string name="drawer_enable_swipe_dismiss">אפשר החלקה לביטול</string>
+    <string name="bottom_drawer_max_width_landscape">רוחב מקסימלי במצב לרוחב</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

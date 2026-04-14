@@ -9,6 +9,8 @@
     <string name="drag_handle">Vetokahva</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">laajenna</string>
+    <string name="expanded">laajennettu</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">tiivistä</string>
+    <string name="collapsed">kutistettu</string>
 </resources>

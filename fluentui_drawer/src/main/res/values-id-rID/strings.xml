@@ -9,6 +9,8 @@
     <string name="drag_handle">Seret Handel</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">luaskan</string>
+    <string name="expanded">diluaskan</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">ciutkan</string>
+    <string name="collapsed">diciutkan</string>
 </resources>

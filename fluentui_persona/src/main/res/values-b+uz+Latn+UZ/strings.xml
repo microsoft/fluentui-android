@@ -14,4 +14,8 @@
     <string name="Active">Faol</string>
     <!-- String specifying the work status of a person -->
     <string name="Inactive">Nofaol</string>
+    <!-- Describes the Numbering of Persona List items -->
+    <string name="position_string">%d roʻyxatdagi %d element</string>
+    <!-- Status of a person -->
+    <string name="status_string">Holat: %s</string>
 </resources>
