@@ -4,5 +4,11 @@
     <string name="tab_content_description">\u0020 sekmesi %1$d / %2$d</string>
 
     <!-- Describes the Numbering of Pill Butons Inside PillBar -->
-    <string name="position_string">%d listesinde %d öğesi</string>
+    <string name="position_string">%1$d öğe %2$d listesinde</string>
+
+    <!-- String specifying the Active status of a tab -->
+    <string name="tab_active">Etkin</string>
+
+    <!-- String specifying the Inactive status of a tab -->
+    <string name="tab_inactive">Etkin değil</string>
 </resources>

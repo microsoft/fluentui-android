@@ -18,7 +18,7 @@
     <!-- Describes the action button component -->
     <string name="fluentui_action_button">Bouton d’action</string>
     <!-- Describes the dismiss button component -->
-    <string name="fluentui_dismiss_button">Dismiss</string>
+    <string name="fluentui_dismiss_button">Ignorer</string>
     <!-- Describes enabled action-->
     <string name="fluentui_enabled">Activé</string>
     <!-- Describes close action for a sheet-->
@@ -104,7 +104,7 @@
     <string name="fluentui_keyboard_number">Nombre</string>
     <string name="fluentui_keyboard_phone">Téléphone</string>
     <string name="fluentui_keyboard_uri">URI</string>
-    <string name="fluentui_keyboard_email">E-mail</string>
+    <string name="fluentui_keyboard_email">Courriel</string>
     <string name="fluentui_keyboard_password">Mot de passe</string>
     <string name="fluentui_keyboard_number_password">NumberPassword</string>
     <string name="fluentui_keyboard_decimal">Décimal</string>

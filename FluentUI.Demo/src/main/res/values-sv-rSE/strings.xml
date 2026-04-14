@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Klickade på navigeringsikonen.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Centrera appfältet</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">Appstapelstorlek</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Vänster logotyp</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Navigeringsikon</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Aktivera knappbeskrivningar</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Flagga</string>
     <string name="app_bar_layout_menu_settings">Inställningar</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Ta bort</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Klickade på ta bort objekt</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Växlingsknapp</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Växla objekt klickade</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
@@ -408,9 +427,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Expandera beständigt BottomSheet</string>
-    <string name="collapse_persistent_sheet_button"> Dölj beständigt BottomSheet</string>
-    <string name="show_persistent_sheet_button"> Visa beständigt BottomSheet</string>
+    <string name="expand_bottom_sheet_button">Visa beständigt nederkantsblad</string>
+    <string name="collapse_persistent_sheet_button"> Dölj beständigt nederkantsblad</string>
+    <string name="show_persistent_sheet_button"> Visa beständigt nederkantsblad</string>
     <string name="new_view">Det här är en ny vy</string>
     <string name="toggle_sheet_content">Växla innehåll i Bottomsheet</string>
     <string name="switch_to_custom_content">Växla till anpassat innehåll</string>
@@ -760,6 +779,8 @@
     <string name="menu_xOffset">Förskjutning X (i dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Förskjutning Y (i dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Tipsförskjutning (i dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Innehållstext</string>
     <!-- UI Label for repeat content text -->
@@ -850,6 +871,8 @@
     <string name="drawer_less_than_half_screen_content">Mindre än halvskärmsinnehåll</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Innehåll i dynamisk storlek</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Sökbart lådinnehåll</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Innehåll i staplad låda</string>
     <!-- UI Label for Expandable -->
@@ -860,6 +883,8 @@
     <string name="prevent_scrim_click_dismissal">Förhindra avstängning på Scrim Click</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Visa handtag</string>
+    <string name="drawer_enable_swipe_dismiss">Aktivera Svep stäng</string>
+    <string name="bottom_drawer_max_width_landscape">Max liggande bredd</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

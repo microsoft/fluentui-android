@@ -9,6 +9,8 @@
     <string name="drag_handle">Dra handtag</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">visa</string>
+    <string name="expanded">visas</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">dölj</string>
+    <string name="collapsed">dold</string>
 </resources>

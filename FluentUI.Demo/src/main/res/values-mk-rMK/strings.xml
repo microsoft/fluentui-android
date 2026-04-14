@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Кликната е иконата за навигација.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">Централно порамни ја лентата за апликации</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">Големина на Лента за апликации</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">Лево лого</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">Икона за навигација</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Овозможи екрански совети</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Знаменце</string>
     <string name="app_bar_layout_menu_settings">Параметри</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">Избриши</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">Ставката за бришење е кликната</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">Префрли</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Кликнато е префрлување на артикл</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Аватар</string>
     <!--Double line items-->
@@ -408,9 +427,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Прошири го постојниот долен лист</string>
-    <string name="collapse_persistent_sheet_button"> Сокриј го постојниот долен лист</string>
-    <string name="show_persistent_sheet_button"> Прикажи постојан BottomSheet</string>
+    <string name="expand_bottom_sheet_button">Проширете го постојаниот долен работен лист</string>
+    <string name="collapse_persistent_sheet_button"> Сокриј го постојаниот долен работен лист</string>
+    <string name="show_persistent_sheet_button"> Прикажи го постојаниот долен работен лист</string>
     <string name="new_view">Ова е нов приказ</string>
     <string name="toggle_sheet_content">Префрли ја содржината на BottomSheet</string>
     <string name="switch_to_custom_content">Промени на приспособена содржина</string>
@@ -760,6 +779,8 @@
     <string name="menu_xOffset">Отстапување X (во dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">Отстапување Y (во dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Отстапување на врвот (во dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">Текст на содржина</string>
     <!-- UI Label for repeat content text -->
@@ -805,7 +826,7 @@
     <!-- UI Label Cancel -->
     <string name="cancel">Откажете</string>
     <!-- UI Label Ok -->
-    <string name="ok">ОК</string>
+    <string name="ok">Во ред</string>
     <!-- A sample description -->
     <string name="dialog_description">Дијалогот е мал прозорец што го потсетува корисникот да донесе одлука или да внесе дополнителни информации.</string>
 
@@ -850,6 +871,8 @@
     <string name="drawer_less_than_half_screen_content">Помалку од половина содржина на екранот</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">Динамична големина на содржина</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">Содржина на фиоката што може да се пребарува</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">Содржина на вметнатата фиока</string>
     <!-- UI Label for Expandable -->
@@ -860,6 +883,8 @@
     <string name="prevent_scrim_click_dismissal">Спречи го отфрлањето на скрим-клик</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Прикажи ја рачката</string>
+    <string name="drawer_enable_swipe_dismiss">Овозможи Помини со прст Отфрли</string>
+    <string name="bottom_drawer_max_width_landscape">Максимална ширина на пејзажот</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

@@ -1,6 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
 <resources>
-  <string name="drag_handle">Arrastar Alça</string>
-  <string name="expand">expandir</string>
-  <string name="collapse">fechar</string>
+    <!--SheetBehavior Address-->
+
+    <!-- Text for bottomsheet handle -->
+    <string name="drag_handle">Arrastar Alça</string>
+    <!-- onClick Label for bottomsheet to expand -->
+    <string name="expand">expandir</string>
+    <string name="expanded">expandido</string>
+    <!-- onClick Label for bottomsheet to collapse -->
+    <string name="collapse">fechar</string>
+    <string name="collapsed">fechado</string>
 </resources>

@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">నావిగేషన్ చిహ్నం క్లిక్ చేయబడింది.</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">యాప్ బార్‌ను మధ్యకు అమర్చండి</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">యాప్ బార్ పరిమాణం</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">ఎడమ వైపు లోగో</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">నావిగేషన్ చిహ్నం</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">Tooltipsను ప్రారంభించు</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">ఫ్లాగ్ చేయండి</string>
     <string name="app_bar_layout_menu_settings">సెట్టింగ్‌లు</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">తొలగించు</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">క్లిక్ చేసిన అంశాన్ని తొలగించండి</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">టోగుల్</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">Toggle అంశం క్లిక్ చేయబడింది</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">అవతార్</string>
     <!--Double line items-->
@@ -408,9 +427,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">పెర్సిస్టెంట్ బాటమ్‌షీట్‌ని విస్తరించండి</string>
-    <string name="collapse_persistent_sheet_button"> పెర్సిస్టెంట్ బాటమ్‌షీట్‌ను దాచండి</string>
-    <string name="show_persistent_sheet_button"> నిరంతర బాటమ్‌షీట్‌ని చూపించు</string>
+    <string name="expand_bottom_sheet_button">స్థిర దిగువ షీట్‌ను విస్తరించండి</string>
+    <string name="collapse_persistent_sheet_button"> స్థిర దిగువ షీట్‌ను దాచు</string>
+    <string name="show_persistent_sheet_button"> స్థిర దిగువ షీట్‌ను చూపించు</string>
     <string name="new_view">ఇది కొత్త వీక్షణ</string>
     <string name="toggle_sheet_content">దిగువ షీట్ విషయాన్ని టోగుల్ చేయండి</string>
     <string name="switch_to_custom_content">అనుకూల విషయానికి మారండి</string>
@@ -760,6 +779,8 @@
     <string name="menu_xOffset">ఆఫ్‌సెట్ X (dpలో)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">అఫ్‌సెట్ Y (dpలో)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">చివర స్థానభ్రంశం (dpలో)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">కంటెంట్ టెక్స్ట్</string>
     <!-- UI Label for repeat content text -->
@@ -850,6 +871,8 @@
     <string name="drawer_less_than_half_screen_content">సగం కంటే తక్కువ స్క్రీన్ కంటెంట్</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">డైనమిక్ సైజ్ కంటెంట్</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">వెతకగలిగే డ్రాయర్ కంటెంట్</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">నెస్టెడ్ డ్రాయర్ కంటెంట్</string>
     <!-- UI Label for Expandable -->
@@ -860,6 +883,8 @@
     <string name="prevent_scrim_click_dismissal">స్క్రిం క్లిక్ పై తొలగింపును నిరోధించండి</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">హ్యాండిల్‌ని చూపించు</string>
+    <string name="drawer_enable_swipe_dismiss">స్వైప్ డిస్మిస్ ను ఎనేబుల్ చేయండి</string>
+    <string name="bottom_drawer_max_width_landscape">గరిష్ట ల్యాండ్‌స్కేప్ వెడల్పు</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

@@ -42,6 +42,21 @@
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">ຄລິກໄອຄອນການນຳທາງແລ້ວ</string>
 
+    <!-- Text for title alignment -->
+    <string name="center_title_alignment">ຈັດແຖບແອັບໃຫ້ຢູ່ເຄິ່ງກາງ</string>
+
+    <!-- Text for app bar size -->
+    <string name="app_bar_size">ຂະຫນາດແຖບແອັບ</string>
+
+    <!-- Text for app bar left accessories -->
+    <string name="left_logo">ໂລໂກ້ເບື້ອງຊ້າຍ</string>
+
+    <!-- Text for app bar navigation icon -->
+    <string name="navigation_icon">ໄອຄອນການນໍາທາງ</string>
+
+    <!-- Text for enabling tooltips -->
+    <string name="enable_tooltips">ເປີດໃຊ້ເຄັດລັບເຄື່ອງມື</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">ໝາຍ</string>
     <string name="app_bar_layout_menu_settings">ການຕັ້ງຄ່າ</string>
@@ -217,6 +232,10 @@
     <string name="bottom_sheet_item_delete_title">ລຶບ</string>
     <!--UI Label for user action clicked on item delete-->
     <string name="bottom_sheet_item_delete_toast">ລຶບລາຍການແບ່ງປັນ</string>
+    <!--UI Label for item toggle-->
+    <string name="bottom_sheet_item_toggle_title">ສະຫຼັບ</string>
+    <!--UI Label for user action clicked on item toggle-->
+    <string name="bottom_sheet_item_toggle_toast">ຄລິກລາຍການສະຫຼັບແລ້ວ</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">ຮູບແທນຕົວ</string>
     <!--Double line items-->
@@ -407,9 +426,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">ຂະຫຍາຍ BottomSheet ແບບຖາວອນ</string>
-    <string name="collapse_persistent_sheet_button"> ​ເຊື່ອງ BottomSheet ແບບຖາວອນ</string>
-    <string name="show_persistent_sheet_button"> ສະແດງ BottomSheet ແບບຖາວອນ</string>
+    <string name="expand_bottom_sheet_button">ຂະຫຍາຍໜ້າຕາຕະລາງລຸ່ມສຸດແບບຄົງທີ່</string>
+    <string name="collapse_persistent_sheet_button"> ​ເຊື່ອງໜ້າຕາຕະລາງລຸ່ມສຸດແບບຄົງທີ່</string>
+    <string name="show_persistent_sheet_button"> ສະແດງໜ້າຕາຕະລາງລຸ່ມສຸດແບບຄົງທີ່</string>
     <string name="new_view">ນີ້ແມ່ນມຸມມອງໃໝ່</string>
     <string name="toggle_sheet_content">ສະຫຼັບເນື້ອຫາ BottomSheet</string>
     <string name="switch_to_custom_content">ປ່ຽນເປັນເນື້ອຫາແບບກຳນົດເອງ</string>
@@ -759,6 +778,8 @@
     <string name="menu_xOffset">ອອບເຊັດ X (in dp)</string>
     <!-- UI Label for yOffset -->
     <string name="menu_yOffset">ອອບເຊັດ Y (in dp)</string>
+    <!-- UI Label for tip Offset-->
+    <string name="menu_tipOffset">Tip Offset (in dp)</string>
     <!-- UI Label for content text -->
     <string name="menu_content_text">ຂໍ້ຄວາມເນື້ອຫາ</string>
     <!-- UI Label for repeat content text -->
@@ -849,6 +870,8 @@
     <string name="drawer_less_than_half_screen_content">ເນື້ອຫາໜ້ອຍກວ່າເຄິ່ງໜ້າຈໍ</string>
     <!-- UI Label for Dynamic size content text-->
     <string name="drawer_dynamic_size_content">ເນື້ອຫາຂະຫນາດໄດນາມິກ</string>
+    <!-- UI Label for Searchable drawer content-->
+    <string name="searchable_drawer_content">ເນື້ອຫາໃນລີ້ນຊັກທີ່ສາມາດຄົ້ນຫາໄດ້</string>
     <!-- UI Label for Nested drawer content text-->
     <string name="drawer_nested_drawer_content">ເນື້ອຫາລີ້ນຊັກທີ່ຊ້ອນກັນ</string>
     <!-- UI Label for Expandable -->
@@ -859,6 +882,8 @@
     <string name="prevent_scrim_click_dismissal">ປ້ອງກັນການຍົກເລີກໃນ Scrim Click</string>
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">ສະແດງການຈັດການ</string>
+    <string name="drawer_enable_swipe_dismiss">ເປີດໃຊ້ການປິດການປັດໄວ້</string>
+    <string name="bottom_drawer_max_width_landscape">ຄວາມກວ້າງແນວນອນສູງສຸດ</string>
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->

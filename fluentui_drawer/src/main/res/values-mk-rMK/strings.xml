@@ -9,6 +9,8 @@
     <string name="drag_handle">Рачка за повлекување</string>
     <!-- onClick Label for bottomsheet to expand -->
     <string name="expand">прошири</string>
+    <string name="expanded">проширено</string>
     <!-- onClick Label for bottomsheet to collapse -->
     <string name="collapse">сокриј</string>
+    <string name="collapsed">сокриено</string>
 </resources>
