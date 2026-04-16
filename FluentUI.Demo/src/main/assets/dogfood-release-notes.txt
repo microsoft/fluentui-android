@@ -3,7 +3,7 @@ What's new
 Fluent v2:
 Fix/enhancement:
     1. Adding focusability and accessibility enhancements for Stackable Snackbar to provide better user experience for screen reader users.
-    2. Added support for localiazation to multiple modules to enable developers to easily adapt the components for different languages and regions.
+    2. Added support for localization to multiple modules to enable developers to easily adapt the components for different languages and regions.
 
 Note:
 The Demo App for Fluent Controls will now also be published on Github starting from v0.3.8
