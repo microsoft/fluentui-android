@@ -1,5 +1,6 @@
 package com.microsoft.fluentui.tokenized.notification
 
+import android.util.Log
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutLinearInEasing
@@ -11,6 +12,7 @@ import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -44,10 +46,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
@@ -55,12 +61,12 @@ import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
@@ -81,6 +87,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.StackableSnackbarEntryAn
 import com.microsoft.fluentui.theme.token.controlTokens.StackableSnackbarExitAnimationType
 import com.microsoft.fluentui.tokenized.controls.Button
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.launch
 import kotlin.math.abs
 import kotlin.math.pow
@@ -179,6 +186,10 @@ class SnackBarStackState(
 
     var expanded by mutableStateOf(false)
         private set
+    var selectedItemId: String? = null
+        private set
+    var focusRequestToken by mutableIntStateOf(0)
+        private set
     internal var maxCurrentSize = maxCollapsedSize
 
     internal var combinedStackHeight by mutableIntStateOf(0)
@@ -217,6 +228,8 @@ class SnackBarStackState(
         }
         maxCurrentSize = if (expanded) maxExpandedSize else maxCollapsedSize
         snapshotStateList.add(SnackbarItemInternal(snackbar))
+        selectedItemId = snackbar.id
+        focusRequestToken++
         if (sizeVisible() > maxCurrentSize) {
             hideOldest()
         }
@@ -229,11 +242,26 @@ class SnackBarStackState(
      * @return `true` if the snackbar was found and removed, `false` otherwise.
      */
     fun removeSnackbarById(id: String): Boolean {
-        snapshotStateList.firstOrNull { it.model.id == id }?.let {
-            snapshotStateList.remove(it)
+        val index = snapshotStateList.indexOfFirst { id == it.model.id }
+        if (index == -1) {
+            return false
+        }
+        if (id != selectedItemId) {
+            snapshotStateList.removeAt(index)
             return true
         }
-        return false
+        selectedItemId = if (index == snapshotStateList.size - 1){
+            snapshotStateList.firstOrNull{ it.visibility.value == ItemVisibility.Visible && it.model.id != selectedItemId }?.model?.id
+        } else {
+            snapshotStateList.getOrNull(index+1)?.model?.id
+        }
+        snapshotStateList.removeAt(index)
+        focusRequestToken++
+        return true
+    }
+
+    fun updateSelectedItem(id: String) {
+        selectedItemId = id
     }
 
     /**
@@ -250,9 +278,22 @@ class SnackBarStackState(
         onRemoveCompleteCallback: () -> Unit = {}
     ) {
         val snackbar = snapshotStateList.firstOrNull { it.model.id == id } ?: return
+        if (id == selectedItemId) {
+            val index = snapshotStateList.indexOf(snackbar)
+            selectedItemId = if (index == snapshotStateList.size - 1) {
+                snapshotStateList.firstOrNull {
+                    it.visibility.value == ItemVisibility.Visible && it.model.id != id
+                }?.model?.id
+            } else {
+                snapshotStateList.getOrNull(index + 1)?.model?.id
+            }
+        }
         snackbar.visibility.value = ItemVisibility.BeingRemoved
         delay(ANIMATION_DURATION_MS.toLong())
         snapshotStateList.remove(snackbar)
+        if (id != selectedItemId) {
+            focusRequestToken++
+        }
         if (showLastHiddenSnackbarOnRemove) {
             onVisibleSizeChange()
         }
@@ -267,6 +308,12 @@ class SnackBarStackState(
         expanded = !expanded
         maxCurrentSize = if (expanded) maxExpandedSize else maxCollapsedSize
         onVisibleSizeChange()
+        selectedItemId = if (expanded) {
+            snapshotStateList.firstOrNull { it.visibility.value == ItemVisibility.Visible }?.model?.id
+        } else {
+            snapshotStateList.lastOrNull()?.model?.id
+        }
+        focusRequestToken++
     }
 
     /**
@@ -443,6 +490,8 @@ fun SnackBarStack(
     snackBarStackConfig: SnackBarStackConfig = SnackBarStackConfig()
 ) {
     val localDensity = LocalDensity.current
+    val view = LocalView.current
+    val focusManager = LocalFocusManager.current
 
     val totalVisibleSnackbars by remember { derivedStateOf { state.sizeVisible() } }
     val targetHeight = if (totalVisibleSnackbars == 0) {
@@ -458,11 +507,25 @@ fun SnackBarStack(
         label = SnackBarLabels.STACK_HEIGHT_ANIMATION
     )
 
+    val expandedAnnouncement = stringResource(R.string.expanded_announcement)
+    val collapsedAnnouncement = stringResource(R.string.collapsed_announcement)
+
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     val screenWidthPx = with(localDensity) { screenWidth.toPx() }
 
     val scrollState =
         rememberScrollState() //TODO: Keep Focus Anchored To the Bottom when expanded and new snackbar added
+
+    LaunchedEffect(expandedAnnouncement, collapsedAnnouncement) {
+        snapshotFlow { state.expanded }
+            .drop(1) // dropping the first emission since it's not a result of user interaction and can cause unwanted announcements on initial load.
+            .collect { isExpanded ->
+                if (!isExpanded) {
+                    focusManager.clearFocus()
+                }
+                view.announceForAccessibility(if (isExpanded) expandedAnnouncement else collapsedAnnouncement)
+            }
+    }
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -533,6 +596,19 @@ private fun SnackBarStackItem(
     val snackBarInfo = SnackBarInfo(model.style, false)
     val entryAnimationType = token.entryAnimationType(snackBarInfo)
     val exitAnimationType = token.exitAnimationType(snackBarInfo)
+
+    val focusRequester = remember { FocusRequester() }
+
+    LaunchedEffect(state.focusRequestToken) {
+        if (state.selectedItemId == model.id) {
+            delay(ANIMATION_DURATION_MS.toLong())
+            try {
+                focusRequester.requestFocus()
+            } catch (e: Exception) {
+                Log.e("SnackBarStackItem", "Failed to request focus for snackbar with id ${model.id}", e)
+            }
+        }
+    }
 
     // Vertical Offset Animation: Related to Stack Expansion/Collapse and Item Position in Stack
     val initialYOffset = when (entryAnimationType) {
@@ -708,9 +784,23 @@ private fun SnackBarStackItem(
                 )
                 .clip(RoundedCornerShape(8.dp))
                 .background(token.backgroundBrush(snackBarInfo))
-                .semantics {
-                    liveRegion = LiveRegionMode.Polite
+                .focusRequester(focusRequester)
+                .onFocusChanged{
+                    if (it.isFocused) {
+                        state.updateSelectedItem(model.id)
+                    }
                 }
+                .focusable()
+                .then(
+                    Modifier.semantics {
+                        val resultString = buildString {
+                            append("${trueIndex+1} of ${state.snapshotStateList.size} ${model.message}")
+                            model.actionText?.let { append(", $it") }
+                            model.trailingIcon?.contentDescription?.let { append(", $it") }
+                        }
+                        contentDescription = resultString
+                    }
+                )
                 .testTag(SnackBarTestTags.SNACK_BAR),
             verticalAlignment = Alignment.CenterVertically
         ) {
