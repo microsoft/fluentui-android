@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="scrim_content_description">વિસ્તૃત સૂચનાઓને કાઢી નાખો</string>
+    <string name="expanded_announcement">List Expanded</string>
+    <string name="collapsed_announcement">List Collapsed</string>
 </resources>
