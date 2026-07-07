@@ -1,0 +1,38 @@
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- task: AzureCLI@2
+  displayName: Verify Service Connection
+  inputs:
+    azureSubscription: 'onebranch-pipelines-kv'
+    scriptType: bash
+    scriptLocation: inlineScript
+    inlineScript: |
+      echo "Current Azure Context"
+      az account show
+
+- task: AzureCLI@2
+  displayName: Get TouchDown Token
+  inputs:
+    azureSubscription: 'onebranch-pipelines-kv'
+    scriptType: bash
+    scriptLocation: inlineScript
+    inlineScript: |
+      echo "Requesting TouchDown token"
+
+      TOKEN=$(az account get-access-token \
+        --scope https://prdtrs01.onmicrosoft.com/touchdownbuildservice_prod/.default \
+        --query accessToken \
+        -o tsv)
+
+      if [ -z "$TOKEN" ]; then
+        echo "FAILED: Token acquisition returned empty token"
+        exit 1
+      fi
+
+      echo "SUCCESS: Token acquired"
+      echo "Token length: ${#TOKEN}"
