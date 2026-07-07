@@ -1,84 +1,117 @@
-on: workflow_dispatch
+trigger: none
+pr: none
 
-permissions:
-  id-token: write
-  contents: write
-  pull-requests: write
+pool:
+  vmImage: ubuntu-22.04
 
-jobs:
-  Localize:
-    runs-on: ubuntu-22.04
-    environment: Auth
+variables:
+  GITHUB_REPOSITORY: microsoft/fluentui-android
+  BASE_BRANCH: master
 
-    steps:
-    - uses: actions/checkout@v3
+steps:
+- checkout: self
+  clean: true
 
-    - name: Get access token for TouchDown Build
-      id: get-token
-      run: |
-          # 1. Get the GitHub OIDC federated token
-          FEDERATED_TOKEN=$(curl -s -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange" | jq -r '.value')
-          
-          # 2. Exchange it for a TouchDown Build access token (v2.0 endpoint)
-          RESPONSE=$(curl -s -X POST \
-          "https://login.microsoftonline.com/${{ secrets.AZURE_TENANT_ID }}/oauth2/v2.0/token" \
-            -H "Content-Type: application/x-www-form-urlencoded" \
-            -d "client_id=${{ secrets.AZURE_CLIENT_ID }}" \
-            -d "scope=https://prdtrs01.onmicrosoft.com/touchdownbuildservice_prod/.default" \
-            -d "client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer" \
-            -d "client_assertion=$FEDERATED_TOKEN" \
-            -d "grant_type=client_credentials")
-          
-          TOKEN=$(echo "$RESPONSE" | jq -r '.access_token')
-          
-          if [ "$TOKEN" = "null" ] || [ -z "$TOKEN" ]; then
-            echo "ERROR: Failed to get access token"
-            echo "$RESPONSE" | jq .
-            exit 1
-          fi
-          
-          echo "::add-mask::$TOKEN"
-          echo "TD_ACCESS_TOKEN=$TOKEN" >> "$GITHUB_ENV"
-          echo "Token acquired successfully (length: ${#TOKEN})"
-    - shell: bash
-      name: Localize
-      env:
-        TDBUILD_TEAM_ID: ${{ secrets.TDBUILD_TEAM_ID }}
-        TD_ACCESS_TOKEN: ${{ env.TD_ACCESS_TOKEN }}
-      run: ./localize.sh
-    - name: Create Pull Request
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-      run: |
-        set -e
-        echo "Start."
-        # Configure git and Push updates
-        git config --global user.email ${{ secrets.EMAIL }}
-        git config --global user.name ${{ secrets.NAME }}
-        git config pull.rebase false
-        branch=Localize-$GITHUB_RUN_ID
-        message='TDBuild Localization'
-        echo "Creating branch $branch"
-        git branch $branch
-        echo "Checkout $branch"
-        git checkout $branch
-        # Add / update and commit
-        git add .
-        if [[ `git status --porcelain` ]]; then
-            echo "Adding git commit"
-            git commit -m 'Adding localized files'
-            echo "Pushing to origin"
-            git push origin $branch
-            echo "Creating PR"
-            gh api \
-                --method POST \
-                -H "Accept: application/vnd.github+json" \
-                /repos/${GITHUB_REPOSITORY}/pulls \
-                -f title="$message" \
-              -f body="Localized files" \
-              -f head="$branch" \
-              -f base='master'
-        else
-            echo "No changes since last run"
-        fi
+- task: AzureCLI@2
+  displayName: Get access token for TouchDown Build
+  inputs:
+    azureSubscription: 'onebranch-pipelines-kv'
+    scriptType: bash
+    scriptLocation: inlineScript
+    inlineScript: |
+      set -e
+
+      echo "Getting TouchDown Build token using Azure DevOps service connection..."
+
+      TOKEN=$(az account get-access-token \
+        --scope https://prdtrs01.onmicrosoft.com/touchdownbuildservice_prod/.default \
+        --query accessToken \
+        -o tsv)
+
+      if [ -z "$TOKEN" ]; then
+        echo "ERROR: Failed to get TouchDown Build access token"
+        exit 1
+      fi
+
+      echo "##vso[task.setsecret]$TOKEN"
+      echo "##vso[task.setvariable variable=TD_ACCESS_TOKEN;issecret=true]$TOKEN"
+
+      echo "Token acquired successfully. Length: ${#TOKEN}"
+
+- script: |
+    set -e
+
+    echo "Running localization script..."
+
+    chmod +x ./localize.sh
+    ./localize.sh
+  displayName: Localize
+  env:
+    TDBUILD_TEAM_ID: $(TDBUILD_TEAM_ID)
+    TD_ACCESS_TOKEN: $(TD_ACCESS_TOKEN)
+
+- script: |
+    set -e
+
+    echo "Creating localization pull request..."
+
+    if [ -z "$GH_TOKEN" ]; then
+      echo "ERROR: GH_TOKEN pipeline variable is missing"
+      exit 1
+    fi
+
+    if [ -z "$EMAIL" ]; then
+      echo "ERROR: EMAIL pipeline variable is missing"
+      exit 1
+    fi
+
+    if [ -z "$NAME" ]; then
+      echo "ERROR: NAME pipeline variable is missing"
+      exit 1
+    fi
+
+    if ! command -v gh >/dev/null 2>&1; then
+      echo "ERROR: GitHub CLI 'gh' is not available on this agent"
+      exit 1
+    fi
+
+    echo "##vso[task.setsecret]$GH_TOKEN"
+
+    git config --global user.email "$EMAIL"
+    git config --global user.name "$NAME"
+    git config pull.rebase false
+
+    git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+
+    branch="Localize-${BUILD_BUILDID}"
+    message="TDBuild Localization"
+
+    echo "Creating branch $branch"
+    git checkout -b "$branch"
+
+    git add .
+
+    if [[ `git status --porcelain` ]]; then
+      echo "Adding git commit"
+      git commit -m "Adding localized files"
+
+      echo "Pushing branch to origin"
+      git push origin "$branch"
+
+      echo "Creating PR"
+      gh api \
+        --method POST \
+        -H "Accept: application/vnd.github+json" \
+        "/repos/${GITHUB_REPOSITORY}/pulls" \
+        -f title="$message" \
+        -f body="Localized files" \
+        -f head="$branch" \
+        -f base="$(BASE_BRANCH)"
+    else
+      echo "No changes since last run"
+    fi
+  displayName: Create Pull Request
+  env:
+    GH_TOKEN: $(GH_TOKEN)
+    EMAIL: $(EMAIL)
+    NAME: $(NAME)
