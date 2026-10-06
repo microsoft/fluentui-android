@@ -711,7 +711,7 @@ private fun SnackBarStackItem(
                                 contentHeight + with(localDensity) {
                                     snackBarStackConfig.snackbarGapWhenExpanded.toPx().toInt()
                                 }
-                            state.combinedStackHeight = state.heightAfterIndex(0)
+                            state.combinedStackHeight = state.heightAfterIndex(-1)
                             return@onGloballyPositioned
                         }
                     )
