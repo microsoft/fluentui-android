@@ -952,6 +952,7 @@ fun Scrim(
                 .clickable(
                     interactionSource = remember { MutableInteractionSource() },
                     indication = null,
+                    role = Role.Button,
                     onClick = onDismiss
                 )
                 .semantics {
