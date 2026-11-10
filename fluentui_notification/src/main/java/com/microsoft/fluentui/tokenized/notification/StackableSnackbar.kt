@@ -807,6 +807,15 @@ private fun SnackBarStackItem(
 
             var hasTitleOverflow by remember { mutableStateOf(false) }
             var hasSubtitleOverflow by remember { mutableStateOf(false) }
+            var reportedOverflow by remember { mutableStateOf(false) }
+            // Notify only when the combined (title or subtitle) overflow state changes.
+            fun notifyOverflowIfChanged() {
+                val overflow = hasTitleOverflow || hasSubtitleOverflow
+                if (overflow != reportedOverflow) {
+                    reportedOverflow = overflow
+                    model.onTitleOverflowChange?.invoke(overflow)
+                }
+            }
             if (model.leadingIcon != null && model.leadingIcon.isIconAvailable()) {
                 Box(
                     modifier = Modifier
@@ -848,7 +857,7 @@ private fun SnackBarStackItem(
                     onTextLayout = { textLayout ->
                         if (hasTitleOverflow != textLayout.hasVisualOverflow) {
                             hasTitleOverflow = textLayout.hasVisualOverflow
-                            model.onTitleOverflowChange?.invoke(hasTitleOverflow || hasSubtitleOverflow)
+                            notifyOverflowIfChanged()
                         }
                     }
                 )
@@ -861,7 +870,7 @@ private fun SnackBarStackItem(
                         onTextLayout = { textLayout ->
                             if (hasSubtitleOverflow != textLayout.hasVisualOverflow) {
                                 hasSubtitleOverflow = textLayout.hasVisualOverflow
-                                model.onTitleOverflowChange?.invoke(hasTitleOverflow || hasSubtitleOverflow)
+                                notifyOverflowIfChanged()
                             }
                         },
                         modifier = Modifier.testTag(SnackBarTestTags.SNACK_BAR_SUBTITLE)
