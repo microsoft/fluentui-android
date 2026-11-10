@@ -143,7 +143,7 @@ private val DEFAULT_SNACKBAR_TOKENS = StackableSnackBarTokens()
  * @property snackBarToken The tokens for customizing the snackbar's appearance.
  * @property onActionTextClicked The callback to be invoked when the action button is clicked.
  * @property enableSwipeToDismiss If `true`, swiping the snackbar item horizontally will dismiss it.
- * @property onTitleOverflowChange The callback to determine on whether the text(title) has overflown. It receives a boolean indicating if there is an overflow.
+ * @property onTitleOverflowChange The callback to determine on whether the text (title or subtitle) has overflown. It receives a boolean indicating if there is an overflow.
  */
 @Stable
 data class SnackBarItemModel(
@@ -805,7 +805,8 @@ private fun SnackBarStackItem(
             verticalAlignment = Alignment.CenterVertically
         ) {
 
-            var hasTextOverflow by remember { mutableStateOf(false) }
+            var hasTitleOverflow by remember { mutableStateOf(false) }
+            var hasSubtitleOverflow by remember { mutableStateOf(false) }
             if (model.leadingIcon != null && model.leadingIcon.isIconAvailable()) {
                 Box(
                     modifier = Modifier
@@ -845,9 +846,9 @@ private fun SnackBarStackItem(
                     maxLines = messageMaxLines,
                     overflow = TextOverflow.Ellipsis,
                     onTextLayout = { textLayout ->
-                        if (hasTextOverflow != textLayout.hasVisualOverflow) {
-                            hasTextOverflow = textLayout.hasVisualOverflow
-                            model.onTitleOverflowChange?.invoke(hasTextOverflow)
+                        if (hasTitleOverflow != textLayout.hasVisualOverflow) {
+                            hasTitleOverflow = textLayout.hasVisualOverflow
+                            model.onTitleOverflowChange?.invoke(hasTitleOverflow || hasSubtitleOverflow)
                         }
                     }
                 )
@@ -857,6 +858,12 @@ private fun SnackBarStackItem(
                         style = token.subtitleTypography(snackBarInfo),
                         maxLines = messageMaxLines,
                         overflow = TextOverflow.Ellipsis,
+                        onTextLayout = { textLayout ->
+                            if (hasSubtitleOverflow != textLayout.hasVisualOverflow) {
+                                hasSubtitleOverflow = textLayout.hasVisualOverflow
+                                model.onTitleOverflowChange?.invoke(hasTitleOverflow || hasSubtitleOverflow)
+                            }
+                        },
                         modifier = Modifier.testTag(SnackBarTestTags.SNACK_BAR_SUBTITLE)
                     )
                 }
