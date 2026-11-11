@@ -136,7 +136,7 @@ fun SnackBarStackDemoLayout(context: V2StackableSnackbarActivity) {
                                     }
                                 }
                             ),
-                            onTitleOverflowChange = { },
+                            onTextOverflowChange = { },
                             onActionTextClicked = {
                                 stackState.toggleExpandedState()
                             },
@@ -176,7 +176,7 @@ fun SnackBarStackDemoLayout(context: V2StackableSnackbarActivity) {
                                             }
                                         }
                                     ),
-                                    onTitleOverflowChange = { },
+                                    onTextOverflowChange = { },
                                     onActionTextClicked = {
                                         stackState.toggleExpandedState()
                                     },

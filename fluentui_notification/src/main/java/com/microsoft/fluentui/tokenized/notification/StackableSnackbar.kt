@@ -143,7 +143,6 @@ private val DEFAULT_SNACKBAR_TOKENS = StackableSnackBarTokens()
  * @property snackBarToken The tokens for customizing the snackbar's appearance.
  * @property onActionTextClicked The callback to be invoked when the action button is clicked.
  * @property enableSwipeToDismiss If `true`, swiping the snackbar item horizontally will dismiss it.
- * @property onTitleOverflowChange The callback to determine on whether the text(title) has overflown. It receives a boolean indicating if there is an overflow.
  * @property onTextOverflowChange The callback to determine whether any text (title or subtitle) has overflown. It is invoked only when the combined overflow state changes.
  */
 @Stable
@@ -158,7 +157,6 @@ data class SnackBarItemModel(
     val snackBarToken: StackableSnackBarTokens = DEFAULT_SNACKBAR_TOKENS,
     val onActionTextClicked: () -> Unit = {},
     val enableSwipeToDismiss: Boolean = true,
-    val onTitleOverflowChange: ((Boolean) -> Unit)? = null,
     val onTextOverflowChange: ((Boolean) -> Unit)? = null
 )
 
@@ -859,7 +857,6 @@ private fun SnackBarStackItem(
                     onTextLayout = { textLayout ->
                         if (hasTitleOverflow != textLayout.hasVisualOverflow) {
                             hasTitleOverflow = textLayout.hasVisualOverflow
-                            model.onTitleOverflowChange?.invoke(hasTitleOverflow)
                             notifyTextOverflowIfChanged()
                         }
                     }
