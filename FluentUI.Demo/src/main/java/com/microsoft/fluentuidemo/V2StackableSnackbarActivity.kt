@@ -10,6 +10,8 @@ import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.KeyboardArrowUp
+import com.microsoft.fluentui.theme.token.controlTokens.SnackbarStyle
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -107,7 +109,8 @@ fun SnackBarStackDemoLayout(context: V2StackableSnackbarActivity) {
             SnackBarStack(
                 state = stackState,
                 snackBarStackConfig = SnackBarStackConfig(
-                    snackbarGapWhenExpanded = 10.dp
+                    snackbarGapWhenExpanded = 10.dp,
+                    maximumTextLinesWhenCollapsed = 1
                 )
             )
             Spacer(modifier = Modifier.height(10.dp))
@@ -133,7 +136,7 @@ fun SnackBarStackDemoLayout(context: V2StackableSnackbarActivity) {
                                     }
                                 }
                             ),
-                            onTitleOverflowChange = { },
+                            onTextOverflowChange = { },
                             onActionTextClicked = {
                                 stackState.toggleExpandedState()
                             },
@@ -173,7 +176,7 @@ fun SnackBarStackDemoLayout(context: V2StackableSnackbarActivity) {
                                             }
                                         }
                                     ),
-                                    onTitleOverflowChange = { },
+                                    onTextOverflowChange = { },
                                     onActionTextClicked = {
                                         stackState.toggleExpandedState()
                                     },
@@ -185,6 +188,31 @@ fun SnackBarStackDemoLayout(context: V2StackableSnackbarActivity) {
                     }
                 }, text = "Keep Adding")
             }
+            Spacer(modifier = Modifier.height(10.dp))
+            Button(onClick = {
+                val id = counter++
+                lateinit var model: SnackBarItemModel
+                model = SnackBarItemModel(
+                    id = id.toString(),
+                    message = "Short title #$id",
+                    style = SnackbarStyle.Accent,
+                    subTitle = "Long subtitle that should wrap across several lines and get truncated when collapsed. ".repeat(4),
+                    actionText = "Expand",
+                    // The chevron only appears when the (subtitle) text overflows.
+                    onTextOverflowChange = { overflow ->
+                        model.trailingIcon = if (overflow) {
+                            FluentIcon(
+                                Icons.Default.KeyboardArrowUp,
+                                Icons.Default.KeyboardArrowUp,
+                                contentDescription = "Expand"
+                            )
+                        } else null
+                    },
+                    onActionTextClicked = { stackState.toggleExpandedState() },
+                    enableSwipeToDismiss = true
+                )
+                stackState.addSnackbar(model)
+            }, text = "Add Long Subtitle Snackbar")
             Spacer(modifier = Modifier.height(10.dp))
         }
     }
