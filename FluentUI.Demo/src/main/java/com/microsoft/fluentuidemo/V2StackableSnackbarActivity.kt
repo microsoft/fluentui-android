@@ -11,6 +11,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.KeyboardArrowUp
+import com.microsoft.fluentui.theme.token.controlTokens.SnackbarStyle
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -194,10 +195,11 @@ fun SnackBarStackDemoLayout(context: V2StackableSnackbarActivity) {
                 model = SnackBarItemModel(
                     id = id.toString(),
                     message = "Short title #$id",
+                    style = SnackbarStyle.Accent,
                     subTitle = "Long subtitle that should wrap across several lines and get truncated when collapsed. ".repeat(4),
                     actionText = "Expand",
                     // The chevron only appears when the (subtitle) text overflows.
-                    onTitleOverflowChange = { overflow ->
+                    onTextOverflowChange = { overflow ->
                         model.trailingIcon = if (overflow) {
                             FluentIcon(
                                 Icons.Default.KeyboardArrowUp,

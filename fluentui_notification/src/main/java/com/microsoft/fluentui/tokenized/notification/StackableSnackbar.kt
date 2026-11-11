@@ -143,7 +143,8 @@ private val DEFAULT_SNACKBAR_TOKENS = StackableSnackBarTokens()
  * @property snackBarToken The tokens for customizing the snackbar's appearance.
  * @property onActionTextClicked The callback to be invoked when the action button is clicked.
  * @property enableSwipeToDismiss If `true`, swiping the snackbar item horizontally will dismiss it.
- * @property onTitleOverflowChange The callback to determine on whether the text (title or subtitle) has overflown. It receives a boolean indicating if there is an overflow.
+ * @property onTitleOverflowChange The callback to determine on whether the text(title) has overflown. It receives a boolean indicating if there is an overflow.
+ * @property onTextOverflowChange The callback to determine whether any text (title or subtitle) has overflown. It is invoked only when the combined overflow state changes.
  */
 @Stable
 data class SnackBarItemModel(
@@ -157,7 +158,8 @@ data class SnackBarItemModel(
     val snackBarToken: StackableSnackBarTokens = DEFAULT_SNACKBAR_TOKENS,
     val onActionTextClicked: () -> Unit = {},
     val enableSwipeToDismiss: Boolean = true,
-    val onTitleOverflowChange: ((Boolean) -> Unit)? = null
+    val onTitleOverflowChange: ((Boolean) -> Unit)? = null,
+    val onTextOverflowChange: ((Boolean) -> Unit)? = null
 )
 
 internal data class SnackbarItemInternal(
@@ -593,7 +595,7 @@ private fun SnackBarStackItem(
     val isTop = visibleIndex == 0
 
     val token = model.snackBarToken
-    val snackBarInfo = SnackBarInfo(model.style, false)
+    val snackBarInfo = SnackBarInfo(model.style, !model.subTitle.isNullOrBlank())
     val entryAnimationType = token.entryAnimationType(snackBarInfo)
     val exitAnimationType = token.exitAnimationType(snackBarInfo)
 
@@ -808,12 +810,12 @@ private fun SnackBarStackItem(
             var hasTitleOverflow by remember { mutableStateOf(false) }
             var hasSubtitleOverflow by remember { mutableStateOf(false) }
             var reportedOverflow by remember { mutableStateOf(false) }
-            // Notify only when the combined (title or subtitle) overflow state changes.
-            fun notifyOverflowIfChanged() {
+            // Combined (title or subtitle) overflow; notify only when it changes.
+            fun notifyTextOverflowIfChanged() {
                 val overflow = hasTitleOverflow || hasSubtitleOverflow
                 if (overflow != reportedOverflow) {
                     reportedOverflow = overflow
-                    model.onTitleOverflowChange?.invoke(overflow)
+                    model.onTextOverflowChange?.invoke(overflow)
                 }
             }
             if (model.leadingIcon != null && model.leadingIcon.isIconAvailable()) {
@@ -857,7 +859,8 @@ private fun SnackBarStackItem(
                     onTextLayout = { textLayout ->
                         if (hasTitleOverflow != textLayout.hasVisualOverflow) {
                             hasTitleOverflow = textLayout.hasVisualOverflow
-                            notifyOverflowIfChanged()
+                            model.onTitleOverflowChange?.invoke(hasTitleOverflow)
+                            notifyTextOverflowIfChanged()
                         }
                     }
                 )
@@ -870,7 +873,7 @@ private fun SnackBarStackItem(
                         onTextLayout = { textLayout ->
                             if (hasSubtitleOverflow != textLayout.hasVisualOverflow) {
                                 hasSubtitleOverflow = textLayout.hasVisualOverflow
-                                notifyOverflowIfChanged()
+                                notifyTextOverflowIfChanged()
                             }
                         },
                         modifier = Modifier.testTag(SnackBarTestTags.SNACK_BAR_SUBTITLE)
