@@ -68,6 +68,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.ExperimentalTextApi
+import androidx.compose.ui.text.PlatformTextStyle
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -107,6 +111,21 @@ private object SnackBarTestTags {
     const val SNACK_BAR_SUBTITLE = "snack_bar_subtitle"
     const val SNACK_BAR_ACTION_BUTTON = "snack_bar_action_button"
 }
+
+// Figma: 2dp gap between the title and the subtitle.
+private val SUBTITLE_TOP_SPACING = 2.dp
+
+// Makes every line (including a single one) take the full lineHeight (20sp), as in Figma.
+@OptIn(ExperimentalTextApi::class)
+private fun TextStyle.withFullLineHeight() = merge(
+    TextStyle(
+        platformStyle = PlatformTextStyle(includeFontPadding = false),
+        lineHeightStyle = LineHeightStyle(
+            alignment = LineHeightStyle.Alignment.Center,
+            trim = LineHeightStyle.Trim.None
+        )
+    )
+)
 
 private object SnackBarLabels {
     const val STACK_HEIGHT_ANIMATION = "StackHeightAnimation"
@@ -853,7 +872,7 @@ private fun SnackBarStackItem(
 
                 Text(
                     text = model.message,
-                    style = token.titleTypography(snackBarInfo),
+                    style = token.titleTypography(snackBarInfo).withFullLineHeight(),
                     maxLines = messageMaxLines,
                     overflow = TextOverflow.Ellipsis,
                     onTextLayout = { textLayout ->
@@ -864,14 +883,16 @@ private fun SnackBarStackItem(
                 if (subTitle != null) {
                     Text(
                         text = subTitle,
-                        style = token.subtitleTypography(snackBarInfo),
+                        style = token.subtitleTypography(snackBarInfo).withFullLineHeight(),
                         maxLines = messageMaxLines,
                         overflow = TextOverflow.Ellipsis,
                         onTextLayout = { textLayout ->
                             hasSubtitleOverflow = textLayout.hasVisualOverflow
                             notifyTextOverflowIfChanged()
                         },
-                        modifier = Modifier.testTag(SnackBarTestTags.SNACK_BAR_SUBTITLE)
+                        modifier = Modifier
+                            .padding(top = SUBTITLE_TOP_SPACING)
+                            .testTag(SnackBarTestTags.SNACK_BAR_SUBTITLE)
                     )
                 }
 
@@ -885,7 +906,13 @@ private fun SnackBarStackItem(
                     modifier = Modifier
                         .testTag(SnackBarTestTags.SNACK_BAR_ACTION_BUTTON)
                         .then(
-                            Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
+                            // 8dp to the text and to the trailing icon, 16dp to the edge when there is no icon.
+                            Modifier.padding(
+                                start = 8.dp,
+                                end = if (model.trailingIcon != null) 8.dp else 16.dp,
+                                top = 12.dp,
+                                bottom = 12.dp
+                            )
                         ),
                     text = model.actionText,
                     style = ButtonStyle.TextButton,
@@ -924,7 +951,7 @@ private fun SnackBarStackItem(
                             icon,
                             modifier = Modifier
                                 .padding(top = 12.dp, bottom = 12.dp, end = 16.dp)
-                                .size(token.leftIconSize(snackBarInfo)),
+                                .size(token.dismissIconSize(snackBarInfo)),
                             tint = token.iconColor(snackBarInfo)
                         )
                     }
