@@ -827,7 +827,7 @@ private fun SnackBarStackItem(
                                     interactionSource = remember { MutableInteractionSource() },
                                     indication = rememberRipple(),
                                     enabled = true,
-                                    role = Role.Image,
+                                    role = Role.Button,
                                     onClick = model.leadingIcon.onClick!!
                                 )
                             } else Modifier
@@ -917,7 +917,7 @@ private fun SnackBarStackItem(
                                         interactionSource = remember { MutableInteractionSource() },
                                         indication = rememberRipple(),
                                         enabled = true,
-                                        role = Role.Image,
+                                        role = Role.Button,
                                         onClick = onClick
                                     )
                                 } ?: Modifier
