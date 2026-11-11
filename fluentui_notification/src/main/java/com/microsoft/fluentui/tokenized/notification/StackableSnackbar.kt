@@ -795,6 +795,7 @@ private fun SnackBarStackItem(
                     Modifier.semantics {
                         val resultString = buildString {
                             append("${trueIndex+1} of ${state.snapshotStateList.size} ${model.message}")
+                            model.subTitle?.takeIf { it.isNotBlank() }?.let { append(", $it") }
                             model.actionText?.let { append(", $it") }
                             model.trailingIcon?.contentDescription?.let { append(", $it") }
                         }
