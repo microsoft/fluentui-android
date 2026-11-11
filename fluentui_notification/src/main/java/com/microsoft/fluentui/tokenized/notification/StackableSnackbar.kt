@@ -593,7 +593,8 @@ private fun SnackBarStackItem(
     val isTop = visibleIndex == 0
 
     val token = model.snackBarToken
-    val snackBarInfo = SnackBarInfo(model.style, !model.subTitle.isNullOrBlank())
+    val subTitle = model.subTitle?.takeIf { it.isNotBlank() }
+    val snackBarInfo = SnackBarInfo(model.style, subTitle != null)
     val entryAnimationType = token.entryAnimationType(snackBarInfo)
     val exitAnimationType = token.exitAnimationType(snackBarInfo)
 
@@ -795,7 +796,7 @@ private fun SnackBarStackItem(
                     Modifier.semantics {
                         val resultString = buildString {
                             append("${trueIndex+1} of ${state.snapshotStateList.size} ${model.message}")
-                            model.subTitle?.takeIf { it.isNotBlank() }?.let { append(", $it") }
+                            subTitle?.let { append(", $it") }
                             model.actionText?.let { append(", $it") }
                             model.trailingIcon?.contentDescription?.let { append(", $it") }
                         }
@@ -809,13 +810,13 @@ private fun SnackBarStackItem(
             var hasTitleOverflow by remember { mutableStateOf(false) }
             var hasSubtitleOverflow by remember { mutableStateOf(false) }
             var reportedOverflow by remember { mutableStateOf(false) }
-            // Combined (title or subtitle) overflow; notify only when it changes.
+
+            // Reports the combined (title or subtitle) overflow, only when it changes.
             fun notifyTextOverflowIfChanged() {
                 val overflow = hasTitleOverflow || hasSubtitleOverflow
-                if (overflow != reportedOverflow) {
-                    reportedOverflow = overflow
-                    model.onTextOverflowChange?.invoke(overflow)
-                }
+                if (overflow == reportedOverflow) return
+                reportedOverflow = overflow
+                model.onTextOverflowChange?.invoke(overflow)
             }
             if (model.leadingIcon != null && model.leadingIcon.isIconAvailable()) {
                 Box(
@@ -856,23 +857,19 @@ private fun SnackBarStackItem(
                     maxLines = messageMaxLines,
                     overflow = TextOverflow.Ellipsis,
                     onTextLayout = { textLayout ->
-                        if (hasTitleOverflow != textLayout.hasVisualOverflow) {
-                            hasTitleOverflow = textLayout.hasVisualOverflow
-                            notifyTextOverflowIfChanged()
-                        }
+                        hasTitleOverflow = textLayout.hasVisualOverflow
+                        notifyTextOverflowIfChanged()
                     }
                 )
-                if (!model.subTitle.isNullOrBlank()) {
+                if (subTitle != null) {
                     Text(
-                        text = model.subTitle,
+                        text = subTitle,
                         style = token.subtitleTypography(snackBarInfo),
                         maxLines = messageMaxLines,
                         overflow = TextOverflow.Ellipsis,
                         onTextLayout = { textLayout ->
-                            if (hasSubtitleOverflow != textLayout.hasVisualOverflow) {
-                                hasSubtitleOverflow = textLayout.hasVisualOverflow
-                                notifyTextOverflowIfChanged()
-                            }
+                            hasSubtitleOverflow = textLayout.hasVisualOverflow
+                            notifyTextOverflowIfChanged()
                         },
                         modifier = Modifier.testTag(SnackBarTestTags.SNACK_BAR_SUBTITLE)
                     )
