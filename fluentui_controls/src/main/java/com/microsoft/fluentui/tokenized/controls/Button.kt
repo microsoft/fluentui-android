@@ -101,7 +101,7 @@ fun Button(
             )
             .clip(shape)
             .semantics(true) {
-                editableText = AnnotatedString(text ?: "")
+                this.text = AnnotatedString(text ?: "")
                 this.contentDescription = contentDescription ?: ""
             }
             .then(clickAndSemanticsModifier)
