@@ -19,6 +19,28 @@ if (!cfsToken) {
     throw new GradleException('cfs-init.gradle: AZURE_ARTIFACTS_ENV_ACCESS_TOKEN must be set to authenticate to ' + cfsFeedUrl)
 }
 
+// Fail fast with Azure DevOps's own reason if the feed rejects the token (e.g. an expired PAT);
+// otherwise dependency resolution only reports a bare "401 Unauthorized".
+def probe = (HttpURLConnection) new URL(cfsFeedUrl + '/junit/junit/4.12/junit-4.12.pom').openConnection()
+probe.setRequestProperty('Authorization', 'Basic ' + ('AzureDevOps:' + cfsToken).bytes.encodeBase64().toString())
+probe.connectTimeout = 30000
+probe.readTimeout = 30000
+def probeStatus = probe.responseCode
+if (probeStatus in [401, 403]) {
+    def reason = probe.getHeaderField('X-TFS-ServiceError')
+    reason = reason ? URLDecoder.decode(reason, 'UTF-8') : (probe.errorStream?.text?.take(300) ?: 'no reason given')
+    def hints = ["token length ${cfsToken.length()}", "ActivityId ${probe.getHeaderField('ActivityId')}"]
+    if (cfsToken != cfsToken.trim()) {
+        hints << 'the token has leading/trailing whitespace'
+    }
+    if (cfsToken.startsWith('$(')) {
+        hints << 'the pipeline variable was not expanded'
+    }
+    throw new GradleException("cfs-init.gradle: ${cfsFeedUrl} rejected AZURE_ARTIFACTS_ENV_ACCESS_TOKEN (HTTP ${probeStatus}: ${reason}; ${hints.join('; ')})" +
+            '. If it is the mavenPassword PAT, create a new microsoftdesign PAT with Packaging (Read & write) scope and update the pipeline variable.')
+}
+probe.disconnect()
+
 def useCfsFeed = { RepositoryHandler repositories ->
     repositories.all { ArtifactRepository repo ->
         if (repo instanceof MavenArtifactRepository && repo.name != cfsFeedName && repo.url.scheme in ['http', 'https']) {
