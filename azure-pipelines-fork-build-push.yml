@@ -21,6 +21,7 @@ jobs:
           gradleWrapperFile: 'gradlew'
           tasks: 'lint'
           javaHomeOption: 'JDKVersion'
+          jdkVersionOption: "$(jdkVersion)"
           sonarQubeRunAnalysis: false
           spotBugsAnalysis: false
 
