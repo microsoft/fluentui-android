@@ -1,0 +1,42 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+// Gradle init script for internal Azure Pipelines builds (pass it with --init-script).
+// 1ES Network Isolation (SFI ES4.2.4, CFSClean/CFSClean2 policies) forbids builds from reaching public
+// package registries such as repo1.maven.org, jcenter.bintray.com and plugins.gradle.org. This script
+// replaces every remote Maven repository declared by the build with the Office Azure Artifacts feed,
+// which proxies Maven Central, Google Maven and the Gradle Plugin Portal through upstream sources.
+// Requires AZURE_ARTIFACTS_ENV_ACCESS_TOKEN (e.g. mapped from $(System.AccessToken)).
+
+def cfsFeedName = 'OfficeCfsFeed'
+def cfsFeedUrl = 'https://pkgs.dev.azure.com/office/_packaging/Office/maven/v1'
+def cfsToken = System.getenv('AZURE_ARTIFACTS_ENV_ACCESS_TOKEN')
+if (!cfsToken) {
+    throw new GradleException('cfs-init.gradle: AZURE_ARTIFACTS_ENV_ACCESS_TOKEN must be set to authenticate to ' + cfsFeedUrl)
+}
+
+def useCfsFeed = { RepositoryHandler repositories ->
+    repositories.all { ArtifactRepository repo ->
+        if (repo instanceof MavenArtifactRepository && repo.name != cfsFeedName && repo.url.scheme in ['http', 'https']) {
+            logger.info("cfs-init.gradle: replacing repository ${repo.name} (${repo.url}) with ${cfsFeedUrl}")
+            repositories.remove(repo)
+            if (repositories.findByName(cfsFeedName) == null) {
+                repositories.maven {
+                    name = cfsFeedName
+                    url = cfsFeedUrl
+                    credentials {
+                        username = 'AzureDevOps'
+                        password = cfsToken
+                    }
+                }
+            }
+        }
+    }
+}
+
+allprojects {
+    useCfsFeed(buildscript.repositories)
+    useCfsFeed(repositories)
+}

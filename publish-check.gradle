@@ -3,15 +3,19 @@ project.ext.artifactExists = { repo, artifactId, artifactVersion ->
     def pomFileName = artifactId+"-"+artifactVersion+".pom"
     def artifactPath = groupId+"/"+artifactId+"/"+artifactVersion+"/"+pomFileName
     def url = 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentui-android/maven/v1'
+    // Internal pipelines (see cfs-init.gradle) run under 1ES Network Isolation, which forbids calling repo1.maven.org.
+    // There Maven Central is queried through a feed whose only upstream is Maven Central and which holds no packages
+    // of its own, so a version resolves there exactly when it is on Maven Central.
+    def viaCentralProxyFeed = repo != "feed" && System.getenv('AZURE_ARTIFACTS_ENV_ACCESS_TOKEN') != null
     if(repo != "feed"){
-        url = 'https://repo1.maven.org/maven2'
+        url = viaCentralProxyFeed ? 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentuigithubtest/maven/v1' : 'https://repo1.maven.org/maven2'
     }
     def repositoryUrl = url+"/"+artifactPath
 
     try {
         def connection = (HttpURLConnection) new URL(repositoryUrl).openConnection()
 
-        if(repo == "feed"){
+        if(repo == "feed" || viaCentralProxyFeed){
             connection.setRequestProperty("Authorization", "Basic " + getBase64EncodedCredentials())
         }
         connection.setConnectTimeout(10000)
@@ -20,9 +24,17 @@ project.ext.artifactExists = { repo, artifactId, artifactVersion ->
 
         def responseCode = connection.getResponseCode()
 
+        // A wrong answer here would re-release already published versions, so fail instead of guessing.
+        if (viaCentralProxyFeed && responseCode != 200 && responseCode != 404) {
+            throw new GradleException("HTTP ${responseCode} while checking ${repositoryUrl}")
+        }
+
         return (200 == responseCode)
 
     } catch (IOException ignored) {
+        if (viaCentralProxyFeed) {
+            throw new GradleException("Could not check ${repositoryUrl}", ignored)
+        }
         println(ignored)
         return false
     }

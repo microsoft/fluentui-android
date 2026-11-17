@@ -21,6 +21,9 @@ extends:
       os: windows
     customBuildTags:
     - ES365AIMigrationTooling
+    settings:
+      # SFI ES4.2.4: block public package registries. Gradle resolves through the Office feed instead (cfs-init.gradle).
+      networkIsolationPolicy: Permissive,CFSClean,CFSClean2
     stages:
     - stage: __default
       jobs:
@@ -41,10 +44,12 @@ extends:
               bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
               ls
         - task: Gradle@3
+          env:
+            AZURE_ARTIFACTS_ENV_ACCESS_TOKEN: $(System.AccessToken)
           inputs:
             gradleWrapperFile: "gradlew"
             tasks: "build"
-            options: "-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)"
+            options: "--init-script $(Build.SourcesDirectory)/cfs-init.gradle -PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)"
             publishJUnitResults: false
             javaHomeOption: "JDKVersion"
             jdkVersionOption: "$(jdkVersion)"
@@ -52,9 +57,12 @@ extends:
             spotBugsAnalysis: false
         - task: Gradle@2
           displayName: Generate testApk
+          env:
+            AZURE_ARTIFACTS_ENV_ACCESS_TOKEN: $(System.AccessToken)
           inputs:
             gradleWrapperFile: "gradlew"
             tasks: "assembleDevelopmentDebugAndroidTest"
+            options: "--init-script $(Build.SourcesDirectory)/cfs-init.gradle"
             publishJUnitResults: false
             javaHomeOption: "JDKVersion"
             jdkVersionOption: "$(jdkVersion)"
@@ -63,8 +71,11 @@ extends:
         - task: Gradle@2
           displayName: Hydra Lab UI test
           condition: eq(coalesce(variables['runHydraLabTests'], 'false'), 'true')
+          env:
+            AZURE_ARTIFACTS_ENV_ACCESS_TOKEN: $(System.AccessToken)
           inputs:
             gradleWrapperFile: "gradlew"
+            options: "--init-script $(Build.SourcesDirectory)/cfs-init.gradle"
             tasks: "requestHydraLabTest -PappPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/development/debug/FluentUI.Demo-development-debug.apk -PtestAppPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/androidTest/development/debug/FluentUI.Demo-development-debug-androidTest.apk -PbuildFlavor=$(buildFlavor) -PtestSuiteName=$(testSuiteName) -PrunTimeOutSeconds=$(timeOutSeconds) -PdeviceIdentifier=$(deviceIdentifier) -PgroupTestType=$(groupTestType) -PreportAudience=TestLabOwner -PauthToken=$(authToken) -PpkgName=$(pkgName) -PtestPkgName=$(testPkgName) -PrunningType=$(runningType) -PframeworkType=$(frameworkType) -PhydraLabAPIHost=$(hydraLabAPIHost) -PhydraLabAPISchema=$(hydraLabAPISchema)"
             javaHomeOption: "JDKVersion"
             jdkVersionOption: "$(jdkVersion)"
@@ -77,12 +88,14 @@ extends:
             failTaskOnFailedTests: $(failTaskOnFailedTests)
         - task: Gradle@2
           displayName: "generate artifacts and publish to feed"
+          env:
+            AZURE_ARTIFACTS_ENV_ACCESS_TOKEN: $(System.AccessToken)
           inputs:
             gradleWrapperFile: "gradlew"
             tasks: "publish"
             javaHomeOption: "JDKVersion"
             jdkVersionOption: "$(jdkVersion)"
-            options: "-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword) -Pdeveloper_id=$(developer_id) -Pdeveloper_name=\"$(developer_name)\" -Pdeveloper_email=$(developer_email)"
+            options: "--init-script $(Build.SourcesDirectory)/cfs-init.gradle -PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword) -Pdeveloper_id=$(developer_id) -Pdeveloper_name=\"$(developer_name)\" -Pdeveloper_email=$(developer_email)"
         - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
           displayName: 📒 Generate Manifest
           inputs:
