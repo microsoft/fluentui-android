@@ -6,12 +6,14 @@
 // Gradle init script for internal Azure Pipelines builds (pass it with --init-script).
 // 1ES Network Isolation (SFI ES4.2.4, CFSClean/CFSClean2 policies) forbids builds from reaching public
 // package registries such as repo1.maven.org, jcenter.bintray.com and plugins.gradle.org. This script
-// replaces every remote Maven repository declared by the build with the Office Azure Artifacts feed,
-// which proxies Maven Central, Google Maven and the Gradle Plugin Portal through upstream sources.
-// Requires AZURE_ARTIFACTS_ENV_ACCESS_TOKEN (e.g. mapped from $(System.AccessToken)).
+// replaces every remote Maven repository declared by the build with the TestFluent Azure Artifacts feed,
+// whose Maven upstreams are only public sources (Maven Central, Google Maven, Gradle Plugin Portal), so every
+// package is served complete. (The Office feed is not used: its internal upstreams can serve incomplete
+// packages, e.g. okhttp 3.10.0 without its jar.)
+// Requires AZURE_ARTIFACTS_ENV_ACCESS_TOKEN: a microsoftdesign PAT, e.g. mapped from $(mavenPassword).
 
-def cfsFeedName = 'OfficeCfsFeed'
-def cfsFeedUrl = 'https://pkgs.dev.azure.com/office/_packaging/Office/maven/v1'
+def cfsFeedName = 'TestFluentCfsFeed'
+def cfsFeedUrl = 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/TestFluent/maven/v1'
 def cfsToken = System.getenv('AZURE_ARTIFACTS_ENV_ACCESS_TOKEN')
 if (!cfsToken) {
     throw new GradleException('cfs-init.gradle: AZURE_ARTIFACTS_ENV_ACCESS_TOKEN must be set to authenticate to ' + cfsFeedUrl)
@@ -39,4 +41,12 @@ def useCfsFeed = { RepositoryHandler repositories ->
 allprojects {
     useCfsFeed(buildscript.repositories)
     useCfsFeed(repositories)
+
+    // Robolectric downloads its Android runtime jars at test time, bypassing Gradle's repositories
+    // (default: repo1.maven.org). Point it at the same feed.
+    tasks.withType(Test).configureEach {
+        systemProperty 'robolectric.dependency.repo.url', cfsFeedUrl
+        systemProperty 'robolectric.dependency.repo.username', 'AzureDevOps'
+        systemProperty 'robolectric.dependency.repo.password', cfsToken
+    }
 }
