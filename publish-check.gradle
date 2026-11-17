@@ -6,7 +6,7 @@ project.ext.artifactExists = { repo, artifactId, artifactVersion ->
     // Internal pipelines (see cfs-init.gradle) run under 1ES Network Isolation, which forbids calling repo1.maven.org.
     // There Maven Central is queried through a feed whose only upstream is Maven Central and which holds no packages
     // of its own, so a version resolves there exactly when it is on Maven Central.
-    def viaCentralProxyFeed = repo != "feed" && System.getenv('AZURE_ARTIFACTS_ENV_ACCESS_TOKEN') != null
+    def viaCentralProxyFeed = repo != "feed" && System.getenv('CFS_FEED_TOKEN') != null
     if(repo != "feed"){
         url = viaCentralProxyFeed ? 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentuigithubtest/maven/v1' : 'https://repo1.maven.org/maven2'
     }

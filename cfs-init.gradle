@@ -10,13 +10,14 @@
 // whose Maven upstreams are only public sources (Maven Central, Google Maven, Gradle Plugin Portal), so every
 // package is served complete. (The Office feed is not used: its internal upstreams can serve incomplete
 // packages, e.g. okhttp 3.10.0 without its jar.)
-// Requires AZURE_ARTIFACTS_ENV_ACCESS_TOKEN: a microsoftdesign PAT, e.g. mapped from $(mavenPassword).
+// Requires CFS_FEED_TOKEN: a microsoftdesign PAT, e.g. mapped from $(mavenPassword). (Not AZURE_ARTIFACTS_ENV_ACCESS_TOKEN:
+// the Azure Pipelines Gradle task overwrites that with the pipeline's own token, which only works in the office org.)
 
 def cfsFeedName = 'TestFluentCfsFeed'
 def cfsFeedUrl = 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/TestFluent/maven/v1'
-def cfsToken = System.getenv('AZURE_ARTIFACTS_ENV_ACCESS_TOKEN')
+def cfsToken = System.getenv('CFS_FEED_TOKEN')
 if (!cfsToken) {
-    throw new GradleException('cfs-init.gradle: AZURE_ARTIFACTS_ENV_ACCESS_TOKEN must be set to authenticate to ' + cfsFeedUrl)
+    throw new GradleException('cfs-init.gradle: CFS_FEED_TOKEN must be set to authenticate to ' + cfsFeedUrl)
 }
 
 // Fail fast with Azure DevOps's own reason if the feed rejects the token (e.g. an expired PAT);
@@ -36,7 +37,7 @@ if (probeStatus in [401, 403]) {
     if (cfsToken.startsWith('$(')) {
         hints << 'the pipeline variable was not expanded'
     }
-    throw new GradleException("cfs-init.gradle: ${cfsFeedUrl} rejected AZURE_ARTIFACTS_ENV_ACCESS_TOKEN (HTTP ${probeStatus}: ${reason}; ${hints.join('; ')})" +
+    throw new GradleException("cfs-init.gradle: ${cfsFeedUrl} rejected CFS_FEED_TOKEN (HTTP ${probeStatus}: ${reason}; ${hints.join('; ')})" +
             '. If it is the mavenPassword PAT, create a new microsoftdesign PAT with Packaging (Read & write) scope and update the pipeline variable.')
 }
 probe.disconnect()

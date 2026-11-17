@@ -45,7 +45,7 @@ extends:
               ls
         - task: Gradle@3
           env:
-            AZURE_ARTIFACTS_ENV_ACCESS_TOKEN: $(mavenPassword)
+            CFS_FEED_TOKEN: $(mavenPassword)
           inputs:
             gradleWrapperFile: "gradlew"
             tasks: "build"
@@ -58,7 +58,7 @@ extends:
         - task: Gradle@2
           displayName: Generate testApk
           env:
-            AZURE_ARTIFACTS_ENV_ACCESS_TOKEN: $(mavenPassword)
+            CFS_FEED_TOKEN: $(mavenPassword)
           inputs:
             gradleWrapperFile: "gradlew"
             tasks: "assembleDevelopmentDebugAndroidTest"
@@ -72,7 +72,7 @@ extends:
           displayName: Hydra Lab UI test
           condition: eq(coalesce(variables['runHydraLabTests'], 'false'), 'true')
           env:
-            AZURE_ARTIFACTS_ENV_ACCESS_TOKEN: $(mavenPassword)
+            CFS_FEED_TOKEN: $(mavenPassword)
           inputs:
             gradleWrapperFile: "gradlew"
             options: "--init-script $(Build.SourcesDirectory)/cfs-init.gradle"
@@ -89,7 +89,7 @@ extends:
         - task: Gradle@2
           displayName: "generate artifacts and publish to feed"
           env:
-            AZURE_ARTIFACTS_ENV_ACCESS_TOKEN: $(mavenPassword)
+            CFS_FEED_TOKEN: $(mavenPassword)
           inputs:
             gradleWrapperFile: "gradlew"
             tasks: "publish"
