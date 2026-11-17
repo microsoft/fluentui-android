@@ -13,16 +13,27 @@ project.ext.artifactExists = { repo, artifactId, artifactVersion ->
     def repositoryUrl = url+"/"+artifactPath
 
     try {
-        def connection = (HttpURLConnection) new URL(repositoryUrl).openConnection()
+        def responseCode
+        // Azure Artifacts throttles busy identities with HTTP 429 (+ Retry-After); retry transient responses.
+        for (int attempt = 1; ; attempt++) {
+            def connection = (HttpURLConnection) new URL(repositoryUrl).openConnection()
 
-        if(repo == "feed" || viaCentralProxyFeed){
-            connection.setRequestProperty("Authorization", "Basic " + getBase64EncodedCredentials())
+            if(repo == "feed" || viaCentralProxyFeed){
+                connection.setRequestProperty("Authorization", "Basic " + getBase64EncodedCredentials())
+            }
+            connection.setConnectTimeout(10000)
+            connection.setReadTimeout(10000)
+            connection.setRequestMethod("HEAD")
+
+            responseCode = connection.getResponseCode()
+            if ((responseCode != 429 && responseCode < 500) || attempt == 6) {
+                break
+            }
+            def retryAfter = connection.getHeaderField("Retry-After")
+            def waitSeconds = retryAfter?.isInteger() ? Math.min(retryAfter.toInteger(), 60) : 10 * attempt
+            println("HTTP ${responseCode} while checking ${repositoryUrl}; retrying in ${waitSeconds}s")
+            Thread.sleep(waitSeconds * 1000L)
         }
-        connection.setConnectTimeout(10000)
-        connection.setReadTimeout(10000)
-        connection.setRequestMethod("HEAD")
-
-        def responseCode = connection.getResponseCode()
 
         // A wrong answer here would re-release already published versions, so fail instead of guessing.
         if (viaCentralProxyFeed && responseCode != 200 && responseCode != 404) {
