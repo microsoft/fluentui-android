@@ -1,3 +1,8 @@
+import java.net.http.HttpClient
+import java.net.http.HttpRequest
+import java.net.http.HttpResponse
+import java.time.Duration
+
 project.ext.artifactExists = { repo, artifactId, artifactVersion ->
     def groupId = 'com/microsoft/fluentui'
     def pomFileName = artifactId+"-"+artifactVersion+".pom"
@@ -6,30 +11,41 @@ project.ext.artifactExists = { repo, artifactId, artifactVersion ->
     // Internal pipelines (see cfs-init.gradle) run under 1ES Network Isolation, which forbids calling repo1.maven.org.
     // There Maven Central is queried through a feed whose only upstream is Maven Central and which holds no packages
     // of its own, so a version resolves there exactly when it is on Maven Central.
-    def viaCentralProxyFeed = repo != "feed" && System.getenv('CFS_FEED_TOKEN') != null
+    def viaCentralProxyFeed = repo != "feed" && project.hasProperty('cfsFeedToken')
     if(repo != "feed"){
         url = viaCentralProxyFeed ? 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentuigithubtest/maven/v1' : 'https://repo1.maven.org/maven2'
     }
     def repositoryUrl = url+"/"+artifactPath
+    // java.net.http, unlike HttpURLConnection, doesn't log request headers (and so credentials) under --debug.
+    def client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1).connectTimeout(Duration.ofSeconds(10)).build()
+    def head = { String target ->
+        def response
+        for (int hop = 0; hop <= 3; hop++) {
+            def request = HttpRequest.newBuilder(URI.create(target)).method("HEAD", HttpRequest.BodyPublishers.noBody()).timeout(Duration.ofSeconds(10))
+            // Send credentials only to the repository itself, not to redirect targets on other hosts.
+            if((repo == "feed" || viaCentralProxyFeed) && URI.create(target).authority == URI.create(repositoryUrl).authority){
+                request.header("Authorization", "Basic " + getBase64EncodedCredentials())
+            }
+            response = client.send(request.build(), HttpResponse.BodyHandlers.discarding())
+            def location = response.headers().firstValue("Location").orElse(null)
+            if (!(response.statusCode() in [301, 302, 303, 307, 308]) || location == null) {
+                break
+            }
+            target = URI.create(target).resolve(location).toString()
+        }
+        return response
+    }
 
     try {
         def responseCode
         // Azure Artifacts throttles busy identities with HTTP 429 (+ Retry-After); retry transient responses.
         for (int attempt = 1; ; attempt++) {
-            def connection = (HttpURLConnection) new URL(repositoryUrl).openConnection()
-
-            if(repo == "feed" || viaCentralProxyFeed){
-                connection.setRequestProperty("Authorization", "Basic " + getBase64EncodedCredentials())
-            }
-            connection.setConnectTimeout(10000)
-            connection.setReadTimeout(10000)
-            connection.setRequestMethod("HEAD")
-
-            responseCode = connection.getResponseCode()
+            def response = head(repositoryUrl)
+            responseCode = response.statusCode()
             if ((responseCode != 429 && responseCode < 500) || attempt == 6) {
                 break
             }
-            def retryAfter = connection.getHeaderField("Retry-After")
+            def retryAfter = response.headers().firstValue("Retry-After").orElse(null)
             def waitSeconds = retryAfter?.isInteger() ? Math.min(retryAfter.toInteger(), 60) : 10 * attempt
             println("HTTP ${responseCode} while checking ${repositoryUrl}; retrying in ${waitSeconds}s")
             Thread.sleep(waitSeconds * 1000L)
