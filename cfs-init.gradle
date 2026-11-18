@@ -1,0 +1,101 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+// Gradle init script for internal Azure Pipelines builds. Pass it with --init-script, together with the feed
+// token as -PcfsFeedToken=<token>: unlike an environment variable, a Gradle property isn't inherited by child
+// processes such as test JVMs or the Kotlin daemon.
+// 1ES Network Isolation (SFI ES4.2.4, CFSClean/CFSClean2 policies) forbids builds from reaching public
+// package registries such as repo1.maven.org, jcenter.bintray.com and plugins.gradle.org. This script
+// replaces every remote Maven repository declared by the build with the TestFluent Azure Artifacts feed,
+// whose Maven upstreams are only public sources (Maven Central, Google Maven, Gradle Plugin Portal), so every
+// package is served complete. (The Office feed is not used: its internal upstreams can serve incomplete
+// packages, e.g. okhttp 3.10.0 without its jar.)
+
+import java.net.http.HttpClient
+import java.net.http.HttpRequest
+import java.net.http.HttpResponse
+import java.time.Duration
+
+def cfsFeedName = 'TestFluentCfsFeed'
+def cfsFeedUrl = 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/TestFluent/maven/v1'
+def cfsToken = gradle.startParameter.projectProperties['cfsFeedToken']
+if (!cfsToken) {
+    throw new GradleException('cfs-init.gradle: pass the feed token as -PcfsFeedToken=<token> to authenticate to ' + cfsFeedUrl)
+}
+
+// Fail fast with Azure DevOps's own reason if the feed rejects the token (e.g. an expired PAT); otherwise
+// dependency resolution only reports a bare "401 Unauthorized". Uses java.net.http because, unlike
+// HttpURLConnection, it doesn't log request headers (and so the credential) when Gradle runs with --debug.
+def probe = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1).connectTimeout(Duration.ofSeconds(30)).build().send(
+        HttpRequest.newBuilder(URI.create(cfsFeedUrl + '/junit/junit/4.12/junit-4.12.pom'))
+                .header('Authorization', 'Basic ' + ('AzureDevOps:' + cfsToken).bytes.encodeBase64().toString())
+                .timeout(Duration.ofSeconds(30))
+                .build(),
+        HttpResponse.BodyHandlers.ofString())
+if (probe.statusCode() in [401, 403]) {
+    def reason = probe.headers().firstValue('X-TFS-ServiceError').orElse(null)
+    reason = reason ? URLDecoder.decode(reason, 'UTF-8') : (probe.body()?.take(300) ?: 'no reason given')
+    def hints = ["token length ${cfsToken.length()}", "ActivityId ${probe.headers().firstValue('ActivityId').orElse('n/a')}"]
+    if (cfsToken != cfsToken.trim()) {
+        hints << 'the token has leading/trailing whitespace'
+    }
+    if (cfsToken.startsWith('$(')) {
+        hints << 'the pipeline variable was not expanded'
+    }
+    throw new GradleException("cfs-init.gradle: ${cfsFeedUrl} rejected the token (HTTP ${probe.statusCode()}: ${reason}; ${hints.join('; ')})" +
+            '. If it is the mavenPassword PAT, create a new microsoftdesign PAT with Packaging (Read & write) scope and update the pipeline variable.')
+}
+
+def useCfsFeed = { RepositoryHandler repositories ->
+    repositories.all { ArtifactRepository repo ->
+        if (repo instanceof MavenArtifactRepository && repo.name != cfsFeedName && repo.url.scheme in ['http', 'https']) {
+            logger.info("cfs-init.gradle: replacing repository ${repo.name} (${repo.url}) with ${cfsFeedUrl}")
+            repositories.remove(repo)
+            if (repositories.findByName(cfsFeedName) == null) {
+                repositories.maven {
+                    name = cfsFeedName
+                    url = cfsFeedUrl
+                    credentials {
+                        username = 'AzureDevOps'
+                        password = cfsToken
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Robolectric downloads its Android runtime jar at test time, bypassing Gradle's repositories (default:
+// repo1.maven.org). Instead, Gradle downloads it through the feed and Robolectric reads it from a local
+// directory, so test JVMs need neither network access nor the token. Update both values below when the
+// Robolectric version or the SDK level that unit tests run on changes (see Robolectric's DefaultSdkProvider).
+def robolectricVersion = '4.13'
+def robolectricRuntimeJars = ['org.robolectric:android-all-instrumented:14-robolectric-10818077-i6'] // SDK 34
+def robolectricDir = new File(gradle.gradleUserHomeDir, 'cfs-init/robolectric')
+
+gradle.rootProject { root ->
+    def runtime = root.configurations.create('cfsRobolectricRuntime') { transitive = false }
+    robolectricRuntimeJars.each { root.dependencies.add(runtime.name, it) }
+    root.tasks.register('cfsFetchRobolectricRuntime', Copy) {
+        from runtime
+        into robolectricDir
+    }
+}
+
+allprojects {
+    useCfsFeed(buildscript.repositories)
+    useCfsFeed(repositories)
+
+    tasks.withType(Test).configureEach { test ->
+        test.dependsOn(':cfsFetchRobolectricRuntime')
+        test.systemProperty 'robolectric.dependency.dir', robolectricDir.absolutePath
+        test.doFirst {
+            def robolectricJar = test.classpath.find { it.name ==~ /robolectric-[\d.]+\.jar/ }
+            if (robolectricJar && robolectricJar.name != "robolectric-${robolectricVersion}.jar".toString()) {
+                throw new GradleException("cfs-init.gradle: tests use ${robolectricJar.name}, but robolectricRuntimeJars is for Robolectric ${robolectricVersion}; update both")
+            }
+        }
+    }
+}
