@@ -42,8 +42,8 @@ pipelines:
         credscan:
           lastModifiedDate: 2025-08-04
         binskim:
-          lastModifiedDate: 2025-08-04
+          lastModifiedDate: 2026-11-18
         prefast:
-          lastModifiedDate: 2025-08-04
+          lastModifiedDate: 2026-11-18
         roslyn:
-          lastModifiedDate: 2025-08-04
+          lastModifiedDate: 2026-11-18
