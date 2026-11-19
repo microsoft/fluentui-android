@@ -13,8 +13,8 @@ android {
         applicationId 'com.microsoft.fluentuidemo'
         minSdkVersion 23
         targetSdkVersion 34
-        versionCode 2015
-        versionName '0.3.15'
+        versionCode 2016
+        versionName '0.3.16'
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     kotlinOptions {
