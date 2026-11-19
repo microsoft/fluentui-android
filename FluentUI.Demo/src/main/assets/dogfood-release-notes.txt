@@ -2,9 +2,13 @@ Release version 0.3.16
 What's new
 Fluent v2:
 Fix/enhancement:
-    1. Stackable Snackbar now reports subtitle truncation: the new SnackBarItemModel.onTextOverflowChange callback is invoked when the title or subtitle overflow state changes. It replaces onTitleOverflowChange, so callers of onTitleOverflowChange must rename it to onTextOverflowChange.
+    1. Stackable Snackbar now reports subtitle truncation: the new SnackBarItemModel.onTextOverflowChange callback is invoked only when the combined title-or-subtitle overflow state changes. It replaces onTitleOverflowChange, so callers of onTitleOverflowChange must rename it to onTextOverflowChange and account for subtitle overflow.
     2. Stackable Snackbar now uses the bold title style when a subtitle is present and follows the Figma spacing: 2dp gap between title and subtitle, full line height for text, 8dp gaps around the action button and a 20dp trailing icon.
     3. Improved Stackable Snackbar accessibility: the subtitle is included in the snackbar's content description, and clickable leading and trailing icons are announced as buttons.
+
+Also included since the last published release (0.3.14):
+    1. Fixed expanded Stackable Snackbar height calculation to include the first snackbar and prevent clipping.
+    2. Improved Stackable Snackbar scrim accessibility with button semantics and the default label "Collapse Expanded notifications".
 
 Note:
 The Demo App for Fluent Controls will now also be published on Github starting from v0.3.8
