@@ -17,6 +17,9 @@ extends:
       os: windows
     customBuildTags:
     - ES365AIMigrationTooling
+    settings:
+      # SFI ES4.2.4: block public package registries. Gradle downloads dependencies through the OC_PublicPackages feed instead (cfs-init.gradle).
+      networkIsolationPolicy: Permissive,CFSClean,CFSClean2
     stages:
     - stage: __default
       jobs:
