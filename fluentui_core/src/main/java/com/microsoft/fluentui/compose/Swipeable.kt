@@ -852,8 +852,8 @@ val <T> SwipeableState<T>.PreUpPostDownNestedScrollConnection: NestedScrollConne
             val toFling = Offset(available.x, available.y).toFloat()
             return if (toFling < 0 && offset.value > minBound) {
                 performFling(velocity = toFling)
-                // since we go to the anchor with tween settling, consume all for the best UX
-                available
+                // Consume the vertical velocity while settling to the anchor.
+                Velocity(0f, available.y)
             } else {
                 Velocity.Zero
             }
@@ -861,7 +861,7 @@ val <T> SwipeableState<T>.PreUpPostDownNestedScrollConnection: NestedScrollConne
 
         override suspend fun onPostFling(consumed: Velocity, available: Velocity): Velocity {
             performFling(velocity = Offset(available.x, available.y).toFloat())
-            return available
+            return Velocity(0f, available.y)
         }
 
         private fun Float.toOffset(): Offset = Offset(0f, this)
@@ -886,7 +886,7 @@ val <T> SwipeableState<T>.PostDownNestedScrollConnection: NestedScrollConnection
 
         override suspend fun onPostFling(consumed: Velocity, available: Velocity): Velocity {
             performFling(velocity = Offset(available.x, available.y).toFloat())
-            return available
+            return Velocity(0f, available.y)
         }
 
         private fun Float.toOffset(): Offset = Offset(0f, this)
@@ -918,7 +918,7 @@ val <T> SwipeableState<T>.NonDismissiblePostDownNestedScrollConnection: NestedSc
 
         override suspend fun onPostFling(consumed: Velocity, available: Velocity): Velocity {
             performFling(velocity = Offset(available.x, available.y).toFloat())
-            return available
+            return Velocity(0f, available.y)
         }
 
         private fun Float.toOffset(): Offset = Offset(0f, this)
@@ -953,8 +953,8 @@ val <T> SwipeableState<T>.NonDismissiblePreUpPostDownNestedScrollConnection: Nes
             val toFling = Offset(available.x, available.y).toFloat()
             return if (toFling < 0 && offset.value > minBound) {
                 performFling(velocity = toFling)
-                // since we go to the anchor with tween settling, consume all for the best UX
-                available
+                // Consume the vertical velocity while settling to the anchor.
+                Velocity(0f, available.y)
             } else {
                 Velocity.Zero
             }
