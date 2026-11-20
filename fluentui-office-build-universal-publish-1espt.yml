@@ -44,7 +44,12 @@ extends:
             javaHomeOption: 'JDKVersion'
             jdkVersionOption: '1.11'
             sonarQubeRunAnalysis: false
-            options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'
+            options: >-
+              -PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword)
+              -PsigningKeyStorePassword=$(signingKeyStorePassword)
+              --init-script $(Build.SourcesDirectory)/cfs-init.gradle
+              -PcfsFeedUrl=https://pkgs.dev.azure.com/office/OC/_packaging/OC_PublicPackages/maven/v1
+              -PcfsFeedToken=$(System.AccessToken)
         - task: CopyFiles@2
           displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
           inputs:

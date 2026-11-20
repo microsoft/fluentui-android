@@ -8,18 +8,18 @@
 // processes such as test JVMs or the Kotlin daemon.
 // 1ES Network Isolation (SFI ES4.2.4, CFSClean/CFSClean2 policies) forbids builds from reaching public
 // package registries such as repo1.maven.org, jcenter.bintray.com and plugins.gradle.org. This script
-// replaces every remote Maven repository declared by the build with the TestFluent Azure Artifacts feed,
-// whose Maven upstreams are only public sources (Maven Central, Google Maven, Gradle Plugin Portal), so every
-// package is served complete. (The Office feed is not used: its internal upstreams can serve incomplete
-// packages, e.g. okhttp 3.10.0 without its jar.)
+// replaces every remote Maven repository declared by the build with a CFS-compliant Azure Artifacts feed.
+// Pipelines may select a project-scoped public feed with -PcfsFeedUrl; the default TestFluent feed has
+// Maven upstreams for Maven Central, Google Maven, and the Gradle Plugin Portal.
 
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse
 import java.time.Duration
 
-def cfsFeedName = 'TestFluentCfsFeed'
-def cfsFeedUrl = 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/TestFluent/maven/v1'
+def cfsFeedName = 'CfsArtifactFeed'
+def cfsFeedUrl = gradle.startParameter.projectProperties['cfsFeedUrl'] ?:
+        'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/TestFluent/maven/v1'
 def cfsToken = gradle.startParameter.projectProperties['cfsFeedToken']
 if (!cfsToken) {
     throw new GradleException('cfs-init.gradle: pass the feed token as -PcfsFeedToken=<token> to authenticate to ' + cfsFeedUrl)
@@ -45,7 +45,7 @@ if (probe.statusCode() in [401, 403]) {
         hints << 'the pipeline variable was not expanded'
     }
     throw new GradleException("cfs-init.gradle: ${cfsFeedUrl} rejected the token (HTTP ${probe.statusCode()}: ${reason}; ${hints.join('; ')})" +
-            '. If it is the mavenPassword PAT, create a new microsoftdesign PAT with Packaging (Read & write) scope and update the pipeline variable.')
+            '. For a PAT, verify its Packaging Read scope. For System.AccessToken, verify the pipeline build identity has Feed and Upstream Reader (Collaborator) access.')
 }
 
 def useCfsFeed = { RepositoryHandler repositories ->
