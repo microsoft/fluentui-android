@@ -129,7 +129,6 @@ import com.microsoft.fluentui.icons.avataricons.presence.unknown.medium.Dark
 import com.microsoft.fluentui.icons.avataricons.presence.unknown.medium.Light
 import com.microsoft.fluentui.icons.avataricons.presence.unknown.small.Dark
 import com.microsoft.fluentui.icons.avataricons.presence.unknown.small.Light
-import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.*
