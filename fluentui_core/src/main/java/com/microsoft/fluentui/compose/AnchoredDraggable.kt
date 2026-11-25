@@ -16,7 +16,6 @@
 
 package com.microsoft.fluentui.compose
 
-import android.annotation.SuppressLint
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.animate
 import androidx.compose.foundation.MutatePriority
