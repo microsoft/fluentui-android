@@ -21,6 +21,9 @@ extends:
       os: windows
     customBuildTags:
     - ES365AIMigrationTooling
+    settings:
+      # SFI ES4.2.4: block public package registries. Gradle downloads everything (including Robolectric's Android runtime) through the TestFluent feed instead (cfs-init.gradle).
+      networkIsolationPolicy: Permissive,CFSClean,CFSClean2
     stages:
     - stage: __default
       jobs:
@@ -44,7 +47,7 @@ extends:
           inputs:
             gradleWrapperFile: "gradlew"
             tasks: "build"
-            options: "-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)"
+            options: "--init-script $(Build.SourcesDirectory)/cfs-init.gradle -PcfsFeedToken=$(mavenPassword) -PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)"
             publishJUnitResults: false
             javaHomeOption: "JDKVersion"
             jdkVersionOption: "$(jdkVersion)"
@@ -55,6 +58,7 @@ extends:
           inputs:
             gradleWrapperFile: "gradlew"
             tasks: "assembleDevelopmentDebugAndroidTest"
+            options: "--init-script $(Build.SourcesDirectory)/cfs-init.gradle -PcfsFeedToken=$(mavenPassword)"
             publishJUnitResults: false
             javaHomeOption: "JDKVersion"
             jdkVersionOption: "$(jdkVersion)"
@@ -65,6 +69,7 @@ extends:
           condition: eq(coalesce(variables['runHydraLabTests'], 'false'), 'true')
           inputs:
             gradleWrapperFile: "gradlew"
+            options: "--init-script $(Build.SourcesDirectory)/cfs-init.gradle -PcfsFeedToken=$(mavenPassword)"
             tasks: "requestHydraLabTest -PappPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/development/debug/FluentUI.Demo-development-debug.apk -PtestAppPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/androidTest/development/debug/FluentUI.Demo-development-debug-androidTest.apk -PbuildFlavor=$(buildFlavor) -PtestSuiteName=$(testSuiteName) -PrunTimeOutSeconds=$(timeOutSeconds) -PdeviceIdentifier=$(deviceIdentifier) -PgroupTestType=$(groupTestType) -PreportAudience=TestLabOwner -PauthToken=$(authToken) -PpkgName=$(pkgName) -PtestPkgName=$(testPkgName) -PrunningType=$(runningType) -PframeworkType=$(frameworkType) -PhydraLabAPIHost=$(hydraLabAPIHost) -PhydraLabAPISchema=$(hydraLabAPISchema)"
             javaHomeOption: "JDKVersion"
             jdkVersionOption: "$(jdkVersion)"
@@ -82,7 +87,7 @@ extends:
             tasks: "publish"
             javaHomeOption: "JDKVersion"
             jdkVersionOption: "$(jdkVersion)"
-            options: "-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword) -Pdeveloper_id=$(developer_id) -Pdeveloper_name=\"$(developer_name)\" -Pdeveloper_email=$(developer_email)"
+            options: "--init-script $(Build.SourcesDirectory)/cfs-init.gradle -PcfsFeedToken=$(mavenPassword) -PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword) -Pdeveloper_id=$(developer_id) -Pdeveloper_name=\"$(developer_name)\" -Pdeveloper_email=$(developer_email)"
         - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
           displayName: 📒 Generate Manifest
           inputs:

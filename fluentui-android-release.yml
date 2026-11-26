@@ -40,7 +40,7 @@ extends:
             artifactName: 'Build'
             targetPath: '$(Pipeline.Workspace)/fluentui-android-maven-publish/Build'
         steps:
-        - task: SFP.release-tasks.custom-build-release-task.EsrpRelease@9
+        - task: SFP.release-tasks.custom-build-release-task.EsrpRelease@11
           displayName: 'ESRP Release'
           inputs:
             connectedservicename: 'ESRP-JSHost3'

@@ -7,7 +7,6 @@ package com.microsoft.fluentui.theme.token
 
 import androidx.compose.runtime.compositionLocalOf
 import com.microsoft.fluentui.theme.token.controlTokens.*
-import java.util.ResourceBundle.Control
 
 interface ControlInfo
 

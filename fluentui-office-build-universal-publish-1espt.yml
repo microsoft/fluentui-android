@@ -17,6 +17,9 @@ extends:
       os: windows
     customBuildTags:
     - ES365AIMigrationTooling
+    settings:
+      # SFI ES4.2.4: block public package registries. Gradle downloads dependencies through the OC_PublicPackages feed instead (cfs-init.gradle).
+      networkIsolationPolicy: Permissive,CFSClean,CFSClean2
     stages:
     - stage: __default
       jobs:
@@ -44,7 +47,12 @@ extends:
             javaHomeOption: 'JDKVersion'
             jdkVersionOption: '1.11'
             sonarQubeRunAnalysis: false
-            options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'
+            options: >-
+              -PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword)
+              -PsigningKeyStorePassword=$(signingKeyStorePassword)
+              --init-script $(Build.SourcesDirectory)/cfs-init.gradle
+              -PcfsFeedUrl=https://pkgs.dev.azure.com/office/OC/_packaging/OC_PublicPackages/maven/v1
+              -PcfsFeedToken=$(System.AccessToken)
         - task: CopyFiles@2
           displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
           inputs:
