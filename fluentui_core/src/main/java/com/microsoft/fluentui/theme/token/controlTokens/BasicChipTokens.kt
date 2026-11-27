@@ -13,7 +13,7 @@ import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.IControlToken
 import com.microsoft.fluentui.theme.token.StateBrush
 import com.microsoft.fluentui.theme.token.StateColor
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 open class BasicChipInfo : ControlInfo
 

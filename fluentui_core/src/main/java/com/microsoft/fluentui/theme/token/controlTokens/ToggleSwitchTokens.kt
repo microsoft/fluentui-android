@@ -6,6 +6,7 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.*
+import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 
 open class ToggleSwitchInfo(
@@ -86,11 +87,18 @@ open class ToggleSwitchTokens : IControlToken, Parcelable {
         )
     }
 
+    @IgnoredOnParcel
     open val fixedTrackHeight = 32.dp
+    @IgnoredOnParcel
     open val fixedTrackWidth = 52.dp
+    @IgnoredOnParcel
     open val restKnobDiameter = 26.dp
+    @IgnoredOnParcel
     open val pressedKnobDiameter = 24.dp
+    @IgnoredOnParcel
     open val knobRippleRadius = 24.dp
+    @IgnoredOnParcel
     open val restPaddingTrack = 3.dp
+    @IgnoredOnParcel
     open val pressedPaddingTrack = 4.dp
 }
