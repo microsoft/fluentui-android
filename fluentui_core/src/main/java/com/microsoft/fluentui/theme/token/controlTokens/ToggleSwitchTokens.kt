@@ -1,19 +1,16 @@
 package com.microsoft.fluentui.theme.token.controlTokens
 
-import android.os.Parcelable
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.*
-import kotlinx.parcelize.Parcelize
 
 open class ToggleSwitchInfo(
     val checked: Boolean = true,
 ) : ControlInfo
 
-@Parcelize
-open class ToggleSwitchTokens : IControlToken, Parcelable {
+open class ToggleSwitchTokens : IControlToken {
 
     @Composable
     open fun trackColor(switchInfo: ToggleSwitchInfo): StateColor {
